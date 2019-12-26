@@ -14,6 +14,8 @@ import UIKit
 
 @IBDesignable
 public class DSFSparklineBarGraph: DSFSparklineView {
+	/// The line width to use when drawing the border of each bar
 	@IBInspectable public var lineWidth: CGFloat = 0.5
+	/// The spacing between each bar
 	@IBInspectable public var barSpacing: CGFloat = 1.0
 }

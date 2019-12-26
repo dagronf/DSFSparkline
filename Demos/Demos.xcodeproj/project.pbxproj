@@ -3,23 +3,329 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		23102B5423B0245A001A621D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102B5323B0245A001A621D /* AppDelegate.swift */; };
+		23102B5623B0245A001A621D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102B5523B0245A001A621D /* ViewController.swift */; };
+		23102B5823B0245B001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102B5723B0245B001A621D /* Assets.xcassets */; };
+		23102B5B23B0245B001A621D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102B5923B0245B001A621D /* Main.storyboard */; };
+		23102BC423B02AED001A621D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102BC323B02AED001A621D /* AppDelegate.swift */; };
+		23102BC623B02AED001A621D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102BC523B02AED001A621D /* SceneDelegate.swift */; };
+		23102BC823B02AED001A621D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102BC723B02AED001A621D /* ViewController.swift */; };
+		23102BCB23B02AED001A621D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BC923B02AED001A621D /* Main.storyboard */; };
+		23102BCD23B02AEE001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102BCC23B02AEE001A621D /* Assets.xcassets */; };
+		23102BD023B02AEE001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BCE23B02AEE001A621D /* LaunchScreen.storyboard */; };
+		23102BDD23B02B0A001A621D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23102BDC23B02B0A001A621D /* AppDelegate.m */; };
+		23102BE023B02B0A001A621D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23102BDF23B02B0A001A621D /* ViewController.m */; };
+		23102BE223B02B0B001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102BE123B02B0B001A621D /* Assets.xcassets */; };
+		23102BE523B02B0B001A621D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BE323B02B0B001A621D /* Main.storyboard */; };
+		23102BE823B02B0B001A621D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23102BE723B02B0B001A621D /* main.m */; };
+		23102BF423B02B32001A621D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102BF323B02B32001A621D /* AppDelegate.swift */; };
+		23102BF623B02B32001A621D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102BF523B02B32001A621D /* ViewController.swift */; };
+		23102BF923B02B32001A621D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BF723B02B32001A621D /* Main.storyboard */; };
+		23102BFB23B02B33001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFA23B02B33001A621D /* Assets.xcassets */; };
+		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
+		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
+		818D753426991E180BB47221 /* Pods_tvOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1454125E806636BA42C54B4F /* Pods_tvOS_Sparkline_Demo.framework */; };
+		8A82BDB21D4EE86397462DFA /* Pods_iOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072B771B97EA05B58BCD3795 /* Pods_iOS_Sparkline_Demo.framework */; };
+		940D3611DC2580C43D615E50 /* Pods_macOS_Sparkline_Demo_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E789450D83944C4DC116BCB /* Pods_macOS_Sparkline_Demo_Objc.framework */; };
+		E84A94F020DCAE5C66BDED71 /* Pods_macOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E4B2E674A8129385BEC0CC9 /* Pods_macOS_Sparkline_Demo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		072B771B97EA05B58BCD3795 /* Pods_iOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08D97DE1E07E682A7D396320 /* Pods-macOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		1454125E806636BA42C54B4F /* Pods_tvOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E789450D83944C4DC116BCB /* Pods_macOS_Sparkline_Demo_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Sparkline_Demo_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23102B5023B0245A001A621D /* macOS Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23102B5323B0245A001A621D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23102B5523B0245A001A621D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23102B5723B0245B001A621D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23102B5A23B0245B001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23102B5C23B0245B001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23102B5D23B0245B001A621D /* macOS_Sparkline_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS_Sparkline_Demo.entitlements; sourceTree = "<group>"; };
+		23102BC123B02AED001A621D /* iOS Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23102BC323B02AED001A621D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23102BC523B02AED001A621D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		23102BC723B02AED001A621D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23102BCA23B02AED001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23102BCC23B02AEE001A621D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23102BCF23B02AEE001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		23102BD123B02AEE001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23102BD923B02B0A001A621D /* macOS Sparkline Demo Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Sparkline Demo Objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23102BDB23B02B0A001A621D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		23102BDC23B02B0A001A621D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		23102BDE23B02B0A001A621D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		23102BDF23B02B0A001A621D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		23102BE123B02B0B001A621D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23102BE423B02B0B001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23102BE623B02B0B001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23102BE723B02B0B001A621D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		23102BE923B02B0B001A621D /* macOS_Sparkline_Demo_Objc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS_Sparkline_Demo_Objc.entitlements; sourceTree = "<group>"; };
+		23102BF123B02B32001A621D /* tvOS Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvOS Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23102BF323B02B32001A621D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23102BF523B02B32001A621D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23102BF823B02B32001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23102BFA23B02B33001A621D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23102BFD23B02B33001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
+		5FFCAD902AAAF6E0ECE0D2DE /* Pods-iOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		7E4BD9A4FEA4E2D9E954037A /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.debug.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.debug.xcconfig"; sourceTree = "<group>"; };
+		88534BA22A312ABB45B7F0EB /* Pods-tvOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		9C8C89E46AB5783A21861854 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.release.xcconfig"; sourceTree = "<group>"; };
+		9E4B2E674A8129385BEC0CC9 /* Pods_macOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99A1A784AC734B50481CF85 /* Pods-tvOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+		EA3E9909165C83714958DA79 /* Pods-macOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+		EAEED51D81F694E0834D0619 /* Pods-iOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23102B4D23B0245A001A621D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E84A94F020DCAE5C66BDED71 /* Pods_macOS_Sparkline_Demo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BBE23B02AED001A621D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A82BDB21D4EE86397462DFA /* Pods_iOS_Sparkline_Demo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BD623B02B0A001A621D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				940D3611DC2580C43D615E50 /* Pods_macOS_Sparkline_Demo_Objc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BEE23B02B32001A621D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				818D753426991E180BB47221 /* Pods_tvOS_Sparkline_Demo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
+		07360E889B815570FA5F6557 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08D97DE1E07E682A7D396320 /* Pods-macOS Sparkline Demo.debug.xcconfig */,
+				EA3E9909165C83714958DA79 /* Pods-macOS Sparkline Demo.release.xcconfig */,
+				5FFCAD902AAAF6E0ECE0D2DE /* Pods-iOS Sparkline Demo.debug.xcconfig */,
+				EAEED51D81F694E0834D0619 /* Pods-iOS Sparkline Demo.release.xcconfig */,
+				7E4BD9A4FEA4E2D9E954037A /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */,
+				9C8C89E46AB5783A21861854 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */,
+				88534BA22A312ABB45B7F0EB /* Pods-tvOS Sparkline Demo.debug.xcconfig */,
+				A99A1A784AC734B50481CF85 /* Pods-tvOS Sparkline Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		23102B4423B0165B001A621D = {
 			isa = PBXGroup;
 			children = (
+				23102B5223B0245A001A621D /* macOS Sparkline Demo */,
+				23102BDA23B02B0A001A621D /* macOS Sparkline Demo Objc */,
+				23102BC223B02AED001A621D /* iOS Sparkline Demo */,
+				23102BF223B02B32001A621D /* tvOS Sparkline Demo */,
+				23102B5123B0245A001A621D /* Products */,
+				07360E889B815570FA5F6557 /* Pods */,
+				5173C747ACFBB06784C8A0B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
+		23102B5123B0245A001A621D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23102B5023B0245A001A621D /* macOS Sparkline Demo.app */,
+				23102BC123B02AED001A621D /* iOS Sparkline Demo.app */,
+				23102BD923B02B0A001A621D /* macOS Sparkline Demo Objc.app */,
+				23102BF123B02B32001A621D /* tvOS Sparkline Demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23102B5223B0245A001A621D /* macOS Sparkline Demo */ = {
+			isa = PBXGroup;
+			children = (
+				23102B5323B0245A001A621D /* AppDelegate.swift */,
+				23102B5523B0245A001A621D /* ViewController.swift */,
+				23102C0323B03315001A621D /* cpuUsage.swift */,
+				23102B5723B0245B001A621D /* Assets.xcassets */,
+				23102B5923B0245B001A621D /* Main.storyboard */,
+				23102B5C23B0245B001A621D /* Info.plist */,
+				23102B5D23B0245B001A621D /* macOS_Sparkline_Demo.entitlements */,
+			);
+			path = "macOS Sparkline Demo";
+			sourceTree = "<group>";
+		};
+		23102BC223B02AED001A621D /* iOS Sparkline Demo */ = {
+			isa = PBXGroup;
+			children = (
+				23102BC323B02AED001A621D /* AppDelegate.swift */,
+				23102BC523B02AED001A621D /* SceneDelegate.swift */,
+				23102BC723B02AED001A621D /* ViewController.swift */,
+				23102BC923B02AED001A621D /* Main.storyboard */,
+				23102BCC23B02AEE001A621D /* Assets.xcassets */,
+				23102BCE23B02AEE001A621D /* LaunchScreen.storyboard */,
+				23102BD123B02AEE001A621D /* Info.plist */,
+			);
+			path = "iOS Sparkline Demo";
+			sourceTree = "<group>";
+		};
+		23102BDA23B02B0A001A621D /* macOS Sparkline Demo Objc */ = {
+			isa = PBXGroup;
+			children = (
+				23102BDB23B02B0A001A621D /* AppDelegate.h */,
+				23102BDC23B02B0A001A621D /* AppDelegate.m */,
+				23102BDE23B02B0A001A621D /* ViewController.h */,
+				23102BDF23B02B0A001A621D /* ViewController.m */,
+				23102BE123B02B0B001A621D /* Assets.xcassets */,
+				23102BE323B02B0B001A621D /* Main.storyboard */,
+				23102BE623B02B0B001A621D /* Info.plist */,
+				23102BE723B02B0B001A621D /* main.m */,
+				23102BE923B02B0B001A621D /* macOS_Sparkline_Demo_Objc.entitlements */,
+			);
+			path = "macOS Sparkline Demo Objc";
+			sourceTree = "<group>";
+		};
+		23102BF223B02B32001A621D /* tvOS Sparkline Demo */ = {
+			isa = PBXGroup;
+			children = (
+				23102BF323B02B32001A621D /* AppDelegate.swift */,
+				23102BF523B02B32001A621D /* ViewController.swift */,
+				23102BF723B02B32001A621D /* Main.storyboard */,
+				23102BFA23B02B33001A621D /* Assets.xcassets */,
+				23102BFC23B02B33001A621D /* LaunchScreen.storyboard */,
+				23102BFF23B02B33001A621D /* Info.plist */,
+			);
+			path = "tvOS Sparkline Demo";
+			sourceTree = "<group>";
+		};
+		5173C747ACFBB06784C8A0B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				072B771B97EA05B58BCD3795 /* Pods_iOS_Sparkline_Demo.framework */,
+				1E789450D83944C4DC116BCB /* Pods_macOS_Sparkline_Demo_Objc.framework */,
+				1454125E806636BA42C54B4F /* Pods_tvOS_Sparkline_Demo.framework */,
+				9E4B2E674A8129385BEC0CC9 /* Pods_macOS_Sparkline_Demo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23102B4F23B0245A001A621D /* macOS Sparkline Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23102B5E23B0245B001A621D /* Build configuration list for PBXNativeTarget "macOS Sparkline Demo" */;
+			buildPhases = (
+				B39F682AA04BEC8E3B2D97FA /* [CP] Check Pods Manifest.lock */,
+				23102B4C23B0245A001A621D /* Sources */,
+				23102B4D23B0245A001A621D /* Frameworks */,
+				23102B4E23B0245A001A621D /* Resources */,
+				1D43D535D9DE7AFF0EEF8E4D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "macOS Sparkline Demo";
+			productName = "macOS Sparkline Demo";
+			productReference = 23102B5023B0245A001A621D /* macOS Sparkline Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23102BC023B02AED001A621D /* iOS Sparkline Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23102BD423B02AEE001A621D /* Build configuration list for PBXNativeTarget "iOS Sparkline Demo" */;
+			buildPhases = (
+				35B09C0057D16F4887763246 /* [CP] Check Pods Manifest.lock */,
+				23102BBD23B02AED001A621D /* Sources */,
+				23102BBE23B02AED001A621D /* Frameworks */,
+				23102BBF23B02AED001A621D /* Resources */,
+				E5AFB601511805A0D8966990 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Sparkline Demo";
+			productName = "iOS Sparkline Demo";
+			productReference = 23102BC123B02AED001A621D /* iOS Sparkline Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23102BD823B02B0A001A621D /* macOS Sparkline Demo Objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23102BEA23B02B0B001A621D /* Build configuration list for PBXNativeTarget "macOS Sparkline Demo Objc" */;
+			buildPhases = (
+				E3FB29BEC72DEBE93E5237FE /* [CP] Check Pods Manifest.lock */,
+				23102BD523B02B0A001A621D /* Sources */,
+				23102BD623B02B0A001A621D /* Frameworks */,
+				23102BD723B02B0A001A621D /* Resources */,
+				5EF333230A2CD7CCEBA26460 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "macOS Sparkline Demo Objc";
+			productName = "macOS Sparkline Demo Objc";
+			productReference = 23102BD923B02B0A001A621D /* macOS Sparkline Demo Objc.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23102BF023B02B32001A621D /* tvOS Sparkline Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23102C0023B02B33001A621D /* Build configuration list for PBXNativeTarget "tvOS Sparkline Demo" */;
+			buildPhases = (
+				BB811E87C079D0A01B7AFCFD /* [CP] Check Pods Manifest.lock */,
+				23102BED23B02B32001A621D /* Sources */,
+				23102BEE23B02B32001A621D /* Frameworks */,
+				23102BEF23B02B32001A621D /* Resources */,
+				94CD245D16C48767B5C80AC0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tvOS Sparkline Demo";
+			productName = "tvOS Sparkline Demo";
+			productReference = 23102BF123B02B32001A621D /* tvOS Sparkline Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		23102B4523B0165B001A621D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
+				TargetAttributes = {
+					23102B4F23B0245A001A621D = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					23102BC023B02AED001A621D = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					23102BD823B02B0A001A621D = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					23102BF023B02B32001A621D = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
 			};
 			buildConfigurationList = 23102B4823B0165B001A621D /* Build configuration list for PBXProject "Demos" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -30,12 +336,310 @@
 				Base,
 			);
 			mainGroup = 23102B4423B0165B001A621D;
+			productRefGroup = 23102B5123B0245A001A621D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				23102B4F23B0245A001A621D /* macOS Sparkline Demo */,
+				23102BC023B02AED001A621D /* iOS Sparkline Demo */,
+				23102BD823B02B0A001A621D /* macOS Sparkline Demo Objc */,
+				23102BF023B02B32001A621D /* tvOS Sparkline Demo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		23102B4E23B0245A001A621D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102B5823B0245B001A621D /* Assets.xcassets in Resources */,
+				23102B5B23B0245B001A621D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BBF23B02AED001A621D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102BD023B02AEE001A621D /* LaunchScreen.storyboard in Resources */,
+				23102BCD23B02AEE001A621D /* Assets.xcassets in Resources */,
+				23102BCB23B02AED001A621D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BD723B02B0A001A621D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102BE223B02B0B001A621D /* Assets.xcassets in Resources */,
+				23102BE523B02B0B001A621D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BEF23B02B32001A621D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */,
+				23102BFB23B02B33001A621D /* Assets.xcassets in Resources */,
+				23102BF923B02B32001A621D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1D43D535D9DE7AFF0EEF8E4D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35B09C0057D16F4887763246 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS Sparkline Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EF333230A2CD7CCEBA26460 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94CD245D16C48767B5C80AC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B39F682AA04BEC8E3B2D97FA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS Sparkline Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB811E87C079D0A01B7AFCFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvOS Sparkline Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3FB29BEC72DEBE93E5237FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS Sparkline Demo Objc-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5AFB601511805A0D8966990 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23102B4C23B0245A001A621D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102B5623B0245A001A621D /* ViewController.swift in Sources */,
+				23102C0423B03315001A621D /* cpuUsage.swift in Sources */,
+				23102B5423B0245A001A621D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BBD23B02AED001A621D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102BC823B02AED001A621D /* ViewController.swift in Sources */,
+				23102BC423B02AED001A621D /* AppDelegate.swift in Sources */,
+				23102BC623B02AED001A621D /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BD523B02B0A001A621D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102BE023B02B0A001A621D /* ViewController.m in Sources */,
+				23102BE823B02B0B001A621D /* main.m in Sources */,
+				23102BDD23B02B0A001A621D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23102BED23B02B32001A621D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23102BF623B02B32001A621D /* ViewController.swift in Sources */,
+				23102BF423B02B32001A621D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		23102B5923B0245B001A621D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23102B5A23B0245B001A621D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23102BC923B02AED001A621D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23102BCA23B02AED001A621D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23102BCE23B02AEE001A621D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23102BCF23B02AEE001A621D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		23102BE323B02B0B001A621D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23102BE423B02B0B001A621D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23102BF723B02B32001A621D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23102BF823B02B32001A621D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23102BFC23B02B33001A621D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23102BFD23B02B33001A621D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		23102B4923B0165B001A621D /* Debug */ = {
@@ -50,6 +654,566 @@
 			};
 			name = Release;
 		};
+		23102B5F23B0245B001A621D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08D97DE1E07E682A7D396320 /* Pods-macOS Sparkline Demo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "macOS Sparkline Demo/macOS_Sparkline_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "macOS Sparkline Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.macOS-Sparkline-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		23102B6023B0245B001A621D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA3E9909165C83714958DA79 /* Pods-macOS Sparkline Demo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "macOS Sparkline Demo/macOS_Sparkline_Demo.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "macOS Sparkline Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.macOS-Sparkline-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		23102BD223B02AEE001A621D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FFCAD902AAAF6E0ECE0D2DE /* Pods-iOS Sparkline Demo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "iOS Sparkline Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.iOS-Sparkline-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		23102BD323B02AEE001A621D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAEED51D81F694E0834D0619 /* Pods-iOS Sparkline Demo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "iOS Sparkline Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.iOS-Sparkline-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		23102BEB23B02B0B001A621D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E4BD9A4FEA4E2D9E954037A /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "macOS Sparkline Demo Objc/macOS_Sparkline_Demo_Objc.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "macOS Sparkline Demo Objc/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.macOS-Sparkline-Demo-Objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		23102BEC23B02B0B001A621D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C8C89E46AB5783A21861854 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "macOS Sparkline Demo Objc/macOS_Sparkline_Demo_Objc.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "macOS Sparkline Demo Objc/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.macOS-Sparkline-Demo-Objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		23102C0123B02B33001A621D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88534BA22A312ABB45B7F0EB /* Pods-tvOS Sparkline Demo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "tvOS Sparkline Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.tvOS-Sparkline-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+			};
+			name = Debug;
+		};
+		23102C0223B02B33001A621D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A99A1A784AC734B50481CF85 /* Pods-tvOS Sparkline Demo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "tvOS Sparkline Demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.tvOS-Sparkline-Demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -58,6 +1222,42 @@
 			buildConfigurations = (
 				23102B4923B0165B001A621D /* Debug */,
 				23102B4A23B0165B001A621D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23102B5E23B0245B001A621D /* Build configuration list for PBXNativeTarget "macOS Sparkline Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23102B5F23B0245B001A621D /* Debug */,
+				23102B6023B0245B001A621D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23102BD423B02AEE001A621D /* Build configuration list for PBXNativeTarget "iOS Sparkline Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23102BD223B02AEE001A621D /* Debug */,
+				23102BD323B02AEE001A621D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23102BEA23B02B0B001A621D /* Build configuration list for PBXNativeTarget "macOS Sparkline Demo Objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23102BEB23B02B0B001A621D /* Debug */,
+				23102BEC23B02B0B001A621D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23102C0023B02B33001A621D /* Build configuration list for PBXNativeTarget "tvOS Sparkline Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23102C0123B02B33001A621D /* Debug */,
+				23102C0223B02B33001A621D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
