@@ -61,6 +61,14 @@ public extension DSFSparklineDataSource {
 		return self.sparkline.push(value: value)
 	}
 
+	/// Add a vector of new values. Equivalent to push(values[0]), push(values[1]), push(values[2]) etc.
+	@objc func push(values: [CGFloat]) {
+		defer {
+			self.notifyDataChange()
+		}
+		self.sparkline.push(values: values)
+	}
+
 	/// Set the sparkline data to the specified values. The window size is changed to reflect the extent of the input data
 	@objc func set(values: [CGFloat]) {
 		self.sparkline.set(values: values)

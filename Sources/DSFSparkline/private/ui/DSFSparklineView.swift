@@ -26,17 +26,6 @@ public typealias SLView = UIView
 
 	// Listen for changes in the data and update appropriately
 	private var dataObserver: NSObjectProtocol?
-	private func updateDataObserver() {
-		self.dataObserver = nil
-		if self.dataSource != nil {
-			self.dataObserver = NotificationCenter.default.addObserver(
-				forName: DSFSparklineDataSource.DataChangedNotification,
-				object: self.dataSource!,
-				queue: nil, using: { [weak self] (notification) in
-					self?.updateDisplay()
-			})
-		}
-	}
 
 	/// The source of data for the sparkline
 	@objc weak public var dataSource: DSFSparklineDataSource? {
@@ -50,14 +39,6 @@ public typealias SLView = UIView
 	deinit {
 		self.dataObserver = nil
 	}
-
-	#if os(macOS)
-	public override var isFlipped: Bool {
-		return true
-	}
-	#endif
-
-	func colorDidChange() {	}
 
 	/// The primary color for the sparkline
 	#if os(macOS)
@@ -74,19 +55,45 @@ public typealias SLView = UIView
 	}
 	#endif
 
-	/// Draw a line at the zero point
+	/// Draw a dotted line at the zero point on the y-axis
 	@IBInspectable public var showZero: Bool = false
 
+	/// The size of the sparkline window
 	@IBInspectable public var windowSize: UInt = 20 {
 		didSet {
 			self.dataSource?.windowSize = self.windowSize
 		}
 	}
 
+}
+
+extension DSFSparklineView {
+
+	private func updateDataObserver() {
+		self.dataObserver = nil
+		if self.dataSource != nil {
+			self.dataObserver = NotificationCenter.default.addObserver(
+				forName: DSFSparklineDataSource.DataChangedNotification,
+				object: self.dataSource!,
+				queue: nil, using: { [weak self] (notification) in
+					self?.updateDisplay()
+			})
+		}
+	}
+
+	#if os(macOS)
+	public override var isFlipped: Bool {
+		return true
+	}
+	#endif
+
 	public override func awakeFromNib() {
 		super.awakeFromNib()
 		self.dataSource?.windowSize = self.windowSize
 	}
+
+	/// Override in inherited classes to be notified when the color changes
+	@objc func colorDidChange() {	}
 
 	public func updateDisplay() {
 		#if os(macOS)

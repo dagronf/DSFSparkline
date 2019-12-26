@@ -164,4 +164,21 @@ class DSFSparklineTests: XCTestCase {
 		XCTAssertEqual(7, ds2.windowSize)
 		XCTAssertEqual(ds2.data, [0, 1, 2, 3, 4, 5, 6])
 	}
+
+
+	func testAddValues() {
+		let ds = DSFSparklineDataSource(windowSize: 5)
+		ds.push(values: [1.1, 2.2, 3.3])
+		XCTAssertEqual(ds.data, [0, 0, 1.1, 2.2, 3.3])
+		XCTAssertTrue(ds.push(value: 1.2))
+		XCTAssertEqual(ds.data, [0, 1.1, 2.2, 3.3, 1.2])
+
+		ds.push(values: [10, 11, 12])
+		XCTAssertEqual(ds.data, [3.3, 1.2, 10.0, 11.0, 12.0])
+
+		// Check what happens if greater than window.  Should truncate to the last 5 values in the array
+		// Equivalent to push 1, push 2, push 3, push 4 etc.
+		ds.push(values: [1, 2, 3, 4, 5, 6, 7, 8])
+		XCTAssertEqual(ds.data, [4, 5, 6, 7, 8])
+	}
 }

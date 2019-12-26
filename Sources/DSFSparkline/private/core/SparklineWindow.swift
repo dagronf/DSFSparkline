@@ -83,6 +83,29 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 		return true
 	}
 
+	public func push(values: [T]) {
+
+		self.counter += UInt(values.count)
+
+		var temp = self.data.yData
+
+		// The difference between
+		let diff = temp.count - values.count
+		if diff < 0 {
+			// There are more data points than the window size
+			temp = values
+			temp.removeFirst(abs(diff))
+		}
+		else if diff == 0 {
+			temp = values
+		}
+		else {
+			temp.removeFirst(min(values.count, temp.count))
+			temp.append(contentsOf: values)
+		}
+		self.data.yData = temp
+	}
+
 	public func set(values: [T]) {
 		if let yRange = self.data.yRange {
 			self.data.yData = values.map { $0.clamped(to: yRange) }
