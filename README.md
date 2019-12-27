@@ -1,6 +1,6 @@
 # Sparklines for macOS, iOS and tvOS
 
-A lightweight sparkline component
+A lightweight sparkline component, supporting Swift and Objective-C.
 
 <p align="center">
     <img src="https://img.shields.io/github/v/tag/dagronf/DSFSparkline" />
@@ -21,7 +21,7 @@ A lightweight sparkline component
 ## Features
 
 * Simple bar and line support
-* `IBDesignable` support
+* `IBDesignable` support so you can see your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
 * Line graph can draw with discrete lines or fitted to a curve
@@ -52,19 +52,47 @@ A lightweight sparkline component
 
 The library is split into a data model, and a view model.  A data source (model) is created and assigned to a view model in order to populate the sparkline.
 
-### Data Model (data source)
+So, a very simple example…
+
+```swift
+
+// Create the view
+let sparklineView = DSFSparklineView(…)
+sparklineView.graphColor = UIColor.blue
+sparklineView.showZero = true
+
+// Create the datasource and assign to the view
+let sparklineDataSource = DSFSparklineDataSource(windowSize: 30, range: -1.0 ... 1.0)
+sparklineView.dataSource = sparklineDataSource
+
+…
+
+// Add a single new data element to the sparkline
+sparklineDataSource.push(value: 0.7)                          // view automatically updates with new data
+
+// Add a set of data to the sparkline
+sparklineDataSource.push(values: [0.3, -0.2, 1.0])            // view automatically updates with new data
+
+// Completely replace the sparkline data with a new set of data
+sparklineDataSource.set(values: [0.2, -0.2, 0.0, 0.9, 0.8])   // view automatically resets to new data
+
+```
+
+## Data Model (data source)
 
 Represents the data to be displayed.
 
-The data source is assigned to the view model to provide data for drawing the sparkline. As data is changed the assigned view is automatically updated to reflect the new data
+The data source is assigned to the view model to provide data for drawing the sparkline. As data is changed the assigned view is automatically updated to reflect the new data.  If more data is added via a push or set the data is added to the datasource, the associated view will automatically update to reflect the new data. Older data that no longer falls within the window is discarded.
 
-If more data is added via a push or set the data is added to the sparkline window. Older data that no longer falls within the window is discarded.
+### Range
+An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical range will grow and shrink to accomodate the full range of data.
 
-### View Model
+
+## View Model
 
 Represents the viewable settings and display.
 
-##### Common display customizations
+### Common display customizations
 
 | Setting       | Type                | Description                                        |
 |---------------|---------------------|----------------------------------------------------|
@@ -72,7 +100,7 @@ Represents the viewable settings and display.
 | `showZero`    | `Bool`              | Draw a dotted line at the zero point on the y-axis |
 | `windowSize ` | `UInt`              | The size of the sparkline window.                  |
 
-##### Line graph customizations
+### Line graph customizations
 
 | Setting         | Type      | Description                            |
 |-----------------|-----------|----------------------------------------|
@@ -81,7 +109,7 @@ Represents the viewable settings and display.
 | `lineShading`   | `Bool`    | Shade the area under the line          |
 | `shadowed`      | `Bool`    | Draw a shadow under the line           |
 
-##### Bar graph customizations
+### Bar graph customizations
 
 | Setting         | Type      | Description                  |
 |-----------------|-----------|------------------------------|
@@ -96,16 +124,11 @@ There are demos available in the `Demos` subfolder for each of the supported pla
 
 #### Cocoapods
 
-``` 
-target 'macOS Sparkline Demo' do
-	platform :osx, '10.12'
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+`pod 'DSFSparkline', :git => 'https://github.com/dagronf/DSFSparkline/'`
 
-  # Pods for macOS Sparkline Demo
-  pod 'DSFSparkline', :git => 'https://github.com/dagronf/DSFSparkline/'
-end
-```
+#### Swift package manager
+
+
 
 ## Usage
 

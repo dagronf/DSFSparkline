@@ -12,7 +12,7 @@ import DSFSparkline
 class GridViewController: NSViewController {
 	@IBOutlet weak var grid: NSGridView!
 
-	let sz = 33
+	let sz = 32
 
 	var dataSources: [[DSFSparklineDataSource]] = []
 
@@ -39,11 +39,17 @@ class GridViewController: NSViewController {
 				let i = DSFSparklineLineGraph()
 				i.showZero = true
 				i.graphColor = self.color(row: row, col: column)
-				i.lineWidth = 1.0
+				i.lineWidth = 0.5
+				//i.lineShading = false
 				i.translatesAutoresizingMaskIntoConstraints = false
 				i.addConstraint(NSLayoutConstraint(item: i, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 32))
 				i.addConstraint(NSLayoutConstraint(item: i, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 32))
+
 				i.dataSource = self.dataSources[row][column]
+
+				let ranr: [CGFloat] = RandomArray(count: 50, range: -1 ... 1)
+				self.dataSources[row][column].push(values: ranr)
+
 				return i
 			}
 
@@ -78,8 +84,7 @@ class GridViewController: NSViewController {
 		let y = hypot(1.0 - xpos, 1.0 - ypos) / 1.414
 		let k = hypot(xpos, 1.0 - ypos) / 1.414
 
-//		return NSColor(deviceCyan: c, magenta: m, yellow: y, black: k, alpha: 1.0)
-		var color = NSColor(deviceCyan: c, magenta: m, yellow: y, black: k, alpha: 1.0)
+		let color = NSColor(deviceCyan: c, magenta: m, yellow: y, black: k, alpha: 1.0)
 		return self.lighter(color)
 	}
 
@@ -91,7 +96,7 @@ class GridViewController: NSViewController {
 
 			(0 ... self.sz).forEach { row in
 				(0 ... self.sz).forEach { column in
-					self.dataSources[row][column].push(value: CGFloat.random(in: -1 ... 1))
+					_ = self.dataSources[row][column].push(value: CGFloat.random(in: -1 ... 1))
 				}
 			}
 
@@ -99,4 +104,21 @@ class GridViewController: NSViewController {
 		}
 	}
 
+}
+
+/// Generate an array of random values for Swift value types that support random value generation
+/// - Parameters:
+///   - count: The number of random numbers to generate
+///   - range: The range of values to generate
+///
+/// Example:
+///
+/// ```swift
+/// let tenVals: [CGFloat] = RandomArray(count: 10, range: -10 ... 10)
+/// ```
+///
+/// Note that the `[CGFloat]` in the definition is required, as explicit generic function instantiation isn't supported
+/// in Swift.
+func RandomArray<T>(count: UInt, range: ClosedRange<T>) -> Array<T> where T: BinaryFloatingPoint, T.RawSignificand : FixedWidthInteger {
+   return (0 ..< count).map { _ in T.random(in: range) }
 }
