@@ -64,12 +64,12 @@ extension DSFSparklineLineGraph {
 				outer.clip(to: clipRect)
 			}
 
-			if self.lineShading {
+			if self.lineShading, let gradient = self.gradient {
 				outer.usingGState { (ctx) in
 					ctx.addPath(path)
 					ctx.clip()
 					ctx.drawLinearGradient(
-						self.gradient!, start: CGPoint(x: 0.0, y: self.bounds.maxY),
+						gradient, start: CGPoint(x: 0.0, y: self.bounds.maxY),
 						end: CGPoint(x: 0.0, y: self.bounds.minY),
 						options: [.drawsAfterEndLocation, .drawsBeforeStartLocation])
 				}

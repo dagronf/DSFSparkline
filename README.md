@@ -3,7 +3,7 @@
 A lightweight sparkline component
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Version-0.9-ff69b4" />
+    <img src="https://img.shields.io/github/v/tag/dagronf/DSFSparkline" />
     <img src="https://img.shields.io/badge/macOS-10.11+-red" />
     <img src="https://img.shields.io/badge/iOS-11.0+-blue" />
     <img src="https://img.shields.io/badge/tvOS-11.0+-orange" />
@@ -11,7 +11,7 @@ A lightweight sparkline component
 
 <p align="center">
     <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" />
-    <img src="https://img.shields.io/github/license/dagronf/DSFSparkline" />
+    <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
     <img src="https://img.shields.io/badge/pod-compatible-informational" alt="CocoaPods" />
     <a href="https://swift.org/package-manager">
         <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />

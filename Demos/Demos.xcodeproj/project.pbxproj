@@ -45,6 +45,7 @@
 		23102BFB23B02B33001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFA23B02B33001A621D /* Assets.xcassets */; };
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
+		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
 		23E2278C23B5846E00E59122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278B23B5846E00E59122 /* AppDelegate.swift */; };
 		23E2278E23B5846E00E59122 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278D23B5846E00E59122 /* ViewController.swift */; };
 		23E2279023B5846E00E59122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E2278F23B5846E00E59122 /* Assets.xcassets */; };
@@ -125,6 +126,7 @@
 		23102BFD23B02B33001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
+		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		23E2278923B5846E00E59122 /* macOS Table Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Table Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2278B23B5846E00E59122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E2278D23B5846E00E59122 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				23E2279123B5846E00E59122 /* Main.storyboard */,
 				23E2279423B5846E00E59122 /* Info.plist */,
 				23E2279523B5846E00E59122 /* macOS_Table_Demo.entitlements */,
+				232F732223B5BE2A00FA3A3F /* GridViewController.swift */,
 			);
 			path = "macOS Table Demo";
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 			files = (
 				23E2278E23B5846E00E59122 /* ViewController.swift in Sources */,
 				23E2278C23B5846E00E59122 /* AppDelegate.swift in Sources */,
+				232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
