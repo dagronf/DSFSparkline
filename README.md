@@ -26,38 +26,27 @@ A lightweight sparkline component, supporting Swift and Objective-C.
 * y-range can be fixed and the sparkline will truncate to the specified range
 * Line graph can draw with discrete lines or fitted to a curve
 
-## Screenshots
+## Available types
 
-### In app
+### Line
+![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg)
+![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg)
+### Bar
+![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg)
+### Dot
+![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
 
-| macOS dark | macOS light | iOS |
-|----|----|----|
-| <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_dark.png" width="300"> | <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_light.png" width="300"> | <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_iOS_animated.gif"> |
-
-### Interface Builder
-
-| macOS | tvOS |
-|----|----|
-|<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder.png" width="303"></a>|<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder-2.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder-2.png" width="420"></a>|
-
-## OS Version support
-
-| Setting | Minimum Version |
-|---------|-----------------|
-| `macOS` | `10.11`         |
-| `iOS`   | `11.0`          |
-| `tvOS`  | `11.0`          |
 
 ## Overview
 
-The library is split into a data model, and a view model.  A data source (model) is created and assigned to a view model in order to populate the sparkline.
+The library is split into a data model and a view model.  A data source (model) is created and assigned to a view model in order to populate the sparkline.
 
 So, a very simple example…
 
 ```swift
 
 // Create the view
-let sparklineView = DSFSparklineView(…)
+let sparklineView = DSFSparklineLineGraph(…)
 sparklineView.graphColor = UIColor.blue
 sparklineView.showZero = true
 
@@ -115,6 +104,13 @@ Represents the viewable settings and display.
 |-----------------|-----------|------------------------------|
 | `lineWidth`     | `CGFloat` | The width of the line        |
 | `barSpacing`    | `CGFloat` | The spacing between each bar |
+
+### Dot graph customizations
+
+| Setting           | Type                | Description                                        |
+|-------------------|---------------------|----------------------------------------------------|
+| `upsideDown`      | `Bool`              | If true, draws from the top of the graph downwards |
+| `unsetGraphColor` | `NSColor`/`UIColor` | The color to use when drawing the background       |
 
 ## Integration
 
@@ -242,12 +238,33 @@ dataSource.reset()
 [dataSource reset];
 ```
 
+## Screenshots
+
+### In app
+
+| macOS dark | macOS light | iOS |
+|----|----|----|
+| <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_dark.png" width="300"> | <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_light.png" width="300"> | <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_iOS_animated.gif"> |
+
+### Interface Builder
+
+| macOS | tvOS |
+|----|----|
+|<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder.png" width="303"></a>|<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder-2.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder-2.png" width="420"></a>|
+
+### Animated
+
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.mp4">900+ sparklines at once</a>
+
+![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
+
+
 ## License
 
 ```
 MIT License
 
-Copyright (c) 2019 Darren Ford
+Copyright (c) 2020 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

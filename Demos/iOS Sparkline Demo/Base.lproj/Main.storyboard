@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-rk-lDK">
-                                <rect key="frame" x="20" y="64" width="374" height="423"/>
+                                <rect key="frame" x="20" y="64" width="374" height="483"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-7V-VA6" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
@@ -157,6 +157,27 @@
                                             <constraint firstAttribute="height" constant="110" id="bCS-VG-cVH"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="H0Y-0a-Ipr" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="433" width="374" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="htz-bI-puc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                <color key="value" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -169,6 +190,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="dot1" destination="H0Y-0a-Ipr" id="Ygl-Op-bwl"/>
                         <outlet property="s1" destination="Rdk-zA-Xyw" id="bEp-4v-Nuu"/>
                         <outlet property="s2" destination="Ubo-jJ-kxT" id="fGb-GN-lUE"/>
                         <outlet property="s3" destination="NUp-L1-rCj" id="xk3-7g-lbw"/>

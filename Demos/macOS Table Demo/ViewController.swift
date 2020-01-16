@@ -17,6 +17,7 @@ class ViewController: NSViewController {
 
 	var inDataSources: [DSFSparklineDataSource] = []
 	var outDataSources: [DSFSparklineDataSource] = []
+	var cpuDataSources: [DSFSparklineDataSource] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -26,6 +27,8 @@ class ViewController: NSViewController {
 		(0 ..< count).forEach { _ in
 			inDataSources.append(DSFSparklineDataSource(windowSize: 50, range: -1.5 ... 1.5))
 			outDataSources.append(DSFSparklineDataSource(windowSize: 50, range: -1.5 ... 1.5))
+
+			cpuDataSources.append(DSFSparklineDataSource(windowSize: 100, range: 0 ... 100))
 		}
 
 		self.tableView.reloadData()
@@ -44,11 +47,15 @@ class ViewController: NSViewController {
 			guard let `self` = self else {
 				return
 			}
+
 			self.inDataSources.forEach {
 				 _ = $0.push(value: CGFloat.random(in: -1 ... 1))
 			}
 			self.outDataSources.forEach {
 				 _ = $0.push(value: CGFloat.random(in: -1 ... 1))
+			}
+			self.cpuDataSources.forEach {
+				 _ = $0.push(value: CGFloat.random(in: 0 ... 100))
 			}
 			self.updateWithNewValues()
 		}
@@ -59,8 +66,12 @@ class ViewController: NSViewController {
 
 class Graphico: NSTableCellView {
 	@IBOutlet weak var sparkline: DSFSparklineLineGraph!
-
 }
+
+class Graphicodot: NSTableCellView {
+	@IBOutlet weak var sparkline: DSFSparklineDotGraph!
+}
+
 
 extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
 
@@ -82,6 +93,11 @@ extension ViewController: NSTableViewDataSource, NSTableViewDelegate {
 		else if tableColumn?.identifier == NSUserInterfaceItemIdentifier("outgraph"),
 			let tcv = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("outgraph"), owner: self) as? Graphico {
 			tcv.sparkline.dataSource = outDataSources[row]
+			return tcv
+		}
+		else if tableColumn?.identifier == NSUserInterfaceItemIdentifier("cpuGraph"),
+			let tcv = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("cpuGraph"), owner: self) as? Graphicodot {
+			tcv.sparkline.dataSource = cpuDataSources[row]
 			return tcv
 		}
 		return nil

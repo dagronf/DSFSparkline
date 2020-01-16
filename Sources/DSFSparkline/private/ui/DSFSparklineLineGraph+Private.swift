@@ -129,14 +129,6 @@ extension DSFSparklineLineGraph {
 				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: normZero), CGPoint(x: drawRect.width, y: normZero) ])
 			}
 		}
-
-		/// Uncomment to draw the last datapoint value as text
-//		if let yval = dataSource.data.last {
-//			let yraw = NSMutableString(string: String(format: "%.2f", yval))
-//			let a = [NSAttributedString.Key.font: SLFont.systemFont(ofSize: 9),
-//						NSAttributedString.Key.foregroundColor: color]
-//			yraw.draw(at: CGPoint(x:0, y:0), withAttributes: a)
-//		}
 	}
 }
 

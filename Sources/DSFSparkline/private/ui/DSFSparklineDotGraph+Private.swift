@@ -1,8 +1,8 @@
 //
-//  DSFSparklineBarGraph+Private.swift
+//  DSFSparklineDataSource.swift
 //  DSFSparklines
 //
-//  Created by Darren Ford on 16/1/20.
+//  Created by Darren Ford on 21/12/19.
 //  Copyright © 2019 Darren Ford. All rights reserved.
 //
 //  MIT license
@@ -27,66 +27,78 @@ import Cocoa
 import UIKit
 #endif
 
-extension DSFSparklineBarGraph {
+extension DSFSparklineDotGraph {
 
 	#if os(macOS)
 	override public func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
 		if let ctx = NSGraphicsContext.current?.cgContext {
-			drawBarGraph(primary: ctx)
+			drawGraph(primary: ctx)
 		}
 	}
 	#else
 	public override func draw(_ rect: CGRect) {
 		super.draw(rect)
 		if let ctx = UIGraphicsGetCurrentContext() {
-			drawBarGraph(primary: ctx)
+			drawGraph(primary: ctx)
 		}
 	}
 	#endif
+}
 
-	private func drawBarGraph(primary: CGContext) {
-
-		let drawRect = self.bounds
-
-		let range: ClosedRange<CGFloat> = 2 ... max(2, drawRect.maxY - 2)
+private extension DSFSparklineDotGraph {
+	private func drawGraph(primary: CGContext) {
 
 		guard let dataSource = self.dataSource else {
 			return
 		}
 
-		let normy = dataSource.normalized
-		let xDiff = self.bounds.width / CGFloat(normy.count)
-		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (drawRect.height-1)).clamped(to: range))
+		let drawRect = self.bounds
+
+		let height = drawRect.height
+		let dimension = floor(height / CGFloat(self.verticalDotCount))
+
+		// All values scaled between 0 and 1
+		let normalized = dataSource.normalized
+
+		var position = drawRect.width - dimension
+
+		let path = CGMutablePath()
+		let unsetPath = CGMutablePath()
+
+		for dataPoint in normalized.reversed() {
+			let boxCount = UInt(CGFloat(self.verticalDotCount) * dataPoint)
+
+			for c in 0 ... verticalDotCount {
+				let pos = self.upsideDown ? (CGFloat(c) * dimension) : height - (CGFloat(c) * dimension)
+				let r = CGRect(x: position, y: pos, width: dimension, height: dimension)
+				let ri = r.insetBy(dx: 0.5, dy: 0.5)
+
+				if c < boxCount {
+					path.addRect(ri)
+				}
+				else {
+					unsetPath.addRect(ri)
+				}
+			}
+
+			// Move left.  If we've hit the lower bound, then stop
+			position -= dimension
+			if position < 0 {
+				break
+			}
 		}
 
-		primary.usingGState { (outer) in
+		primary.usingGState { (state) in
+			state.addPath(path)
+			state.setFillColor(self.graphColor.cgColor)
+			state.drawPath(using: .fill)
+		}
 
-			outer.setRenderingIntent(.relativeColorimetric)
-			outer.interpolationQuality = .none
-
-			if dataSource.counter < dataSource.windowSize {
-				let pos = CGFloat(dataSource.counter) * xDiff + 1
-				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
-				outer.clip(to: clipRect)
-			}
-
-			let path = CGMutablePath()
-			for point in points.enumerated() {
-				let r = CGRect(x: CGFloat(point.offset) * xDiff, y: drawRect.height - point.element.y, width: xDiff - barSpacing, height: point.element.y)
-				path.addRect(r)
-			}
-			path.closeSubpath()
-
-			outer.addPath(path)
-
-			outer.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
-			outer.setLineWidth(self.lineWidth)
-			outer.setStrokeColor(self.graphColor.cgColor)
-			outer.setShouldAntialias(false)
-
-			outer.drawPath(using: .fillStroke)
+		primary.usingGState { (state) in
+			state.addPath(unsetPath)
+			state.setFillColor(self.unsetGraphColor.cgColor)
+			state.drawPath(using: .fill)
 		}
 	}
 

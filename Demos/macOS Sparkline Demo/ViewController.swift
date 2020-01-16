@@ -58,6 +58,13 @@ class ViewController: NSViewController {
 
 	@IBOutlet weak var cpuStack: NSStackView!
 
+	@IBOutlet weak var cpuDotView: DSFSparklineDotGraph!
+	var cpuDotViewDatasource = DSFSparklineDataSource(range: 0 ... 100)
+
+	@IBOutlet weak var cpu2DotView: DSFSparklineDotGraph!
+	var cpu2DotViewDatasource = DSFSparklineDataSource(range: 0 ... 100)
+
+
 	let cpuUsage = MyCpuUsage()
 
 	override func viewWillAppear() {
@@ -79,6 +86,9 @@ class ViewController: NSViewController {
 		fakeSparkCpu3.dataSource = fakeSparkCpu3Datasource
 		fakeSparkCpu4.dataSource = fakeSparkCpu4Datasource
 		fakeSparkCpu5.dataSource = fakeSparkCpu5Datasource
+
+		cpuDotView.dataSource = cpuDotViewDatasource
+		cpu2DotView.dataSource = cpu2DotViewDatasource
 
 		sparkStaticData.dataSource = sparkStaticDatasource
 		sparkStaticDatasource.set(values: (0 ... 10).map { _ in
@@ -112,6 +122,9 @@ class ViewController: NSViewController {
 			_ = self.fakeSparkCpu3Datasource.push(value: CGFloat.random(in: 0 ... 1))
 			_ = self.fakeSparkCpu4Datasource.push(value: CGFloat.random(in: 0 ... 1))
 			_ = self.fakeSparkCpu5Datasource.push(value: CGFloat.random(in: 0 ... 1))
+
+			_ = self.cpuDotViewDatasource.push(value: CGFloat.random(in: 0 ... 100))
+			_ = self.cpu2DotViewDatasource.push(value: CGFloat.random(in: 0 ... 100))
 
 			self.updateWithNewValues()
 		}

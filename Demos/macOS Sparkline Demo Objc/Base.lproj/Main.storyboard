@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -707,17 +708,17 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="244"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="415"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Throughput" translatesAutoresizingMaskIntoConstraints="NO" id="pA9-Os-r2C">
-                                <rect key="frame" x="17" y="122" width="451" height="102"/>
+                                <rect key="frame" x="17" y="293" width="446" height="102"/>
                                 <view key="contentView" id="gof-HN-L75">
-                                    <rect key="frame" x="3" y="3" width="445" height="84"/>
+                                    <rect key="frame" x="3" y="3" width="440" height="84"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="X3f-SW-jsr" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="8" width="429" height="68"/>
+                                            <rect key="frame" x="8" y="8" width="424" height="68"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                     <color key="value" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
@@ -744,13 +745,13 @@
                                 </constraints>
                             </box>
                             <box title="Throughput" translatesAutoresizingMaskIntoConstraints="NO" id="hNC-qx-jV7">
-                                <rect key="frame" x="17" y="16" width="451" height="102"/>
+                                <rect key="frame" x="17" y="187" width="446" height="102"/>
                                 <view key="contentView" id="YWt-zc-gNz">
-                                    <rect key="frame" x="3" y="3" width="445" height="84"/>
+                                    <rect key="frame" x="3" y="3" width="440" height="84"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vfz-XG-Zqu" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="8" width="429" height="68"/>
+                                            <rect key="frame" x="8" y="8" width="424" height="68"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                     <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
@@ -777,25 +778,86 @@
                                     <constraint firstAttribute="height" constant="98" id="5qO-0u-nv7"/>
                                 </constraints>
                             </box>
+                            <box title="Received/Sent" translatesAutoresizingMaskIntoConstraints="NO" id="nk7-dk-fnU">
+                                <rect key="frame" x="17" y="27" width="446" height="155"/>
+                                <view key="contentView" id="aB3-uQ-T3N">
+                                    <rect key="frame" x="3" y="3" width="440" height="137"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-RU-TFK" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                            <rect key="frame" x="8" y="69" width="424" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="gx4-36-Wnh"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                    <color key="value" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                    <integer key="value" value="100"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                    <color key="value" name="separatorColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </customView>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-0V-zTh" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                            <rect key="frame" x="8" y="8" width="424" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="lMC-gV-0Bo"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                    <color key="value" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                    <integer key="value" value="100"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                    <color key="value" name="separatorColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="upsideDown" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </customView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Yaa-RU-TFK" secondAttribute="trailing" constant="8" id="38K-kZ-1lE"/>
+                                        <constraint firstAttribute="bottom" secondItem="7Nz-0V-zTh" secondAttribute="bottom" constant="8" id="Dse-xi-ok0"/>
+                                        <constraint firstItem="7Nz-0V-zTh" firstAttribute="top" secondItem="Yaa-RU-TFK" secondAttribute="bottom" constant="1" id="Ehr-Qy-eu9"/>
+                                        <constraint firstItem="7Nz-0V-zTh" firstAttribute="trailing" secondItem="Yaa-RU-TFK" secondAttribute="trailing" id="L3v-sc-MEX"/>
+                                        <constraint firstItem="7Nz-0V-zTh" firstAttribute="leading" secondItem="Yaa-RU-TFK" secondAttribute="leading" id="dnE-o4-aNe"/>
+                                        <constraint firstItem="Yaa-RU-TFK" firstAttribute="leading" secondItem="aB3-uQ-T3N" secondAttribute="leading" constant="8" id="icO-Lj-BWa"/>
+                                        <constraint firstItem="Yaa-RU-TFK" firstAttribute="top" secondItem="aB3-uQ-T3N" secondAttribute="top" constant="8" id="xN1-vh-lui"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="Qsm-1Y-LUr"/>
+                                </constraints>
+                            </box>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hNC-qx-jV7" secondAttribute="bottom" constant="20" id="0x3-ME-REg"/>
                             <constraint firstItem="hNC-qx-jV7" firstAttribute="top" secondItem="pA9-Os-r2C" secondAttribute="bottom" constant="8" id="bbX-2T-BOb"/>
+                            <constraint firstItem="nk7-dk-fnU" firstAttribute="top" secondItem="YWt-zc-gNz" secondAttribute="bottom" constant="8" id="gbc-ng-u1l"/>
                             <constraint firstItem="hNC-qx-jV7" firstAttribute="trailing" secondItem="pA9-Os-r2C" secondAttribute="trailing" id="hQp-Po-fuR"/>
+                            <constraint firstItem="nk7-dk-fnU" firstAttribute="trailing" secondItem="YWt-zc-gNz" secondAttribute="trailing" id="kXy-PE-8p7"/>
                             <constraint firstItem="pA9-Os-r2C" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="rz1-WW-1qw"/>
                             <constraint firstItem="hNC-qx-jV7" firstAttribute="leading" secondItem="pA9-Os-r2C" secondAttribute="leading" id="t6c-yu-LP3"/>
-                            <constraint firstAttribute="trailing" secondItem="pA9-Os-r2C" secondAttribute="trailing" constant="15" id="vcj-nf-bnw"/>
+                            <constraint firstItem="nk7-dk-fnU" firstAttribute="leading" secondItem="YWt-zc-gNz" secondAttribute="leading" id="vTV-qe-uty"/>
+                            <constraint firstAttribute="trailing" secondItem="pA9-Os-r2C" secondAttribute="trailing" constant="20" id="vcj-nf-bnw"/>
                             <constraint firstItem="pA9-Os-r2C" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="wGc-TH-1AC"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nk7-dk-fnU" secondAttribute="bottom" constant="20" id="zEv-v6-peu"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="barGraph" destination="Vfz-XG-Zqu" id="Xf1-ZW-Bdo"/>
                         <outlet property="lineGraph" destination="X3f-SW-jsr" id="WgW-zU-yGA"/>
+                        <outlet property="receiveGraph" destination="Yaa-RU-TFK" id="Hyh-4k-V0H"/>
+                        <outlet property="sendGraph" destination="7Nz-0V-zTh" id="J2f-O8-wk7"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="740.5"/>
         </scene>
     </scenes>
 </document>

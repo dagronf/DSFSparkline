@@ -135,6 +135,7 @@
 		23E2279423B5846E00E59122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23E2279523B5846E00E59122 /* macOS_Table_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS_Table_Demo.entitlements; sourceTree = "<group>"; };
 		2AD80F78B273C36D7AE1CF60 /* libPods-macOS Table Demo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-macOS Table Demo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		519D4222497F12FA5711078D /* Pods-simple_test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simple_test.release.xcconfig"; path = "Target Support Files/Pods-simple_test/Pods-simple_test.release.xcconfig"; sourceTree = "<group>"; };
 		56C07A0E91422ECC2B8F9F7F /* Pods-macOS Table Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Table Demo.release.xcconfig"; path = "Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo.release.xcconfig"; sourceTree = "<group>"; };
 		5FFCAD902AAAF6E0ECE0D2DE /* Pods-iOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		7E4BD9A4FEA4E2D9E954037A /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.debug.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,9 +143,11 @@
 		9C8C89E46AB5783A21861854 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.release.xcconfig"; sourceTree = "<group>"; };
 		9E4B2E674A8129385BEC0CC9 /* Pods_macOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99A1A784AC734B50481CF85 /* Pods-tvOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+		B2F05EC58F4D5C3850C94C35 /* Pods_simple_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_simple_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B685B99B75A681B5C5E4B5 /* Pods-macOS Table Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Table Demo.debug.xcconfig"; path = "Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		EA3E9909165C83714958DA79 /* Pods-macOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
 		EAEED51D81F694E0834D0619 /* Pods-iOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+		F3EC9FF4CACAACE72ADACDC6 /* Pods-simple_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simple_test.debug.xcconfig"; path = "Target Support Files/Pods-simple_test/Pods-simple_test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,8 @@
 				A99A1A784AC734B50481CF85 /* Pods-tvOS Sparkline Demo.release.xcconfig */,
 				E5B685B99B75A681B5C5E4B5 /* Pods-macOS Table Demo.debug.xcconfig */,
 				56C07A0E91422ECC2B8F9F7F /* Pods-macOS Table Demo.release.xcconfig */,
+				F3EC9FF4CACAACE72ADACDC6 /* Pods-simple_test.debug.xcconfig */,
+				519D4222497F12FA5711078D /* Pods-simple_test.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				1454125E806636BA42C54B4F /* Pods_tvOS_Sparkline_Demo.framework */,
 				9E4B2E674A8129385BEC0CC9 /* Pods_macOS_Sparkline_Demo.framework */,
 				2AD80F78B273C36D7AE1CF60 /* libPods-macOS Table Demo.a */,
+				B2F05EC58F4D5C3850C94C35 /* Pods_simple_test.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
