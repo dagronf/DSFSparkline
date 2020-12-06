@@ -15,8 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	var window: NSWindow!
 
-	let demoDataSource1 = DSFSparklineDataSource()
-	let demoDataSource2 = DSFSparklineDataSource()
+	let demoDataSource1 = DSFSparklineDataSource(range: 0 ... 1)
+	let demoDataSource2 = DSFSparklineDataSource(range: -1 ... 1)
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Create the SwiftUI view that provides the window contents.
