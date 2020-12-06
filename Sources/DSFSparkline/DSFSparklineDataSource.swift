@@ -78,10 +78,8 @@ public extension DSFSparklineDataSource {
 
 	/// Add a vector of new values. Equivalent to push(values[0]), push(values[1]), push(values[2]) etc.
 	@objc func push(values: [CGFloat]) {
-		defer {
-			self.notifyDataChange()
-		}
 		self.sparkline.push(values: values)
+		self.notifyDataChange()
 	}
 
 	/// Set the sparkline data to the specified values. The window size is changed to reflect the extent of the input data
@@ -117,10 +115,12 @@ public extension DSFSparklineDataSource {
 
 public extension DSFSparklineDataSource {
 
+	/// Returns the lower bound for the current set of values.  If no values are present, returns CGFloat.greatestFiniteMagnitude
 	@objc var lowerBound: CGFloat {
 		return self.sparkline.yRange?.lowerBound ?? CGFloat.greatestFiniteMagnitude
 	}
 
+	/// Returns the upper bound for the current set of values.  If no values are present, returns CGFloat.greatestFiniteMagnitude
 	@objc var upperBound: CGFloat {
 		return self.sparkline.yRange?.upperBound ?? CGFloat.greatestFiniteMagnitude
 	}

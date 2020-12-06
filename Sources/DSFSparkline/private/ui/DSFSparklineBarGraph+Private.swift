@@ -27,26 +27,24 @@ import Cocoa
 import UIKit
 #endif
 
-extension DSFSparklineBarGraph {
-
+public extension DSFSparklineBarGraph {
 	#if os(macOS)
-	override public func draw(_ dirtyRect: NSRect) {
+	override func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
 		if let ctx = NSGraphicsContext.current?.cgContext {
-			drawBarGraph(primary: ctx)
+			self.drawBarGraph(primary: ctx)
 		}
 	}
 	#else
-	public override func draw(_ rect: CGRect) {
+	override func draw(_ rect: CGRect) {
 		super.draw(rect)
 		if let ctx = UIGraphicsGetCurrentContext() {
-			drawBarGraph(primary: ctx)
+			self.drawBarGraph(primary: ctx)
 		}
 	}
 	#endif
 
 	private func drawBarGraph(primary: CGContext) {
-
 		let drawRect = self.bounds
 
 		let range: ClosedRange<CGFloat> = 2 ... max(2, drawRect.maxY - 2)
@@ -58,10 +56,10 @@ extension DSFSparklineBarGraph {
 		let normy = dataSource.normalized
 		let xDiff = self.bounds.width / CGFloat(normy.count)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (drawRect.height-1)).clamped(to: range))
+			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (drawRect.height - 1)).clamped(to: range))
 		}
 
-		primary.usingGState { (outer) in
+		primary.usingGState { outer in
 
 			outer.setRenderingIntent(.relativeColorimetric)
 			outer.interpolationQuality = .none
@@ -88,7 +86,22 @@ extension DSFSparklineBarGraph {
 
 			outer.drawPath(using: .fillStroke)
 		}
+
+		let color: SLColor
+		#if os(macOS)
+		color = SLColor.disabledControlTextColor
+		#else
+		color = SLColor.systemGray
+		#endif
+
+		if showZero {
+			let normZero = self.bounds.height - (dataSource.normalize(value: 0.0) * self.bounds.height)
+			primary.usingGState { ctx in
+				ctx.setLineWidth(0.5)
+				ctx.setStrokeColor(color.cgColor)
+				ctx.setLineDash(phase: 0.0, lengths: [1, 1])
+				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: normZero), CGPoint(x: drawRect.width, y: normZero)])
+			}
+		}
 	}
-
-
 }
