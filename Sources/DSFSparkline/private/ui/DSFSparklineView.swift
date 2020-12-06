@@ -142,3 +142,22 @@ extension DSFSparklineView {
 		#endif
 	}
 }
+
+extension DSFSparklineDataSource {
+
+	/// Return the vertical fractional position within the data window that represents
+	/// zero for the current set of data.
+	func fractionalZeroPosition() -> CGFloat {
+		if let r = self.range, r.lowerBound <= 0, r.upperBound >= 0 {
+			// If a fixed range is specified, calculate the zero line from the specified range
+			let full = r.upperBound - r.lowerBound		// full range width
+			let midPoint = full / 2.0					// midpoint of the full range
+			let midZero = midPoint / full				// zero fractional value within the range
+			return midZero
+		}
+		else {
+			// If no fixed range is specified, calculate the zero line position using the current range of the data.
+			return self.normalize(value: 0.0)
+		}
+	}
+}

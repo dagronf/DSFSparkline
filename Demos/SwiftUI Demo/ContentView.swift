@@ -21,6 +21,7 @@ struct ContentView: View {
 			HStack {
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource1,
 											 graphColor: NSColor.blue,
+											 showZero: true,
 											 barSpacing: 0)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource2,

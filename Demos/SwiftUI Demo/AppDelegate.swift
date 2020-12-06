@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	var window: NSWindow!
 
-	let demoDataSource1 = DSFSparklineDataSource(range: 0 ... 1)
+	let demoDataSource1 = DSFSparklineDataSource()
 	let demoDataSource2 = DSFSparklineDataSource(range: -1 ... 1)
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -48,7 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				return
 			}
 
-			let cr = CGFloat.random(in: 0.0 ... 1.0)
+			let cr = CGFloat.random(in: -1.0 ... 1.0)
 			_ = self.demoDataSource1.push(value: cr)
 
 			let cr2 = CGFloat.random(in: -1 ... 1)

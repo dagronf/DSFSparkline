@@ -95,24 +95,13 @@ public extension DSFSparklineBarGraph {
 		#endif
 
 		if self.showZero {
-
-			let normalizedZeroPos: CGFloat
-
-			if let r = self.dataSource?.range,
-			   r.lowerBound < 0, r.upperBound >= 0 {
-				let full = r.upperBound - r.lowerBound		// full range width
-				let midPoint = full / 2.0					// midpoint of the full range
-				let midZero = midPoint / full				// zero fractional value within the range
-				normalizedZeroPos = self.bounds.height - (midZero * self.bounds.height)
-			}
-			else {
-				normalizedZeroPos = self.bounds.height - (dataSource.normalize(value: 0.0) * self.bounds.height)
-			}
+			let frac = self.dataSource?.fractionalZeroPosition() ?? 1
+			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 			primary.usingGState { ctx in
 				ctx.setLineWidth(0.5)
 				ctx.setStrokeColor(color.cgColor)
 				ctx.setLineDash(phase: 0.0, lengths: [1, 1])
-				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: normalizedZeroPos), CGPoint(x: drawRect.width, y: normalizedZeroPos)])
+				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: drawRect.width, y: zeroPos)])
 			}
 		}
 	}
