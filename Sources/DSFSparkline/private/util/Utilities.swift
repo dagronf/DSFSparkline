@@ -24,6 +24,26 @@
 import Foundation
 import CoreGraphics.CGContext
 
+#if os(macOS)
+import Cocoa
+public typealias DSFColor = NSColor
+#else
+import UIKit
+public typealias DSFColor = UIColor
+#endif
+
+
+#if canImport(SwiftUI)
+import SwiftUI
+#if os(macOS)
+@available(macOS 10.15, *)
+typealias DSFViewRepresentable = NSViewRepresentable
+#else
+@available(iOS 13.0, tvOS 13.0, *)
+typealias DSFViewRepresentable = UIViewRepresentable
+#endif
+#endif
+
 extension ExpressibleByIntegerLiteral where Self: Comparable {
 	/// Clamp a value to a closed range
 	/// - Parameter range: the range to clamp to

@@ -17,11 +17,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	let demoDataSource1 = DSFSparklineDataSource()
 	let demoDataSource2 = DSFSparklineDataSource(range: -1 ... 1)
+	let demoDataSource3 = DSFSparklineDataSource(range: 0 ... 100)
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Create the SwiftUI view that provides the window contents.
 		let contentView = ContentView(dataSource1: demoDataSource1,
-									  dataSource2: demoDataSource2)
+									  dataSource2: demoDataSource2,
+									  dataSource3: demoDataSource3,
+									  dataSource4: demoDataSource3)
 
 		// Create the window and set the content view.
 		window = NSWindow(
@@ -33,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		window.setFrameAutosaveName("Main Window")
 		window.contentView = NSHostingView(rootView: contentView)
 		window.makeKeyAndOrderFront(nil)
+
+		self.demoDataSource3.windowSize = 40
 
 		self.updateWithNewValues()
 	}
@@ -53,6 +58,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 			let cr2 = CGFloat.random(in: -1 ... 1)
 			_ = self.demoDataSource2.push(value: cr2)
+
+			let cr3 = CGFloat.random(in: 0 ... 100)
+			_ = self.demoDataSource3.push(value: cr3)
+
 
 //			_ = self.sparkCrashDatasource.push(value: cr)
 //			_ = self.sparkCrash2Datasource.push(value: cr)

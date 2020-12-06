@@ -56,22 +56,27 @@ private extension DSFSparklineDotGraph {
 		let drawRect = self.bounds
 
 		let height = drawRect.height
-		let dimension = floor(height / CGFloat(self.verticalDotCount))
+		let dotHeight = floor(height / CGFloat(self.verticalDotCount))
 
-		// All values scaled between 0 and 1
-		let normalized = dataSource.normalized
-
-		var position = drawRect.width - dimension
+		var position = drawRect.width - dotHeight
 
 		let path = CGMutablePath()
 		let unsetPath = CGMutablePath()
 
-		for dataPoint in normalized.reversed() {
-			let boxCount = UInt(CGFloat(self.verticalDotCount) * dataPoint)
+		// Map normalized values to box positions
+		let normalizedBoxed: [UInt] = dataSource.normalized.reversed().map { dataPoint in
+			let floatBoxPos = CGFloat(self.verticalDotCount) * dataPoint
+			return UInt(floatBoxPos.rounded(.awayFromZero))
+		}
 
-			for c in 0 ... verticalDotCount {
-				let pos = self.upsideDown ? (CGFloat(c) * dimension) : height - (CGFloat(c) * dimension)
-				let r = CGRect(x: position, y: pos, width: dimension, height: dimension)
+		for dataPoint in normalizedBoxed {
+			let boxCount = dataPoint
+
+			for c in 0 ..< self.verticalDotCount {
+				let pos = self.upsideDown
+					? (CGFloat(c) * dotHeight)
+					: height - (CGFloat(c) * dotHeight) - dotHeight
+				let r = CGRect(x: position, y: pos, width: dotHeight, height: dotHeight)
 				let ri = r.insetBy(dx: 0.5, dy: 0.5)
 
 				if c < boxCount {
@@ -83,7 +88,7 @@ private extension DSFSparklineDotGraph {
 			}
 
 			// Move left.  If we've hit the lower bound, then stop
-			position -= dimension
+			position -= dotHeight
 			if position < 0 {
 				break
 			}

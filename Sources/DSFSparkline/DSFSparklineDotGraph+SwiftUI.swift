@@ -1,5 +1,5 @@
 //
-//  DSFSparklineBarGraph.swift
+//  DSFSparklineDotGraph+SwiftUI.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 7/12/20.
@@ -24,41 +24,43 @@
 
 import SwiftUI
 
+
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-public extension DSFSparklineBarGraph {
+public extension DSFSparklineDotGraph {
 	struct SwiftUI {
 
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
-		/// Draw a dotted line at the zero point on the y-axis
-		let showZero: Bool
 
-		let lineWidth: CGFloat
-		/// The spacing between each bar
-		let barSpacing: CGFloat
+		/// Are the values drawn from the top down?
+		let upsideDown: Bool
+		/// The number of vertical buckets to break the input data up into
+		let verticalDotCount: UInt
+		/// The secondary color for the sparkline
+		let unsetGraphColor: DSFColor
 
 		public init(dataSource: DSFSparklineDataSource,
 					graphColor: DSFColor,
-					showZero: Bool = false,
-					lineWidth: CGFloat = 0.5,
-					barSpacing: CGFloat = 1.0) {
+					unsetGraphColor: DSFColor = DSFColor.clear,
+					verticalDotCount: UInt = 10,
+					upsideDown: Bool = false) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
-			self.showZero = showZero
-			self.lineWidth = lineWidth
-			self.barSpacing = barSpacing
+			self.verticalDotCount = verticalDotCount
+			self.upsideDown = upsideDown
+			self.unsetGraphColor = unsetGraphColor
 		}
 	}
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-extension DSFSparklineBarGraph.SwiftUI: DSFViewRepresentable {
+extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 	#if os(macOS)
-	public typealias NSViewType = DSFSparklineBarGraph
+	public typealias NSViewType = DSFSparklineDotGraph
 	#else
-	public typealias UIViewType = DSFSparklineBarGraph
+	public typealias UIViewType = DSFSparklineDotGraph
 	#endif
 
 	public func makeCoordinator() -> Coordinator {
@@ -67,10 +69,10 @@ extension DSFSparklineBarGraph.SwiftUI: DSFViewRepresentable {
 }
 
 @available(macOS 10.15, iOS 13.0, *)
-public extension DSFSparklineBarGraph.SwiftUI {
+public extension DSFSparklineDotGraph.SwiftUI {
 	class Coordinator: NSObject {
-		let parent: DSFSparklineBarGraph.SwiftUI
-		init(_ sparkline: DSFSparklineBarGraph.SwiftUI) {
+		let parent: DSFSparklineDotGraph.SwiftUI
+		init(_ sparkline: DSFSparklineDotGraph.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
@@ -79,21 +81,23 @@ public extension DSFSparklineBarGraph.SwiftUI {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 99.0, *)
-extension DSFSparklineBarGraph.SwiftUI {
-	public func makeUIView(context: Context) -> DSFSparklineBarGraph {
-		let view = DSFSparklineBarGraph(frame: .zero)
+extension DSFSparklineDotGraph.SwiftUI {
+	public func makeUIView(context: Context) -> DSFSparklineDotGraph {
+		let view = DSFSparklineDotGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
 		view.windowSize = windowSize
+
 		view.graphColor = self.graphColor
-		view.barSpacing = self.barSpacing
-		view.lineWidth = self.lineWidth
-		view.showZero = self.showZero
+		view.verticalDotCount = self.verticalDotCount
+		view.unsetGraphColor = self.unsetGraphColor
+		view.upsideDown = self.upsideDown
+
 		return view
 	}
 
-	public func updateUIView(_ uiView: DSFSparklineBarGraph, context: Context) {
+	public func updateUIView(_ uiView: DSFSparklineDotGraph, context: Context) {
 
 	}
 }
@@ -101,23 +105,24 @@ extension DSFSparklineBarGraph.SwiftUI {
 // MARK: - macOS Specific
 
 @available(macOS 10.15, *)
-extension DSFSparklineBarGraph.SwiftUI {
-	public func makeNSView(context: Context) -> DSFSparklineBarGraph {
-		let view = DSFSparklineBarGraph(frame: .zero)
+extension DSFSparklineDotGraph.SwiftUI {
+	public func makeNSView(context: Context) -> DSFSparklineDotGraph {
+		let view = DSFSparklineDotGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 
 		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
 		view.windowSize = windowSize
-		
+
 		view.graphColor = self.graphColor
-		view.barSpacing = self.barSpacing
-		view.lineWidth = self.lineWidth
-		view.showZero = self.showZero
+		view.verticalDotCount = self.verticalDotCount
+		view.unsetGraphColor = self.unsetGraphColor
+		view.upsideDown = self.upsideDown
+		
 		return view
 	}
 
-	public func updateNSView(_ uiView: DSFSparklineBarGraph, context: Context) {
+	public func updateNSView(_ uiView: DSFSparklineDotGraph, context: Context) {
 
 	}
 }
