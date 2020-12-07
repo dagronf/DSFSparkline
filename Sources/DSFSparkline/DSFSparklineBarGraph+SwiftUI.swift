@@ -104,7 +104,7 @@ extension DSFSparklineBarGraph.SwiftUI {
 
 // MARK: - macOS Specific
 
-@available(macOS 10.15, *)
+@available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
 extension DSFSparklineBarGraph.SwiftUI {
 	public func makeNSView(context: Context) -> DSFSparklineBarGraph {
 		return makeBarGraph(context)

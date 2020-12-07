@@ -84,13 +84,13 @@ var PreviewGlobalDataSource2: DSFSparklineDataSource = {
 }()
 
 var PreviewGlobalDataSource3: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0)
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
 	d.push(values: [50, 40, 30, 20, 10, 0, 100, 90, 80, 70])
 	return d
 }()
 
 var PreviewGlobalDataSource4: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0)
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
 	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
 	return d
 }()

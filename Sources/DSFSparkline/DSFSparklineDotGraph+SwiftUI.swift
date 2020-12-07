@@ -104,7 +104,7 @@ extension DSFSparklineDotGraph.SwiftUI {
 
 // MARK: - macOS Specific
 
-@available(macOS 10.15, *)
+@available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
 extension DSFSparklineDotGraph.SwiftUI {
 	public func makeNSView(context: Context) -> DSFSparklineDotGraph {
 		return self.makeDotGraph(context)

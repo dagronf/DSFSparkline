@@ -66,6 +66,7 @@ public extension DSFSparklineLineGraph {
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
+
 	#if os(macOS)
 	public typealias NSViewType = DSFSparklineLineGraph
 	#else
@@ -109,14 +110,14 @@ extension DSFSparklineLineGraph.SwiftUI {
 		return self.makeLineGraph(context)
 	}
 
-	public func updateUIView(_ context: Context) {
+	public func updateUIView(_ uiView: DSFSparklineLineGraph, context: Context) {
 
 	}
 }
 
 // MARK: - macOS Specific
 
-@available(macOS 10.15, *)
+@available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
 extension DSFSparklineLineGraph.SwiftUI {
 	public func makeNSView(context: Context) -> DSFSparklineLineGraph {
 		return self.makeLineGraph(context)
