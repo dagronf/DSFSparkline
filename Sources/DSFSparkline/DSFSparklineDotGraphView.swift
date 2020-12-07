@@ -28,7 +28,7 @@ import UIKit
 #endif
 
 @IBDesignable
-public class DSFSparklineDotGraph: DSFSparklineView {
+public class DSFSparklineDotGraphView: DSFSparklineView {
 
 	/// Are the values drawn from the top down?
 	@IBInspectable public var upsideDown: Bool = false {

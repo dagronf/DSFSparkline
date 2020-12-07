@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-rk-lDK">
                                 <rect key="frame" x="20" y="64" width="374" height="450"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-7V-VA6" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-7V-VA6" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -31,12 +31,12 @@
                                                 <color key="value" systemColor="systemIndigoColor"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-MM-1EB" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-MM-1EB" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="85" width="374" height="75"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -49,12 +49,12 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BBW-Jd-8WN" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BBW-Jd-8WN" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="170" width="374" height="75"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -75,7 +75,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mAv-lQ-6fh">
                                         <rect key="frame" x="0.0" y="255" width="374" height="110"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-zA-Xyw" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-zA-Xyw" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                 <rect key="frame" x="0.0" y="0.0" width="84.5" height="110"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -88,15 +88,12 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ubo-jJ-kxT" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ubo-jJ-kxT" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                 <rect key="frame" x="96.5" y="0.0" width="84.5" height="110"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -109,15 +106,12 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-L1-rCj" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-L1-rCj" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                 <rect key="frame" x="193" y="0.0" width="84.5" height="110"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -130,15 +124,12 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="kP5-lN-Uhl" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="kP5-lN-Uhl" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                 <rect key="frame" x="289.5" y="0.0" width="84.5" height="110"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -151,9 +142,6 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                         <integer key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
@@ -164,7 +152,7 @@
                                             <constraint firstAttribute="height" constant="110" id="bCS-VG-cVH"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="H0Y-0a-Ipr" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="H0Y-0a-Ipr" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="375" width="374" height="75"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>

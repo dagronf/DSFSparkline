@@ -35,8 +35,8 @@ class GridViewController: NSViewController {
 		}
 
 		(0 ... sz).forEach { row in
-			let vs = (0 ... sz).map { column -> DSFSparklineLineGraph in
-				let i = DSFSparklineLineGraph()
+			let vs = (0 ... sz).map { column -> DSFSparklineLineGraphView in
+				let i = DSFSparklineLineGraphView()
 				i.showZero = false
 				i.graphColor = self.color(row: row, col: column)
 				i.lineWidth = 0.5

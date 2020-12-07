@@ -21,7 +21,7 @@ struct UpperGraph: View {
 	let lineShading: Bool
 
 	var body: some View {
-		DSFSparklineLineGraph.SwiftUI(dataSource: dataSource,
+		DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource,
 									  graphColor: graphColor,
 									  showZero: showZero,
 									  interpolated: interpolated,
@@ -83,12 +83,12 @@ struct ContentView: View {
 				UpperGraph(label: "Right", dataSource: dataSource4, graphColor: NSColor.systemPurple, showZero: false, interpolated: false, lineShading: false)
 			})
 			HStack {
-				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource1,
+				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource1,
 											 graphColor: NSColor.blue,
 											 showZero: true,
 											 barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
-				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource2,
+				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource2,
 											 graphColor: NSColor.green,
 											 showZero: true,
 											 lineWidth: 2,
@@ -96,24 +96,24 @@ struct ContentView: View {
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 			}
 			HStack {
-				DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
+				DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
 											 graphColor: NSColor.blue,
 											 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2))
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
-				DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
+				DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
 											 graphColor: NSColor.red,
 											 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
 											 upsideDown: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				VStack(alignment: .center, spacing: nil, content: {
-					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
+					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
 												 graphColor: NSColor.systemGreen,
 												 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
 												 verticalDotCount: 10)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
-					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
+					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
 												 graphColor: NSColor.systemPink,
 												 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
 												 verticalDotCount: 10,
@@ -130,27 +130,27 @@ struct ContentView: View {
 					Text("Dot").tag(4)
 				}.pickerStyle(RadioGroupPickerStyle())
 				if self.selectedType == 1 {
-					DSFSparklineLineGraph.SwiftUI(dataSource: dataSource5,
+					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				}
 				else if self.selectedType == 2 {
-					DSFSparklineLineGraph.SwiftUI(dataSource: dataSource5,
+					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor,
 											 interpolated: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				}
 				else if self.selectedType == 3 {
-					DSFSparklineBarGraph.SwiftUI(dataSource: dataSource5,
+					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor,
 											 barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				}
 				else {
-					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource5,
+					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
@@ -209,12 +209,12 @@ struct SparklineView: View {
 
    var body: some View {
 	  HStack {
-		 DSFSparklineLineGraph.SwiftUI(
+		 DSFSparklineLineGraphView.SwiftUI(
 			dataSource: leftDataSource,
 			graphColor: DSFColor.red,
 			showZero: false,
 			interpolated: true)
-		 DSFSparklineBarGraph.SwiftUI(
+		 DSFSparklineBarGraphView.SwiftUI(
 			dataSource: rightDataSource,
 			graphColor: DSFColor.blue,
 			showZero: true,

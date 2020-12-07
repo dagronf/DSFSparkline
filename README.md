@@ -20,6 +20,10 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
     </a>
 </p>
 
+## WARNING: Breaking Changes for 2.0.0
+
+Note that the 2.0.0 release has changes that will break your existing DSFSparkline code. Please see below for the changes.
+
 ## Features
 
 * Simple bar, dot and line graph support.
@@ -49,7 +53,7 @@ So, a very simple example…
 ```swift
 
 // Create the view
-let sparklineView = DSFSparklineLineGraph(…)
+let sparklineView = DSFSparklineLineGraphView(…)
 sparklineView.graphColor = UIColor.blue
 sparklineView.showZero = true
 
@@ -85,9 +89,9 @@ An optional range can be set on the data source, which means that the view will 
 
 Represents the viewable settings and display.  The current view types available are :-
 
-* DSFSparklineLineGraph
-* DSFSparklineBarGraph
-* DSFSparklineDotGraph
+* DSFSparklineLineGraphView
+* DSFSparklineBarGraphView
+* DSFSparklineDotGraphView
 
 ### Common display customizations
 
@@ -96,7 +100,7 @@ Represents the viewable settings and display.  The current view types available 
 | `graphColor`  | `NSColor`/`UIColor` | The color to use when drawing the sparkline        |
 | `showZero`    | `Bool`              | Draw a dotted line at the zero point on the y-axis |
 
-### Line graph customizations (`DSFSparklineLineGraph`)
+### Line graph customizations (`DSFSparklineLineGraphView`)
 
 | Setting         | Type      | Description                            |
 |-----------------|-----------|----------------------------------------|
@@ -105,14 +109,14 @@ Represents the viewable settings and display.  The current view types available 
 | `lineShading`   | `Bool`    | Shade the area under the line          |
 | `shadowed`      | `Bool`    | Draw a shadow under the line           |
 
-### Bar graph customizations (`DSFSparklineBarGraph`)
+### Bar graph customizations (`DSFSparklineBarGraphView`)
 
 | Setting         | Type      | Description                  |
 |-----------------|-----------|------------------------------|
 | `lineWidth`     | `CGFloat` | The width of the line        |
 | `barSpacing`    | `CGFloat` | The spacing between each bar |
 
-### Dot graph customizations (`DSFSparklineDotGraph`)
+### Dot graph customizations (`DSFSparklineDotGraphView`)
 
 | Setting           | Type                | Description                                        |
 |-------------------|---------------------|----------------------------------------------------|
@@ -257,12 +261,12 @@ struct SparklineView: View {
    
    var body: some View {
       HStack {
-         DSFSparklineLineGraph.SwiftUI(
+         DSFSparklineLineGraphView.SwiftUI(
             dataSource: leftDataSource,
             graphColor: UIColor.red,
             showZero: false,
             interpolated: true)
-         DSFSparklineLineGraph.SwiftUI(
+         DSFSparklineLineGraphView.SwiftUI(
             dataSource: rightDataSource,
             graphColor: UIColor.blue,
             showZero: false,
@@ -298,12 +302,20 @@ struct SparklineView: View {
 
 ### `2.0.0`
 
-* Renamed `SLColor` and `SLView` to `DSFColor` and `DSFView` for consistency.
+* The primary views have been renamed with a `View` postfix. So
 
-* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which should only be called from Interface Builder.
+   `DSFSparklineLineGraph` -> `DSFSparklineLineGraphView`
+   
+   `DSFSparklineBarGraph` -> `DSFSparklineBarGraphView`
+   
+   `DSFSparklineDotGraph` -> `DSFSparklineDotGraphView`
+
+* Renamed `SLColor` and `SLView` to `DSFColor` and `DSFView` for module naming consistency.
+
+* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which should only be called from Interface Builder.  If you want to set the windowSize from your xib file, set the `graphWindowSize` inspectable.
 
 	If you see warnings in the log like 
-`2020-12-07 18:22:51.619867+1100 iOS Sparkline Demo[75174:1459637] Failed to set (windowSize) user defined inspected property on (DSFSparkline.DSFSparklineBarGraph): [<DSFSparkline.DSFSparklineBarGraph 0x7fe2eb10f2b0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key windowSize.
+`2020-12-07 18:22:51.619867+1100 iOS Sparkline Demo[75174:1459637] Failed to set (windowSize) user defined inspected property on (DSFSparkline.DSFSparklineBarGraphView): [<DSFSparkline.DSFSparklineBarGraphView 0x7fe2eb10f2b0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key windowSize.
 `
 it means that you have a `windowSize` value set in your .xib file.  Remove it and set the `graphWindowSize` value instead.
 

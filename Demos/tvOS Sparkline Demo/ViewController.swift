@@ -14,13 +14,13 @@ class ViewController: UIViewController {
 	@IBOutlet weak var green: DSFSparklineView!
 	var greenDataSource = DSFSparklineDataSource(range: -11 ... 11)
 
-	@IBOutlet weak var red: DSFSparklineLineGraph!
+	@IBOutlet weak var red: DSFSparklineLineGraphView!
 	var redDataSource = DSFSparklineDataSource(range: -40 ... 10)
 
-	@IBOutlet weak var purple: DSFSparklineDotGraph!
+	@IBOutlet weak var purple: DSFSparklineDotGraphView!
 	var purpleDataSource = DSFSparklineDataSource(range: 0 ... 50)
 
-	@IBOutlet weak var orange: DSFSparklineDotGraph!
+	@IBOutlet weak var orange: DSFSparklineDotGraphView!
 	var orangeDataSource = DSFSparklineDataSource(range: 0 ... 50)
 
 	override func viewDidLoad() {

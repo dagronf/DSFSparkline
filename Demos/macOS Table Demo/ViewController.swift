@@ -65,11 +65,11 @@ class ViewController: NSViewController {
 }
 
 class Graphico: NSTableCellView {
-	@IBOutlet weak var sparkline: DSFSparklineLineGraph!
+	@IBOutlet weak var sparkline: DSFSparklineLineGraphView!
 }
 
 class Graphicodot: NSTableCellView {
-	@IBOutlet weak var sparkline: DSFSparklineDotGraph!
+	@IBOutlet weak var sparkline: DSFSparklineDotGraphView!
 }
 
 

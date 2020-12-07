@@ -1,5 +1,5 @@
 //
-//  DSFSparklineLineGraph+SwiftUI.swift
+//  DSFSparklineLineGraphView+SwiftUI.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 7/12/20.
@@ -26,7 +26,7 @@
 import SwiftUI
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-public extension DSFSparklineLineGraph {
+public extension DSFSparklineLineGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
@@ -65,16 +65,16 @@ public extension DSFSparklineLineGraph {
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
+extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 	#if os(macOS)
-	public typealias NSViewType = DSFSparklineLineGraph
+	public typealias NSViewType = DSFSparklineLineGraphView
 	#else
-	public typealias UIViewType = DSFSparklineLineGraph
+	public typealias UIViewType = DSFSparklineLineGraphView
 	#endif
 
 	public class Coordinator: NSObject {
-		let parent: DSFSparklineLineGraph.SwiftUI
-		init(_ sparkline: DSFSparklineLineGraph.SwiftUI) {
+		let parent: DSFSparklineLineGraphView.SwiftUI
+		init(_ sparkline: DSFSparklineLineGraphView.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
@@ -83,8 +83,8 @@ extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
 		Coordinator(self)
 	}
 
-	func makeLineGraph(_: Context) -> DSFSparklineLineGraph {
-		let view = DSFSparklineLineGraph(frame: .zero)
+	func makeLineGraph(_: Context) -> DSFSparklineLineGraphView {
+		let view = DSFSparklineLineGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.dataSource = self.dataSource
 		view.graphColor = self.graphColor
@@ -102,23 +102,23 @@ extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 9999.0, *)
-public extension DSFSparklineLineGraph.SwiftUI {
-	func makeUIView(context: Context) -> DSFSparklineLineGraph {
+public extension DSFSparklineLineGraphView.SwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineLineGraphView {
 		return self.makeLineGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineLineGraph, context _: Context) {}
+	func updateUIView(_: DSFSparklineLineGraphView, context _: Context) {}
 }
 
 // MARK: - macOS Specific
 
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
-public extension DSFSparklineLineGraph.SwiftUI {
-	func makeNSView(context: Context) -> DSFSparklineLineGraph {
+public extension DSFSparklineLineGraphView.SwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineLineGraphView {
 		return self.makeLineGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineLineGraph, context _: Context) {}
+	func updateNSView(_: DSFSparklineLineGraphView, context _: Context) {}
 }
 
 #endif

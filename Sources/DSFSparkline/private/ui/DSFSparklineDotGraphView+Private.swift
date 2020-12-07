@@ -27,7 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
-extension DSFSparklineDotGraph {
+extension DSFSparklineDotGraphView {
 
 	#if os(macOS)
 	override public func draw(_ dirtyRect: NSRect) {
@@ -46,7 +46,7 @@ extension DSFSparklineDotGraph {
 	#endif
 }
 
-private extension DSFSparklineDotGraph {
+private extension DSFSparklineDotGraphView {
 	private func drawGraph(primary: CGContext) {
 
 		guard let dataSource = self.dataSource else {

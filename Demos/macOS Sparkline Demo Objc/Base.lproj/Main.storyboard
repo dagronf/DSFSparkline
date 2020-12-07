@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -717,7 +716,7 @@
                                     <rect key="frame" x="3" y="3" width="440" height="84"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="X3f-SW-jsr" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="X3f-SW-jsr" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="8" y="8" width="424" height="68"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -753,7 +752,7 @@
                                     <rect key="frame" x="3" y="3" width="440" height="84"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vfz-XG-Zqu" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vfz-XG-Zqu" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="8" y="8" width="424" height="68"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -787,7 +786,7 @@
                                     <rect key="frame" x="3" y="3" width="440" height="137"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-RU-TFK" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-RU-TFK" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="8" y="69" width="424" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="gx4-36-Wnh"/>
@@ -807,7 +806,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-0V-zTh" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-0V-zTh" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="8" y="8" width="424" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="lMC-gV-0Bo"/>

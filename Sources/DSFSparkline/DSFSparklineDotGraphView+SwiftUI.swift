@@ -1,5 +1,5 @@
 //
-//  DSFSparklineDotGraph+SwiftUI.swift
+//  DSFSparklineDotGraphView+SwiftUI.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 7/12/20.
@@ -25,7 +25,7 @@
 import SwiftUI
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-public extension DSFSparklineDotGraph {
+public extension DSFSparklineDotGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
@@ -55,16 +55,16 @@ public extension DSFSparklineDotGraph {
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
+extension DSFSparklineDotGraphView.SwiftUI: DSFViewRepresentable {
 	#if os(macOS)
-	public typealias NSViewType = DSFSparklineDotGraph
+	public typealias NSViewType = DSFSparklineDotGraphView
 	#else
-	public typealias UIViewType = DSFSparklineDotGraph
+	public typealias UIViewType = DSFSparklineDotGraphView
 	#endif
 	
 	public class Coordinator: NSObject {
-		let parent: DSFSparklineDotGraph.SwiftUI
-		init(_ sparkline: DSFSparklineDotGraph.SwiftUI) {
+		let parent: DSFSparklineDotGraphView.SwiftUI
+		init(_ sparkline: DSFSparklineDotGraphView.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
@@ -73,8 +73,8 @@ extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 		Coordinator(self)
 	}
 	
-	private func makeDotGraph(_: Context) -> DSFSparklineDotGraph {
-		let view = DSFSparklineDotGraph(frame: .zero)
+	private func makeDotGraph(_: Context) -> DSFSparklineDotGraphView {
+		let view = DSFSparklineDotGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.dataSource = self.dataSource
 		
@@ -89,23 +89,23 @@ extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 99.0, *)
-public extension DSFSparklineDotGraph.SwiftUI {
-	func makeUIView(context: Context) -> DSFSparklineDotGraph {
+public extension DSFSparklineDotGraphView.SwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineDotGraphView {
 		return self.makeDotGraph(context)
 	}
 	
-	func updateUIView(_: DSFSparklineDotGraph, context _: Context) {}
+	func updateUIView(_: DSFSparklineDotGraphView, context _: Context) {}
 }
 
 // MARK: - macOS Specific
 
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
-public extension DSFSparklineDotGraph.SwiftUI {
-	func makeNSView(context: Context) -> DSFSparklineDotGraph {
+public extension DSFSparklineDotGraphView.SwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineDotGraphView {
 		return self.makeDotGraph(context)
 	}
 	
-	func updateNSView(_: DSFSparklineDotGraph, context _: Context) {}
+	func updateNSView(_: DSFSparklineDotGraphView, context _: Context) {}
 }
 
 #endif

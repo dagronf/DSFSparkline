@@ -53,15 +53,15 @@ class ViewController: NSViewController {
 	@IBOutlet weak var fakeSparkCpu5: DSFSparklineView!
 	var fakeSparkCpu5Datasource = DSFSparklineDataSource(range: 0 ... 1)
 
-	@IBOutlet weak var sparkStaticData: DSFSparklineLineGraph!
+	@IBOutlet weak var sparkStaticData: DSFSparklineLineGraphView!
 	var sparkStaticDatasource = DSFSparklineDataSource(range: -20 ... 50)
 
 	@IBOutlet weak var cpuStack: NSStackView!
 
-	@IBOutlet weak var cpuDotView: DSFSparklineDotGraph!
+	@IBOutlet weak var cpuDotView: DSFSparklineDotGraphView!
 	var cpuDotViewDatasource = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
 
-	@IBOutlet weak var cpu2DotView: DSFSparklineDotGraph!
+	@IBOutlet weak var cpu2DotView: DSFSparklineDotGraphView!
 	var cpu2DotViewDatasource = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
 
 
@@ -149,7 +149,7 @@ extension ViewController: CPUDelegate {
 			cpuDataSources.removeAll()
 
 			usage.forEach { _ in
-				let cpu = DSFSparklineBarGraph.init(frame: CGRect(x: 0, y: 0, width: cpuStack.frame.width, height: 32))
+				let cpu = DSFSparklineBarGraphView.init(frame: CGRect(x: 0, y: 0, width: cpuStack.frame.width, height: 32))
 				let ds = DSFSparklineDataSource(range: 0 ... 100)
 				ds.windowSize = 30
 				cpu.dataSource = ds

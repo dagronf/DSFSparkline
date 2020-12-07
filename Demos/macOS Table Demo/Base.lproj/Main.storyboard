@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -733,17 +732,17 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="Table" id="XfG-lQ-9wD" customClass="ViewController" customModule="macOS_Table_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="575" height="270"/>
+                    <view key="view" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="25" width="575" height="245"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kq-M6J">
-                                <rect key="frame" x="20" y="20" width="535" height="230"/>
+                                <rect key="frame" x="20" y="-5" width="535" height="205"/>
                                 <clipView key="contentView" id="l94-XN-lZh">
-                                    <rect key="frame" x="1" y="1" width="533" height="213"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <rect key="frame" x="1" y="1" width="533" height="188"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="DXW-4H-9LJ" viewBased="YES" id="8Z2-o9-tfX">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="188"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="163"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -797,7 +796,7 @@
                                                             <rect key="frame" x="81" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="mJd-uu-ISW" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="mJd-uu-ISW" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -840,7 +839,7 @@
                                                             <rect key="frame" x="234" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nui-jx-X69" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nui-jx-X69" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -883,7 +882,7 @@
                                                             <rect key="frame" x="387" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="qpf-7v-LOk" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="qpf-7v-LOk" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -950,8 +949,8 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.059701492537313432" horizontal="YES" id="NX9-rQ-Aph">
-                                    <rect key="frame" x="1" y="214" width="533" height="15"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="NX9-rQ-Aph">
+                                    <rect key="frame" x="1" y="189" width="533" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mck-Zs-RC3">

@@ -1,5 +1,5 @@
 //
-//  DSFSparklineLineGraph+Private.swift
+//  DSFSparklineLineGraphView+Private.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 21/12/19.
@@ -27,7 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
-extension DSFSparklineLineGraph {
+extension DSFSparklineLineGraphView {
 
 	#if os(macOS)
 	override public func draw(_ dirtyRect: NSRect) {

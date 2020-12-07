@@ -11,15 +11,15 @@
 
 @interface ViewController ()
 
-@property (nonatomic, weak) IBOutlet DSFSparklineLineGraph *lineGraph;
+@property (nonatomic, weak) IBOutlet DSFSparklineLineGraphView *lineGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* dataSource;
 
-@property (weak) IBOutlet DSFSparklineBarGraph* barGraph;
+@property (weak) IBOutlet DSFSparklineBarGraphView* barGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* barDataSource;
 
-@property (weak) IBOutlet DSFSparklineDotGraph *receiveGraph;
+@property (weak) IBOutlet DSFSparklineDotGraphView *receiveGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* receiveDataSource;
-@property (weak) IBOutlet DSFSparklineDotGraph *sendGraph;
+@property (weak) IBOutlet DSFSparklineDotGraphView *sendGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* sendDataSource;
 
 @end

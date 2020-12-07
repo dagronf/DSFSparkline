@@ -12,23 +12,23 @@ import DSFSparkline
 class ViewController: UIViewController {
 
 
-	@IBOutlet weak var spark1: DSFSparklineLineGraph!
+	@IBOutlet weak var spark1: DSFSparklineLineGraphView!
 	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 30)
-	@IBOutlet weak var spark2: DSFSparklineLineGraph!
+	@IBOutlet weak var spark2: DSFSparklineLineGraphView!
 	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 10)
-	@IBOutlet weak var spark3: DSFSparklineBarGraph!
+	@IBOutlet weak var spark3: DSFSparklineBarGraphView!
 	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
 
-	@IBOutlet weak var dot1: DSFSparklineDotGraph!
+	@IBOutlet weak var dot1: DSFSparklineDotGraphView!
 	var dot1ds = DSFSparklineDataSource(windowSize: 80, range: -10 ... 10)
 
-	@IBOutlet weak var s1: DSFSparklineBarGraph!
+	@IBOutlet weak var s1: DSFSparklineBarGraphView!
 	var ds1 = DSFSparklineDataSource(range: -10 ... 10)
-	@IBOutlet weak var s2: DSFSparklineBarGraph!
+	@IBOutlet weak var s2: DSFSparklineBarGraphView!
 	var ds2 = DSFSparklineDataSource(range: -10 ... 10)
-	@IBOutlet weak var s3: DSFSparklineBarGraph!
+	@IBOutlet weak var s3: DSFSparklineBarGraphView!
 	var ds3 = DSFSparklineDataSource(range: -10 ... 10)
-	@IBOutlet weak var s4: DSFSparklineBarGraph!
+	@IBOutlet weak var s4: DSFSparklineBarGraphView!
 	var ds4 = DSFSparklineDataSource(range: -10 ... 10)
 
 	override func viewDidLoad() {

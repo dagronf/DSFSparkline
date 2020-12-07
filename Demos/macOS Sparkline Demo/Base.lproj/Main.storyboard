@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -754,7 +753,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="a9M-Aq-5EU" column="BAq-tP-YvS" id="f5q-yf-nDE">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="OiD-9p-Pec" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="OiD-9p-Pec" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="415" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="aoL-Bw-P6f"/>
@@ -795,7 +794,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="aLC-sK-pHI" column="BAq-tP-YvS" id="udP-F5-0Sd">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-DQ-1cR" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-DQ-1cR" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="372" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="Ybe-gn-KCp"/>
@@ -824,7 +823,7 @@
                                     </gridCell>
                                     <gridCell row="rOA-HK-JHa" column="lKi-gS-TNi" id="raf-BR-nMc"/>
                                     <gridCell row="rOA-HK-JHa" column="BAq-tP-YvS" id="lIF-PY-sE4">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="tNT-lg-8kA" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="tNT-lg-8kA" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="329" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="gsf-Ye-tOh"/>
@@ -862,7 +861,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="mUE-ZI-8yG" column="BAq-tP-YvS" id="Smp-Jf-JPv">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="n87-Qb-hCp" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="n87-Qb-hCp" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="286" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="B8l-YI-Etj"/>
@@ -901,7 +900,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="Mqg-XJ-bG5" column="BAq-tP-YvS" id="Gd0-vA-1Yb">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BEz-6V-bx1" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BEz-6V-bx1" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="243" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="1W5-NG-iuE"/>
@@ -938,7 +937,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="Urz-a5-acf" column="BAq-tP-YvS" id="h1q-mq-bhM">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-f3-3gr" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-f3-3gr" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="200" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="jjG-zN-x95"/>
@@ -981,7 +980,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="ldh-b2-9YP" column="BAq-tP-YvS" id="3MP-Ub-yd0">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="DpK-RA-KO6" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="DpK-RA-KO6" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="157" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="8EG-Wx-EQV"/>
@@ -1031,7 +1030,7 @@
                                         <stackView key="contentView" distribution="fillEqually" orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w5N-2a-bX8">
                                             <rect key="frame" x="224" y="86" width="216" height="48"/>
                                             <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="cr4-vs-J7q" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="cr4-vs-J7q" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="Ci6-pO-roZ"/>
@@ -1053,7 +1052,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Zib-x5-HMi" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Zib-x5-HMi" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="44" y="0.0" width="40" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="Kaf-Qz-BTZ"/>
@@ -1075,7 +1074,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ff8-fX-wcp" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Ff8-fX-wcp" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="88" y="0.0" width="40" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="HZT-bV-MIL"/>
@@ -1097,7 +1096,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="1oc-TP-XvY" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="1oc-TP-XvY" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="132" y="0.0" width="40" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="Gny-nF-gx7"/>
@@ -1119,7 +1118,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="RvH-VG-IqQ" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="RvH-VG-IqQ" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="176" y="0.0" width="40" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="ixh-ET-CqP"/>
@@ -1161,7 +1160,7 @@
                                     <gridCell row="BE0-WA-Esz" column="mND-oT-fMP" id="4cs-G9-hnb"/>
                                     <gridCell row="BE0-WA-Esz" column="lKi-gS-TNi" id="OdA-8y-x7P"/>
                                     <gridCell row="BE0-WA-Esz" column="BAq-tP-YvS" id="G3t-xd-11p">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="AVo-hu-76v" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="AVo-hu-76v" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="43" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="ifW-Lb-JMn"/>
@@ -1186,7 +1185,7 @@
                                     <gridCell row="17y-ez-wQ3" column="mND-oT-fMP" id="YWV-6O-NxH"/>
                                     <gridCell row="17y-ez-wQ3" column="lKi-gS-TNi" id="lod-vY-vX8"/>
                                     <gridCell row="17y-ez-wQ3" column="BAq-tP-YvS" id="lPs-p4-TB6">
-                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZVQ-x6-UGu" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                        <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZVQ-x6-UGu" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="224" y="0.0" width="216" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="5m2-fH-yfx"/>
@@ -1215,7 +1214,7 @@
                                 <rect key="frame" x="20" y="20" width="471" height="184"/>
                                 <clipView key="contentView" id="MSZ-hg-s8h">
                                     <rect key="frame" x="1" y="1" width="469" height="182"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-Xu-3pN">
                                             <rect key="frame" x="0.0" y="0.0" width="469" height="0.0"/>
