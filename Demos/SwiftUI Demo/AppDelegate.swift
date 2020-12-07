@@ -15,16 +15,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	var window: NSWindow!
 
-	let demoDataSource1 = DSFSparklineDataSource()
+	let demoDataSource1 = DSFSparklineDataSource(windowSize: 30)
 	let demoDataSource2 = DSFSparklineDataSource(range: -1 ... 1)
 	let demoDataSource3 = DSFSparklineDataSource(range: 0 ... 100)
+
+	let demoDataSource4 = DSFSparklineDataSource(range: 0 ... 100)
+	var lastSource4: CGFloat = 50.0
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Create the SwiftUI view that provides the window contents.
 		let contentView = ContentView(dataSource1: demoDataSource1,
 									  dataSource2: demoDataSource2,
 									  dataSource3: demoDataSource3,
-									  dataSource4: demoDataSource3)
+									  dataSource4: demoDataSource4)
 
 		// Create the window and set the content view.
 		window = NSWindow(
@@ -37,7 +40,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		window.contentView = NSHostingView(rootView: contentView)
 		window.makeKeyAndOrderFront(nil)
 
-		self.demoDataSource3.windowSize = 40
+		self.demoDataSource3.windowSize = 30
+		self.demoDataSource4.windowSize = 30
+		_ = self.demoDataSource4.push(value: 50)
 
 		self.updateWithNewValues()
 	}
@@ -62,6 +67,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			let cr3 = CGFloat.random(in: 0 ... 100)
 			_ = self.demoDataSource3.push(value: cr3)
 
+			let cr4 = CGFloat.random(in: -20 ... 20)
+			let newVal = min(100, max(0, self.lastSource4 + cr4))
+			_ = self.demoDataSource4.push(value: newVal)
+			self.lastSource4 = newVal
 
 //			_ = self.sparkCrashDatasource.push(value: cr)
 //			_ = self.sparkCrash2Datasource.push(value: cr)

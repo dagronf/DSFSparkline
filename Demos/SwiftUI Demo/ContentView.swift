@@ -17,8 +17,19 @@ struct ContentView: View {
 
 	var body: some View {
 		VStack {
-			Text("Hello, World!")
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
+			HStack {
+				DSFSparklineLineGraph.SwiftUI(dataSource: dataSource4,
+											  graphColor: NSColor.systemOrange)
+				DSFSparklineLineGraph.SwiftUI(dataSource: dataSource4,
+											 graphColor: NSColor.yellow,
+											 interpolated: true,
+											 shadowed: true)
+				DSFSparklineLineGraph.SwiftUI(dataSource: dataSource4,
+											  graphColor: NSColor.systemPurple,
+											  lineShading: false,
+											  shadowed: true)
+
+			}
 			HStack {
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource1,
 											 graphColor: NSColor.blue,
@@ -42,12 +53,12 @@ struct ContentView: View {
 											 upsideDown: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				VStack(alignment: .center, spacing: nil, content: {
-					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource4,
+					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
 												 graphColor: NSColor.systemGreen,
 												 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
 												 verticalDotCount: 10)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
-					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource4,
+					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
 												 graphColor: NSColor.systemPink,
 												 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
 												 verticalDotCount: 10,
@@ -78,11 +89,17 @@ var PreviewGlobalDataSource3: DSFSparklineDataSource = {
 	return d
 }()
 
+var PreviewGlobalDataSource4: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0)
+	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
+	return d
+}()
+
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContentView(dataSource1: PreviewGlobalDataSource1,
 					dataSource2: PreviewGlobalDataSource2,
 					dataSource3: PreviewGlobalDataSource3,
-					dataSource4: PreviewGlobalDataSource3)
+					dataSource4: PreviewGlobalDataSource4)
 	}
 }

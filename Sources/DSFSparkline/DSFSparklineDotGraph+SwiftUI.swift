@@ -63,26 +63,18 @@ extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 	public typealias UIViewType = DSFSparklineDotGraph
 	#endif
 
-	public func makeCoordinator() -> Coordinator {
-		Coordinator(self)
-	}
-}
-
-@available(macOS 10.15, iOS 13.0, *)
-public extension DSFSparklineDotGraph.SwiftUI {
-	class Coordinator: NSObject {
+	public class Coordinator: NSObject {
 		let parent: DSFSparklineDotGraph.SwiftUI
 		init(_ sparkline: DSFSparklineDotGraph.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-}
 
-// MARK: - iOS/tvOS Specific
+	public func makeCoordinator() -> Coordinator {
+		Coordinator(self)
+	}
 
-@available(iOS 13.0, tvOS 13.0, macOS 99.0, *)
-extension DSFSparklineDotGraph.SwiftUI {
-	public func makeUIView(context: Context) -> DSFSparklineDotGraph {
+	private func makeDotGraph(_ context: Context) -> DSFSparklineDotGraph {
 		let view = DSFSparklineDotGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		let windowSize = self.dataSource.windowSize
@@ -93,8 +85,16 @@ extension DSFSparklineDotGraph.SwiftUI {
 		view.verticalDotCount = self.verticalDotCount
 		view.unsetGraphColor = self.unsetGraphColor
 		view.upsideDown = self.upsideDown
-
 		return view
+	}
+}
+
+// MARK: - iOS/tvOS Specific
+
+@available(iOS 13.0, tvOS 13.0, macOS 99.0, *)
+extension DSFSparklineDotGraph.SwiftUI {
+	public func makeUIView(context: Context) -> DSFSparklineDotGraph {
+		return self.makeDotGraph(context)
 	}
 
 	public func updateUIView(_ uiView: DSFSparklineDotGraph, context: Context) {
@@ -107,19 +107,7 @@ extension DSFSparklineDotGraph.SwiftUI {
 @available(macOS 10.15, *)
 extension DSFSparklineDotGraph.SwiftUI {
 	public func makeNSView(context: Context) -> DSFSparklineDotGraph {
-		let view = DSFSparklineDotGraph(frame: .zero)
-		view.translatesAutoresizingMaskIntoConstraints = false
-
-		let windowSize = self.dataSource.windowSize
-		view.dataSource = self.dataSource
-		view.windowSize = windowSize
-
-		view.graphColor = self.graphColor
-		view.verticalDotCount = self.verticalDotCount
-		view.unsetGraphColor = self.unsetGraphColor
-		view.upsideDown = self.upsideDown
-		
-		return view
+		return self.makeDotGraph(context)
 	}
 
 	public func updateNSView(_ uiView: DSFSparklineDotGraph, context: Context) {
