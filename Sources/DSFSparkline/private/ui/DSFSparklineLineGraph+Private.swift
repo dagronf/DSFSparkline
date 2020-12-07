@@ -23,12 +23,9 @@
 
 #if os(macOS)
 import Cocoa
-typealias SLFont = NSFont
 #else
 import UIKit
-typealias SLFont = UIFont
 #endif
-
 
 extension DSFSparklineLineGraph {
 

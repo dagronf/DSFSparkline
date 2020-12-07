@@ -28,10 +28,12 @@ import CoreGraphics.CGContext
 import Cocoa
 public typealias DSFColor = NSColor
 public typealias DSFView = NSView
+public typealias DSFFont = NSFont
 #else
 import UIKit
 public typealias DSFColor = UIColor
 public typealias DSFView = UIView
+public typealias DSFFont = UIFont
 #endif
 
 #if canImport(SwiftUI)
