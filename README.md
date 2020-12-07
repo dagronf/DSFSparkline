@@ -270,16 +270,14 @@ struct SparklineView: View {
 
 ### `2.0.0` Updates for SwiftUI
 
-* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `ibWindowSize` which ONLY affects Interface Builder.
+* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which ONLY affects Interface Builder.
 
 If you see warnings in the log like 
 `2020-12-07 18:22:51.619867+1100 iOS Sparkline Demo[75174:1459637] Failed to set (windowSize) user defined inspected property on (DSFSparkline.DSFSparklineBarGraph): [<DSFSparkline.DSFSparklineBarGraph 0x7fe2eb10f2b0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key windowSize.
 `
-it means that you have a `windowSize` value set in your .xib file.
+it means that you have a `windowSize` value set in your .xib file.  Remove it and set the `graphWindowSize` value instead.
 
-* For the Bar type, `lineWidth` and `barSpacing` now represent the pixel spacing between bars and the pixel width for the line.
-
-
+* For the Bar type, `lineWidth` and `barSpacing` now represent the pixel spacing between bars and the pixel width for the line.  You may find that your line spacing and bar spacing is shot if you have set fractional values for these in the past (for example, if you set lineWidth = 0.5).  The reason for this is to draw lines on pixel boundaries and avoid antialiasing.
 
 ## Screenshots
 

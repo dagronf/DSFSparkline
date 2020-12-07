@@ -797,9 +797,8 @@
                                                             <rect key="frame" x="81" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJd-uu-ISW" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
-                                                                    <rect key="frame" x="3" y="3" width="144" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="mJd-uu-ISW" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                                             <color key="value" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
@@ -813,6 +812,12 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="mJd-uu-ISW" firstAttribute="leading" secondItem="EfF-k3-f0g" secondAttribute="leading" id="Wqm-1w-ecd"/>
+                                                                <constraint firstAttribute="bottom" secondItem="mJd-uu-ISW" secondAttribute="bottom" id="i1K-6w-p7M"/>
+                                                                <constraint firstItem="mJd-uu-ISW" firstAttribute="top" secondItem="EfF-k3-f0g" secondAttribute="top" id="vK2-KA-hEM"/>
+                                                                <constraint firstAttribute="trailing" secondItem="mJd-uu-ISW" secondAttribute="trailing" id="zq9-Pk-x9D"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="sparkline" destination="mJd-uu-ISW" id="fUb-n6-d0k"/>
                                                             </connections>
@@ -835,9 +840,8 @@
                                                             <rect key="frame" x="234" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nui-jx-X69" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
-                                                                    <rect key="frame" x="3" y="3" width="144" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="nui-jx-X69" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                                             <color key="value" name="systemRedColor" catalog="System" colorSpace="catalog"/>
@@ -851,6 +855,12 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="nui-jx-X69" firstAttribute="top" secondItem="ejl-mS-lCR" secondAttribute="top" id="Xq3-gc-2Jh"/>
+                                                                <constraint firstAttribute="bottom" secondItem="nui-jx-X69" secondAttribute="bottom" id="ekS-Ub-IIt"/>
+                                                                <constraint firstItem="nui-jx-X69" firstAttribute="leading" secondItem="ejl-mS-lCR" secondAttribute="leading" id="qzL-zm-WmY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="nui-jx-X69" secondAttribute="trailing" id="sxR-Ii-3vb"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="sparkline" destination="nui-jx-X69" id="aEh-nu-P7V"/>
                                                             </connections>
@@ -873,9 +883,8 @@
                                                             <rect key="frame" x="387" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpf-7v-LOk" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
-                                                                    <rect key="frame" x="3" y="3" width="144" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="qpf-7v-LOk" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                                             <color key="value" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
@@ -889,6 +898,12 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="qpf-7v-LOk" firstAttribute="leading" secondItem="cTk-PE-kJz" secondAttribute="leading" id="9Db-6j-X1W"/>
+                                                                <constraint firstItem="qpf-7v-LOk" firstAttribute="top" secondItem="cTk-PE-kJz" secondAttribute="top" id="ItH-D7-gWh"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qpf-7v-LOk" secondAttribute="trailing" id="pic-OO-M0t"/>
+                                                                <constraint firstAttribute="bottom" secondItem="qpf-7v-LOk" secondAttribute="bottom" id="uxr-V7-hYm"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="sparkline" destination="qpf-7v-LOk" id="38E-sa-qzX"/>
                                                             </connections>
@@ -935,7 +950,7 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="NX9-rQ-Aph">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.059701492537313432" horizontal="YES" id="NX9-rQ-Aph">
                                     <rect key="frame" x="1" y="214" width="533" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
