@@ -1,6 +1,6 @@
 # Sparklines for macOS, iOS and tvOS
 
-A lightweight sparkline component, supporting Swift and Objective-C.
+A lightweight sparkline component, supporting Swift, SwiftUI and Objective-C.
 
 <p align="center">
     <img src="https://img.shields.io/github/v/tag/dagronf/DSFSparkline" />
@@ -25,6 +25,7 @@ A lightweight sparkline component, supporting Swift and Objective-C.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
 * Line graph can draw with discrete lines or fitted to a curve
+* SwiftUI support
 
 ## Available types
 
@@ -124,7 +125,7 @@ There are demos available in the `Demos` subfolder for each of the supported pla
 
 #### Swift package manager
 
-
+Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Usage
 
@@ -236,6 +237,33 @@ dataSource.reset()
 ```objective-c
 /// Objective-C
 [dataSource reset];
+```
+
+## SwiftUI Support
+
+Each graph type provides its own 
+
+```swift
+struct SparklineView: View {
+
+   let leftDataSource: DSFSparklineDataSource
+   let rightDataSource: DSFSparklineDataSource
+   
+   var body: some View {
+      HStack {
+         DSFSparklineLineGraph.SwiftUI(
+            dataSource: leftDataSource,
+            graphColor: UIColor.red,
+            showZero: false,
+            interpolated: true)
+         DSFSparklineLineGraph.SwiftUI(
+            dataSource: rightDataSource,
+            graphColor: UIColor.blue,
+            showZero: false,
+            interpolated: true)
+      }
+   }
+}
 ```
 
 ## Screenshots

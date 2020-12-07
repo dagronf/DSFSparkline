@@ -1,5 +1,5 @@
 //
-//  DSFSparklineBarGraph.swift
+//  DSFSparklineBarGraph+SwiftUI.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 7/12/20.
@@ -27,26 +27,26 @@ import SwiftUI
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineBarGraph {
 	struct SwiftUI {
-
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
-
+		
 		let lineWidth: CGFloat
 		/// The spacing between each bar
 		let barSpacing: CGFloat
-
+		
 		public init(dataSource: DSFSparklineDataSource,
 					graphColor: DSFColor,
 					showZero: Bool = false,
 					lineWidth: CGFloat = 0.5,
-					barSpacing: CGFloat = 1.0) {
+					barSpacing: CGFloat = 1.0)
+		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
-
+			
 			self.showZero = showZero
 			self.lineWidth = lineWidth
 			self.barSpacing = barSpacing
@@ -61,27 +61,27 @@ extension DSFSparklineBarGraph.SwiftUI: DSFViewRepresentable {
 	#else
 	public typealias UIViewType = DSFSparklineBarGraph
 	#endif
-
+	
 	public class Coordinator: NSObject {
 		let parent: DSFSparklineBarGraph.SwiftUI
 		init(_ sparkline: DSFSparklineBarGraph.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-
+	
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-
-	private func makeBarGraph(_ context: Context) -> DSFSparklineBarGraph {
+	
+	private func makeBarGraph(_: Context) -> DSFSparklineBarGraph {
 		let view = DSFSparklineBarGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
-
+		
 		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
 		view.windowSize = windowSize
 		view.graphColor = self.graphColor
-
+		
 		view.barSpacing = self.barSpacing
 		view.lineWidth = self.lineWidth
 		view.showZero = self.showZero
@@ -92,27 +92,23 @@ extension DSFSparklineBarGraph.SwiftUI: DSFViewRepresentable {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 9999.0, *)
-extension DSFSparklineBarGraph.SwiftUI {
-	public func makeUIView(context: Context) -> DSFSparklineBarGraph {
-		return makeBarGraph(context)
+public extension DSFSparklineBarGraph.SwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineBarGraph {
+		return self.makeBarGraph(context)
 	}
-
-	public func updateUIView(_ uiView: DSFSparklineBarGraph, context: Context) {
-
-	}
+	
+	func updateUIView(_: DSFSparklineBarGraph, context _: Context) {}
 }
 
 // MARK: - macOS Specific
 
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
-extension DSFSparklineBarGraph.SwiftUI {
-	public func makeNSView(context: Context) -> DSFSparklineBarGraph {
-		return makeBarGraph(context)
+public extension DSFSparklineBarGraph.SwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineBarGraph {
+		return self.makeBarGraph(context)
 	}
-
-	public func updateNSView(_ uiView: DSFSparklineBarGraph, context: Context) {
-
-	}
+	
+	func updateNSView(_: DSFSparklineBarGraph, context _: Context) {}
 }
 
 #endif

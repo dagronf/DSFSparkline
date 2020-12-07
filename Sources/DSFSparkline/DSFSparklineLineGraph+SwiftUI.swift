@@ -20,22 +20,21 @@
 //  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+
 #if canImport(SwiftUI)
 
 import SwiftUI
 
-
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineLineGraph {
 	struct SwiftUI {
-
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
-
+		
 		/// The width for the line drawn on the graph
 		let lineWidth: CGFloat
 		/// The number of vertical buckets to break the input data up into
@@ -44,18 +43,19 @@ public extension DSFSparklineLineGraph {
 		let lineShading: Bool
 		/// Draw a shadow under the line
 		let shadowed: Bool
-
+		
 		public init(dataSource: DSFSparklineDataSource,
 					graphColor: DSFColor,
 					showZero: Bool = false,
 					lineWidth: CGFloat = 1.5,
 					interpolated: Bool = false,
 					lineShading: Bool = true,
-					shadowed: Bool = false) {
+					shadowed: Bool = false)
+		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 			self.showZero = showZero
-
+			
 			self.lineWidth = lineWidth
 			self.interpolated = interpolated
 			self.lineShading = lineShading
@@ -66,25 +66,24 @@ public extension DSFSparklineLineGraph {
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
-
 	#if os(macOS)
 	public typealias NSViewType = DSFSparklineLineGraph
 	#else
 	public typealias UIViewType = DSFSparklineLineGraph
 	#endif
-
+	
 	public class Coordinator: NSObject {
 		let parent: DSFSparklineLineGraph.SwiftUI
 		init(_ sparkline: DSFSparklineLineGraph.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-
+	
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-
-	func makeLineGraph(_ context: Context) -> DSFSparklineLineGraph {
+	
+	func makeLineGraph(_: Context) -> DSFSparklineLineGraph {
 		let view = DSFSparklineLineGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		let windowSize = self.dataSource.windowSize
@@ -92,12 +91,12 @@ extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
 		view.windowSize = windowSize
 		view.graphColor = self.graphColor
 		view.showZero = self.showZero
-
+		
 		view.lineWidth = self.lineWidth
 		view.interpolated = self.interpolated
 		view.lineShading = self.lineShading
 		view.shadowed = self.shadowed
-
+		
 		return view
 	}
 }
@@ -105,27 +104,23 @@ extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 9999.0, *)
-extension DSFSparklineLineGraph.SwiftUI {
-	public func makeUIView(context: Context) -> DSFSparklineLineGraph {
+public extension DSFSparklineLineGraph.SwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineLineGraph {
 		return self.makeLineGraph(context)
 	}
-
-	public func updateUIView(_ uiView: DSFSparklineLineGraph, context: Context) {
-
-	}
+	
+	func updateUIView(_: DSFSparklineLineGraph, context _: Context) {}
 }
 
 // MARK: - macOS Specific
 
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
-extension DSFSparklineLineGraph.SwiftUI {
-	public func makeNSView(context: Context) -> DSFSparklineLineGraph {
+public extension DSFSparklineLineGraph.SwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineLineGraph {
 		return self.makeLineGraph(context)
 	}
-
-	public func updateNSView(_ uiView: DSFSparklineLineGraph, context: Context) {
-
-	}
+	
+	func updateNSView(_: DSFSparklineLineGraph, context _: Context) {}
 }
 
 #endif

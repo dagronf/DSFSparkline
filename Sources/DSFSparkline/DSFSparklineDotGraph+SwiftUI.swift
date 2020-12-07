@@ -24,28 +24,27 @@
 
 import SwiftUI
 
-
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineDotGraph {
 	struct SwiftUI {
-
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
-
+		
 		/// Are the values drawn from the top down?
 		let upsideDown: Bool
 		/// The number of vertical buckets to break the input data up into
 		let verticalDotCount: UInt
 		/// The secondary color for the sparkline
 		let unsetGraphColor: DSFColor
-
+		
 		public init(dataSource: DSFSparklineDataSource,
 					graphColor: DSFColor,
 					unsetGraphColor: DSFColor = DSFColor.clear,
 					verticalDotCount: UInt = 10,
-					upsideDown: Bool = false) {
+					upsideDown: Bool = false)
+		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 			self.verticalDotCount = verticalDotCount
@@ -62,25 +61,25 @@ extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 	#else
 	public typealias UIViewType = DSFSparklineDotGraph
 	#endif
-
+	
 	public class Coordinator: NSObject {
 		let parent: DSFSparklineDotGraph.SwiftUI
 		init(_ sparkline: DSFSparklineDotGraph.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-
+	
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-
-	private func makeDotGraph(_ context: Context) -> DSFSparklineDotGraph {
+	
+	private func makeDotGraph(_: Context) -> DSFSparklineDotGraph {
 		let view = DSFSparklineDotGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
 		view.windowSize = windowSize
-
+		
 		view.graphColor = self.graphColor
 		view.verticalDotCount = self.verticalDotCount
 		view.unsetGraphColor = self.unsetGraphColor
@@ -92,27 +91,23 @@ extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 99.0, *)
-extension DSFSparklineDotGraph.SwiftUI {
-	public func makeUIView(context: Context) -> DSFSparklineDotGraph {
+public extension DSFSparklineDotGraph.SwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineDotGraph {
 		return self.makeDotGraph(context)
 	}
-
-	public func updateUIView(_ uiView: DSFSparklineDotGraph, context: Context) {
-
-	}
+	
+	func updateUIView(_: DSFSparklineDotGraph, context _: Context) {}
 }
 
 // MARK: - macOS Specific
 
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
-extension DSFSparklineDotGraph.SwiftUI {
-	public func makeNSView(context: Context) -> DSFSparklineDotGraph {
+public extension DSFSparklineDotGraph.SwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineDotGraph {
 		return self.makeDotGraph(context)
 	}
-
-	public func updateNSView(_ uiView: DSFSparklineDotGraph, context: Context) {
-
-	}
+	
+	func updateNSView(_: DSFSparklineDotGraph, context _: Context) {}
 }
 
 #endif
