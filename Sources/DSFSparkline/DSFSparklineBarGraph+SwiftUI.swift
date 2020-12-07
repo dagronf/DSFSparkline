@@ -34,16 +34,16 @@ public extension DSFSparklineBarGraph {
 		
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
-		/// The line width to use when drawing the border of each bar
-		let lineWidth: CGFloat
-		/// The spacing between each bar
-		let barSpacing: CGFloat
+		/// The line width (in pixels) to use when drawing the border of each bar
+		let lineWidth: UInt
+		/// The spacing (in pixels) between each bar
+		let barSpacing: UInt
 		
 		public init(dataSource: DSFSparklineDataSource,
 					graphColor: DSFColor,
 					showZero: Bool = false,
-					lineWidth: CGFloat = 0.5,
-					barSpacing: CGFloat = 1.0)
+					lineWidth: UInt = 1,
+					barSpacing: UInt = 1)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor

@@ -29,7 +29,7 @@ class GridViewController: NSViewController {
 
 		(0 ... sz).forEach { row in
 			let item = (0 ... sz).map { _ in
-				DSFSparklineDataSource(windowSize: 50, range: -1 ... 1)
+				DSFSparklineDataSource(windowSize: 30, range: -1 ... 1)
 			}
 			dataSources.append(item)
 		}
@@ -37,17 +37,16 @@ class GridViewController: NSViewController {
 		(0 ... sz).forEach { row in
 			let vs = (0 ... sz).map { column -> DSFSparklineLineGraph in
 				let i = DSFSparklineLineGraph()
-				i.showZero = true
+				i.showZero = false
 				i.graphColor = self.color(row: row, col: column)
 				i.lineWidth = 0.5
-				//i.lineShading = false
 				i.translatesAutoresizingMaskIntoConstraints = false
 				i.addConstraint(NSLayoutConstraint(item: i, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 32))
 				i.addConstraint(NSLayoutConstraint(item: i, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 32))
 
 				i.dataSource = self.dataSources[row][column]
 
-				let ranr: [CGFloat] = RandomArray(count: 50, range: -1 ... 1)
+				let ranr: [CGFloat] = RandomArray(count: 30, range: -1 ... 1)
 				self.dataSources[row][column].push(values: ranr)
 
 				return i

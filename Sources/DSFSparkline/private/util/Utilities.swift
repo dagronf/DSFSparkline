@@ -27,9 +27,15 @@ import CoreGraphics.CGContext
 #if os(macOS)
 import Cocoa
 public typealias DSFColor = NSColor
+public func RetinaValue() -> CGFloat {
+	return NSScreen.main?.backingScaleFactor ?? 1
+}
 #else
 import UIKit
 public typealias DSFColor = UIColor
+public func RetinaValue() -> CGFloat {
+	return UIScreen.main.scale
+}
 #endif
 
 

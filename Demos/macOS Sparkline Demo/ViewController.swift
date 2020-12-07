@@ -159,7 +159,7 @@ extension ViewController: CPUDelegate {
 				cpu.addConstraint(NSLayoutConstraint(item: cpu, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48))
 				cpu.graphColor = .systemBlue
 				cpu.isHidden = false
-				cpu.barSpacing = 2.0
+				cpu.barSpacing = 1
 				self.cpuStack.addArrangedSubview(cpu)
 
 				let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))

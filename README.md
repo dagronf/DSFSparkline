@@ -271,6 +271,7 @@ struct SparklineView: View {
 ### `2.0.0` Updates for SwiftUI
 
 * I removed `windowSize` from the core DSFSparklineView. `windowSize` is related to the data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support -- called `ibWindowSize` which ONLY affects Interface Builder
+* For the Bar type, `lineWidth` and `barSpacing` now represent the pixel spacing between bars and the pixel width for the line.
 
 ## Screenshots
 
@@ -286,12 +287,13 @@ struct SparklineView: View {
 |----|----|
 |<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder.png" width="303"></a>|<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder-2.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_interfacebuilder-2.png" width="420"></a>|
 
+### SwiftUI
+
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png" width="400"></a>
+
 ### Animated
 
-<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.mp4">900+ sparklines at once</a>
-
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
-
 
 ## License
 

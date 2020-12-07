@@ -26,11 +26,16 @@ struct UpperGraph: View {
 									  showZero: showZero,
 									  interpolated: interpolated,
 									  lineShading: lineShading)
+			.background(
+				Rectangle()
+					.fill(Color(.displayP3, white: 1.0, opacity: 0.1))
+					.shadow(color: .black, radius: 8, x: 4, y: -4)
+			)
 			.clipShape(RoundedRectangle(cornerRadius: 8))
 			.padding(4)
 			.background(
 				RoundedRectangle(cornerRadius: 8)
-					.fill(Color(.displayP3, white: 1.0, opacity: 0.1))
+					.fill(Color(.displayP3, white: 0.5, opacity: 0.1))
 					.shadow(color: .black, radius: 8, x: 4, y: -4)
 			)
 			.overlay(
@@ -38,12 +43,12 @@ struct UpperGraph: View {
 					Text(self.label)
 						.shadow(color: .black, radius: 1)
 					Color.clear
-				}).padding(4), alignment: .leading)
+				}).padding(6), alignment: .leading)
 	}
 }
 
 var PreviewUpperGraphDataSource: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0)
 	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
 	return d
 }()
@@ -86,7 +91,8 @@ struct ContentView: View {
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource2,
 											 graphColor: NSColor.green,
 											 showZero: true,
-											 barSpacing: 2)
+											 lineWidth: 2,
+											 barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 			}
 			HStack {
@@ -139,10 +145,9 @@ struct ContentView: View {
 				else if self.selectedType == 3 {
 					DSFSparklineBarGraph.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor,
-											 barSpacing: 0)
+											 barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
-
 				}
 				else {
 					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource5,

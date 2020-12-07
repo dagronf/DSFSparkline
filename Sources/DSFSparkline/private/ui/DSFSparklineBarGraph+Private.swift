@@ -44,6 +44,16 @@ public extension DSFSparklineBarGraph {
 	}
 	#endif
 
+	#if os(macOS)
+	func retinaScale() -> CGFloat {
+		return self.window?.screen?.backingScaleFactor ?? 1.0
+	}
+	#else
+	func retinaScale() -> CGFloat {
+		return self.window?.screen.scale ?? 1.0
+	}
+	#endif
+
 	private func drawBarGraph(primary: CGContext) {
 		let drawRect = self.bounds
 
@@ -72,17 +82,22 @@ public extension DSFSparklineBarGraph {
 
 			let path = CGMutablePath()
 			for point in points.enumerated() {
-				let r = CGRect(x: CGFloat(point.offset) * xDiff, y: drawRect.height - point.element.y, width: xDiff - barSpacing, height: point.element.y)
-				path.addRect(r)
+				let r = CGRect(x: CGFloat(point.offset) * xDiff,
+							   y: drawRect.height - point.element.y,
+							   width: xDiff - 1 - (CGFloat(self.barSpacing) * self.retinaScale()),
+							   height: point.element.y - CGFloat(self.lineWidth))
+				path.addRect(r.integral)
 			}
 			path.closeSubpath()
 
 			outer.addPath(path)
 
-			outer.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
-			outer.setLineWidth(self.lineWidth)
-			outer.setStrokeColor(self.graphColor.cgColor)
 			outer.setShouldAntialias(false)
+
+			outer.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
+			outer.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
+			outer.setStrokeColor(self.graphColor.cgColor)
+
 
 			outer.drawPath(using: .fillStroke)
 		}
@@ -98,7 +113,7 @@ public extension DSFSparklineBarGraph {
 			let frac = self.dataSource?.fractionalZeroPosition() ?? 1
 			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 			primary.usingGState { ctx in
-				ctx.setLineWidth(0.5)
+				ctx.setLineWidth(1 / self.retinaScale())
 				ctx.setStrokeColor(color.cgColor)
 				ctx.setLineDash(phase: 0.0, lengths: [1, 1])
 				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: drawRect.width, y: zeroPos)])
