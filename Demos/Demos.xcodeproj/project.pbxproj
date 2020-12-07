@@ -14,7 +14,6 @@
 			);
 			dependencies = (
 				23882CFB257D677F00AC103A /* PBXTargetDependency */,
-				23882CF9257D677100AC103A /* PBXTargetDependency */,
 				239716BE23B554E50034A4D4 /* PBXTargetDependency */,
 				239716C223B554E80034A4D4 /* PBXTargetDependency */,
 				23E2279A23B5A6EF00E59122 /* PBXTargetDependency */,
@@ -66,13 +65,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		23882CF8257D677100AC103A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 23102B4523B0165B001A621D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 23102BF023B02B32001A621D;
-			remoteInfo = "tvOS Sparkline Demo";
-		};
 		23882CFA257D677F00AC103A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 23102B4523B0165B001A621D /* Project object */;
@@ -917,11 +909,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		23882CF9257D677100AC103A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 23102BF023B02B32001A621D /* tvOS Sparkline Demo */;
-			targetProxy = 23882CF8257D677100AC103A /* PBXContainerItemProxy */;
-		};
 		23882CFB257D677F00AC103A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 23882CDD257D675700AC103A /* SwiftUI Demo */;
@@ -1376,7 +1363,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1442,7 +1429,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.macOS-Sparkline-Demo-Objc";

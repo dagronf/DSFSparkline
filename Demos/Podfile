@@ -13,6 +13,7 @@ end
 target 'macOS Sparkline Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
 	use_frameworks!
+	platform :osx, '10.15'
 
   # Pods for macOS Sparkline Demo
   pod 'DSFSparkline', :path => '../'
@@ -23,6 +24,7 @@ target 'macOS Sparkline Demo Objc' do
   # Comment the next line if you don't want to use dynamic frameworks
 	use_frameworks!
 
+	platform :osx, '10.15'
   # Pods for macOS Sparkline Demo
   pod 'DSFSparkline', :path => '../'
 
@@ -32,6 +34,8 @@ target 'macOS Table Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
 	use_frameworks!
 
+	platform :osx, '10.15'
+
   # Pods for macOS Sparkline Demo
   pod 'DSFSparkline', :path => '../'
 
@@ -40,6 +44,8 @@ end
 target 'SwiftUI Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
 	use_frameworks!
+
+	platform :osx, '10.15'
 
   # Pods for macOS Sparkline Demo
   pod 'DSFSparkline', :path => '../'
