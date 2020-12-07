@@ -1,12 +1,14 @@
 # Sparklines for macOS, iOS and tvOS
 
-A lightweight sparkline component, supporting Swift, SwiftUI and Objective-C.
+A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Objective-C.
 
 <p align="center">
     <img src="https://img.shields.io/github/v/tag/dagronf/DSFSparkline" />
     <img src="https://img.shields.io/badge/macOS-10.11+-red" />
     <img src="https://img.shields.io/badge/iOS-11.0+-blue" />
     <img src="https://img.shields.io/badge/tvOS-11.0+-orange" />
+    <img src="https://img.shields.io/badge/SwiftUI-1.0+-green" />
+    <img src="https://img.shields.io/badge/macCatalyst-1.0+-purple" />
 </p>
 
 <p align="center">
@@ -20,7 +22,7 @@ A lightweight sparkline component, supporting Swift, SwiftUI and Objective-C.
 
 ## Features
 
-* Simple bar and line support
+* Simple bar, dot and line graph support.
 * `IBDesignable` support so you can see your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
@@ -75,12 +77,17 @@ Represents the data to be displayed.
 The data source is assigned to the view model to provide data for drawing the sparkline. As data is changed the assigned view is automatically updated to reflect the new data.  If more data is added via a push or set the data is added to the datasource, the associated view will automatically update to reflect the new data. Older data that no longer falls within the window is discarded.
 
 ### Range
+
 An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical range will grow and shrink to accomodate the full range of data.
 
 
-## View Model
+## Views
 
-Represents the viewable settings and display.
+Represents the viewable settings and display.  The current view types available are :-
+
+* DSFSparklineLineGraph
+* DSFSparklineBarGraph
+* DSFSparklineDotGraph
 
 ### Common display customizations
 
@@ -88,9 +95,8 @@ Represents the viewable settings and display.
 |---------------|---------------------|----------------------------------------------------|
 | `graphColor`  | `NSColor`/`UIColor` | The color to use when drawing the sparkline        |
 | `showZero`    | `Bool`              | Draw a dotted line at the zero point on the y-axis |
-| `windowSize ` | `UInt`              | The size of the sparkline window.                  |
 
-### Line graph customizations
+### Line graph customizations (`DSFSparklineLineGraph`)
 
 | Setting         | Type      | Description                            |
 |-----------------|-----------|----------------------------------------|
@@ -99,14 +105,14 @@ Represents the viewable settings and display.
 | `lineShading`   | `Bool`    | Shade the area under the line          |
 | `shadowed`      | `Bool`    | Draw a shadow under the line           |
 
-### Bar graph customizations
+### Bar graph customizations (`DSFSparklineBarGraph`)
 
 | Setting         | Type      | Description                  |
 |-----------------|-----------|------------------------------|
 | `lineWidth`     | `CGFloat` | The width of the line        |
 | `barSpacing`    | `CGFloat` | The spacing between each bar |
 
-### Dot graph customizations
+### Dot graph customizations (`DSFSparklineDotGraph`)
 
 | Setting           | Type                | Description                                        |
 |-------------------|---------------------|----------------------------------------------------|
@@ -266,19 +272,6 @@ struct SparklineView: View {
 }
 ```
 
-## Changes
-
-### `2.0.0` Updates for SwiftUI
-
-* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which ONLY affects Interface Builder.
-
-If you see warnings in the log like 
-`2020-12-07 18:22:51.619867+1100 iOS Sparkline Demo[75174:1459637] Failed to set (windowSize) user defined inspected property on (DSFSparkline.DSFSparklineBarGraph): [<DSFSparkline.DSFSparklineBarGraph 0x7fe2eb10f2b0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key windowSize.
-`
-it means that you have a `windowSize` value set in your .xib file.  Remove it and set the `graphWindowSize` value instead.
-
-* For the Bar type, `lineWidth` and `barSpacing` now represent the pixel spacing between bars and the pixel width for the line.  You may find that your line spacing and bar spacing is shot if you have set fractional values for these in the past (for example, if you set lineWidth = 0.5).  The reason for this is to draw lines on pixel boundaries and avoid antialiasing.
-
 ## Screenshots
 
 ### In app
@@ -300,6 +293,23 @@ it means that you have a `windowSize` value set in your .xib file.  Remove it an
 ### Animated
 
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
+
+## Changes
+
+### `2.0.0`
+
+* Renamed `SLColor` and `SLView` to `DSFColor` and `DSFView` for consistency.
+
+* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which should only be called from Interface Builder.
+
+	If you see warnings in the log like 
+`2020-12-07 18:22:51.619867+1100 iOS Sparkline Demo[75174:1459637] Failed to set (windowSize) user defined inspected property on (DSFSparkline.DSFSparklineBarGraph): [<DSFSparkline.DSFSparklineBarGraph 0x7fe2eb10f2b0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key windowSize.
+`
+it means that you have a `windowSize` value set in your .xib file.  Remove it and set the `graphWindowSize` value instead.
+
+* For the Bar type, `lineWidth` and `barSpacing` now represent the pixel spacing between bars and the pixel width for the line.  You may find that your line spacing and bar spacing are now incorrect if you have set fractional values for these in the past (for example, if you set lineWidth = 0.5).  The reason for this change is to aid drawing lines on pixel boundaries and avoid antialiasing.
+
+* Fix for zero line being upside-down
 
 ## License
 
