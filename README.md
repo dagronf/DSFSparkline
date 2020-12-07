@@ -241,7 +241,7 @@ dataSource.reset()
 
 ## SwiftUI Support
 
-Each graph type provides its own 
+Each graph type provides its own SwiftUI view (appending `.SwiftUI` to the class name).
 
 ```swift
 struct SparklineView: View {
@@ -270,7 +270,7 @@ struct SparklineView: View {
 
 ### `2.0.0` Updates for SwiftUI
 
-* I removed `windowSize` from the core DSFSparklineView. `windowSize` is related to the data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support -- called `ibWindowSize` which ONLY affects Interface Builder
+* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support -- called `ibWindowSize` which ONLY affects Interface Builder.
 * For the Bar type, `lineWidth` and `barSpacing` now represent the pixel spacing between bars and the pixel width for the line.
 
 ## Screenshots

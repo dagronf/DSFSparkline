@@ -56,6 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Insert code here to tear down your application
 	}
 
+	var sinusoid = 0.00
 
 	func updateWithNewValues() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
@@ -63,7 +64,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 				return
 			}
 
-			let cr = CGFloat.random(in: -1.0 ... 1.0)
+			let val = sin(self.sinusoid)
+			self.sinusoid += 0.12
+
+			let cr = CGFloat(val)
 			_ = self.demoDataSource1.push(value: cr)
 
 			let cr2 = CGFloat.random(in: self.demoDataSource2.range!) //-1 ... 1)

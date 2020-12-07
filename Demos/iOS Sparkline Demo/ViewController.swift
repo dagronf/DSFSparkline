@@ -13,9 +13,9 @@ class ViewController: UIViewController {
 
 
 	@IBOutlet weak var spark1: DSFSparklineLineGraph!
-	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 10)
+	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 30)
 	@IBOutlet weak var spark2: DSFSparklineLineGraph!
-	var spark2ds = DSFSparklineDataSource(range: -10 ... 10)
+	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 10)
 	@IBOutlet weak var spark3: DSFSparklineBarGraph!
 	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
 
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
 				return
 			}
 
-			_ = self.spark1ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
+			_ = self.spark1ds.push(value: CGFloat.random(in: self.spark1ds.range!))
 			_ = self.spark2ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
 			_ = self.spark3ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
 

@@ -86,13 +86,13 @@ struct ContentView: View {
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource1,
 											 graphColor: NSColor.blue,
 											 showZero: true,
-											 barSpacing: 0)
+											 barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource2,
 											 graphColor: NSColor.green,
 											 showZero: true,
 											 lineWidth: 2,
-											 barSpacing: 1)
+											 barSpacing: 2)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 			}
 			HStack {
@@ -198,5 +198,48 @@ struct ContentView_Previews: PreviewProvider {
 					dataSource3: PreviewGlobalDataSource3,
 					dataSource4: PreviewGlobalDataSource4,
 					dataSource5: PreviewGlobalDataSource5)
+	}
+}
+
+
+struct SparklineView: View {
+
+   let leftDataSource: DSFSparklineDataSource
+   let rightDataSource: DSFSparklineDataSource
+
+   var body: some View {
+	  HStack {
+		 DSFSparklineLineGraph.SwiftUI(
+			dataSource: leftDataSource,
+			graphColor: DSFColor.red,
+			showZero: false,
+			interpolated: true)
+		 DSFSparklineBarGraph.SwiftUI(
+			dataSource: rightDataSource,
+			graphColor: DSFColor.blue,
+			showZero: true,
+			lineWidth: 2)
+	  }
+	.padding()
+   }
+}
+
+var SparklineView_PreviewGlobalDataSource1: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0)
+	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
+	return d
+}()
+
+var SparklineView_PreviewGlobalDataSource2: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 10, range: -100.0 ... 30.0)
+	d.push(values: [20, 10, 0, -10, -20, -30, 40, 50, 60, 70])
+	return d
+}()
+
+
+struct SparklineView_Previews: PreviewProvider {
+	static var previews: some View {
+		SparklineView(leftDataSource: SparklineView_PreviewGlobalDataSource1,
+					  rightDataSource: SparklineView_PreviewGlobalDataSource2)
 	}
 }

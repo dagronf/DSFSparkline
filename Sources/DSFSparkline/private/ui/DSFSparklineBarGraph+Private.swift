@@ -74,7 +74,7 @@ public extension DSFSparklineBarGraph {
 			for point in points.enumerated() {
 				let r = CGRect(x: CGFloat(point.offset) * xDiff,
 							   y: drawRect.height - point.element.y,
-							   width: xDiff - 1 - (CGFloat(self.barSpacing) * self.retinaScale()),
+							   width: xDiff - 1 - (CGFloat(self.barSpacing)),
 							   height: point.element.y - CGFloat(self.lineWidth))
 				path.addRect(r.integral)
 			}
@@ -90,24 +90,6 @@ public extension DSFSparklineBarGraph {
 
 
 			outer.drawPath(using: .fillStroke)
-		}
-
-		let color: DSFColor
-		#if os(macOS)
-		color = DSFColor.disabledControlTextColor
-		#else
-		color = DSFColor.systemGray
-		#endif
-
-		if self.showZero {
-			let frac = self.dataSource?.fractionalZeroPosition() ?? 1
-			let zeroPos = self.bounds.height - (frac * self.bounds.height)
-			primary.usingGState { ctx in
-				ctx.setLineWidth(1 / self.retinaScale())
-				ctx.setStrokeColor(color.cgColor)
-				ctx.setLineDash(phase: 0.0, lengths: [1, 1])
-				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: drawRect.width, y: zeroPos)])
-			}
 		}
 	}
 }

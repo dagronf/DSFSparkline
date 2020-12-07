@@ -113,10 +113,46 @@ extension DSFSparklineView {
 	#if os(macOS)
 	override public func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
+
+		guard let dataSource = self.dataSource else { return }
+
+		// Show the zero point if wanted
+		if self.showZero {
+			let frac = dataSource.fractionalZeroPosition()
+			let zeroPos = self.bounds.height - (frac * self.bounds.height)
+
+			if let primary = NSGraphicsContext.current?.cgContext {
+				primary.usingGState { ctx in
+					let color = DSFColor.disabledControlTextColor
+					ctx.setLineWidth(1 / self.retinaScale())
+					ctx.setStrokeColor(color.cgColor)
+					ctx.setLineDash(phase: 0.0, lengths: [1, 1])
+					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
+				}
+			}
+		}
 	}
 	#else
 	public override func draw(_ rect: CGRect) {
 		super.draw(rect)
+
+		guard let dataSource = self.dataSource else { return }
+
+		// Show the zero point if wanted
+		if self.showZero {
+			let frac = dataSource.fractionalZeroPosition()
+			let zeroPos = self.bounds.height - (frac * self.bounds.height)
+
+			if let primary = UIGraphicsGetCurrentContext() {
+				primary.usingGState { ctx in
+					let color = DSFColor.systemGray
+					ctx.setLineWidth(1 / self.retinaScale())
+					ctx.setStrokeColor(color.cgColor)
+					ctx.setLineDash(phase: 0.0, lengths: [1, 1])
+					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
+				}
+			}
+		}
 	}
 	#endif
 
@@ -144,9 +180,7 @@ extension DSFSparklineDataSource {
 		if let r = self.range, r.lowerBound <= 0, r.upperBound >= 0 {
 			// If a fixed range is specified, calculate the zero line from the specified range
 			let full = r.upperBound - r.lowerBound		// full range width
-			let midPoint = full / 2.0					// midpoint of the full range
-			let midZero = midPoint / full				// zero fractional value within the range
-			return midZero
+			return abs(r.lowerBound) / full
 		}
 		else {
 			// If no fixed range is specified, calculate the zero line position using the current range of the data.
