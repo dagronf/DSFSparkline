@@ -120,13 +120,14 @@ extension DSFSparklineLineGraph {
 		color = SLColor.systemGray
 		#endif
 
-		if showZero {
-			let normZero = self.bounds.height - (dataSource.normalize(value: 0.0) * self.bounds.height)
-			primary.usingGState { (ctx) in
+		if self.showZero {
+			let frac = self.dataSource?.fractionalZeroPosition() ?? 1
+			let zeroPos = self.bounds.height - (frac * self.bounds.height)
+			primary.usingGState { ctx in
 				ctx.setLineWidth(0.5)
 				ctx.setStrokeColor(color.cgColor)
 				ctx.setLineDash(phase: 0.0, lengths: [1, 1])
-				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: normZero), CGPoint(x: drawRect.width, y: normZero) ])
+				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: drawRect.width, y: zeroPos)])
 			}
 		}
 	}

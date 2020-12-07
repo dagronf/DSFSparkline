@@ -58,7 +58,10 @@ private extension DSFSparklineDotGraph {
 		let height = drawRect.height
 		let dotHeight = floor(height / CGFloat(self.verticalDotCount))
 
-		var position = drawRect.width - dotHeight
+		let xOffset: CGFloat = self.bounds.width.truncatingRemainder(dividingBy: dotHeight) / 2.0
+		let yOffset: CGFloat = self.bounds.height.truncatingRemainder(dividingBy: dotHeight) / 2.0
+
+		var position = drawRect.width - dotHeight - xOffset
 
 		let path = CGMutablePath()
 		let unsetPath = CGMutablePath()
@@ -74,8 +77,8 @@ private extension DSFSparklineDotGraph {
 
 			for c in 0 ..< self.verticalDotCount {
 				let pos = self.upsideDown
-					? (CGFloat(c) * dotHeight)
-					: height - (CGFloat(c) * dotHeight) - dotHeight
+					? (CGFloat(c) * dotHeight) + yOffset
+					: height - (CGFloat(c) * dotHeight) - dotHeight - yOffset
 				let r = CGRect(x: position, y: pos, width: dotHeight, height: dotHeight)
 				let ri = r.insetBy(dx: 0.5, dy: 0.5)
 

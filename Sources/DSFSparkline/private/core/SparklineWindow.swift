@@ -84,15 +84,20 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 	/// - Parameter value: The value to push into the sparkline
 	/// - Return whether the
 	public func push(value: T) -> Bool {
+		let plotValue: T
 		if let r = self.data.yRange, !r.contains(value) {
-			return false
+			plotValue = min(r.upperBound, max(r.lowerBound, value))
+			Swift.print("WARN: Value \(value) outside specified range \(r), truncating to \(plotValue)")
+		}
+		else {
+			plotValue = value
 		}
 
 		self.counter += 1
 
 		var temp = self.data.yData
 		temp.removeFirst()
-		temp.append(value)
+		temp.append(plotValue)
 		self.data.yData = temp
 
 		return true

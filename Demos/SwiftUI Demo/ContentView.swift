@@ -9,6 +9,58 @@ import SwiftUI
 
 import DSFSparkline
 
+struct UpperGraph: View {
+
+	let label: String
+
+	let dataSource: DSFSparklineDataSource
+	let graphColor: DSFColor
+
+	let showZero: Bool
+	let interpolated: Bool
+	let lineShading: Bool
+
+	var body: some View {
+		DSFSparklineLineGraph.SwiftUI(dataSource: dataSource,
+									  graphColor: graphColor,
+									  showZero: showZero,
+									  interpolated: interpolated,
+									  lineShading: lineShading)
+			.clipShape(RoundedRectangle(cornerRadius: 8))
+			.padding(4)
+			.background(
+				RoundedRectangle(cornerRadius: 8)
+					.fill(Color(.displayP3, white: 1.0, opacity: 0.1))
+					.shadow(color: .black, radius: 8, x: 4, y: -4)
+			)
+			.overlay(
+				VStack(alignment: .leading, spacing: nil, content: {
+					Text(self.label)
+						.shadow(color: .black, radius: 1)
+					Color.clear
+				}).padding(4), alignment: .leading)
+	}
+}
+
+var PreviewUpperGraphDataSource: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
+	return d
+}()
+
+struct UpperGraph_Previews: PreviewProvider {
+	static var previews: some View {
+		UpperGraph(label: "Testing",
+				   dataSource: PreviewUpperGraphDataSource,
+				   graphColor: DSFColor.systemOrange,
+				   showZero: true,
+				   interpolated: true,
+				   lineShading: true)
+	}
+}
+
+/////////////
+
 struct ContentView: View {
 	let dataSource1: DSFSparklineDataSource
 	let dataSource2: DSFSparklineDataSource
@@ -17,19 +69,11 @@ struct ContentView: View {
 
 	var body: some View {
 		VStack {
-			HStack {
-				DSFSparklineLineGraph.SwiftUI(dataSource: dataSource4,
-											  graphColor: NSColor.systemOrange)
-				DSFSparklineLineGraph.SwiftUI(dataSource: dataSource4,
-											 graphColor: NSColor.yellow,
-											 interpolated: true,
-											 shadowed: true)
-				DSFSparklineLineGraph.SwiftUI(dataSource: dataSource4,
-											  graphColor: NSColor.systemPurple,
-											  lineShading: false,
-											  shadowed: true)
-
-			}
+			HStack(alignment: .center, spacing: 8, content: {
+				UpperGraph(label: "Left", dataSource: dataSource4, graphColor: NSColor.systemOrange, showZero: false, interpolated: false, lineShading: true)
+				UpperGraph(label: "Middle", dataSource: dataSource4, graphColor: NSColor.systemYellow, showZero: true, interpolated: true, lineShading: true)
+				UpperGraph(label: "Right", dataSource: dataSource4, graphColor: NSColor.systemPurple, showZero: false, interpolated: false, lineShading: false)
+			})
 			HStack {
 				DSFSparklineBarGraph.SwiftUI(dataSource: dataSource1,
 											 graphColor: NSColor.blue,
@@ -47,11 +91,13 @@ struct ContentView: View {
 											 graphColor: NSColor.blue,
 											 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2))
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(2)
 				DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
 											 graphColor: NSColor.red,
 											 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
 											 upsideDown: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(2)
 				VStack(alignment: .center, spacing: nil, content: {
 					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource3,
 												 graphColor: NSColor.systemGreen,
@@ -67,7 +113,7 @@ struct ContentView: View {
 
 				})
 			}
-		}
+		}.padding(20)
 	}
 }
 
