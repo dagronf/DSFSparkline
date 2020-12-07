@@ -46,7 +46,6 @@ public typealias SLView = UIView
 	@objc weak public var dataSource: DSFSparklineDataSource? {
 		didSet {
 			self.updateDataObserver()
-			self.dataSource?.windowSize = self.windowSize
 			self.updateDisplay()
 		}
 	}
@@ -74,12 +73,14 @@ public typealias SLView = UIView
 	@IBInspectable public var showZero: Bool = false
 
 	/// The size of the sparkline window
-	@IBInspectable public var windowSize: UInt = 20 {
+	///
+	/// This member is purely IBDesignable display related -- to set the actual window you need to set
+	/// `windowSize` on the dataSource
+	@IBInspectable public var ibWindowSize: UInt = 20 {
 		didSet {
-			self.dataSource?.windowSize = self.windowSize
+			self.updateDisplay()
 		}
 	}
-
 }
 
 extension DSFSparklineView {
@@ -101,11 +102,6 @@ extension DSFSparklineView {
 		return true
 	}
 	#endif
-
-	public override func awakeFromNib() {
-		super.awakeFromNib()
-		self.dataSource?.windowSize = self.windowSize
-	}
 
 	/// Override in inherited classes to be notified when the color changes
 	@objc func colorDidChange() {	}
@@ -129,10 +125,11 @@ extension DSFSparklineView {
 	#endif
 
 	public override func prepareForInterfaceBuilder() {
-		let e = 0 ..< self.windowSize
+
+		let e = 0 ..< self.ibWindowSize
 		let data = e.map { arg in return CGFloat.random(in: -10.0 ... 10.0) }
 
-		let ds = DSFSparklineDataSource(windowSize: self.windowSize)
+		let ds = DSFSparklineDataSource(windowSize: self.ibWindowSize)
 		self.dataSource = ds
 		ds.set(values: data)
 

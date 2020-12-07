@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -26,6 +26,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0C9FC132DFD7A71E163593B6 /* Pods_macOS_Sparkline_Demo_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54838B7C6E16A5EE0E9EE95B /* Pods_macOS_Sparkline_Demo_Objc.framework */; };
+		0FA36E9BFD9FAABC06DB5814 /* Pods_tvOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DFD024DD1ADFD58DC5066B /* Pods_tvOS_Sparkline_Demo.framework */; };
+		12E7885F9E7D4E70050B9FDB /* Pods_macOS_Table_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA2445B3AD95A77C8B2E6DB /* Pods_macOS_Table_Demo.framework */; };
 		23102B5423B0245A001A621D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102B5323B0245A001A621D /* AppDelegate.swift */; };
 		23102B5623B0245A001A621D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102B5523B0245A001A621D /* ViewController.swift */; };
 		23102B5823B0245B001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102B5723B0245B001A621D /* Assets.xcassets */; };
@@ -48,21 +51,18 @@
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
-		23882CCB257D65CB00AC103A /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23882CCA257D65CB00AC103A /* DSFSparkline */; };
-		23882CCD257D65D300AC103A /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23882CCC257D65D300AC103A /* DSFSparkline */; };
-		23882CCF257D65DB00AC103A /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23882CCE257D65DB00AC103A /* DSFSparkline */; };
-		23882CD1257D65E100AC103A /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23882CD0257D65E100AC103A /* DSFSparkline */; };
-		23882CD3257D65E600AC103A /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23882CD2257D65E600AC103A /* DSFSparkline */; };
 		23882CE1257D675700AC103A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE0257D675700AC103A /* AppDelegate.swift */; };
 		23882CE3257D675700AC103A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE2257D675700AC103A /* ContentView.swift */; };
 		23882CE5257D675800AC103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE4257D675800AC103A /* Assets.xcassets */; };
 		23882CE8257D675800AC103A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE7257D675800AC103A /* Preview Assets.xcassets */; };
 		23882CEB257D675800AC103A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE9257D675800AC103A /* Main.storyboard */; };
-		23882CFD257D679100AC103A /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23882CFC257D679100AC103A /* DSFSparkline */; };
 		23E2278C23B5846E00E59122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278B23B5846E00E59122 /* AppDelegate.swift */; };
 		23E2278E23B5846E00E59122 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278D23B5846E00E59122 /* ViewController.swift */; };
 		23E2279023B5846E00E59122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E2278F23B5846E00E59122 /* Assets.xcassets */; };
 		23E2279323B5846E00E59122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E2279123B5846E00E59122 /* Main.storyboard */; };
+		73E144093BF355D884B0ACAB /* Pods_iOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462EC212C63FCA74CCCDC138 /* Pods_iOS_Sparkline_Demo.framework */; };
+		88FBBBFD8F709322BC8EE0F9 /* Pods_macOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A74F7FD6AB3A38A216A4F17C /* Pods_macOS_Sparkline_Demo.framework */; };
+		E1B8588097E11D312548F18F /* Pods_SwiftUI_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F8CF8B8BE29DA7895E97AD /* Pods_SwiftUI_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +111,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C98132175512CBF928379A0 /* Pods-tvOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		23102B5023B0245A001A621D /* macOS Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23102B5323B0245A001A621D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23102B5523B0245A001A621D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
-		23882CB0257D654600AC103A /* DSFSparkline */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DSFSparkline; path = ..; sourceTree = "<group>"; };
 		23882CDE257D675700AC103A /* SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23882CE0257D675700AC103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23882CE2257D675700AC103A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,6 +161,23 @@
 		23E2279223B5846E00E59122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23E2279423B5846E00E59122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23E2279523B5846E00E59122 /* macOS_Table_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS_Table_Demo.entitlements; sourceTree = "<group>"; };
+		299A34BEF9FB08DCD877FC20 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.release.xcconfig"; sourceTree = "<group>"; };
+		30DFD024DD1ADFD58DC5066B /* Pods_tvOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35356AF6B05B9C51EFD93DC8 /* Pods-macOS Table Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Table Demo.release.xcconfig"; path = "Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo.release.xcconfig"; sourceTree = "<group>"; };
+		35C0320EE7AD4745BC932568 /* Pods-tvOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+		45E273EE841BC8A338DDF6EE /* Pods-iOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		462EC212C63FCA74CCCDC138 /* Pods_iOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48E547A7C45F780D70E3618A /* Pods-iOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
+		54838B7C6E16A5EE0E9EE95B /* Pods_macOS_Sparkline_Demo_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Sparkline_Demo_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA2445B3AD95A77C8B2E6DB /* Pods_macOS_Table_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Table_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A74F7FD6AB3A38A216A4F17C /* Pods_macOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7BAD58741200BC0860AA5C7 /* Pods-macOS Table Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Table Demo.debug.xcconfig"; path = "Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		AF1B806B9CE4F7EA3DCC5367 /* Pods-macOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		BEC6FED78FBC495A6D2F9A65 /* Pods-SwiftUI Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI Demo.release.xcconfig"; path = "Target Support Files/Pods-SwiftUI Demo/Pods-SwiftUI Demo.release.xcconfig"; sourceTree = "<group>"; };
+		D5E3B4EA43F43A14BA6745A2 /* Pods-SwiftUI Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUI Demo.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUI Demo/Pods-SwiftUI Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		F1F8CF8B8BE29DA7895E97AD /* Pods_SwiftUI_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUI_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2CF0413D1672711D8190D70 /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.debug.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.debug.xcconfig"; sourceTree = "<group>"; };
+		FCB6D746D4652F74DB6313C2 /* Pods-macOS Sparkline Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23882CCB257D65CB00AC103A /* DSFSparkline in Frameworks */,
+				88FBBBFD8F709322BC8EE0F9 /* Pods_macOS_Sparkline_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23882CCD257D65D300AC103A /* DSFSparkline in Frameworks */,
+				73E144093BF355D884B0ACAB /* Pods_iOS_Sparkline_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23882CCF257D65DB00AC103A /* DSFSparkline in Frameworks */,
+				0C9FC132DFD7A71E163593B6 /* Pods_macOS_Sparkline_Demo_Objc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23882CD1257D65E100AC103A /* DSFSparkline in Frameworks */,
+				0FA36E9BFD9FAABC06DB5814 /* Pods_tvOS_Sparkline_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23882CFD257D679100AC103A /* DSFSparkline in Frameworks */,
+				E1B8588097E11D312548F18F /* Pods_SwiftUI_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23882CD3257D65E600AC103A /* DSFSparkline in Frameworks */,
+				12E7885F9E7D4E70050B9FDB /* Pods_macOS_Table_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +235,6 @@
 		23102B4423B0165B001A621D = {
 			isa = PBXGroup;
 			children = (
-				23882CB0257D654600AC103A /* DSFSparkline */,
 				23E2278A23B5846E00E59122 /* macOS Table Demo */,
 				23102B5223B0245A001A621D /* macOS Sparkline Demo */,
 				23102BDA23B02B0A001A621D /* macOS Sparkline Demo Objc */,
@@ -227,6 +243,7 @@
 				23882CDF257D675700AC103A /* SwiftUI Demo */,
 				23102B5123B0245A001A621D /* Products */,
 				23882CC9257D65CB00AC103A /* Frameworks */,
+				998AA4E1741703C986850307 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -303,6 +320,12 @@
 		23882CC9257D65CB00AC103A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1F8CF8B8BE29DA7895E97AD /* Pods_SwiftUI_Demo.framework */,
+				462EC212C63FCA74CCCDC138 /* Pods_iOS_Sparkline_Demo.framework */,
+				A74F7FD6AB3A38A216A4F17C /* Pods_macOS_Sparkline_Demo.framework */,
+				54838B7C6E16A5EE0E9EE95B /* Pods_macOS_Sparkline_Demo_Objc.framework */,
+				8DA2445B3AD95A77C8B2E6DB /* Pods_macOS_Table_Demo.framework */,
+				30DFD024DD1ADFD58DC5066B /* Pods_tvOS_Sparkline_Demo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,6 +366,25 @@
 			path = "macOS Table Demo";
 			sourceTree = "<group>";
 		};
+		998AA4E1741703C986850307 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5E3B4EA43F43A14BA6745A2 /* Pods-SwiftUI Demo.debug.xcconfig */,
+				BEC6FED78FBC495A6D2F9A65 /* Pods-SwiftUI Demo.release.xcconfig */,
+				45E273EE841BC8A338DDF6EE /* Pods-iOS Sparkline Demo.debug.xcconfig */,
+				48E547A7C45F780D70E3618A /* Pods-iOS Sparkline Demo.release.xcconfig */,
+				AF1B806B9CE4F7EA3DCC5367 /* Pods-macOS Sparkline Demo.debug.xcconfig */,
+				FCB6D746D4652F74DB6313C2 /* Pods-macOS Sparkline Demo.release.xcconfig */,
+				F2CF0413D1672711D8190D70 /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */,
+				299A34BEF9FB08DCD877FC20 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */,
+				A7BAD58741200BC0860AA5C7 /* Pods-macOS Table Demo.debug.xcconfig */,
+				35356AF6B05B9C51EFD93DC8 /* Pods-macOS Table Demo.release.xcconfig */,
+				0C98132175512CBF928379A0 /* Pods-tvOS Sparkline Demo.debug.xcconfig */,
+				35C0320EE7AD4745BC932568 /* Pods-tvOS Sparkline Demo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -350,18 +392,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23102B5E23B0245B001A621D /* Build configuration list for PBXNativeTarget "macOS Sparkline Demo" */;
 			buildPhases = (
+				EDD7B5E8778A3D4943B69142 /* [CP] Check Pods Manifest.lock */,
 				23102B4C23B0245A001A621D /* Sources */,
 				23102B4D23B0245A001A621D /* Frameworks */,
 				23102B4E23B0245A001A621D /* Resources */,
+				455247237771D37395DD2BCE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "macOS Sparkline Demo";
-			packageProductDependencies = (
-				23882CCA257D65CB00AC103A /* DSFSparkline */,
-			);
 			productName = "macOS Sparkline Demo";
 			productReference = 23102B5023B0245A001A621D /* macOS Sparkline Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -370,18 +411,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23102BD423B02AEE001A621D /* Build configuration list for PBXNativeTarget "iOS Sparkline Demo" */;
 			buildPhases = (
+				D29ACFE8A22516B363969E44 /* [CP] Check Pods Manifest.lock */,
 				23102BBD23B02AED001A621D /* Sources */,
 				23102BBE23B02AED001A621D /* Frameworks */,
 				23102BBF23B02AED001A621D /* Resources */,
+				11358DC71CE81E7EC38DCC3B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "iOS Sparkline Demo";
-			packageProductDependencies = (
-				23882CCC257D65D300AC103A /* DSFSparkline */,
-			);
 			productName = "iOS Sparkline Demo";
 			productReference = 23102BC123B02AED001A621D /* iOS Sparkline Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -390,18 +430,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23102BEA23B02B0B001A621D /* Build configuration list for PBXNativeTarget "macOS Sparkline Demo Objc" */;
 			buildPhases = (
+				2BB894E9F1DE606E6550C364 /* [CP] Check Pods Manifest.lock */,
 				23102BD523B02B0A001A621D /* Sources */,
 				23102BD623B02B0A001A621D /* Frameworks */,
 				23102BD723B02B0A001A621D /* Resources */,
+				C2C36D45764F4EE501FB7D01 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "macOS Sparkline Demo Objc";
-			packageProductDependencies = (
-				23882CCE257D65DB00AC103A /* DSFSparkline */,
-			);
 			productName = "macOS Sparkline Demo Objc";
 			productReference = 23102BD923B02B0A001A621D /* macOS Sparkline Demo Objc.app */;
 			productType = "com.apple.product-type.application";
@@ -410,18 +449,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23102C0023B02B33001A621D /* Build configuration list for PBXNativeTarget "tvOS Sparkline Demo" */;
 			buildPhases = (
+				4545BB8829A779E0165D8D39 /* [CP] Check Pods Manifest.lock */,
 				23102BED23B02B32001A621D /* Sources */,
 				23102BEE23B02B32001A621D /* Frameworks */,
 				23102BEF23B02B32001A621D /* Resources */,
+				BB33840E65BD71F1DC614ADD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "tvOS Sparkline Demo";
-			packageProductDependencies = (
-				23882CD0257D65E100AC103A /* DSFSparkline */,
-			);
 			productName = "tvOS Sparkline Demo";
 			productReference = 23102BF123B02B32001A621D /* tvOS Sparkline Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -430,18 +468,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23882CEE257D675800AC103A /* Build configuration list for PBXNativeTarget "SwiftUI Demo" */;
 			buildPhases = (
+				D3286436CE8A16FF1976C0D4 /* [CP] Check Pods Manifest.lock */,
 				23882CDA257D675700AC103A /* Sources */,
 				23882CDB257D675700AC103A /* Frameworks */,
 				23882CDC257D675700AC103A /* Resources */,
+				C9017F17AA4B8770CEBC33A2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "SwiftUI Demo";
-			packageProductDependencies = (
-				23882CFC257D679100AC103A /* DSFSparkline */,
-			);
 			productName = "SwiftUI Demo";
 			productReference = 23882CDE257D675700AC103A /* SwiftUI Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -450,18 +487,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23E2279823B5846E00E59122 /* Build configuration list for PBXNativeTarget "macOS Table Demo" */;
 			buildPhases = (
+				22231ECF06701F0D9647E255 /* [CP] Check Pods Manifest.lock */,
 				23E2278523B5846E00E59122 /* Sources */,
 				23E2278623B5846E00E59122 /* Frameworks */,
 				23E2278723B5846E00E59122 /* Resources */,
+				D210D6192C057E13D2D6680E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "macOS Table Demo";
-			packageProductDependencies = (
-				23882CD2257D65E600AC103A /* DSFSparkline */,
-			);
 			productName = "macOS Table Demo";
 			productReference = 23E2278923B5846E00E59122 /* macOS Table Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -581,6 +617,243 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11358DC71CE81E7EC38DCC3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOS Sparkline Demo/Pods-iOS Sparkline Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		22231ECF06701F0D9647E255 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS Table Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BB894E9F1DE606E6550C364 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS Sparkline Demo Objc-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4545BB8829A779E0165D8D39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tvOS Sparkline Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		455247237771D37395DD2BCE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo/Pods-macOS Sparkline Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB33840E65BD71F1DC614ADD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2C36D45764F4EE501FB7D01 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9017F17AA4B8770CEBC33A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI Demo/Pods-SwiftUI Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftUI Demo/Pods-SwiftUI Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftUI Demo/Pods-SwiftUI Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D210D6192C057E13D2D6680E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D29ACFE8A22516B363969E44 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOS Sparkline Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3286436CE8A16FF1976C0D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftUI Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDD7B5E8778A3D4943B69142 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-macOS Sparkline Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		23102B4C23B0245A001A621D /* Sources */ = {
@@ -758,6 +1031,7 @@
 		};
 		23102B5F23B0245B001A621D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF1B806B9CE4F7EA3DCC5367 /* Pods-macOS Sparkline Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -833,6 +1107,7 @@
 		};
 		23102B6023B0245B001A621D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCB6D746D4652F74DB6313C2 /* Pods-macOS Sparkline Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -901,6 +1176,7 @@
 		};
 		23102BD223B02AEE001A621D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45E273EE841BC8A338DDF6EE /* Pods-iOS Sparkline Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -973,6 +1249,7 @@
 		};
 		23102BD323B02AEE001A621D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48E547A7C45F780D70E3618A /* Pods-iOS Sparkline Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1039,6 +1316,7 @@
 		};
 		23102BEB23B02B0B001A621D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2CF0413D1672711D8190D70 /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1110,6 +1388,7 @@
 		};
 		23102BEC23B02B0B001A621D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 299A34BEF9FB08DCD877FC20 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1174,6 +1453,7 @@
 		};
 		23102C0123B02B33001A621D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C98132175512CBF928379A0 /* Pods-tvOS Sparkline Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -1248,6 +1528,7 @@
 		};
 		23102C0223B02B33001A621D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35C0320EE7AD4745BC932568 /* Pods-tvOS Sparkline Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -1316,6 +1597,7 @@
 		};
 		23882CEF257D675800AC103A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5E3B4EA43F43A14BA6745A2 /* Pods-SwiftUI Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1394,6 +1676,7 @@
 		};
 		23882CF0257D675800AC103A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEC6FED78FBC495A6D2F9A65 /* Pods-SwiftUI Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1483,6 +1766,7 @@
 		};
 		23E2279623B5846E00E59122 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7BAD58741200BC0860AA5C7 /* Pods-macOS Table Demo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1557,6 +1841,7 @@
 		};
 		23E2279723B5846E00E59122 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35356AF6B05B9C51EFD93DC8 /* Pods-macOS Table Demo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1698,33 +1983,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		23882CCA257D65CB00AC103A /* DSFSparkline */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFSparkline;
-		};
-		23882CCC257D65D300AC103A /* DSFSparkline */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFSparkline;
-		};
-		23882CCE257D65DB00AC103A /* DSFSparkline */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFSparkline;
-		};
-		23882CD0257D65E100AC103A /* DSFSparkline */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFSparkline;
-		};
-		23882CD2257D65E600AC103A /* DSFSparkline */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFSparkline;
-		};
-		23882CFC257D679100AC103A /* DSFSparkline */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DSFSparkline;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23102B4523B0165B001A621D /* Project object */;
 }

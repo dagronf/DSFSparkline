@@ -22,12 +22,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	let demoDataSource4 = DSFSparklineDataSource(range: 0 ... 100)
 	var lastSource4: CGFloat = 50.0
 
+	let demoDataSource5 = DSFSparklineDataSource(range: 0 ... 100)
+
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Create the SwiftUI view that provides the window contents.
 		let contentView = ContentView(dataSource1: demoDataSource1,
 									  dataSource2: demoDataSource2,
 									  dataSource3: demoDataSource3,
-									  dataSource4: demoDataSource4)
+									  dataSource4: demoDataSource4,
+									  dataSource5: demoDataSource5)
 
 		// Create the window and set the content view.
 		window = NSWindow(
@@ -43,6 +46,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		self.demoDataSource3.windowSize = 100
 		self.demoDataSource4.windowSize = 40
 		_ = self.demoDataSource4.push(value: 50)
+
+		self.demoDataSource5.windowSize = 50
 
 		self.updateWithNewValues()
 	}
@@ -71,6 +76,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			let newVal = min(100, max(0, self.lastSource4 + cr4))
 			_ = self.demoDataSource4.push(value: newVal)
 			self.lastSource4 = newVal
+
+			let cr5 = CGFloat.random(in: self.demoDataSource5.range!)
+			_ = self.demoDataSource5.push(value: cr5)
 
 			self.updateWithNewValues()
 		}

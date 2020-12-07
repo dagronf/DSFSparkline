@@ -31,9 +31,10 @@ public extension DSFSparklineBarGraph {
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
+		
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
-		
+		/// The line width to use when drawing the border of each bar
 		let lineWidth: CGFloat
 		/// The spacing between each bar
 		let barSpacing: CGFloat
@@ -77,9 +78,7 @@ extension DSFSparklineBarGraph.SwiftUI: DSFViewRepresentable {
 		let view = DSFSparklineBarGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		
-		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
-		view.windowSize = windowSize
 		view.graphColor = self.graphColor
 		
 		view.barSpacing = self.barSpacing

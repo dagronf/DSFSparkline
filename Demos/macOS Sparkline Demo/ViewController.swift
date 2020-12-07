@@ -151,12 +151,12 @@ extension ViewController: CPUDelegate {
 			usage.forEach { _ in
 				let cpu = DSFSparklineBarGraph.init(frame: CGRect(x: 0, y: 0, width: cpuStack.frame.width, height: 32))
 				let ds = DSFSparklineDataSource(range: 0 ... 100)
+				ds.windowSize = 30
 				cpu.dataSource = ds
 				self.cpuDataSources.append(ds)
 
 				cpu.translatesAutoresizingMaskIntoConstraints = false
 				cpu.addConstraint(NSLayoutConstraint(item: cpu, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 48))
-				cpu.windowSize = 30
 				cpu.graphColor = .systemBlue
 				cpu.isHidden = false
 				cpu.barSpacing = 2.0

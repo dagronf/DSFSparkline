@@ -66,6 +66,9 @@ struct ContentView: View {
 	let dataSource2: DSFSparklineDataSource
 	let dataSource3: DSFSparklineDataSource
 	let dataSource4: DSFSparklineDataSource
+	let dataSource5: DSFSparklineDataSource
+
+	@State var selectedType = 1
 
 	var body: some View {
 		VStack {
@@ -113,6 +116,42 @@ struct ContentView: View {
 
 				})
 			}
+			HStack {
+				Picker(selection: $selectedType, label: EmptyView()) {
+					Text("Line").tag(1)
+					Text("Line (Smooth)").tag(2)
+					Text("Bar").tag(3)
+					Text("Dot").tag(4)
+				}.pickerStyle(RadioGroupPickerStyle())
+				if self.selectedType == 1 {
+					DSFSparklineLineGraph.SwiftUI(dataSource: dataSource5,
+											 graphColor: NSColor.textColor)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(2)
+				}
+				else if self.selectedType == 2 {
+					DSFSparklineLineGraph.SwiftUI(dataSource: dataSource5,
+											 graphColor: NSColor.textColor,
+											 interpolated: true)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(2)
+				}
+				else if self.selectedType == 3 {
+					DSFSparklineBarGraph.SwiftUI(dataSource: dataSource5,
+											 graphColor: NSColor.textColor,
+											 barSpacing: 0)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(2)
+
+				}
+				else {
+					DSFSparklineDotGraph.SwiftUI(dataSource: dataSource5,
+											 graphColor: NSColor.textColor)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(2)
+				}
+			}
+
 		}.padding(20)
 	}
 }
@@ -141,11 +180,18 @@ var PreviewGlobalDataSource4: DSFSparklineDataSource = {
 	return d
 }()
 
+var PreviewGlobalDataSource5: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
+	return d
+}()
+
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContentView(dataSource1: PreviewGlobalDataSource1,
 					dataSource2: PreviewGlobalDataSource2,
 					dataSource3: PreviewGlobalDataSource3,
-					dataSource4: PreviewGlobalDataSource4)
+					dataSource4: PreviewGlobalDataSource4,
+					dataSource5: PreviewGlobalDataSource5)
 	}
 }

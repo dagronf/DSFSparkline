@@ -34,7 +34,7 @@ public extension DSFSparklineLineGraph {
 		let graphColor: DSFColor
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
-		
+
 		/// The width for the line drawn on the graph
 		let lineWidth: CGFloat
 		/// The number of vertical buckets to break the input data up into
@@ -43,7 +43,7 @@ public extension DSFSparklineLineGraph {
 		let lineShading: Bool
 		/// Draw a shadow under the line
 		let shadowed: Bool
-		
+
 		public init(dataSource: DSFSparklineDataSource,
 					graphColor: DSFColor,
 					showZero: Bool = false,
@@ -55,7 +55,7 @@ public extension DSFSparklineLineGraph {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 			self.showZero = showZero
-			
+
 			self.lineWidth = lineWidth
 			self.interpolated = interpolated
 			self.lineShading = lineShading
@@ -71,32 +71,30 @@ extension DSFSparklineLineGraph.SwiftUI: DSFViewRepresentable {
 	#else
 	public typealias UIViewType = DSFSparklineLineGraph
 	#endif
-	
+
 	public class Coordinator: NSObject {
 		let parent: DSFSparklineLineGraph.SwiftUI
 		init(_ sparkline: DSFSparklineLineGraph.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-	
+
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-	
+
 	func makeLineGraph(_: Context) -> DSFSparklineLineGraph {
 		let view = DSFSparklineLineGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
-		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
-		view.windowSize = windowSize
 		view.graphColor = self.graphColor
 		view.showZero = self.showZero
-		
+
 		view.lineWidth = self.lineWidth
 		view.interpolated = self.interpolated
 		view.lineShading = self.lineShading
 		view.shadowed = self.shadowed
-		
+
 		return view
 	}
 }
@@ -108,7 +106,7 @@ public extension DSFSparklineLineGraph.SwiftUI {
 	func makeUIView(context: Context) -> DSFSparklineLineGraph {
 		return self.makeLineGraph(context)
 	}
-	
+
 	func updateUIView(_: DSFSparklineLineGraph, context _: Context) {}
 }
 
@@ -119,7 +117,7 @@ public extension DSFSparklineLineGraph.SwiftUI {
 	func makeNSView(context: Context) -> DSFSparklineLineGraph {
 		return self.makeLineGraph(context)
 	}
-	
+
 	func updateNSView(_: DSFSparklineLineGraph, context _: Context) {}
 }
 

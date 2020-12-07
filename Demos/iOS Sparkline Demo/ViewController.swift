@@ -13,11 +13,11 @@ class ViewController: UIViewController {
 
 
 	@IBOutlet weak var spark1: DSFSparklineLineGraph!
-	var spark1ds = DSFSparklineDataSource(range: -10 ... 10)
+	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 10)
 	@IBOutlet weak var spark2: DSFSparklineLineGraph!
 	var spark2ds = DSFSparklineDataSource(range: -10 ... 10)
 	@IBOutlet weak var spark3: DSFSparklineBarGraph!
-	var spark3ds = DSFSparklineDataSource(range: -10 ... 10)
+	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
 
 	@IBOutlet weak var dot1: DSFSparklineDotGraph!
 	var dot1ds = DSFSparklineDataSource(range: -10 ... 10)

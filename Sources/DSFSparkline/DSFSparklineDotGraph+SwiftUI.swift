@@ -76,9 +76,7 @@ extension DSFSparklineDotGraph.SwiftUI: DSFViewRepresentable {
 	private func makeDotGraph(_: Context) -> DSFSparklineDotGraph {
 		let view = DSFSparklineDotGraph(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
-		let windowSize = self.dataSource.windowSize
 		view.dataSource = self.dataSource
-		view.windowSize = windowSize
 		
 		view.graphColor = self.graphColor
 		view.verticalDotCount = self.verticalDotCount

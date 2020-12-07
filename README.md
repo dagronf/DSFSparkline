@@ -266,6 +266,12 @@ struct SparklineView: View {
 }
 ```
 
+## Changes
+
+### `2.0.0` Updates for SwiftUI
+
+* I removed `windowSize` from the core DSFSparklineView. `windowSize` is related to the data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support -- called `ibWindowSize` which ONLY affects Interface Builder
+
 ## Screenshots
 
 ### In app
