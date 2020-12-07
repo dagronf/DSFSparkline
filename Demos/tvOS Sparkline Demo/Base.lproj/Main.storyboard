@@ -35,16 +35,13 @@
                                                 <color key="value" systemColor="systemGreenColor"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                <integer key="value" value="100"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
@@ -62,13 +59,10 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                <integer key="value" value="500"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
@@ -86,23 +80,14 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                         <color key="value" systemColor="systemYellowColor"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                        <integer key="value" value="500"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                        <real key="value" value="0.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
-                                                        <integer key="value" value="200"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
                                                         <color key="value" systemColor="placeholderTextColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
                                                         <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                        <integer key="value" value="200"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -116,23 +101,14 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                         <color key="value" systemColor="systemOrangeColor"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="NO"/>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                                        <integer key="value" value="500"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                        <real key="value" value="0.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
-                                                        <integer key="value" value="200"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
                                                         <color key="value" systemColor="placeholderTextColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
                                                         <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                        <integer key="value" value="200"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>

@@ -12,16 +12,16 @@ import DSFSparkline
 class ViewController: UIViewController {
 
 	@IBOutlet weak var green: DSFSparklineView!
-	var greenDataSource = DSFSparklineDataSource(windowSize: 50, range: -11 ... 11)
+	var greenDataSource = DSFSparklineDataSource(range: -11 ... 11)
 
 	@IBOutlet weak var red: DSFSparklineLineGraph!
-	var redDataSource = DSFSparklineDataSource(windowSize: 50, range: -40 ... 10)
+	var redDataSource = DSFSparklineDataSource(range: -40 ... 10)
 
 	@IBOutlet weak var purple: DSFSparklineDotGraph!
-	var purpleDataSource = DSFSparklineDataSource(windowSize: 200, range: 0 ... 50)
+	var purpleDataSource = DSFSparklineDataSource(range: 0 ... 50)
 
 	@IBOutlet weak var orange: DSFSparklineDotGraph!
-	var orangeDataSource = DSFSparklineDataSource(windowSize: 200, range: 0 ... 50)
+	var orangeDataSource = DSFSparklineDataSource(range: 0 ... 50)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

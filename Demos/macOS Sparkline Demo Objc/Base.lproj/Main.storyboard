@@ -730,6 +730,9 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                    <integer key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </subviews>
@@ -799,6 +802,9 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
                                                     <color key="value" name="separatorColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                    <integer key="value" value="100"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-0V-zTh" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
@@ -817,6 +823,9 @@
                                                     <color key="value" name="separatorColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="upsideDown" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                    <integer key="value" value="100"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </subviews>

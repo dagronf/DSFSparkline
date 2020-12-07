@@ -41,6 +41,10 @@ import UIKit
 	/// The source of data for the sparkline
 	@objc weak public var dataSource: DSFSparklineDataSource? {
 		didSet {
+			if self.windowSizeSetInXib {
+				self.dataSource?.windowSize = self.graphWindowSize
+			}
+
 			self.updateDataObserver()
 			self.updateDisplay()
 		}
@@ -70,13 +74,16 @@ import UIKit
 
 	/// The size of the sparkline window
 	///
-	/// This member is purely IBDesignable display related -- to set the actual window you need to set
+	/// This member is purely IBDesignable display related
 	/// `windowSize` on the dataSource
-	@IBInspectable public var ibWindowSize: UInt = 20 {
+	@IBInspectable public var graphWindowSize: UInt = 20 {
 		didSet {
+			self.windowSizeSetInXib = true
+			self.dataSource?.windowSize = self.graphWindowSize
 			self.updateDisplay()
 		}
 	}
+	private var windowSizeSetInXib = false
 }
 
 extension DSFSparklineView {
@@ -158,10 +165,10 @@ extension DSFSparklineView {
 
 	public override func prepareForInterfaceBuilder() {
 
-		let e = 0 ..< self.ibWindowSize
+		let e = 0 ..< self.graphWindowSize
 		let data = e.map { arg in return CGFloat.random(in: -10.0 ... 10.0) }
 
-		let ds = DSFSparklineDataSource(windowSize: self.ibWindowSize)
+		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
 		self.dataSource = ds
 		ds.set(values: data)
 

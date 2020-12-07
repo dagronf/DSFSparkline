@@ -59,10 +59,10 @@ class ViewController: NSViewController {
 	@IBOutlet weak var cpuStack: NSStackView!
 
 	@IBOutlet weak var cpuDotView: DSFSparklineDotGraph!
-	var cpuDotViewDatasource = DSFSparklineDataSource(range: 0 ... 100)
+	var cpuDotViewDatasource = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
 
 	@IBOutlet weak var cpu2DotView: DSFSparklineDotGraph!
-	var cpu2DotViewDatasource = DSFSparklineDataSource(range: 0 ... 100)
+	var cpu2DotViewDatasource = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
 
 
 	let cpuUsage = MyCpuUsage()
