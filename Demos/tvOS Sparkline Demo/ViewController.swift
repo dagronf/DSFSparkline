@@ -12,10 +12,16 @@ import DSFSparkline
 class ViewController: UIViewController {
 
 	@IBOutlet weak var green: DSFSparklineView!
-	var greenDataSource = DSFSparklineDataSource(range: -11 ... 11)
+	var greenDataSource = DSFSparklineDataSource(windowSize: 50, range: -11 ... 11)
 
 	@IBOutlet weak var red: DSFSparklineLineGraph!
-	var redDataSource = DSFSparklineDataSource(range: -21 ... 11)
+	var redDataSource = DSFSparklineDataSource(windowSize: 50, range: -40 ... 10)
+
+	@IBOutlet weak var purple: DSFSparklineDotGraph!
+	var purpleDataSource = DSFSparklineDataSource(windowSize: 200, range: 0 ... 50)
+
+	@IBOutlet weak var orange: DSFSparklineDotGraph!
+	var orangeDataSource = DSFSparklineDataSource(windowSize: 200, range: 0 ... 50)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,17 +29,22 @@ class ViewController: UIViewController {
 
 		green.dataSource = greenDataSource
 		red.dataSource = redDataSource
+		purple.dataSource = purpleDataSource
+		orange.dataSource = orangeDataSource
 
-		addNewValue2()
+		self.updateWithNewValues()
 
 	}
 	
-	func addNewValue2() {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-			_ = self?.greenDataSource.push(value: CGFloat.random(in: -10.0 ... 10.0))
-			_ = self?.redDataSource.push(value: CGFloat.random(in: -15.0 ... 10.0))
+	func updateWithNewValues() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+			guard let `self` = self else { return }
+			_ = self.greenDataSource.push(value: CGFloat.random(in: self.greenDataSource.range!))
+			_ = self.redDataSource.push(value: CGFloat.random(in: self.redDataSource.range!))
+			_ = self.purpleDataSource.push(value: CGFloat.random(in: self.purpleDataSource.range!))
+			_ = self.orangeDataSource.push(value: CGFloat.random(in: self.orangeDataSource.range!))
 
-			self?.addNewValue2()
+			self.updateWithNewValues()
 		}
 	}
 

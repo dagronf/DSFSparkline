@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -736,14 +736,14 @@
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="575" height="270"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kq-M6J">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kq-M6J">
                                 <rect key="frame" x="20" y="20" width="535" height="230"/>
                                 <clipView key="contentView" id="l94-XN-lZh">
-                                    <rect key="frame" x="1" y="0.0" width="533" height="214"/>
+                                    <rect key="frame" x="1" y="1" width="533" height="213"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" headerView="DXW-4H-9LJ" viewBased="YES" id="8Z2-o9-tfX">
-                                            <rect key="frame" x="0.0" y="0.0" width="591" height="189"/>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="DXW-4H-9LJ" viewBased="YES" id="8Z2-o9-tfX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="188"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -751,7 +751,6 @@
                                             <tableColumns>
                                                 <tableColumn identifier="ident" width="62" minWidth="40" maxWidth="1000" id="9G7-AO-PbM">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -763,11 +762,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="identifier" id="xgf-ni-dIy">
-                                                            <rect key="frame" x="1" y="1" width="62" height="17"/>
+                                                            <rect key="frame" x="11" y="1" width="67" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oxK-uw-bN5">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="62" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="67" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="zB1-Oa-SEW">
                                                                         <font key="font" metaFont="system"/>
@@ -784,7 +783,6 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="ingraph" width="150" minWidth="150" maxWidth="150" id="RXE-IB-oYG">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -796,7 +794,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="ingraph" id="EfF-k3-f0g" customClass="Graphico" customModule="macOS_Table_Demo" customModuleProvider="target">
-                                                            <rect key="frame" x="66" y="1" width="150" height="17"/>
+                                                            <rect key="frame" x="81" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJd-uu-ISW" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
@@ -823,7 +821,6 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="outgraph" width="150" minWidth="150" maxWidth="150" id="sbV-NN-XLZ">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -835,7 +832,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="outgraph" id="ejl-mS-lCR" customClass="Graphico" customModule="macOS_Table_Demo" customModuleProvider="target">
-                                                            <rect key="frame" x="219" y="1" width="150" height="17"/>
+                                                            <rect key="frame" x="234" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nui-jx-X69" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
@@ -862,7 +859,6 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="cpuGraph" width="150" minWidth="150" maxWidth="150" id="VD3-7l-12m">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -874,7 +870,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="cpuGraph" id="cTk-PE-kJz" customClass="Graphicodot" customModule="macOS_Table_Demo" customModuleProvider="target">
-                                                            <rect key="frame" x="372" y="1" width="150" height="17"/>
+                                                            <rect key="frame" x="387" y="1" width="150" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpf-7v-LOk" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
@@ -901,7 +897,6 @@
                                                 </tableColumn>
                                                 <tableColumn width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="qQT-fA-yIT">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -913,11 +908,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Hgl-je-HBv">
-                                                            <rect key="frame" x="525" y="1" width="64" height="17"/>
+                                                            <rect key="frame" x="540" y="1" width="68" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gPu-gk-AAY">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" id="DT3-7w-M3u">
                                                                         <font key="font" metaFont="system"/>
@@ -948,8 +943,8 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="DXW-4H-9LJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="591" height="25"/>
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="DXW-4H-9LJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>

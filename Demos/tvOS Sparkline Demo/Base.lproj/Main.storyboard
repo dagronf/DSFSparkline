@@ -21,69 +21,139 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-ho-C6a" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
-                                <rect key="frame" x="96" y="60" width="1728" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="WOo-Ou-TDR"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
-                                        <color key="value" systemColor="systemGreenColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                        <integer key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-Xm-bRw" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
-                                <rect key="frame" x="96" y="225" width="1728" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Zqu-tz-rnA"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
-                                        <color key="value" systemColor="systemBlueColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
-                                        <integer key="value" value="500"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
-                                        <integer key="value" value="50"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="kNJ-ib-BOR">
+                                <rect key="frame" x="96" y="60" width="1728" height="458"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-ho-C6a" customClass="DSFSparklineBarGraph" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="0.0" width="1728" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="WOo-Ou-TDR"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" systemColor="systemGreenColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRm-Xm-bRw" customClass="DSFSparklineLineGraph" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="165" width="1728" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="Zqu-tz-rnA"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" systemColor="systemBlueColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="500"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="100" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-3c-csm">
+                                        <rect key="frame" x="0.0" y="330" width="1728" height="128"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Nas-fi-tod" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                                <rect key="frame" x="0.0" y="0.0" width="860" height="128"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="R6s-rI-6Cn"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                        <color key="value" systemColor="systemYellowColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                        <integer key="value" value="500"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
+                                                        <integer key="value" value="200"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                        <color key="value" systemColor="placeholderTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="100" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="eEe-RW-4pi" customClass="DSFSparklineDotGraph" customModule="DSFSparkline">
+                                                <rect key="frame" x="868" y="0.0" width="860" height="128"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="Q1v-w6-LYd"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                        <color key="value" systemColor="systemOrangeColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                        <integer key="value" value="500"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="ibWindowSize">
+                                                        <integer key="value" value="200"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                        <color key="value" systemColor="placeholderTextColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Wc6-ho-C6a" firstAttribute="top" secondItem="wu6-TO-1qx" secondAttribute="top" id="0ig-VV-uis"/>
-                            <constraint firstItem="eRm-Xm-bRw" firstAttribute="trailing" secondItem="Wc6-ho-C6a" secondAttribute="trailing" id="AVa-RF-ca7"/>
-                            <constraint firstItem="eRm-Xm-bRw" firstAttribute="top" secondItem="Wc6-ho-C6a" secondAttribute="bottom" constant="37" id="UxY-6o-Ik1"/>
-                            <constraint firstItem="Wc6-ho-C6a" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="16" id="h4w-iY-pdn"/>
-                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="Wc6-ho-C6a" secondAttribute="trailing" constant="16" id="oi8-q7-sWA"/>
-                            <constraint firstItem="eRm-Xm-bRw" firstAttribute="leading" secondItem="Wc6-ho-C6a" secondAttribute="leading" id="y4i-03-Ewm"/>
+                            <constraint firstItem="kNJ-ib-BOR" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="16" id="FYN-2a-Vy3"/>
+                            <constraint firstItem="kNJ-ib-BOR" firstAttribute="top" secondItem="wu6-TO-1qx" secondAttribute="top" id="ch9-4g-B55"/>
+                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="kNJ-ib-BOR" secondAttribute="trailing" constant="16" id="cvY-oH-7eC"/>
+                            <constraint firstItem="wu6-TO-1qx" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kNJ-ib-BOR" secondAttribute="bottom" id="uJl-7h-o7O"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="green" destination="Wc6-ho-C6a" id="Nth-j7-N1B"/>
+                        <outlet property="orange" destination="eEe-RW-4pi" id="0wE-MG-jjH"/>
+                        <outlet property="purple" destination="Nas-fi-tod" id="VaU-3w-FPz"/>
                         <outlet property="red" destination="eRm-Xm-bRw" id="Of5-Pv-xkW"/>
                     </connections>
                 </viewController>
@@ -93,11 +163,20 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
