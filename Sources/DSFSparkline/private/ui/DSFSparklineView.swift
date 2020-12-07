@@ -23,16 +23,12 @@
 
 #if os(macOS)
 import Cocoa
-public typealias SLColor = NSColor
-public typealias SLView = NSView
 #else
 import UIKit
-public typealias SLColor = UIColor
-public typealias SLView = UIView
 #endif
 
 @IBDesignable
-@objc public class DSFSparklineView: SLView {
+@objc public class DSFSparklineView: DSFView {
 
 	#if TARGET_INTERFACE_BUILDER
 	/// Need this to hold on to the datasource when using designable, or else it disappears due to being weak

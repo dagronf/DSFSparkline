@@ -44,16 +44,6 @@ public extension DSFSparklineBarGraph {
 	}
 	#endif
 
-	#if os(macOS)
-	func retinaScale() -> CGFloat {
-		return self.window?.screen?.backingScaleFactor ?? 1.0
-	}
-	#else
-	func retinaScale() -> CGFloat {
-		return self.window?.screen.scale ?? 1.0
-	}
-	#endif
-
 	private func drawBarGraph(primary: CGContext) {
 		let drawRect = self.bounds
 
@@ -102,11 +92,11 @@ public extension DSFSparklineBarGraph {
 			outer.drawPath(using: .fillStroke)
 		}
 
-		let color: SLColor
+		let color: DSFColor
 		#if os(macOS)
-		color = SLColor.disabledControlTextColor
+		color = DSFColor.disabledControlTextColor
 		#else
-		color = SLColor.systemGray
+		color = DSFColor.systemGray
 		#endif
 
 		if self.showZero {

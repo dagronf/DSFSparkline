@@ -27,17 +27,12 @@ import CoreGraphics.CGContext
 #if os(macOS)
 import Cocoa
 public typealias DSFColor = NSColor
-public func RetinaValue() -> CGFloat {
-	return NSScreen.main?.backingScaleFactor ?? 1
-}
+public typealias DSFView = NSView
 #else
 import UIKit
 public typealias DSFColor = UIColor
-public func RetinaValue() -> CGFloat {
-	return UIScreen.main.scale
-}
+public typealias DSFView = UIView
 #endif
-
 
 #if canImport(SwiftUI)
 import SwiftUI
@@ -80,4 +75,16 @@ extension CGContext {
 		}
 		try stateBlock(self)
 	}
+}
+
+extension DSFView {
+	#if os(macOS)
+	@objc func retinaScale() -> CGFloat {
+		return self.window?.screen?.backingScaleFactor ?? 1.0
+	}
+	#else
+	@objc func retinaScale() -> CGFloat {
+		return self.window?.screen.scale ?? 1.0
+	}
+	#endif
 }

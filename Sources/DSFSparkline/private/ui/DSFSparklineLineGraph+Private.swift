@@ -105,7 +105,7 @@ extension DSFSparklineLineGraph {
 				if shadowed {
 					ctx.setShadow(offset: CGSize(width: 0.5, height: yoff),
 									  blur: 1.0,
-									  color: SLColor.black.withAlphaComponent(0.3).cgColor)
+									  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
 				}
 				ctx.setLineJoin(.round)
 				ctx.strokePath()
@@ -113,11 +113,11 @@ extension DSFSparklineLineGraph {
 		}
 
 
-		let color: SLColor
+		let color: DSFColor
 		#if os(macOS)
-		color = SLColor.disabledControlTextColor
+		color = DSFColor.disabledControlTextColor
 		#else
-		color = SLColor.systemGray
+		color = DSFColor.systemGray
 		#endif
 
 		if self.showZero {
