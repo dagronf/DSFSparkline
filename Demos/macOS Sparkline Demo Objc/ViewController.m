@@ -27,29 +27,30 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-	 [super viewDidLoad];
+	[super viewDidLoad];
 
-	 srand48(time(0));
+	srand48(time(0));
 
-	 _dataSource = [[DSFSparklineDataSource alloc] init];
-	 _barDataSource = [[DSFSparklineDataSource alloc] init];
-	 _receiveDataSource = [[DSFSparklineDataSource alloc] init];
-	 _sendDataSource = [[DSFSparklineDataSource alloc] init];
+	_dataSource = [[DSFSparklineDataSource alloc] init];
+	_barDataSource = [[DSFSparklineDataSource alloc] init];
+	_receiveDataSource = [[DSFSparklineDataSource alloc] init];
+	_sendDataSource = [[DSFSparklineDataSource alloc] init];
 
-	 [[self lineGraph] setDataSource:[self dataSource]];
-	 [[self dataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
+	[[self lineGraph] setDataSource:[self dataSource]];
+	[[self dataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
 
-	 [[self barGraph] setDataSource:[self barDataSource]];
-	 [[self barDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
+	[[self barGraph] setDataSource:[self barDataSource]];
+	[[self barDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
+	[[self barDataSource] setZeroLineValue:0.2];
 
-	 [[self barDataSource] setWindowSize:30];
+	[[self barDataSource] setWindowSize:30];
 
-	 [[self receiveGraph] setDataSource:[self receiveDataSource]];
-	 [[self receiveDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
-	 [[self sendGraph] setDataSource:[self sendDataSource]];
-	 [[self sendDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
+	[[self receiveGraph] setDataSource:[self receiveDataSource]];
+	[[self receiveDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
+	[[self sendGraph] setDataSource:[self sendDataSource]];
+	[[self sendDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
 
-	 [self performUpdate];
+	[self performUpdate];
 }
 
 - (void)performUpdate {

@@ -63,6 +63,9 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 		}
 	}
 
+	/// The 'zero' line for drawing the horizontal line. Should be in yRange
+	var zeroLineValue: CGFloat = 0.0
+
 	/// Create a sparkline data window with an optional data range
 	/// - Parameters:
 	///   - windowSize: The number of data points to be kept in the spark line

@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	let demoDataSource4 = DSFSparklineDataSource(range: 0 ... 100)
 	var lastSource4: CGFloat = 50.0
 
-	let demoDataSource5 = DSFSparklineDataSource(range: 0 ... 100)
+	let demoDataSource5 = DSFSparklineDataSource(range: 0 ... 100, zeroLineValue: 80)
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Create the SwiftUI view that provides the window contents.

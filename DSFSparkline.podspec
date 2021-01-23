@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "DSFSparkline"
-  s.version      = "2.0.0"
+  s.version      = "3.0.0"
   s.summary      = "Simple Sparkline View for macOS, iOS and tvOS"
   s.description  = <<-DESC
-    Simple Sparkline View for macOS, iOS and tvOS
+    Simple Sparkline View for macOS, iOS and tvOS. Supports SwiftUI, AppKit and UIKit
   DESC
   s.homepage     = "https://github.com/dagronf"
   s.license      = { :type => "MIT", :file => "LICENSE" }

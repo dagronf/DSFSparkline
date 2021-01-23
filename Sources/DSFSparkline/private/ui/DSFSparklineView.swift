@@ -125,7 +125,7 @@ extension DSFSparklineView {
 
 		// Show the zero point if wanted
 		if self.showZero {
-			let frac = dataSource.fractionalZeroPosition()
+			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
 			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 
 			if let primary = NSGraphicsContext.current?.cgContext {
@@ -147,7 +147,7 @@ extension DSFSparklineView {
 
 		// Show the zero point if wanted
 		if self.showZero {
-			let frac = dataSource.fractionalZeroPosition()
+			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
 			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 
 			if let primary = UIGraphicsGetCurrentContext() {
@@ -184,14 +184,24 @@ extension DSFSparklineDataSource {
 	/// Return the vertical fractional position within the data window that represents
 	/// zero for the current set of data.
 	func fractionalZeroPosition() -> CGFloat {
-		if let r = self.range, r.lowerBound <= 0, r.upperBound >= 0 {
+		return fractionalPosition(for: 0.0)
+	}
+
+	/// Return the vertical fractional position within the data window that represents
+	/// the zero line value for the current set of data.
+	func fractionalPosition(for value: CGFloat) -> CGFloat {
+		let result: CGFloat
+		if let r = self.range {
 			// If a fixed range is specified, calculate the zero line from the specified range
 			let full = r.upperBound - r.lowerBound		// full range width
-			return abs(r.lowerBound) / full
+			result = abs(value - r.lowerBound) / full
 		}
 		else {
 			// If no fixed range is specified, calculate the zero line position using the current range of the data.
-			return self.normalize(value: 0.0)
+			result = self.normalize(value: value)
 		}
+
+		// Clamp to 0.0 -> 1.0
+		return min(max(result, 0.0), 1.0)
 	}
 }

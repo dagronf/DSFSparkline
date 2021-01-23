@@ -43,15 +43,15 @@ class ViewController: NSViewController {
 	var sparkTransmissionErrorDatasource = DSFSparklineDataSource(range: 0 ... 1)
 
 	@IBOutlet weak var fakeSparkCpu1: DSFSparklineView!
-	var fakeSparkCpu1Datasource = DSFSparklineDataSource(range: 0 ... 1)
+	var fakeSparkCpu1Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu2: DSFSparklineView!
-	var fakeSparkCpu2Datasource = DSFSparklineDataSource(range: 0 ... 1)
+	var fakeSparkCpu2Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu3: DSFSparklineView!
-	var fakeSparkCpu3Datasource = DSFSparklineDataSource(range: 0 ... 1)
+	var fakeSparkCpu3Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu4: DSFSparklineView!
-	var fakeSparkCpu4Datasource = DSFSparklineDataSource(range: 0 ... 1)
+	var fakeSparkCpu4Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu5: DSFSparklineView!
-	var fakeSparkCpu5Datasource = DSFSparklineDataSource(range: 0 ... 1)
+	var fakeSparkCpu5Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 
 	@IBOutlet weak var sparkStaticData: DSFSparklineLineGraphView!
 	var sparkStaticDatasource = DSFSparklineDataSource(range: -20 ... 50)

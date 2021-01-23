@@ -95,10 +95,10 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Common display customizations
 
-| Setting       | Type                | Description                                        |
-|---------------|---------------------|----------------------------------------------------|
-| `graphColor`  | `NSColor`/`UIColor` | The color to use when drawing the sparkline        |
-| `showZero`    | `Bool`              | Draw a dotted line at the zero point on the y-axis |
+| Setting       | Type                | Description                                             |
+|---------------|---------------------|---------------------------------------------------------|
+| `graphColor`  | `NSColor`/`UIColor` | The color to use when drawing the sparkline             |
+| `showZero`    | `Bool`              | Draw a dotted line at the zero line point on the y-axis |
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 
@@ -178,6 +178,19 @@ dataSource.range = -1.0 ... 1.0
 ```objective-c
 /// Objective-C
 [dataSource setRangeWithLowerBound:-1.0 upperBound:1.0];
+```
+
+#### Setting the 'zero level' value for the sparkline
+
+The 'zero line' represents the dotted line that is drawn horizontally across the line and bar graphs. By default, this zero line is set at 0.0 within the graph's window values.  You can set the 'zero' line at an arbitrary value using the `zeroLineValue` on the data source.
+
+```swift
+// Initialize to draw a dotted line at 0.8 
+let datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
+
+// Change the data source to draw the zeroline at 0.9
+myDataSource.zeroLineValue = 0.9
+
 ```
 
 ### Modifying or retrieving data
@@ -269,7 +282,7 @@ struct SparklineView: View {
          DSFSparklineLineGraphView.SwiftUI(
             dataSource: rightDataSource,
             graphColor: UIColor.blue,
-            showZero: false,
+            showZero: true,
             interpolated: true)
       }
    }
@@ -299,6 +312,12 @@ struct SparklineView: View {
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `3.0.0`
+
+* Add the ability to set the 'zero' line value. Defaults to zero for backwards compatibility.
+
+You can set where the 'zero' line draws via the `zeroLineValue` on the datasource.
 
 ### `2.0.0`
 

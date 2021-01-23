@@ -35,8 +35,11 @@ import Foundation
 		super.init()
 	}
 
-	public init(windowSize: UInt? = nil, range: ClosedRange<CGFloat>? = nil) {
+	public init(windowSize: UInt? = nil, range: ClosedRange<CGFloat>? = nil, zeroLineValue: CGFloat? = nil) {
 		self.sparkline.yRange = range
+		if let zValue = zeroLineValue {
+			self.sparkline.zeroLineValue = zValue
+		}
 		if let ws = windowSize {
 			self.sparkline.windowSize = ws
 		}
@@ -64,6 +67,17 @@ public extension DSFSparklineDataSource {
 		}
 		set {
 			self.sparkline.windowSize = newValue
+			self.notifyDataChange()
+		}
+	}
+
+	/// The 'zero' line for drawing the horizontal line. Should be in the range lowerBound ..< upperBound
+	@objc var zeroLineValue: CGFloat {
+		get {
+			self.sparkline.zeroLineValue
+		}
+		set {
+			self.sparkline.zeroLineValue = newValue
 			self.notifyDataChange()
 		}
 	}
@@ -129,6 +143,14 @@ public extension DSFSparklineDataSource {
 	@objc func setRange(lowerBound: CGFloat, upperBound: CGFloat) {
 		assert(lowerBound < upperBound)
 		self.sparkline.yRange = lowerBound ... upperBound
+		self.notifyDataChange()
+	}
+
+	/// Set a range using discrete upper and lower bounds, drawing a line at the 'zero' point within the range
+	@objc func setRange(lowerBound: CGFloat, upperBound: CGFloat, zeroLinePoint: CGFloat) {
+		assert(lowerBound <= zeroLinePoint && zeroLinePoint <= upperBound)
+		self.sparkline.yRange = lowerBound ... upperBound
+		self.sparkline.zeroLineValue = zeroLinePoint
 		self.notifyDataChange()
 	}
 

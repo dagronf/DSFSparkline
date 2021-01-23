@@ -131,13 +131,15 @@ struct ContentView: View {
 				}.pickerStyle(RadioGroupPickerStyle())
 				if self.selectedType == 1 {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
-											 graphColor: NSColor.textColor)
+																 graphColor: NSColor.textColor,
+																 showZero: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				}
 				else if self.selectedType == 2 {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor,
+											 showZero: true,
 											 interpolated: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
@@ -145,6 +147,7 @@ struct ContentView: View {
 				else if self.selectedType == 3 {
 					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource5,
 											 graphColor: NSColor.textColor,
+											 showZero: true,
 											 barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
@@ -233,6 +236,7 @@ var SparklineView_PreviewGlobalDataSource1: DSFSparklineDataSource = {
 var SparklineView_PreviewGlobalDataSource2: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 10, range: -100.0 ... 30.0)
 	d.push(values: [20, 10, 0, -10, -20, -30, 40, 50, 60, 70])
+	d.zeroLineValue = -80
 	return d
 }()
 
@@ -240,6 +244,6 @@ var SparklineView_PreviewGlobalDataSource2: DSFSparklineDataSource = {
 struct SparklineView_Previews: PreviewProvider {
 	static var previews: some View {
 		SparklineView(leftDataSource: SparklineView_PreviewGlobalDataSource1,
-					  rightDataSource: SparklineView_PreviewGlobalDataSource2)
+						  rightDataSource: SparklineView_PreviewGlobalDataSource2)
 	}
 }
