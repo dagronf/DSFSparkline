@@ -22,7 +22,7 @@
 //
 
 import CoreGraphics
-import Foundation
+import UIKit
 
 @objc public class DSFSparklineDataSource: NSObject {
 
@@ -81,6 +81,41 @@ public extension DSFSparklineDataSource {
 			self.notifyDataChange()
 		}
 	}
+    
+    /// The 'zero' line color for drawing the horizontal line. Should be in the range lowerBound ..< upperBound
+    @objc var zeroLineColor: UIColor {
+        get {
+            self.sparkline.zeroLineColor
+        }
+        set {
+            self.sparkline.zeroLineColor = newValue
+            self.notifyDataChange()
+        }
+    }
+    
+    /// The 'zero' line width for drawing the horizontal line.
+    @objc var zeroLineWidth: CGFloat {
+        get {
+            self.sparkline.zeroLineWidth
+        }
+        set {
+            self.sparkline.zeroLineWidth = newValue
+            self.notifyDataChange()
+        }
+    }
+
+    //    var zeroLineType: DSFSparklineZeroLineType = .dash
+    /// The 'zero' line type for drawing the horizontal line.
+    @objc var zeroLineStyle: [CGFloat] {
+        get {
+            self.sparkline.zeroLineStyle
+        }
+        set {
+            self.sparkline.zeroLineStyle = newValue
+            self.notifyDataChange()
+        }
+    }
+
 
 	/// Add a new value. If there are more values than the window size, the oldest value is discarded
 	@objc func push(value: CGFloat) -> Bool {

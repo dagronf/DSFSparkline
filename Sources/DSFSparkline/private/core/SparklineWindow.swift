@@ -21,7 +21,8 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
+import UIKit
+import CoreGraphics
 
 class SparklineWindow<T> where T: BinaryFloatingPoint {
 
@@ -64,7 +65,16 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 	}
 
 	/// The 'zero' line for drawing the horizontal line. Should be in yRange
-	var zeroLineValue: CGFloat = 0.0
+    var zeroLineValue: CGFloat = 0.0
+
+    /// The 'zero' line color for drawing the horizontal line.
+    var zeroLineColor: UIColor = DSFColor.systemGray
+
+    /// The 'zero' line width for drawing the horizontal line.
+    var zeroLineWidth: CGFloat = 1.0
+
+    /// The style of the 'zero' line. Use [] to specify a solid line.
+    var zeroLineStyle: [CGFloat] = [1.0, 1.0]
 
 	/// Create a sparkline data window with an optional data range
 	/// - Parameters:

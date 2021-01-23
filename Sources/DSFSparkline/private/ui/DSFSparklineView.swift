@@ -72,6 +72,27 @@ import UIKit
 	/// Draw a dotted line at the zero point on the y-axis
 	@IBInspectable public var showZero: Bool = false
 
+    /// The color of the dotted line at the zero point on the y-axis
+    #if os(macOS)
+    @IBInspectable public var zeroLineColor: NSColor = NSColor.gray {
+        didSet {
+            self.colorDidChange()
+        }
+    }
+    #else
+    @IBInspectable public var zeroLineColor: UIColor = .systemGray {
+        didSet {
+            self.colorDidChange()
+        }
+    }
+    #endif
+
+    /// The width of the dotted line at the zero point on the y-axis
+    @IBInspectable public var zeroLineWidth: CGFloat = 1.0
+    
+    /// The style of the dotted line. Use [] to specify a solid line.
+    public var zeroLineStyle: [CGFloat] = [1.0, 1.0]
+
 	/// The size of the sparkline window
 	///
 	/// This member is purely IBDesignable display related
@@ -130,10 +151,10 @@ extension DSFSparklineView {
 
 			if let primary = NSGraphicsContext.current?.cgContext {
 				primary.usingGState { ctx in
-					let color = DSFColor.disabledControlTextColor
-					ctx.setLineWidth(1 / self.retinaScale())
+                    let color = dataSource.zeroLineColor
+                    ctx.setLineWidth(dataSource.zeroLineWidth / self.retinaScale())
 					ctx.setStrokeColor(color.cgColor)
-					ctx.setLineDash(phase: 0.0, lengths: [1, 1])
+                    ctx.setLineDash(phase: 0.0, lengths: dataSource.zeroLineStyle)
 					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
 				}
 			}
@@ -152,10 +173,10 @@ extension DSFSparklineView {
 
 			if let primary = UIGraphicsGetCurrentContext() {
 				primary.usingGState { ctx in
-					let color = DSFColor.systemGray
-					ctx.setLineWidth(1 / self.retinaScale())
+                    let color = dataSource.zeroLineColor
+                    ctx.setLineWidth(dataSource.zeroLineWidth / self.retinaScale())
 					ctx.setStrokeColor(color.cgColor)
-					ctx.setLineDash(phase: 0.0, lengths: [1, 1])
+                    ctx.setLineDash(phase: 0, lengths: dataSource.zeroLineStyle)
 					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
 				}
 			}
