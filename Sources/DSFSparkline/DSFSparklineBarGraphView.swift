@@ -27,8 +27,9 @@ import Cocoa
 import UIKit
 #endif
 
+/// A sparkline graph that displays bars
 @IBDesignable
-public class DSFSparklineBarGraphView: DSFSparklineView {
+public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 	/// The line width (in pixels) to use when drawing the border of each bar
 	@IBInspectable public var lineWidth: UInt = 1
 	/// The spacing (in pixels) between each bar

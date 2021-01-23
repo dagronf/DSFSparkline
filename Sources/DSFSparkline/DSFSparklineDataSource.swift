@@ -21,9 +21,10 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import CoreGraphics
 import Foundation
+import CoreGraphics
 
+/// A datasource for a sparkline
 @objc public class DSFSparklineDataSource: NSObject {
 
 	@objc(DSFSparklineDataSourceDataChangedNotification)

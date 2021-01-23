@@ -23,11 +23,14 @@
 
 import Foundation
 
+/// The sparkline 'window' represents the data window to be displayed in the graph
+/// It is meant to represent the _data_ for the graph, not the way that the graph draws.
 class SparklineWindow<T> where T: BinaryFloatingPoint {
 
 	private let NormalizedRange: ClosedRange<T> = 0.0 ... 1.0
 	private let data: SparklineData<T>
 
+	/// Optional fixed range for the data being displayed
 	public var yRange: ClosedRange<T>? {
 		get {
 			self.data.yRange
@@ -63,8 +66,8 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 		}
 	}
 
-	/// The 'zero' line for drawing the horizontal line. Should be in yRange
-	var zeroLineValue: CGFloat = 0.0
+	/// The 'zero' line for drawing the horizontal line.
+	var zeroLineValue: T = 0.0
 
 	/// Create a sparkline data window with an optional data range
 	/// - Parameters:

@@ -27,6 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
+/// A sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 @IBDesignable
 public class DSFSparklineDotGraphView: DSFSparklineView {
 

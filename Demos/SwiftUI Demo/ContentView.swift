@@ -10,22 +10,27 @@ import SwiftUI
 import DSFSparkline
 
 struct UpperGraph: View {
-
 	let label: String
 
 	let dataSource: DSFSparklineDataSource
 	let graphColor: DSFColor
 
 	let showZero: Bool
+	var zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared
+
 	let interpolated: Bool
 	let lineShading: Bool
 
+	var shadowed: Bool = false
+
 	var body: some View {
 		DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource,
-									  graphColor: graphColor,
-									  showZero: showZero,
-									  interpolated: interpolated,
-									  lineShading: lineShading)
+													 graphColor: graphColor,
+													 showZero: showZero,
+													 zeroLineDefinition: self.zeroLineDefinition,
+													 interpolated: interpolated,
+													 lineShading: lineShading,
+													 shadowed: shadowed)
 			.background(
 				Rectangle()
 					.fill(Color(.displayP3, white: 1.0, opacity: 0.1))
@@ -43,12 +48,13 @@ struct UpperGraph: View {
 					Text(self.label)
 						.shadow(color: .black, radius: 1)
 					Color.clear
-				}).padding(6), alignment: .leading)
+				}).padding(6), alignment: .leading
+			)
 	}
 }
 
 var PreviewUpperGraphDataSource: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0)
+	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0, zeroLineValue: 25)
 	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
 	return d
 }()
@@ -56,11 +62,13 @@ var PreviewUpperGraphDataSource: DSFSparklineDataSource = {
 struct UpperGraph_Previews: PreviewProvider {
 	static var previews: some View {
 		UpperGraph(label: "Testing",
-				   dataSource: PreviewUpperGraphDataSource,
-				   graphColor: DSFColor.systemOrange,
-				   showZero: true,
-				   interpolated: true,
-				   lineShading: true)
+					  dataSource: PreviewUpperGraphDataSource,
+					  graphColor: DSFColor.systemOrange,
+					  showZero: true,
+					  zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition(),
+					  interpolated: true,
+					  lineShading: true,
+					  shadowed: true)
 	}
 }
 
@@ -74,7 +82,7 @@ struct ContentView: View {
 	let dataSource5: DSFSparklineDataSource
 
 	@State var selectedType = 1
-
+	
 	var body: some View {
 		VStack {
 			HStack(alignment: .center, spacing: 8, content: {
@@ -84,40 +92,40 @@ struct ContentView: View {
 			})
 			HStack {
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource1,
-											 graphColor: NSColor.blue,
-											 showZero: true,
-											 barSpacing: 1)
+															graphColor: NSColor.blue,
+															showZero: true,
+															barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource2,
-											 graphColor: NSColor.green,
-											 showZero: true,
-											 lineWidth: 2,
-											 barSpacing: 2)
+															graphColor: NSColor.green,
+															showZero: true,
+															lineWidth: 2,
+															barSpacing: 2)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 			}
 			HStack {
 				DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
-											 graphColor: NSColor.blue,
-											 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2))
+															graphColor: NSColor.blue,
+															unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2))
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
-											 graphColor: NSColor.red,
-											 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
-											 upsideDown: true)
+															graphColor: NSColor.red,
+															unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
+															upsideDown: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 					.padding(2)
 				VStack(alignment: .center, spacing: nil, content: {
 					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
-												 graphColor: NSColor.systemGreen,
-												 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
-												 verticalDotCount: 10)
+																graphColor: NSColor.systemGreen,
+																unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
+																verticalDotCount: 10)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource3,
-												 graphColor: NSColor.systemPink,
-												 unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
-												 verticalDotCount: 10,
-												 upsideDown: true)
+																graphColor: NSColor.systemPink,
+																unsetGraphColor: NSColor.darkGray.withAlphaComponent(0.2),
+																verticalDotCount: 10,
+																upsideDown: true)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 
 				})
@@ -133,30 +141,30 @@ struct ContentView: View {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 																 graphColor: NSColor.textColor,
 																 showZero: true)
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
-					.padding(2)
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
+						.padding(2)
 				}
 				else if self.selectedType == 2 {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
-											 graphColor: NSColor.textColor,
-											 showZero: true,
-											 interpolated: true)
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
-					.padding(2)
+																 graphColor: NSColor.textColor,
+																 showZero: true,
+																 interpolated: true)
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
+						.padding(2)
 				}
 				else if self.selectedType == 3 {
 					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource5,
-											 graphColor: NSColor.textColor,
-											 showZero: true,
-											 barSpacing: 1)
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
-					.padding(2)
+																graphColor: NSColor.textColor,
+																showZero: true,
+																barSpacing: 1)
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
+						.padding(2)
 				}
 				else {
 					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource5,
-											 graphColor: NSColor.textColor)
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
-					.padding(2)
+																graphColor: NSColor.textColor)
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
+						.padding(2)
 				}
 			}
 
@@ -197,34 +205,34 @@ var PreviewGlobalDataSource5: DSFSparklineDataSource = {
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		ContentView(dataSource1: PreviewGlobalDataSource1,
-					dataSource2: PreviewGlobalDataSource2,
-					dataSource3: PreviewGlobalDataSource3,
-					dataSource4: PreviewGlobalDataSource4,
-					dataSource5: PreviewGlobalDataSource5)
+						dataSource2: PreviewGlobalDataSource2,
+						dataSource3: PreviewGlobalDataSource3,
+						dataSource4: PreviewGlobalDataSource4,
+						dataSource5: PreviewGlobalDataSource5)
 	}
 }
 
-
 struct SparklineView: View {
+	let leftDataSource: DSFSparklineDataSource
+	let rightDataSource: DSFSparklineDataSource
 
-   let leftDataSource: DSFSparklineDataSource
-   let rightDataSource: DSFSparklineDataSource
-
-   var body: some View {
-	  HStack {
-		 DSFSparklineLineGraphView.SwiftUI(
-			dataSource: leftDataSource,
-			graphColor: DSFColor.red,
-			showZero: false,
-			interpolated: true)
-		 DSFSparklineBarGraphView.SwiftUI(
-			dataSource: rightDataSource,
-			graphColor: DSFColor.blue,
-			showZero: true,
-			lineWidth: 2)
-	  }
-	.padding()
-   }
+	var body: some View {
+		HStack {
+			DSFSparklineLineGraphView.SwiftUI(
+				dataSource: leftDataSource,
+				graphColor: DSFColor.red,
+				showZero: false,
+				interpolated: true
+			)
+			DSFSparklineBarGraphView.SwiftUI(
+				dataSource: rightDataSource,
+				graphColor: DSFColor.blue,
+				showZero: true,
+				lineWidth: 2
+			)
+		}
+		.padding()
+	}
 }
 
 var SparklineView_PreviewGlobalDataSource1: DSFSparklineDataSource = {
@@ -239,7 +247,6 @@ var SparklineView_PreviewGlobalDataSource2: DSFSparklineDataSource = {
 	d.zeroLineValue = -80
 	return d
 }()
-
 
 struct SparklineView_Previews: PreviewProvider {
 	static var previews: some View {

@@ -46,6 +46,7 @@ class SparklineData<T> where T: BinaryFloatingPoint {
 		self.yRange = range
 	}
 
+	/// Return a normalized (scaled 0.0 -> 1.0) of the supplied value
 	func normalize(value: T) -> T {
 		guard let min = yMin, let max = self.yMax else {
 			return 0.0

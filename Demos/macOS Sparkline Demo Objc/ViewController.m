@@ -38,6 +38,7 @@
 
 	[[self lineGraph] setDataSource:[self dataSource]];
 	[[self dataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
+	[[self lineGraph] setZeroLineDashStyleString: @"3,3"];
 
 	[[self barGraph] setDataSource:[self barDataSource]];
 	[[self barDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];

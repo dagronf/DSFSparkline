@@ -30,7 +30,8 @@ Note that the 2.0.0 release has changes that will break your existing DSFSparkli
 * `IBDesignable` support so you can see your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
-* Line graph can draw with discrete lines or fitted to a curve
+* Line graph can draw with discrete lines or fitted to a curve'
+* Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
 * SwiftUI support
 
 ## Available types
@@ -95,10 +96,18 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Common display customizations
 
-| Setting       | Type                | Description                                             |
-|---------------|---------------------|---------------------------------------------------------|
-| `graphColor`  | `NSColor`/`UIColor` | The color to use when drawing the sparkline             |
-| `showZero`    | `Bool`              | Draw a dotted line at the zero line point on the y-axis |
+| Setting               | Type                | Description                                             |
+|-----------------------|---------------------|---------------------------------------------------------|
+| `graphColor`          | `NSColor`/`UIColor` | The color to use when drawing the sparkline             |
+
+### Common elements for graphs that can display a zero line (Line/Bar)
+
+| Setting               | Type                | Description                                             |
+|-----------------------|---------------------|---------------------------------------------------------|
+| `showZero`            | `Bool`              | Draw a dotted line at the zero line point on the y-axis |
+| `zeroLineColor`       | `NSColor`/`UIColor` | The color of the 'zero line' on the y-axis.             |
+| `zeroLineWidth`       | `CGFloat`           | The width of the 'zero line' on the y-axis              |
+| `zeroLineDashStyle`   | `[CGFloat]`         | The dash pattern to use when drawing the zero line      |
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 
@@ -180,16 +189,18 @@ dataSource.range = -1.0 ... 1.0
 [dataSource setRangeWithLowerBound:-1.0 upperBound:1.0];
 ```
 
-#### Setting the 'zero level' value for the sparkline
+#### Setting the 'zero line' value for the sparkline
 
-The 'zero line' represents the dotted line that is drawn horizontally across the line and bar graphs. By default, this zero line is set at 0.0 within the graph's window values.  You can set the 'zero' line at an arbitrary value using the `zeroLineValue` on the data source.
+The 'zero line' represents the dotted line that is drawn horizontally across the line and bar graphs. By default, this zero line is set at 0.0 within the graph's window values. 
+
+You can change the 'zero line' to an arbitrary value using the `zeroLineValue` on the data source.
 
 ```swift
 // Initialize to draw a dotted line at 0.8 
 let datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 
-// Change the data source to draw the zeroline at 0.9
-myDataSource.zeroLineValue = 0.9
+// Change the data source to draw the zeroline at 0.3
+myDataSource.zeroLineValue = 0.3
 
 ```
 
@@ -312,6 +323,10 @@ struct SparklineView: View {
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `3.1.0`
+
+* Add the ability to customize the zero-line display ([Tito Ciuro](https://github.com/tciuro))
 
 ### `3.0.0`
 

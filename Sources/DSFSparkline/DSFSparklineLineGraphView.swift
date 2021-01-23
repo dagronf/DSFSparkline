@@ -28,7 +28,7 @@ import UIKit
 #endif
 
 @IBDesignable
-public class DSFSparklineLineGraphView: DSFSparklineView {
+public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph
 	@IBInspectable public var lineWidth: CGFloat = 1.5
 	

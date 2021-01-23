@@ -31,24 +31,38 @@ public extension DSFSparklineBarGraphView {
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
-		
+
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
+		/// The drawing definition for the zero line point
+		let zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition
+
 		/// The line width (in pixels) to use when drawing the border of each bar
 		let lineWidth: UInt
 		/// The spacing (in pixels) between each bar
 		let barSpacing: UInt
-		
+
+		/// Create a bar graph sparkline
+		/// - Parameters:
+		///   - dataSource: The data source for the graph
+		///   - graphColor: The color to draw the graph
+		///   - showZero: Show or hide a 'zero line' horizontal line
+		///   - zeroLineDefinition: the settings for drawing the zero line
+		///   - lineWidth: The width of the line around each bar
+		///   - barSpacing: The spacing between the bars
 		public init(dataSource: DSFSparklineDataSource,
-					graphColor: DSFColor,
-					showZero: Bool = false,
-					lineWidth: UInt = 1,
-					barSpacing: UInt = 1)
+						graphColor: DSFColor,
+						showZero: Bool = false,
+						zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared,
+						lineWidth: UInt = 1,
+						barSpacing: UInt = 1)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
-			
+
 			self.showZero = showZero
+			self.zeroLineDefinition = zeroLineDefinition
+
 			self.lineWidth = lineWidth
 			self.barSpacing = barSpacing
 		}
@@ -62,28 +76,31 @@ extension DSFSparklineBarGraphView.SwiftUI: DSFViewRepresentable {
 	#else
 	public typealias UIViewType = DSFSparklineBarGraphView
 	#endif
-	
+
 	public class Coordinator: NSObject {
 		let parent: DSFSparklineBarGraphView.SwiftUI
 		init(_ sparkline: DSFSparklineBarGraphView.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-	
+
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-	
+
 	private func makeBarGraph(_: Context) -> DSFSparklineBarGraphView {
 		let view = DSFSparklineBarGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
-		
+
 		view.dataSource = self.dataSource
 		view.graphColor = self.graphColor
-		
+
 		view.barSpacing = self.barSpacing
 		view.lineWidth = self.lineWidth
+
 		view.showZero = self.showZero
+		view.setZeroLineDefinition(self.zeroLineDefinition)
+
 		return view
 	}
 }
@@ -95,7 +112,7 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 	func makeUIView(context: Context) -> DSFSparklineBarGraphView {
 		return self.makeBarGraph(context)
 	}
-	
+
 	func updateUIView(_: DSFSparklineBarGraphView, context _: Context) {}
 }
 
@@ -106,7 +123,7 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 	func makeNSView(context: Context) -> DSFSparklineBarGraphView {
 		return self.makeBarGraph(context)
 	}
-	
+
 	func updateNSView(_: DSFSparklineBarGraphView, context _: Context) {}
 }
 

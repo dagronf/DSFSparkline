@@ -32,8 +32,11 @@ public extension DSFSparklineLineGraphView {
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
+
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZero: Bool
+		/// The drawing definition for the zero line point
+		let zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition
 
 		/// The width for the line drawn on the graph
 		let lineWidth: CGFloat
@@ -44,17 +47,30 @@ public extension DSFSparklineLineGraphView {
 		/// Draw a shadow under the line
 		let shadowed: Bool
 
+		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
+		/// - Parameters:
+		///   - dataSource: The data source for the graph
+		///   - graphColor: The color of the dots that are set
+		///   - showZero: Show or hide a 'zero line' horizontal line
+		///   - zeroLineDefinition: the settings for drawing the zero line
+		///   - lineWidth: The width of the line
+		///   - interpolated: If true, curves the line through the graph points.
+		///   - lineShading: If true, shades the underside of the drawn line.
+		///   - shadowed: If true, draws a shadow under the line part of the graph.
 		public init(dataSource: DSFSparklineDataSource,
-					graphColor: DSFColor,
-					showZero: Bool = false,
-					lineWidth: CGFloat = 1.5,
-					interpolated: Bool = false,
-					lineShading: Bool = true,
-					shadowed: Bool = false)
+						graphColor: DSFColor,
+						showZero: Bool = false,
+						zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared,
+						lineWidth: CGFloat = 1.5,
+						interpolated: Bool = false,
+						lineShading: Bool = true,
+						shadowed: Bool = false)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
+
 			self.showZero = showZero
+			self.zeroLineDefinition = zeroLineDefinition
 
 			self.lineWidth = lineWidth
 			self.interpolated = interpolated
@@ -88,12 +104,14 @@ extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.dataSource = self.dataSource
 		view.graphColor = self.graphColor
-		view.showZero = self.showZero
 
 		view.lineWidth = self.lineWidth
 		view.interpolated = self.interpolated
 		view.lineShading = self.lineShading
 		view.shadowed = self.shadowed
+
+		view.showZero = self.showZero
+		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		return view
 	}

@@ -31,19 +31,26 @@ public extension DSFSparklineDotGraphView {
 		let dataSource: DSFSparklineDataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
-		
+
 		/// Are the values drawn from the top down?
 		let upsideDown: Bool
 		/// The number of vertical buckets to break the input data up into
 		let verticalDotCount: UInt
 		/// The secondary color for the sparkline
 		let unsetGraphColor: DSFColor
-		
+
+		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
+		/// - Parameters:
+		///   - dataSource: The data source for the graph
+		///   - graphColor: The color of the dots that are set
+		///   - unsetGraphColor: The color of the dots that are not set
+		///   - verticalDotCount: The number of dots vertically
+		///   - upsideDown: Draw the graph upside down
 		public init(dataSource: DSFSparklineDataSource,
-					graphColor: DSFColor,
-					unsetGraphColor: DSFColor = DSFColor.clear,
-					verticalDotCount: UInt = 10,
-					upsideDown: Bool = false)
+						graphColor: DSFColor,
+						unsetGraphColor: DSFColor = DSFColor.clear,
+						verticalDotCount: UInt = 10,
+						upsideDown: Bool = false)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -61,23 +68,23 @@ extension DSFSparklineDotGraphView.SwiftUI: DSFViewRepresentable {
 	#else
 	public typealias UIViewType = DSFSparklineDotGraphView
 	#endif
-	
+
 	public class Coordinator: NSObject {
 		let parent: DSFSparklineDotGraphView.SwiftUI
 		init(_ sparkline: DSFSparklineDotGraphView.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-	
+
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-	
+
 	private func makeDotGraph(_: Context) -> DSFSparklineDotGraphView {
 		let view = DSFSparklineDotGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.dataSource = self.dataSource
-		
+
 		view.graphColor = self.graphColor
 		view.verticalDotCount = self.verticalDotCount
 		view.unsetGraphColor = self.unsetGraphColor
@@ -93,7 +100,7 @@ public extension DSFSparklineDotGraphView.SwiftUI {
 	func makeUIView(context: Context) -> DSFSparklineDotGraphView {
 		return self.makeDotGraph(context)
 	}
-	
+
 	func updateUIView(_: DSFSparklineDotGraphView, context _: Context) {}
 }
 
@@ -104,7 +111,7 @@ public extension DSFSparklineDotGraphView.SwiftUI {
 	func makeNSView(context: Context) -> DSFSparklineDotGraphView {
 		return self.makeDotGraph(context)
 	}
-	
+
 	func updateNSView(_: DSFSparklineDotGraphView, context _: Context) {}
 }
 

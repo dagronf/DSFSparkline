@@ -69,9 +69,6 @@ import UIKit
 	}
 	#endif
 
-	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var showZero: Bool = false
-
 	/// The size of the sparkline window
 	///
 	/// This member is purely IBDesignable display related
@@ -120,46 +117,10 @@ extension DSFSparklineView {
 	#if os(macOS)
 	override public func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
-
-		guard let dataSource = self.dataSource else { return }
-
-		// Show the zero point if wanted
-		if self.showZero {
-			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
-			let zeroPos = self.bounds.height - (frac * self.bounds.height)
-
-			if let primary = NSGraphicsContext.current?.cgContext {
-				primary.usingGState { ctx in
-					let color = DSFColor.disabledControlTextColor
-					ctx.setLineWidth(1 / self.retinaScale())
-					ctx.setStrokeColor(color.cgColor)
-					ctx.setLineDash(phase: 0.0, lengths: [1, 1])
-					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
-				}
-			}
-		}
 	}
 	#else
 	public override func draw(_ rect: CGRect) {
 		super.draw(rect)
-
-		guard let dataSource = self.dataSource else { return }
-
-		// Show the zero point if wanted
-		if self.showZero {
-			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
-			let zeroPos = self.bounds.height - (frac * self.bounds.height)
-
-			if let primary = UIGraphicsGetCurrentContext() {
-				primary.usingGState { ctx in
-					let color = DSFColor.systemGray
-					ctx.setLineWidth(1 / self.retinaScale())
-					ctx.setStrokeColor(color.cgColor)
-					ctx.setLineDash(phase: 0.0, lengths: [1, 1])
-					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
-				}
-			}
-		}
 	}
 	#endif
 
