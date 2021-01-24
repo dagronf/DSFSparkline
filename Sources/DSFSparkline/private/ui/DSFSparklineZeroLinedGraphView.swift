@@ -56,7 +56,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	}
 
 	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var showZero: Bool = false
+	@IBInspectable public var showZeroLine: Bool = false
 
 	/// The color of the dotted line at the zero point on the y-axis
 	#if os(macOS)
@@ -127,7 +127,7 @@ public extension DSFSparklineZeroLineGraphView {
 		guard let dataSource = self.dataSource else { return }
 
 		// Show the zero point if wanted
-		if self.showZero {
+		if self.showZeroLine {
 			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
 			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 
@@ -149,7 +149,7 @@ public extension DSFSparklineZeroLineGraphView {
 		guard let dataSource = self.dataSource else { return }
 
 		// Show the zero point if wanted
-		if self.showZero {
+		if self.showZeroLine {
 			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
 			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 

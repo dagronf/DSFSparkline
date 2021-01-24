@@ -15,7 +15,7 @@ struct UpperGraph: View {
 	let dataSource: DSFSparklineDataSource
 	let graphColor: DSFColor
 
-	let showZero: Bool
+	let showZeroLine: Bool
 	var zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared
 
 	let interpolated: Bool
@@ -26,7 +26,7 @@ struct UpperGraph: View {
 	var body: some View {
 		DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource,
 													 graphColor: graphColor,
-													 showZero: showZero,
+													 showZeroLine: showZeroLine,
 													 zeroLineDefinition: self.zeroLineDefinition,
 													 interpolated: interpolated,
 													 lineShading: lineShading,
@@ -64,7 +64,7 @@ struct UpperGraph_Previews: PreviewProvider {
 		UpperGraph(label: "Testing",
 					  dataSource: PreviewUpperGraphDataSource,
 					  graphColor: DSFColor.systemOrange,
-					  showZero: true,
+					  showZeroLine: true,
 					  zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition(),
 					  interpolated: true,
 					  lineShading: true,
@@ -86,19 +86,19 @@ struct ContentView: View {
 	var body: some View {
 		VStack {
 			HStack(alignment: .center, spacing: 8, content: {
-				UpperGraph(label: "Left", dataSource: dataSource4, graphColor: NSColor.systemOrange, showZero: false, interpolated: false, lineShading: true)
-				UpperGraph(label: "Middle", dataSource: dataSource4, graphColor: NSColor.systemYellow, showZero: true, interpolated: true, lineShading: true)
-				UpperGraph(label: "Right", dataSource: dataSource4, graphColor: NSColor.systemPurple, showZero: false, interpolated: false, lineShading: false)
+				UpperGraph(label: "Left", dataSource: dataSource4, graphColor: NSColor.systemOrange, showZeroLine: false, interpolated: false, lineShading: true)
+				UpperGraph(label: "Middle", dataSource: dataSource4, graphColor: NSColor.systemYellow, showZeroLine: true, interpolated: true, lineShading: true)
+				UpperGraph(label: "Right", dataSource: dataSource4, graphColor: NSColor.systemPurple, showZeroLine: false, interpolated: false, lineShading: false)
 			})
 			HStack {
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource1,
 															graphColor: NSColor.blue,
-															showZero: true,
+															showZeroLine: true,
 															barSpacing: 1)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource2,
 															graphColor: NSColor.green,
-															showZero: true,
+															showZeroLine: true,
 															lineWidth: 2,
 															barSpacing: 2)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -140,14 +140,14 @@ struct ContentView: View {
 				if self.selectedType == 1 {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 																 graphColor: NSColor.textColor,
-																 showZero: true)
+																 showZeroLine: true)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 						.padding(2)
 				}
 				else if self.selectedType == 2 {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 																 graphColor: NSColor.textColor,
-																 showZero: true,
+																 showZeroLine: true,
 																 interpolated: true)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 						.padding(2)
@@ -155,7 +155,7 @@ struct ContentView: View {
 				else if self.selectedType == 3 {
 					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource5,
 																graphColor: NSColor.textColor,
-																showZero: true,
+																showZeroLine: true,
 																barSpacing: 1)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 						.padding(2)
@@ -221,13 +221,13 @@ struct SparklineView: View {
 			DSFSparklineLineGraphView.SwiftUI(
 				dataSource: leftDataSource,
 				graphColor: DSFColor.red,
-				showZero: false,
+				showZeroLine: false,
 				interpolated: true
 			)
 			DSFSparklineBarGraphView.SwiftUI(
 				dataSource: rightDataSource,
 				graphColor: DSFColor.blue,
-				showZero: true,
+				showZeroLine: true,
 				lineWidth: 2
 			)
 		}

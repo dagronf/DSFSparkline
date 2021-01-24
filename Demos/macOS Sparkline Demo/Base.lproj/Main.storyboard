@@ -766,7 +766,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="1.5"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                     <integer key="value" value="40"/>
@@ -807,7 +807,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="1.5"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
                                                     <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
@@ -843,7 +843,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
@@ -920,7 +920,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>
@@ -957,7 +957,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <integer key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                     <integer key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
@@ -1008,7 +1008,7 @@
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="NO"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                     <integer key="value" value="40"/>
                                                 </userDefinedRuntimeAttribute>
@@ -1055,7 +1055,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1078,7 +1078,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1101,7 +1101,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1124,7 +1124,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1147,7 +1147,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>

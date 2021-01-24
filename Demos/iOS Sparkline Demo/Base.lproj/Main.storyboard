@@ -30,7 +30,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                 <color key="value" systemColor="systemIndigoColor"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
@@ -48,7 +48,7 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>

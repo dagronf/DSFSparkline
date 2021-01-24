@@ -56,7 +56,7 @@ So, a very simple example…
 // Create the view
 let sparklineView = DSFSparklineLineGraphView(…)
 sparklineView.graphColor = UIColor.blue
-sparklineView.showZero = true
+sparklineView.showZeroLine = true
 
 // Create the datasource and assign to the view
 let sparklineDataSource = DSFSparklineDataSource(windowSize: 30, range: -1.0 ... 1.0)
@@ -104,7 +104,7 @@ Represents the viewable settings and display.  The current view types available 
 
 | Setting               | Type                | Description                                             |
 |-----------------------|---------------------|---------------------------------------------------------|
-| `showZero`            | `Bool`              | Draw a dotted line at the zero line point on the y-axis |
+| `showZeroLine`        | `Bool`              | Draw a dotted line at the zero line point on the y-axis |
 | `zeroLineColor`       | `NSColor`/`UIColor` | The color of the 'zero line' on the y-axis.             |
 | `zeroLineWidth`       | `CGFloat`           | The width of the 'zero line' on the y-axis              |
 | `zeroLineDashStyle`   | `[CGFloat]`         | The dash pattern to use when drawing the zero line      |
@@ -288,12 +288,12 @@ struct SparklineView: View {
          DSFSparklineLineGraphView.SwiftUI(
             dataSource: leftDataSource,
             graphColor: UIColor.red,
-            showZero: false,
+            showZeroLine: false,
             interpolated: true)
          DSFSparklineLineGraphView.SwiftUI(
             dataSource: rightDataSource,
             graphColor: UIColor.blue,
-            showZero: true,
+            showZeroLine: true,
             interpolated: true)
       }
    }
@@ -327,6 +327,7 @@ struct SparklineView: View {
 ### `3.1.0`
 
 * Add the ability to customize the zero-line display ([Tito Ciuro](https://github.com/tciuro))
+* Changed `showZero` to `showZeroLine` for consistency with the new zero-line display values
 
 ### `3.0.0`
 

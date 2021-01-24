@@ -33,7 +33,7 @@ public extension DSFSparklineBarGraphView {
 		let graphColor: DSFColor
 
 		/// Draw a dotted line at the zero point on the y-axis
-		let showZero: Bool
+		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
 		let zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition
 
@@ -46,13 +46,13 @@ public extension DSFSparklineBarGraphView {
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
 		///   - graphColor: The color to draw the graph
-		///   - showZero: Show or hide a 'zero line' horizontal line
+		///   - showZeroLine: Show or hide a 'zero line' horizontal line
 		///   - zeroLineDefinition: the settings for drawing the zero line
 		///   - lineWidth: The width of the line around each bar
 		///   - barSpacing: The spacing between the bars
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
-						showZero: Bool = false,
+						showZeroLine: Bool = false,
 						zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared,
 						lineWidth: UInt = 1,
 						barSpacing: UInt = 1)
@@ -60,7 +60,7 @@ public extension DSFSparklineBarGraphView {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 
-			self.showZero = showZero
+			self.showZeroLine = showZeroLine
 			self.zeroLineDefinition = zeroLineDefinition
 
 			self.lineWidth = lineWidth
@@ -98,7 +98,7 @@ extension DSFSparklineBarGraphView.SwiftUI: DSFViewRepresentable {
 		view.barSpacing = self.barSpacing
 		view.lineWidth = self.lineWidth
 
-		view.showZero = self.showZero
+		view.showZeroLine = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		return view

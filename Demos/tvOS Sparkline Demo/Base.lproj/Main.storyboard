@@ -34,7 +34,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                 <color key="value" systemColor="systemGreenColor"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                 <integer key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
@@ -57,7 +57,7 @@
                                                 <color key="value" systemColor="systemBlueColor"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                 <real key="value" value="1"/>

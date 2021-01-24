@@ -726,7 +726,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
                                                     <integer key="value" value="30"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="YES"/>
@@ -762,7 +762,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
                                                     <integer key="value" value="30"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZero" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                     <real key="value" value="1"/>
