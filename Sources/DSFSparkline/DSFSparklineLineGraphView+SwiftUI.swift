@@ -36,7 +36,7 @@ public extension DSFSparklineLineGraphView {
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
-		let zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition
+		let zeroLineDefinition: DSFSparklineZeroLineDefinition
 
 		/// The width for the line drawn on the graph
 		let lineWidth: CGFloat
@@ -51,20 +51,20 @@ public extension DSFSparklineLineGraphView {
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
 		///   - graphColor: The color of the dots that are set
-		///   - showZeroLine: Show or hide a 'zero line' horizontal line
-		///   - zeroLineDefinition: the settings for drawing the zero line
 		///   - lineWidth: The width of the line
 		///   - interpolated: If true, curves the line through the graph points.
 		///   - lineShading: If true, shades the underside of the drawn line.
 		///   - shadowed: If true, draws a shadow under the line part of the graph.
+		///   - showZeroLine: Show or hide a 'zero line' horizontal line
+		///   - zeroLineDefinition: the settings for drawing the zero line
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
-						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared,
 						lineWidth: CGFloat = 1.5,
 						interpolated: Bool = false,
 						lineShading: Bool = true,
-						shadowed: Bool = false)
+						shadowed: Bool = false,
+						showZeroLine: Bool = false,
+						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor

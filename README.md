@@ -85,6 +85,9 @@ The data source is assigned to the view model to provide data for drawing the sp
 
 An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical range will grow and shrink to accomodate the full range of data.
 
+### Zero line
+
+You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource)
 
 ## Views
 
@@ -201,8 +204,9 @@ let datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 
 // Change the data source to draw the zeroline at 0.3
 myDataSource.zeroLineValue = 0.3
-
 ```
+
+To style the zero-line, use the graph member variables defined in **Common elements for graphs that can display a zero line (Line/Bar)**
 
 ### Modifying or retrieving data
 
@@ -275,7 +279,7 @@ dataSource.reset()
 
 ## SwiftUI Support
 
-Each graph type provides its own SwiftUI view (appending `.SwiftUI` to the class name).
+Each graph type provides its own SwiftUI view (appending `.SwiftUI` to the class name). You can style the zero-line (if the graph supports it) using the `zeroLineDefinition` initialization parameter.
 
 ```swift
 struct SparklineView: View {
@@ -283,22 +287,29 @@ struct SparklineView: View {
    let leftDataSource: DSFSparklineDataSource
    let rightDataSource: DSFSparklineDataSource
    
+   let BigCyanZeroLine = DSFSparklineZeroLineDefinition(
+      color: .cyan,
+      lineWidth: 3,
+      lineDashStyle: [4,1,2,1]
+   )
+   
    var body: some View {
       HStack {
          DSFSparklineLineGraphView.SwiftUI(
             dataSource: leftDataSource,
-            graphColor: UIColor.red,
-            showZeroLine: false,
+            graphColor: DSFColor.red,
             interpolated: true)
-         DSFSparklineLineGraphView.SwiftUI(
+         DSFSparklineBarGraphView.SwiftUI(
             dataSource: rightDataSource,
-            graphColor: UIColor.blue,
+            graphColor: DSFColor.blue,
+            lineWidth: 2,
             showZeroLine: true,
-            interpolated: true)
+            zeroLineDefinition: BigCyanZeroLine)
       }
    }
 }
 ```
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png" width="300"></a>
 
 ## Screenshots
 
@@ -323,6 +334,12 @@ struct SparklineView: View {
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `3.2.0`
+
+* Changed the zero-line definition class to `DSFSparklineZeroLineDefinition` for clarity.
+* More documentation, especially around SwiftUI. Attempted to make the documentation clearer around drawing parameters.
+
 
 ### `3.1.0`
 

@@ -31,30 +31,6 @@ import UIKit
 @IBDesignable
 public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 
-	/// Drawing definition for the zero line
-	public struct Definition {
-		#if os(macOS)
-		public static let DefaultColor = DSFColor.disabledControlTextColor
-		#else
-		public static let DefaultColor = DSFColor.systemGray
-		#endif
-
-		public static let shared = Definition()
-
-		let color: DSFColor
-		let lineWidth: CGFloat
-		let lineDashStyle: [CGFloat]
-
-		public init(color: DSFColor = DefaultColor,
-						lineWidth: CGFloat = 1.0,
-						lineDashStyle: [CGFloat] = [1, 1])
-		{
-			self.color = color
-			self.lineWidth = lineWidth
-			self.lineDashStyle = lineDashStyle
-		}
-	}
-
 	/// Draw a dotted line at the zero point on the y-axis
 	@IBInspectable public var showZeroLine: Bool = false
 
@@ -109,7 +85,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 public extension DSFSparklineZeroLineGraphView {
 
 	/// Configure the zero line using the ZeroLineDefinition 
-	func setZeroLineDefinition(_ definition: DSFSparklineZeroLineGraphView.Definition) {
+	func setZeroLineDefinition(_ definition: DSFSparklineZeroLineDefinition) {
 		self.zeroLineWidth = definition.lineWidth
 		self.zeroLineColor = definition.color
 		self.zeroLineDashStyle = definition.lineDashStyle

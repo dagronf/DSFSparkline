@@ -29,33 +29,33 @@ public extension DSFSparklineBarGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
 		let dataSource: DSFSparklineDataSource
+
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
-
-		/// Draw a dotted line at the zero point on the y-axis
-		let showZeroLine: Bool
-		/// The drawing definition for the zero line point
-		let zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition
-
 		/// The line width (in pixels) to use when drawing the border of each bar
 		let lineWidth: UInt
 		/// The spacing (in pixels) between each bar
 		let barSpacing: UInt
 
+		/// Draw a dotted line at the zero point on the y-axis
+		let showZeroLine: Bool
+		/// The drawing definition for the zero line point
+		let zeroLineDefinition: DSFSparklineZeroLineDefinition
+
 		/// Create a bar graph sparkline
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
 		///   - graphColor: The color to draw the graph
-		///   - showZeroLine: Show or hide a 'zero line' horizontal line
-		///   - zeroLineDefinition: the settings for drawing the zero line
 		///   - lineWidth: The width of the line around each bar
 		///   - barSpacing: The spacing between the bars
+		///   - showZeroLine: Show or hide a 'zero line' horizontal line
+		///   - zeroLineDefinition: the settings for drawing the zero line
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
-						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared,
 						lineWidth: UInt = 1,
-						barSpacing: UInt = 1)
+						barSpacing: UInt = 1,
+						showZeroLine: Bool = false,
+						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor

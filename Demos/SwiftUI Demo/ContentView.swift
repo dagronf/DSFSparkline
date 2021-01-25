@@ -16,7 +16,7 @@ struct UpperGraph: View {
 	let graphColor: DSFColor
 
 	let showZeroLine: Bool
-	var zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition = .shared
+	var zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared
 
 	let interpolated: Bool
 	let lineShading: Bool
@@ -26,11 +26,11 @@ struct UpperGraph: View {
 	var body: some View {
 		DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource,
 													 graphColor: graphColor,
-													 showZeroLine: showZeroLine,
-													 zeroLineDefinition: self.zeroLineDefinition,
 													 interpolated: interpolated,
 													 lineShading: lineShading,
-													 shadowed: shadowed)
+													 shadowed: shadowed,
+													 showZeroLine: showZeroLine,
+													 zeroLineDefinition: self.zeroLineDefinition)
 			.background(
 				Rectangle()
 					.fill(Color(.displayP3, white: 1.0, opacity: 0.1))
@@ -65,7 +65,7 @@ struct UpperGraph_Previews: PreviewProvider {
 					  dataSource: PreviewUpperGraphDataSource,
 					  graphColor: DSFColor.systemOrange,
 					  showZeroLine: true,
-					  zeroLineDefinition: DSFSparklineZeroLineGraphView.Definition(),
+					  zeroLineDefinition: DSFSparklineZeroLineDefinition(),
 					  interpolated: true,
 					  lineShading: true,
 					  shadowed: true)
@@ -81,6 +81,11 @@ struct ContentView: View {
 	let dataSource4: DSFSparklineDataSource
 	let dataSource5: DSFSparklineDataSource
 
+	let BigCyanZeroLine = DSFSparklineZeroLineDefinition(
+		color: .cyan,
+		lineWidth: 3,
+		lineDashStyle: [4,1,2,1])
+
 	@State var selectedType = 1
 	
 	var body: some View {
@@ -93,14 +98,15 @@ struct ContentView: View {
 			HStack {
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource1,
 															graphColor: NSColor.blue,
-															showZeroLine: true,
-															barSpacing: 1)
+															barSpacing: 1,
+															showZeroLine: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource2,
 															graphColor: NSColor.green,
-															showZeroLine: true,
 															lineWidth: 2,
-															barSpacing: 2)
+															barSpacing: 2,
+															showZeroLine: true,
+															zeroLineDefinition: BigCyanZeroLine)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 			}
 			HStack {
@@ -147,16 +153,16 @@ struct ContentView: View {
 				else if self.selectedType == 2 {
 					DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource5,
 																 graphColor: NSColor.textColor,
-																 showZeroLine: true,
-																 interpolated: true)
+																 interpolated: true,
+																 showZeroLine: true)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 						.padding(2)
 				}
 				else if self.selectedType == 3 {
 					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource5,
 																graphColor: NSColor.textColor,
-																showZeroLine: true,
-																barSpacing: 1)
+																barSpacing: 1,
+																showZeroLine: true)
 						.frame(maxWidth: .infinity, maxHeight: .infinity)
 						.padding(2)
 				}
@@ -221,14 +227,14 @@ struct SparklineView: View {
 			DSFSparklineLineGraphView.SwiftUI(
 				dataSource: leftDataSource,
 				graphColor: DSFColor.red,
-				showZeroLine: false,
 				interpolated: true
 			)
 			DSFSparklineBarGraphView.SwiftUI(
 				dataSource: rightDataSource,
 				graphColor: DSFColor.blue,
+				lineWidth: 2,
 				showZeroLine: true,
-				lineWidth: 2
+				zeroLineDefinition: .init(color: .yellow, lineWidth: 4, lineDashStyle: [3, 3])
 			)
 		}
 		.padding()

@@ -56,6 +56,9 @@
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="2,2"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
+                                                <color key="value" systemColor="systemOrangeColor"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BBW-Jd-8WN" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
