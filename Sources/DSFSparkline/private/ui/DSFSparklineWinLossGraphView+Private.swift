@@ -52,14 +52,16 @@ public extension DSFSparklineWinLossGraphView {
 
 		let integralRect = self.bounds.integral
 
+		let windowSize: Int = Int(dataSource.windowSize)
+
 		// This represents the _full_ width of a bar within the graph, including the spacing.
-		let componentWidth: Int = Int(integralRect.width) / Int(dataSource.windowSize)
+		let componentWidth: Int = Int(integralRect.width) / windowSize
 
 		// The width of the BAR component
-		let barWidth = componentWidth - Int(barSpacing)
+		let barWidth: Int = componentWidth - Int(self.barSpacing)
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(self.bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+		let xOffset: Int = (Int(integralRect.width) - (componentWidth * windowSize)) / 2
 
 		// Map the +ve values to true, the -ve (and 0) to false
 		let winLoss: [Bool] = dataSource.data.map { $0 > 0 }
