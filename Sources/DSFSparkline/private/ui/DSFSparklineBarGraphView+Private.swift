@@ -54,49 +54,57 @@ public extension DSFSparklineBarGraphView {
 	}
 
 	private func drawBarGraph(primary: CGContext) {
-		let drawRect = self.bounds
-
-		let range: ClosedRange<CGFloat> = 2 ... max(2, drawRect.maxY - 2)
-
 		guard let dataSource = self.dataSource else {
 			return
 		}
 
+		let integralRect = self.bounds.integral
+
+		// This represents the _full_ width of a bar within the graph, including the spacing.
+		let componentWidth = Int(integralRect.width) / Int(dataSource.windowSize)
+
+		// The width of the BAR component
+		let barWidth = componentWidth - Int(barSpacing)
+
+		// The left offset in order to center X
+		let xOffset: Int = (Int(self.bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+
+		// The available height range
+		let range: ClosedRange<CGFloat> = 2 ... max(2, integralRect.maxY - 2)
+
 		let normy = dataSource.normalized
 		let xDiff = self.bounds.width / CGFloat(normy.count)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (drawRect.height - 1)).clamped(to: range))
+			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (integralRect.height - 1)).clamped(to: range))
 		}
 
 		primary.usingGState { outer in
 
 			outer.setRenderingIntent(.relativeColorimetric)
 			outer.interpolationQuality = .none
+			outer.setShouldAntialias(false)
 
 			if dataSource.counter < dataSource.windowSize {
-				let pos = CGFloat(dataSource.counter) * xDiff + 1
-				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				let pos = xOffset + (Int(dataSource.counter) * componentWidth)
+				let clipRect = self.bounds.divided(atDistance: CGFloat(pos), from: .maxXEdge).slice
 				outer.clip(to: clipRect)
 			}
 
 			let path = CGMutablePath()
 			for point in points.enumerated() {
-				let r = CGRect(x: CGFloat(point.offset) * xDiff,
-							   y: drawRect.height - point.element.y,
-							   width: xDiff - 1 - (CGFloat(self.barSpacing)),
-							   height: point.element.y - CGFloat(self.lineWidth))
+				let yVal = Int(point.element.y.rounded(.down))
+				let r = CGRect(x: xOffset + point.offset * componentWidth,
+									y: Int(integralRect.height) - yVal,
+									width: barWidth,
+									height: yVal - Int(self.lineWidth))
 				path.addRect(r.integral)
 			}
 			path.closeSubpath()
 
 			outer.addPath(path)
-
-			outer.setShouldAntialias(false)
-
 			outer.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
 			outer.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
 			outer.setStrokeColor(self.graphColor.cgColor)
-
 
 			outer.drawPath(using: .fillStroke)
 		}
