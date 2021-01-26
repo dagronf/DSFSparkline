@@ -47,6 +47,12 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 			self.colorDidChange()
 		}
 	}
+	/// The color to draw the 'tie' boxes
+	@IBInspectable public var tieColor: NSColor? = nil {
+		didSet {
+			self.colorDidChange()
+		}
+	}
 	#else
 	/// The color to draw the 'win' boxes
 	@IBInspectable public var winColor: UIColor = UIColor.systemGreen {
@@ -56,6 +62,12 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 	}
 	/// The color to draw the 'loss' boxes
 	@IBInspectable public var lossColor: UIColor = UIColor.systemRed {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	/// The color to draw the 'tie' boxes
+	@IBInspectable public var tieColor: UIColor? = nil {
 		didSet {
 			self.colorDidChange()
 		}

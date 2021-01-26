@@ -64,7 +64,11 @@ public extension DSFSparklineWinLossGraphView {
 		let xOffset: Int = (Int(integralRect.width) - (componentWidth * windowSize)) / 2
 
 		// Map the +ve values to true, the -ve (and 0) to false
-		let winLoss: [Bool] = dataSource.data.map { $0 > 0 }
+		let winLoss: [Int] = dataSource.data.map {
+			if $0 > 0 { return 1 }
+			if $0 < 0 { return -1 }
+			return 0
+		}
 
 		let graphLineWidth: CGFloat = 1 / self.retinaScale() * CGFloat(self.lineWidth)
 
@@ -85,16 +89,21 @@ public extension DSFSparklineWinLossGraphView {
 
 			let winPath = CGMutablePath()
 			let lossPath = CGMutablePath()
+			let tiePath = CGMutablePath()
 
 			for point in winLoss.enumerated() {
 				let x = xOffset + point.offset * componentWidth
-				if point.element == true {
+				if point.element == 1 {
 					let rect = CGRect(x: x, y: 1, width: barWidth, height: barHeight)
 					winPath.addRect(rect.integral)
 				}
-				else {
+				else if point.element == -1 {
 					let rect = CGRect(x: x, y: midPoint + 1, width: barWidth, height: barHeight)
 					lossPath.addRect(rect.integral)
+				}
+				else {
+					let rect = CGRect(x: x, y: Int(integralRect.height) / 2 - (barHeight / 4), width: barWidth, height: barHeight / 2)
+					tiePath.addRect(rect.integral)
 				}
 			}
 
@@ -117,6 +126,33 @@ public extension DSFSparklineWinLossGraphView {
 					lossState.drawPath(using: .fillStroke)
 				}
 			}
+
+			if let tieColor = self.tieColor, !tiePath.isEmpty {
+				outer.usingGState { tieState in
+					tieState.addPath(tiePath)
+					tieState.setLineWidth(graphLineWidth)
+
+					let tieAlpha = min(1, tieColor.cgColor.alpha + 0.1)
+					tieState.setFillColor(tieColor.cgColor)
+					tieState.setStrokeColor(tieColor.withAlphaComponent(tieAlpha).cgColor)
+					tieState.drawPath(using: .fillStroke)
+				}
+			}
 		}
+	}
+
+	override func prepareForInterfaceBuilder() {
+
+		let e = 0 ..< self.graphWindowSize
+		let data = e.map { arg in return Int.random(in: -1 ... 1) }
+
+		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
+		self.dataSource = ds
+		ds.set(values: data.map { CGFloat($0) })
+
+		#if TARGET_INTERFACE_BUILDER
+		/// Need this to hold on to the datasource, or else it disappears due to being weak
+		self.ibDataSource = ds
+		#endif
 	}
 }

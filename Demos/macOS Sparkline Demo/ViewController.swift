@@ -126,7 +126,7 @@ class ViewController: NSViewController {
 			_ = self.sparkNetworkErrorDatasource.push(value: CGFloat.random(in: -10.0 ... 30.0))
 			_ = self.sparkTransmissionErrorDatasource.push(value: CGFloat.random(in: 0 ... 1))
 
-			_ = self.sparkPacketRejectionDatasource.push(value: CGFloat.random(in: -1 ... 1))
+			_ = self.sparkPacketRejectionDatasource.push(value: CGFloat(Int.random(in: -1 ... 1)))
 
 			/////
 

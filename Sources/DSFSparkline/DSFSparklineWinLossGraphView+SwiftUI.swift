@@ -35,6 +35,9 @@ public extension DSFSparklineWinLossGraphView {
 		let winColor: DSFColor
 		/// The 'loss' color for the sparkline
 		let lossColor: DSFColor
+		/// The 'tie' color for the sparkline.  If nil, tie values are not drawn
+		let tieColor: DSFColor?
+
 		/// The line width (in pixels) to use when drawing the border of each bar
 		let lineWidth: UInt
 		/// The spacing (in pixels) between each bar
@@ -50,6 +53,7 @@ public extension DSFSparklineWinLossGraphView {
 		///   - dataSource: The data source for the graph
 		///   - winColor: The 'win' color for the sparkline
 		///   - lossColor: The 'loss' color for the sparkline
+		///   - tieColor: The 'tie' color for the sparkline
 		///   - lineWidth: The width of the line around each bar
 		///   - barSpacing: The spacing between the bars
 		///   - showZeroLine: Show or hide a 'zero line' horizontal line
@@ -57,6 +61,7 @@ public extension DSFSparklineWinLossGraphView {
 		public init(dataSource: DSFSparklineDataSource,
 						winColor: DSFColor = .systemGreen,
 						lossColor: DSFColor = .systemRed,
+						tieColor: DSFColor? = nil,
 						lineWidth: UInt = 1,
 						barSpacing: UInt = 1,
 						showZeroLine: Bool = false,
@@ -66,6 +71,7 @@ public extension DSFSparklineWinLossGraphView {
 
 			self.winColor = winColor
 			self.lossColor = lossColor
+			self.tieColor = tieColor
 
 			self.lineWidth = lineWidth
 			self.barSpacing = barSpacing
@@ -103,6 +109,7 @@ extension DSFSparklineWinLossGraphView.SwiftUI: DSFViewRepresentable {
 
 		view.winColor = self.winColor
 		view.lossColor = self.lossColor
+		view.tieColor = self.tieColor
 
 		view.barSpacing = self.barSpacing
 		view.lineWidth = self.lineWidth

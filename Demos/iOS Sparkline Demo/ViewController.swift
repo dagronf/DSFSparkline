@@ -36,6 +36,8 @@ class ViewController: UIViewController {
 	@IBOutlet weak var winLoss1: DSFSparklineWinLossGraphView!
 	var wl1 = DSFSparklineDataSource(range: -1 ... 1)
 
+	@IBOutlet weak var winLoss2: DSFSparklineWinLossGraphView!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -58,6 +60,7 @@ class ViewController: UIViewController {
 		s4.dataSource = ds4
 
 		winLoss1.dataSource = wl1
+		winLoss2.dataSource = wl1
 
 		self.addNewValue2()
 	}
@@ -87,7 +90,7 @@ class ViewController: UIViewController {
 			_ = self.ds3.push(value: CGFloat.random(in: -10.0 ... 10.0))
 			_ = self.ds4.push(value: CGFloat.random(in: -10.0 ... 10.0))
 
-			_ = self.wl1.push(value: CGFloat.random(in: -1 ... 1))
+			_ = self.wl1.push(value: CGFloat(Int.random(in: -1 ... 1)))
 
 			self.addNewValue2()
 		}

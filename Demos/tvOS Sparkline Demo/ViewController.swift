@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 		winLoss.dataSource = wlSource
 
 		let randWinLoss: [CGFloat] = (0 ..< 50).map { _ in
-			return CGFloat.random(in: -1 ... 1)
+			return CGFloat(Int.random(in: -1 ... 1))
 		}
 		wlSource.set(values: randWinLoss)
 
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
 			_ = self.purpleDataSource.push(value: CGFloat.random(in: self.purpleDataSource.range!))
 			_ = self.orangeDataSource.push(value: CGFloat.random(in: self.orangeDataSource.range!))
 
-			_ = self.wlSource.push(value: CGFloat.random(in: self.wlSource.range!))
+			_ = self.wlSource.push(value: CGFloat(Int.random(in: -1 ... 1)))
 
 			self.updateWithNewValues()
 		}

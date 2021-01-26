@@ -22,7 +22,7 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 
 ## Features
 
-* Simple bar, dot and line graph support.
+* Simple bar, dot, line and win/loss graph support.
 * `IBDesignable` support so you can see your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
@@ -59,7 +59,8 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 ### Dot
 
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
-
+### Win/Loss
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/win-loss.png" width="400">
 
 ## Overview
 
@@ -119,7 +120,7 @@ Represents the viewable settings and display.  The current view types available 
 
 | Setting               | Type                | Description                                             |
 |-----------------------|---------------------|---------------------------------------------------------|
-| `graphColor`          | `NSColor`/`UIColor` | The color to use when drawing the sparkline             |
+| `graphColor`          | `NSColor`<br>`UIColor` | The color to use when drawing the sparkline             |
 
 #### Common elements for graphs that can display a zero line (Line/Bar)
 
@@ -137,8 +138,9 @@ Represents the viewable settings and display.  The current view types available 
 | `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line?          |
 | `lowerGraphColor`     | `NSColor`<br/>`UIColor` | The color used to draw values below the zero line. If nil, is the same as the graph color |
 
-
 ### Line graph customizations (`DSFSparklineLineGraphView`)
+
+A simple line graph
 
 | Setting         | Type      | Description                            |
 |-----------------|-----------|----------------------------------------|
@@ -149,6 +151,8 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
 
+A simple bar graph
+
 | Setting         | Type      | Description                  |
 |-----------------|-----------|------------------------------|
 | `lineWidth`     | `CGFloat` | The width of the line        |
@@ -156,10 +160,25 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Dot graph customizations (`DSFSparklineDotGraphView`)
 
+A dot graph reminiscent of Activity Viewer
+
 | Setting           | Type                | Description                                        |
 |-------------------|---------------------|----------------------------------------------------|
 | `upsideDown`      | `Bool`              | If true, draws from the top of the graph downwards |
-| `unsetGraphColor` | `NSColor`/`UIColor` | The color to use when drawing the background       |
+| `unsetGraphColor` | `NSColor`<br>`UIColor` | The color to use when drawing the background       |
+
+### Win/Loss graph customizations (`DSFSparklineWinLossGraphView`)
+
+A win-loss graph, where positive values in the datasource are represented as a 'win', negative values represented as a 'loss', and zero values are a 'tie'.
+
+| Setting        | Type                | Description                                  |
+|----------------|---------------------|----------------------------------------------|
+| `lineWidth`    | `CGFloat`           | The line width for the stroke                |
+| `barSpacing`   | `CGFloat`           | The spacing between each bar                 |
+| `winColor`     | `NSColor`<br>`UIColor` | The color to use for a 'win'           |
+| `lossColor`    | `NSColor`<br>`UIColor` | The color to use for a 'loss'          |
+| `tieColor`     | `NSColor`<br>`UIColor`  | *(optional)* The color to use for a 'tie'. If nil, tie (0) values are not drawn<br>By default, 'tie' values are not drawn. |
+
 
 The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
