@@ -50,6 +50,7 @@
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
+		2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */; };
 		23882CE1257D675700AC103A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE0257D675700AC103A /* AppDelegate.swift */; };
 		23882CE3257D675700AC103A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE2257D675700AC103A /* ContentView.swift */; };
 		23882CE5257D675800AC103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE4257D675800AC103A /* Assets.xcassets */; };
@@ -138,6 +139,7 @@
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLossGraphContentView.swift; sourceTree = "<group>"; };
 		23882CDE257D675700AC103A /* SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23882CE0257D675700AC103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23882CE2257D675700AC103A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				23882CEC257D675800AC103A /* Info.plist */,
 				23882CED257D675800AC103A /* SwiftUI_Demo.entitlements */,
 				23882CE6257D675800AC103A /* Preview Content */,
+				2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */,
 			);
 			path = "SwiftUI Demo";
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23882CE3257D675700AC103A /* ContentView.swift in Sources */,
+				2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */,
 				23882CE1257D675700AC103A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
