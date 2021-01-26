@@ -221,6 +221,44 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="7N7-yg-gbp" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="460" width="374" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="RR3-w6-hIY"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                <color key="value" systemColor="tertiarySystemFillColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
+                                                <color key="value" systemColor="separatorColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="zeroLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -242,6 +280,7 @@
                         <outlet property="spark2" destination="EqD-MM-1EB" id="B9W-V4-3gh"/>
                         <outlet property="spark3" destination="BBW-Jd-8WN" id="QS2-ZH-LJV"/>
                         <outlet property="spark4" destination="SXc-Lq-HWV" id="TwB-jw-Sfb"/>
+                        <outlet property="winLoss1" destination="7N7-yg-gbp" id="mYs-yM-uGA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -250,6 +289,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
