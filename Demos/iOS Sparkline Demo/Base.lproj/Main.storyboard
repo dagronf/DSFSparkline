@@ -136,6 +136,8 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ubo-jJ-kxT" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
@@ -154,6 +156,8 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-L1-rCj" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
@@ -172,6 +176,8 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="kP5-lN-Uhl" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
@@ -190,6 +196,8 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>

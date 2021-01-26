@@ -967,7 +967,7 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
-                                                    <integer key="value" value="1"/>
+                                                    <integer key="value" value="0"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                     <integer key="value" value="20"/>
