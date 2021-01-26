@@ -72,6 +72,11 @@ public extension DSFSparklineDataSource {
 		}
 	}
 
+	/// The number of unfilled buckets in the sparkline
+	@objc var emptyValueCount: UInt {
+		return self.sparkline.emptyValueCount
+	}
+
 	/// The 'zero' line for drawing the horizontal line. Should be in the range lowerBound ..< upperBound
 	@objc var zeroLineValue: CGFloat {
 		get {

@@ -382,6 +382,10 @@ struct SparklineView: View {
 
 ## Changes
 
+### Latest
+
+* Added win/loss/tie sparkline type
+
 ### `3.4.0`
 
 * Added support for centering line and bar graphs around their zero-line value.

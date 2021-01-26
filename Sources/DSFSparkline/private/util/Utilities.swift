@@ -90,3 +90,12 @@ extension DSFView {
 	}
 	#endif
 }
+
+extension CGPoint {
+	@inlinable func offsettingX(by value: CGFloat) -> CGPoint {
+		return CGPoint(x: self.x + value, y: self.y)
+	}
+	@inlinable func offsettingY(by value: CGFloat) -> CGPoint {
+		return CGPoint(x: self.x, y: self.y + value)
+	}
+}

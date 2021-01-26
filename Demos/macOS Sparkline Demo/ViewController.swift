@@ -45,6 +45,10 @@ class ViewController: NSViewController {
 	@IBOutlet weak var sparkPacketRejection: DSFSparklineWinLossGraphView!
 	var sparkPacketRejectionDatasource = DSFSparklineDataSource(windowSize: 10, range: -1 ... 1)
 
+	@IBOutlet weak var stackLineView: DSFSparklineStackLineGraphView!
+	var stackLineViewDatasource = DSFSparklineDataSource(range: 0 ... 10)
+
+
 
 	@IBOutlet weak var fakeSparkCpu1: DSFSparklineView!
 	var fakeSparkCpu1Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
@@ -91,6 +95,7 @@ class ViewController: NSViewController {
 		sparkPacketRejectionDatasource.windowSize = 20
 		sparkPacketRejection.dataSource = sparkPacketRejectionDatasource
 
+		stackLineView.dataSource = stackLineViewDatasource
 
 		fakeSparkCpu1.dataSource = fakeSparkCpu1Datasource
 		fakeSparkCpu2.dataSource = fakeSparkCpu2Datasource
@@ -127,6 +132,9 @@ class ViewController: NSViewController {
 			_ = self.sparkTransmissionErrorDatasource.push(value: CGFloat.random(in: 0 ... 1))
 
 			_ = self.sparkPacketRejectionDatasource.push(value: CGFloat(Int.random(in: -1 ... 1)))
+
+			_ = self.stackLineViewDatasource.push(value: CGFloat(Int.random(in: 0 ... 10)))
+
 
 			/////
 

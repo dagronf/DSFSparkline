@@ -66,6 +66,14 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 		}
 	}
 
+	/// The number if of 'empty' buckets in the current window
+	var emptyValueCount: UInt {
+		if self.counter > self.windowSize {
+			return 0
+		}
+		return self.windowSize - self.counter
+	}
+
 	/// The 'zero' line for drawing the horizontal line.
 	var zeroLineValue: T = 0.0
 
@@ -99,12 +107,12 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 			plotValue = value
 		}
 
-		self.counter += 1
-
 		var temp = self.data.yData
 		temp.removeFirst()
 		temp.append(plotValue)
 		self.data.yData = temp
+
+		self.counter += 1
 
 		return true
 	}
