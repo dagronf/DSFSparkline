@@ -35,22 +35,26 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 	@IBInspectable public var barSpacing: UInt = 1
 
 	#if os(macOS)
+	/// The color to draw the 'win' boxes
 	@IBInspectable public var winColor: NSColor = NSColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
+	/// The color to draw the 'loss' boxes
 	@IBInspectable public var lossColor: NSColor = NSColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
+	/// The color to draw the 'win' boxes
 	@IBInspectable public var winColor: UIColor = UIColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
+	/// The color to draw the 'loss' boxes
 	@IBInspectable public var lossColor: UIColor = UIColor.systemRed {
 		didSet {
 			self.colorDidChange()

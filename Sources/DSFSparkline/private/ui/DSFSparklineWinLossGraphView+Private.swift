@@ -63,8 +63,6 @@ public extension DSFSparklineWinLossGraphView {
 
 		// Map the +ve values to true, the -ve (and 0) to false
 		let winLoss: [Bool] = dataSource.data.map { $0 > 0 }
-		let hasWin = (winLoss.firstIndex(of: true) != nil)
-		let hasLoss = (winLoss.firstIndex(of: false) != nil)
 
 		let graphLineWidth: CGFloat = 1 / self.retinaScale() * CGFloat(self.lineWidth)
 
@@ -83,17 +81,23 @@ public extension DSFSparklineWinLossGraphView {
 				outer.clip(to: clipRect.integral)
 			}
 
-			if hasWin {
-				outer.usingGState { winState in
-					let winPath = CGMutablePath()
-					for point in winLoss.enumerated() {
-						guard point.element == true else { continue }
+			let winPath = CGMutablePath()
+			let lossPath = CGMutablePath()
 
-						let x = xOffset + point.offset * componentWidth
-						let rect = CGRect(x: x, y: 1, width: barWidth, height: barHeight)
-						winPath.addRect(rect.integral)
-					}
-					winPath.closeSubpath()
+			for point in winLoss.enumerated() {
+				let x = xOffset + point.offset * componentWidth
+				if point.element == true {
+					let rect = CGRect(x: x, y: 1, width: barWidth, height: barHeight)
+					winPath.addRect(rect.integral)
+				}
+				else {
+					let rect = CGRect(x: x, y: midPoint + 1, width: barWidth, height: barHeight)
+					lossPath.addRect(rect.integral)
+				}
+			}
+
+			if !winPath.isEmpty {
+				outer.usingGState { winState in
 					winState.addPath(winPath)
 					winState.setFillColor(self.winColor.withAlphaComponent(0.3).cgColor)
 					winState.setStrokeColor(self.winColor.cgColor)
@@ -102,17 +106,8 @@ public extension DSFSparklineWinLossGraphView {
 				}
 			}
 
-			if hasLoss {
+			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
-					let lossPath = CGMutablePath()
-					for point in winLoss.enumerated() {
-						guard point.element == false else { continue }
-
-						let x = xOffset + point.offset * componentWidth
-						let rect = CGRect(x: x, y: midPoint + 1, width: barWidth, height: barHeight)
-						lossPath.addRect(rect.integral)
-					}
-					lossPath.closeSubpath()
 					lossState.addPath(lossPath)
 					lossState.setFillColor(self.lossColor.withAlphaComponent(0.3).cgColor)
 					lossState.setStrokeColor(self.lossColor.cgColor)
