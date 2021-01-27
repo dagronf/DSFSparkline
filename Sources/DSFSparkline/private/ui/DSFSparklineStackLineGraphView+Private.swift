@@ -52,6 +52,7 @@ extension DSFSparklineStackLineGraphView {
 		}
 
 		let integralRect = self.bounds.integral
+		let integralHeight: CGFloat = integralRect.height
 
 		// This represents the _full_ width of a bar within the graph, including the spacing.
 		let componentWidth = Int(integralRect.width) / Int(dataSource.windowSize)
@@ -60,13 +61,15 @@ extension DSFSparklineStackLineGraphView {
 		let xOffset: Int = (Int(self.bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
 
 		// The available height range
-		let range: ClosedRange<CGFloat> = 2 ... max(2, integralRect.maxY - 2)
+		let range: ClosedRange<CGFloat> = 1 ... max(1, integralRect.maxY)
 
-		let normy = dataSource.normalized
-		//let xDiff = self.bounds.width / CGFloat(normy.count)
-		let points = normy.enumerated().map {
-			CGPoint(x: xOffset + $0.offset * componentWidth,
-					  y: Int(($0.element * (integralRect.height - 1)).clamped(to: range)))
+		// The normalized (0 -> 1) data points
+		let normalized = dataSource.normalized
+
+		let points: [CGPoint] = normalized.enumerated().map {
+			let xVal = xOffset + ($0.offset * componentWidth)
+			let yVal = (integralHeight - ($0.element * integralHeight)).clamped(to: range)
+			return CGPoint(x: xVal, y: Int(yVal))
 		}
 
 		let ordered = points.enumerated()
@@ -111,15 +114,15 @@ extension DSFSparklineStackLineGraphView {
 					let fillPath = linePath.mutableCopy()!
 					let bounds = fillPath.boundingBox
 
-					fillPath.addLine(to: CGPoint(x: bounds.maxX, y: integralRect.maxY + 2))
-					fillPath.addLine(to: CGPoint(x: bounds.minX, y: integralRect.maxY + 2))
+					fillPath.addLine(to: CGPoint(x: bounds.maxX, y: integralRect.maxY))
+					fillPath.addLine(to: CGPoint(x: bounds.minX, y: integralRect.maxY))
 					fillPath.closeSubpath()
 
 					ctx.addPath(fillPath)
 					ctx.clip()
 					ctx.drawLinearGradient(
-						gradient, start: CGPoint(x: bounds.minX, y: self.bounds.maxY),
-						end: CGPoint(x: bounds.minX, y: self.bounds.minY),
+						gradient, start: CGPoint(x: bounds.minX, y: integralRect.maxY),
+						end: CGPoint(x: bounds.minX, y: integralRect.minY),
 						options: [.drawsAfterEndLocation, .drawsBeforeStartLocation])
 				}
 			}
