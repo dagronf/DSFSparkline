@@ -45,6 +45,11 @@ public extension DSFSparklineStackLineGraphView {
 		/// Draw a shadow under the line
 		let shadowed: Bool
 
+		/// Highlight the y-range defined in the datasource
+		let showHighlightRange: Bool
+		/// The style of the y-range highlight
+		let highlightDefinition: DSFSparklineHighlightRangeDefinition?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -54,13 +59,17 @@ public extension DSFSparklineStackLineGraphView {
 		///   - shadowed: If true, draws a shadow under the line part of the graph.
 		///   - showZeroLine: Show or hide a 'zero line' horizontal line
 		///   - zeroLineDefinition: the settings for drawing the zero line
+		///   - showHighlightRange: Highlight the y-range defined in the datasource
+		///   - highlightDefinition: The style of the y-range highlight
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
 						lineWidth: CGFloat = 1.5,
 						lineShading: Bool = true,
 						shadowed: Bool = false,
 						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared)
+						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
+						showHighlightRange: Bool = false,
+						highlightDefinition: DSFSparklineHighlightRangeDefinition? = nil)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -71,6 +80,9 @@ public extension DSFSparklineStackLineGraphView {
 			self.lineWidth = lineWidth
 			self.lineShading = lineShading
 			self.shadowed = shadowed
+
+			self.showHighlightRange = showHighlightRange
+			self.highlightDefinition = highlightDefinition
 		}
 	}
 }
@@ -107,6 +119,11 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.showZeroLine = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
+		view.showHighlightRange = self.showHighlightRange
+		if self.showHighlightRange, let hr = self.highlightDefinition {
+			view.highlightColor = hr.highlightColor
+		}
+		
 		return view
 	}
 }
@@ -134,3 +151,9 @@ public extension DSFSparklineStackLineGraphView.SwiftUI {
 }
 
 #endif
+
+//struct DSFSparklineStackLineGraphViewSwiftUI_Previews: PreviewProvider {
+//	static var previews: some View {
+//		/*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+//	}
+//}

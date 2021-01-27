@@ -61,3 +61,17 @@ public struct DSFSparklineZeroLineDefinition {
 		self.lineDashStyle = lineDashStyle
 	}
 }
+
+public struct DSFSparklineHighlightRangeDefinition {
+	#if os(macOS)
+	public static let DefaultColor = DSFColor.quaternaryLabelColor
+	#else
+	public static let DefaultColor = DSFColor.systemGray
+	#endif
+
+	public let highlightColor: DSFColor
+
+	public init(highlightColor: DSFColor = DefaultColor) {
+		self.highlightColor = highlightColor
+	}
+}

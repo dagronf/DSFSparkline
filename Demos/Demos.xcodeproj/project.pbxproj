@@ -49,6 +49,7 @@
 		23102BFB23B02B33001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFA23B02B33001A621D /* Assets.xcassets */; };
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
+		231D4AAE25C10F2E0004F053 /* UnrangedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
 		2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */; };
 		2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352E6F825BFCE8000321175 /* OverlayView.swift */; };
@@ -140,6 +141,7 @@
 		23102BFD23B02B33001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
+		231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnrangedContentView.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLossGraphContentView.swift; sourceTree = "<group>"; };
 		2352E6F825BFCE8000321175 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */,
 				2352E6F825BFCE8000321175 /* OverlayView.swift */,
 				238EF46325C0D88D00FCC829 /* StackLineGraphContentView.swift */,
+				231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */,
 			);
 			path = "SwiftUI Demo";
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 			files = (
 				23882CE3257D675700AC103A /* ContentView.swift in Sources */,
 				2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */,
+				231D4AAE25C10F2E0004F053 /* UnrangedContentView.swift in Sources */,
 				238EF46425C0D88D00FCC829 /* StackLineGraphContentView.swift in Sources */,
 				2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */,
 				23882CE1257D675700AC103A /* AppDelegate.swift in Sources */,

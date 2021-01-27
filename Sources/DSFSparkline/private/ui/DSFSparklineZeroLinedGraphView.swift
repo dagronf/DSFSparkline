@@ -21,6 +21,8 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+import SwiftUI
+
 #if os(macOS)
 import Cocoa
 #else
@@ -107,6 +109,57 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	internal var lowerColor: DSFColor {
 		return self.lowerGraphColor ?? self.graphColor
 	}
+
+	/// Draw a dotted line at the zero point on the y-axis
+	@IBInspectable public var showHighlightRange: Bool = false {
+		didSet {
+			self.updateDisplay()
+		}
+	}
+
+	/// The color of the dotted line at the zero point on the y-axis
+	#if os(macOS)
+	@IBInspectable public var highlightColor = NSColor.gray {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	#else
+	@IBInspectable public var highlightColor: UIColor = .systemGray {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	#endif
+
+	/// A string of the format "0.1,0.7"
+	@IBInspectable public var highlightRangeString: String? = nil {
+		didSet {
+			if let rangeStr = highlightRangeString {
+				let components = rangeStr.split(separator: ",")
+				let floats: [CGFloat] = components
+					.map { String($0) } // Convert to string array
+					.compactMap { Float($0) } // Convert to float array if possible
+					.compactMap { CGFloat($0) } // Convert to CGFloat array
+				if floats.count == 2, floats[0] < floats[1] {
+					self.dataSource?.highlightRange = floats[0] ..< floats[1]
+				}
+				else {
+					self.dataSource?.highlightRange = nil
+					Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
+				}
+			}
+			else {
+				self.dataSource?.highlightRange = nil
+			}
+		}
+	}
+
+	public var highlightRange: Range<CGFloat>? {
+		get {
+			self.dataSource?.highlightRange
+		}
+	}
 }
 
 public extension DSFSparklineZeroLineGraphView {
@@ -126,46 +179,51 @@ public extension DSFSparklineZeroLineGraphView {
 	#if os(macOS)
 	override func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
-
-		guard let dataSource = self.dataSource else { return }
-
-		// Show the zero point if wanted
-		if self.showZeroLine {
-			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
-			let zeroPos = self.bounds.height - (frac * self.bounds.height)
-
-			if let primary = NSGraphicsContext.current?.cgContext {
-				primary.usingGState { ctx in
-					let color = self.zeroLineColor
-					ctx.setLineWidth(self.zeroLineWidth / self.retinaScale())
-					ctx.setStrokeColor(color.cgColor)
-					ctx.setLineDash(phase: 0.0, lengths: self.zeroLineDashStyle)
-					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
-				}
-			}
+		if let ctx = NSGraphicsContext.current?.cgContext {
+			self.drawAdditional(primary: ctx)
 		}
 	}
 	#else
 	override func draw(_ rect: CGRect) {
 		super.draw(rect)
+		if let ctx = UIGraphicsGetCurrentContext() {
+			self.drawAdditional(primary: ctx)
+		}
+	}
+	#endif
+
+	func drawAdditional(primary: CGContext) {
 
 		guard let dataSource = self.dataSource else { return }
+
+		if self.showHighlightRange,
+			let range = self.highlightRange {
+
+			let integ = self.bounds.integral
+
+			let lb = 1.0 - dataSource.normalize(value: range.lowerBound)
+			let ub = 1.0 - dataSource.normalize(value: range.upperBound)
+
+			primary.usingGState { ctx in
+				ctx.setFillColor(self.highlightColor.cgColor)
+				let r = CGRect(x: 0, y: ub * integ.height, width: integ.width, height: (lb - ub) * integ.height)
+				ctx.addRect(r)
+				ctx.fillPath()
+			}
+		}
 
 		// Show the zero point if wanted
 		if self.showZeroLine {
 			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
 			let zeroPos = self.bounds.height - (frac * self.bounds.height)
 
-			if let primary = UIGraphicsGetCurrentContext() {
-				primary.usingGState { ctx in
-					let color = self.zeroLineColor
-					ctx.setLineWidth(self.zeroLineWidth / self.retinaScale())
-					ctx.setStrokeColor(color.cgColor)
-					ctx.setLineDash(phase: 0, lengths: self.zeroLineDashStyle)
-					ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
-				}
+			primary.usingGState { ctx in
+				let color = self.zeroLineColor
+				ctx.setLineWidth(self.zeroLineWidth / self.retinaScale())
+				ctx.setStrokeColor(color.cgColor)
+				ctx.setLineDash(phase: 0.0, lengths: self.zeroLineDashStyle)
+				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
 			}
 		}
 	}
-	#endif
 }

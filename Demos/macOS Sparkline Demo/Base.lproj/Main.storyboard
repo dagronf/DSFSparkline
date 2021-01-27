@@ -1086,6 +1086,10 @@
                                                     <real key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showHighlightRange" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
+                                                    <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="0.083262864437849166" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>

@@ -36,7 +36,9 @@ import CoreGraphics
 		super.init()
 	}
 
-	public init(windowSize: UInt? = nil, range: ClosedRange<CGFloat>? = nil, zeroLineValue: CGFloat? = nil) {
+	public init(windowSize: UInt? = nil,
+					range: ClosedRange<CGFloat>? = nil,
+					zeroLineValue: CGFloat? = nil) {
 		self.sparkline.yRange = range
 		if let zValue = zeroLineValue {
 			self.sparkline.zeroLineValue = zValue
@@ -88,6 +90,30 @@ public extension DSFSparklineDataSource {
 		}
 	}
 
+	/// The highlight range for the graph
+	var highlightRange: Range<CGFloat>? {
+		get {
+			self.sparkline.highlightRange
+		}
+		set {
+			self.sparkline.highlightRange = newValue
+			self.notifyDataChange()
+		}
+	}
+
+	@objc func setHighlightRange(_ lower: CGFloat, _ upper: CGFloat) {
+		assert(lower < upper)
+		self.highlightRange = lower ..< upper
+	}
+
+	@objc func resetHighlightRange() {
+		self.highlightRange = nil
+	}
+}
+
+
+public extension DSFSparklineDataSource {
+	
 	/// Add a new value. If there are more values than the window size, the oldest value is discarded
 	@objc func push(value: CGFloat) -> Bool {
 		defer {

@@ -15,8 +15,9 @@ var UpDataSource1: DSFSparklineDataSource = {
 }()
 
 var UpDataSource2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 8, range: -100 ... 100)
-	d.push(values: [100, -100, 0, -50, 50, 0, 10, -10])
+	let d = DSFSparklineDataSource(windowSize: 8, range: 0 ... 100)
+	d.push(values: [100, 0, 25, 50, 75, 10, 10, 88])
+	d.highlightRange = 0 ..< 50
 	return d
 }()
 
@@ -32,6 +33,8 @@ var UpDataSource3: DSFSparklineDataSource = {
 
 var UpDataSource4: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 21, range: 0 ... 1)
+	d.highlightRange = 0 ..< 0.5
+	d.zeroLineValue = 0.5
 	d.push(values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0])
 	return d
 }()
@@ -51,7 +54,12 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				dataSource: UpDataSource2,
 				graphColor: DSFColor.green,
 				lineWidth: 1,
-				showZeroLine: true
+				showZeroLine: true,
+				showHighlightRange: true,
+				highlightDefinition:
+					DSFSparklineHighlightRangeDefinition(
+						highlightColor: DSFColor.cyan.withAlphaComponent(0.2)
+					)
 			)
 			.frame(width: 250.0, height: 59.0)
 
@@ -68,7 +76,13 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				dataSource: UpDataSource4,
 				graphColor: DSFColor.red,
 				lineWidth: 0.5,
-				shadowed: false
+				shadowed: false,
+				showZeroLine: true,
+				showHighlightRange: true,
+				highlightDefinition:
+					DSFSparklineHighlightRangeDefinition(
+						highlightColor: DSFColor.systemPink.withAlphaComponent(0.1)
+					)
 			)
 			.frame(width: 330.0, height: 59.0)
 		}

@@ -77,6 +77,9 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 	/// The 'zero' line for drawing the horizontal line.
 	var zeroLineValue: T = 0.0
 
+	/// The highlight range for the graph
+	var highlightRange: Range<T>?
+
 	/// Create a sparkline data window with an optional data range
 	/// - Parameters:
 	///   - windowSize: The number of data points to be kept in the spark line

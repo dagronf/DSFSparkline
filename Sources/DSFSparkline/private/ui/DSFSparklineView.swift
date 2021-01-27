@@ -150,6 +150,7 @@ extension DSFSparklineView {
 
 		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
 		self.dataSource = ds
+		ds.highlightRange = -3 ..< 3
 		ds.set(values: data)
 
 		#if TARGET_INTERFACE_BUILDER

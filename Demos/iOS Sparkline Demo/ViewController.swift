@@ -50,6 +50,7 @@ class ViewController: UIViewController {
 
 		spark2.dataSource = spark2ds
 		spark2ds.zeroLineValue = -7
+		spark2ds.highlightRange = -3 ..< 3
 
 		spark3.dataSource = spark3ds
 
