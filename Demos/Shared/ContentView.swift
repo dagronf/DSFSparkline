@@ -103,6 +103,11 @@ struct ContentView: View {
 																  lineDashStyle: [1, 1])
 							)
 							.frame(width: 120)
+							DSFSparklineTabletGraphView.SwiftUI(
+								dataSource: userItems2[number].dataSource,
+								barSpacing: 2
+							)
+							.frame(width: 200, height: 12)
 						}
 						.padding(4)
 						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)

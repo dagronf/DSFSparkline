@@ -38,6 +38,8 @@ class ViewController: UIViewController {
 
 	@IBOutlet weak var winLoss2: DSFSparklineWinLossGraphView!
 
+	@IBOutlet weak var tabletView1: DSFSparklineTabletGraphView!
+	@IBOutlet weak var tabletView2: DSFSparklineTabletGraphView!
 
 	@IBOutlet weak var stacklineGraphView: DSFSparklineStackLineGraphView!
 	var sl1 = DSFSparklineDataSource(range: 0 ... 10)
@@ -66,6 +68,9 @@ class ViewController: UIViewController {
 
 		winLoss1.dataSource = wl1
 		winLoss2.dataSource = wl1
+
+		tabletView1.dataSource = wl1
+		tabletView2.dataSource = wl1
 
 		stacklineGraphView.dataSource = sl1
 

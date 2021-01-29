@@ -1,5 +1,5 @@
 //
-//  DSFSparklineWinLossGraphView+Private.swift
+//  DSFSparklineTabletGraphView+Private.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 16/1/20.
@@ -27,83 +27,72 @@ import Cocoa
 import UIKit
 #endif
 
-public extension DSFSparklineWinLossGraphView {
+public extension DSFSparklineTabletGraphView {
 	
 	#if os(macOS)
 	override func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
 		if let ctx = NSGraphicsContext.current?.cgContext {
-			self.drawWinLossGraph(primary: ctx)
+			self.drawTabletGraph(primary: ctx)
 		}
 	}
 	#else
 	override func draw(_ rect: CGRect) {
 		super.draw(rect)
 		if let ctx = UIGraphicsGetCurrentContext() {
-			self.drawWinLossGraph(primary: ctx)
+			self.drawTabletGraph(primary: ctx)
 		}
 	}
 	#endif
 
-	private func drawWinLossGraph(primary: CGContext) {
+	private func drawTabletGraph(primary: CGContext) {
 		guard let dataSource = self.dataSource else {
 			return
 		}
 
-		let integralRect = self.bounds.integral
+		let integralRect = self.bounds.insetBy(dx: 0, dy: 1)
+		let windowSize = CGFloat(dataSource.windowSize)
 
-		let windowSize: Int = Int(dataSource.windowSize)
+		// The amount of space left in the rect once we've removed the bar spacing for all elements
+		let w = integralRect.width - (windowSize * (self.barSpacing + self.lineWidth))
 
-		// This represents the _full_ width of a bar within the graph, including the spacing.
-		let componentWidth: Int = Int(integralRect.width) / windowSize
+		// The size of a circle
+		let circleSize = min(w / CGFloat(windowSize), integralRect.height)
 
-		// The width of the BAR component
-		let barWidth: Int = componentWidth - Int(self.barSpacing)
+		// This represents the _full_ width of a circle, including the spacing.
+		let componentWidth = circleSize + self.barSpacing + self.lineWidth
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(integralRect.width) - (componentWidth * windowSize)) / 2
+		let xOffset: CGFloat = (integralRect.width - (componentWidth * windowSize)) / 2
 
 		// Map the +ve values to true, the -ve (and 0) to false
 		let winLoss: [Int] = dataSource.data.map {
 			if $0 > 0 { return 1 }
-			if $0 < 0 { return -1 }
-			return 0
+			return -1
 		}
 
-		let graphLineWidth: CGFloat = 1 / self.retinaScale() * CGFloat(self.lineWidth)
-
-		let midPoint = Int(bounds.midY.rounded())
-		let barHeight = Int(integralRect.midY) - Int(self.lineWidth)
+		let midPoint = bounds.midY
 
 		primary.usingGState { outer in
 
-			outer.setShouldAntialias(false)
-			outer.setRenderingIntent(.relativeColorimetric)
-			outer.interpolationQuality = .none
-
 			if dataSource.counter < dataSource.windowSize {
-				let pos = Int(dataSource.counter) * componentWidth
-				let clipRect = integralRect.divided(atDistance: CGFloat(pos + xOffset), from: .maxXEdge).slice
+				let pos = CGFloat(dataSource.counter) * componentWidth
+				let clipRect = integralRect.divided(atDistance: CGFloat(pos + xOffset + CGFloat(self.barSpacing / 2)), from: .maxXEdge).slice
 				outer.clip(to: clipRect.integral)
 			}
 
 			let winPath = CGMutablePath()
 			let lossPath = CGMutablePath()
-			let tiePath = CGMutablePath()
 
 			for point in winLoss.enumerated() {
-				let x = xOffset + point.offset * componentWidth
+				let x = xOffset + CGFloat(point.offset) * componentWidth
 				if point.element == 1 {
-					let rect = CGRect(x: x, y: 1, width: barWidth, height: barHeight)
-					winPath.addRect(rect.integral)
+					let rect = CGRect(x: x, y: midPoint - (circleSize / 2), width: circleSize, height: circleSize)
+					winPath.addEllipse(in: rect.integral)
 				}
 				else if point.element == -1 {
-					let rect = CGRect(x: x, y: midPoint + 1, width: barWidth, height: barHeight)
-					lossPath.addRect(rect.integral)
-				}
-				else {
-					let rect = CGRect(x: x, y: Int(integralRect.height) / 2 - (barHeight / 4), width: barWidth, height: barHeight / 2)
-					tiePath.addRect(rect.integral)
+					let rect = CGRect(x: x, y: midPoint - (circleSize / 2), width: circleSize, height: circleSize)
+					lossPath.addEllipse(in: rect.integral)
 				}
 			}
 
@@ -112,7 +101,7 @@ public extension DSFSparklineWinLossGraphView {
 					winState.addPath(winPath)
 					winState.setFillColor(self.winColor.withAlphaComponent(0.3).cgColor)
 					winState.setStrokeColor(self.winColor.cgColor)
-					winState.setLineWidth(graphLineWidth)
+					winState.setLineWidth(self.lineWidth)
 					winState.drawPath(using: .fillStroke)
 				}
 			}
@@ -120,26 +109,14 @@ public extension DSFSparklineWinLossGraphView {
 			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
 					lossState.addPath(lossPath)
-					lossState.setFillColor(self.lossColor.withAlphaComponent(0.3).cgColor)
 					lossState.setStrokeColor(self.lossColor.cgColor)
-					lossState.setLineWidth(graphLineWidth)
-					lossState.drawPath(using: .fillStroke)
-				}
-			}
-
-			if let tieColor = self.tieColor, !tiePath.isEmpty {
-				outer.usingGState { tieState in
-					tieState.addPath(tiePath)
-					tieState.setLineWidth(graphLineWidth)
-
-					let tieAlpha = min(1, tieColor.cgColor.alpha + 0.1)
-					tieState.setFillColor(tieColor.cgColor)
-					tieState.setStrokeColor(tieColor.withAlphaComponent(tieAlpha).cgColor)
-					tieState.drawPath(using: .fillStroke)
+					lossState.setLineWidth(self.lineWidth)
+					lossState.drawPath(using: .stroke)
 				}
 			}
 		}
 	}
+
 
 	override func prepareForInterfaceBuilder() {
 
