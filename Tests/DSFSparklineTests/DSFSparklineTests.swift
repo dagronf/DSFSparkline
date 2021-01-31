@@ -34,6 +34,16 @@ class DSFSparklineTests: XCTestCase {
 		// Put teardown code here. This method is called after the invocation of each test method in the class.
 	}
 
+	func testFixForWindowSizeSmallerThanInitialDataIssues() {
+
+		// Testing for https://github.com/dagronf/DSFSparkline/issues/3
+
+		let ds = SparklineWindow<CGFloat>(windowSize: 5, dataRange: (-10 ... 10))
+
+		ds.push(values: [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5])
+		XCTAssertEqual(ds.raw.count, 5)
+	}
+
 	func testBlah() {
 
 		let dd = SparklineWindow<CGFloat>(windowSize: 10, dataRange: (-100 ... 100))
@@ -52,9 +62,7 @@ class DSFSparklineTests: XCTestCase {
 		XCTAssertEqual(dd.normalized.count, 10)
 
 		XCTAssertEqual(dd.normalized, [0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.505])
-
-		// Check outside range
-		XCTAssertFalse(dd.push(value: 200))
+		XCTAssertTrue(dd.push(value: 100))
 	}
 
 	func testDynamicallyRanged() {
@@ -132,11 +140,12 @@ class DSFSparklineTests: XCTestCase {
 
 	func testDataSource() {
 
+		// Check that truncating to range works
 		let ds = DSFSparklineDataSource(windowSize: 10, range: -10 ... 10)
 		XCTAssertTrue(ds.push(value: 5))
-		XCTAssertFalse(ds.push(value: 50))
-		XCTAssertEqual(ds.data, [0, 0, 0, 0, 0, 0, 0, 0, 0, 5])
-		XCTAssertEqual(ds.normalized, [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.75])
+		XCTAssertTrue(ds.push(value: 50))
+		XCTAssertEqual(ds.data, [0, 0, 0, 0, 0, 0, 0, 0, 5, 10])
+		XCTAssertEqual(ds.normalized, [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.75, 1.0])
 
 		// With no range, adding 5 here makes the implicit range to 0 ... 5
 		let ds2 = DSFSparklineDataSource(windowSize: 5)
