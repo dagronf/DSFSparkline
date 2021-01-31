@@ -81,6 +81,25 @@ import UIKit
 		}
 	}
 	private var windowSizeSetInXib = false
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.setup()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.setup()
+	}
+
+	func setup() {
+		#if !os(macOS)
+		// Configure iOS/tvOS to make the background transparent.
+		// If isOpaque is true (the default value) iOS assumes that you're drawing
+		// the ENTIRE content of the control (which we are not).
+		self.isOpaque = false
+		#endif
+	}
 }
 
 extension DSFSparklineView {
