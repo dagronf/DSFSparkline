@@ -335,11 +335,15 @@ struct SparklineView: View {
 
 ## Changes
 
+### `3.3.0`
+
+* Fixed issue where iOS background wasn't being drawn correctly in some cases.
+* Fixed rare crash where a line graph with < 2 points would crash.
+
 ### `3.2.0`
 
 * Changed the zero-line definition class to `DSFSparklineZeroLineDefinition` for clarity.
 * More documentation, especially around SwiftUI. Attempted to make the documentation clearer around drawing parameters.
-
 
 ### `3.1.0`
 
