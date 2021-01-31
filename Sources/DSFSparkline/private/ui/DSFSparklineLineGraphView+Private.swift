@@ -61,6 +61,12 @@ extension DSFSparklineLineGraphView {
 			CGPoint(x: CGFloat($0.offset) * xDiff, y: drawRect.height - ($0.element * (drawRect.height-1)).clamped(to: range))
 		}
 
+		if points.count < 2 {
+			// There's no line if there's either no data or just a single point
+			// https://github.com/dagronf/DSFSparkline/issues/3#issuecomment-770324047
+			return
+		}
+
 		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated).mutableCopy()!
 		path.addLine(to: CGPoint(x: drawRect.width + 4, y: points.last!.y))
 		path.addLine(to: CGPoint(x: drawRect.width + 4, y: drawRect.maxY + 2.0))
