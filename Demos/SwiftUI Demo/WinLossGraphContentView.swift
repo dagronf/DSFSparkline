@@ -13,9 +13,15 @@ struct WinLossGraphContentView: View {
 	let leftDataSource: DSFSparklineDataSource
 	let rightDataSource: DSFSparklineDataSource
 	let upDataSource: DSFSparklineDataSource
+	let tablet1: DSFSparklineDataSource
 
 	var body: some View {
-		VStack {
+		VStack(spacing: 20) {
+
+			Text("Win/Loss Style")
+				.underline()
+				.font(.headline)
+
 			DSFSparklineWinLossGraphView.SwiftUI(
 				dataSource: leftDataSource
 			)
@@ -38,6 +44,24 @@ struct WinLossGraphContentView: View {
 				zeroLineDefinition: DSFSparklineZeroLineDefinition(color: .textColor)
 			)
 			.frame(width: 330.0, height: 34.0)
+
+			Text("Tablet Style")
+				.underline()
+				.font(.headline)
+
+			VStack {
+				DSFSparklineTabletGraphView.SwiftUI(
+					dataSource: TabletDataSource1,
+					winColor: .systemTeal,
+					lossColor: DSFColor.systemGray.withAlphaComponent(0.2),
+					barSpacing: 2
+				)
+				DSFSparklineTabletGraphView.SwiftUI(
+					dataSource: TabletDataSource1,
+					barSpacing: 2
+				)
+			}
+			.frame(width: 250, height: 40)
 		}
 		.padding()
 	}
@@ -61,10 +85,17 @@ var WinLossDataSource3: DSFSparklineDataSource = {
 	return d
 }()
 
+var TabletDataSource1: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 20, range: -1 ... 1)
+	d.push(values: [1, 1, 1, -1, 1, 0, -1, -1, 1, 1, 1, -1, -1, 1, 1, 0, -1, 1, 1, 1])
+	return d
+}()
+
 struct WinLossGraphContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		WinLossGraphContentView(leftDataSource: WinLossDataSource1,
 										rightDataSource: WinLossDataSource2,
-										upDataSource: WinLossDataSource3)
+										upDataSource: WinLossDataSource3,
+										tablet1: TabletDataSource1)
 	}
 }
