@@ -32,17 +32,26 @@ public extension DSFSparklineBarGraphView {
 	override func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
 		if let ctx = NSGraphicsContext.current?.cgContext {
-			self.drawBarGraph(primary: ctx)
+			self.drawGraph(primary: ctx)
 		}
 	}
 	#else
 	override func draw(_ rect: CGRect) {
 		super.draw(rect)
 		if let ctx = UIGraphicsGetCurrentContext() {
-			self.drawBarGraph(primary: ctx)
+			self.drawGraph(primary: ctx)
 		}
 	}
 	#endif
+
+	private func drawGraph(primary: CGContext) {
+		if self.centeredAtZeroLine {
+			self.drawCenteredBarGraph(primary: primary)
+		}
+		else {
+			self.drawBarGraph(primary: primary)
+		}
+	}
 
 	private func drawBarGraph(primary: CGContext) {
 		let drawRect = self.bounds
@@ -92,4 +101,83 @@ public extension DSFSparklineBarGraphView {
 			outer.drawPath(using: .fillStroke)
 		}
 	}
+
+	private func drawCenteredBarGraph(primary: CGContext) {
+
+		guard let dataSource = self.dataSource else {
+			return
+		}
+
+		let drawRect = self.bounds
+		let height = drawRect.height - 1
+
+		let range: ClosedRange<CGFloat> = 2 ... max(2, drawRect.maxY - 2)
+
+
+		let normy = dataSource.normalized
+		let xDiff = self.bounds.width / CGFloat(normy.count)
+
+		let centre = dataSource.normalize(value: dataSource.zeroLineValue)
+		let centroid = (1 - centre) * (drawRect.height - 1)
+
+		primary.usingGState { outer in
+
+			outer.setRenderingIntent(.relativeColorimetric)
+			outer.interpolationQuality = .none
+
+			if dataSource.counter < dataSource.windowSize {
+				let pos = CGFloat(dataSource.counter) * xDiff + 1
+				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				outer.clip(to: clipRect)
+			}
+
+			let positivePath = CGMutablePath()
+			let negativePath = CGMutablePath()
+
+			for value in normy.enumerated() {
+				let x = CGFloat(value.offset) * xDiff
+				if value.element >= centre {
+					let yy = (centre - value.element) * height
+					let r = CGRect(x: x,
+										y: centroid,
+										width: xDiff - 1 - (CGFloat(self.barSpacing)),
+										height: yy) // - CGFloat(self.lineWidth))
+					positivePath.addRect(r.integral)
+				}
+				else {
+					let yy = (value.element - centre) * height
+					let r = CGRect(x: x,
+										y: centroid,
+										width: xDiff - 1 - (CGFloat(self.barSpacing)),
+										height: -yy - CGFloat(self.lineWidth))
+					negativePath.addRect(r.integral)
+				}
+			}
+			positivePath.closeSubpath()
+			negativePath.closeSubpath()
+
+			outer.setShouldAntialias(false)
+
+			if !positivePath.isEmpty {
+				outer.usingGState { ctx in
+					ctx.addPath(positivePath)
+					ctx.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
+					ctx.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
+					ctx.setStrokeColor(self.graphColor.cgColor)
+					ctx.drawPath(using: .fillStroke)
+				}
+			}
+
+			if !negativePath.isEmpty {
+				outer.usingGState { ctx in
+					ctx.addPath(negativePath)
+					ctx.setFillColor(self.negativeColor.withAlphaComponent(0.3).cgColor)
+					ctx.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
+					ctx.setStrokeColor(self.negativeColor.cgColor)
+					ctx.drawPath(using: .fillStroke)
+				}
+			}
+		}
+	}
+
 }

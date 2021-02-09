@@ -18,6 +18,8 @@ class ViewController: UIViewController {
 	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 10)
 	@IBOutlet weak var spark3: DSFSparklineBarGraphView!
 	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
+	@IBOutlet weak var spark4: DSFSparklineBarGraphView!
+	var spark4ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
 
 	@IBOutlet weak var dot1: DSFSparklineDotGraphView!
 	var dot1ds = DSFSparklineDataSource(windowSize: 80, range: -10 ... 10)
@@ -39,6 +41,9 @@ class ViewController: UIViewController {
 		spark2.dataSource = spark2ds
 		spark3.dataSource = spark3ds
 
+		spark4.dataSource = spark4ds
+		spark4ds.zeroLineValue = -5
+
 		dot1.dataSource = dot1ds
 
 		s1.dataSource = ds1
@@ -49,6 +54,8 @@ class ViewController: UIViewController {
 		self.addNewValue2()
 	}
 
+	var sinusoid: CGFloat = 0.00
+
 	func addNewValue2() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
 			guard let `self` = self else {
@@ -57,7 +64,13 @@ class ViewController: UIViewController {
 
 			_ = self.spark1ds.push(value: CGFloat.random(in: self.spark1ds.range!))
 			_ = self.spark2ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
+
 			_ = self.spark3ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
+
+			let val = sin(self.sinusoid)
+			self.sinusoid += 0.3
+
+			_ = self.spark4ds.push(value: (val * 10.0))
 
 			_ = self.dot1ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
 

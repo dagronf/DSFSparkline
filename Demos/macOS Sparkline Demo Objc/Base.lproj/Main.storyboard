@@ -707,12 +707,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="415"/>
+                    <view key="view" misplaced="YES" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Throughput" translatesAutoresizingMaskIntoConstraints="NO" id="pA9-Os-r2C">
-                                <rect key="frame" x="17" y="293" width="446" height="102"/>
+                                <rect key="frame" x="17" y="384" width="446" height="102"/>
                                 <view key="contentView" id="gof-HN-L75">
                                     <rect key="frame" x="3" y="3" width="440" height="84"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -748,16 +748,38 @@
                                 </constraints>
                             </box>
                             <box title="Throughput" translatesAutoresizingMaskIntoConstraints="NO" id="hNC-qx-jV7">
-                                <rect key="frame" x="17" y="187" width="446" height="102"/>
+                                <rect key="frame" x="17" y="176" width="446" height="204"/>
                                 <view key="contentView" id="YWt-zc-gNz">
-                                    <rect key="frame" x="3" y="3" width="440" height="84"/>
+                                    <rect key="frame" x="3" y="3" width="440" height="186"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vfz-XG-Zqu" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="8" width="424" height="68"/>
+                                            <rect key="frame" x="8" y="84" width="424" height="68"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="68" id="ykB-AK-O22"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                     <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                    <integer key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </customView>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2Sf-rx-WZW" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
+                                            <rect key="frame" x="8" y="8" width="424" height="68"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="68" id="wRV-AD-ZhK"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                    <color key="value" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
                                                     <integer key="value" value="30"/>
@@ -767,22 +789,28 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="negativeColor">
+                                                    <color key="value" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Vfz-XG-Zqu" secondAttribute="bottom" constant="8" id="5dL-bX-aJU"/>
+                                        <constraint firstItem="2Sf-rx-WZW" firstAttribute="trailing" secondItem="Vfz-XG-Zqu" secondAttribute="trailing" id="E2s-6B-jYP"/>
                                         <constraint firstAttribute="trailing" secondItem="Vfz-XG-Zqu" secondAttribute="trailing" constant="8" id="GEJ-xl-sPy"/>
-                                        <constraint firstItem="Vfz-XG-Zqu" firstAttribute="top" secondItem="YWt-zc-gNz" secondAttribute="top" constant="8" id="k20-9d-LnI"/>
+                                        <constraint firstItem="2Sf-rx-WZW" firstAttribute="top" secondItem="Vfz-XG-Zqu" secondAttribute="bottom" constant="8" id="JXw-Ox-WYH"/>
+                                        <constraint firstAttribute="bottom" secondItem="2Sf-rx-WZW" secondAttribute="bottom" constant="8" id="eZL-2B-N8q"/>
                                         <constraint firstItem="Vfz-XG-Zqu" firstAttribute="leading" secondItem="YWt-zc-gNz" secondAttribute="leading" constant="8" id="ke2-lp-kkr"/>
+                                        <constraint firstItem="2Sf-rx-WZW" firstAttribute="leading" secondItem="Vfz-XG-Zqu" secondAttribute="leading" id="ux0-dI-hbp"/>
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="98" id="5qO-0u-nv7"/>
+                                    <constraint firstAttribute="height" constant="200" id="5qO-0u-nv7"/>
                                 </constraints>
                             </box>
                             <box title="Received/Sent" translatesAutoresizingMaskIntoConstraints="NO" id="nk7-dk-fnU">
-                                <rect key="frame" x="17" y="27" width="446" height="155"/>
+                                <rect key="frame" x="17" y="16" width="446" height="155"/>
                                 <view key="contentView" id="aB3-uQ-T3N">
                                     <rect key="frame" x="3" y="3" width="440" height="137"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -859,6 +887,7 @@
                     </view>
                     <connections>
                         <outlet property="barGraph" destination="Vfz-XG-Zqu" id="Xf1-ZW-Bdo"/>
+                        <outlet property="centeredBarGraph" destination="2Sf-rx-WZW" id="QJR-nt-v8t"/>
                         <outlet property="lineGraph" destination="X3f-SW-jsr" id="WgW-zU-yGA"/>
                         <outlet property="receiveGraph" destination="Yaa-RU-TFK" id="Hyh-4k-V0H"/>
                         <outlet property="sendGraph" destination="7Nz-0V-zTh" id="J2f-O8-wk7"/>
@@ -866,7 +895,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="740.5"/>
+            <point key="canvasLocation" x="75" y="770"/>
         </scene>
     </scenes>
 </document>

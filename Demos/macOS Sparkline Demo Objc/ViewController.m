@@ -17,6 +17,9 @@
 @property (weak) IBOutlet DSFSparklineBarGraphView* barGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* barDataSource;
 
+@property (weak) IBOutlet DSFSparklineBarGraphView* centeredBarGraph;
+@property (nonatomic, strong) DSFSparklineDataSource* centeredBarDataSource;
+
 @property (weak) IBOutlet DSFSparklineDotGraphView *receiveGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* receiveDataSource;
 @property (weak) IBOutlet DSFSparklineDotGraphView *sendGraph;
@@ -33,6 +36,7 @@
 
 	_dataSource = [[DSFSparklineDataSource alloc] init];
 	_barDataSource = [[DSFSparklineDataSource alloc] init];
+	_centeredBarDataSource = [[DSFSparklineDataSource alloc] init];
 	_receiveDataSource = [[DSFSparklineDataSource alloc] init];
 	_sendDataSource = [[DSFSparklineDataSource alloc] init];
 
@@ -43,8 +47,16 @@
 	[[self barGraph] setDataSource:[self barDataSource]];
 	[[self barDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
 	[[self barDataSource] setZeroLineValue:0.2];
-
 	[[self barDataSource] setWindowSize:30];
+
+	[[self centeredBarGraph] setDataSource:[self centeredBarDataSource]];
+	[[self centeredBarDataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
+	//[[self centeredBarDataSource] setZeroLineValue:-0.2];
+	[[self centeredBarDataSource] setWindowSize:22];
+
+	[[self centeredBarDataSource] setWithValues:
+	 @[@(0.0), @(0.1), @(0.2), @(0.3), @(0.4), @(0.5), @(0.6), @(0.7), @(0.8), @(0.9), @(1),
+		@(0.0), @(-0.1), @(-0.2), @(-0.3), @(-0.4), @(-0.5), @(-0.6), @(-0.7), @(-0.8), @(-0.9), @(-1)]];
 
 	[[self receiveGraph] setDataSource:[self receiveDataSource]];
 	[[self receiveDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
@@ -55,20 +67,24 @@
 }
 
 - (void)performUpdate {
-	 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-		  CGFloat v1 = drand48();
+		CGFloat v1 = drand48();
 
-		  BOOL result = [[self dataSource] pushWithValue: (v1 * 2) - 1];
-		  result = [[self barDataSource] pushWithValue: v1];
+		BOOL result = [[self dataSource] pushWithValue: (v1 * 2) - 1];
+		result = [[self barDataSource] pushWithValue: v1];
 
-		  v1 = drand48();
-		  result = [[self receiveDataSource] pushWithValue:v1];
-		  v1 = drand48();
-		  result = [[self sendDataSource] pushWithValue:v1];
+//		v1 = drand48();
+//		result = [[self centeredBarDataSource] pushWithValue:(v1 * 2) - 1];
 
-		  [self performUpdate];
-	 });
+
+		v1 = drand48();
+		result = [[self receiveDataSource] pushWithValue:v1];
+		v1 = drand48();
+		result = [[self sendDataSource] pushWithValue:v1];
+
+		[self performUpdate];
+	});
 }
 
 - (void)setRepresentedObject:(id)representedObject {
