@@ -24,6 +24,32 @@
 import Foundation
 import CoreGraphics
 
+extension CGMutablePath {
+	@discardableResult
+	func addPathWithPoints(_ points: [CGPoint], smoothed: Bool = false) -> CGPath {
+		if smoothed {
+			return self.addPathByExtrapolatingPoints(points)
+		}
+		else {
+			return self.addPathWithPoints(points)
+		}
+	}
+
+	private func addPathByExtrapolatingPoints(_ interpolationPoints: [CGPoint]) -> CGPath {
+		self.interpolatePointsWithHermite(interpolationPoints: interpolationPoints)
+		return self
+	}
+
+	private func addPathWithPoints(_ points: [CGPoint]) -> CGPath {
+		assert(points.count > 1)
+		self.move(to: points.first!)
+		for point in points.dropFirst() {
+			self.addLine(to: point)
+		}
+		return self
+	}
+}
+
 extension CGPath {
 	func fit(verticallyIn rect: CGRect) -> CGPath? {
 		let boundingBox = self.boundingBox
