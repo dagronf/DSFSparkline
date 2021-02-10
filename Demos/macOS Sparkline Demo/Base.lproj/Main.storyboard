@@ -1090,6 +1090,7 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
                                                     <color key="value" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="highlightRangeString" value="3,7"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>

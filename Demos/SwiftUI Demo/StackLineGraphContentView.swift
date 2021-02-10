@@ -10,7 +10,7 @@ import DSFSparkline
 
 var UpDataSource1: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 11, range: 0 ... 1, zeroLineValue: 0.3)
-	d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.4, 0.9, 1])
+	d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
 	return d
 }()
 
@@ -42,16 +42,31 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
 
-			Text("Stackline")
+			VStack {
+				Text("Stackline")
 
-			DSFSparklineStackLineGraphView.SwiftUI(
-				dataSource: UpDataSource1,
-				graphColor: DSFColor.linkColor,
-				showZeroLine: true
-			)
-			.frame(width: 330.0, height: 60.0)
-			.padding(5)
-			.border(Color.gray.opacity(0.2), width: 1)
+				DSFSparklineStackLineGraphView.SwiftUI(
+					dataSource: UpDataSource1,
+					graphColor: DSFColor.linkColor,
+					showZeroLine: true
+				)
+				.frame(width: 330.0, height: 60.0)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+				Text("Stackline centered")
+
+				DSFSparklineStackLineGraphView.SwiftUI(
+					dataSource: UpDataSource1,
+					graphColor: DSFColor.lightGray,
+					showZeroLine: true,
+					centeredAtZeroLine: true,
+					lowerGraphColor: DSFColor.darkGray
+				)
+				.frame(width: 330.0, height: 60.0)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+			}
 
 			Text("Stackline with range")
 
@@ -60,11 +75,12 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				graphColor: DSFColor.green,
 				lineWidth: 1,
 				showZeroLine: true,
-				highlightDefinition:
+				highlightDefinitions: [
 					DSFSparklineHighlightRangeDefinition(
 						range: 0 ..< 50,
 						highlightColor: DSFColor.cyan.withAlphaComponent(0.2)
 					)
+				]
 			)
 			.frame(width: 250.0, height: 59.0)
 			.padding(5)
@@ -91,11 +107,12 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				lineWidth: 0.5,
 				shadowed: false,
 				showZeroLine: true,
-				highlightDefinition:
+				highlightDefinitions: [
 					DSFSparklineHighlightRangeDefinition(
 						range: 0.3 ..< 0.7,
 						highlightColor: DSFColor.systemPink.withAlphaComponent(0.1)
 					)
+				]
 			)
 			.frame(width: 330.0, height: 59.0)
 			.padding(5)

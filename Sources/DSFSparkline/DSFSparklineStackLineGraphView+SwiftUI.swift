@@ -50,8 +50,8 @@ public extension DSFSparklineStackLineGraphView {
 		/// The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		let lowerGraphColor: DSFColor?
 
-		/// The style of the y-range highlight
-		let highlightDefinition: DSFSparklineHighlightRangeDefinition?
+		/// Highlight y-ranges within the graph
+		let highlightDefinitions: [DSFSparklineHighlightRangeDefinition]
 
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
@@ -64,7 +64,7 @@ public extension DSFSparklineStackLineGraphView {
 		///   - zeroLineDefinition: the settings for drawing the zero line
 		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
-		///   - highlightDefinition: The style of the y-range highlight
+		///   - highlightDefinitions: The style of the y-range highlight
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
 						lineWidth: CGFloat = 1.5,
@@ -74,7 +74,7 @@ public extension DSFSparklineStackLineGraphView {
 						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
-						highlightDefinition: DSFSparklineHighlightRangeDefinition? = nil)
+						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [])
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -89,7 +89,7 @@ public extension DSFSparklineStackLineGraphView {
 			self.lineShading = lineShading
 			self.shadowed = shadowed
 
-			self.highlightDefinition = highlightDefinition
+			self.highlightDefinitions = highlightDefinitions
 		}
 	}
 }
@@ -129,9 +129,9 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.centeredAtZeroLine = self.centeredAtZeroLine
 		view.lowerGraphColor = self.lowerGraphColor
 
-		if let hr = self.highlightDefinition {
+		if self.highlightDefinitions.count > 0 {
 			view.showHighlightRange = true
-			view.highlightRangeDefinition = hr
+			view.highlightRangeDefinition = self.highlightDefinitions
 		}
 		
 		return view

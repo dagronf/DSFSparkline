@@ -84,7 +84,7 @@ struct WinLossGraphContentView: View {
 
 var WinLossDataSource1: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 10, range: -1.0 ... 1)
-	d.push(values: [1, -1, 0, 1, -1, 0, 1, -1, 0, 1])
+	d.push(values: [1, -1, 0, 1, -1, -1, 1, -1, 0, 1])
 	return d
 }()
 

@@ -147,25 +147,27 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 					self.creatableHighlightRangeDefinition.range = floats[0] ..< floats[1]
 				}
 				else {
-					self.highlightRangeDefinition = nil
+					self.highlightRangeDefinition = []
 					Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
 				}
 			}
 			else {
-				self.highlightRangeDefinition = nil
+				self.highlightRangeDefinition = []
 			}
 		}
 	}
 
 	private var creatableHighlightRangeDefinition: DSFSparklineHighlightRangeDefinition {
-		if let item = self.highlightRangeDefinition {
+		if let item = self.highlightRangeDefinition.first {
 			return item
 		}
-		self.highlightRangeDefinition = DSFSparklineHighlightRangeDefinition(lowerBound: 0, upperBound: 1)
-		return self.highlightRangeDefinition!
+
+		let new = DSFSparklineHighlightRangeDefinition(lowerBound: 0, upperBound: 1)
+		self.highlightRangeDefinition = [new]
+		return new
 	}
 
-	@objc public var highlightRangeDefinition: DSFSparklineHighlightRangeDefinition? {
+	@objc public var highlightRangeDefinition: [DSFSparklineHighlightRangeDefinition] = [] {
 		didSet {
 			self.updateDisplay()
 		}
@@ -173,7 +175,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 
 	public override func prepareForInterfaceBuilder() {
 		if self.showHighlightRange {
-			self.highlightRangeDefinition = DSFSparklineHighlightRangeDefinition(range: -3 ..< 3)
+			self.highlightRangeDefinition = [DSFSparklineHighlightRangeDefinition(range: -3 ..< 3, highlightColor: self.highlightColor)]
 		}
 		super.prepareForInterfaceBuilder()
 	}
@@ -214,9 +216,8 @@ public extension DSFSparklineZeroLineGraphView {
 
 		guard let dataSource = self.dataSource else { return }
 
-		if let def = self.highlightRangeDefinition {
-
-			let integ = self.bounds.integral
+		let integ = self.bounds.integral
+		for def in self.highlightRangeDefinition {
 
 			let lb = 1.0 - dataSource.normalize(value: def.range.lowerBound)
 			let ub = 1.0 - dataSource.normalize(value: def.range.upperBound)
