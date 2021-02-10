@@ -28,7 +28,7 @@ class ViewController: NSViewController {
 	var sparkCrashDatasource = DSFSparklineDataSource(range: -10 ... 10)
 
 	@IBOutlet weak var sparkCrash2: DSFSparklineView!
-	var sparkCrash2Datasource = DSFSparklineDataSource(range: -10 ... 10)
+	var sparkCrash2Datasource = DSFSparklineDataSource(range: -13 ... 13)
 
 	@IBOutlet weak var sparkDeprecation: DSFSparklineView!
 	var sparkDeprecationDatasource = DSFSparklineDataSource(range: -10 ... 10)

@@ -15,7 +15,10 @@ class ViewController: UIViewController {
 	var greenDataSource = DSFSparklineDataSource(range: -11 ... 11)
 
 	@IBOutlet weak var red: DSFSparklineLineGraphView!
-	var redDataSource = DSFSparklineDataSource(range: -40 ... 10)
+	var redDataSource = DSFSparklineDataSource(range: -45 ... 15)
+
+	@IBOutlet weak var centeredRedDataSource: DSFSparklineLineGraphView!
+
 
 	@IBOutlet weak var purple: DSFSparklineDotGraphView!
 	var purpleDataSource = DSFSparklineDataSource(range: 0 ... 50)
@@ -29,6 +32,8 @@ class ViewController: UIViewController {
 
 		green.dataSource = greenDataSource
 		red.dataSource = redDataSource
+		centeredRedDataSource.dataSource = redDataSource
+
 		purple.dataSource = purpleDataSource
 		orange.dataSource = orangeDataSource
 
@@ -40,7 +45,7 @@ class ViewController: UIViewController {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
 			guard let `self` = self else { return }
 			_ = self.greenDataSource.push(value: CGFloat.random(in: self.greenDataSource.range!))
-			_ = self.redDataSource.push(value: CGFloat.random(in: self.redDataSource.range!))
+			_ = self.redDataSource.push(value: CGFloat.random(in: -40 ... 10))
 			_ = self.purpleDataSource.push(value: CGFloat.random(in: self.purpleDataSource.range!))
 			_ = self.orangeDataSource.push(value: CGFloat.random(in: self.orangeDataSource.range!))
 

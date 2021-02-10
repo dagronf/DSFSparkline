@@ -53,6 +53,26 @@ extension DSFSparklineLineGraphView {
 			self.drawLineGraph(primary: primary)
 		}
 	}
+
+	public override func colorDidChange() {
+
+		// Update the gradients to match the color change
+
+		self.gradient = CGGradient(
+			colorsSpace: nil,
+			colors: [self.graphColor.withAlphaComponent(0.4).cgColor,
+						self.graphColor.withAlphaComponent(0.2).cgColor] as CFArray,
+			locations: [1.0, 0.0]
+			)!
+
+		let lc = lowerColor
+		self.lowerGradient = CGGradient(
+			colorsSpace: nil,
+			colors: [lc.withAlphaComponent(0.4).cgColor,
+						lc.withAlphaComponent(0.2).cgColor] as CFArray,
+			locations: [1.0, 0.0]
+			)!
+	}
 }
 
 fileprivate extension DSFSparklineLineGraphView {
@@ -184,7 +204,7 @@ fileprivate extension DSFSparklineLineGraphView {
 					}
 
 					if self.lineShading {
-						let gradient = (which == 0) ? self.gradient : self.negativeGradient
+						let gradient = (which == 0) ? self.gradient : self.lowerGradient
 						if let grad = gradient {
 							inner.usingGState { (ctx) in
 								ctx.addPath(path)
@@ -199,7 +219,7 @@ fileprivate extension DSFSparklineLineGraphView {
 
 					inner.usingGState { (ctx) in
 						ctx.addPath(path)
-						ctx.setStrokeColor(which == 0 ? self.graphColor.cgColor : self.negativeColor.cgColor)
+						ctx.setStrokeColor(which == 0 ? self.graphColor.cgColor : self.lowerColor.cgColor)
 						ctx.setLineWidth(self.lineWidth)
 
 						let yoff: CGFloat

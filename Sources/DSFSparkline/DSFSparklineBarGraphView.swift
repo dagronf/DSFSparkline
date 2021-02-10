@@ -34,23 +34,4 @@ public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 	@IBInspectable public var lineWidth: UInt = 1
 	/// The spacing (in pixels) between each bar
 	@IBInspectable public var barSpacing: UInt = 1
-
-	/// Center point
-
-	@IBInspectable public var centeredAtZeroLine: Bool = false
-
-	/// The color if the graph value is below the zero line
-	#if os(macOS)
-	@IBInspectable public var negativeColor: NSColor = .systemRed {
-		didSet {
-			self.colorDidChange()
-		}
-	}
-	#else
-	@IBInspectable public var negativeColor: UIColor = .systemRed {
-		didSet {
-			self.colorDidChange()
-		}
-	}
-	#endif
 }

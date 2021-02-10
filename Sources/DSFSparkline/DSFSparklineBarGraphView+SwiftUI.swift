@@ -42,8 +42,10 @@ public extension DSFSparklineBarGraphView {
 		/// The drawing definition for the zero line point
 		let zeroLineDefinition: DSFSparklineZeroLineDefinition
 
+		/// Should the line graph be centered around the zero-line?
 		let centeredAtZeroLine: Bool
-		let negativeGraphColor: DSFColor
+		/// The color used to draw values lower than the zero-line, or nil for the same as the graph color
+		let lowerGraphColor: DSFColor?
 
 		/// Create a bar graph sparkline
 		/// - Parameters:
@@ -53,6 +55,8 @@ public extension DSFSparklineBarGraphView {
 		///   - barSpacing: The spacing between the bars
 		///   - showZeroLine: Show or hide a 'zero line' horizontal line
 		///   - zeroLineDefinition: the settings for drawing the zero line
+		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
+		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
 						lineWidth: UInt = 1,
@@ -60,7 +64,7 @@ public extension DSFSparklineBarGraphView {
 						showZeroLine: Bool = false,
 						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
-						negativeGraphColor: DSFColor = DSFColor.systemRed)
+						lowerGraphColor: DSFColor? = nil)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -69,7 +73,7 @@ public extension DSFSparklineBarGraphView {
 			self.zeroLineDefinition = zeroLineDefinition
 
 			self.centeredAtZeroLine = centeredAtZeroLine
-			self.negativeGraphColor = negativeGraphColor
+			self.lowerGraphColor = lowerGraphColor
 
 			self.lineWidth = lineWidth
 			self.barSpacing = barSpacing
@@ -110,7 +114,7 @@ extension DSFSparklineBarGraphView.SwiftUI: DSFViewRepresentable {
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		view.centeredAtZeroLine = self.centeredAtZeroLine
-		view.negativeColor = self.negativeGraphColor
+		view.lowerGraphColor = self.lowerGraphColor
 
 		return view
 	}

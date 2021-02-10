@@ -67,6 +67,9 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                 <real key="value" value="0.5"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
+                                                <color key="value" systemColor="systemRedColor"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BBW-Jd-8WN" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
@@ -107,6 +110,9 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="negativeColor">
+                                                <color key="value" systemColor="systemOrangeColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
                                                 <color key="value" systemColor="systemOrangeColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>

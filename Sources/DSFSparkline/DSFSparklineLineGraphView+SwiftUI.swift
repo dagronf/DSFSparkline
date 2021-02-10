@@ -33,9 +33,6 @@ public extension DSFSparklineLineGraphView {
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
 
-		let centeredAtZeroLine: Bool
-		let negativeGraphColor: DSFColor
-
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
@@ -50,6 +47,11 @@ public extension DSFSparklineLineGraphView {
 		/// Draw a shadow under the line
 		let shadowed: Bool
 
+		/// Should the line graph be centered around the zero-line?
+		let centeredAtZeroLine: Bool
+		/// The color used to draw values lower than the zero-line, or nil for the same as the graph color
+		let lowerGraphColor: DSFColor?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -60,6 +62,8 @@ public extension DSFSparklineLineGraphView {
 		///   - shadowed: If true, draws a shadow under the line part of the graph.
 		///   - showZeroLine: Show or hide a 'zero line' horizontal line
 		///   - zeroLineDefinition: the settings for drawing the zero line
+		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
+		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
 						lineWidth: CGFloat = 1.5,
@@ -69,7 +73,7 @@ public extension DSFSparklineLineGraphView {
 						showZeroLine: Bool = false,
 						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
-						negativeGraphColor: DSFColor = DSFColor.systemRed)
+						lowerGraphColor: DSFColor? = nil)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -78,7 +82,7 @@ public extension DSFSparklineLineGraphView {
 			self.zeroLineDefinition = zeroLineDefinition
 
 			self.centeredAtZeroLine = centeredAtZeroLine
-			self.negativeGraphColor = negativeGraphColor
+			self.lowerGraphColor = lowerGraphColor
 
 			self.lineWidth = lineWidth
 			self.interpolated = interpolated
@@ -122,7 +126,7 @@ extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		view.centeredAtZeroLine = self.centeredAtZeroLine
-		view.negativeColor = self.negativeGraphColor
+		view.lowerGraphColor = self.lowerGraphColor
 
 		return view
 	}

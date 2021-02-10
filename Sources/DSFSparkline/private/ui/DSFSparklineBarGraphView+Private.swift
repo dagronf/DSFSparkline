@@ -171,9 +171,9 @@ public extension DSFSparklineBarGraphView {
 			if !negativePath.isEmpty {
 				outer.usingGState { ctx in
 					ctx.addPath(negativePath)
-					ctx.setFillColor(self.negativeColor.withAlphaComponent(0.3).cgColor)
+					ctx.setFillColor(self.lowerColor.withAlphaComponent(0.3).cgColor)
 					ctx.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
-					ctx.setStrokeColor(self.negativeColor.cgColor)
+					ctx.setStrokeColor(self.lowerColor.cgColor)
 					ctx.drawPath(using: .fillStroke)
 				}
 			}

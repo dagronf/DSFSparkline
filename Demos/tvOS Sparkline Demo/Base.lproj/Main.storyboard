@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="kNJ-ib-BOR">
-                                <rect key="frame" x="96" y="60" width="1728" height="458"/>
+                                <rect key="frame" x="96" y="60" width="1728" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-ho-C6a" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="1728" height="128"/>
@@ -74,8 +74,40 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="100" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-3c-csm">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbq-YT-X12" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="330" width="1728" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="vIt-w6-fQ2"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" systemColor="systemPurpleColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="zeroLineWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="3,3"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
+                                                <color key="value" systemColor="secondaryLabelColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
+                                                <color key="value" systemColor="systemOrangeColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="100" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-3c-csm">
+                                        <rect key="frame" x="0.0" y="495" width="1728" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Nas-fi-tod" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
                                                 <rect key="frame" x="0.0" y="0.0" width="860" height="128"/>
@@ -134,6 +166,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="centeredRedDataSource" destination="mbq-YT-X12" id="CjO-7B-hSA"/>
                         <outlet property="green" destination="Wc6-ho-C6a" id="Nth-j7-N1B"/>
                         <outlet property="orange" destination="eEe-RW-4pi" id="0wE-MG-jjH"/>
                         <outlet property="purple" destination="Nas-fi-tod" id="VaU-3w-FPz"/>
@@ -149,6 +182,9 @@
         <systemColor name="placeholderTextColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -157,6 +193,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

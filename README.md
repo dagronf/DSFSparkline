@@ -37,10 +37,18 @@ Note that the 2.0.0 release has changes that will break your existing DSFSparkli
 ## Available types
 
 ### Line
+
+#### Standard
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg)
+#### Interpolated
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg)
+#### Centered, interpolated
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" width="400">
 ### Bar
+#### Standard
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg)
+#### Centered
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerbar.png" width="400">
 ### Dot
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
 
@@ -89,6 +97,8 @@ An optional range can be set on the data source, which means that the view will 
 
 You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource)
 
+The zero-line can also be used to center certain graph types (currently line and bar).
+
 ## Views
 
 Represents the viewable settings and display.  The current view types available are :-
@@ -105,12 +115,15 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Common elements for graphs that can display a zero line (Line/Bar)
 
-| Setting               | Type                | Description                                             |
-|-----------------------|---------------------|---------------------------------------------------------|
-| `showZeroLine`        | `Bool`              | Draw a dotted line at the zero line point on the y-axis |
-| `zeroLineColor`       | `NSColor`/`UIColor` | The color of the 'zero line' on the y-axis.             |
-| `zeroLineWidth`       | `CGFloat`           | The width of the 'zero line' on the y-axis              |
-| `zeroLineDashStyle`   | `[CGFloat]`         | The dash pattern to use when drawing the zero line      |
+| Setting               | Type                    | Description                                             |
+|-----------------------|-------------------------|---------------------------------------------------------|
+| `showZeroLine`        | `Bool`                  | Draw a dotted line at the zero line point on the y-axis |
+| `zeroLineColor`       | `NSColor`<br/>`UIColor` | The color of the 'zero line' on the y-axis.             |
+| `zeroLineWidth`       | `CGFloat`               | The width of the 'zero line' on the y-axis              |
+| `zeroLineDashStyle`   | `[CGFloat]`             | The dash pattern to use when drawing the zero line      |
+| `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line?          |
+| `lowerGraphColor`     | `NSColor`<br/>`UIColor` | The color used to draw values below the zero line. If nil, is the same as the graph color |
+
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 

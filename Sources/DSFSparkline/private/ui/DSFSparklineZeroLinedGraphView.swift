@@ -49,6 +49,8 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	}
 	#endif
 
+	// MARK: Zero-line display
+
 	/// The width of the dotted line at the zero point on the y-axis
 	@IBInspectable public var zeroLineWidth: CGFloat = 1.0
 
@@ -79,6 +81,31 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 			}
 			self.updateDisplay()
 		}
+	}
+
+	// MARK: Zero-line centering
+
+	/// Should the graph be centered at the zero line?
+	@IBInspectable public var centeredAtZeroLine: Bool = false
+
+	/// The color used to draw values below the zero line. If nil, is the same as the graph color
+	#if os(macOS)
+	@IBInspectable public var lowerGraphColor: NSColor? {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	#else
+	@IBInspectable public var lowerGraphColor: UIColor? {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	#endif
+
+	/// The 'lowerColor' represents the 'negativeColor' if it is set, otherwise its the same as the graphColor
+	internal var lowerColor: DSFColor {
+		return self.lowerGraphColor ?? self.graphColor
 	}
 }
 

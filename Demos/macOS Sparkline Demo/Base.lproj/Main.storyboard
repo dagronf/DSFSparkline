@@ -802,21 +802,27 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
-                                                    <color key="value" red="0.42787649500000002" green="1" blue="0.33720872619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="value" name="linkColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                    <real key="value" value="1.5"/>
+                                                    <real key="value" value="0.5"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
-                                                    <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="value" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="zeroLineWidth">
-                                                    <real key="value" value="2"/>
+                                                    <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="2,2"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="negativeColor">
+                                                    <color key="value" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
+                                                    <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>

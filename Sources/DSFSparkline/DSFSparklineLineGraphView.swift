@@ -41,39 +41,6 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false
 
-	/// Center point
-	@IBInspectable public var centeredAtZeroLine: Bool = false
-
-	/// The color if the graph value is below the zero line
-	#if os(macOS)
-	@IBInspectable public var negativeColor: NSColor = .systemRed {
-		didSet {
-			self.colorDidChange()
-		}
-	}
-	#else
-	@IBInspectable public var negativeColor: UIColor = .systemRed {
-		didSet {
-			self.colorDidChange()
-		}
-	}
-	#endif
-
-	var gradient: CGGradient?
-	var negativeGradient: CGGradient?
-
-	public override func colorDidChange() {
-		self.gradient = CGGradient(
-			colorsSpace: nil,
-			colors: [self.graphColor.withAlphaComponent(0.4).cgColor,
-						self.graphColor.withAlphaComponent(0.2).cgColor] as CFArray,
-			locations: [1.0, 0.0]
-			)!
-		self.negativeGradient = CGGradient(
-			colorsSpace: nil,
-			colors: [self.negativeColor.withAlphaComponent(0.4).cgColor,
-						self.negativeColor.withAlphaComponent(0.2).cgColor] as CFArray,
-			locations: [1.0, 0.0]
-			)!
-	}
+	internal var gradient: CGGradient?
+	internal var lowerGradient: CGGradient?
 }
