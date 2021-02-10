@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		window.contentView = NSHostingView(rootView: contentView)
 		window.makeKeyAndOrderFront(nil)
 
-		demoDataSource1.highlightRange = -0.1 ..< 0.1
+		//demoDataSource1.highlightRange = -0.1 ..< 0.1
 
 		self.demoDataSource3.windowSize = 100
 		self.demoDataSource4.windowSize = 40

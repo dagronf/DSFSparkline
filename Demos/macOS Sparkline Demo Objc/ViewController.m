@@ -49,6 +49,12 @@
 	[[self barDataSource] setZeroLineValue:0.2];
 	[[self barDataSource] setWindowSize:30];
 
+	id blue = [[NSColor blueColor] colorWithAlphaComponent:0.2];
+	id high = [[DSFSparklineHighlightRangeDefinition alloc] initWithLowerBound:0.3
+																						 upperBound:0.7
+																					highlightColor:blue];
+	[[self barGraph] setHighlightRangeDefinition:high];
+
 	[[self centeredBarGraph] setDataSource:[self centeredBarDataSource]];
 	[[self centeredBarDataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
 	//[[self centeredBarDataSource] setZeroLineValue:-0.2];

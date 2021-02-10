@@ -89,26 +89,6 @@ public extension DSFSparklineDataSource {
 			self.notifyDataChange()
 		}
 	}
-
-	/// The highlight range for the graph
-	var highlightRange: Range<CGFloat>? {
-		get {
-			self.sparkline.highlightRange
-		}
-		set {
-			self.sparkline.highlightRange = newValue
-			self.notifyDataChange()
-		}
-	}
-
-	@objc func setHighlightRange(_ lower: CGFloat, _ upper: CGFloat) {
-		assert(lower < upper)
-		self.highlightRange = lower ..< upper
-	}
-
-	@objc func resetHighlightRange() {
-		self.highlightRange = nil
-	}
 }
 
 

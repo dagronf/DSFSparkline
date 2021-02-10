@@ -50,8 +50,6 @@ public extension DSFSparklineStackLineGraphView {
 		/// The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		let lowerGraphColor: DSFColor?
 
-		/// Highlight the y-range defined in the datasource
-		let showHighlightRange: Bool
 		/// The style of the y-range highlight
 		let highlightDefinition: DSFSparklineHighlightRangeDefinition?
 
@@ -66,7 +64,6 @@ public extension DSFSparklineStackLineGraphView {
 		///   - zeroLineDefinition: the settings for drawing the zero line
 		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
-		///   - showHighlightRange: Highlight the y-range defined in the datasource
 		///   - highlightDefinition: The style of the y-range highlight
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
@@ -77,7 +74,6 @@ public extension DSFSparklineStackLineGraphView {
 						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
-						showHighlightRange: Bool = false,
 						highlightDefinition: DSFSparklineHighlightRangeDefinition? = nil)
 		{
 			self.dataSource = dataSource
@@ -93,7 +89,6 @@ public extension DSFSparklineStackLineGraphView {
 			self.lineShading = lineShading
 			self.shadowed = shadowed
 
-			self.showHighlightRange = showHighlightRange
 			self.highlightDefinition = highlightDefinition
 		}
 	}
@@ -134,9 +129,9 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.centeredAtZeroLine = self.centeredAtZeroLine
 		view.lowerGraphColor = self.lowerGraphColor
 
-		view.showHighlightRange = self.showHighlightRange
-		if self.showHighlightRange, let hr = self.highlightDefinition {
-			view.highlightColor = hr.highlightColor
+		if let hr = self.highlightDefinition {
+			view.showHighlightRange = true
+			view.highlightRangeDefinition = hr
 		}
 		
 		return view

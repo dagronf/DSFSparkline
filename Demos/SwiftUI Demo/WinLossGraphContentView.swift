@@ -34,8 +34,7 @@ struct WinLossGraphContentView: View {
 				lossColor: .systemTeal,
 				tieColor: DSFColor.systemGray.withAlphaComponent(0.1),
 				lineWidth: 3,
-				barSpacing: 6,
-				showZeroLine: true
+				barSpacing: 6
 			)
 			.padding(5)
 			.border(Color.gray.opacity(0.2), width: 1)

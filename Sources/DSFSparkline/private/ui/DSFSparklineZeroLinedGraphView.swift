@@ -121,12 +121,14 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	#if os(macOS)
 	@IBInspectable public var highlightColor = NSColor.gray {
 		didSet {
+			self.creatableHighlightRangeDefinition.highlightColor = self.highlightColor
 			self.colorDidChange()
 		}
 	}
 	#else
 	@IBInspectable public var highlightColor: UIColor = .systemGray {
 		didSet {
+			self.creatableHighlightRangeDefinition.highlightColor = self.highlightColor
 			self.colorDidChange()
 		}
 	}
@@ -142,24 +144,40 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 					.compactMap { Float($0) } // Convert to float array if possible
 					.compactMap { CGFloat($0) } // Convert to CGFloat array
 				if floats.count == 2, floats[0] < floats[1] {
-					self.dataSource?.highlightRange = floats[0] ..< floats[1]
+					self.creatableHighlightRangeDefinition.range = floats[0] ..< floats[1]
 				}
 				else {
-					self.dataSource?.highlightRange = nil
+					self.highlightRangeDefinition = nil
 					Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
 				}
 			}
 			else {
-				self.dataSource?.highlightRange = nil
+				self.highlightRangeDefinition = nil
 			}
 		}
 	}
 
-	public var highlightRange: Range<CGFloat>? {
-		get {
-			self.dataSource?.highlightRange
+	private var creatableHighlightRangeDefinition: DSFSparklineHighlightRangeDefinition {
+		if let item = self.highlightRangeDefinition {
+			return item
+		}
+		self.highlightRangeDefinition = DSFSparklineHighlightRangeDefinition(lowerBound: 0, upperBound: 1)
+		return self.highlightRangeDefinition!
+	}
+
+	@objc public var highlightRangeDefinition: DSFSparklineHighlightRangeDefinition? {
+		didSet {
+			self.updateDisplay()
 		}
 	}
+
+	public override func prepareForInterfaceBuilder() {
+		if self.showHighlightRange {
+			self.highlightRangeDefinition = DSFSparklineHighlightRangeDefinition(range: -3 ..< 3)
+		}
+		super.prepareForInterfaceBuilder()
+	}
+
 }
 
 public extension DSFSparklineZeroLineGraphView {
@@ -196,16 +214,15 @@ public extension DSFSparklineZeroLineGraphView {
 
 		guard let dataSource = self.dataSource else { return }
 
-		if self.showHighlightRange,
-			let range = self.highlightRange {
+		if let def = self.highlightRangeDefinition {
 
 			let integ = self.bounds.integral
 
-			let lb = 1.0 - dataSource.normalize(value: range.lowerBound)
-			let ub = 1.0 - dataSource.normalize(value: range.upperBound)
+			let lb = 1.0 - dataSource.normalize(value: def.range.lowerBound)
+			let ub = 1.0 - dataSource.normalize(value: def.range.upperBound)
 
 			primary.usingGState { ctx in
-				ctx.setFillColor(self.highlightColor.cgColor)
+				ctx.setFillColor(def.highlightColor.cgColor)
 				let r = CGRect(x: 0, y: ub * integ.height, width: integ.width, height: (lb - ub) * integ.height)
 				ctx.addRect(r)
 				ctx.fillPath()

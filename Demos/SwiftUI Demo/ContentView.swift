@@ -102,7 +102,9 @@ struct ContentView: View {
 															showZeroLine: true,
 															showHighlightRange: true,
 															highlightDefinition:
-																DSFSparklineHighlightRangeDefinition(highlightColor: DSFColor.quaternaryLabelColor))
+																DSFSparklineHighlightRangeDefinition(
+																	range: 0 ..< 0.5,
+																	highlightColor: DSFColor.quaternaryLabelColor))
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource2,
 															graphColor: NSColor.green,

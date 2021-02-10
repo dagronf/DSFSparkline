@@ -737,13 +737,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="575" height="245"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="42" horizontalPageScroll="10" verticalLineScroll="42" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWa-kq-M6J">
-                                <rect key="frame" x="20" y="20" width="515" height="155"/>
+                                <rect key="frame" x="20" y="20" width="495" height="105"/>
                                 <clipView key="contentView" id="l94-XN-lZh">
-                                    <rect key="frame" x="1" y="1" width="513" height="138"/>
+                                    <rect key="frame" x="1" y="1" width="493" height="88"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" headerView="DXW-4H-9LJ" viewBased="YES" id="8Z2-o9-tfX">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -804,11 +804,12 @@
                                                                             <color key="value" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                                            <real key="value" value="2"/>
+                                                                            <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="NO"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                             </subviews>
@@ -847,11 +848,12 @@
                                                                             <color key="value" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                                                            <real key="value" value="2"/>
+                                                                            <real key="value" value="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="NO"/>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </customView>
                                                             </subviews>
@@ -951,7 +953,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="NX9-rQ-Aph">
-                                    <rect key="frame" x="1" y="139" width="513" height="15"/>
+                                    <rect key="frame" x="1" y="89" width="493" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mck-Zs-RC3">

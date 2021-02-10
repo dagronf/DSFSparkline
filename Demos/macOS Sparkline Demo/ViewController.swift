@@ -96,7 +96,7 @@ class ViewController: NSViewController {
 		sparkPacketRejection.dataSource = sparkPacketRejectionDatasource
 
 		stackLineView.dataSource = stackLineViewDatasource
-		stackLineViewDatasource.highlightRange = 3 ..< 7
+		stackLineView.highlightRangeDefinition?.range = 3 ..< 7
 		stackLineView.showHighlightRange = true
 
 		fakeSparkCpu1.dataSource = fakeSparkCpu1Datasource
