@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-rk-lDK">
-                                <rect key="frame" x="20" y="64" width="374" height="540"/>
+                                <rect key="frame" x="20" y="64" width="374" height="769"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-7V-VA6" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
@@ -230,7 +230,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="7N7-yg-gbp" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                        <rect key="frame" x="0.0" y="460" width="374" height="25"/>
+                                        <rect key="frame" x="0.0" y="545" width="374" height="25"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="RR3-w6-hIY"/>
@@ -268,7 +268,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-ri-mCl" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                        <rect key="frame" x="0.0" y="495" width="374" height="45"/>
+                                        <rect key="frame" x="0.0" y="580" width="374" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="dj8-Mf-Qxy"/>
@@ -314,6 +314,113 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="3MS-nZ-UwQ" customClass="DSFSparklineTabletGraphView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="635" width="374" height="25"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="bm1-Ef-imf"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                <color key="value" systemColor="tertiarySystemFillColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
+                                                <color key="value" systemColor="separatorColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="zeroLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="5WL-JK-xwx" customClass="DSFSparklineTabletGraphView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="670" width="374" height="14"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="kt0-j4-gCA"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                <color key="value" systemColor="tertiarySystemFillColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
+                                                <color key="value" systemColor="separatorColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="-"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="zeroLineWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="winColor">
+                                                <color key="value" red="0.0044808890670000002" green="0.030145617199999999" blue="0.34826511139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lossColor">
+                                                <color key="value" red="1" green="0.56650460749999998" blue="0.00052769381199999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="PEf-dy-zeY" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="694" width="374" height="75"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="KCf-eA-M9U"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                <color key="value" systemColor="tertiarySystemFillColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -335,6 +442,9 @@
                         <outlet property="spark2" destination="EqD-MM-1EB" id="B9W-V4-3gh"/>
                         <outlet property="spark3" destination="BBW-Jd-8WN" id="QS2-ZH-LJV"/>
                         <outlet property="spark4" destination="SXc-Lq-HWV" id="TwB-jw-Sfb"/>
+                        <outlet property="stacklineGraphView" destination="PEf-dy-zeY" id="TRN-Zc-j7l"/>
+                        <outlet property="tabletView1" destination="3MS-nZ-UwQ" id="tGc-no-TcD"/>
+                        <outlet property="tabletView2" destination="5WL-JK-xwx" id="7gZ-6G-eJ8"/>
                         <outlet property="winLoss1" destination="7N7-yg-gbp" id="mYs-yM-uGA"/>
                         <outlet property="winLoss2" destination="ByN-ri-mCl" id="ao7-aj-LAo"/>
                     </connections>
