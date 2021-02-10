@@ -16,15 +16,18 @@ struct WinLossGraphContentView: View {
 	let tablet1: DSFSparklineDataSource
 
 	var body: some View {
-		VStack(spacing: 20) {
+		VStack(spacing: 8) {
 
-			Text("Win/Loss Style")
-				.underline()
-				.font(.headline)
+			Text("Win/Loss")
 
 			DSFSparklineWinLossGraphView.SwiftUI(
 				dataSource: leftDataSource
 			)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("Win/Loss/Tie")
+
 			DSFSparklineWinLossGraphView.SwiftUI(
 				dataSource: rightDataSource,
 				winColor: .systemIndigo,
@@ -34,6 +37,11 @@ struct WinLossGraphContentView: View {
 				barSpacing: 6,
 				showZeroLine: true
 			)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("Win/Loss/Tie with zero-line")
+
 			DSFSparklineWinLossGraphView.SwiftUI(
 				dataSource: upDataSource,
 				winColor: .systemGreen,
@@ -44,10 +52,10 @@ struct WinLossGraphContentView: View {
 				zeroLineDefinition: DSFSparklineZeroLineDefinition(color: .textColor)
 			)
 			.frame(width: 330.0, height: 34.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
 
-			Text("Tablet Style")
-				.underline()
-				.font(.headline)
+			Text("Tablet")
 
 			VStack {
 				DSFSparklineTabletGraphView.SwiftUI(
@@ -56,13 +64,21 @@ struct WinLossGraphContentView: View {
 					lossColor: DSFColor.systemGray.withAlphaComponent(0.2),
 					barSpacing: 2
 				)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
 				DSFSparklineTabletGraphView.SwiftUI(
 					dataSource: TabletDataSource1,
+					lineWidth: 1,
 					barSpacing: 2
 				)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+				.frame(height: 20)
 			}
-			.frame(width: 250, height: 40)
+			.frame(height: 60)
 		}
+		.frame(height: 400)
 		.padding()
 	}
 }

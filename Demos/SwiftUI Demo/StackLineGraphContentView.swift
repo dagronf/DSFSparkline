@@ -33,7 +33,7 @@ var UpDataSource3: DSFSparklineDataSource = {
 
 var UpDataSource4: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 21, range: 0 ... 1)
-	d.highlightRange = 0 ..< 0.5
+	d.highlightRange = 0.3 ..< 0.7
 	d.zeroLineValue = 0.5
 	d.push(values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0])
 	return d
@@ -43,12 +43,19 @@ var UpDataSource4: DSFSparklineDataSource = {
 struct StackLineGraphContentView_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
+
+			Text("Stackline")
+
 			DSFSparklineStackLineGraphView.SwiftUI(
 				dataSource: UpDataSource1,
 				graphColor: DSFColor.linkColor,
 				showZeroLine: true
 			)
 			.frame(width: 330.0, height: 60.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("Stackline with range")
 
 			DSFSparklineStackLineGraphView.SwiftUI(
 				dataSource: UpDataSource2,
@@ -62,6 +69,10 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 					)
 			)
 			.frame(width: 250.0, height: 59.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("Stackline no fill")
 
 			DSFSparklineStackLineGraphView.SwiftUI(
 				dataSource: UpDataSource3,
@@ -71,6 +82,10 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				shadowed: false
 			)
 			.frame(width: 330.0, height: 59.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("StackLine with range")
 
 			DSFSparklineStackLineGraphView.SwiftUI(
 				dataSource: UpDataSource4,
@@ -85,6 +100,10 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 					)
 			)
 			.frame(width: 330.0, height: 59.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("StackLine centered around zero-line")
 
 			DSFSparklineStackLineGraphView.SwiftUI(
 				dataSource: UpDataSource4,
@@ -92,10 +111,15 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				lineWidth: 0.5,
 				shadowed: false,
 				showZeroLine: true,
+				zeroLineDefinition: DSFSparklineZeroLineDefinition(color: .textColor, lineWidth: 1, lineDashStyle: []),
 				centeredAtZeroLine: true,
 				lowerGraphColor: DSFColor.systemPink
 			)
 			.frame(width: 330.0, height: 59.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
 		}
+		.padding(10)
+		.frame(height: 600.0)
 	}
 }
