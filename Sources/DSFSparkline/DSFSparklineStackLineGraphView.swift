@@ -38,13 +38,6 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false
 	
-	var gradient: CGGradient?
-	public override func colorDidChange() {
-		self.gradient = CGGradient(
-			colorsSpace: nil,
-			colors: [self.graphColor.withAlphaComponent(0.4).cgColor,
-						self.graphColor.withAlphaComponent(0.2).cgColor] as CFArray,
-			locations: [1.0, 0.0]
-			)!
-	}
+	internal var gradient: CGGradient?
+	internal var lowerGradient: CGGradient?
 }

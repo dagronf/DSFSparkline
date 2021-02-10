@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-rk-lDK">
-                                <rect key="frame" x="20" y="64" width="374" height="769"/>
+                                <rect key="frame" x="20" y="64" width="374" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-7V-VA6" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="75"/>
@@ -397,10 +397,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="PEf-dy-zeY" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                        <rect key="frame" x="0.0" y="694" width="374" height="75"/>
+                                        <rect key="frame" x="0.0" y="694" width="374" height="35"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="KCf-eA-M9U"/>
+                                            <constraint firstAttribute="height" constant="35" id="KCf-eA-M9U"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -419,6 +419,35 @@
                                                 <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="R2J-3t-GVH" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="739" width="374" height="35"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="nKQ-WS-e2v"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                <color key="value" red="0.39145434205184221" green="0.55418628454208374" blue="0.41031768849562661" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="windowSize">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
+                                                <color key="value" systemColor="tertiarySystemFillColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
+                                                <integer key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
+                                                <color key="value" red="0.55418628454208374" green="0.39853696759501883" blue="0.45183829138689885" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
@@ -443,6 +472,7 @@
                         <outlet property="spark3" destination="BBW-Jd-8WN" id="QS2-ZH-LJV"/>
                         <outlet property="spark4" destination="SXc-Lq-HWV" id="TwB-jw-Sfb"/>
                         <outlet property="stacklineGraphView" destination="PEf-dy-zeY" id="TRN-Zc-j7l"/>
+                        <outlet property="stacklineGraphView2" destination="R2J-3t-GVH" id="m2K-0C-2tc"/>
                         <outlet property="tabletView1" destination="3MS-nZ-UwQ" id="tGc-no-TcD"/>
                         <outlet property="tabletView2" destination="5WL-JK-xwx" id="7gZ-6G-eJ8"/>
                         <outlet property="winLoss1" destination="7N7-yg-gbp" id="mYs-yM-uGA"/>

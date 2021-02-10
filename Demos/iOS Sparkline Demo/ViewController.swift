@@ -44,6 +44,9 @@ class ViewController: UIViewController {
 	@IBOutlet weak var stacklineGraphView: DSFSparklineStackLineGraphView!
 	var sl1 = DSFSparklineDataSource(range: 0 ... 10)
 
+	@IBOutlet weak var stacklineGraphView2: DSFSparklineStackLineGraphView!
+
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -72,7 +75,9 @@ class ViewController: UIViewController {
 		tabletView1.dataSource = wl1
 		tabletView2.dataSource = wl1
 
+		sl1.zeroLineValue = 5
 		stacklineGraphView.dataSource = sl1
+		stacklineGraphView2.dataSource = sl1
 
 		self.addNewValue2()
 	}

@@ -45,6 +45,11 @@ public extension DSFSparklineStackLineGraphView {
 		/// Draw a shadow under the line
 		let shadowed: Bool
 
+		/// Should the line graph be centered around the zero-line?
+		let centeredAtZeroLine: Bool
+		/// The color used to draw values lower than the zero-line, or nil for the same as the graph color
+		let lowerGraphColor: DSFColor?
+
 		/// Highlight the y-range defined in the datasource
 		let showHighlightRange: Bool
 		/// The style of the y-range highlight
@@ -59,6 +64,8 @@ public extension DSFSparklineStackLineGraphView {
 		///   - shadowed: If true, draws a shadow under the line part of the graph.
 		///   - showZeroLine: Show or hide a 'zero line' horizontal line
 		///   - zeroLineDefinition: the settings for drawing the zero line
+		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
+		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - showHighlightRange: Highlight the y-range defined in the datasource
 		///   - highlightDefinition: The style of the y-range highlight
 		public init(dataSource: DSFSparklineDataSource,
@@ -68,6 +75,8 @@ public extension DSFSparklineStackLineGraphView {
 						shadowed: Bool = false,
 						showZeroLine: Bool = false,
 						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
+						centeredAtZeroLine: Bool = false,
+						lowerGraphColor: DSFColor? = nil,
 						showHighlightRange: Bool = false,
 						highlightDefinition: DSFSparklineHighlightRangeDefinition? = nil)
 		{
@@ -76,6 +85,9 @@ public extension DSFSparklineStackLineGraphView {
 
 			self.showZeroLine = showZeroLine
 			self.zeroLineDefinition = zeroLineDefinition
+
+			self.centeredAtZeroLine = centeredAtZeroLine
+			self.lowerGraphColor = lowerGraphColor
 
 			self.lineWidth = lineWidth
 			self.lineShading = lineShading
@@ -118,6 +130,9 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 
 		view.showZeroLine = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
+
+		view.centeredAtZeroLine = self.centeredAtZeroLine
+		view.lowerGraphColor = self.lowerGraphColor
 
 		view.showHighlightRange = self.showHighlightRange
 		if self.showHighlightRange, let hr = self.highlightDefinition {

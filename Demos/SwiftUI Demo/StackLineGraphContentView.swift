@@ -85,6 +85,17 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 					)
 			)
 			.frame(width: 330.0, height: 59.0)
+
+			DSFSparklineStackLineGraphView.SwiftUI(
+				dataSource: UpDataSource4,
+				graphColor: DSFColor.green,
+				lineWidth: 0.5,
+				shadowed: false,
+				showZeroLine: true,
+				centeredAtZeroLine: true,
+				lowerGraphColor: DSFColor.systemPink
+			)
+			.frame(width: 330.0, height: 59.0)
 		}
 	}
 }
