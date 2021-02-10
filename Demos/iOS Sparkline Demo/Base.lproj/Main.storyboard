@@ -34,6 +34,7 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-MM-1EB" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
@@ -44,20 +45,27 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
-                                                <color key="value" systemColor="systemIndigoColor"/>
+                                                <color key="value" systemColor="systemGreenColor"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="NO"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="zeroLineWidth">
-                                                <real key="value" value="2"/>
+                                                <real key="value" value="0.5"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="2,2"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
                                                 <color key="value" systemColor="systemOrangeColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="negativeColor">
+                                                <color key="value" systemColor="systemPinkColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="0.5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>

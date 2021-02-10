@@ -117,7 +117,7 @@ public extension DSFSparklineBarGraphView {
 		let normy = dataSource.normalized
 		let xDiff = self.bounds.width / CGFloat(normy.count)
 
-		let centre = dataSource.normalize(value: dataSource.zeroLineValue)
+		let centre = dataSource.normalizedZeroLineValue
 		let centroid = (1 - centre) * (drawRect.height - 1)
 
 		primary.usingGState { outer in

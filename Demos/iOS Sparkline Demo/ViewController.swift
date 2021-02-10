@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 	@IBOutlet weak var spark1: DSFSparklineLineGraphView!
 	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 30)
 	@IBOutlet weak var spark2: DSFSparklineLineGraphView!
-	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 10)
+	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -12 ... 12)
 	@IBOutlet weak var spark3: DSFSparklineBarGraphView!
 	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
 	@IBOutlet weak var spark4: DSFSparklineBarGraphView!
@@ -38,7 +38,10 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view.
 
 		spark1.dataSource = spark1ds
+
 		spark2.dataSource = spark2ds
+		spark2ds.zeroLineValue = -7
+
 		spark3.dataSource = spark3ds
 
 		spark4.dataSource = spark4ds

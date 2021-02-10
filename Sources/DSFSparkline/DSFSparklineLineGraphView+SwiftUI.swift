@@ -33,6 +33,9 @@ public extension DSFSparklineLineGraphView {
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
 
+		let centeredAtZeroLine: Bool
+		let negativeGraphColor: DSFColor
+
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
@@ -64,13 +67,18 @@ public extension DSFSparklineLineGraphView {
 						lineShading: Bool = true,
 						shadowed: Bool = false,
 						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared)
+						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
+						centeredAtZeroLine: Bool = false,
+						negativeGraphColor: DSFColor = DSFColor.systemRed)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 
 			self.showZeroLine = showZeroLine
 			self.zeroLineDefinition = zeroLineDefinition
+
+			self.centeredAtZeroLine = centeredAtZeroLine
+			self.negativeGraphColor = negativeGraphColor
 
 			self.lineWidth = lineWidth
 			self.interpolated = interpolated
@@ -112,6 +120,9 @@ extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 
 		view.showZeroLine = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
+
+		view.centeredAtZeroLine = self.centeredAtZeroLine
+		view.negativeColor = self.negativeGraphColor
 
 		return view
 	}

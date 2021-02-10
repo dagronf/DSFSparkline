@@ -42,6 +42,9 @@ public extension DSFSparklineBarGraphView {
 		/// The drawing definition for the zero line point
 		let zeroLineDefinition: DSFSparklineZeroLineDefinition
 
+		let centeredAtZeroLine: Bool
+		let negativeGraphColor: DSFColor
+
 		/// Create a bar graph sparkline
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -55,13 +58,18 @@ public extension DSFSparklineBarGraphView {
 						lineWidth: UInt = 1,
 						barSpacing: UInt = 1,
 						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared)
+						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
+						centeredAtZeroLine: Bool = false,
+						negativeGraphColor: DSFColor = DSFColor.systemRed)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 
 			self.showZeroLine = showZeroLine
 			self.zeroLineDefinition = zeroLineDefinition
+
+			self.centeredAtZeroLine = centeredAtZeroLine
+			self.negativeGraphColor = negativeGraphColor
 
 			self.lineWidth = lineWidth
 			self.barSpacing = barSpacing
@@ -100,6 +108,9 @@ extension DSFSparklineBarGraphView.SwiftUI: DSFViewRepresentable {
 
 		view.showZeroLine = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
+
+		view.centeredAtZeroLine = self.centeredAtZeroLine
+		view.negativeColor = self.negativeGraphColor
 
 		return view
 	}

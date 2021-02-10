@@ -106,7 +106,8 @@ struct ContentView: View {
 															lineWidth: 2,
 															barSpacing: 2,
 															showZeroLine: true,
-															zeroLineDefinition: BigCyanZeroLine)
+															zeroLineDefinition: BigCyanZeroLine,
+															centeredAtZeroLine: true)
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
 			}
 			HStack {

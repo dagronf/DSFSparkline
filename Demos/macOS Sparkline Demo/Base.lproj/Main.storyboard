@@ -816,6 +816,7 @@
                                                     <real key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="2,2"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>

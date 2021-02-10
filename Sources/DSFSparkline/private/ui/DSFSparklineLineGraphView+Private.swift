@@ -46,6 +46,18 @@ extension DSFSparklineLineGraphView {
 	#endif
 
 	private func drawGraph(primary: CGContext) {
+		if self.centeredAtZeroLine {
+			self.drawCenteredGraph(primary: primary)
+		}
+		else {
+			self.drawLineGraph(primary: primary)
+		}
+	}
+}
+
+fileprivate extension DSFSparklineLineGraphView {
+
+	func drawLineGraph(primary: CGContext) {
 
 		let drawRect = self.bounds
 
@@ -115,6 +127,98 @@ extension DSFSparklineLineGraphView {
 			}
 		}
 	}
+
+	func drawCenteredGraph(primary: CGContext) {
+
+		let drawRect = self.bounds
+
+		let range: ClosedRange<CGFloat> = 2 ... drawRect.maxY - 2
+
+		guard let dataSource = self.dataSource else {
+			return
+		}
+
+		let normy = dataSource.normalized
+		let xDiff = self.bounds.width / CGFloat(normy.count - 1)
+		let points = normy.enumerated().map {
+			CGPoint(x: CGFloat($0.offset) * xDiff, y: drawRect.height - ($0.element * (drawRect.height-1)).clamped(to: range))
+		}
+
+		if points.count < 2 {
+			// There's no line if there's either no data or just a single point
+			// https://github.com/dagronf/DSFSparkline/issues/3#issuecomment-770324047
+			return
+		}
+
+		let centroid = (1-dataSource.normalizedZeroLineValue) * (drawRect.height - 1)
+
+		//let path = CGMutablePath()
+
+		var pts: [CGPoint] = [CGPoint(x: drawRect.minX - 1, y: centroid)]
+		pts.append(CGPoint(x: -1, y: points[0].y))
+		pts.append(contentsOf: points)
+		pts.append(CGPoint(x: drawRect.maxX + 1, y: points.last!.y))
+		pts.append(CGPoint(x: drawRect.maxX + 1, y: centroid))
+
+		let path = CGPath.pathWithPoints(pts, smoothed: self.interpolated).mutableCopy()!
+		
+		primary.usingGState { (outer) in
+
+			for which in (0 ... 1) {
+
+				if dataSource.counter < dataSource.windowSize {
+					let pos = CGFloat(dataSource.counter) * xDiff
+					let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+					outer.clip(to: clipRect)
+				}
+
+				outer.usingGState { (inner) in
+
+					let split = self.bounds.divided(atDistance: centroid, from: .minYEdge)
+
+					if which == 0 {
+						inner.clip(to: split.slice)
+					}
+					else {
+						inner.clip(to: split.remainder)
+					}
+
+					if self.lineShading {
+						let gradient = (which == 0) ? self.gradient : self.negativeGradient
+						if let grad = gradient {
+							inner.usingGState { (ctx) in
+								ctx.addPath(path)
+								ctx.clip()
+								ctx.drawLinearGradient(
+									grad, start: CGPoint(x: 0.0, y: self.bounds.maxY),
+									end: CGPoint(x: 0.0, y: self.bounds.minY),
+									options: [.drawsAfterEndLocation, .drawsBeforeStartLocation])
+							}
+						}
+					}
+
+					inner.usingGState { (ctx) in
+						ctx.addPath(path)
+						ctx.setStrokeColor(which == 0 ? self.graphColor.cgColor : self.negativeColor.cgColor)
+						ctx.setLineWidth(self.lineWidth)
+
+						let yoff: CGFloat
+						#if os(macOS)
+						yoff = -0.5		// macos is flipped
+						#else
+						yoff = 0.5
+						#endif
+
+						if shadowed {
+							ctx.setShadow(offset: CGSize(width: 0.5, height: yoff),
+											  blur: 1.0,
+											  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+						}
+						ctx.setLineJoin(.round)
+						ctx.strokePath()
+					}
+				}
+			}
+		}
+	}
 }
-
-

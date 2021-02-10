@@ -173,6 +173,10 @@ extension DSFSparklineDataSource {
 		return self.sparkline.normalize(value: value)
 	}
 
+	var normalizedZeroLineValue: CGFloat {
+		return self.normalize(value: self.zeroLineValue)
+	}
+
 	fileprivate func notifyDataChange() {
 		NotificationCenter.default.post(name: DSFSparklineDataSource.DataChangedNotification, object: self)
 	}

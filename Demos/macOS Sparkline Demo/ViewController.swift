@@ -75,7 +75,10 @@ class ViewController: NSViewController {
 		cpuUsage.delegate = self
 
 		sparkCrash.dataSource = sparkCrashDatasource
+
 		sparkCrash2.dataSource = sparkCrash2Datasource
+		sparkCrash2Datasource.zeroLineValue = -5
+
 		sparkDeprecation.dataSource = sparkDeprecationDatasource
 		sparkIntervention.dataSource = sparkInterventionDatasource
 		sparkNetworkError.dataSource = sparkNetworkErrorDatasource
