@@ -22,14 +22,15 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 
 ## Features
 
-* Simple bar, dot, line and win/loss graph support.
-* `IBDesignable` support so you can see your sparklines in interface builder.
+* Multiple graph styles support, such as line, bar, tablet etc.
+* SwiftUI support for all sparkline types
+* `IBDesignable` support so you can see and configure your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
 * Line graph can draw with discrete lines or fitted to a curve'
 * Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
-* Center bar/line graphs around the zero line
-* SwiftUI support
+* Optional highlighting ranges (or multiple!) on a graph.
+* Center bar/line/stackline graphs around the zero line
 
 ## Available types
 
@@ -37,30 +38,41 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 
 #### Standard
 
-![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg)
+|  Standard  | Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line-centered.png" width="400">|
+
 #### Interpolated
 
-![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg)
-
-#### Centered, interpolated
-
-<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" width="400">
+|  Interpolated  | Interpolated Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" height="70" width="400">|
 
 ### Bar
 
-#### Standard
+|  Standard  |  Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerbar.png" width="400">|
 
-![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg)
+### Stackline
 
-#### Centered
-
-<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerbar.png" width="400">
+|  Standard  |  Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/stackline.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/stackline-centered.png" width="400">|
 
 ### Dot
 
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
+
 ### Win/Loss
-<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/win-loss.png" width="400">
+
+|  Win/Loss  |  Win/Loss/Tie  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/winlosstie.png" width="400">|
+
+### Tablet
+
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/tablet.png" width="400">
 
 ## Overview
 
@@ -108,13 +120,20 @@ You can define a 'zero-line' to your line or bar graph.  The zero-line denotes t
 
 The zero-line can also be used to center certain graph types (currently line and bar). By default, the zero-line is set at 0.0.
 
+### Highlighting ranges
+
+You can specify multiple ranges on a graph (line, bar, stackbar) to highlight. You might (for example) set a red highlight on the upper portion of a line graph to quickly indicate values that are 'dangerous'.
+
 ## View Types
 
 Represents the viewable settings and display.  The current view types available are :-
 
 * DSFSparklineLineGraphView
+* DSFSparklineStackLineGraphView
 * DSFSparklineBarGraphView
 * DSFSparklineDotGraphView
+* DSFSparklineWinLossGraphView
+* DSFSparklineTabletGraphView
 
 ### Common display customizations
 
@@ -141,6 +160,15 @@ Represents the viewable settings and display.  The current view types available 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 
 A simple line graph
+
+|  Standard  | Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line-centered.png" width="400">|
+
+|  Interpolated  | Interpolated Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" height="70" width="400">|
+
 
 | Setting         | Type      | Description                            |
 |-----------------|-----------|----------------------------------------|
@@ -179,6 +207,16 @@ A win-loss graph, where positive values in the datasource are represented as a '
 | `lossColor`    | `NSColor`<br>`UIColor` | The color to use for a 'loss'          |
 | `tieColor`     | `NSColor`<br>`UIColor`  | *(optional)* The color to use for a 'tie'. If nil, tie (0) values are not drawn<br>By default, 'tie' values are not drawn. |
 
+### Tablet graph customizations (`DSFSparklineTabletGraphView`)
+
+A tablet graph, where positive values in the datasource are represented as a filled circle, negative values represented as an unfilled circle. The concept is identical to the win/loss graph except the renderering is different.
+
+| Setting        | Type                | Description                                  |
+|----------------|---------------------|----------------------------------------------|
+| `lineWidth`    | `CGFloat`           | The line width for the stroke                |
+| `barSpacing`   | `CGFloat`           | The spacing between each bar                 |
+| `winColor`     | `NSColor`<br>`UIColor` | The color to draw the filled circle for a 'win'  |
+| `lossColor`    | `NSColor`<br>`UIColor` | The color to draw the filled circle for a 'loss' |
 
 The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
@@ -360,6 +398,9 @@ struct SparklineView: View {
 
 ## Screenshots
 
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/report-ex.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/report-ex.png" width="300"></a>
+
+
 ### In app
 
 | macOS dark | macOS light | iOS |
@@ -384,7 +425,9 @@ struct SparklineView: View {
 
 ### Latest
 
+* Added stackline sparkline type
 * Added win/loss/tie sparkline type
+* Added tablet sparkline type
 
 ### `3.4.0`
 

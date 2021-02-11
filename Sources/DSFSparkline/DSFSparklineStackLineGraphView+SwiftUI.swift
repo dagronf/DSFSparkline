@@ -3,7 +3,7 @@
 //  DSFSparklines
 //
 //  Created by Darren Ford on 7/12/20.
-//  Copyright © 2020 Darren Ford. All rights reserved.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

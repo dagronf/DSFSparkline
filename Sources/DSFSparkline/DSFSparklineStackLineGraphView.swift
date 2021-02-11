@@ -3,7 +3,7 @@
 //  DSFSparklines
 //
 //  Created by Darren Ford on 20/12/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -27,6 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
+/// A stack line sparkline type
 @IBDesignable
 public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph

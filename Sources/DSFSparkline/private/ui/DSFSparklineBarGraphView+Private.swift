@@ -119,9 +119,6 @@ public extension DSFSparklineBarGraphView {
 		let drawRect = self.bounds
 		let height = drawRect.height - 1
 
-		let range: ClosedRange<CGFloat> = 2 ... max(2, drawRect.maxY - 2)
-
-
 		let normy = dataSource.normalized
 		let xDiff = self.bounds.width / CGFloat(normy.count)
 

@@ -1,9 +1,9 @@
 //
-//  DSFSparklineTabletGraphView.swift
+//  DSFSparklineZeroLineDefinition.swift
 //  DSFSparklines
 //
-//  Created by Darren Ford on 20/12/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Created by Darren Ford on 25/01/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -27,6 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
+/// A tablet-style sparkline. Similar to win/loss except rendering as a row of filled/unfilled circles
 @IBDesignable
 public class DSFSparklineTabletGraphView: DSFSparklineView {
 	/// The width of the stroke for the tablet

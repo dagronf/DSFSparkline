@@ -9,8 +9,15 @@ import SwiftUI
 import DSFSparkline
 
 var UpDataSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 11, range: 0 ... 1, zeroLineValue: 0.3)
-	d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.4)
+	//d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
+
+	d.push(values: [
+				0.85, 0.04, 0.24, 0.13, 0.51, 0.93, 0.26, 0.69, 0.16, 0.39,
+				0.19, 0.12, 0.28, 0.42, 0.42, 0.48, 0.29, 0.05, 0.87, 0.28
+	])
+
+
 	return d
 }()
 
@@ -47,26 +54,53 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 
 				DSFSparklineStackLineGraphView.SwiftUI(
 					dataSource: UpDataSource1,
-					graphColor: DSFColor.linkColor,
-					showZeroLine: true
+					graphColor: DSFColor.textColor,
+					lineWidth: 1
 				)
-				.frame(width: 330.0, height: 60.0)
+				.frame(height: 40.0)
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 
-				Text("Stackline centered")
+				Text("Stackline with zero-line")
 
 				DSFSparklineStackLineGraphView.SwiftUI(
 					dataSource: UpDataSource1,
-					graphColor: DSFColor.lightGray,
-					showZeroLine: true,
-					centeredAtZeroLine: true,
-					lowerGraphColor: DSFColor.darkGray
+					graphColor: DSFColor.controlAccentColor,
+					lineWidth: 1,
+					showZeroLine: true
 				)
-				.frame(width: 330.0, height: 60.0)
+				.frame(height: 40.0)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+				Text("Stackline centered around zero-line")
+
+				DSFSparklineStackLineGraphView.SwiftUI(
+					dataSource: UpDataSource1,
+					graphColor: DSFColor.linkColor,
+					lineWidth: 1,
+					showZeroLine: true,
+					centeredAtZeroLine: true
+				)
+				.frame(height: 40.0)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+				Text("Stackline centered around zero-line, lower color")
+
+				DSFSparklineStackLineGraphView.SwiftUI(
+					dataSource: UpDataSource1,
+					graphColor: DSFColor.systemGreen,
+					lineWidth: 1,
+					//showZeroLine: true,
+					centeredAtZeroLine: true,
+					lowerGraphColor: DSFColor.systemRed
+				)
+				.frame(height: 60.0)
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 			}
+			.frame(width: 330.0)
 
 			Text("Stackline with range")
 
@@ -77,8 +111,8 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 				showZeroLine: true,
 				highlightDefinitions: [
 					DSFSparklineHighlightRangeDefinition(
-						range: 0 ..< 50,
-						highlightColor: DSFColor.cyan.withAlphaComponent(0.2)
+						range: 20 ..< 80,
+						highlightColor: DSFColor.placeholderTextColor.withAlphaComponent(0.2)
 					)
 				]
 			)
@@ -135,6 +169,6 @@ struct StackLineGraphContentView_Previews: PreviewProvider {
 			.border(Color.gray.opacity(0.2), width: 1)
 		}
 		.padding(10)
-		.frame(height: 600.0)
+		.frame(height: 900.0)
 	}
 }

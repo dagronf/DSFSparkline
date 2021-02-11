@@ -68,7 +68,7 @@ struct WinLossGraphContentView: View {
 
 				DSFSparklineTabletGraphView.SwiftUI(
 					dataSource: TabletDataSource1,
-					lineWidth: 1,
+					lineWidth: 0.5,
 					barSpacing: 2
 				)
 				.padding(5)
