@@ -15,31 +15,56 @@ struct OverlayView: View {
 }
 
 var ds1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0 ... 100, zeroLineValue: 50)
-	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
-	return d
-}()
+	let d = DSFSparklineDataSource(windowSize: 20, range: -50 ... 50, zeroLineValue: 0)
+	d.set(values: [18,
+						 -5,
+						 11,
+						 12,
+						 -21,
+						 48,
+						 41,
+						 -19,
+						 -28,
+						 3,
 
-var ds2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0 ... 100)
-	d.push(values: [3, 66, 77, 100, 43, 19, 4, 0, 32, 44])
+						 28,
+						 -27,
+						 -21,
+						 -45,
+						 -48,
+						 -39,
+						 33,
+						 -4,
+						 35,
+						 37]
+	)
 	return d
 }()
 
 struct OverlayView_Previews: PreviewProvider {
 	static var previews: some View {
-		ZStack {
-			DSFSparklineBarGraphView.SwiftUI(
-				dataSource: ds1,
-				graphColor: .blue,
-				showZeroLine: true
-			)
-			DSFSparklineLineGraphView.SwiftUI(
-				dataSource: ds2,
-				graphColor: .textColor,
-				lineWidth: 4,
-				lineShading: false
-			)
+		VStack {
+			Text("Using ZStack to overlay two sparklines")
+
+			ZStack {
+				DSFSparklineBarGraphView.SwiftUI(
+					dataSource: ds1,
+					graphColor: .systemTeal,
+					barSpacing: 1,
+					showZeroLine: true,
+					centeredAtZeroLine: true
+				)
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: ds1,
+					graphColor: .textColor,
+					lineWidth: 1,
+					interpolated: true,
+					lineShading: false
+				)
+			}
+			.frame(height: 40)
 		}
+		.frame(width: 200)
+		.padding()
 	}
 }
