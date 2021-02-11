@@ -163,7 +163,7 @@
 		236A57F725C1392B00F2BACF /* SwiftUI Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		236A57F925C1392B00F2BACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236A57FA25C1392B00F2BACF /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		23882CDE257D675700AC103A /* SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23882CDE257D675700AC103A /* macOS SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23882CE0257D675700AC103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23882CE2257D675700AC103A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		23882CE4257D675800AC103A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 				23102BDA23B02B0A001A621D /* macOS Sparkline Demo Objc */,
 				23102BC223B02AED001A621D /* iOS Sparkline Demo */,
 				23102BF223B02B32001A621D /* tvOS Sparkline Demo */,
-				23882CDF257D675700AC103A /* SwiftUI Demo */,
+				23882CDF257D675700AC103A /* macOS SwiftUI Demo */,
 				238423FD25C74EE400A2A861 /* SwiftUI Sparkline Crossplatform */,
 				23102B5123B0245A001A621D /* Products */,
 				23882CC9257D65CB00AC103A /* Frameworks */,
@@ -296,7 +296,7 @@
 				23102BD923B02B0A001A621D /* macOS Sparkline Demo Objc.app */,
 				23102BF123B02B32001A621D /* tvOS Sparkline Demo.app */,
 				23E2278923B5846E00E59122 /* macOS Table Demo.app */,
-				23882CDE257D675700AC103A /* SwiftUI Demo.app */,
+				23882CDE257D675700AC103A /* macOS SwiftUI Demo.app */,
 				236A57F025C1392B00F2BACF /* SwiftUI Sparkline Demo.app */,
 				236A57F725C1392B00F2BACF /* SwiftUI Sparkline Demo.app */,
 			);
@@ -412,7 +412,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		23882CDF257D675700AC103A /* SwiftUI Demo */ = {
+		23882CDF257D675700AC103A /* macOS SwiftUI Demo */ = {
 			isa = PBXGroup;
 			children = (
 				23882CE0257D675700AC103A /* AppDelegate.swift */,
@@ -428,7 +428,7 @@
 				238EF46325C0D88D00FCC829 /* StackLineGraphContentView.swift */,
 				231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */,
 			);
-			path = "SwiftUI Demo";
+			path = "macOS SwiftUI Demo";
 			sourceTree = "<group>";
 		};
 		23882CE6257D675800AC103A /* Preview Content */ = {
@@ -593,9 +593,9 @@
 			productReference = 236A57F725C1392B00F2BACF /* SwiftUI Sparkline Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		23882CDD257D675700AC103A /* SwiftUI Demo */ = {
+		23882CDD257D675700AC103A /* macOS SwiftUI Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 23882CEE257D675800AC103A /* Build configuration list for PBXNativeTarget "SwiftUI Demo" */;
+			buildConfigurationList = 23882CEE257D675800AC103A /* Build configuration list for PBXNativeTarget "macOS SwiftUI Demo" */;
 			buildPhases = (
 				D3286436CE8A16FF1976C0D4 /* [CP] Check Pods Manifest.lock */,
 				23882CDA257D675700AC103A /* Sources */,
@@ -607,9 +607,9 @@
 			);
 			dependencies = (
 			);
-			name = "SwiftUI Demo";
+			name = "macOS SwiftUI Demo";
 			productName = "SwiftUI Demo";
-			productReference = 23882CDE257D675700AC103A /* SwiftUI Demo.app */;
+			productReference = 23882CDE257D675700AC103A /* macOS SwiftUI Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 		23E2278823B5846E00E59122 /* macOS Table Demo */ = {
@@ -688,7 +688,7 @@
 				23102BD823B02B0A001A621D /* macOS Sparkline Demo Objc */,
 				23102BF023B02B32001A621D /* tvOS Sparkline Demo */,
 				23E2278823B5846E00E59122 /* macOS Table Demo */,
-				23882CDD257D675700AC103A /* SwiftUI Demo */,
+				23882CDD257D675700AC103A /* macOS SwiftUI Demo */,
 				236A57EF25C1392B00F2BACF /* SwiftUI Sparkline Demo (iOS) */,
 				236A57F625C1392B00F2BACF /* SwiftUI Sparkline Demo (macOS) */,
 			);
@@ -1173,7 +1173,7 @@
 /* Begin PBXTargetDependency section */
 		23882CFB257D677F00AC103A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 23882CDD257D675700AC103A /* SwiftUI Demo */;
+			target = 23882CDD257D675700AC103A /* macOS SwiftUI Demo */;
 			targetProxy = 23882CFA257D677F00AC103A /* PBXContainerItemProxy */;
 		};
 		239716BE23B554E50034A4D4 /* PBXTargetDependency */ = {
@@ -2175,12 +2175,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "SwiftUI Demo/SwiftUI_Demo.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "macOS SwiftUI Demo/SwiftUI_Demo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI Demo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"macOS SwiftUI Demo/Preview Content\"";
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2200,7 +2200,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "SwiftUI Demo/Info.plist";
+				INFOPLIST_FILE = "macOS SwiftUI Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2209,7 +2209,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.SwiftUI-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.macOS-SwiftUI-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2254,12 +2254,12 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "SwiftUI Demo/SwiftUI_Demo.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "macOS SwiftUI Demo/SwiftUI_Demo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI Demo/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"macOS SwiftUI Demo/Preview Content\"";
 				DEVELOPMENT_TEAM = 3L6RK3LGGW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2273,7 +2273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "SwiftUI Demo/Info.plist";
+				INFOPLIST_FILE = "macOS SwiftUI Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2281,7 +2281,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.SwiftUI-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.macOS-SwiftUI-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2517,7 +2517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		23882CEE257D675800AC103A /* Build configuration list for PBXNativeTarget "SwiftUI Demo" */ = {
+		23882CEE257D675800AC103A /* Build configuration list for PBXNativeTarget "macOS SwiftUI Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				23882CEF257D675800AC103A /* Debug */,
