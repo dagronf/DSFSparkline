@@ -27,6 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
+/// A sparkline that draws a line graph
 @IBDesignable
 public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph
@@ -41,6 +42,7 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false
 
+	// Optional gradient colors
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?
 }

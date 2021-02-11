@@ -27,7 +27,7 @@ import Cocoa
 import UIKit
 #endif
 
-/// Drawing definition for the zero-line
+/// Drawing definition for the zero-line operations
 public struct DSFSparklineZeroLineDefinition {
 	#if os(macOS)
 	public static let DefaultColor = DSFColor.disabledControlTextColor

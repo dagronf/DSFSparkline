@@ -20,10 +20,6 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
     </a>
 </p>
 
-## WARNING: Breaking Changes for 2.0.0
-
-Note that the 2.0.0 release has changes that will break your existing DSFSparkline code. Please see below for the changes.
-
 ## Features
 
 * Simple bar, dot and line graph support.
@@ -32,6 +28,7 @@ Note that the 2.0.0 release has changes that will break your existing DSFSparkli
 * y-range can be fixed and the sparkline will truncate to the specified range
 * Line graph can draw with discrete lines or fitted to a curve'
 * Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
+* Center bar/line graphs around the zero line
 * SwiftUI support
 
 ## Available types
@@ -39,17 +36,28 @@ Note that the 2.0.0 release has changes that will break your existing DSFSparkli
 ### Line
 
 #### Standard
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg)
 #### Interpolated
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg)
+
 #### Centered, interpolated
+
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" width="400">
+
 ### Bar
+
 #### Standard
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg)
+
 #### Centered
+
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerbar.png" width="400">
+
 ### Dot
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
 
 
@@ -91,15 +99,15 @@ The data source is assigned to the view model to provide data for drawing the sp
 
 ### Range
 
-An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical range will grow and shrink to accomodate the full range of data.
+An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical display will grow and shrink to accomodate the full range of data.
 
 ### Zero line
 
-You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource)
+You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource to 20)
 
-The zero-line can also be used to center certain graph types (currently line and bar).
+The zero-line can also be used to center certain graph types (currently line and bar). By default, the zero-line is set at 0.0.
 
-## Views
+## View Types
 
 Represents the viewable settings and display.  The current view types available are :-
 
@@ -113,7 +121,7 @@ Represents the viewable settings and display.  The current view types available 
 |-----------------------|---------------------|---------------------------------------------------------|
 | `graphColor`          | `NSColor`/`UIColor` | The color to use when drawing the sparkline             |
 
-### Common elements for graphs that can display a zero line (Line/Bar)
+#### Common elements for graphs that can display a zero line (Line/Bar)
 
 | Setting               | Type                    | Description                                             |
 |-----------------------|-------------------------|---------------------------------------------------------|
@@ -121,6 +129,11 @@ Represents the viewable settings and display.  The current view types available 
 | `zeroLineColor`       | `NSColor`<br/>`UIColor` | The color of the 'zero line' on the y-axis.             |
 | `zeroLineWidth`       | `CGFloat`               | The width of the 'zero line' on the y-axis              |
 | `zeroLineDashStyle`   | `[CGFloat]`             | The dash pattern to use when drawing the zero line      |
+
+#### Common elements for graphs that can be centered around the zero-line (Line/Bar)
+
+| Setting               | Type                    | Description                                             |
+|-----------------------|-------------------------|---------------------------------------------------------|
 | `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line?          |
 | `lowerGraphColor`     | `NSColor`<br/>`UIColor` | The color used to draw values below the zero line. If nil, is the same as the graph color |
 
@@ -147,6 +160,8 @@ Represents the viewable settings and display.  The current view types available 
 |-------------------|---------------------|----------------------------------------------------|
 | `upsideDown`      | `Bool`              | If true, draws from the top of the graph downwards |
 | `unsetGraphColor` | `NSColor`/`UIColor` | The color to use when drawing the background       |
+
+The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
 ## Integration
 
@@ -347,6 +362,10 @@ struct SparklineView: View {
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `3.4.0`
+
+* Added support for centering line and bar graphs around their zero-line value.
 
 ### `3.3.0`
 
