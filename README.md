@@ -20,10 +20,6 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
     </a>
 </p>
 
-## WARNING: Breaking Changes for 2.0.0
-
-Note that the 2.0.0 release has changes that will break your existing DSFSparkline code. Please see below for the changes.
-
 ## Features
 
 * Simple bar, dot and line graph support.
@@ -39,17 +35,28 @@ Note that the 2.0.0 release has changes that will break your existing DSFSparkli
 ### Line
 
 #### Standard
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg)
 #### Interpolated
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg)
+
 #### Centered, interpolated
+
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" width="400">
+
 ### Bar
+
 #### Standard
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg)
+
 #### Centered
+
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerbar.png" width="400">
+
 ### Dot
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
 
 
