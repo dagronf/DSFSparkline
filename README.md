@@ -423,7 +423,11 @@ struct SparklineView: View {
 
 ## Changes
 
-### Latest
+### `3.5.1`
+
+* Fixed version in podspec
+
+### `3.5.0`
 
 * Added stackline sparkline type
 * Added win/loss/tie sparkline type
