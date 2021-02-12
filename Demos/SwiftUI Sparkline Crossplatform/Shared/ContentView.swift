@@ -21,6 +21,19 @@ struct UserResults {
 	}
 }
 
+struct SalesResult {
+	let name: String
+	var values: [CGFloat]
+	var maximumTotal: CGFloat
+
+	init(name: String, values: [CGFloat], maximumTotal: CGFloat) {
+		self.name = name
+		self.values = values
+		self.maximumTotal = maximumTotal
+	}
+}
+
+
 struct ContentView: View {
 	var gridItems1: [GridItem] = [
 		GridItem(.fixed(35), spacing: 2),
@@ -54,6 +67,14 @@ struct ContentView: View {
 		UserResults(name: "Jackson", values: [-1, 1, 1, -1, -1, 1, 1, 1]),
 		UserResults(name: "Lucas", values: [1, -1, -1, 1, 1, -1, -1, 1]),
 		UserResults(name: "Noah", values: [-1, 1, 1, 1, -1, 1, 1, 1]),
+	]
+
+	let salesItems: [SalesResult] = [
+		SalesResult(name: "Aiden", values: [120, 200, 0, 270], maximumTotal: 1000),
+		SalesResult(name: "Ethan", values: [300, 400, 100, 90], maximumTotal: 1000),
+		SalesResult(name: "Jackson", values: [10, 40, 90, 110], maximumTotal: 1000),
+		SalesResult(name: "Lucas", values: [250, 250, 100, 100], maximumTotal: 1000),
+		SalesResult(name: "Noah", values: [300, 100, 200, 270], maximumTotal: 1000),
 	]
 	
 	var body: some View {
@@ -114,6 +135,31 @@ struct ContentView: View {
 					}
 				}
 				.frame(maxWidth: .infinity)
+
+				Text("Team Sales")
+
+				LazyHGrid(rows: gridItems2) {
+					ForEach(0 ..< 5, id: \.self) { number in
+						HStack {
+							Text(salesItems[number].name)
+								.frame(width: 80, alignment: .leading)
+							ForEach(0 ..< 4, id: \.self) { count in
+								Text("\(salesItems[number].values[count], specifier: "%.2f")")
+									.frame(width: 80, alignment: .trailing)
+							}
+							DSFSparklineDataBarGraphView.SwiftUI(
+								dataSource: salesItems[number].values,
+								maximumTotalValue: salesItems[number].maximumTotal
+							)
+							.frame(width: 120)
+							.border(Color.gray.opacity(0.3), width: 0.5)
+						}
+						.padding(4)
+						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
+					}
+				}
+				.frame(maxWidth: .infinity)
+
 			}
 		}
 	}
@@ -124,3 +170,4 @@ struct ContentView_Previews: PreviewProvider {
 		ContentView()
 	}
 }
+

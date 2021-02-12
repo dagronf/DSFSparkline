@@ -30,6 +30,11 @@ public extension DSFSparklineDataBarGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
 		let dataSource: [CGFloat]
+		/// Maximum total value.  If -1, this value is i
+		let maximumTotalValue: CGFloat
+		/// The 'undrawn' color for the graph
+		let unsetColor: DSFColor?
+
 		/// Palette to use when coloring the chart
 		let palette: DSFSparklinePalette
 
@@ -44,17 +49,28 @@ public extension DSFSparklineDataBarGraphView {
 		/// The duration of the animation
 		let animationDuration: CGFloat
 
-		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
+		/// Create a databar graph
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
+		///   - maximumTotalValue: The maximum _total_ value. If the datasource values total is greater than this value, it clips the display
+		///   - palette: The color palette to use when drawing the graph
+		///   - unsetColor: (optional) the color to use when drawing the background (useful when the maximumValue is also set)
+		///   - strokeColor: The color to draw the separator lines between data points
+		///   - lineWidth: The width of the separator lines
+		///   - animated: If set, animates any datasource value changes
+		///   - animationDuration: The duration for the animate-in animation
 		public init(dataSource: [CGFloat],
+						maximumTotalValue: CGFloat = -1,
 						palette: DSFSparklinePalette = .shared,
+						unsetColor: DSFColor? = nil,
 						strokeColor: DSFColor? = nil,
 						lineWidth: CGFloat = 1.0,
 						animated: Bool = false,
 						animationDuration: CGFloat = 0.25)
 		{
 			self.dataSource = dataSource
+			self.maximumTotalValue = maximumTotalValue
+			self.unsetColor = unsetColor
 			self.strokeColor = strokeColor
 			self.lineWidth = lineWidth
 			self.palette = palette
@@ -83,10 +99,11 @@ extension DSFSparklineDataBarGraphView.SwiftUI: DSFViewRepresentable {
 		Coordinator(self)
 	}
 
-	func makePieGraph(_: Context) -> DSFSparklineDataBarGraphView {
+	func makeDataBarGraph(_: Context) -> DSFSparklineDataBarGraphView {
 		let view = DSFSparklineDataBarGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.strokeColor = self.strokeColor
+		view.unsetColor = self.unsetColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
 
@@ -94,6 +111,7 @@ extension DSFSparklineDataBarGraphView.SwiftUI: DSFViewRepresentable {
 		view.animationDuration = self.animationDuration
 
 		view.dataSource = self.dataSource
+		view.maximumTotalValue = self.maximumTotalValue
 		return view
 	}
 }
@@ -103,11 +121,12 @@ extension DSFSparklineDataBarGraphView.SwiftUI: DSFViewRepresentable {
 @available(iOS 13.0, tvOS 13.0, macOS 9999.0, *)
 public extension DSFSparklineDataBarGraphView.SwiftUI {
 	func makeUIView(context: Context) -> DSFSparklineDataBarGraphView {
-		return self.makePieGraph(context)
+		return self.makeDataBarGraph(context)
 	}
 
 	func updateUIView(_ view: DSFSparklineDataBarGraphView, context _: Context) {
 		view.strokeColor = self.strokeColor
+		view.unsetColor = self.unsetColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
 
@@ -115,6 +134,7 @@ public extension DSFSparklineDataBarGraphView.SwiftUI {
 		view.animationDuration = self.animationDuration
 
 		view.dataSource = self.dataSource
+		view.maximumTotalValue = self.maximumTotalValue
 	}
 }
 
@@ -123,11 +143,12 @@ public extension DSFSparklineDataBarGraphView.SwiftUI {
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
 public extension DSFSparklineDataBarGraphView.SwiftUI {
 	func makeNSView(context: Context) -> DSFSparklineDataBarGraphView {
-		return self.makePieGraph(context)
+		return self.makeDataBarGraph(context)
 	}
 
 	func updateNSView(_ view: DSFSparklineDataBarGraphView, context _: Context) {
 		view.strokeColor = self.strokeColor
+		view.unsetColor = self.unsetColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
 

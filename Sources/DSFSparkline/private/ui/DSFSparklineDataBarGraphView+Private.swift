@@ -65,9 +65,21 @@ public extension DSFSparklineDataBarGraphView {
 			return
 		}
 
+		let total = self.maximumTotalValue > 0 ? self.maximumTotalValue : self.total
+
 		let rect = self.bounds.integral
 		var position: CGFloat = rect.minX
-		let delta: CGFloat = (rect.width / self.total) * self.fractionComplete
+		let delta: CGFloat = (rect.width / total) * self.fractionComplete
+
+		primary.clip(to: rect)
+
+		if let unsetColor = self.unsetColor?.cgColor {
+			primary.usingGState { state in
+				state.addRect(rect)
+				state.setFillColor(unsetColor)
+				state.fillPath()
+			}
+		}
 
 		for segment in self.dataSource.enumerated() {
 

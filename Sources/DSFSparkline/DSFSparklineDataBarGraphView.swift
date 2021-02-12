@@ -42,6 +42,34 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 		}
 	}
 
+	// MARK: - Maximum Total
+
+	/// The maximum _total_ value. If the datasource values total is greater than this value, it clips the display
+	@IBInspectable public var maximumTotalValue: CGFloat = -1 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
+
+	// MARK: Optional background color
+
+	/// The 'undrawn' color for the graph
+	#if os(macOS)
+	@IBInspectable public var unsetColor: NSColor? {
+		didSet {
+			self.updateDisplay()
+		}
+	}
+	#else
+	@IBInspectable public var unsetColor: UIColor? {
+		didSet {
+			self.updateDisplay()
+		}
+	}
+	#endif
+
+	// MARK: - Stroke
+
 	/// The stroke color for the pie chart
 	#if os(macOS)
 	@IBInspectable public var strokeColor: NSColor? {
