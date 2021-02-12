@@ -41,7 +41,7 @@ target 'macOS Table Demo' do
 
 end
 
-target 'SwiftUI Demo' do
+target 'macOS SwiftUI Demo' do
   # Comment the next line if you don't want to use dynamic frameworks
 	use_frameworks!
 

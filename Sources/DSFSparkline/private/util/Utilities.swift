@@ -99,3 +99,8 @@ extension CGPoint {
 		return CGPoint(x: self.x, y: self.y + value)
 	}
 }
+
+/// Return the slope of the line joining points a and b
+@inlinable func gradient(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
+	return (b.y - a.y) / (b.x - a.x)
+}

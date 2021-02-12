@@ -21,8 +21,8 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
 import CoreGraphics
+import Foundation
 
 extension CGMutablePath {
 	@discardableResult
@@ -63,7 +63,8 @@ extension CGPath {
 	static func pathWithPoints(_ points: [CGPoint], smoothed: Bool = false) -> CGPath {
 		if smoothed {
 			return CGPath.byExtrapolatingPoints(points)
-		} else {
+		}
+		else {
 			return CGPath.byPathWithPoints(points)
 		}
 	}
@@ -107,7 +108,8 @@ extension CGMutablePath {
 			if ii > 0 {
 				mx = (nextPoint.x - currentPoint.x) * 0.5 + (currentPoint.x - previousPoint.x) * 0.5
 				my = (nextPoint.y - currentPoint.y) * 0.5 + (currentPoint.y - previousPoint.y) * 0.5
-			} else {
+			}
+			else {
 				mx = (nextPoint.x - currentPoint.x) * 0.5
 				my = (nextPoint.y - currentPoint.y) * 0.5
 			}
@@ -123,7 +125,8 @@ extension CGMutablePath {
 			if ii < n - 1 {
 				mx = (nextPoint.x - currentPoint.x) * 0.5 + (currentPoint.x - previousPoint.x) * 0.5
 				my = (nextPoint.y - currentPoint.y) * 0.5 + (currentPoint.y - previousPoint.y) * 0.5
-			} else {
+			}
+			else {
 				mx = (currentPoint.x - previousPoint.x) * 0.5
 				my = (currentPoint.y - previousPoint.y) * 0.5
 			}
@@ -132,5 +135,64 @@ extension CGMutablePath {
 
 			self.addCurve(to: endPoint, control1: controlPoint1, control2: controlPoint2)
 		}
+	}
+}
+
+extension CGPath {
+
+	/// Fit a bezier path through all of the points.
+	static func InterpolatePointsUsingBezier(points: [CGPoint], f: CGFloat = 0.3, t: CGFloat = 0.6) -> CGPath? {
+
+		// See: https://www.geeksforgeeks.org/how-to-draw-smooth-curve-through-multiple-points-using-javascript/
+
+		let path = CGMutablePath()
+
+		guard let first: CGPoint = points.first,
+				points.count > 1 else
+		{
+			return nil
+		}
+
+		path.move(to: first)
+
+		let remaining = [CGPoint](points.dropFirst())
+		let pairs: [(CGPoint, CGPoint?)] = remaining.enumerated().map { point in
+			let next: CGPoint? =
+				point.offset < remaining.count - 1 ? remaining[point.offset + 1] : nil
+			return (point.element, next)
+		}
+
+		var m: CGFloat = 0
+		var dx1: CGFloat = 0
+		var dy1: CGFloat = 0
+		var preP = first
+
+		for pair in pairs {
+			let curP = pair.0
+			let nexP = pair.1 // This is nil for the last point in the graph
+
+			let dx2: CGFloat
+			let dy2: CGFloat
+
+			if let next = nexP {
+				m = gradient(preP, next)
+				dx2 = (next.x - curP.x) * -f
+				dy2 = dx2 * m * t
+			}
+			else {
+				dx2 = 0
+				dy2 = 0
+			}
+
+			path.addCurve(to: curP,
+							  control1: CGPoint(x: preP.x - dx1, y: preP.y - dy1),
+							  control2: CGPoint(x: curP.x + dx2, y: curP.y + dy2))
+
+			dx1 = dx2
+			dy1 = dy2
+			preP = curP
+		}
+
+		return path.copy()
 	}
 }

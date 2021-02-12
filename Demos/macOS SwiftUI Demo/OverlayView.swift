@@ -15,7 +15,7 @@ struct OverlayView: View {
 }
 
 var ds1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: -50 ... 50, zeroLineValue: 0)
+	let d = DSFSparklineDataSource(windowSize: 20, range: -55 ... 55, zeroLineValue: 0)
 	d.set(values: [18,
 						 -5,
 						 11,
@@ -62,9 +62,9 @@ struct OverlayView_Previews: PreviewProvider {
 					lineShading: false
 				)
 			}
-			.frame(height: 40)
+			.frame(height: 60)
 		}
-		.frame(width: 200)
+		.frame(width: 300)
 		.padding()
 	}
 }
