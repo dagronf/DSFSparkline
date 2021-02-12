@@ -423,6 +423,11 @@ struct SparklineView: View {
 
 ## Changes
 
+### `3.5.2`
+
+* Fixed Objective-C Demo app
+* Added `snapshot` method to the base sparkline view class to produce an NSImage/UIImage version of the sparkline for embedded sparklines in text etc.
+
 ### `3.5.1`
 
 * Fixed version in podspec

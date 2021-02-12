@@ -53,7 +53,7 @@
 	id high = [[DSFSparklineHighlightRangeDefinition alloc] initWithLowerBound:0.3
 																						 upperBound:0.7
 																					highlightColor:blue];
-	[[self barGraph] setHighlightRangeDefinition:high];
+	[[self barGraph] setHighlightRangeDefinition:@[high]];
 
 	[[self centeredBarGraph] setDataSource:[self centeredBarDataSource]];
 	[[self centeredBarDataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
