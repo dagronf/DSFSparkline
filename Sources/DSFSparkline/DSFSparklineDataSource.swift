@@ -47,6 +47,15 @@ import CoreGraphics
 			self.sparkline.windowSize = ws
 		}
 	}
+
+	/// Create a datasource from a series of values
+	/// - Parameters:
+	///   - values: The values to initially assign to the datasource
+	///   - range: (optional) The maximum range to represent.
+	public convenience init(values: [CGFloat], range: ClosedRange<CGFloat>? = nil) {
+		self.init(windowSize: UInt(values.count), range: range)
+		self.set(values: values)
+	}
 }
 
 // MARK: - Value handling

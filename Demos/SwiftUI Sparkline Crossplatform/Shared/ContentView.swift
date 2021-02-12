@@ -72,7 +72,7 @@ struct ContentView: View {
 	let salesItems: [SalesResult] = [
 		SalesResult(name: "Aiden", values: [120, 200, 0, 270], maximumTotal: 1000),
 		SalesResult(name: "Ethan", values: [300, 400, 100, 90], maximumTotal: 1000),
-		SalesResult(name: "Jackson", values: [10, 40, 90, 110], maximumTotal: 1000),
+		SalesResult(name: "Jackson", values: [100, 140, 90, 110], maximumTotal: 1000),
 		SalesResult(name: "Lucas", values: [250, 250, 100, 100], maximumTotal: 1000),
 		SalesResult(name: "Noah", values: [300, 100, 200, 270], maximumTotal: 1000),
 	]
@@ -140,26 +140,39 @@ struct ContentView: View {
 
 				LazyHGrid(rows: gridItems2) {
 					ForEach(0 ..< 5, id: \.self) { number in
-						HStack {
+						HStack(spacing: 10) {
 							Text(salesItems[number].name)
 								.frame(width: 80, alignment: .leading)
 							ForEach(0 ..< 4, id: \.self) { count in
 								Text("\(salesItems[number].values[count], specifier: "%.2f")")
-									.frame(width: 80, alignment: .trailing)
+									.frame(width: 60, alignment: .trailing)
 							}
-							DSFSparklineDataBarGraphView.SwiftUI(
-								dataSource: salesItems[number].values,
-								maximumTotalValue: salesItems[number].maximumTotal
+
+							DSFSparklineLineGraphView.SwiftUI(
+								dataSource: DSFSparklineDataSource(values: salesItems[number].values),
+								graphColor: DSFColor.systemBlue,
+								lineShading: false
 							)
 							.frame(width: 120)
-							.border(Color.gray.opacity(0.3), width: 0.5)
+
+							DSFSparklinePieGraphView.SwiftUI(
+								dataSource: salesItems[number].values
+							)
+							.frame(width: 28, height: 28)
+
+							DSFSparklineDataBarGraphView.SwiftUI(
+								dataSource: salesItems[number].values,
+								maximumTotalValue: salesItems[number].maximumTotal,
+								unsetColor: DSFColor.black.withAlphaComponent(0.2)
+							)
+							.frame(width: 120)
+
 						}
 						.padding(4)
 						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
 					}
 				}
 				.frame(maxWidth: .infinity)
-
 			}
 		}
 	}
