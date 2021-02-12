@@ -101,6 +101,44 @@ struct PieGraphContentView_Previews: PreviewProvider {
 				)
 				.frame(width: 36, height: 36)
 			}
+
+			HStack(spacing: 8) {
+				DSFSparklinePieGraphView.SwiftUI(
+					dataSource: fourthDataSource,
+					palette: grays,
+					animated: true,
+					animationDuration: 1.0
+				)
+				.frame(width: 36, height: 36)
+
+				DSFSparklinePieGraphView.SwiftUI(
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePieGraphView.Palette.shared.colors.count),
+					strokeColor: DSFColor.black.withAlphaComponent(0.5),
+					lineWidth: 1,
+					animated: true,
+					animationDuration: 1.0
+				)
+				.frame(width: 36, height: 36)
+
+				DSFSparklinePieGraphView.SwiftUI(
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePieGraphView.Palette.sharedGrays.colors.count),
+					palette: .sharedGrays,
+					strokeColor: DSFColor.black.withAlphaComponent(0.5),
+					lineWidth: 1,
+					animated: true,
+					animationDuration: 1.0
+				)
+				.frame(width: 36, height: 36)
+
+				DSFSparklinePieGraphView.SwiftUI(
+					dataSource: [5, 2, 4, 8],
+					strokeColor: DSFColor.textColor,
+					lineWidth: 1,
+					animated: true,
+					animationDuration: 1.0
+				)
+				.frame(width: 36, height: 36)
+			}
 		}
 
 		.padding()

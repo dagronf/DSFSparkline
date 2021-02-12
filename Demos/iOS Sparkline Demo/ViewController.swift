@@ -10,73 +10,92 @@ import UIKit
 import DSFSparkline
 
 class ViewController: UIViewController {
-
-
-	@IBOutlet weak var spark1: DSFSparklineLineGraphView!
+	@IBOutlet var spark1: DSFSparklineLineGraphView!
 	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 30)
-	@IBOutlet weak var spark2: DSFSparklineLineGraphView!
+	@IBOutlet var spark2: DSFSparklineLineGraphView!
 	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -12 ... 12)
-	@IBOutlet weak var spark3: DSFSparklineBarGraphView!
+	@IBOutlet var spark3: DSFSparklineBarGraphView!
 	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
-	@IBOutlet weak var spark4: DSFSparklineBarGraphView!
+	@IBOutlet var spark4: DSFSparklineBarGraphView!
 	var spark4ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
 
-	@IBOutlet weak var dot1: DSFSparklineDotGraphView!
+	@IBOutlet var dot1: DSFSparklineDotGraphView!
 	var dot1ds = DSFSparklineDataSource(windowSize: 80, range: -10 ... 10)
 
-	@IBOutlet weak var s1: DSFSparklineBarGraphView!
+	@IBOutlet var s1: DSFSparklineBarGraphView!
 	var ds1 = DSFSparklineDataSource(range: -10 ... 10)
-	@IBOutlet weak var s2: DSFSparklineBarGraphView!
+	@IBOutlet var s2: DSFSparklineBarGraphView!
 	var ds2 = DSFSparklineDataSource(range: -10 ... 10)
-	@IBOutlet weak var s3: DSFSparklineBarGraphView!
+	@IBOutlet var s3: DSFSparklineBarGraphView!
 	var ds3 = DSFSparklineDataSource(range: -10 ... 10)
-	@IBOutlet weak var s4: DSFSparklineBarGraphView!
+	@IBOutlet var s4: DSFSparklineBarGraphView!
 	var ds4 = DSFSparklineDataSource(range: -10 ... 10)
 
-	@IBOutlet weak var winLoss1: DSFSparklineWinLossGraphView!
+	@IBOutlet var winLoss1: DSFSparklineWinLossGraphView!
 	var wl1 = DSFSparklineDataSource(range: -1 ... 1)
 
-	@IBOutlet weak var winLoss2: DSFSparklineWinLossGraphView!
+	@IBOutlet var winLoss2: DSFSparklineWinLossGraphView!
 
-	@IBOutlet weak var tabletView1: DSFSparklineTabletGraphView!
-	@IBOutlet weak var tabletView2: DSFSparklineTabletGraphView!
+	@IBOutlet var tabletView1: DSFSparklineTabletGraphView!
+	@IBOutlet var tabletView2: DSFSparklineTabletGraphView!
 
-	@IBOutlet weak var stacklineGraphView: DSFSparklineStackLineGraphView!
+	@IBOutlet var stacklineGraphView: DSFSparklineStackLineGraphView!
 	var sl1 = DSFSparklineDataSource(range: 0 ... 10)
 
-	@IBOutlet weak var stacklineGraphView2: DSFSparklineStackLineGraphView!
+	@IBOutlet var stacklineGraphView2: DSFSparklineStackLineGraphView!
 
+	@IBOutlet var pie0: DSFSparklinePieGraphView!
+	@IBOutlet var pie1: DSFSparklinePieGraphView!
+	@IBOutlet var pie2: DSFSparklinePieGraphView!
+	@IBOutlet var pie3: DSFSparklinePieGraphView!
+	@IBOutlet var pie4: DSFSparklinePieGraphView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 
-		spark1.dataSource = spark1ds
+		self.spark1.dataSource = self.spark1ds
 
-		spark2.dataSource = spark2ds
-		spark2ds.zeroLineValue = -7
+		self.spark2.dataSource = self.spark2ds
+		self.spark2ds.zeroLineValue = -7
 
-		spark3.dataSource = spark3ds
+		self.spark3.dataSource = self.spark3ds
 
-		spark4.dataSource = spark4ds
-		spark4ds.zeroLineValue = -5
+		self.spark4.dataSource = self.spark4ds
+		self.spark4ds.zeroLineValue = -5
 
-		dot1.dataSource = dot1ds
+		self.dot1.dataSource = self.dot1ds
 
-		s1.dataSource = ds1
-		s2.dataSource = ds2
-		s3.dataSource = ds3
-		s4.dataSource = ds4
+		self.s1.dataSource = self.ds1
+		self.s2.dataSource = self.ds2
+		self.s3.dataSource = self.ds3
+		self.s4.dataSource = self.ds4
 
-		winLoss1.dataSource = wl1
-		winLoss2.dataSource = wl1
+		self.winLoss1.dataSource = self.wl1
+		self.winLoss2.dataSource = self.wl1
 
-		tabletView1.dataSource = wl1
-		tabletView2.dataSource = wl1
+		self.tabletView1.dataSource = self.wl1
+		self.tabletView2.dataSource = self.wl1
 
-		sl1.zeroLineValue = 5
-		stacklineGraphView.dataSource = sl1
-		stacklineGraphView2.dataSource = sl1
+		self.sl1.zeroLineValue = 5
+		self.stacklineGraphView.dataSource = self.sl1
+		self.stacklineGraphView2.dataSource = self.sl1
+
+		let palette = DSFSparklinePieGraphView.Palette(
+			[
+				DSFColor(red: 0.6, green: 0.6, blue: 1, alpha: 1),
+				DSFColor(red: 0.4, green: 0.4, blue: 1, alpha: 1),
+				DSFColor(red: 0.2, green: 0.2, blue: 1, alpha: 1),
+				DSFColor(red: 0.0, green: 0.0, blue: 1, alpha: 1),
+			])
+
+		self.pie0.palette = .sharedGrays
+		self.pie0.dataSource = [5, 5, 5, 5, 5]
+
+		self.pie1.palette = palette
+		self.pie2.palette = palette
+
+		self.updateValues(self)
 
 		self.addNewValue2()
 	}
@@ -97,7 +116,7 @@ class ViewController: UIViewController {
 			let val = sin(self.sinusoid)
 			self.sinusoid += 0.3
 
-			_ = self.spark4ds.push(value: (val * 10.0))
+			_ = self.spark4ds.push(value: val * 10.0)
 
 			_ = self.dot1ds.push(value: CGFloat.random(in: -10.0 ... 10.0))
 
@@ -110,11 +129,28 @@ class ViewController: UIViewController {
 
 			_ = self.sl1.push(value: CGFloat(Int.random(in: 0 ... 10)))
 
-
 			self.addNewValue2()
 		}
 	}
 
-
+	@IBAction func updateValues(_: Any) {
+		let v1 = UInt.random(count: 4, range: 1 ... 10).map { CGFloat($0) }
+		self.pie1.dataSource = v1
+		self.pie2.dataSource = v1
+		let v2 = UInt.random(count: 4, range: 1 ... 10).map { CGFloat($0) }
+		self.pie3.dataSource = v2
+		self.pie4.dataSource = v2
+	}
 }
 
+extension CGFloat {
+	static func random(count: UInt, range: ClosedRange<CGFloat>) -> [CGFloat] {
+		return (0 ..< count).map { _ in CGFloat.random(in: range) }
+	}
+}
+
+extension UInt {
+	static func random(count: UInt, range: ClosedRange<UInt>) -> [UInt] {
+		return (0 ..< count).map { _ in UInt.random(in: range) }
+	}
+}

@@ -46,6 +46,17 @@ import UIKit
 		// If isOpaque is true (the default value) iOS assumes that you're drawing
 		// the ENTIRE content of the control (which we are not).
 		self.isOpaque = false
+		#else
+		self.wantsLayer = true
+		#endif
+	}
+
+	/// The root layer for the view
+	var rootLayer: CALayer {
+		#if os(macOS)
+		return self.layer!
+		#else
+		return self.layer
 		#endif
 	}
 

@@ -39,18 +39,27 @@ public extension DSFSparklinePieGraphView {
 		/// Stroke Width
 		let lineWidth: CGFloat
 
+		/// Should we animate the dataSource changes
+		let animated: Bool
+		/// The duration of the animation
+		let animationDuration: CGFloat
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
 		public init(dataSource: [CGFloat],
 						palette: DSFSparklinePieGraphView.Palette = .shared,
 						strokeColor: DSFColor? = nil,
-						lineWidth: CGFloat = 1.0)
+						lineWidth: CGFloat = 1.0,
+						animated: Bool = false,
+						animationDuration: CGFloat = 0.25)
 		{
 			self.dataSource = dataSource
 			self.strokeColor = strokeColor
 			self.lineWidth = lineWidth
 			self.palette = palette
+			self.animated = animated
+			self.animationDuration = animationDuration
 		}
 	}
 }
@@ -77,10 +86,14 @@ extension DSFSparklinePieGraphView.SwiftUI: DSFViewRepresentable {
 	func makePieGraph(_: Context) -> DSFSparklinePieGraphView {
 		let view = DSFSparklinePieGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.dataSource = self.dataSource
 		view.strokeColor = self.strokeColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
+
+		view.animated = self.animated
+		view.animationDuration = self.animationDuration
+
+		view.dataSource = self.dataSource
 		return view
 	}
 }
@@ -93,10 +106,15 @@ public extension DSFSparklinePieGraphView.SwiftUI {
 		return self.makePieGraph(context)
 	}
 
-	func updateUIView(view: DSFSparklinePieGraphView, context _: Context) {
+	func updateUIView(_ view: DSFSparklinePieGraphView, context _: Context) {
 		view.strokeColor = self.strokeColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
+
+		view.animated = self.animated
+		view.animationDuration = self.animationDuration
+
+		view.dataSource = self.dataSource
 	}
 }
 
@@ -112,6 +130,11 @@ public extension DSFSparklinePieGraphView.SwiftUI {
 		view.strokeColor = self.strokeColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
+
+		view.animated = self.animated
+		view.animationDuration = self.animationDuration
+
+		view.dataSource = self.dataSource
 	}
 }
 
