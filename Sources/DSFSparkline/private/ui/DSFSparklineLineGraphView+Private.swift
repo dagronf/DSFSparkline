@@ -79,7 +79,9 @@ fileprivate extension DSFSparklineLineGraphView {
 
 	func drawLineGraph(primary: CGContext) {
 
-		let drawRect = self.bounds
+		// Adjust the inset so that markers can draw unclipped if they are asked for
+		let inset = self.markerSize > 0 ? self.markerSize / 2 : 0
+		let drawRect = self.bounds.insetBy(dx: inset, dy: inset)
 
 		let range: ClosedRange<CGFloat> = 2 ... drawRect.maxY - 2
 
@@ -88,9 +90,10 @@ fileprivate extension DSFSparklineLineGraphView {
 		}
 
 		let normy = dataSource.normalized
-		let xDiff = self.bounds.width / CGFloat(normy.count - 1)
+		let xDiff = drawRect.width / CGFloat(normy.count - 1)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff, y: drawRect.height - ($0.element * (drawRect.height-1)).clamped(to: range))
+			CGPoint(x: CGFloat($0.offset) * xDiff + drawRect.minX,
+					  y: drawRect.height - ($0.element * (drawRect.height-1)).clamped(to: range))
 		}
 
 		if points.count < 2 {
@@ -99,12 +102,7 @@ fileprivate extension DSFSparklineLineGraphView {
 			return
 		}
 
-		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated).mutableCopy()!
-		path.addLine(to: CGPoint(x: drawRect.width + 4, y: points.last!.y))
-		path.addLine(to: CGPoint(x: drawRect.width + 4, y: drawRect.maxY + 2.0))
-		path.addLine(to: CGPoint(x: -2.0, y: drawRect.maxY + 2.0))
-		path.addLine(to: CGPoint(x: -2.0, y: points.first!.y))
-		path.closeSubpath()
+		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated)
 
 		let allP = CGMutablePath()
 		if self.markerSize > 0 {
@@ -119,17 +117,25 @@ fileprivate extension DSFSparklineLineGraphView {
 
 			if dataSource.counter < dataSource.windowSize {
 				let pos = CGFloat(dataSource.counter) * xDiff
-				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				let clipRect = drawRect.divided(atDistance: pos, from: .maxXEdge).slice
 				outer.clip(to: clipRect)
 			}
 
 			if self.lineShading, let gradient = self.gradient {
 				outer.usingGState { (ctx) in
-					ctx.addPath(path)
+
+					let clipper = path.mutableCopy()!
+					clipper.addLine(to: CGPoint(x: drawRect.maxX, y: points.last!.y))
+					clipper.addLine(to: CGPoint(x: drawRect.maxX, y: drawRect.maxY))
+					clipper.addLine(to: CGPoint(x: drawRect.minX, y: drawRect.maxY))
+					clipper.addLine(to: CGPoint(x: drawRect.minX, y: points.first!.y))
+					clipper.closeSubpath()
+
+					ctx.addPath(clipper)
 					ctx.clip()
 					ctx.drawLinearGradient(
-						gradient, start: CGPoint(x: 0.0, y: self.bounds.maxY),
-						end: CGPoint(x: 0.0, y: self.bounds.minY),
+						gradient, start: CGPoint(x: 0.0, y: drawRect.maxY),
+						end: CGPoint(x: 0.0, y: drawRect.minY),
 						options: [.drawsAfterEndLocation, .drawsBeforeStartLocation])
 				}
 			}
@@ -167,7 +173,9 @@ fileprivate extension DSFSparklineLineGraphView {
 
 	func drawCenteredGraph(primary: CGContext) {
 
-		let drawRect = self.bounds
+		// Adjust the inset so that markers can draw unclipped if they are asked for
+		let inset = self.markerSize > 0 ? self.markerSize / 2 : 0
+		let drawRect = self.bounds.insetBy(dx: inset, dy: inset)
 
 		let range: ClosedRange<CGFloat> = 2 ... drawRect.maxY - 2
 
@@ -176,9 +184,10 @@ fileprivate extension DSFSparklineLineGraphView {
 		}
 
 		let normy = dataSource.normalized
-		let xDiff = self.bounds.width / CGFloat(normy.count - 1)
+		let xDiff = drawRect.width / CGFloat(normy.count - 1)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff, y: drawRect.height - ($0.element * (drawRect.height-1)).clamped(to: range))
+			CGPoint(x: CGFloat($0.offset) * xDiff + drawRect.minX,
+					  y: drawRect.height - ($0.element * (drawRect.height-1)).clamped(to: range))
 		}
 
 		if points.count < 2 {
@@ -195,7 +204,8 @@ fileprivate extension DSFSparklineLineGraphView {
 		if self.markerSize > 0 {
 			points.enumerated().forEach { point in
 				let w = self.markerSize / 2
-				let r = CGRect(x: point.element.x - w, y: point.element.y - w, width: self.markerSize, height: self.markerSize)
+				let r = CGRect(x: point.element.x - w, y: point.element.y - w,
+									width: self.markerSize, height: self.markerSize)
 				if dataSource.valueAtOffsetIsBelowZeroline(point.offset) {
 					nPoints.addPath(CGPath(ellipseIn: r, transform: nil))
 				}
@@ -205,13 +215,7 @@ fileprivate extension DSFSparklineLineGraphView {
 			}
 		}
 
-		var pts: [CGPoint] = [CGPoint(x: drawRect.minX - 1, y: centroid)]
-		pts.append(CGPoint(x: -1, y: points[0].y))
-		pts.append(contentsOf: points)
-		pts.append(CGPoint(x: drawRect.maxX + 1, y: points.last!.y))
-		pts.append(CGPoint(x: drawRect.maxX + 1, y: centroid))
-
-		let path = CGPath.pathWithPoints(pts, smoothed: self.interpolated).mutableCopy()!
+		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated).mutableCopy()!
 		
 		primary.usingGState { (outer) in
 
@@ -219,13 +223,13 @@ fileprivate extension DSFSparklineLineGraphView {
 
 				if dataSource.counter < dataSource.windowSize {
 					let pos = CGFloat(dataSource.counter) * xDiff
-					let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+					let clipRect = drawRect.divided(atDistance: pos, from: .maxXEdge).slice
 					outer.clip(to: clipRect)
 				}
 
 				outer.usingGState { (inner) in
 
-					let split = self.bounds.divided(atDistance: centroid, from: .minYEdge)
+					let split = drawRect.divided(atDistance: centroid, from: .minYEdge)
 
 					if which == 0 {
 						inner.clip(to: split.slice)
@@ -238,11 +242,21 @@ fileprivate extension DSFSparklineLineGraphView {
 						let gradient = (which == 0) ? self.gradient : self.lowerGradient
 						if let grad = gradient {
 							inner.usingGState { (ctx) in
-								ctx.addPath(path)
+
+								let altY = which == 0 ? drawRect.maxY : drawRect.minY
+
+								let clipper = path.mutableCopy()!
+								clipper.addLine(to: CGPoint(x: drawRect.maxX, y: points.last!.y))
+								clipper.addLine(to: CGPoint(x: drawRect.maxX, y: altY))
+								clipper.addLine(to: CGPoint(x: drawRect.minX, y: altY))
+								clipper.addLine(to: CGPoint(x: drawRect.minX, y: points.first!.y))
+								clipper.closeSubpath()
+
+								ctx.addPath(clipper)
 								ctx.clip()
 								ctx.drawLinearGradient(
-									grad, start: CGPoint(x: 0.0, y: self.bounds.maxY),
-									end: CGPoint(x: 0.0, y: self.bounds.minY),
+									grad, start: CGPoint(x: drawRect.minX, y: drawRect.maxY),
+									end: CGPoint(x: drawRect.maxX, y: drawRect.minY),
 									options: [.drawsAfterEndLocation, .drawsBeforeStartLocation])
 							}
 						}

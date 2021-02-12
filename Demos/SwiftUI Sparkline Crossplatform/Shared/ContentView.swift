@@ -151,7 +151,8 @@ struct ContentView: View {
 							DSFSparklineLineGraphView.SwiftUI(
 								dataSource: DSFSparklineDataSource(values: salesItems[number].values),
 								graphColor: DSFColor.systemBlue,
-								lineShading: false
+								lineShading: false,
+								markerSize: 6
 							)
 							.frame(width: 120)
 

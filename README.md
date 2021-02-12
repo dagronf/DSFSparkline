@@ -161,21 +161,13 @@ Represents the viewable settings and display.  The current view types available 
 
 A simple line graph
 
-|  Standard  | Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line-centered.png" width="400">|
-
-|  Interpolated  | Interpolated Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" height="70" width="400">|
-
-
 | Setting         | Type      | Description                            |
 |-----------------|-----------|----------------------------------------|
 | `lineWidth`     | `CGFloat` | The width of the line                  |
 | `interpolation` | `Bool`    | Interpolate a curve between the points |
 | `lineShading`   | `Bool`    | Shade the area under the line          |
 | `shadowed`      | `Bool`    | Draw a shadow under the line           |
+| `markerSize`    | `CGFloat` | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
 

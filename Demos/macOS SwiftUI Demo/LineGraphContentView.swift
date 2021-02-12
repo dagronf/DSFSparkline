@@ -121,7 +121,8 @@ struct LineGraphContentView_Previews: PreviewProvider {
 						dataSource: LineSource1,
 						graphColor: DSFColor.textColor,
 						interpolated: true,
-						showZeroLine: true
+						showZeroLine: true,
+						markerSize: 4
 					)
 					.frame(height: 40.0)
 					.padding(5)
