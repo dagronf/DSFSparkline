@@ -35,6 +35,7 @@ import UIKit
 @objc public class DSFSparklinePalette: NSObject {
 	/// The colors to be used when drawing segments
 	@objc public let colors: [DSFColor]
+	@objc public let cgColors: NSArray
 
 	/// A default palette used when no palette is specified.
 	@objc public static let shared = DSFSparklinePalette([
@@ -58,6 +59,14 @@ import UIKit
 
 	@objc public init(_ colors: [DSFColor]) {
 		self.colors = colors
+		self.cgColors = NSArray(array: colors.map { $0.cgColor })
 		super.init()
+	}
+
+	@inlinable func colorAtOffset(_ offset: Int) -> DSFColor {
+		return self.colors[offset % self.colors.count]
+	}
+	@inlinable func cgColorAtOffset(_ offset: Int) -> CGColor {
+		return self.cgColors[offset % self.colors.count] as! CGColor
 	}
 }

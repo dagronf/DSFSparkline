@@ -1,9 +1,9 @@
 //
-//  DSFSparklineTabletGraphView+Private.swift
+//  DSFSparklineDataBarGraphView+Private.swift
 //  DSFSparklines
 //
-//  Created by Darren Ford on 16/1/20.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Created by Darren Ford on 12/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -29,9 +29,19 @@ import UIKit
 
 public extension DSFSparklineDataBarGraphView {
 
-	@inlinable func colorForOffset(_ offset: Int) -> DSFColor {
-		return self.palette.colors[offset % self.palette.colors.count]
+	func dataDidChange() {
+		// Precalculate the total.
+		self.total = self.dataSource.reduce(0) { $0 + $1 }
+
+		if self.animated {
+			self.startAnimateIn()
+		}
+		else {
+			self.fractionComplete = 1.0
+			self.updateDisplay()
+		}
 	}
+
 
 	#if os(macOS)
 	override func draw(_ dirtyRect: NSRect) {
@@ -55,8 +65,7 @@ public extension DSFSparklineDataBarGraphView {
 			return
 		}
 
-		let rect = self.bounds.insetBy(dx: 1, dy: 1).integral
-
+		let rect = self.bounds.integral
 		var position: CGFloat = rect.minX
 		let delta: CGFloat = (rect.width / self.total) * self.fractionComplete
 
@@ -64,7 +73,7 @@ public extension DSFSparklineDataBarGraphView {
 
 			primary.usingGState { state in
 
-				state.setFillColor(self.colorForOffset(segment.offset).cgColor)
+				state.setFillColor(self.palette.cgColorAtOffset(segment.offset))
 
 				let width = segment.element * delta
 

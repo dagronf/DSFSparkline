@@ -8,17 +8,17 @@
 import SwiftUI
 import DSFSparkline
 
-let palette1 = DSFSparklinePalette([.systemRed, .systemOrange, .systemYellow])
-let grays = DSFSparklinePalette([
+fileprivate let palette1 = DSFSparklinePalette([.systemRed, .systemOrange, .systemYellow])
+fileprivate let grays = DSFSparklinePalette([
 	DSFColor.init(deviceWhite: 1.00, alpha: 1),
 	DSFColor.init(deviceWhite: 0.66, alpha: 1),
 	DSFColor.init(deviceWhite: 0.33, alpha: 1)
 ])
 
-let firstDataSource: [CGFloat] = [10, 40, 25]
-let secondDataSource: [CGFloat] = [33, 33, 33]
-let thirdDataSource: [CGFloat] = [85, 10, 19]
-let fourthDataSource: [CGFloat] = [3, 4, 5]
+fileprivate let firstDataSource: [CGFloat] = [10, 40, 25]
+fileprivate let secondDataSource: [CGFloat] = [33, 33, 33]
+fileprivate let thirdDataSource: [CGFloat] = [85, 10, 19]
+fileprivate let fourthDataSource: [CGFloat] = [3, 4, 5]
 
 
 struct PieGraphContentView_Previews: PreviewProvider {
@@ -112,8 +112,8 @@ struct PieGraphContentView_Previews: PreviewProvider {
 
 				DSFSparklinePieGraphView.SwiftUI(
 					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.shared.colors.count),
-					strokeColor: DSFColor.black.withAlphaComponent(0.5),
-					lineWidth: 1,
+					strokeColor: DSFColor.black,
+					lineWidth: 2,
 					animated: true,
 					animationDuration: 1.0
 				)

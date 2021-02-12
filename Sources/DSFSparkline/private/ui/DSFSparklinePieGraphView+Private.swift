@@ -29,8 +29,17 @@ import UIKit
 
 public extension DSFSparklinePieGraphView {
 
-	@inlinable func colorForOffset(_ offset: Int) -> DSFColor {
-		return self.palette.colors[offset % self.palette.colors.count]
+	internal func dataDidChange() {
+		// Precalculate the total.
+		self.total = self.dataSource.reduce(0) { $0 + $1 }
+
+		if self.animated {
+			self.startAnimateIn()
+		}
+		else {
+			self.fractionComplete = 1.0
+			self.updateDisplay()
+		}
 	}
 
 	#if os(macOS)
@@ -66,17 +75,12 @@ public extension DSFSparklinePieGraphView {
 		// the starting angle is -90 degrees (top of the circle, as the context is flipped). By default, 0 is the right hand side of the circle, with the positive angle being in an anti-clockwise direction (same as a unit circle in maths).
 		var startAngle = -CGFloat.pi * 0.5
 
-		if let stroke = self.strokeColor?.cgColor {
-			primary.setStrokeColor(stroke)
-			primary.setLineWidth(self.lineWidth)
-		}
-
 		for segment in self.dataSource.enumerated() { // loop through the values array
 
 			primary.usingGState { state in
 
 				// set fill color to the segment color
-				state.setFillColor(self.colorForOffset(segment.offset).cgColor)
+				state.setFillColor(self.palette.cgColorAtOffset(segment.offset))
 
 				// update the end angle of the segment
 				//let endAngle = startAngle + 2 * .pi * (segment.element / total)
@@ -88,13 +92,44 @@ public extension DSFSparklinePieGraphView {
 				// add arc from the center for each segment (anticlockwise is specified for the arc, but as the view flips the context, it will produce a clockwise arc)
 				state.addArc(center: viewCenter, radius: radius, startAngle: startAngle, endAngle: fraEndAngle, clockwise: false)
 
-				let drawType: CGPathDrawingMode = self.strokeColor != nil ? .fillStroke : .fill
-				state.drawPath(using: drawType)
+				state.drawPath(using: .fill)
 
 				// update starting angle of the next segment to the ending angle of this segment
 				startAngle = fraEndAngle // endAngle
 			}
 		}
+
+		// We draw the strokes AFTER we draw ALL the segment fills to avoid unpleasant rendering
+
+		if let stroke = self.strokeColor?.cgColor {
+
+			var startAngle = -CGFloat.pi * 0.5
+
+			primary.setStrokeColor(stroke)
+			primary.setLineWidth(self.lineWidth)
+
+			for segment in self.dataSource.enumerated() { // loop through the values array
+
+				primary.usingGState { state in
+
+					// update the end angle of the segment
+					// let endAngle = startAngle + (2 * .pi * (segment.element / total))
+					let fraEndAngle = startAngle + (2 * .pi * (segment.element / total)) * fractionComplete
+
+					// move to the center of the pie chart
+					state.move(to: viewCenter)
+
+					// add arc from the center for each segment (anticlockwise is specified for the arc, but as the view flips the context, it will produce a clockwise arc)
+					state.addArc(center: viewCenter, radius: radius, startAngle: startAngle, endAngle: fraEndAngle, clockwise: false)
+
+					state.drawPath(using: .stroke)
+
+					// update starting angle of the next segment to the ending angle of this segment
+					startAngle = fraEndAngle // endAngle
+				}
+			}
+		}
+
 	}
 }
 

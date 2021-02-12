@@ -38,17 +38,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	/// blue cars, you just set the values directly.
 	@objc public var dataSource: [CGFloat] = [] {
 		didSet {
-
-			// Precalculate the total.
-			self.total = self.dataSource.reduce(0) { $0 + $1 }
-
-			if self.animated {
-				self.startAnimateIn()
-			}
-			else {
-				self.fractionComplete = 1.0
-				self.updateDisplay()
-			}
+			self.dataDidChange()
 		}
 	}
 
@@ -87,5 +77,5 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 
 	internal var animationLayer: ArbitraryAnimationLayer?
 	internal var fractionComplete: CGFloat = 0
-	internal private(set) var total: CGFloat = 0.0
+	internal var total: CGFloat = 0.0
 }
