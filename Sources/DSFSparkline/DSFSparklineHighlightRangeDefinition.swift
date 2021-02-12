@@ -28,7 +28,7 @@ import UIKit
 #endif
 
 /// A highlight range definition
-public class DSFSparklineHighlightRangeDefinition: NSObject {
+@objc public class DSFSparklineHighlightRangeDefinition: NSObject {
 	#if os(macOS)
 	public static let DefaultColor = DSFColor.quaternaryLabelColor
 	#else
@@ -44,6 +44,7 @@ public class DSFSparklineHighlightRangeDefinition: NSObject {
 	public init(range: Range<CGFloat>, highlightColor: DSFColor = DefaultColor) {
 		self.range = range
 		self.highlightColor = highlightColor
+		super.init()
 	}
 
 	/// Objective-C compatible initializer. Lowerbound MUST be less than upperbound!
@@ -51,6 +52,7 @@ public class DSFSparklineHighlightRangeDefinition: NSObject {
 		assert(lowerBound < upperBound)
 		self.range = lowerBound ..< upperBound
 		self.highlightColor = highlightColor
+		super.init()
 	}
 }
 

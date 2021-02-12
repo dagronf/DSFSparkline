@@ -29,6 +29,9 @@ class ViewController: UIViewController {
 	@IBOutlet weak var winLoss: DSFSparklineWinLossGraphView!
 	var wlSource = DSFSparklineDataSource(range: -1 ... 1)
 
+	@IBOutlet weak var pie1: DSFSparklinePieGraphView!
+	@IBOutlet weak var pie2: DSFSparklinePieGraphView!
+	@IBOutlet weak var pie3: DSFSparklinePieGraphView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -47,6 +50,10 @@ class ViewController: UIViewController {
 
 		purple.dataSource = purpleDataSource
 		orange.dataSource = orangeDataSource
+
+		pie1.dataSource = [1, 2, 3]
+		pie2.dataSource = [3, 2, 1]
+		pie3.dataSource = [1, 7, 4, 9]
 
 		self.updateWithNewValues()
 

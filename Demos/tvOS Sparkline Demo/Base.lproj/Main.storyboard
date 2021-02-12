@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="kNJ-ib-BOR">
-                                <rect key="frame" x="96" y="60" width="1728" height="735"/>
+                                <rect key="frame" x="96" y="60" width="1728" height="836"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-ho-C6a" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="1728" height="128"/>
@@ -177,6 +177,32 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Zvv-Rv-bhG">
+                                        <rect key="frame" x="0.0" y="772" width="1728" height="64"/>
+                                        <subviews>
+                                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOH-ou-7cF" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="aAR-b7-mVP"/>
+                                                    <constraint firstAttribute="height" constant="64" id="hLg-XF-gek"/>
+                                                </constraints>
+                                            </view>
+                                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-vy-qSp" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
+                                                <rect key="frame" x="832" y="0.0" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="Qch-Zz-CCe"/>
+                                                    <constraint firstAttribute="height" constant="64" id="Wg8-eM-Nol"/>
+                                                </constraints>
+                                            </view>
+                                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohf-JL-rMA" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
+                                                <rect key="frame" x="1664" y="0.0" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="64" id="D5R-NI-fYR"/>
+                                                    <constraint firstAttribute="width" constant="64" id="kGv-py-woG"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -193,6 +219,9 @@
                         <outlet property="centeredRedDataSource" destination="mbq-YT-X12" id="CjO-7B-hSA"/>
                         <outlet property="green" destination="Wc6-ho-C6a" id="Nth-j7-N1B"/>
                         <outlet property="orange" destination="eEe-RW-4pi" id="0wE-MG-jjH"/>
+                        <outlet property="pie1" destination="pOH-ou-7cF" id="UCY-8i-HfT"/>
+                        <outlet property="pie2" destination="J2J-vy-qSp" id="8ve-dl-flN"/>
+                        <outlet property="pie3" destination="ohf-JL-rMA" id="8Ie-0W-ZbP"/>
                         <outlet property="purple" destination="Nas-fi-tod" id="VaU-3w-FPz"/>
                         <outlet property="red" destination="eRm-Xm-bRw" id="Of5-Pv-xkW"/>
                         <outlet property="winLoss" destination="xDV-60-4pQ" id="PYJ-ah-ycI"/>

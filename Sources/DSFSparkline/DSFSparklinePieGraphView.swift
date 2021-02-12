@@ -30,13 +30,19 @@ import UIKit
 /// A sparkline that draws a simple pie chart
 @IBDesignable
 public class DSFSparklinePieGraphView: DSFSparklineCoreView {
-
-	/// The data to be displayed in the pie
+	/// The data to be displayed in the pie.
+	///
+	/// The values become a percentage of the total value stored within the
+	/// dataStore, and as such each value ends up being drawn as a fraction of the total.
+	/// So for example, if you want the pie chart to represent the number of red cars vs. number of
+	/// blue cars, you just set the values directly.
 	@objc public var dataSource: [CGFloat] = [] {
 		didSet {
-			total = self.dataSource.reduce(0) { $0 + $1 }
 
-			if animated {
+			// Precalculate the total.
+			self.total = self.dataSource.reduce(0) { $0 + $1 }
+
+			if self.animated {
 				self.startAnimateIn()
 			}
 			else {

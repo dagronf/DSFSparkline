@@ -41,7 +41,7 @@ public extension DSFSparklinePieGraphView {
 		}
 	}
 	#else
-	override public func draw(_ rect: CGRect) {
+	override func draw(_ rect: CGRect) {
 		super.draw(rect)
 		if let ctx = UIGraphicsGetCurrentContext() {
 			self.drawPieGraph(primary: ctx)
@@ -105,10 +105,10 @@ extension DSFSparklinePieGraphView {
 		#if TARGET_INTERFACE_BUILDER
 		self.animated = false
 		self.dataSource = [
-			3,
-			6,
-			5,
-			9
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
 		]
 		#endif
 	}

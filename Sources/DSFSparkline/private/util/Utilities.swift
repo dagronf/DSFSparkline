@@ -136,6 +136,8 @@ public extension UIView {
 }
 #endif
 
+// MARK: - Arbitrary animation support
+
 /// A simple layer class to expose an animation progress for a CAAnimation.
 public class ArbitraryAnimationLayer: CALayer {
 

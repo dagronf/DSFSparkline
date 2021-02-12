@@ -34,14 +34,12 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCX-QR-0r6" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="animatable" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ImA-fW-c0P" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="69" y="0.0" width="69" height="28"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +49,6 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zb-XU-BNk" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="138" y="0.0" width="69" height="28"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,7 +62,6 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="416-u3-Cvp" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="207" y="0.0" width="69" height="28"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="animatable" value="NO"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
@@ -75,7 +71,6 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-97-yue" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="276" y="0.0" width="69" height="28"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="animatable" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">

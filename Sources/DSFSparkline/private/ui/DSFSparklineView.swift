@@ -27,48 +27,6 @@ import Cocoa
 import UIKit
 #endif
 
-/// A common base class for all graph view types
-@objc public class DSFSparklineCoreView: DSFView {
-
-	public override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.setup()
-	}
-
-	public required init?(coder: NSCoder) {
-		super.init(coder: coder)
-		self.setup()
-	}
-
-	func setup() {
-		#if !os(macOS)
-		// Configure iOS/tvOS to make the background transparent.
-		// If isOpaque is true (the default value) iOS assumes that you're drawing
-		// the ENTIRE content of the control (which we are not).
-		self.isOpaque = false
-		#else
-		self.wantsLayer = true
-		#endif
-	}
-
-	/// The root layer for the view
-	var rootLayer: CALayer {
-		#if os(macOS)
-		return self.layer!
-		#else
-		return self.layer
-		#endif
-	}
-
-	public func updateDisplay() {
-		#if os(macOS)
-		self.needsDisplay = true
-		#else
-		self.setNeedsDisplay()
-		#endif
-	}
-}
-
 @IBDesignable
 @objc public class DSFSparklineView: DSFSparklineCoreView {
 
@@ -138,12 +96,6 @@ extension DSFSparklineView {
 			})
 		}
 	}
-
-	#if os(macOS)
-	public override var isFlipped: Bool {
-		return true
-	}
-	#endif
 
 	/// Override in inherited classes to be notified when the color changes
 	@objc func colorDidChange() {	}
