@@ -13,11 +13,13 @@
 			buildPhases = (
 			);
 			dependencies = (
-				23882CFB257D677F00AC103A /* PBXTargetDependency */,
+				23369E8525D65B2D00A40023 /* PBXTargetDependency */,
+				23369E8725D65B2D00A40023 /* PBXTargetDependency */,
+				239716C023B554E70034A4D4 /* PBXTargetDependency */,
 				239716BE23B554E50034A4D4 /* PBXTargetDependency */,
 				239716C223B554E80034A4D4 /* PBXTargetDependency */,
+				23882CFB257D677F00AC103A /* PBXTargetDependency */,
 				23E2279A23B5A6EF00E59122 /* PBXTargetDependency */,
-				239716C023B554E70034A4D4 /* PBXTargetDependency */,
 			);
 			name = "All Demos";
 			productName = "Add Demos";
@@ -53,6 +55,7 @@
 		2329C5A425D5C5DA000B500D /* LineGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329C5A325D5C5DA000B500D /* LineGraphContentView.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
 		2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */; };
+		23369EB125D6601500A40023 /* DataBarGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23369EB025D6601500A40023 /* DataBarGraphContentView.swift */; };
 		2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352E6F825BFCE8000321175 /* OverlayView.swift */; };
 		236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FC25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
@@ -79,6 +82,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		23369E8425D65B2D00A40023 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23102B4523B0165B001A621D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 236A57EF25C1392B00F2BACF;
+			remoteInfo = "SwiftUI Sparkline Demo (iOS)";
+		};
+		23369E8625D65B2D00A40023 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23102B4523B0165B001A621D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 236A57F625C1392B00F2BACF;
+			remoteInfo = "SwiftUI Sparkline Demo (macOS)";
+		};
 		23882CFA257D677F00AC103A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 23102B4523B0165B001A621D /* Project object */;
@@ -156,6 +173,7 @@
 		2329C5A325D5C5DA000B500D /* LineGraphContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphContentView.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLossGraphContentView.swift; sourceTree = "<group>"; };
+		23369EB025D6601500A40023 /* DataBarGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBarGraphContentView.swift; sourceTree = "<group>"; };
 		2352E6F825BFCE8000321175 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
 		236A57EA25C1392A00F2BACF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -432,6 +450,7 @@
 				238EF46325C0D88D00FCC829 /* StackLineGraphContentView.swift */,
 				231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */,
 				23E20E6425D6178D001E8E67 /* PieGraphContentView.swift */,
+				23369EB025D6601500A40023 /* DataBarGraphContentView.swift */,
 			);
 			path = "macOS SwiftUI Demo";
 			sourceTree = "<group>";
@@ -1155,6 +1174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23369EB125D6601500A40023 /* DataBarGraphContentView.swift in Sources */,
 				23882CE3257D675700AC103A /* ContentView.swift in Sources */,
 				2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */,
 				23E20E8125D618E3001E8E67 /* PieGraphContentView.swift in Sources */,
@@ -1179,6 +1199,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		23369E8525D65B2D00A40023 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 236A57EF25C1392B00F2BACF /* SwiftUI Sparkline Demo (iOS) */;
+			targetProxy = 23369E8425D65B2D00A40023 /* PBXContainerItemProxy */;
+		};
+		23369E8725D65B2D00A40023 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 236A57F625C1392B00F2BACF /* SwiftUI Sparkline Demo (macOS) */;
+			targetProxy = 23369E8625D65B2D00A40023 /* PBXContainerItemProxy */;
+		};
 		23882CFB257D677F00AC103A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 23882CDD257D675700AC103A /* macOS SwiftUI Demo */;

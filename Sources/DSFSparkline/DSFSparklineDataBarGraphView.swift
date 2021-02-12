@@ -1,5 +1,5 @@
 //
-//  DSFSparklinePieGraphView.swift
+//  DSFSparklineDataBarGraphView.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 12/2/21.
@@ -29,8 +29,8 @@ import UIKit
 
 /// A sparkline that draws a simple pie chart
 @IBDesignable
-public class DSFSparklinePieGraphView: DSFSparklineCoreView {
-	/// The data to be displayed in the pie.
+public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
+	/// The data to be displayed in the data bar.
 	///
 	/// The values become a percentage of the total value stored within the
 	/// dataStore, and as such each value ends up being drawn as a fraction of the total.

@@ -1,5 +1,5 @@
 //
-//  DSFSparklinePieGraphView+SwiftUI.swift
+//  DSFSparklineDataBarGraphView+SwiftUI.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 12/2/21.
@@ -26,7 +26,7 @@
 import SwiftUI
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-public extension DSFSparklinePieGraphView {
+public extension DSFSparklineDataBarGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
 		let dataSource: [CGFloat]
@@ -65,16 +65,16 @@ public extension DSFSparklinePieGraphView {
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
-extension DSFSparklinePieGraphView.SwiftUI: DSFViewRepresentable {
+extension DSFSparklineDataBarGraphView.SwiftUI: DSFViewRepresentable {
 	#if os(macOS)
-	public typealias NSViewType = DSFSparklinePieGraphView
+	public typealias NSViewType = DSFSparklineDataBarGraphView
 	#else
-	public typealias UIViewType = DSFSparklinePieGraphView
+	public typealias UIViewType = DSFSparklineDataBarGraphView
 	#endif
 
 	public class Coordinator: NSObject {
-		let parent: DSFSparklinePieGraphView.SwiftUI
-		init(_ sparkline: DSFSparklinePieGraphView.SwiftUI) {
+		let parent: DSFSparklineDataBarGraphView.SwiftUI
+		init(_ sparkline: DSFSparklineDataBarGraphView.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
@@ -83,8 +83,8 @@ extension DSFSparklinePieGraphView.SwiftUI: DSFViewRepresentable {
 		Coordinator(self)
 	}
 
-	func makePieGraph(_: Context) -> DSFSparklinePieGraphView {
-		let view = DSFSparklinePieGraphView(frame: .zero)
+	func makePieGraph(_: Context) -> DSFSparklineDataBarGraphView {
+		let view = DSFSparklineDataBarGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.strokeColor = self.strokeColor
 		view.lineWidth = self.lineWidth
@@ -101,12 +101,12 @@ extension DSFSparklinePieGraphView.SwiftUI: DSFViewRepresentable {
 // MARK: - iOS/tvOS Specific
 
 @available(iOS 13.0, tvOS 13.0, macOS 9999.0, *)
-public extension DSFSparklinePieGraphView.SwiftUI {
-	func makeUIView(context: Context) -> DSFSparklinePieGraphView {
+public extension DSFSparklineDataBarGraphView.SwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineDataBarGraphView {
 		return self.makePieGraph(context)
 	}
 
-	func updateUIView(_ view: DSFSparklinePieGraphView, context _: Context) {
+	func updateUIView(_ view: DSFSparklineDataBarGraphView, context _: Context) {
 		view.strokeColor = self.strokeColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
@@ -121,12 +121,12 @@ public extension DSFSparklinePieGraphView.SwiftUI {
 // MARK: - macOS Specific
 
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
-public extension DSFSparklinePieGraphView.SwiftUI {
-	func makeNSView(context: Context) -> DSFSparklinePieGraphView {
+public extension DSFSparklineDataBarGraphView.SwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineDataBarGraphView {
 		return self.makePieGraph(context)
 	}
 
-	func updateNSView(_ view: DSFSparklinePieGraphView, context _: Context) {
+	func updateNSView(_ view: DSFSparklineDataBarGraphView, context _: Context) {
 		view.strokeColor = self.strokeColor
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
