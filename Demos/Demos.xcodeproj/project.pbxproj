@@ -66,6 +66,7 @@
 		23882CE8257D675800AC103A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE7257D675800AC103A /* Preview Assets.xcassets */; };
 		23882CEB257D675800AC103A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE9257D675800AC103A /* Main.storyboard */; };
 		238EF46425C0D88D00FCC829 /* StackLineGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238EF46325C0D88D00FCC829 /* StackLineGraphContentView.swift */; };
+		23E20E8125D618E3001E8E67 /* PieGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E20E6425D6178D001E8E67 /* PieGraphContentView.swift */; };
 		23E2278C23B5846E00E59122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278B23B5846E00E59122 /* AppDelegate.swift */; };
 		23E2278E23B5846E00E59122 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278D23B5846E00E59122 /* ViewController.swift */; };
 		23E2279023B5846E00E59122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E2278F23B5846E00E59122 /* Assets.xcassets */; };
@@ -173,6 +174,7 @@
 		23882CEC257D675800AC103A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23882CED257D675800AC103A /* SwiftUI_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftUI_Demo.entitlements; sourceTree = "<group>"; };
 		238EF46325C0D88D00FCC829 /* StackLineGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackLineGraphContentView.swift; sourceTree = "<group>"; };
+		23E20E6425D6178D001E8E67 /* PieGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieGraphContentView.swift; sourceTree = "<group>"; };
 		23E2278923B5846E00E59122 /* macOS Table Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Table Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2278B23B5846E00E59122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E2278D23B5846E00E59122 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				2329C5A325D5C5DA000B500D /* LineGraphContentView.swift */,
 				238EF46325C0D88D00FCC829 /* StackLineGraphContentView.swift */,
 				231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */,
+				23E20E6425D6178D001E8E67 /* PieGraphContentView.swift */,
 			);
 			path = "macOS SwiftUI Demo";
 			sourceTree = "<group>";
@@ -1154,6 +1157,7 @@
 			files = (
 				23882CE3257D675700AC103A /* ContentView.swift in Sources */,
 				2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */,
+				23E20E8125D618E3001E8E67 /* PieGraphContentView.swift in Sources */,
 				231D4AAE25C10F2E0004F053 /* UnrangedContentView.swift in Sources */,
 				238EF46425C0D88D00FCC829 /* StackLineGraphContentView.swift in Sources */,
 				2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */,

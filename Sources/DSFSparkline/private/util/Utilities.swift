@@ -135,3 +135,41 @@ public extension UIView {
 	}
 }
 #endif
+
+/// A simple layer class to expose an animation progress for a CAAnimation.
+public class ArbitraryAnimationLayer: CALayer {
+
+	static let KeyPath: String = "progress"
+
+	override init() {
+		super.init()
+	}
+
+	var progressCallback: ((CGFloat) -> Void)?
+
+	override init(layer: Any) {
+		super.init(layer: layer)
+		guard let newL = layer as? ArbitraryAnimationLayer else {
+			fatalError()
+		}
+		self.progress = newL.progress
+		self.progressCallback = newL.progressCallback
+	}
+
+	required init?(coder _: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	@objc dynamic var progress: CGFloat = 0 {
+		didSet {
+			progressCallback?(progress)
+		}
+	}
+
+	public override static func needsDisplay(forKey key: String) -> Bool {
+		if key == ArbitraryAnimationLayer.KeyPath {
+			return true
+		}
+		return super.needsDisplay(forKey: key)
+	}
+}

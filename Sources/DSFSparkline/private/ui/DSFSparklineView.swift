@@ -27,8 +27,39 @@ import Cocoa
 import UIKit
 #endif
 
+/// A common base class for all graph view types
+@objc public class DSFSparklineCoreView: DSFView {
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.setup()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.setup()
+	}
+
+	func setup() {
+		#if !os(macOS)
+		// Configure iOS/tvOS to make the background transparent.
+		// If isOpaque is true (the default value) iOS assumes that you're drawing
+		// the ENTIRE content of the control (which we are not).
+		self.isOpaque = false
+		#endif
+	}
+
+	public func updateDisplay() {
+		#if os(macOS)
+		self.needsDisplay = true
+		#else
+		self.setNeedsDisplay()
+		#endif
+	}
+}
+
 @IBDesignable
-@objc public class DSFSparklineView: DSFView {
+@objc public class DSFSparklineView: DSFSparklineCoreView {
 
 	#if TARGET_INTERFACE_BUILDER
 	/// Need this to hold on to the datasource when using designable, or else it disappears due to being weak
@@ -81,25 +112,6 @@ import UIKit
 		}
 	}
 	private var windowSizeSetInXib = false
-
-	public override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.setup()
-	}
-
-	public required init?(coder: NSCoder) {
-		super.init(coder: coder)
-		self.setup()
-	}
-
-	func setup() {
-		#if !os(macOS)
-		// Configure iOS/tvOS to make the background transparent.
-		// If isOpaque is true (the default value) iOS assumes that you're drawing
-		// the ENTIRE content of the control (which we are not).
-		self.isOpaque = false
-		#endif
-	}
 }
 
 extension DSFSparklineView {
@@ -124,14 +136,6 @@ extension DSFSparklineView {
 
 	/// Override in inherited classes to be notified when the color changes
 	@objc func colorDidChange() {	}
-
-	public func updateDisplay() {
-		#if os(macOS)
-		self.needsDisplay = true
-		#else
-		self.setNeedsDisplay()
-		#endif
-	}
 
 	#if os(macOS)
 	override public func draw(_ dirtyRect: NSRect) {
