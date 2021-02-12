@@ -11,6 +11,7 @@ import DSFSparkline
 
 class ViewController: UIViewController {
 	@IBOutlet var spark1: DSFSparklineLineGraphView!
+	@IBOutlet var spark12: DSFSparklineLineGraphView!
 	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 30)
 	@IBOutlet var spark2: DSFSparklineLineGraphView!
 	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -12 ... 12)
@@ -55,9 +56,10 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view.
 
 		self.spark1.dataSource = self.spark1ds
+		self.spark12.dataSource = self.spark1ds
 
 		self.spark2.dataSource = self.spark2ds
-		self.spark2ds.zeroLineValue = -7
+		self.spark2ds.zeroLineValue = 0
 
 		self.spark3.dataSource = self.spark3ds
 
@@ -81,7 +83,7 @@ class ViewController: UIViewController {
 		self.stacklineGraphView.dataSource = self.sl1
 		self.stacklineGraphView2.dataSource = self.sl1
 
-		let palette = DSFSparklinePieGraphView.Palette(
+		let palette = DSFSparklinePalette(
 			[
 				DSFColor(red: 0.6, green: 0.6, blue: 1, alpha: 1),
 				DSFColor(red: 0.4, green: 0.4, blue: 1, alpha: 1),

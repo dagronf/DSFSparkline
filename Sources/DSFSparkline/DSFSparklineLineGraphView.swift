@@ -42,6 +42,9 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false
 
+	/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
+	@IBInspectable public var markerSize: CGFloat = -1
+
 	// Optional gradient colors
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?

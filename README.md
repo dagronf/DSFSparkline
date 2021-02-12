@@ -423,6 +423,11 @@ struct SparklineView: View {
 
 ## Changes
 
+### Latest
+
+* Added pie chart, databar chart.
+* Added ability to show data markers for line graphs
+
 ### `3.5.2`
 
 * Fixed Objective-C Demo app

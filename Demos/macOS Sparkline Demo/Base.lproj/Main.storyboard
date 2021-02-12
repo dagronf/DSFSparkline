@@ -825,6 +825,9 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
                                                     <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>
@@ -854,6 +857,9 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
+                                                    <real key="value" value="6"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>

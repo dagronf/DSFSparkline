@@ -98,6 +98,11 @@ public extension DSFSparklineDataSource {
 			self.notifyDataChange()
 		}
 	}
+
+	// Is the value at the specified offset in the data source BELOW the zero-line value?
+	@inlinable func valueAtOffsetIsBelowZeroline(_ offset: Int) -> Bool {
+		return self.data[offset] < self.zeroLineValue
+	}
 }
 
 

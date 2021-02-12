@@ -106,6 +106,15 @@ fileprivate extension DSFSparklineLineGraphView {
 		path.addLine(to: CGPoint(x: -2.0, y: points.first!.y))
 		path.closeSubpath()
 
+		let allP = CGMutablePath()
+		if self.markerSize > 0 {
+			points.forEach { point in
+				let w = self.markerSize / 2
+				let r = CGRect(x: point.x - w, y: point.y - w, width: self.markerSize, height: self.markerSize)
+				allP.addPath(CGPath(ellipseIn: r, transform: nil))
+			}
+		}
+
 		primary.usingGState { (outer) in
 
 			if dataSource.counter < dataSource.windowSize {
@@ -145,6 +154,14 @@ fileprivate extension DSFSparklineLineGraphView {
 				ctx.setLineJoin(.round)
 				ctx.strokePath()
 			}
+
+			if !allP.isEmpty {
+				outer.usingGState { (ctx) in
+					ctx.addPath(allP)
+					ctx.setFillColor(self.graphColor.cgColor)
+					ctx.fillPath()
+				}
+			}
 		}
 	}
 
@@ -172,7 +189,21 @@ fileprivate extension DSFSparklineLineGraphView {
 
 		let centroid = (1-dataSource.normalizedZeroLineValue) * (drawRect.height - 1)
 
-		//let path = CGMutablePath()
+		let pPoints = CGMutablePath()
+		let nPoints = CGMutablePath()
+
+		if self.markerSize > 0 {
+			points.enumerated().forEach { point in
+				let w = self.markerSize / 2
+				let r = CGRect(x: point.element.x - w, y: point.element.y - w, width: self.markerSize, height: self.markerSize)
+				if dataSource.valueAtOffsetIsBelowZeroline(point.offset) {
+					nPoints.addPath(CGPath(ellipseIn: r, transform: nil))
+				}
+				else {
+					pPoints.addPath(CGPath(ellipseIn: r, transform: nil))
+				}
+			}
+		}
 
 		var pts: [CGPoint] = [CGPoint(x: drawRect.minX - 1, y: centroid)]
 		pts.append(CGPoint(x: -1, y: points[0].y))
@@ -217,9 +248,11 @@ fileprivate extension DSFSparklineLineGraphView {
 						}
 					}
 
+					let whichColor = which == 0 ? self.graphColor.cgColor : self.lowerColor.cgColor
+
 					inner.usingGState { (ctx) in
 						ctx.addPath(path)
-						ctx.setStrokeColor(which == 0 ? self.graphColor.cgColor : self.lowerColor.cgColor)
+						ctx.setStrokeColor(whichColor)
 						ctx.setLineWidth(self.lineWidth)
 
 						let yoff: CGFloat
@@ -237,6 +270,21 @@ fileprivate extension DSFSparklineLineGraphView {
 						ctx.setLineJoin(.round)
 						ctx.strokePath()
 					}
+				}
+			}
+
+			if !pPoints.isEmpty {
+				outer.usingGState { (ctx) in
+					ctx.addPath(pPoints)
+					ctx.setFillColor(self.graphColor.cgColor)
+					ctx.fillPath()
+				}
+			}
+			if !nPoints.isEmpty {
+				outer.usingGState { (ctx) in
+					ctx.addPath(nPoints)
+					ctx.setFillColor(self.lowerColor.cgColor)
+					ctx.fillPath()
 				}
 			}
 		}

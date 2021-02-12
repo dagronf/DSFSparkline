@@ -9,11 +9,10 @@ import SwiftUI
 import DSFSparkline
 
 var LineSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 30, range: 0 ... 1, zeroLineValue: 0.4)
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.5)
 	d.push(values: [
 		0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.87, 0.44, 0.02, 0.27,
-		0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.20,
-		0.93, 0.71, 0.08, 0.13, 0.92, 0.02, 0.50, 0.25, 0.44, 0.02
+		0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50
 	])
 	return d
 }()
@@ -43,6 +42,34 @@ struct LineGraphContentView_Previews: PreviewProvider {
 						lineWidth: 1,
 						interpolated: true,
 						lineShading: false
+					)
+					.frame(height: 40.0)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+				}
+				.frame(width: 400.0)
+
+				Text("Line with markers")
+
+				HStack {
+					DSFSparklineLineGraphView.SwiftUI(
+						dataSource: LineSource1,
+						graphColor: DSFColor.textColor,
+						lineWidth: 1,
+						lineShading: false,
+						markerSize: 4
+					)
+					.frame(height: 40.0)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+
+					DSFSparklineLineGraphView.SwiftUI(
+						dataSource: LineSource1,
+						graphColor: DSFColor.textColor,
+						lineWidth: 1,
+						interpolated: true,
+						lineShading: false,
+						markerSize: 4
 					)
 					.frame(height: 40.0)
 					.padding(5)
@@ -133,6 +160,38 @@ struct LineGraphContentView_Previews: PreviewProvider {
 			}
 
 			VStack {
+
+				Text("Line centered with markers")
+
+				HStack {
+					DSFSparklineLineGraphView.SwiftUI(
+						dataSource: LineSource1,
+						graphColor: DSFColor.systemGreen,
+						lineWidth: 0.5,
+						showZeroLine: true,
+						centeredAtZeroLine: true,
+						lowerGraphColor: DSFColor(calibratedRed: 0.7, green: 0, blue: 0, alpha: 1.0),
+						markerSize: 4
+					)
+					.frame(height: 40.0)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+
+					DSFSparklineLineGraphView.SwiftUI(
+						dataSource: LineSource1,
+						graphColor: DSFColor.systemGreen,
+						interpolated: true,
+						showZeroLine: true,
+						centeredAtZeroLine: true,
+						lowerGraphColor: DSFColor(calibratedRed: 0.7, green: 0, blue: 0, alpha: 1.0),
+						markerSize: 4
+					)
+					.frame(height: 40.0)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+				}
+				.frame(width: 400.0)
+
 				Text("Line with ranges")
 
 				HStack {

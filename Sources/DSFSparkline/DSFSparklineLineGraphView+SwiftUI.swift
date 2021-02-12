@@ -55,6 +55,9 @@ public extension DSFSparklineLineGraphView {
 		/// Highlight y-ranges within the graph
 		let highlightDefinitions: [DSFSparklineHighlightRangeDefinition]
 
+		/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
+		let markerSize: CGFloat
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -68,6 +71,7 @@ public extension DSFSparklineLineGraphView {
 		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
+		///   - markerSize: The size of the markers to draw. If the markerSize is less than 0, markers will not draw
 		public init(dataSource: DSFSparklineDataSource,
 						graphColor: DSFColor,
 						lineWidth: CGFloat = 1.5,
@@ -78,7 +82,8 @@ public extension DSFSparklineLineGraphView {
 						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
-						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [])
+						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [],
+						markerSize: CGFloat = -1)
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -95,6 +100,8 @@ public extension DSFSparklineLineGraphView {
 			self.shadowed = shadowed
 
 			self.highlightDefinitions = highlightDefinitions
+
+			self.markerSize = markerSize
 		}
 	}
 }
@@ -139,6 +146,8 @@ extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 			view.showHighlightRange = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
+
+		view.markerSize = self.markerSize
 
 		return view
 	}
