@@ -259,9 +259,9 @@ var SparklineView_PreviewGlobalDataSource1: DSFSparklineDataSource = {
 }()
 
 var SparklineView_PreviewGlobalDataSource2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: -100.0 ... 30.0)
+	let d = DSFSparklineDataSource(windowSize: 10, range: -100.0 ... 100.0)
 	d.push(values: [20, 10, 0, -10, -20, -30, 40, 50, 60, 70])
-	d.zeroLineValue = -80
+	d.zeroLineValue = -20
 	return d
 }()
 

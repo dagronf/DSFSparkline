@@ -34,7 +34,11 @@ import UIKit
 public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 
 	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var showZeroLine: Bool = false
+	@IBInspectable public var showZeroLine: Bool = false {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 
 	/// The color of the dotted line at the zero point on the y-axis
 	#if os(macOS)

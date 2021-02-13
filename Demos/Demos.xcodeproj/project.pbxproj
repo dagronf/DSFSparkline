@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -52,11 +52,13 @@
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
 		231D4AAE25C10F2E0004F053 /* UnrangedContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */; };
+		23229BDD25D7936B0000C2C6 /* ZeroLineConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23229BDC25D7936B0000C2C6 /* ZeroLineConfigurationView.swift */; };
 		2329C5A425D5C5DA000B500D /* LineGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2329C5A325D5C5DA000B500D /* LineGraphContentView.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
 		2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */; };
 		23369EB125D6601500A40023 /* DataBarGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23369EB025D6601500A40023 /* DataBarGraphContentView.swift */; };
 		2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2352E6F825BFCE8000321175 /* OverlayView.swift */; };
+		235623D825D6BE2C007E5CF7 /* BarGraphBuilderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235623D725D6BE2C007E5CF7 /* BarGraphBuilderContentView.swift */; };
 		236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FC25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FD25C1392B00F2BACF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57EA25C1392A00F2BACF /* ContentView.swift */; };
@@ -74,6 +76,7 @@
 		23E2278E23B5846E00E59122 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278D23B5846E00E59122 /* ViewController.swift */; };
 		23E2279023B5846E00E59122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E2278F23B5846E00E59122 /* Assets.xcassets */; };
 		23E2279323B5846E00E59122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E2279123B5846E00E59122 /* Main.storyboard */; };
+		23F7646B25D6C4C400E63649 /* DSFStepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 23F7646A25D6C4C400E63649 /* DSFStepperView */; };
 		4079C8A3550FDF1D8564108E /* Pods_macOS_SwiftUI_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0893A7B69A2C716F5E308880 /* Pods_macOS_SwiftUI_Demo.framework */; };
 		56BB7F1533CC30E57AC9654A /* Pods_SwiftUI_Sparkline_Demo__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB4E75AB431D5E8C3C582F2 /* Pods_SwiftUI_Sparkline_Demo__iOS_.framework */; };
 		73E144093BF355D884B0ACAB /* Pods_iOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462EC212C63FCA74CCCDC138 /* Pods_iOS_Sparkline_Demo.framework */; };
@@ -170,11 +173,13 @@
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
 		231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnrangedContentView.swift; sourceTree = "<group>"; };
+		23229BDC25D7936B0000C2C6 /* ZeroLineConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroLineConfigurationView.swift; sourceTree = "<group>"; };
 		2329C5A325D5C5DA000B500D /* LineGraphContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphContentView.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		2331FB5D25BFBA4600CE4311 /* WinLossGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinLossGraphContentView.swift; sourceTree = "<group>"; };
 		23369EB025D6601500A40023 /* DataBarGraphContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBarGraphContentView.swift; sourceTree = "<group>"; };
 		2352E6F825BFCE8000321175 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		235623D725D6BE2C007E5CF7 /* BarGraphBuilderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphBuilderContentView.swift; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
 		236A57EA25C1392A00F2BACF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		236A57EB25C1392B00F2BACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -280,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4079C8A3550FDF1D8564108E /* Pods_macOS_SwiftUI_Demo.framework in Frameworks */,
+				23F7646B25D6C4C400E63649 /* DSFStepperView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +457,8 @@
 				231D4AAD25C10F2E0004F053 /* UnrangedContentView.swift */,
 				23E20E6425D6178D001E8E67 /* PieGraphContentView.swift */,
 				23369EB025D6601500A40023 /* DataBarGraphContentView.swift */,
+				235623D725D6BE2C007E5CF7 /* BarGraphBuilderContentView.swift */,
+				23229BDC25D7936B0000C2C6 /* ZeroLineConfigurationView.swift */,
 			);
 			path = "macOS SwiftUI Demo";
 			sourceTree = "<group>";
@@ -634,6 +642,9 @@
 			dependencies = (
 			);
 			name = "macOS SwiftUI Demo";
+			packageProductDependencies = (
+				23F7646A25D6C4C400E63649 /* DSFStepperView */,
+			);
 			productName = "SwiftUI Demo";
 			productReference = 23882CDE257D675700AC103A /* macOS SwiftUI Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -704,6 +715,9 @@
 				Base,
 			);
 			mainGroup = 23102B4423B0165B001A621D;
+			packageReferences = (
+				23F7646925D6C4C400E63649 /* XCRemoteSwiftPackageReference "DSFStepperView" */,
+			);
 			productRefGroup = 23102B5123B0245A001A621D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1176,12 +1190,14 @@
 			files = (
 				23369EB125D6601500A40023 /* DataBarGraphContentView.swift in Sources */,
 				23882CE3257D675700AC103A /* ContentView.swift in Sources */,
+				23229BDD25D7936B0000C2C6 /* ZeroLineConfigurationView.swift in Sources */,
 				2352E6F925BFCE8000321175 /* OverlayView.swift in Sources */,
 				23E20E8125D618E3001E8E67 /* PieGraphContentView.swift in Sources */,
 				231D4AAE25C10F2E0004F053 /* UnrangedContentView.swift in Sources */,
 				238EF46425C0D88D00FCC829 /* StackLineGraphContentView.swift in Sources */,
 				2331FB5E25BFBA4600CE4311 /* WinLossGraphContentView.swift in Sources */,
 				23882CE1257D675700AC103A /* AppDelegate.swift in Sources */,
+				235623D825D6BE2C007E5CF7 /* BarGraphBuilderContentView.swift in Sources */,
 				2329C5A425D5C5DA000B500D /* LineGraphContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2583,6 +2599,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		23F7646925D6C4C400E63649 /* XCRemoteSwiftPackageReference "DSFStepperView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/DSFStepperView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		23F7646A25D6C4C400E63649 /* DSFStepperView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23F7646925D6C4C400E63649 /* XCRemoteSwiftPackageReference "DSFStepperView" */;
+			productName = DSFStepperView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23102B4523B0165B001A621D /* Project object */;
 }

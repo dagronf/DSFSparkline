@@ -141,7 +141,9 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 		return self.makeBarGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineBarGraphView, context _: Context) {}
+	func updateUIView(_ view: DSFSparklineBarGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
 
 // MARK: - macOS Specific
@@ -152,7 +154,34 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 		return self.makeBarGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineBarGraphView, context _: Context) {}
+	func updateNSView(_ view: DSFSparklineBarGraphView, context _: Context) {
+		self.updateView(view)
+	}
+}
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineBarGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineBarGraphView) {
+
+		UpdateIfNotEqual(result: &view.graphColor, val: self.graphColor)
+		UpdateIfNotEqual(result: &view.barSpacing, val: self.barSpacing)
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
+
+		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+		view.setZeroLineDefinition(self.zeroLineDefinition)
+
+		UpdateIfNotEqual(result: &view.centeredAtZeroLine, val: self.centeredAtZeroLine)
+		UpdateIfNotEqual(result: &view.lowerGraphColor, val: self.lowerGraphColor)
+
+		if self.highlightDefinitions.count > 0 {
+			view.showHighlightRange = true
+			view.highlightRangeDefinition = self.highlightDefinitions
+		}
+		else {
+			view.showHighlightRange = false
+			view.highlightRangeDefinition = []
+		}
+	}
 }
 
 #endif

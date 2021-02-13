@@ -90,16 +90,18 @@ public extension DSFSparklineBarGraphView {
 				outer.clip(to: clipRect)
 			}
 
-			let path = CGMutablePath()
+			var bars: [CGRect] = []
 			for point in points.enumerated() {
 				let yVal = Int(point.element.y.rounded(.down))
 				let r = CGRect(x: xOffset + point.offset * componentWidth,
 									y: Int(integralRect.height) - yVal,
 									width: barWidth,
 									height: yVal - Int(self.lineWidth))
-				path.addRect(r.integral)
+				bars.append(r.integral)
 			}
-			path.closeSubpath()
+
+			let path = CGMutablePath()
+			path.addRects(bars)
 
 			outer.addPath(path)
 			outer.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
@@ -136,8 +138,8 @@ public extension DSFSparklineBarGraphView {
 				outer.clip(to: clipRect)
 			}
 
-			let positivePath = CGMutablePath()
-			let negativePath = CGMutablePath()
+			var positivePath: [CGRect] = []
+			var negativePath: [CGRect] = []
 
 			for value in normy.enumerated() {
 				let x = CGFloat(value.offset) * xDiff
@@ -147,7 +149,7 @@ public extension DSFSparklineBarGraphView {
 										y: centroid,
 										width: xDiff - 1 - (CGFloat(self.barSpacing)),
 										height: yy) // - CGFloat(self.lineWidth))
-					positivePath.addRect(r.integral)
+					positivePath.append(r.integral)
 				}
 				else {
 					let yy = (value.element - centre) * height
@@ -155,17 +157,17 @@ public extension DSFSparklineBarGraphView {
 										y: centroid,
 										width: xDiff - 1 - (CGFloat(self.barSpacing)),
 										height: -yy - CGFloat(self.lineWidth))
-					negativePath.addRect(r.integral)
+					negativePath.append(r.integral)
 				}
 			}
-			positivePath.closeSubpath()
-			negativePath.closeSubpath()
 
 			outer.setShouldAntialias(false)
 
 			if !positivePath.isEmpty {
+				let path = CGMutablePath()
+				path.addRects(positivePath)
 				outer.usingGState { ctx in
-					ctx.addPath(positivePath)
+					ctx.addPath(path)
 					ctx.setFillColor(self.graphColor.withAlphaComponent(0.3).cgColor)
 					ctx.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
 					ctx.setStrokeColor(self.graphColor.cgColor)
@@ -174,8 +176,10 @@ public extension DSFSparklineBarGraphView {
 			}
 
 			if !negativePath.isEmpty {
+				let path = CGMutablePath()
+				path.addRects(negativePath)
 				outer.usingGState { ctx in
-					ctx.addPath(negativePath)
+					ctx.addPath(path)
 					ctx.setFillColor(self.lowerColor.withAlphaComponent(0.3).cgColor)
 					ctx.setLineWidth(1 / self.retinaScale() * CGFloat(self.lineWidth))
 					ctx.setStrokeColor(self.lowerColor.cgColor)

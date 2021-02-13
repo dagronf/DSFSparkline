@@ -63,7 +63,6 @@ private extension DSFSparklineDotGraphView {
 
 		var position = drawRect.width - dotHeight - xOffset
 
-		let path = CGMutablePath()
 		let unsetPath = CGMutablePath()
 
 		// Map normalized values to box positions
@@ -71,6 +70,9 @@ private extension DSFSparklineDotGraphView {
 			let floatBoxPos = CGFloat(self.verticalDotCount) * dataPoint
 			return UInt(floatBoxPos.rounded(.awayFromZero))
 		}
+
+		var pv: [CGRect] = []
+		var uv: [CGRect] = []
 
 		for dataPoint in normalizedBoxed {
 			let boxCount = dataPoint
@@ -83,10 +85,12 @@ private extension DSFSparklineDotGraphView {
 				let ri = r.insetBy(dx: 0.5, dy: 0.5)
 
 				if c < boxCount {
-					path.addRect(ri)
+					pv.append(ri)
+					//path.addRect(ri)
 				}
 				else {
-					unsetPath.addRect(ri)
+					uv.append(ri)
+					//unsetPath.addRect(ri)
 				}
 			}
 
@@ -97,16 +101,24 @@ private extension DSFSparklineDotGraphView {
 			}
 		}
 
-		primary.usingGState { (state) in
-			state.addPath(path)
-			state.setFillColor(self.graphColor.cgColor)
-			state.drawPath(using: .fill)
+		if pv.count > 0 {
+			primary.usingGState { (state) in
+				let path = CGMutablePath()
+				path.addRects(pv)
+				state.addPath(path)
+				state.setFillColor(self.graphColor.cgColor)
+				state.drawPath(using: .fill)
+			}
 		}
 
-		primary.usingGState { (state) in
-			state.addPath(unsetPath)
-			state.setFillColor(self.unsetGraphColor.cgColor)
-			state.drawPath(using: .fill)
+		if uv.count > 0 {
+			primary.usingGState { (state) in
+				let path = CGMutablePath()
+				path.addRects(uv)
+				state.addPath(unsetPath)
+				state.setFillColor(self.unsetGraphColor.cgColor)
+				state.drawPath(using: .fill)
+			}
 		}
 	}
 

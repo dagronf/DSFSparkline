@@ -125,16 +125,7 @@ public extension DSFSparklineDataBarGraphView.SwiftUI {
 	}
 
 	func updateUIView(_ view: DSFSparklineDataBarGraphView, context _: Context) {
-		view.strokeColor = self.strokeColor
-		view.unsetColor = self.unsetColor
-		view.lineWidth = self.lineWidth
-		view.palette = self.palette
-
-		view.animated = self.animated
-		view.animationDuration = self.animationDuration
-
-		view.dataSource = self.dataSource
-		view.maximumTotalValue = self.maximumTotalValue
+		self.updateView(view)
 	}
 }
 
@@ -147,15 +138,26 @@ public extension DSFSparklineDataBarGraphView.SwiftUI {
 	}
 
 	func updateNSView(_ view: DSFSparklineDataBarGraphView, context _: Context) {
-		view.strokeColor = self.strokeColor
-		view.unsetColor = self.unsetColor
-		view.lineWidth = self.lineWidth
-		view.palette = self.palette
+		self.updateView(view)
+	}
+}
 
-		view.animated = self.animated
-		view.animationDuration = self.animationDuration
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineDataBarGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineDataBarGraphView) {
+		UpdateIfNotEqual(result: &view.strokeColor, val: self.strokeColor)
+		UpdateIfNotEqual(result: &view.unsetColor, val: self.unsetColor)
+		
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
 
-		view.dataSource = self.dataSource
+		UpdateIfNotEqual(result: &view.palette, val: self.palette)
+
+		UpdateIfNotEqual(result: &view.animated, val: self.animated)
+		UpdateIfNotEqual(result: &view.animationDuration, val: self.animationDuration)
+
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+
+		UpdateIfNotEqual(result: &view.maximumTotalValue, val: self.maximumTotalValue)
 	}
 }
 

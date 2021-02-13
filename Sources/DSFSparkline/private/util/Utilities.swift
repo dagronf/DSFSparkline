@@ -175,3 +175,14 @@ public class ArbitraryAnimationLayer: CALayer {
 		return super.needsDisplay(forKey: key)
 	}
 }
+
+// MARK: -
+
+@discardableResult
+@inlinable internal func UpdateIfNotEqual<T>(result: inout T, val: T) -> Bool where T: Equatable {
+	if result != val {
+		result = val
+		return true
+	}
+	return false
+}
