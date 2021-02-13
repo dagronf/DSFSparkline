@@ -186,3 +186,15 @@ public class ArbitraryAnimationLayer: CALayer {
 	}
 	return false
 }
+
+// MARK: - Debugging utils
+
+// Simple method to draw a rectangle in a context (usually for testing)
+func DrawRect(primary: CGContext, rect: CGRect, color: CGColor = DSFColor.systemRed.cgColor) {
+	primary.usingGState { (outer) in
+		outer.addRect(rect)
+		outer.setLineWidth(0.5)
+		outer.setStrokeColor(color)
+		outer.strokePath()
+	}
+}
