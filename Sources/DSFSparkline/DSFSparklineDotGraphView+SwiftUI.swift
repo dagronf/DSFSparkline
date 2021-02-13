@@ -101,7 +101,9 @@ public extension DSFSparklineDotGraphView.SwiftUI {
 		return self.makeDotGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineDotGraphView, context _: Context) {}
+	func updateUIView(_ view: DSFSparklineDotGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
 
 // MARK: - macOS Specific
@@ -112,7 +114,22 @@ public extension DSFSparklineDotGraphView.SwiftUI {
 		return self.makeDotGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineDotGraphView, context _: Context) {}
+	func updateNSView(_ view: DSFSparklineDotGraphView, context _: Context) {
+		self.updateView(view)
+	}
+}
+
+// MARK: - Common updates
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineDotGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineDotGraphView) {
+		UpdateIfNotEqual(result: &view.graphColor, val: self.graphColor)
+		UpdateIfNotEqual(result: &view.upsideDown, val: self.upsideDown)
+		UpdateIfNotEqual(result: &view.verticalDotCount, val: self.verticalDotCount)
+		UpdateIfNotEqual(result: &view.unsetGraphColor, val: self.unsetGraphColor)
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+	}
 }
 
 #endif

@@ -107,14 +107,7 @@ public extension DSFSparklinePieGraphView.SwiftUI {
 	}
 
 	func updateUIView(_ view: DSFSparklinePieGraphView, context _: Context) {
-		view.strokeColor = self.strokeColor
-		view.lineWidth = self.lineWidth
-		view.palette = self.palette
-
-		view.animated = self.animated
-		view.animationDuration = self.animationDuration
-
-		view.dataSource = self.dataSource
+		self.updateView(view)
 	}
 }
 
@@ -127,15 +120,25 @@ public extension DSFSparklinePieGraphView.SwiftUI {
 	}
 
 	func updateNSView(_ view: DSFSparklinePieGraphView, context _: Context) {
-		view.strokeColor = self.strokeColor
-		view.lineWidth = self.lineWidth
-		view.palette = self.palette
-
-		view.animated = self.animated
-		view.animationDuration = self.animationDuration
-
-		view.dataSource = self.dataSource
+		self.updateView(view)
 	}
 }
+
+// MARK: - Common updates
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklinePieGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklinePieGraphView) {
+		UpdateIfNotEqual(result: &view.strokeColor, val: self.strokeColor)
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
+		UpdateIfNotEqual(result: &view.palette, val: self.palette)
+
+		UpdateIfNotEqual(result: &view.animated, val: self.animated)
+		UpdateIfNotEqual(result: &view.animationDuration, val: self.animationDuration)
+
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+	}
+}
+
 
 #endif

@@ -109,7 +109,9 @@ public extension DSFSparklineTabletGraphView.SwiftUI {
 		return self.makeTabletGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineTabletGraphView, context _: Context) {}
+	func updateUIView(_ view: DSFSparklineTabletGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
 
 // MARK: - macOS Specific
@@ -120,7 +122,25 @@ public extension DSFSparklineTabletGraphView.SwiftUI {
 		return self.makeTabletGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineTabletGraphView, context _: Context) {}
+	func updateNSView(_ view: DSFSparklineTabletGraphView, context _: Context) {
+		self.updateView(view)
+	}
+}
+
+// MARK: - Common updates
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineTabletGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineTabletGraphView) {
+
+		UpdateIfNotEqual(result: &view.winColor, val: self.winColor)
+		UpdateIfNotEqual(result: &view.lossColor, val: self.lossColor)
+
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
+		UpdateIfNotEqual(result: &view.barSpacing, val: self.barSpacing)
+
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+	}
 }
 
 #endif

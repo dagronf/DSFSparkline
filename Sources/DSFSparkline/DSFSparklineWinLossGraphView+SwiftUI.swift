@@ -129,7 +129,9 @@ public extension DSFSparklineWinLossGraphView.SwiftUI {
 		return self.makeWinLossGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineWinLossGraphView, context _: Context) {}
+	func updateUIView(_ view: DSFSparklineWinLossGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
 
 // MARK: - macOS Specific
@@ -140,7 +142,29 @@ public extension DSFSparklineWinLossGraphView.SwiftUI {
 		return self.makeWinLossGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineWinLossGraphView, context _: Context) {}
+	func updateNSView(_ view: DSFSparklineWinLossGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
+
+// MARK: - Common updates
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineWinLossGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineWinLossGraphView) {
+
+		UpdateIfNotEqual(result: &view.winColor, val: self.winColor)
+		UpdateIfNotEqual(result: &view.lossColor, val: self.lossColor)
+		UpdateIfNotEqual(result: &view.tieColor, val: self.tieColor)
+
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
+		UpdateIfNotEqual(result: &view.barSpacing, val: self.barSpacing)
+
+		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+	}
+}
+
 
 #endif

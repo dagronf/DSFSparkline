@@ -161,7 +161,9 @@ public extension DSFSparklineLineGraphView.SwiftUI {
 		return self.makeLineGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineLineGraphView, context _: Context) {}
+	func updateUIView(_ view: DSFSparklineLineGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
 
 // MARK: - macOS Specific
@@ -172,7 +174,42 @@ public extension DSFSparklineLineGraphView.SwiftUI {
 		return self.makeLineGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineLineGraphView, context _: Context) {}
+	func updateNSView(_ view: DSFSparklineLineGraphView, context _: Context) {
+		self.updateView(view)
+	}
+}
+
+// MARK: - Common updates
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineLineGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineLineGraphView) {
+
+		UpdateIfNotEqual(result: &view.graphColor, val: self.graphColor)
+
+		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+		view.setZeroLineDefinition(self.zeroLineDefinition)
+
+		UpdateIfNotEqual(result: &view.centeredAtZeroLine, val: self.centeredAtZeroLine)
+		UpdateIfNotEqual(result: &view.lowerGraphColor, val: self.lowerGraphColor)
+
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
+		UpdateIfNotEqual(result: &view.interpolated, val: self.interpolated)
+		UpdateIfNotEqual(result: &view.lineShading, val: self.lineShading)
+		UpdateIfNotEqual(result: &view.shadowed, val: self.shadowed)
+		UpdateIfNotEqual(result: &view.markerSize, val: self.markerSize)
+
+		if self.highlightDefinitions.count > 0 {
+			view.showHighlightRange = true
+			view.highlightRangeDefinition = self.highlightDefinitions
+		}
+		else {
+			view.showHighlightRange = false
+			view.highlightRangeDefinition = []
+		}
+
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+	}
 }
 
 #endif

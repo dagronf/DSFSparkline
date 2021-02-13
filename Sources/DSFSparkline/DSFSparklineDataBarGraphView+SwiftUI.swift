@@ -142,6 +142,8 @@ public extension DSFSparklineDataBarGraphView.SwiftUI {
 	}
 }
 
+// MARK: - Common updates
+
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineDataBarGraphView.SwiftUI {
 	func updateView(_ view: DSFSparklineDataBarGraphView) {

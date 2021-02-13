@@ -116,6 +116,7 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 	func makeLineGraph(_: Context) -> DSFSparklineStackLineGraphView {
 		let view = DSFSparklineStackLineGraphView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
+		
 		view.dataSource = self.dataSource
 		view.graphColor = self.graphColor
 
@@ -146,7 +147,9 @@ public extension DSFSparklineStackLineGraphView.SwiftUI {
 		return self.makeLineGraph(context)
 	}
 
-	func updateUIView(_: DSFSparklineStackLineGraphView, context _: Context) {}
+	func updateUIView(_ view: DSFSparklineStackLineGraphView, context _: Context) {
+		self.updateView(view)
+	}
 }
 
 // MARK: - macOS Specific
@@ -157,13 +160,41 @@ public extension DSFSparklineStackLineGraphView.SwiftUI {
 		return self.makeLineGraph(context)
 	}
 
-	func updateNSView(_: DSFSparklineStackLineGraphView, context _: Context) {}
+	func updateNSView(_ view: DSFSparklineStackLineGraphView, context _: Context) {
+		self.updateView(view)
+	}
+}
+
+
+// MARK: - Common updates
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineStackLineGraphView.SwiftUI {
+	func updateView(_ view: DSFSparklineStackLineGraphView) {
+		UpdateIfNotEqual(result: &view.graphColor, val: self.graphColor)
+
+		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
+		UpdateIfNotEqual(result: &view.lineShading, val: self.lineShading)
+		UpdateIfNotEqual(result: &view.shadowed, val: self.shadowed)
+
+		UpdateIfNotEqual(result: &view.lineShading, val: self.lineShading)
+
+		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+
+		UpdateIfNotEqual(result: &view.centeredAtZeroLine, val: self.centeredAtZeroLine)
+		UpdateIfNotEqual(result: &view.lowerGraphColor, val: self.lowerGraphColor)
+
+		if self.highlightDefinitions.count > 0 {
+			view.showHighlightRange = true
+			view.highlightRangeDefinition = self.highlightDefinitions
+		}
+		else {
+			view.showHighlightRange = false
+			view.highlightRangeDefinition = []
+		}
+
+		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
+	}
 }
 
 #endif
-
-//struct DSFSparklineStackLineGraphViewSwiftUI_Previews: PreviewProvider {
-//	static var previews: some View {
-//		/*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-//	}
-//}
