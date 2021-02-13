@@ -63,8 +63,6 @@ private extension DSFSparklineDotGraphView {
 
 		var position = drawRect.width - dotHeight - xOffset
 
-		let unsetPath = CGMutablePath()
-
 		// Map normalized values to box positions
 		let normalizedBoxed: [UInt] = dataSource.normalized.reversed().map { dataPoint in
 			let floatBoxPos = CGFloat(self.verticalDotCount) * dataPoint
@@ -86,11 +84,9 @@ private extension DSFSparklineDotGraphView {
 
 				if c < boxCount {
 					pv.append(ri)
-					//path.addRect(ri)
 				}
 				else {
 					uv.append(ri)
-					//unsetPath.addRect(ri)
 				}
 			}
 
@@ -115,7 +111,7 @@ private extension DSFSparklineDotGraphView {
 			primary.usingGState { (state) in
 				let path = CGMutablePath()
 				path.addRects(uv)
-				state.addPath(unsetPath)
+				state.addPath(path)
 				state.setFillColor(self.unsetGraphColor.cgColor)
 				state.drawPath(using: .fill)
 			}
