@@ -28,7 +28,6 @@ import UIKit
 #endif
 
 public extension DSFSparklineDataBarGraphView {
-
 	func dataDidChange() {
 		// Precalculate the total.
 		self.total = self.dataSource.reduce(0) { $0 + $1 }
@@ -41,7 +40,6 @@ public extension DSFSparklineDataBarGraphView {
 			self.updateDisplay()
 		}
 	}
-
 
 	#if os(macOS)
 	override func draw(_ dirtyRect: NSRect) {
@@ -60,7 +58,6 @@ public extension DSFSparklineDataBarGraphView {
 	#endif
 
 	func drawDataBarGraph(primary: CGContext) {
-
 		if fractionComplete == 0 {
 			return
 		}
@@ -73,12 +70,10 @@ public extension DSFSparklineDataBarGraphView {
 
 		primary.clip(to: rect)
 
-		if self.maximumTotalValue > 0,
-			let unsetColor = self.unsetColor?.cgColor {
-
+		if self.maximumTotalValue > 0, let unsetColor = self.unsetColor?.cgColor {
 			let cbheight = max(2, rect.height / 6)
 			let center = rect.midY
-			let centerBar = CGRect(x: rect.minX, y: center - (cbheight/2), width: rect.width, height: cbheight)
+			let centerBar = CGRect(x: rect.minX, y: center - (cbheight / 2), width: rect.width, height: cbheight)
 			let pth = CGPath(roundedRect: centerBar,
 								  cornerWidth: cbheight / 2, cornerHeight: cbheight / 2, transform: nil)
 
@@ -90,7 +85,6 @@ public extension DSFSparklineDataBarGraphView {
 		}
 
 		for segment in self.dataSource.enumerated() {
-
 			primary.usingGState { state in
 
 				state.setFillColor(self.palette.cgColorAtOffset(segment.offset))
@@ -101,8 +95,7 @@ public extension DSFSparklineDataBarGraphView {
 				state.addPath(path)
 				state.fillPath()
 
-				if segment.offset > 0,
-					let strokeColor = self.strokeColor {
+				if segment.offset > 0, let strokeColor = self.strokeColor {
 					state.usingGState { separator in
 						separator.setStrokeColor(strokeColor.cgColor)
 						separator.setLineWidth(self.lineWidth)
@@ -119,8 +112,8 @@ public extension DSFSparklineDataBarGraphView {
 	}
 }
 
-extension DSFSparklineDataBarGraphView {
-	public override func prepareForInterfaceBuilder() {
+public extension DSFSparklineDataBarGraphView {
+	override func prepareForInterfaceBuilder() {
 		super.prepareForInterfaceBuilder()
 
 		#if TARGET_INTERFACE_BUILDER
@@ -137,7 +130,6 @@ extension DSFSparklineDataBarGraphView {
 
 extension DSFSparklineDataBarGraphView {
 	func startAnimateIn() {
-
 		self.fractionComplete = 0
 
 		if let a = self.animationLayer {

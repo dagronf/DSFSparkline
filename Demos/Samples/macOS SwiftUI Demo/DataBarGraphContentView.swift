@@ -153,6 +153,7 @@ struct DataBarGraphContentView_Previews: PreviewProvider {
 							animationDuration: 0.5
 						)
 						.frame(height: 24)
+						.padding(3)
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
@@ -164,6 +165,7 @@ struct DataBarGraphContentView_Previews: PreviewProvider {
 							animationDuration: 0.5
 						)
 						.frame(height: 24)
+						.padding(3)
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
@@ -175,6 +177,7 @@ struct DataBarGraphContentView_Previews: PreviewProvider {
 							animationDuration: 0.5
 						)
 						.frame(height: 24)
+						.padding(3)
 						.border(Color.gray.opacity(0.3), width: 0.5)
 					}
 					.frame(width: 192)
@@ -193,6 +196,7 @@ struct DataBarGraphContentView_Previews: PreviewProvider {
 							animationDuration: 0.5
 						)
 						.frame(height: 24)
+						.padding(3)
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
@@ -206,6 +210,7 @@ struct DataBarGraphContentView_Previews: PreviewProvider {
 							animationDuration: 0.5
 						)
 						.frame(height: 24)
+						.padding(3)
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
@@ -219,6 +224,7 @@ struct DataBarGraphContentView_Previews: PreviewProvider {
 							animationDuration: 0.5
 						)
 						.frame(height: 24)
+						.padding(3)
 						.border(Color.gray.opacity(0.3), width: 0.5)
 					}
 					.frame(width: 192)
