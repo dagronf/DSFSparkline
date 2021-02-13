@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Documentation Project
+//  Documentation project
 //
 //  Created by Darren Ford on 14/2/21.
 //

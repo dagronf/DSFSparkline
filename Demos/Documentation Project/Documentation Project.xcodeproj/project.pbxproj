@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		23EE63E125D875C7000C85E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE63E025D875C7000C85E4 /* ViewController.swift */; };
 		23EE63E325D875C8000C85E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23EE63E225D875C8000C85E4 /* Assets.xcassets */; };
 		23EE63E625D875C8000C85E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EE63E425D875C8000C85E4 /* Main.storyboard */; };
+		23EE640925D87663000C85E4 /* DSFSparkline in Frameworks */ = {isa = PBXBuildFile; productRef = 23EE640825D87663000C85E4 /* DSFSparkline */; };
+		23EE640C25D877E7000C85E4 /* CenteringClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE640B25D877E7000C85E4 /* CenteringClipView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		23EE63E525D875C8000C85E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23EE63E725D875C8000C85E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23EE63E825D875C8000C85E4 /* Documentation_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Documentation_Project.entitlements; sourceTree = "<group>"; };
+		23EE640525D8763F000C85E4 /* DSFSparkline */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DSFSparkline; path = ../..; sourceTree = "<group>"; };
+		23EE640B25D877E7000C85E4 /* CenteringClipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenteringClipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23EE640925D87663000C85E4 /* DSFSparkline in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +42,10 @@
 		23EE63D225D875C7000C85E4 = {
 			isa = PBXGroup;
 			children = (
+				23EE640525D8763F000C85E4 /* DSFSparkline */,
 				23EE63DD25D875C7000C85E4 /* Documentation Project */,
 				23EE63DC25D875C7000C85E4 /* Products */,
+				23EE640725D87663000C85E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,10 +64,18 @@
 				23EE63E025D875C7000C85E4 /* ViewController.swift */,
 				23EE63E225D875C8000C85E4 /* Assets.xcassets */,
 				23EE63E425D875C8000C85E4 /* Main.storyboard */,
+				23EE640B25D877E7000C85E4 /* CenteringClipView.swift */,
 				23EE63E725D875C8000C85E4 /* Info.plist */,
 				23EE63E825D875C8000C85E4 /* Documentation_Project.entitlements */,
 			);
 			path = "Documentation Project";
+			sourceTree = "<group>";
+		};
+		23EE640725D87663000C85E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,6 +94,9 @@
 			dependencies = (
 			);
 			name = "Documentation Project";
+			packageProductDependencies = (
+				23EE640825D87663000C85E4 /* DSFSparkline */,
+			);
 			productName = "Documentation Project";
 			productReference = 23EE63DB25D875C7000C85E4 /* Documentation Project.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +152,7 @@
 			files = (
 				23EE63E125D875C7000C85E4 /* ViewController.swift in Sources */,
 				23EE63DF25D875C7000C85E4 /* AppDelegate.swift in Sources */,
+				23EE640C25D877E7000C85E4 /* CenteringClipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +300,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFSparkline.Documentation-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -302,6 +322,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFSparkline.Documentation-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -330,6 +351,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		23EE640825D87663000C85E4 /* DSFSparkline */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFSparkline;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23EE63D325D875C7000C85E4 /* Project object */;
 }
