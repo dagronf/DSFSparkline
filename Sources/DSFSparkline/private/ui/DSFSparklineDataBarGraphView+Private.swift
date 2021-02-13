@@ -75,7 +75,23 @@ public extension DSFSparklineDataBarGraphView {
 
 		if let unsetColor = self.unsetColor?.cgColor {
 			primary.usingGState { state in
+
+				let alpha = unsetColor.alpha
+				let newAlpha = max(0, alpha - 0.1)
+
 				state.addRect(rect)
+				state.setFillColor(unsetColor.copy(alpha: newAlpha)!)
+				state.fillPath()
+			}
+
+			primary.usingGState { state in
+
+				let cbheight = rect.height / 4
+				let center = rect.midY
+
+				let centerBar = CGRect(x: rect.minX, y: center - (cbheight/2), width: rect.width, height: cbheight)
+
+				state.addRect(centerBar)
 				state.setFillColor(unsetColor)
 				state.fillPath()
 			}

@@ -140,12 +140,6 @@
 		0893A7B69A2C716F5E308880 /* Pods_macOS_SwiftUI_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS_SwiftUI_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C98132175512CBF928379A0 /* Pods-tvOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tvOS Sparkline Demo.debug.xcconfig"; path = "Target Support Files/Pods-tvOS Sparkline Demo/Pods-tvOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		22164B502E82316BE6268F57 /* Pods_Documentation_project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Documentation_project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		23031FD325D85EBB003E359B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		23031FD525D85EBB003E359B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		23031FD725D85EBC003E359B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		23031FDA25D85EBC003E359B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		23031FDC25D85EBC003E359B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23031FDD25D85EBC003E359B /* Documentation_project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Documentation_project.entitlements; sourceTree = "<group>"; };
 		23102B5023B0245A001A621D /* macOS Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23102B5323B0245A001A621D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23102B5523B0245A001A621D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -309,19 +303,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23031FD225D85EBB003E359B /* Documentation project */ = {
-			isa = PBXGroup;
-			children = (
-				23031FD325D85EBB003E359B /* AppDelegate.swift */,
-				23031FD525D85EBB003E359B /* ViewController.swift */,
-				23031FD725D85EBC003E359B /* Assets.xcassets */,
-				23031FD925D85EBC003E359B /* Main.storyboard */,
-				23031FDC25D85EBC003E359B /* Info.plist */,
-				23031FDD25D85EBC003E359B /* Documentation_project.entitlements */,
-			);
-			path = "Documentation project";
-			sourceTree = "<group>";
-		};
 		23102B4423B0165B001A621D = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +313,6 @@
 				23102BF223B02B32001A621D /* tvOS Sparkline Demo */,
 				23882CDF257D675700AC103A /* macOS SwiftUI Demo */,
 				238423FD25C74EE400A2A861 /* SwiftUI Sparkline Crossplatform */,
-				23031FD225D85EBB003E359B /* Documentation project */,
 				23102B5123B0245A001A621D /* Products */,
 				23882CC9257D65CB00AC103A /* Frameworks */,
 				998AA4E1741703C986850307 /* Pods */,
@@ -1279,14 +1259,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		23031FD925D85EBC003E359B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				23031FDA25D85EBC003E359B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		23102B5923B0245B001A621D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
