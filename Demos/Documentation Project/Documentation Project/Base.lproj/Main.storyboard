@@ -953,7 +953,11 @@
                                                                         <color key="value" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="unsetGraphColor">
-                                                                        <color key="value" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="value" red="1" green="0.27058823529411763" blue="0.22745098039215686" alpha="0.20686758030726257" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="upsideDown" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalDotCount">
+                                                                        <integer key="value" value="8"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </customView>
