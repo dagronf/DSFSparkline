@@ -1,0 +1,6 @@
+framework module Pods_SwiftUI_Sparkline_Demo__iOS_ {
+  umbrella header "Pods-SwiftUI Sparkline Demo (iOS)-umbrella.h"
+
+  export *
+  module * { export * }
+}

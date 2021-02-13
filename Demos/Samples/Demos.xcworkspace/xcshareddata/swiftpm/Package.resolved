@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DSFStepperView",
+        "repositoryURL": "https://github.com/dagronf/DSFStepperView",
+        "state": {
+          "branch": null,
+          "revision": "9c85163a0e94b7c774b56a6a52cd80adb3e4792d",
+          "version": "1.1.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

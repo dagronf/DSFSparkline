@@ -1,0 +1,18 @@
+PODS:
+  - DSFSparkline (3.5.2):
+    - DSFSparkline/Core (= 3.5.2)
+  - DSFSparkline/Core (3.5.2)
+
+DEPENDENCIES:
+  - DSFSparkline (from `../../`)
+
+EXTERNAL SOURCES:
+  DSFSparkline:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  DSFSparkline: d150d1c5bf9e65eb0d373d9315f7959e47398d3c
+
+PODFILE CHECKSUM: 88651dc336ae7042c9c311812a1303d1626a297c
+
+COCOAPODS: 1.9.1

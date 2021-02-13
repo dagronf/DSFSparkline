@@ -1,0 +1,6 @@
+framework module Pods_macOS_Sparkline_Demo_Objc {
+  umbrella header "Pods-macOS Sparkline Demo Objc-umbrella.h"
+
+  export *
+  module * { export * }
+}

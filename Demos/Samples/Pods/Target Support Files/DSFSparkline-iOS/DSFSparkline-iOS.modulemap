@@ -1,0 +1,6 @@
+framework module DSFSparkline {
+  umbrella header "DSFSparkline-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
