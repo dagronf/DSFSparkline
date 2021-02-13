@@ -73,25 +73,17 @@ public extension DSFSparklineDataBarGraphView {
 
 		primary.clip(to: rect)
 
-		if let unsetColor = self.unsetColor?.cgColor {
-			primary.usingGState { state in
+		if self.maximumTotalValue > 0,
+			let unsetColor = self.unsetColor?.cgColor {
 
-				let alpha = unsetColor.alpha
-				let newAlpha = max(0, alpha - 0.1)
-
-				state.addRect(rect)
-				state.setFillColor(unsetColor.copy(alpha: newAlpha)!)
-				state.fillPath()
-			}
+			let cbheight = max(2, rect.height / 6)
+			let center = rect.midY
+			let centerBar = CGRect(x: rect.minX, y: center - (cbheight/2), width: rect.width, height: cbheight)
+			let pth = CGPath(roundedRect: centerBar,
+								  cornerWidth: cbheight / 2, cornerHeight: cbheight / 2, transform: nil)
 
 			primary.usingGState { state in
-
-				let cbheight = rect.height / 4
-				let center = rect.midY
-
-				let centerBar = CGRect(x: rect.minX, y: center - (cbheight/2), width: rect.width, height: cbheight)
-
-				state.addRect(centerBar)
+				state.addPath(pth)
 				state.setFillColor(unsetColor)
 				state.fillPath()
 			}

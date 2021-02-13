@@ -725,13 +725,13 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Documentation_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="947" height="561"/>
+                        <rect key="frame" x="0.0" y="0.0" width="867" height="561"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kty-ak-QC3">
-                                <rect key="frame" x="0.0" y="0.0" width="947" height="561"/>
+                                <rect key="frame" x="0.0" y="0.0" width="867" height="561"/>
                                 <clipView key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="do4-xR-lo2" customClass="CenteringClipView" customModule="Documentation_Project" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="932" height="546"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="852" height="546"/>
                                     <subviews>
                                         <view ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7UI-6Z-z5D">
                                             <rect key="frame" x="0.0" y="0.0" width="856" height="486"/>
@@ -1409,11 +1409,11 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="psD-Rr-2o6">
-                                    <rect key="frame" x="0.0" y="546" width="932" height="15"/>
+                                    <rect key="frame" x="0.0" y="546" width="852" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="0TC-Rj-jAq">
-                                    <rect key="frame" x="932" y="0.0" width="15" height="546"/>
+                                    <rect key="frame" x="852" y="0.0" width="15" height="546"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -1469,7 +1469,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280.5" y="800.5"/>
+            <point key="canvasLocation" x="240.5" y="800.5"/>
         </scene>
     </scenes>
     <resources>
