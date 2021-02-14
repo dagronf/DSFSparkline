@@ -32,7 +32,7 @@ class ViewController: NSViewController {
 }
 
 fileprivate var LineSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.3)
+	let d = DSFSparklineDataSource(windowSize: 20, /*range: 0 ... 1,*/ zeroLineValue: 0.3)
 	d.push(values: [
 		0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.87, 0.44, 0.02, 0.27,
 		0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50
@@ -41,7 +41,7 @@ fileprivate var LineSource1: DSFSparklineDataSource = {
 }()
 
 fileprivate var LineSource2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.3)
+	let d = DSFSparklineDataSource(windowSize: 20, /*range: 0 ... 1,*/ zeroLineValue: 0.3)
 	d.push(values: [
 		0.58, 0.87, 0.56, 0.18, 0.36, 0.49, 0.86, 0.95, 0.57, 0.96,
 		0.00, 0.09, 0.24, 0.34, 0.29, 0.10, 0.59, 0.52, 0.82, 0.73

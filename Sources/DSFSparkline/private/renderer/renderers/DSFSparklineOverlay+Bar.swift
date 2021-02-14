@@ -5,11 +5,7 @@
 //  Created by Darren Ford on 14/2/21.
 //
 
-#if os(macOS)
-import Cocoa
-#else
-import UIKit
-#endif
+import QuartzCore
 
 public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayBar) class Bar: Centerable {

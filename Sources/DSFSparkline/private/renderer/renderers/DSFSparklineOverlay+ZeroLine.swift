@@ -5,11 +5,7 @@
 //  Created by Darren Ford on 3/2/21.
 //
 
-#if os(macOS)
-import Cocoa
-#else
-import UIKit
-#endif
+import QuartzCore
 
 public extension DSFSparklineOverlay {
 
@@ -39,7 +35,7 @@ public extension DSFSparklineOverlay {
 		/// A string representation of the line dash lengths for the zero line, eg. "1,3,4,2". If you want a solid line, specify "-"
 		///
 		/// Primarily used for Interface Builder integration
-		@objc public func setDashStyleString(_ dashStyleString: String) {
+		@objc public func setDashStyleString(_ dashStyleString: String) -> Bool {
 			if dashStyleString == "-" {
 				// Solid line
 				self.dashStyle = []
@@ -55,8 +51,10 @@ public extension DSFSparklineOverlay {
 				}
 				else {
 					Swift.print("ERROR: Zero Line Style string format is incompatible (\(dashStyleString) -> \(components))")
+					return false
 				}
 			}
+			return true
 		}
 
 		@objc public init(dataSource: DSFSparklineDataSource? = nil,
@@ -69,8 +67,6 @@ public extension DSFSparklineOverlay {
 			self.dashStyle = dashStyle
 
 			super.init(dataSource: dataSource, zeroLineValue: zeroLineValue)
-
-			self.contentsScale = 2
 		}
 
 		required init?(coder: NSCoder) {
