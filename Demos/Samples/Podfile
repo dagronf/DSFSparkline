@@ -86,14 +86,3 @@ target 'tvOS Sparkline Demo' do
   pod 'DSFSparkline', :path => '../../'
 
 end
-
-target 'Documentation project' do
-  # Comment the next line if you don't want to use dynamic frameworks
-	use_frameworks!
-	platform :osx, '10.15'
-
-  # Pods for macOS Sparkline Demo
-  pod 'DSFSparkline', :path => '../../'
-
-end
-
