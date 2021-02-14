@@ -29,10 +29,20 @@ import UIKit
 
 @IBDesignable
 public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
+
 	/// The line width (in pixels) to use when drawing the border of each bar
-	@IBInspectable public var lineWidth: UInt = 1
+	@IBInspectable public var lineWidth: UInt = 1 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
+
 	/// The spacing (in pixels) between each bar
-	@IBInspectable public var barSpacing: UInt = 1
+	@IBInspectable public var barSpacing: UInt = 1 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 
 	#if os(macOS)
 	/// The color to draw the 'win' boxes

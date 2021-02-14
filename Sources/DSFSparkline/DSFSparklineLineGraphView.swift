@@ -31,19 +31,39 @@ import UIKit
 @IBDesignable
 public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph
-	@IBInspectable public var lineWidth: CGFloat = 1.5
+	@IBInspectable public var lineWidth: CGFloat = 1.5 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 	
 	/// Interpolate a curve between the points
-	@IBInspectable public var interpolated: Bool = false
+	@IBInspectable public var interpolated: Bool = false {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 	
 	/// Shade the area under the line
-	@IBInspectable public var lineShading: Bool = true
+	@IBInspectable public var lineShading: Bool = true {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 	
 	/// Draw a shadow under the line
-	@IBInspectable public var shadowed: Bool = false
+	@IBInspectable public var shadowed: Bool = false {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 
 	/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
-	@IBInspectable public var markerSize: CGFloat = -1
+	@IBInspectable public var markerSize: CGFloat = -1 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 
 	// Optional gradient colors
 	internal var gradient: CGGradient?

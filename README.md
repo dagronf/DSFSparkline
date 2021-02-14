@@ -23,6 +23,7 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 ## Features
 
 * Multiple graph styles support, such as line, bar, tablet etc.
+* Independently scalable for sparklines at any size
 * SwiftUI support for all sparkline types
 * `IBDesignable` support so you can see and configure your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
@@ -36,49 +37,97 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 
 ### Line
 
-#### Standard
-
 |  Standard  | Centered  |
 |------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/line-centered.png" width="400">|
-
-#### Interpolated
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-centered.png" width="400">|
 
 |  Interpolated  | Interpolated Centered  |
 |------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/interpolated_line.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerline.png" height="70" width="400">|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated-centered.png" width="400">|
+
+|  Standard Markers  | Interpolated Markers |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
 
 ### Bar
 
 |  Standard  |  Centered  |
 |------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/bar.jpg" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/upperlowerbar.png" width="400">|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-centered.png" width="400">|
 
 ### Stackline
 
 |  Standard  |  Centered  |
 |------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/stackline.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/stackline-centered.png" width="400">|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
 
 ### Dot
 
-![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/dot_graph.jpg)
+|  Standard  |  Inverted  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-inverted.png" width="400">|
 
 ### Win/Loss
 
 |  Win/Loss  |  Win/Loss/Tie  |
 |------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/winlosstie.png" width="400">|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-tie.png" width="400">|
 
 ### Tablet
 
-<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types/tablet.png" width="400">
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
+
+### Pie
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie.png" width="400">|
+
+### DataBar
+
+|  Percent  |  Total  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
+
 
 ## Overview
 
 The library is split into a data model and a view model.  A data source (model) is created and assigned to a view model in order to populate the sparkline.
 
-So, a very simple example…
+## Data Source types
+
+### Data Source (`DSFDataSource`)
+
+Represents the data to be displayed. The data source is assigned to the view model to provide data for drawing the sparkline. As data is changed the assigned view is automatically updated to reflect the new data.  If more data is added via a push or set the data is added to the datasource, the associated view will automatically update to reflect the new data. Older data that no longer falls within the window is discarded.
+
+This provides the ability to show a historical data set over the breadth of the graph.
+
+#### Graph types using `DSFDataSource`
+
+* `DSFSparklineLineGraphView`
+* `DSFSparklineStackLineGraphView`
+* `DSFSparklineBarGraphView`
+* `DSFSparklineDotGraphView`
+* `DSFSparklineWinLossGraphView`
+* `DSFSparklineTabletGraphView`
+
+#### Range
+
+An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical display will grow and shrink to accomodate the full range of data.
+
+#### Zero line
+
+You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource to 20)
+
+The zero-line can also be used to center certain graph types (currently line and bar). By default, the zero-line is set at 0.0.
+
+#### Highlighting ranges
+
+You can specify multiple ranges on a graph (line, bar, stackbar) to highlight. You might (for example) set a red highlight on the upper portion of a line graph to quickly indicate values that are 'dangerous'.
+
+#### Simple example
 
 ```swift
 
@@ -104,47 +153,45 @@ sparklineDataSource.set(values: [0.2, -0.2, 0.0, 0.9, 0.8])   // view automatica
 
 ```
 
-## Data Model (data source)
+### Static Data
 
-Represents the data to be displayed.
+Some types of sparkline use a single 'set' of data, providing no historical context.
 
-The data source is assigned to the view model to provide data for drawing the sparkline. As data is changed the assigned view is automatically updated to reflect the new data.  If more data is added via a push or set the data is added to the datasource, the associated view will automatically update to reflect the new data. Older data that no longer falls within the window is discarded.
+Static data graph types also allow you to set a palette (`DSFSparklinePalette`) of colors to be used when drawing the graph. There is a default palette (kind of a rainbow!) that is used if you don't specify one yourself.
 
-### Range
+#### Types
 
-An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical display will grow and shrink to accomodate the full range of data.
+* `DSFSparklinePieGraphView`
+* `DSFSparklineDataBarGraphView`
 
-### Zero line
+#### Example
 
-You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource to 20)
+```swift
+// Create the view
+let sparklinePieView1 = DSFSparklinePieGraphView(…)
+sparklinePieView.dataSource = [3, 2, 1]
 
-The zero-line can also be used to center certain graph types (currently line and bar). By default, the zero-line is set at 0.0.
+let sparklineDataBarView = DSFSparklineDataBarGraphView(…)
+sparklineDataBarView.palette = DSFSparklinePalette.sharedGrays
+sparklineDataBarView.maximumTotalValue = 10
+sparklineDataBarView.dataSource = [1, 2, 3]
+```
 
-### Highlighting ranges
-
-You can specify multiple ranges on a graph (line, bar, stackbar) to highlight. You might (for example) set a red highlight on the upper portion of a line graph to quickly indicate values that are 'dangerous'.
-
-## View Types
+## View Types and settings
 
 Represents the viewable settings and display.  The current view types available are :-
 
-* DSFSparklineLineGraphView
-* DSFSparklineStackLineGraphView
-* DSFSparklineBarGraphView
-* DSFSparklineDotGraphView
-* DSFSparklineWinLossGraphView
-* DSFSparklineTabletGraphView
-
 ### Common display customizations
 
-| Setting               | Type                | Description                                             |
-|-----------------------|---------------------|---------------------------------------------------------|
+| Setting               | Type                   | Description                                             |
+|-----------------------|------------------------|---------------------------------------------------------|
 | `graphColor`          | `NSColor`<br>`UIColor` | The color to use when drawing the sparkline             |
 
 #### Common elements for graphs that can display a zero line (Line/Bar)
 
 | Setting               | Type                    | Description                                             |
 |-----------------------|-------------------------|---------------------------------------------------------|
+| `dataSource`          | `DSFDataSource`         | The source of data for the graph                        |
 | `showZeroLine`        | `Bool`                  | Draw a dotted line at the zero line point on the y-axis |
 | `zeroLineColor`       | `NSColor`<br/>`UIColor` | The color of the 'zero line' on the y-axis.             |
 | `zeroLineWidth`       | `CGFloat`               | The width of the 'zero line' on the y-axis              |
@@ -152,63 +199,94 @@ Represents the viewable settings and display.  The current view types available 
 
 #### Common elements for graphs that can be centered around the zero-line (Line/Bar)
 
-| Setting               | Type                    | Description                                             |
-|-----------------------|-------------------------|---------------------------------------------------------|
-| `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line?          |
+| Setting               | Type                    | Description                                                                               |
+|-----------------------|-------------------------|-------------------------------------------------------------------------------------------|
+| `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line?                                            |
 | `lowerGraphColor`     | `NSColor`<br/>`UIColor` | The color used to draw values below the zero line. If nil, is the same as the graph color |
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 
 A simple line graph
 
-| Setting         | Type      | Description                            |
-|-----------------|-----------|----------------------------------------|
-| `lineWidth`     | `CGFloat` | The width of the line                  |
-| `interpolation` | `Bool`    | Interpolate a curve between the points |
-| `lineShading`   | `Bool`    | Shade the area under the line          |
-| `shadowed`      | `Bool`    | Draw a shadow under the line           |
-| `markerSize`    | `CGFloat` | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
+| Setting         | Type            | Description                                                                                                        |
+|-----------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| `dataSource`    | `DSFDataSource` | The source of data for the graph                                                                                   |
+| `lineWidth`     | `CGFloat`       | The width of the line                                                                                              |
+| `interpolation` | `Bool`          | Interpolate a curve between the points                                                                             |
+| `lineShading`   | `Bool`          | Shade the area under the line                                                                                      |
+| `shadowed`      | `Bool`          | Draw a shadow under the line                                                                                       |
+| `markerSize`    | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
 
 A simple bar graph
 
-| Setting         | Type      | Description                  |
-|-----------------|-----------|------------------------------|
-| `lineWidth`     | `CGFloat` | The width of the line        |
-| `barSpacing`    | `CGFloat` | The spacing between each bar |
+| Setting      | Type            | Description                      |
+|--------------|-----------------|----------------------------------|
+| `dataSource` | `DSFDataSource` | The source of data for the graph |
+| `lineWidth`  | `CGFloat`       | The width of the line            |
+| `barSpacing` | `CGFloat`       | The spacing between each bar     |
 
 ### Dot graph customizations (`DSFSparklineDotGraphView`)
 
 A dot graph reminiscent of Activity Viewer
 
-| Setting           | Type                | Description                                        |
-|-------------------|---------------------|----------------------------------------------------|
-| `upsideDown`      | `Bool`              | If true, draws from the top of the graph downwards |
+| Setting           | Type                   | Description                                        |
+|-------------------|------------------------|----------------------------------------------------|
+| `dataSource`      | `DSFDataSource`        | The source of data for the graph                   |
+| `upsideDown`      | `Bool`                 | If true, draws from the top of the graph downwards |
 | `unsetGraphColor` | `NSColor`<br>`UIColor` | The color to use when drawing the background       |
 
 ### Win/Loss graph customizations (`DSFSparklineWinLossGraphView`)
 
 A win-loss graph, where positive values in the datasource are represented as a 'win', negative values represented as a 'loss', and zero values are a 'tie'.
 
-| Setting        | Type                | Description                                  |
-|----------------|---------------------|----------------------------------------------|
-| `lineWidth`    | `CGFloat`           | The line width for the stroke                |
-| `barSpacing`   | `CGFloat`           | The spacing between each bar                 |
-| `winColor`     | `NSColor`<br>`UIColor` | The color to use for a 'win'           |
-| `lossColor`    | `NSColor`<br>`UIColor` | The color to use for a 'loss'          |
-| `tieColor`     | `NSColor`<br>`UIColor`  | *(optional)* The color to use for a 'tie'. If nil, tie (0) values are not drawn<br>By default, 'tie' values are not drawn. |
+| Setting        | Type                   | Description                       |
+|----------------|------------------------|-----------------------------------|
+| `dataSource`   | `DSFDataSource`        | The source of data for the graph  |
+| `lineWidth`    | `CGFloat`              | The line width for the stroke     |
+| `barSpacing`   | `CGFloat`              | The spacing between each bar      |
+| `winColor`     | `NSColor`<br>`UIColor` | The color to use for a 'win'      |
+| `lossColor`    | `NSColor`<br>`UIColor` | The color to use for a 'loss'     |
+| `tieColor`     | `NSColor`<br>`UIColor` | *(optional)* The color to use for a 'tie'. If nil, tie (0) values are not drawn<br>By default, 'tie' values are not drawn. |
 
 ### Tablet graph customizations (`DSFSparklineTabletGraphView`)
 
 A tablet graph, where positive values in the datasource are represented as a filled circle, negative values represented as an unfilled circle. The concept is identical to the win/loss graph except the renderering is different.
 
-| Setting        | Type                | Description                                  |
-|----------------|---------------------|----------------------------------------------|
-| `lineWidth`    | `CGFloat`           | The line width for the stroke                |
-| `barSpacing`   | `CGFloat`           | The spacing between each bar                 |
-| `winColor`     | `NSColor`<br>`UIColor` | The color to draw the filled circle for a 'win'  |
-| `lossColor`    | `NSColor`<br>`UIColor` | The color to draw the filled circle for a 'loss' |
+| Setting      | Type                   | Description                                      |
+|--------------|------------------------|--------------------------------------------------|
+| `dataSource` | `DSFDataSource`        | The source of data for the graph                 |
+| `lineWidth`  | `CGFloat`              | The line width for the stroke                    |
+| `barSpacing` | `CGFloat`              | The spacing between each bar                     |
+| `winColor`   | `NSColor`<br>`UIColor` | The color to draw the filled circle for a 'win'  |
+| `lossColor`  | `NSColor`<br>`UIColor` | The color to draw the filled circle for a 'loss' |
+
+### Pie graph customizations (`DSFSparklinePieGraphView`)
+
+| Setting             | Type                   | Description                                                                             |
+|---------------------|------------------------|-----------------------------------------------------------------------------------------|
+| `dataSource`        | `[CGFloat]`            | The data to display in the pie chart                                                    |
+| `palette`           | `DSFSparklinePalette`  | The palette to use when drawing the chart                                               |
+| `strokeColor`       | `NSColor`<br>`UIColor` | (optional) The color of the line to draw between each segment. If nil, no line is drawn |
+| `lineWidth`         | `CGFloat`              | The width of the lines to draw between each segment                                     |
+| `animated`          | `Bool`                 | If true, when the data source is set the segments animate into view                     |
+| `animationDuration` | `CGFloat `             | The duration of the animation                                                           |
+
+The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
+
+### Databar graph customizations (`DSFSparklineDataBarGraphView`)
+
+| Setting             | Type                   | Description                                                                                                            |
+|---------------------|------------------------|------------------------------------------------------------------------------------------------------------------------|
+| `dataSource`        | `[CGFloat]`            | The data to display in the pie chart                                                                                   |
+| `maximumTotalValue` | `CGFloat`              | If <= 0 the data represents a percentage of the total, if > 0 represents the rightmost value to the databar            |
+| `palette`           | `DSFSparklinePalette`  | The palette to use when drawing.                                                                                       |
+| `strokeColor`       | `NSColor`<br>`UIColor` | (optional) The color of the line to draw between each segment. If nil, no line is drawn                                |
+| `lineWidth`         | `CGFloat`              | The width of the lines to draw between each segment                                                                    |
+| `unsetColor`        | `NSColor`<br>`UIColor` | (optional) If the maximum value is set, if the segments don't fit the total this color is used as the background color |
+| `animated`          | `Bool`                 | If true, when the data source is set the segments animate into view                                                    |
+| `animationDuration` | `CGFloat`              | The duration of the animation                                                                                          |
 
 The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
@@ -232,6 +310,7 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 /// Swift
 import DSFSparkline
 ```
+
 ```objective-c
 /// Objective-C
 @import DSFSparkline;
@@ -249,6 +328,7 @@ import DSFSparkline
 dataSource.windowSize = 30
 assert(dataSource.windowSize == 30)
 ```
+
 ```objective-c
 /// Objective-C
 [dataSource setWindowSize:30];
@@ -293,6 +373,7 @@ To style the zero-line, use the graph member variables defined in **Common eleme
 /// Swift
 dataSource.data
 ```
+
 ```objective-c
 /// Objective-C
 [dataSource data];
@@ -306,6 +387,7 @@ Note that this does not change the range value if a range has been set.  If valu
 /// Swift
 dataSource.set(values: [1, 2, 3, 4, 5])
 ```
+
 ```objective-c
 /// Objective-C
 [dataSource setWithValues:@[@(1), @(2), @(3), @(4), @(5)]];
@@ -317,6 +399,7 @@ dataSource.set(values: [1, 2, 3, 4, 5])
 /// Swift
 dataSource.push(value: 4.5)
 ```
+
 ```objective-c
 /// Objective-C
 [dataSource pushWithValue:@(4.5)];
@@ -336,6 +419,7 @@ dataSource.push(value: z)
 /// Swift
 dataSource.push(values: [4.5, 10.3, 11])
 ```
+
 ```objective-c
 /// Objective-C
 [dataSource pushWithValues:@[@(4.5), @(10.3), @(11)]];
@@ -349,6 +433,7 @@ Reset the data to the lower bound for all data points in the window.  If no lowe
 /// Swift
 dataSource.reset()
 ```
+
 ```objective-c
 /// Objective-C
 [dataSource reset];
@@ -488,7 +573,7 @@ it means that you have a `windowSize` value set in your .xib file.  Remove it an
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2021 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

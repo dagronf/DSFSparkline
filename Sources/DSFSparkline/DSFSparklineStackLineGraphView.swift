@@ -31,13 +31,25 @@ import UIKit
 @IBDesignable
 public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph
-	@IBInspectable public var lineWidth: CGFloat = 1
+	@IBInspectable public var lineWidth: CGFloat = 1 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 	
 	/// Shade the area under the line
-	@IBInspectable public var lineShading: Bool = true
+	@IBInspectable public var lineShading: Bool = true {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 	
 	/// Draw a shadow under the line
-	@IBInspectable public var shadowed: Bool = false
+	@IBInspectable public var shadowed: Bool = false {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 	
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?

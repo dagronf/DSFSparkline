@@ -31,32 +31,43 @@ import UIKit
 @IBDesignable
 public class DSFSparklineTabletGraphView: DSFSparklineView {
 	/// The width of the stroke for the tablet
-	@IBInspectable public var lineWidth: CGFloat = 1.0
+	@IBInspectable public var lineWidth: CGFloat = 1.0 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
+
 	/// The spacing (in pixels) between each bar
-	@IBInspectable public var barSpacing: CGFloat = 1.0
+	@IBInspectable public var barSpacing: CGFloat = 1.0 {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 
 	#if os(macOS)
 	/// The color to draw the 'win' boxes
-	@IBInspectable public var winColor: NSColor = NSColor.systemGreen {
+	@IBInspectable public var winColor = NSColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
+
 	/// The color to draw the 'loss' boxes
-	@IBInspectable public var lossColor: NSColor = NSColor.systemRed {
+	@IBInspectable public var lossColor = NSColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
 	/// The color to draw the 'win' boxes
-	@IBInspectable public var winColor: UIColor = UIColor.systemGreen {
+	@IBInspectable public var winColor = UIColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
+
 	/// The color to draw the 'loss' boxes
-	@IBInspectable public var lossColor: UIColor = UIColor.systemRed {
+	@IBInspectable public var lossColor = UIColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}

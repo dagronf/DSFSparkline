@@ -99,7 +99,11 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	@IBInspectable public var animationDuration: CGFloat = 0.25
 
 	/// The palette to use when drawing the pie chart
-	@objc public var palette = DSFSparklinePalette.shared
+	@objc public var palette = DSFSparklinePalette.shared {
+		didSet {
+			self.updateDisplay()
+		}
+	}
 
 	// MARK: - Privates
 
