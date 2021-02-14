@@ -130,15 +130,8 @@ private extension DSFSparklineOverlay.Line {
 				ctx.setStrokeColor(self.primaryLineColor)
 				ctx.setLineWidth(self.lineWidth)
 
-				let yoff: CGFloat
-				#if os(macOS)
-				yoff = -0.5 // macos is flipped
-				#else
-				yoff = 0.5
-				#endif
-
 				if shadowed {
-					ctx.setShadow(offset: CGSize(width: 0.5, height: yoff),
+					ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
 									  blur: 1.0,
 									  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
 				}
@@ -256,15 +249,8 @@ private extension DSFSparklineOverlay.Line {
 					ctx.setStrokeColor(whichColor)
 					ctx.setLineWidth(self.lineWidth)
 
-					let yoff: CGFloat
-					#if os(macOS)
-					yoff = -0.5 // macos is flipped
-					#else
-					yoff = 0.5
-					#endif
-
 					if shadowed {
-						ctx.setShadow(offset: CGSize(width: 0.5, height: yoff),
+						ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
 										  blur: 1.0,
 										  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
 					}

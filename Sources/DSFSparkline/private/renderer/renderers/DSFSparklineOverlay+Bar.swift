@@ -27,6 +27,13 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		/// Draw a shadow under the line
+		@objc public var shadowed: Bool = false {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
 		public override func drawGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
 			if self.centeredAtZeroLine {
 				return self.drawCenteredBarGraph(context: context, bounds: bounds, hostedIn: view)
@@ -106,6 +113,14 @@ extension DSFSparklineOverlay.Bar {
 			}
 
 			outer.usingGState { strokeCtx in
+
+				if self.shadowed {
+					strokeCtx.setShadow(
+						offset: CGSize(width: 0.5, height: 0.5),
+						blur: 1.0,
+						color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+				}
+
 				strokeCtx.addPath(path)
 				strokeCtx.setLineWidth(1 / view.retinaScale() * CGFloat(self.lineWidth))
 				strokeCtx.setStrokeColor(self.primaryLineColor)

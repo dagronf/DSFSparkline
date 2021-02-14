@@ -13,6 +13,7 @@ class ViewController: NSViewController {
 
 	@IBOutlet weak var line1: DSFSparklineRendererView!
 	@IBOutlet weak var bar1: DSFSparklineRendererView!
+	@IBOutlet weak var stackline1: DSFSparklineRendererView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -106,6 +107,7 @@ extension ViewController {
 //		lineOverlay2.centeredAtZeroLine = true
 //		line1.addOverlay(lineOverlay2)
 
+		////////
 
 		let bar0 = DSFSparklineOverlay.Bar()
 		bar0.dataSource = LineSource1
@@ -117,6 +119,40 @@ extension ViewController {
 			(position: 0.0, color: NSColor.systemBlue.withAlphaComponent(0.1).cgColor)
 		])
 		bar1.addOverlay(bar0)
+
+		////////
+
+		let h2 = DSFSparklineOverlay.RangeHighlight()
+		h2.dataSource = LineSource1
+		h2.fillColor = NSColor.quaternaryLabelColor.cgColor
+		h2.highlightRange = 0.3 ..< 0.7
+		stackline1.addOverlay(h2)
+
+		let h3 = DSFSparklineOverlay.RangeHighlight()
+		h3.dataSource = LineSource1
+		h3.fillColor = NSColor.systemRed.withAlphaComponent(0.1).cgColor
+		h3.highlightRange = 0.0 ..< 0.3
+		stackline1.addOverlay(h3)
+
+		let zeroLine2 = DSFSparklineOverlay.ZeroLine()
+		zeroLine2.dataSource = LineSource1
+		stackline1.addOverlay(zeroLine2)
+
+
+		let stack1 = DSFSparklineOverlay.Stackline()
+		stack1.dataSource = LineSource1
+		stack1.shadowed = true
+		stack1.centeredAtZeroLine = true
+		stack1.lineWidth = 1
+		stack1.primaryLineColor = NSColor.systemPurple.cgColor
+		stack1.primaryFillColor = NSColor.systemPurple.withAlphaComponent(0.7).cgColor
+//		stack1.secondaryLineColor = NSColor.systemYellow.cgColor
+//		stack1.secondaryFillColor = NSColor.systemYellow.withAlphaComponent(0.7).cgColor
+
+		stackline1.addOverlay(stack1)
+
+
+		////////
 
 		updateWithNewValues()
 	}

@@ -707,26 +707,35 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Sparkline_Demos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="348"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="UPR-Q9-dIr" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
-                                <rect key="frame" x="20" y="186" width="440" height="64"/>
+                                <rect key="frame" x="20" y="264" width="440" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="eWz-xZ-May"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="b91-5U-48Y" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
-                                <rect key="frame" x="20" y="103" width="440" height="64"/>
+                                <rect key="frame" x="20" y="181" width="440" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="P3e-ND-ZAG"/>
+                                </constraints>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="q0y-3a-uGf" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                <rect key="frame" x="20" y="98" width="440" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="J68-vK-RS1"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="b91-5U-48Y" firstAttribute="top" secondItem="UPR-Q9-dIr" secondAttribute="bottom" constant="19" id="BWZ-Dh-4Qv"/>
+                            <constraint firstItem="q0y-3a-uGf" firstAttribute="top" secondItem="b91-5U-48Y" secondAttribute="bottom" constant="19" id="RsN-Zk-YA0"/>
                             <constraint firstAttribute="trailing" secondItem="UPR-Q9-dIr" secondAttribute="trailing" constant="20" symbolic="YES" id="dXO-Jj-7T4"/>
+                            <constraint firstItem="q0y-3a-uGf" firstAttribute="trailing" secondItem="b91-5U-48Y" secondAttribute="trailing" id="eu9-s1-Svn"/>
                             <constraint firstItem="b91-5U-48Y" firstAttribute="leading" secondItem="UPR-Q9-dIr" secondAttribute="leading" id="fZc-sn-eYL"/>
+                            <constraint firstItem="q0y-3a-uGf" firstAttribute="leading" secondItem="b91-5U-48Y" secondAttribute="leading" id="fuL-lr-qSr"/>
                             <constraint firstItem="b91-5U-48Y" firstAttribute="trailing" secondItem="UPR-Q9-dIr" secondAttribute="trailing" id="nS7-fc-5bp"/>
                             <constraint firstItem="UPR-Q9-dIr" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="qgb-Oi-gin"/>
                             <constraint firstItem="UPR-Q9-dIr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="yRD-zf-ob5"/>
@@ -735,11 +744,12 @@
                     <connections>
                         <outlet property="bar1" destination="b91-5U-48Y" id="l0P-NU-SP8"/>
                         <outlet property="line1" destination="UPR-Q9-dIr" id="2bJ-p4-0po"/>
+                        <outlet property="stackline1" destination="q0y-3a-uGf" id="Dee-x1-JIT"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="694"/>
         </scene>
     </scenes>
 </document>
