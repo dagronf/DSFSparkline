@@ -12,6 +12,7 @@ import DSFSparkline
 class ViewController: NSViewController {
 
 	@IBOutlet weak var line1: DSFSparklineRendererView!
+	@IBOutlet weak var bar1: DSFSparklineRendererView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -104,6 +105,18 @@ extension ViewController {
 //		lineOverlay2.markerSize = 3
 //		lineOverlay2.centeredAtZeroLine = true
 //		line1.addOverlay(lineOverlay2)
+
+
+		let bar0 = DSFSparklineOverlay.Bar()
+		bar0.dataSource = LineSource1
+		bar0.barSpacing = 3
+		bar0.centeredAtZeroLine = true
+		bar0.primaryLineColor = NSColor.systemBlue.cgColor
+		bar0.primaryGradient = CGGradient.Create([
+			(position: 1.0, color: NSColor.systemBlue.withAlphaComponent(0.8).cgColor),
+			(position: 0.0, color: NSColor.systemBlue.withAlphaComponent(0.1).cgColor)
+		])
+		bar1.addOverlay(bar0)
 
 		updateWithNewValues()
 	}

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  DSFSparklineOverlayLine.swift
 //  
 //
 //  Created by Darren Ford on 14/2/21.
@@ -12,43 +12,7 @@ import UIKit
 #endif
 
 public extension DSFSparklineOverlay {
-	@objc(DSFSparklineOverlayLine) class Line: DSFSparklineDataSourceOverlay {
-
-		/// The primary color for the sparkline
-		@objc public var primaryLineColor: CGColor = .black {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		@objc public var primaryFillColor: CGColor = .black {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryLineColor: CGColor? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryLineColorReal: CGColor {
-			self.secondaryLineColor ?? self.primaryLineColor
-		}
-
-		/// The color used to fill below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryFillColor: CGColor? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		@objc public var secondaryFillColorReal: CGColor {
-			self.secondaryFillColor ?? self.primaryFillColor
-		}
+	@objc(DSFSparklineOverlayLine) class Line: Centerable {
 
 		/// The width for the line drawn on the graph
 		@objc public var lineWidth: CGFloat = 1.5 {
@@ -81,24 +45,6 @@ public extension DSFSparklineOverlay {
 				self.setNeedsDisplay()
 			}
 		}
-
-		// Optional gradient colors
-		@objc public var primaryGradient: CGGradient? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		@objc public var secondaryGradient: CGGradient? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		@objc public var secondaryGradientReal: CGGradient? {
-			return self.secondaryGradient ?? self.primaryGradient
-		}
-		
 
 		public override func drawGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
 			if self.centeredAtZeroLine {
