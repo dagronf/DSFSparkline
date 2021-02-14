@@ -55,6 +55,18 @@ extension ExpressibleByIntegerLiteral where Self: Comparable {
 	}
 }
 
+public extension CGGradient {
+	static func Create(_ definition: [(position: CGFloat, color: CGColor)],
+							 colorSpace: CGColorSpace? = nil) -> CGGradient {
+		return CGGradient(
+			colorsSpace: colorSpace,
+			colors: definition.map { $0.1 } as CFArray, // [c1, c2] as CFArray,
+			locations: definition.map { $0.0 } //[1.0, 0.0]
+		)!
+	}
+}
+
+
 extension CGContext {
 	/// Execute the supplied block within a `saveGState() / restoreGState()` pair, providing a context
 	/// to draw in during the execution of the block
