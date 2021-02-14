@@ -500,7 +500,7 @@ struct SparklineView: View {
 
 ## Changes
 
-### Latest
+### `3.6.0`
 
 * Added pie chart, databar chart.
 * Added ability to show data markers for line graphs
