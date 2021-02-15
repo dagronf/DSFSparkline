@@ -24,6 +24,25 @@ public extension NSView {
 	}
 }
 
+// Temperture anomolies
+// https://www.ncdc.noaa.gov/cag/global/time-series/globe/land_ocean/ytd/12/1880-2019
+let land_ocean_temp_anomolies: [CGFloat] = [
+	-0.12, -0.09, -0.10, -0.19, -0.27, -0.26, -0.25, -0.29, -0.14, -0.10, -0.36,
+	-0.27, -0.32, -0.34, -0.32, -0.25, -0.10, -0.11, -0.28, -0.16, -0.08, -0.16,
+	-0.26, -0.37, -0.46, -0.28, -0.21, -0.39, -0.43, -0.44, -0.40, -0.44, -0.34,
+	-0.32, -0.14, -0.09, -0.32, -0.39, -0.30, -0.24, -0.23, -0.16, -0.24, -0.25,
+	-0.24, -0.18, -0.07, -0.17, -0.18, -0.33, -0.11, -0.06, -0.13, -0.26, -0.11,
+	-0.16, -0.12, -0.01, -0.02, 0.01, 0.16, 0.27, 0.11, 0.11, 0.28, 0.18, -0.01,
+	-0.04, -0.05, -0.08, -0.15, 0.00, 0.04, 0.13, -0.10, -0.13, -0.18,
+	0.07, 0.13, 0.08, 0.05, 0.09, 0.11, 0.12, -0.14, -0.07, -0.01,
+	0.00, -0.03, 0.11, 0.06, -0.07, 0.04, 0.19, -0.06, 0.01, -0.07,
+	0.21, 0.12, 0.23, 0.28, 0.32, 0.19, 0.36, 0.17, 0.16, 0.24,
+	0.38, 0.39, 0.29, 0.45, 0.39, 0.24, 0.28, 0.34, 0.47, 0.32,
+	0.51, 0.65, 0.44, 0.42, 0.57, 0.62, 0.64, 0.58, 0.67, 0.64,
+	0.62, 0.54, 0.64, 0.72, 0.57, 0.64, 0.68, 0.74, 0.93, 1.00,
+	0.91, 0.83, 0.95
+]
+
 class ViewController: NSViewController {
 
 	@IBOutlet weak var primaryScrollView: NSScrollView!
@@ -52,6 +71,9 @@ class ViewController: NSViewController {
 	@IBOutlet weak var winLossTie: DSFSparklineWinLossGraphView!
 
 	@IBOutlet weak var tablet1: DSFSparklineTabletGraphView!
+
+	@IBOutlet weak var stripes1: DSFSparklineStripesGraphView!
+	@IBOutlet weak var stripes2: DSFSparklineStripesGraphView!
 
 
 	@IBOutlet weak var pie1: DSFSparklinePieGraphView!
@@ -131,6 +153,8 @@ class ViewController: NSViewController {
 		nameMap["pie"] = self.pieContainerView
 		nameMap["databar"] = self.databarContainerView
 		nameMap["databar-max"] = self.databarTotalContainerView
+		nameMap["stripes-standard"] = self.stripes1
+		nameMap["stripes-integral"] = self.stripes2
 	}
 
 	fileprivate var lineSource: DSFSparklineDataSource = {
@@ -162,6 +186,40 @@ class ViewController: NSViewController {
 		return d
 	}()
 
+	fileprivate var landOceanTempAnomolies: DSFSparklineDataSource = {
+		let e = DSFSparklineDataSource(windowSize: UInt(land_ocean_temp_anomolies.count))
+		e.set(values: land_ocean_temp_anomolies)
+		return e
+	}()
+
+	fileprivate var twiggle: DSFSparklineDataSource = {
+		let e = DSFSparklineDataSource(windowSize: 50)
+
+		var v: Int = 0
+		let vv: [CGFloat] = (0 ..< 24).map { value in
+			let d = v
+			v = (v + 1) % 3
+			if d == 0 { return -1 }
+			if d == 1 { return 0 }
+			return 1
+		}
+		e.set(values: vv)
+		e.windowSize = 50
+		return e
+	}()
+
+	fileprivate var world: DSFSparklineDataSource = {
+		let e = DSFSparklineDataSource(windowSize: UInt(rawData.count))
+		e.set(values: rawData)
+		return e
+	}()
+
+
+	fileprivate var australianAnomaly: DSFSparklineDataSource = {
+		let e = DSFSparklineDataSource(windowSize: UInt(temperature.count))
+		e.set(values: temperature)
+		return e
+	}()
 
 
 	override func viewDidLoad() {
@@ -261,6 +319,31 @@ class ViewController: NSViewController {
 		self.databarTotal6.dataSource = [9, 9, 4]
 		self.databarTotal6.maximumTotalValue = 60
 
+		let color0 = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.000).cgColor
+		let color1 = NSColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.000).cgColor
+
+		let gradient = CGGradient(
+			colorsSpace: CGColorSpaceCreateDeviceRGB(),
+			colors: [color1,
+						NSColor.white.cgColor,
+						color0] as CFArray,
+			locations: [0.0, 0.5, 1.0]
+		)!
+
+		self.stripes1.gradient = gradient
+		self.stripes1.integral = false
+		self.stripes1.dataSource = world
+		//self.stripes1.dataSource = landOceanTempAnomolies
+		//self.stripes1.dataSource = twiggle
+
+		///
+
+		self.stripes2.dataSource = australianAnomaly
+		australianAnomaly.range = -1.5 ... 1.5
+
+		self.stripes2.gradient = gradient
+		self.stripes2.barSpacing = 1
+		self.stripes2.integral = true
 	}
 
 	override var representedObject: Any? {
@@ -317,3 +400,299 @@ class ViewController: NSViewController {
 
 }
 
+/////
+
+// https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/download.html
+// https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.6.0.0.annual_ns_avg.txt
+// Data format :- https://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/series_format.html
+
+let rawData: [CGFloat] = [
+	-0.373,
+	-0.218,
+	-0.228,
+	-0.269,
+	-0.248,
+	-0.272,
+	-0.358,
+	-0.461,
+	-0.467,
+	-0.284,
+	-0.343,
+	-0.407,
+	-0.524,
+	-0.278,
+	-0.494,
+	-0.279,
+	-0.251,
+	-0.321,
+	-0.238,
+	-0.262,
+	-0.276,
+	-0.335,
+	-0.227,
+	-0.304,
+	-0.368,
+	-0.395,
+	-0.384,
+	-0.075,
+	 0.035,
+	-0.230,
+	-0.227,
+	-0.200,
+	-0.213,
+	-0.296,
+	-0.409,
+	-0.389,
+	-0.367,
+	-0.418,
+	-0.307,
+	-0.171,
+	-0.416,
+	-0.330,
+	-0.455,
+	-0.473,
+	-0.410,
+	-0.390,
+	-0.186,
+	-0.206,
+	-0.412,
+	-0.289,
+	-0.203,
+	-0.259,
+	-0.402,
+	-0.479,
+	-0.520,
+	-0.377,
+	-0.283,
+	-0.465,
+	-0.511,
+	-0.522,
+	-0.490,
+	-0.544,
+	-0.437,
+	-0.424,
+	-0.244,
+	-0.141,
+	-0.383,
+	-0.468,
+	-0.333,
+	-0.275,
+	-0.247,
+	-0.187,
+	-0.302,
+	-0.276,
+	-0.294,
+	-0.215,
+	-0.108,
+	-0.210,
+	-0.206,
+	-0.350,
+	-0.137,
+	-0.087,
+	-0.137,
+	-0.273,
+	-0.131,
+	-0.178,
+	-0.147,
+	-0.026,
+	-0.006,
+	-0.052,
+	 0.014,
+	 0.020,
+	-0.027,
+	-0.004,
+	 0.144,
+	 0.025,
+	-0.071,
+	-0.038,
+	-0.039,
+	-0.074,
+	-0.173,
+	-0.052,
+	 0.028,
+	 0.097,
+	-0.129,
+	-0.190,
+	-0.267,
+	-0.007,
+	 0.046,
+	 0.017,
+	-0.049,
+	 0.038,
+	 0.014,
+	 0.048,
+	-0.223,
+	-0.140,
+	-0.068,
+	-0.074,
+	-0.113,
+	 0.032,
+	-0.027,
+	-0.186,
+	-0.065,
+	 0.062,
+	-0.214,
+	-0.149,
+	-0.241,
+	 0.047,
+	-0.062,
+	 0.057,
+	 0.092,
+	 0.140,
+	 0.011,
+	 0.194,
+	-0.014,
+	-0.030,
+	 0.045,
+	 0.192,
+	 0.198,
+	 0.118,
+	 0.296,
+	 0.254,
+	 0.105,
+	 0.148,
+	 0.208,
+	 0.325,
+	 0.183,
+	 0.390,
+	 0.539,
+	 0.306,
+	 0.294,
+	 0.441,
+	 0.496,
+	 0.505,
+	 0.447,
+	 0.545,
+	 0.506,
+	 0.491,
+	 0.395,
+	 0.506,
+	 0.560,
+	 0.425,
+	 0.470,
+	 0.514,
+	 0.579,
+	 0.763,
+	 0.797,
+	 0.677,
+	 0.597,
+	 0.736,
+	 0.768
+]
+
+
+// Annual mean temperature anomaly
+// http://www.bom.gov.au/climate/change/#tabs=Tracker&tracker=timeseries&tQ=graph%3Dtmean%26area%3Daus%26season%3D0112
+let temperature: [CGFloat] = [
+	-0.50,
+	-0.68,
+	-0.20,
+	-0.87,
+	 0.12,
+	 0.07,
+	-0.57,
+	-1.24,
+	-0.54,
+	-0.15,
+	-0.53,
+	-0.23,
+	-0.47,
+	-0.38,
+	-0.69,
+	-0.77,
+	-0.17,
+	-0.51,
+	 0.16,
+	-0.87,
+	-0.24,
+	-0.59,
+	-0.42,
+	-0.45,
+	-0.36,
+	-0.50,
+	-0.14,
+	-0.36,
+	 0.19,
+	-0.62,
+	-0.24,
+	-0.55,
+	 0.08,
+	-0.62,
+	-0.40,
+	-0.29,
+	-0.73,
+	-0.25,
+	-0.45,
+	-0.94,
+	-0.61,
+	-0.43,
+	-0.43,
+	-0.45,
+	-0.36,
+	-0.32,
+	-0.92,
+	 0.04,
+	 0.14,
+	 0.24,
+	-0.66,
+	 0.05,
+	-0.11,
+	-0.13,
+	-0.22,
+	 0.25,
+	-0.50,
+	-0.22,
+	-0.39,
+	-0.03,
+	-0.10,
+	-0.22,
+	 0.15,
+	 0.54,
+	-0.70,
+	-0.22,
+	-0.75,
+	-0.04,
+	-0.31,
+	 0.37,
+	 0.74,
+	 0.27,
+	-0.04,
+	 0.33,
+	-0.38,
+	 0.21,
+	 0.22,
+	 0.17,
+	 0.73,
+	-0.02,
+	 0.47,
+	 0.60,
+	 0.12,
+	 0.31,
+	 0.18,
+	 0.16,
+	 0.60,
+	 0.30,
+	 0.97,
+	 0.32,
+	-0.04,
+	 0.05,
+	 0.71,
+	 0.69,
+	 0.54,
+	 1.16,
+	 0.50,
+	 0.76,
+	 0.45,
+	 0.93,
+	 0.33,
+	-0.00,
+	 0.24,
+	 1.33,
+	 1.04,
+	 0.94,
+	 0.99,
+	 1.06,
+	 1.12,
+	 1.52,
+	 1.15
+]
