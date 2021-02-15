@@ -27,10 +27,9 @@ import Cocoa
 import UIKit
 #endif
 
-/// A sparkline graph that displays bars
+/// A sparkline graph that displays solid color bars with a gradient (like the climate graph)
 @IBDesignable
 public class DSFSparklineStripesGraphView: DSFSparklineView {
-
 	@IBInspectable public var integral: Bool = true {
 		didSet {
 			self.updateDisplay()
@@ -44,13 +43,15 @@ public class DSFSparklineStripesGraphView: DSFSparklineView {
 		}
 	}
 
+	/// The color gradient to use when rendering.
+	///
+	/// Note that transparent gradients display strangely and not as I would expect them to.
+	/// Stick with solid colors in your gradient for the current time.
 	@objc public var gradient: CGGradient? {
 		didSet {
-			self.helper.gradient = gradient
-			self.updateDisplay()
+			self.updateGradient()
 		}
 	}
 
 	internal let helper = GradientHandler()
-
 }

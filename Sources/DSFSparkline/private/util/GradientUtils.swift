@@ -84,6 +84,8 @@ class GradientHandler: NSObject {
 			bitmapInfo: bitmapInfo
 		) else { return }
 
+		context.clear(CGRect(x: 0, y: 0, width: fullWidth, height: 1))
+
 		context.drawLinearGradient(
 			gradient,
 			start: CGPoint(x: 0, y: 0),
@@ -91,7 +93,7 @@ class GradientHandler: NSObject {
 			options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 		)
 
-		// let iii = context.makeImage()
+		// let generatedImage = context.makeImage()
 
 		// The raw pixels from the context in RGBA format
 		let rawData = UnsafeMutableBufferPointer<Pixel>(start: imageData, count: fullWidth)
@@ -112,6 +114,12 @@ class GradientHandler: NSObject {
 
 		let offset = Int(CGFloat(width) * clampedValue)
 		let pixel = self.pixels[offset]
-		return CGColor(red: pixel.red, green: pixel.green, blue: pixel.blue, alpha: pixel.alpha)
+
+		if #available(iOS 13.0, tvOS 13.0, macOS 10.10, *) {
+			return CGColor(red: pixel.red, green: pixel.green, blue: pixel.blue, alpha: pixel.alpha)
+		} else {
+			return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(),
+								components: [pixel.red, pixel.green, pixel.blue, pixel.alpha])!
+		}
 	}
 }

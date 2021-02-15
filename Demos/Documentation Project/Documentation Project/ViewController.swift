@@ -319,14 +319,13 @@ class ViewController: NSViewController {
 		self.databarTotal6.dataSource = [9, 9, 4]
 		self.databarTotal6.maximumTotalValue = 60
 
-		let color0 = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.000).cgColor
-		let color1 = NSColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.000).cgColor
+		let color0 = NSColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0).cgColor
+		let color1 = NSColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
+		let color2 = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0).cgColor
 
 		let gradient = CGGradient(
 			colorsSpace: CGColorSpaceCreateDeviceRGB(),
-			colors: [color1,
-						NSColor.white.cgColor,
-						color0] as CFArray,
+			colors: [color0, color1, color2 ] as CFArray,
 			locations: [0.0, 0.5, 1.0]
 		)!
 

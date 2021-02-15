@@ -28,6 +28,12 @@ import UIKit
 #endif
 
 public extension DSFSparklineStripesGraphView {
+
+	internal func updateGradient() {
+		self.helper.gradient = gradient
+		self.updateDisplay()
+	}
+
 	#if os(macOS)
 	override func draw(_ dirtyRect: NSRect) {
 		super.draw(dirtyRect)
@@ -78,8 +84,8 @@ public extension DSFSparklineStripesGraphView {
 
 		primary.usingGState { outer in
 
-			outer.setRenderingIntent(.relativeColorimetric)
-			outer.interpolationQuality = .none
+			outer.setRenderingIntent(.perceptual)
+			outer.interpolationQuality = .default
 			outer.setShouldAntialias(false)
 
 			if dataSource.counter < dataSource.windowSize {
