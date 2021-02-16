@@ -77,6 +77,22 @@
 		23E2279023B5846E00E59122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E2278F23B5846E00E59122 /* Assets.xcassets */; };
 		23E2279323B5846E00E59122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23E2279123B5846E00E59122 /* Main.storyboard */; };
 		23F7646B25D6C4C400E63649 /* DSFStepperView in Frameworks */ = {isa = PBXBuildFile; productRef = 23F7646A25D6C4C400E63649 /* DSFStepperView */; };
+		23FC810025DB3FC50047A800 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC80FF25DB3FC40047A800 /* ReportView.swift */; };
+		23FC810125DB3FC50047A800 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC80FF25DB3FC40047A800 /* ReportView.swift */; };
+		23FC812025DB47A20047A800 /* WinLossGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */; };
+		23FC812125DB47A20047A800 /* WinLossGraphContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */; };
+		23FC814025DB4E5D0047A800 /* LineDemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */; };
+		23FC814125DB4E5D0047A800 /* LineDemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */; };
+		23FC817525DB547E0047A800 /* StackLineDemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC817425DB547E0047A800 /* StackLineDemoContentView.swift */; };
+		23FC817625DB547E0047A800 /* StackLineDemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC817425DB547E0047A800 /* StackLineDemoContentView.swift */; };
+		23FC819325DB586B0047A800 /* PieGraphDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC819225DB586B0047A800 /* PieGraphDemoView.swift */; };
+		23FC819425DB586B0047A800 /* PieGraphDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC819225DB586B0047A800 /* PieGraphDemoView.swift */; };
+		23FC819F25DB59160047A800 /* DataBarGraphContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC819E25DB59160047A800 /* DataBarGraphContent.swift */; };
+		23FC81A025DB59160047A800 /* DataBarGraphContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC819E25DB59160047A800 /* DataBarGraphContent.swift */; };
+		23FC81B425DB59E70047A800 /* DotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC81B325DB59E70047A800 /* DotGraphView.swift */; };
+		23FC81B525DB59E70047A800 /* DotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC81B325DB59E70047A800 /* DotGraphView.swift */; };
+		23FC81DD25DB60760047A800 /* StripesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC81DC25DB60760047A800 /* StripesDemoView.swift */; };
+		23FC81DE25DB60760047A800 /* StripesDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FC81DC25DB60760047A800 /* StripesDemoView.swift */; };
 		4079C8A3550FDF1D8564108E /* Pods_macOS_SwiftUI_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0893A7B69A2C716F5E308880 /* Pods_macOS_SwiftUI_Demo.framework */; };
 		56BB7F1533CC30E57AC9654A /* Pods_SwiftUI_Sparkline_Demo__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB4E75AB431D5E8C3C582F2 /* Pods_SwiftUI_Sparkline_Demo__iOS_.framework */; };
 		73E144093BF355D884B0ACAB /* Pods_iOS_Sparkline_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462EC212C63FCA74CCCDC138 /* Pods_iOS_Sparkline_Demo.framework */; };
@@ -206,6 +222,14 @@
 		23E2279223B5846E00E59122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		23E2279423B5846E00E59122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23E2279523B5846E00E59122 /* macOS_Table_Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS_Table_Demo.entitlements; sourceTree = "<group>"; };
+		23FC80FF25DB3FC40047A800 /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WinLossGraphContentView.swift; sourceTree = "<group>"; };
+		23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDemoContentView.swift; sourceTree = "<group>"; };
+		23FC817425DB547E0047A800 /* StackLineDemoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackLineDemoContentView.swift; sourceTree = "<group>"; };
+		23FC819225DB586B0047A800 /* PieGraphDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieGraphDemoView.swift; sourceTree = "<group>"; };
+		23FC819E25DB59160047A800 /* DataBarGraphContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBarGraphContent.swift; sourceTree = "<group>"; };
+		23FC81B325DB59E70047A800 /* DotGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotGraphView.swift; sourceTree = "<group>"; };
+		23FC81DC25DB60760047A800 /* StripesDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripesDemoView.swift; sourceTree = "<group>"; };
 		299A34BEF9FB08DCD877FC20 /* Pods-macOS Sparkline Demo Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Sparkline Demo Objc.release.xcconfig"; path = "Target Support Files/Pods-macOS Sparkline Demo Objc/Pods-macOS Sparkline Demo Objc.release.xcconfig"; sourceTree = "<group>"; };
 		30DFD024DD1ADFD58DC5066B /* Pods_tvOS_Sparkline_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tvOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35356AF6B05B9C51EFD93DC8 /* Pods-macOS Table Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS Table Demo.release.xcconfig"; path = "Target Support Files/Pods-macOS Table Demo/Pods-macOS Table Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -394,8 +418,16 @@
 		236A57E825C1392A00F2BACF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */,
 				236A57EA25C1392A00F2BACF /* ContentView.swift */,
+				23FC80FF25DB3FC40047A800 /* ReportView.swift */,
+				23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */,
+				23FC819225DB586B0047A800 /* PieGraphDemoView.swift */,
+				23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */,
+				23FC819E25DB59160047A800 /* DataBarGraphContent.swift */,
+				23FC81B325DB59E70047A800 /* DotGraphView.swift */,
+				23FC817425DB547E0047A800 /* StackLineDemoContentView.swift */,
+				23FC81DC25DB60760047A800 /* StripesDemoView.swift */,
+				236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */,
 				236A57EB25C1392B00F2BACF /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -1176,8 +1208,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FC81DD25DB60760047A800 /* StripesDemoView.swift in Sources */,
+				23FC819F25DB59160047A800 /* DataBarGraphContent.swift in Sources */,
+				23FC817525DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,
 				236A57FD25C1392B00F2BACF /* ContentView.swift in Sources */,
 				236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */,
+				23FC810025DB3FC50047A800 /* ReportView.swift in Sources */,
+				23FC814025DB4E5D0047A800 /* LineDemoContentView.swift in Sources */,
+				23FC812025DB47A20047A800 /* WinLossGraphContentView.swift in Sources */,
+				23FC81B425DB59E70047A800 /* DotGraphView.swift in Sources */,
+				23FC819325DB586B0047A800 /* PieGraphDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,8 +1225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23FC81DE25DB60760047A800 /* StripesDemoView.swift in Sources */,
+				23FC81A025DB59160047A800 /* DataBarGraphContent.swift in Sources */,
+				23FC817625DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,
 				236A57FE25C1392B00F2BACF /* ContentView.swift in Sources */,
 				236A57FC25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */,
+				23FC810125DB3FC50047A800 /* ReportView.swift in Sources */,
+				23FC814125DB4E5D0047A800 /* LineDemoContentView.swift in Sources */,
+				23FC812125DB47A20047A800 /* WinLossGraphContentView.swift in Sources */,
+				23FC81B525DB59E70047A800 /* DotGraphView.swift in Sources */,
+				23FC819425DB586B0047A800 /* PieGraphDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

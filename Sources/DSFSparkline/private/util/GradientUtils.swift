@@ -89,11 +89,11 @@ class GradientHandler: NSObject {
 		context.drawLinearGradient(
 			gradient,
 			start: CGPoint(x: 0, y: 0),
-			end: CGPoint(x: self.width + 1, y: 0),
+			end: CGPoint(x: fullWidth, y: 0),
 			options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 		)
 
-		// let generatedImage = context.makeImage()
+		let generatedImage = context.makeImage()
 
 		// The raw pixels from the context in RGBA format
 		let rawData = UnsafeMutableBufferPointer<Pixel>(start: imageData, count: fullWidth)

@@ -218,26 +218,35 @@ struct LineGraphContentView_Previews: PreviewProvider {
 					.frame(height: 40.0)
 					.padding(5)
 					.border(Color.gray.opacity(0.2), width: 1)
-
-					HStack {
-						DSFSparklineLineGraphView.SwiftUI(
-							dataSource: LineSource1,
-							graphColor: DSFColor.textColor,
-							interpolated: true,
-							lineShading: false,
-							highlightDefinitions: [
-								DSFSparklineHighlightRangeDefinition(
-									range: 0.4 ..< 0.6,
-									highlightColor: DSFColor.placeholderTextColor.withAlphaComponent(0.3)
-								)
-							]
-						)
-						.frame(height: 40.0)
-						.padding(5)
-						.border(Color.gray.opacity(0.2), width: 1)
-					}
+					
+					DSFSparklineLineGraphView.SwiftUI(
+						dataSource: LineSource1,
+						graphColor: DSFColor.textColor,
+						interpolated: true,
+						lineShading: false,
+						highlightDefinitions: [
+							DSFSparklineHighlightRangeDefinition(
+								range: 0.4 ..< 0.6,
+								highlightColor: DSFColor.placeholderTextColor.withAlphaComponent(0.3)
+							)
+						]
+					)
+					.frame(height: 40.0)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
 				}
 				.frame(width: 400.0)
+
+				HStack {
+					DSFSparklineStripesGraphView.SwiftUI(
+						dataSource: LineSource1
+					)
+					.frame(height: 40.0)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+				}
+				.frame(width: 400.0)
+
 			}
 		}
 		.padding(10)
