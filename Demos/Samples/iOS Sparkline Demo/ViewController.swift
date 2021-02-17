@@ -142,10 +142,6 @@ class ViewController: UIViewController {
 		let v2 = UInt.random(count: 4, range: 1 ... 10).map { CGFloat($0) }
 		self.pie3.dataSource = v2
 		self.pie4.dataSource = v2
-
-		let im = self.pie1.snapshot()
-		Swift.print(im)
-
 	}
 }
 

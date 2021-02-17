@@ -500,6 +500,10 @@ struct SparklineView: View {
 
 ## Changes
 
+### `3.6.1`
+
+* Fixed animations on iOS/tvOS
+
 ### `3.6.0`
 
 * Added pie chart, databar chart.

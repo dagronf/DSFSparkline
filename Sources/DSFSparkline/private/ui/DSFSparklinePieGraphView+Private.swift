@@ -152,30 +152,17 @@ extension DSFSparklinePieGraphView {
 extension DSFSparklinePieGraphView {
 	func startAnimateIn() {
 
+		// Stop any animation that is currently active
+		self.animator.stop()
+
 		self.fractionComplete = 0
 
-		if let a = self.animationLayer {
-			// Stop any existing animations
-			a.removeAllAnimations()
-			a.removeFromSuperlayer()
+		self.animator.animationFunction = ArbitraryAnimator.Function.EaseInEaseOut()
+		self.animator.progressBlock = { progress in
+			self.fractionComplete = CGFloat(progress)
+			self.updateDisplay()
 		}
 
-		let alayer = ArbitraryAnimationLayer()
-		self.animationLayer = alayer
-		self.rootLayer.addSublayer(alayer)
-
-		alayer.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
-		let anim = CABasicAnimation()
-		anim.fromValue = 0.0
-		anim.toValue = 1.0
-		anim.duration = CFTimeInterval(animationDuration)
-		anim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-		anim.isRemovedOnCompletion = true
-
-		alayer.progressCallback = { [weak self] progress in
-			self?.fractionComplete = progress
-			self?.updateDisplay()
-		}
-		alayer.add(anim, forKey: "progress")
+		self.animator.start()
 	}
 }

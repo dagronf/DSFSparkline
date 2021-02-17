@@ -107,7 +107,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 
 	// MARK: - Privates
 
-	internal var animationLayer: ArbitraryAnimationLayer?
+	internal var animator = ArbitraryAnimator()
 	internal var fractionComplete: CGFloat = 0
 	internal var total: CGFloat = 0.0
 }

@@ -51,8 +51,16 @@ class ViewController: UIViewController {
 		purple.dataSource = purpleDataSource
 		orange.dataSource = orangeDataSource
 
+		pie1.animated = true
+		pie1.animationDuration = 2.0
 		pie1.dataSource = [1, 2, 3]
+
+		pie2.animated = true
+		pie2.animationDuration = 2.0
 		pie2.dataSource = [3, 2, 1]
+
+		pie3.animated = true
+		pie3.animationDuration = 2.0
 		pie3.dataSource = [1, 7, 4, 9]
 
 		self.updateWithNewValues()
