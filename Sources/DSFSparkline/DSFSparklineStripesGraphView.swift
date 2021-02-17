@@ -47,11 +47,9 @@ public class DSFSparklineStripesGraphView: DSFSparklineView {
 	///
 	/// Note that transparent gradients display strangely and not as I would expect them to.
 	/// Stick with solid colors in your gradient for the current time.
-	@objc public var gradient: CGGradient? {
+	@objc public var gradient: DSFGradient? {
 		didSet {
 			self.updateGradient()
 		}
 	}
-
-	internal let helper = GradientHandler()
 }

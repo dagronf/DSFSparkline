@@ -21,105 +21,106 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+import CoreGraphics
 
-private struct Pixel {
-	var value: UInt32
-	var red: UInt8 {
-		get { return UInt8(self.value & 0xFF) }
-		set { self.value = UInt32(newValue) | (self.value & 0xFFFF_FF00) }
+@objc(DSFGradient) public class DSFGradient: NSObject {
+	@objc(DSFGradientPost) public class Post: NSObject {
+		let color: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat, c: CGColor)
+		let location: CGFloat
+		
+		static let rgbSpace = CGColorSpaceCreateDeviceRGB()
+		
+		public init(color: CGColor, location: CGFloat) {
+			self.location = location
+			
+			let rgbColor = color.converted(to: Self.rgbSpace,
+													 intent: .perceptual,
+													 options: nil)!
+			assert(rgbColor.numberOfComponents == 4)
+			let r1 = rgbColor.components![0]
+			let g1 = rgbColor.components![1]
+			let b1 = rgbColor.components![2]
+			let a1 = rgbColor.components![3]
+			
+			self.color = (r1, g1, b1, a1, rgbColor)
+		}
 	}
-
-	var green: UInt8 {
-		get { return UInt8((self.value >> 8) & 0xFF) }
-		set { self.value = (UInt32(newValue) << 8) | (self.value & 0xFFFF_00FF) }
-	}
-
-	var blue: UInt8 {
-		get { return UInt8((self.value >> 16) & 0xFF) }
-		set { self.value = (UInt32(newValue) << 16) | (self.value & 0xFF00_FFFF) }
-	}
-
-	var alpha: UInt8 {
-		get { return UInt8((self.value >> 24) & 0xFF) }
-		set { self.value = (UInt32(newValue) << 24) | (self.value & 0x00FF_FFFF) }
-	}
-}
-
-class GradientHandler: NSObject {
-	public var gradient: CGGradient? {
+	
+	static let rgbSpace = CGColorSpaceCreateDeviceRGB()
+	static let EmptyColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 0])!
+	
+	var posts: [Post] = [] {
 		didSet {
-			self.buildBitmap()
+			self.sortPosts()
 		}
 	}
-
-	let width: Int = 1024
-	let height: Int = 1
-
-	let bytesPerPixel = 4
-	let bitsPerComponent = 8
-
-	var pixels: [(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)] = []
-
-	func buildBitmap() {
-		self.pixels = []
-
-		guard let gradient = self.gradient else {
-			return
-		}
-
-		let fullWidth = self.width + 1
-
-		let bytesPerRow = fullWidth * self.bytesPerPixel
-		let imageData = UnsafeMutablePointer<Pixel>.allocate(capacity: fullWidth * self.height)
-		let colorSpace = CGColorSpaceCreateDeviceRGB()
-		var bitmapInfo: UInt32 = CGBitmapInfo.byteOrder32Big.rawValue
-		bitmapInfo |= CGImageAlphaInfo.premultipliedLast.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
-		guard let context = CGContext(
-			data: imageData,
-			width: fullWidth, height: height,
-			bitsPerComponent: bitsPerComponent,
-			bytesPerRow: bytesPerRow,
-			space: colorSpace,
-			bitmapInfo: bitmapInfo
-		) else { return }
-
-		context.clear(CGRect(x: 0, y: 0, width: fullWidth, height: 1))
-
-		context.drawLinearGradient(
-			gradient,
-			start: CGPoint(x: 0, y: 0),
-			end: CGPoint(x: fullWidth, y: 0),
-			options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-		)
-
-		let generatedImage = context.makeImage()
-
-		// The raw pixels from the context in RGBA format
-		let rawData = UnsafeMutableBufferPointer<Pixel>(start: imageData, count: fullWidth)
-
-		// Preconvert the values to 0 ... 1 to save drawing time later on
-		self.pixels = rawData.map {
-			(CGFloat($0.red) / 255.0,
-			 CGFloat($0.green) / 255.0,
-			 CGFloat($0.blue) / 255.0,
-			 CGFloat($0.alpha) / 255.0)
-		}
+	
+	private func sortPosts() {
+		self.sortedPosts = self.posts.sorted(by: { (a, b) -> Bool in
+			a.location < b.location
+		})
 	}
-
+	
+	private var sortedPosts: [Post] = []
+	
+	public init(posts: [Post]) {
+		self.posts = posts
+		super.init()
+		
+		self.sortPosts()
+	}
+	
 	func color(at fraction: CGFloat) -> CGColor {
-		// We need to make sure we clamp this value - as if there is a value outside the user's specified range
-		// in the datasource (which is valid!) then the fractional value will be > 1 or < 0.
-		let clampedValue = min(1, max(0, fraction))
-
-		let offset = Int(CGFloat(width) * clampedValue)
-		let pixel = self.pixels[offset]
-
-		if #available(iOS 13.0, tvOS 13.0, macOS 10.10, *) {
-			return CGColor(red: pixel.red, green: pixel.green, blue: pixel.blue, alpha: pixel.alpha)
-		} else {
-			return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(),
-								components: [pixel.red, pixel.green, pixel.blue, pixel.alpha])!
+		if self.sortedPosts.count == 0 {
+			return Self.EmptyColor
 		}
+		if self.sortedPosts.count == 1 {
+			// Just the first color
+			return self.sortedPosts[0].color.c
+		}
+		
+		if fraction < 0 {
+			// Just the first color
+			return self.sortedPosts.first!.color.c
+		}
+		if fraction > 1 {
+			// Just the last color
+			return self.sortedPosts.last!.color.c
+		}
+		
+		var location: Int?
+		for index in 0 ..< self.sortedPosts.count - 1 {
+			let range = self.sortedPosts[index].location ..< self.sortedPosts[index + 1].location
+			if range.contains(fraction) {
+				location = index
+				break
+			}
+		}
+		
+		guard let loc = location else {
+			return self.sortedPosts.last!.color.c
+		}
+		
+		let delta = self.sortedPosts[loc + 1].location - self.sortedPosts[loc].location
+		let divisor = (fraction - self.sortedPosts[loc].location) / delta
+		
+		let c1 = self.sortedPosts[loc].color
+		let r1 = c1.r
+		let g1 = c1.g
+		let b1 = c1.b
+		let a1 = c1.a
+		
+		let c2 = self.sortedPosts[loc + 1].color
+		let r2 = c2.r
+		let g2 = c2.g
+		let b2 = c2.b
+		let a2 = c2.a
+		
+		let newR = r1 + ((r2 - r1) * divisor)
+		let newG = g1 + ((g2 - g1) * divisor)
+		let newB = b1 + ((b2 - b1) * divisor)
+		let newA = a1 + ((a2 - a1) * divisor)
+		
+		return CGColor(colorSpace: Self.rgbSpace, components: [newR, newG, newB, newA])!
 	}
 }

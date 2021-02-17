@@ -30,7 +30,6 @@ import UIKit
 public extension DSFSparklineStripesGraphView {
 
 	internal func updateGradient() {
-		self.helper.gradient = gradient
 		self.updateDisplay()
 	}
 
@@ -61,7 +60,7 @@ public extension DSFSparklineStripesGraphView {
 
 	private func drawStripeGraph(primary: CGContext) {
 		guard let dataSource = self.dataSource,
-				let _ = self.gradient else {
+				let gradient = self.gradient else {
 			return
 		}
 
@@ -96,7 +95,7 @@ public extension DSFSparklineStripesGraphView {
 
 			for value in normalizedPoints.enumerated() {
 				outer.usingGState { inner in
-					let color = self.helper.color(at: value.element)
+					let color = gradient.color(at: value.element)
 					inner.setFillColor(color)
 					let r = CGRect(x: CGFloat(xOffset + value.offset * componentWidth),
 										y: integralRect.minX,
@@ -110,7 +109,7 @@ public extension DSFSparklineStripesGraphView {
 
 	private func drawStripeGraphFloat(primary: CGContext) {
 		guard let dataSource = self.dataSource,
-				let _ = self.gradient else {
+				let gradient = self.gradient else {
 			return
 		}
 
@@ -134,7 +133,7 @@ public extension DSFSparklineStripesGraphView {
 
 			for value in normalizedPoints.enumerated() {
 				outer.usingGState { inner in
-					let color = self.helper.color(at: value.element)
+					let color = gradient.color(at: value.element)
 					inner.setFillColor(color)
 					let r = CGRect(x: CGFloat(value.offset) * componentWidth - (barSpacing == 0 ? 0.5 : 0),
 										y: drawRect.minX,

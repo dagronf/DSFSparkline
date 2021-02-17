@@ -35,17 +35,12 @@ public extension DSFSparklineStripesGraphView {
 		let barSpacing: UInt
 		let integral: Bool
 
-		let gradient: CGGradient
+		let gradient: DSFGradient
 
-		static public let shared: CGGradient = {
-			CGGradient(
-				colorsSpace: CGColorSpaceCreateDeviceRGB(),
-				colors: [
-					CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0]),
-					CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 1])
-				] as CFArray,
-				locations: [0, 1])!
-		}()
+		static public let shared = DSFGradient(posts: [
+			DSFGradient.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 0),
+			DSFGradient.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 1)
+		])
 
 		/// Create a databar graph
 		/// - Parameters:
@@ -60,7 +55,7 @@ public extension DSFSparklineStripesGraphView {
 		public init(dataSource: DSFSparklineDataSource,
 						integral: Bool = false,
 						barSpacing: UInt = 0,
-						gradient: CGGradient = Self.shared)
+						gradient: DSFGradient = Self.shared)
 		{
 			self.dataSource = dataSource
 			self.integral = integral
@@ -133,7 +128,8 @@ public extension DSFSparklineStripesGraphView.SwiftUI {
 	func updateView(_ view: DSFSparklineStripesGraphView) {
 		UpdateIfNotEqual(result: &view.barSpacing, val: self.barSpacing)
 		UpdateIfNotEqual(result: &view.integral, val: self.integral)
-		UpdateIfNotEqual(result: &view.gradient, val: self.gradient)
+
+		view.gradient = self.gradient
 
 		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
 	}

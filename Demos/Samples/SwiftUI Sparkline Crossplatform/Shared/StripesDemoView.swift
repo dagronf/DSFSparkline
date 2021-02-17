@@ -10,12 +10,72 @@ import DSFSparkline
 
 
 struct StripesDemoView: View {
+
+	let gradient = DSFGradient(
+		posts: [
+			DSFGradient.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
+			DSFGradient.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
+			DSFGradient.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
+		]
+	)
+
+	let gradient2 = DSFGradient(
+		posts: [
+			DSFGradient.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
+			DSFGradient.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
+		]
+	)
+
 	var body: some View {
 		VStack {
 
-			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource)
-				.frame(width: 200, height: 25)
+			Text("Global annual mean temperature anomaly")
+
+			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+															 barSpacing: 1,
+															 gradient: self.gradient)
+				.frame(height: 25)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+															 gradient: self.gradient)
+				.frame(height: 25)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+			DSFSparklineBarGraphView.SwiftUI(dataSource: WorldDataSource,
+														graphColor: DSFColor.red,
+														centeredAtZeroLine: true,
+														lowerGraphColor: DSFColor.blue)
+				.frame(height: 50)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+			Text("Australian annual mean temperature anomaly")
+
+			DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+															 barSpacing: 1,
+															 gradient: self.gradient2)
+				.frame(height: 25)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+			DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+															 gradient: self.gradient2)
+				.frame(height: 25)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+			DSFSparklineBarGraphView.SwiftUI(dataSource: australianAnomaly,
+														graphColor: DSFColor.red,
+														centeredAtZeroLine: true,
+														lowerGraphColor: DSFColor.blue)
+				.frame(height: 50)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
 		}
+//		.frame(width: 400)
 
 	}
 }

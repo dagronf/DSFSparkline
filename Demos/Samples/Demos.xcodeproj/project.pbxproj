@@ -65,6 +65,8 @@
 		236A57FE25C1392B00F2BACF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57EA25C1392A00F2BACF /* ContentView.swift */; };
 		236A57FF25C1392B00F2BACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236A57EB25C1392B00F2BACF /* Assets.xcassets */; };
 		236A580025C1392B00F2BACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236A57EB25C1392B00F2BACF /* Assets.xcassets */; };
+		238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053C625DCC2B100B996B5 /* ActiveView.swift */; };
+		238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053C625DCC2B100B996B5 /* ActiveView.swift */; };
 		23882CE1257D675700AC103A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE0257D675700AC103A /* AppDelegate.swift */; };
 		23882CE3257D675700AC103A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE2257D675700AC103A /* ContentView.swift */; };
 		23882CE5257D675800AC103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE4257D675800AC103A /* Assets.xcassets */; };
@@ -205,6 +207,7 @@
 		236A57F725C1392B00F2BACF /* SwiftUI Sparkline Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Sparkline Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		236A57F925C1392B00F2BACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236A57FA25C1392B00F2BACF /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		238053C625DCC2B100B996B5 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		23882CDE257D675700AC103A /* macOS SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23882CE0257D675700AC103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23882CE2257D675700AC103A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -420,6 +423,7 @@
 			children = (
 				236A57EA25C1392A00F2BACF /* ContentView.swift */,
 				23FC80FF25DB3FC40047A800 /* ReportView.swift */,
+				238053C625DCC2B100B996B5 /* ActiveView.swift */,
 				23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */,
 				23FC819225DB586B0047A800 /* PieGraphDemoView.swift */,
 				23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */,
@@ -1208,6 +1212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */,
 				23FC81DD25DB60760047A800 /* StripesDemoView.swift in Sources */,
 				23FC819F25DB59160047A800 /* DataBarGraphContent.swift in Sources */,
 				23FC817525DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,
@@ -1225,6 +1230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */,
 				23FC81DE25DB60760047A800 /* StripesDemoView.swift in Sources */,
 				23FC81A025DB59160047A800 /* DataBarGraphContent.swift in Sources */,
 				23FC817625DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,
