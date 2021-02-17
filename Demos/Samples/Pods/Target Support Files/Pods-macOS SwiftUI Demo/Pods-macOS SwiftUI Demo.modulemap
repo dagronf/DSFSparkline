@@ -1,6 +1,0 @@
-framework module Pods_macOS_SwiftUI_Demo {
-  umbrella header "Pods-macOS SwiftUI Demo-umbrella.h"
-
-  export *
-  module * { export * }
-}

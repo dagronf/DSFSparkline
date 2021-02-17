@@ -23,7 +23,7 @@ struct OverlayView: View {
 				)
 				DSFSparklineLineGraphView.SwiftUI(
 					dataSource: ds1,
-					graphColor: .textColor,
+					graphColor: .gray,
 					lineWidth: 1,
 					interpolated: true,
 					lineShading: false
