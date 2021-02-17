@@ -61,6 +61,12 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
 
+### Stripes
+
+|  Standard  |  Integral (pixel boundaries)  |
+|------------|-------------------------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-integral.png" width="400">|
+
 ### Dot
 
 |  Standard  |  Inverted  |
@@ -109,6 +115,7 @@ This provides the ability to show a historical data set over the breadth of the 
 * `DSFSparklineLineGraphView`
 * `DSFSparklineStackLineGraphView`
 * `DSFSparklineBarGraphView`
+* `DSFSparklineStripesGraphView`
 * `DSFSparklineDotGraphView`
 * `DSFSparklineWinLossGraphView`
 * `DSFSparklineTabletGraphView`
@@ -226,6 +233,18 @@ A simple bar graph
 | `dataSource` | `DSFDataSource` | The source of data for the graph |
 | `lineWidth`  | `CGFloat`       | The width of the line            |
 | `barSpacing` | `CGFloat`       | The spacing between each bar     |
+
+### Stripes graph customizations (`DSFSparklineStripesGraphView`)
+
+A stripes graph.  A good example of a stripes graph is the 'warming stripes' [climate graph](https://www.climatecentral.org/showyourstripes).
+
+Values from the datasource are mapped to a supplied gradient
+
+| Setting      | Type            | Description                                                         |
+|--------------|-----------------|---------------------------------------------------------------------|
+| `dataSource` | `DSFDataSource` | The source of data for the graph                                    |
+| `integral`   | `Bool`          | If true, draws the bars on pixel boundaries to get nice clean lines |
+| `gradient`   | `DSFGradient`   | The color gradient to use when mapping datasource values to colors. |
 
 ### Dot graph customizations (`DSFSparklineDotGraphView`)
 
@@ -499,6 +518,10 @@ struct SparklineView: View {
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `3.7.0`
+
+* Added stripe graph
 
 ### `3.6.1`
 

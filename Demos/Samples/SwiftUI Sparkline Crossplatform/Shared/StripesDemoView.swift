@@ -19,12 +19,32 @@ struct StripesDemoView: View {
 		]
 	)
 
-	let gradient2 = DSFGradient(
-		posts: [
-			DSFGradient.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
-			DSFGradient.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
-		]
-	)
+	let gradient2: DSFGradient = {
+		let g = DSFGradient(posts: [
+			DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 0),
+			DSFGradient.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+		])
+		g.bucketCount = 4
+		return g
+	}()
+
+	let gradient3: DSFGradient = {
+		let g = DSFGradient(posts: [
+			DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 0),
+			DSFGradient.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+		])
+		g.bucketCount = 5
+		return g
+	}()
+
+	let gradient4: DSFGradient = {
+		let g = DSFGradient(posts: [
+			DSFGradient.Post(r: 0.0, g: 0.0, b: 0.0, location: 0),
+			DSFGradient.Post(r: 1.0, g: 1.0, b: 1.0, location: 1.0)
+		])
+		g.bucketCount = 8
+		return g
+	}()
 
 	var body: some View {
 		VStack {
@@ -67,13 +87,33 @@ struct StripesDemoView: View {
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 
-			DSFSparklineBarGraphView.SwiftUI(dataSource: australianAnomaly,
-														graphColor: DSFColor.red,
-														centeredAtZeroLine: true,
-														lowerGraphColor: DSFColor.blue)
-				.frame(height: 50)
-				.padding(5)
-				.border(Color.gray.opacity(0.2), width: 1)
+			VStack {
+				Text("Gradient with buckets")
+				HStack {
+					VStack {
+						DSFSparklineStripesGraphView.SwiftUI(dataSource: GradientTestDataSource,
+																		 gradient: self.gradient3)
+							.frame(height: 25)
+							.padding(5)
+							.border(Color.gray.opacity(0.2), width: 1)
+						DSFSparklineBarGraphView.SwiftUI(dataSource: GradientTestDataSource,
+																	graphColor: DSFColor(red: 0.5, green: 0, blue: 0.5, alpha: 1.0),
+																	centeredAtZeroLine: true,
+																	lowerGraphColor: DSFColor.systemYellow)
+							.frame(height: 50)
+							.padding(5)
+							.border(Color.gray.opacity(0.2), width: 1)
+					}
+					VStack {
+						DSFSparklineStripesGraphView.SwiftUI(dataSource: GradientTestDataSource2,
+																		 barSpacing: 1,
+																		 gradient: self.gradient4)
+							.frame(height: 50)
+							.padding(5)
+							.border(Color.gray.opacity(0.2), width: 1)
+					}
+				}
+			}
 		}
 //		.frame(width: 400)
 
@@ -87,8 +127,21 @@ struct StripesDemoView_Previews: PreviewProvider {
 }
 
 
+// MARK: -
 
+fileprivate var GradientTestDataSource: DSFSparklineDataSource = {
+	let e = DSFSparklineDataSource()
+	e.set(values: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9])
+	return e
+}()
 
+fileprivate var GradientTestDataSource2: DSFSparklineDataSource = {
+	let e = DSFSparklineDataSource()
+	e.set(values: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0,
+						1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+	return e
+}()
 
 // MARK: - World definition
 

@@ -319,17 +319,18 @@ class ViewController: NSViewController {
 		self.databarTotal6.dataSource = [9, 9, 4]
 		self.databarTotal6.maximumTotalValue = 60
 
-		let color0 = NSColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0).cgColor
-		let color1 = NSColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor
-		let color2 = NSColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0).cgColor
+		let gradient1 = DSFGradient(posts: [
+			DSFGradient.Post(r: 0, g: 0, b: 1, location: 0.0),
+			DSFGradient.Post(r: 1, g: 1, b: 1, location: 0.5),
+			DSFGradient.Post(r: 1, g: 0, b: 0, location: 1.0),
+		])
 
-		let gradient = CGGradient(
-			colorsSpace: CGColorSpaceCreateDeviceRGB(),
-			colors: [color0, color1, color2 ] as CFArray,
-			locations: [0.0, 0.5, 1.0]
-		)!
+		let gradient2 = DSFGradient(posts: [
+			DSFGradient.Post(color: NSColor.systemYellow.cgColor, location: 0),
+			DSFGradient.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+		])
 
-		self.stripes1.gradient = gradient
+		self.stripes1.gradient = gradient1
 		self.stripes1.integral = false
 		self.stripes1.dataSource = world
 		//self.stripes1.dataSource = landOceanTempAnomolies
@@ -340,7 +341,7 @@ class ViewController: NSViewController {
 		self.stripes2.dataSource = australianAnomaly
 		australianAnomaly.range = -1.5 ... 1.5
 
-		self.stripes2.gradient = gradient
+		self.stripes2.gradient = gradient2
 		self.stripes2.barSpacing = 1
 		self.stripes2.integral = true
 	}
