@@ -26,7 +26,8 @@ struct ContentView: View {
 		Item(id: 5, name: "Databar"),
 		Item(id: 6, name: "Dot"),
 		Item(id: 7, name: "Stripes"),
-		Item(id: 8, name: "Active")
+		Item(id: 8, name: "Active"),
+		Item(id: 9, name: "Overlay")
 	]
 
 	var body: some View {
@@ -61,6 +62,7 @@ struct DetailView: View {
 			case 6: DotGraphView()
 			case 7: StripesDemoView()
 			case 8: MakeActiveView()
+			case 9: OverlayView()
 			default: fatalError()
 			}
 		}

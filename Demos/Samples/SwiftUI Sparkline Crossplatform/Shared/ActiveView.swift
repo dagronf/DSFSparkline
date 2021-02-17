@@ -9,22 +9,20 @@ import SwiftUI
 
 import DSFSparkline
 
-
-
 struct UpperGraph: View {
 	let label: String
-
+	
 	let dataSource: DSFSparklineDataSource
 	let graphColor: DSFColor
-
+	
 	let showZeroLine: Bool
 	var zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared
-
+	
 	let interpolated: Bool
 	let lineShading: Bool
-
+	
 	var shadowed: Bool = false
-
+	
 	var body: some View {
 		DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource,
 													 graphColor: graphColor,
@@ -76,8 +74,46 @@ struct UpperGraph_Previews: PreviewProvider {
 
 /////////////
 
+var PreviewGlobalDataSource1: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 10, range: 0 ... 1.0)
+	d.push(values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+	return d
+}()
 
+var PreviewGlobalDataSource2: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 10, range: -1.0 ... 1.0)
+	d.push(values: [-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5])
+	return d
+}()
 
+var PreviewGlobalDataSource3: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+	d.push(values: [50, 40, 30, 20, 10, 0, 100, 90, 80, 70])
+	return d
+}()
+
+var PreviewGlobalDataSource4: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
+	return d
+}()
+
+var PreviewGlobalDataSource5: DSFSparklineDataSource = {
+	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
+	return d
+}()
+
+struct ActiveView_Previews: PreviewProvider {
+	static var previews: some View {
+		ActiveView(dataSource: DataSource(PreviewGlobalDataSource1,
+													 PreviewGlobalDataSource2,
+													 PreviewGlobalDataSource3,
+													 PreviewGlobalDataSource4,
+													 PreviewGlobalDataSource5)
+		)
+	}
+}
 
 func MakeActiveView() -> ActiveView {
 	return ActiveView(dataSource: globalSource)
@@ -85,19 +121,25 @@ func MakeActiveView() -> ActiveView {
 
 struct ActiveView: View {
 	let dataSource: DataSource
-	//	let dataSource1: DSFSparklineDataSource
-	//	let dataSource2: DSFSparklineDataSource
-	//	let dataSource3: DSFSparklineDataSource
-	//	let dataSource4: DSFSparklineDataSource
-	//	let dataSource5: DSFSparklineDataSource
-
+	
 	let BigCyanZeroLine = DSFSparklineZeroLineDefinition(
 		color: .cyan,
 		lineWidth: 3,
-		lineDashStyle: [4,1,2,1])
-
+		lineDashStyle: [4, 1, 2, 1]
+	)
+	
 	@State var selectedType = 1
-
+	
+	let gradient = DSFGradient(posts: [
+		DSFGradient.Post(color: DSFColor.systemRed.cgColor, location: 0),
+		DSFGradient.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
+		DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
+		DSFGradient.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
+		DSFGradient.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
+		DSFGradient.Post(color: DSFColor.systemIndigo.cgColor, location: 5 / 6),
+		DSFGradient.Post(color: DSFColor.systemPurple.cgColor, location: 6 / 6),
+	])
+	
 	var body: some View {
 		ScrollView {
 			VStack {
@@ -107,17 +149,26 @@ struct ActiveView: View {
 					UpperGraph(label: "Right", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemPurple, showZeroLine: false, interpolated: false, lineShading: false).frame(height: 60)
 				})
 				HStack {
-					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
-																graphColor: DSFColor.systemBlue,
-																barSpacing: 1,
-																showZeroLine: true,
-																showHighlightRange: true,
-																highlightDefinitions: [
-																	DSFSparklineHighlightRangeDefinition(
-																		range: 0 ..< 0.5,
-																		highlightColor: DSFColor.gray.withAlphaComponent(0.3))
-																])
-						.frame(height: 60)
+					VStack {
+						DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
+																	graphColor: DSFColor.systemBlue,
+																	barSpacing: 1,
+																	showZeroLine: true,
+																	showHighlightRange: true,
+																	highlightDefinitions: [
+																		DSFSparklineHighlightRangeDefinition(
+																			range: 0 ..< 0.5,
+																			highlightColor: DSFColor.gray.withAlphaComponent(0.3)
+																		),
+																	])
+							.frame(height: 60)
+						DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
+																		 barSpacing: 1,
+																		 gradient: self.gradient)
+							.frame(height: 60)
+							.padding(2)
+					}
+					
 					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource2,
 																graphColor: DSFColor.systemGreen,
 																lineWidth: 2,
@@ -151,10 +202,10 @@ struct ActiveView: View {
 																	verticalDotCount: 10,
 																	upsideDown: true)
 							.frame(height: 60)
-
+						
 					})
 				}
-
+				
 				#if os(macOS)
 				HStack {
 					Picker(selection: $selectedType, label: EmptyView()) {
@@ -162,6 +213,7 @@ struct ActiveView: View {
 						Text("Line (Smooth)").tag(2)
 						Text("Bar").tag(3)
 						Text("Dot").tag(4)
+						Text("Stripes").tag(5)
 					}.pickerStyle(RadioGroupPickerStyle())
 					Group {
 						if self.selectedType == 1 {
@@ -181,9 +233,13 @@ struct ActiveView: View {
 																		barSpacing: 1,
 																		showZeroLine: true)
 						}
-						else {
+						else if self.selectedType == 4 {
 							DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
 																		graphColor: DSFColor.systemOrange)
+						}
+						else {
+							DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																			 barSpacing: 1, gradient: self.gradient)
 						}
 					}
 					.frame(height: 80)
@@ -196,6 +252,7 @@ struct ActiveView: View {
 						Text("Line (Smooth)").tag(2)
 						Text("Bar").tag(3)
 						Text("Dot").tag(4)
+						Text("Stripes").tag(5)
 					}
 					Group {
 						if self.selectedType == 1 {
@@ -215,16 +272,20 @@ struct ActiveView: View {
 																		barSpacing: 1,
 																		showZeroLine: true)
 						}
-						else {
+						else if self.selectedType == 4 {
 							DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
 																		graphColor: DSFColor.systemOrange)
+						}
+						else {
+							DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																			 barSpacing: 1, gradient: self.gradient)
 						}
 					}
 					.frame(height: 80)
 					.padding(2)
 				}
 				#endif
-
+				
 			}.padding(20)
 			.onAppear {
 				self.dataSource.start()
@@ -236,68 +297,86 @@ struct ActiveView: View {
 	}
 }
 
-let globalSource = DataSource()
+let globalSource = DataSource(
+	DSFSparklineDataSource(windowSize: 30),
+	DSFSparklineDataSource(range: -1.0 ... 1.0),
+	DSFSparklineDataSource(range: -100 ... 100),
+	DSFSparklineDataSource(range: 0 ... 100),
+	DSFSparklineDataSource(range: 0 ... 100, zeroLineValue: 80)
+)
+
 class DataSource {
-	var PreviewGlobalDataSource1 = DSFSparklineDataSource(windowSize: 30)
-	var PreviewGlobalDataSource2 = DSFSparklineDataSource(range: -1.0 ... 1.0)
-	var PreviewGlobalDataSource3 = DSFSparklineDataSource(range: -100 ... 100)
-	var PreviewGlobalDataSource4 = DSFSparklineDataSource(range: 0 ... 100)
-	var PreviewGlobalDataSource5 = DSFSparklineDataSource(range: 0 ... 100, zeroLineValue: 80)
-
+	let PreviewGlobalDataSource1: DSFSparklineDataSource // = DSFSparklineDataSource(windowSize: 30)
+	let PreviewGlobalDataSource2: DSFSparklineDataSource // = DSFSparklineDataSource(range: -1.0 ... 1.0)
+	let PreviewGlobalDataSource3: DSFSparklineDataSource // = DSFSparklineDataSource(range: -100 ... 100)
+	let PreviewGlobalDataSource4: DSFSparklineDataSource // = DSFSparklineDataSource(range: 0 ... 100)
+	let PreviewGlobalDataSource5: DSFSparklineDataSource // = DSFSparklineDataSource(range: 0 ... 100, zeroLineValue: 80)
+	
 	var shouldStop: Bool = false
-
+	
+	init(_ d1: DSFSparklineDataSource,
+		  _ d2: DSFSparklineDataSource,
+		  _ d3: DSFSparklineDataSource,
+		  _ d4: DSFSparklineDataSource,
+		  _ d5: DSFSparklineDataSource)
+	{
+		self.PreviewGlobalDataSource1 = d1
+		self.PreviewGlobalDataSource2 = d2
+		self.PreviewGlobalDataSource3 = d3
+		self.PreviewGlobalDataSource4 = d4
+		self.PreviewGlobalDataSource5 = d5
+	}
+	
 	func start() {
 		self.shouldStop = false
-
+		
 		self.PreviewGlobalDataSource3.windowSize = 100
 		self.PreviewGlobalDataSource4.windowSize = 40
 		_ = self.PreviewGlobalDataSource4.push(value: 50)
-
+		
 		self.PreviewGlobalDataSource5.windowSize = 50
-
+		
 		self.updateWithNewValues()
 	}
-
+	
 	func stop() {
 		self.shouldStop = true
 	}
-
+	
 	var sinusoid = 0.00
 	var lastSource4: CGFloat = 50.0
-
+	
 	func updateWithNewValues() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
 			guard let `self` = self else {
 				return
 			}
-
+			
 			if self.shouldStop {
 				return
 			}
-
+			
 			let val = sin(self.sinusoid)
 			self.sinusoid += 0.12
-
+			
 			let cr = CGFloat(val)
 			_ = self.PreviewGlobalDataSource1.push(value: cr)
-
-			let cr2 = CGFloat.random(in: self.PreviewGlobalDataSource2.range!) //-1 ... 1)
+			
+			let cr2 = CGFloat.random(in: self.PreviewGlobalDataSource2.range!) // -1 ... 1)
 			_ = self.PreviewGlobalDataSource2.push(value: cr2)
-
+			
 			let cr3 = CGFloat.random(in: self.PreviewGlobalDataSource3.range!) // -100 ... 100)
 			_ = self.PreviewGlobalDataSource3.push(value: cr3)
-
+			
 			let cr4 = CGFloat.random(in: -20 ... 20)
 			let newVal = min(100, max(0, self.lastSource4 + cr4))
 			_ = self.PreviewGlobalDataSource4.push(value: newVal)
 			self.lastSource4 = newVal
-
+			
 			let cr5 = CGFloat.random(in: self.PreviewGlobalDataSource5.range!)
 			_ = self.PreviewGlobalDataSource5.push(value: cr5)
-
+			
 			self.updateWithNewValues()
 		}
 	}
-
 }
-

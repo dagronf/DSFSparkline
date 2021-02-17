@@ -67,6 +67,8 @@
 		236A580025C1392B00F2BACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236A57EB25C1392B00F2BACF /* Assets.xcassets */; };
 		238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053C625DCC2B100B996B5 /* ActiveView.swift */; };
 		238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053C625DCC2B100B996B5 /* ActiveView.swift */; };
+		238053E525DCD14600B996B5 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053E425DCD14600B996B5 /* OverlayView.swift */; };
+		238053E625DCD14600B996B5 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053E425DCD14600B996B5 /* OverlayView.swift */; };
 		23882CE1257D675700AC103A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE0257D675700AC103A /* AppDelegate.swift */; };
 		23882CE3257D675700AC103A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23882CE2257D675700AC103A /* ContentView.swift */; };
 		23882CE5257D675800AC103A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23882CE4257D675800AC103A /* Assets.xcassets */; };
@@ -208,6 +210,7 @@
 		236A57F925C1392B00F2BACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236A57FA25C1392B00F2BACF /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		238053C625DCC2B100B996B5 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
+		238053E425DCD14600B996B5 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		23882CDE257D675700AC103A /* macOS SwiftUI Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS SwiftUI Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23882CE0257D675700AC103A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23882CE2257D675700AC103A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -433,6 +436,7 @@
 				23FC81DC25DB60760047A800 /* StripesDemoView.swift */,
 				236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */,
 				236A57EB25C1392B00F2BACF /* Assets.xcassets */,
+				238053E425DCD14600B996B5 /* OverlayView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1221,6 +1225,7 @@
 				23FC810025DB3FC50047A800 /* ReportView.swift in Sources */,
 				23FC814025DB4E5D0047A800 /* LineDemoContentView.swift in Sources */,
 				23FC812025DB47A20047A800 /* WinLossGraphContentView.swift in Sources */,
+				238053E525DCD14600B996B5 /* OverlayView.swift in Sources */,
 				23FC81B425DB59E70047A800 /* DotGraphView.swift in Sources */,
 				23FC819325DB586B0047A800 /* PieGraphDemoView.swift in Sources */,
 			);
@@ -1239,6 +1244,7 @@
 				23FC810125DB3FC50047A800 /* ReportView.swift in Sources */,
 				23FC814125DB4E5D0047A800 /* LineDemoContentView.swift in Sources */,
 				23FC812125DB47A20047A800 /* WinLossGraphContentView.swift in Sources */,
+				238053E625DCD14600B996B5 /* OverlayView.swift in Sources */,
 				23FC81B525DB59E70047A800 /* DotGraphView.swift in Sources */,
 				23FC819425DB586B0047A800 /* PieGraphDemoView.swift in Sources */,
 			);
