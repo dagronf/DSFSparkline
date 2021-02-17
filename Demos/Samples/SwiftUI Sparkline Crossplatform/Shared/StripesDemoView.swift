@@ -54,23 +54,34 @@ struct StripesDemoView: View {
 			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
 															 barSpacing: 1,
 															 gradient: self.gradient)
-				.frame(height: 25)
+				.frame(height: 30)
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 
-			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
-															 gradient: self.gradient)
-				.frame(height: 25)
+			DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
+														 graphColor: DSFColor.systemTeal,
+														 lineShading: false,
+														 showZeroLine: true)
+				.frame(height: 30)
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 
-			DSFSparklineBarGraphView.SwiftUI(dataSource: WorldDataSource,
-														graphColor: DSFColor.red,
-														centeredAtZeroLine: true,
-														lowerGraphColor: DSFColor.blue)
-				.frame(height: 50)
-				.padding(5)
-				.border(Color.gray.opacity(0.2), width: 1)
+			Text("Global annual mean temperature anomaly overlaid")
+
+			ZStack {
+
+				DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+																 gradient: self.gradient)
+				DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
+															 graphColor: DSFColor.black,
+															 lineWidth: 1.5,
+															 lineShading: false)
+			}
+			.frame(height: 40)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+
 
 			Text("Australian annual mean temperature anomaly")
 
@@ -115,6 +126,7 @@ struct StripesDemoView: View {
 				}
 			}
 		}
+		.padding(4)
 //		.frame(width: 400)
 
 	}
