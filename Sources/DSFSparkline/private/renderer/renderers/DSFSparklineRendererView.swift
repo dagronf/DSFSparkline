@@ -48,6 +48,15 @@ import UIKit
 		self.isOpaque = false
 		#endif
 	}
+
+	/// Multi-platform function for telling the view to update itself
+	public func updateDisplay() {
+		#if os(macOS)
+		self.needsDisplay = true
+		#else
+		self.setNeedsDisplay()
+		#endif
+	}
 }
 
 extension DSFSparklineRendererView {

@@ -184,7 +184,7 @@ extension ViewController {
 
 		////////
 
-		//updateWithNewValues()
+		updateWithNewValues()
 	}
 
 
