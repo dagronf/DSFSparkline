@@ -11,6 +11,12 @@ import DSFSparkline
 
 class ViewController: NSViewController {
 
+
+	@IBOutlet weak var imageView: NSImageView!
+	@IBOutlet weak var imageView2: NSImageView!
+
+
+
 	@IBOutlet weak var line1: DSFSparklineRendererView!
 	@IBOutlet weak var bar1: DSFSparklineRendererView!
 	@IBOutlet weak var stackline1: DSFSparklineRendererView!
@@ -51,7 +57,12 @@ fileprivate var LineSource2: DSFSparklineDataSource = {
 
 extension ViewController {
 
+	func something() {
+
+	}
+
 	func configure() {
+
 
 //		let h1 = DSFSparklineOverlay.RangeHighlight()
 //		h1.dataSource = LineSource1
@@ -124,7 +135,7 @@ extension ViewController {
 
 		let h2 = DSFSparklineOverlay.RangeHighlight()
 		h2.dataSource = LineSource1
-		h2.fillColor = NSColor.quaternaryLabelColor.cgColor
+		h2.fillColor = NSColor.gray.withAlphaComponent(0.2).cgColor
 		h2.highlightRange = 0.3 ..< 0.7
 		stackline1.addOverlay(h2)
 
@@ -152,9 +163,28 @@ extension ViewController {
 		stackline1.addOverlay(stack1)
 
 
+		do {
+			self.imageView.layer?.backgroundColor = .black
+			self.imageView2.layer?.backgroundColor = .white
+
+			let b = DSFSparklineBitmap()
+			b.addOverlay(h2)
+			b.addOverlay(h3)
+			b.addOverlay(zeroLine2)
+			b.addOverlay(stack1)
+
+			let r = CGSize(width: 400, height: 40)
+			if let image = b.generateImage(size: r, scale: 2) {
+				let nsi = NSImage(cgImage: image, size: r)
+				self.imageView.image = nsi
+				self.imageView2.image = nsi
+			}
+		}
+
+
 		////////
 
-		updateWithNewValues()
+		//updateWithNewValues()
 	}
 
 

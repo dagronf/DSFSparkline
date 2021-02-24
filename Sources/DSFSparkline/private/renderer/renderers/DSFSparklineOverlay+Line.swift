@@ -42,12 +42,12 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func drawGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
-				return self.drawCenteredGraph(context: context, bounds: bounds, hostedIn: view)
+				return self.drawCenteredGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawLineGraph(context: context, bounds: bounds, hostedIn: view)
+				return self.drawLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
@@ -55,7 +55,7 @@ public extension DSFSparklineOverlay {
 
 private extension DSFSparklineOverlay.Line {
 
-	func drawLineGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+	func drawLineGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 
 		guard let dataSource = self.dataSource,
 				dataSource.counter != 0  else {
@@ -148,7 +148,7 @@ private extension DSFSparklineOverlay.Line {
 		return drawRect
 	}
 
-	func drawCenteredGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+	func drawCenteredGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 
 		guard let dataSource = self.dataSource,
 				dataSource.counter != 0  else {

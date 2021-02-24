@@ -106,7 +106,7 @@ extension DSFSparklineRendererView: CALayerDelegate {
 		layer.contentsScale = scale
 
 		if let l = layer as? DSFSparklineOverlay {
-			_ = l.drawGraph(context: ctx, bounds: self.bounds, hostedIn: self)
+			_ = l.drawGraph(context: ctx, bounds: self.bounds, scale: self.retinaScale())
 		}
 	}
 }

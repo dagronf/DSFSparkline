@@ -73,13 +73,13 @@ public extension DSFSparklineOverlay {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		open override func drawGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+		open override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			guard let dataSource = self.dataSource else {
 				return bounds
 			}
 
 			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
-			let zeroPos = self.bounds.height - (frac * self.bounds.height)
+			let zeroPos = bounds.height - (frac * bounds.height)
 
 			context.setLineWidth(self.strokeWidth)
 			context.setStrokeColor(self.strokeColor)

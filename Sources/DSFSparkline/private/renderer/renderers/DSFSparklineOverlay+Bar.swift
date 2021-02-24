@@ -30,24 +30,24 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func drawGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
-				return self.drawCenteredBarGraph(context: context, bounds: bounds, hostedIn: view)
+				return self.drawCenteredBarGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawBarGraph(context: context, bounds: bounds, hostedIn: view)
+				return self.drawBarGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
 }
 
 extension DSFSparklineOverlay.Bar {
-	private func drawBarGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+	private func drawBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource else {
 			return bounds
 		}
 
-		let integralRect = self.bounds.integral
+		let integralRect = bounds.integral
 
 		// This represents the _full_ width of a bar within the graph, including the spacing.
 		let componentWidth = Int(integralRect.width) / Int(dataSource.windowSize)
@@ -56,13 +56,13 @@ extension DSFSparklineOverlay.Bar {
 		let barWidth = componentWidth - Int(barSpacing)
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(self.bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+		let xOffset: Int = (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
 
 		// The available height range
 		let range: ClosedRange<CGFloat> = 2 ... max(2, integralRect.maxY - 2)
 
 		let normy = dataSource.normalized
-		let xDiff = self.bounds.width / CGFloat(normy.count)
+		let xDiff = bounds.width / CGFloat(normy.count)
 		let points = normy.enumerated().map {
 			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (integralRect.height - 1)).clamped(to: range))
 		}
@@ -75,7 +75,7 @@ extension DSFSparklineOverlay.Bar {
 
 			if dataSource.counter < dataSource.windowSize {
 				let pos = xOffset + (Int(dataSource.counter) * componentWidth)
-				let clipRect = self.bounds.divided(atDistance: CGFloat(pos), from: .maxXEdge).slice
+				let clipRect = bounds.divided(atDistance: CGFloat(pos), from: .maxXEdge).slice
 				outer.clip(to: clipRect)
 			}
 
@@ -97,8 +97,8 @@ extension DSFSparklineOverlay.Bar {
 				if let gradient = self.primaryGradient {
 					fillCtx.clip()
 					fillCtx.drawLinearGradient(
-						gradient, start: CGPoint(x: 0.0, y: self.bounds.maxY),
-						end: CGPoint(x: 0.0, y: self.bounds.minY),
+						gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+						end: CGPoint(x: 0.0, y: bounds.minY),
 						options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 					)
 				}
@@ -118,7 +118,7 @@ extension DSFSparklineOverlay.Bar {
 				}
 
 				strokeCtx.addPath(path)
-				strokeCtx.setLineWidth(1 / view.retinaScale() * CGFloat(self.lineWidth))
+				strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
 				strokeCtx.setStrokeColor(self.primaryLineColor)
 				strokeCtx.drawPath(using: .stroke)
 			}
@@ -126,17 +126,17 @@ extension DSFSparklineOverlay.Bar {
 		return bounds
 	}
 
-	private func drawCenteredBarGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+	private func drawCenteredBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 
 		guard let dataSource = self.dataSource else {
 			return bounds
 		}
 
-		let drawRect = self.bounds
+		let drawRect = bounds
 		let height = drawRect.height - 1
 
 		let normy = dataSource.normalized
-		let xDiff = self.bounds.width / CGFloat(normy.count)
+		let xDiff = bounds.width / CGFloat(normy.count)
 
 		let centre = dataSource.normalizedZeroLineValue
 		let centroid = (1 - centre) * (drawRect.height - 1)
@@ -148,7 +148,7 @@ extension DSFSparklineOverlay.Bar {
 
 			if dataSource.counter < dataSource.windowSize {
 				let pos = CGFloat(dataSource.counter) * xDiff + 1
-				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				let clipRect = bounds.divided(atDistance: pos, from: .maxXEdge).slice
 				outer.clip(to: clipRect)
 			}
 
@@ -185,8 +185,8 @@ extension DSFSparklineOverlay.Bar {
 					if let gradient = self.primaryGradient {
 						fillCtx.clip()
 						fillCtx.drawLinearGradient(
-							gradient, start: CGPoint(x: 0.0, y: self.bounds.maxY),
-							end: CGPoint(x: 0.0, y: self.bounds.minY),
+							gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+							end: CGPoint(x: 0.0, y: bounds.minY),
 							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 						)
 					}
@@ -198,7 +198,7 @@ extension DSFSparklineOverlay.Bar {
 
 				outer.usingGState { strokeCtx in
 					strokeCtx.addPath(path)
-					strokeCtx.setLineWidth(1 / view.retinaScale() * CGFloat(self.lineWidth))
+					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
 					strokeCtx.setStrokeColor(self.primaryLineColor)
 					strokeCtx.strokePath()
 				}
@@ -213,8 +213,8 @@ extension DSFSparklineOverlay.Bar {
 					if let gradient = self.secondaryGradientReal {
 						fillCtx.clip()
 						fillCtx.drawLinearGradient(
-							gradient, start: CGPoint(x: 0.0, y: self.bounds.maxY),
-							end: CGPoint(x: 0.0, y: self.bounds.minY),
+							gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+							end: CGPoint(x: 0.0, y: bounds.minY),
 							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 						)
 					}
@@ -226,7 +226,7 @@ extension DSFSparklineOverlay.Bar {
 
 				outer.usingGState { strokeCtx in
 					strokeCtx.addPath(path)
-					strokeCtx.setLineWidth(1 / view.retinaScale() * CGFloat(self.lineWidth))
+					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
 					strokeCtx.setStrokeColor(self.secondaryLineColorReal)
 					strokeCtx.strokePath()
 				}

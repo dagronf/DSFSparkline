@@ -707,42 +707,77 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Sparkline_Demos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="348"/>
+                        <rect key="frame" x="0.0" y="0.0" width="2312" height="417"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="UPR-Q9-dIr" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
-                                <rect key="frame" x="20" y="264" width="440" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="eWz-xZ-May"/>
-                                </constraints>
-                            </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="b91-5U-48Y" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
-                                <rect key="frame" x="20" y="181" width="440" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="P3e-ND-ZAG"/>
-                                </constraints>
-                            </customView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="q0y-3a-uGf" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
-                                <rect key="frame" x="20" y="98" width="440" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="J68-vK-RS1"/>
-                                </constraints>
-                            </customView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Rz-Jg-pMy">
+                                <rect key="frame" x="20" y="20" width="2272" height="377"/>
+                                <subviews>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="600" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tww-Bf-Qmc">
+                                        <rect key="frame" x="0.0" y="249" width="2272" height="128"/>
+                                        <subviews>
+                                            <imageView wantsLayer="YES" horizontalHuggingPriority="50" verticalHuggingPriority="50" translatesAutoresizingMaskIntoConstraints="NO" id="SxY-Pk-KyG">
+                                                <rect key="frame" x="0.0" y="0.0" width="1136" height="128"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="OM2-dV-6R9"/>
+                                            </imageView>
+                                            <imageView wantsLayer="YES" horizontalHuggingPriority="50" verticalHuggingPriority="50" translatesAutoresizingMaskIntoConstraints="NO" id="6Q6-n6-dft">
+                                                <rect key="frame" x="1136" y="0.0" width="1136" height="128"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="SLf-ij-0Jd"/>
+                                            </imageView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="UPR-Q9-dIr" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="166" width="440" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="eWz-xZ-May"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="b91-5U-48Y" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="83" width="440" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="P3e-ND-ZAG"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="q0y-3a-uGf" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="J68-vK-RS1"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="b91-5U-48Y" firstAttribute="top" secondItem="UPR-Q9-dIr" secondAttribute="bottom" constant="19" id="BWZ-Dh-4Qv"/>
-                            <constraint firstItem="q0y-3a-uGf" firstAttribute="top" secondItem="b91-5U-48Y" secondAttribute="bottom" constant="19" id="RsN-Zk-YA0"/>
-                            <constraint firstAttribute="trailing" secondItem="UPR-Q9-dIr" secondAttribute="trailing" constant="20" symbolic="YES" id="dXO-Jj-7T4"/>
-                            <constraint firstItem="q0y-3a-uGf" firstAttribute="trailing" secondItem="b91-5U-48Y" secondAttribute="trailing" id="eu9-s1-Svn"/>
-                            <constraint firstItem="b91-5U-48Y" firstAttribute="leading" secondItem="UPR-Q9-dIr" secondAttribute="leading" id="fZc-sn-eYL"/>
-                            <constraint firstItem="q0y-3a-uGf" firstAttribute="leading" secondItem="b91-5U-48Y" secondAttribute="leading" id="fuL-lr-qSr"/>
-                            <constraint firstItem="b91-5U-48Y" firstAttribute="trailing" secondItem="UPR-Q9-dIr" secondAttribute="trailing" id="nS7-fc-5bp"/>
-                            <constraint firstItem="UPR-Q9-dIr" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="qgb-Oi-gin"/>
-                            <constraint firstItem="UPR-Q9-dIr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="yRD-zf-ob5"/>
+                            <constraint firstItem="4Rz-Jg-pMy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="92B-2z-H1c"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4Rz-Jg-pMy" secondAttribute="bottom" constant="20" symbolic="YES" id="d42-lW-GwL"/>
+                            <constraint firstItem="4Rz-Jg-pMy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="nzL-i7-0mh"/>
+                            <constraint firstAttribute="trailing" secondItem="4Rz-Jg-pMy" secondAttribute="trailing" constant="20" symbolic="YES" id="uEg-1c-Erj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bar1" destination="b91-5U-48Y" id="l0P-NU-SP8"/>
+                        <outlet property="imageView" destination="SxY-Pk-KyG" id="UET-4z-QKl"/>
+                        <outlet property="imageView2" destination="6Q6-n6-dft" id="1dz-6i-V9o"/>
                         <outlet property="line1" destination="UPR-Q9-dIr" id="2bJ-p4-0po"/>
                         <outlet property="stackline1" destination="q0y-3a-uGf" id="Dee-x1-JIT"/>
                     </connections>

@@ -30,19 +30,19 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func drawGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
-				return self.drawCenteredStackLineGraph(context: context, bounds: bounds, hostedIn: view)
+				return self.drawCenteredStackLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawStackLineGraph(context: context, bounds: bounds, hostedIn: view)
+				return self.drawStackLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
 }
 
 extension DSFSparklineOverlay.Stackline {
-	private func drawStackLineGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+	private func drawStackLineGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource else {
 			return bounds
 		}
@@ -54,7 +54,7 @@ extension DSFSparklineOverlay.Stackline {
 		let componentWidth = Int(integralRect.width) / Int(dataSource.windowSize)
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(self.bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+		let xOffset: Int = (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
 
 		// The available height range
 		let range: ClosedRange<CGFloat> = 1 ... max(1, integralRect.maxY)
@@ -150,19 +150,19 @@ extension DSFSparklineOverlay.Stackline {
 		return bounds
 	}
 
-	private func drawCenteredStackLineGraph(context: CGContext, bounds: CGRect, hostedIn view: DSFView) -> CGRect {
+	private func drawCenteredStackLineGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource else {
 			return bounds
 		}
 
-		let integralRect = self.bounds.integral
+		let integralRect = bounds.integral
 		let integralHeight: CGFloat = integralRect.height
 
 		// This represents the _full_ width of a bar within the graph, including the spacing.
 		let componentWidth = Int(integralRect.width) / Int(dataSource.windowSize)
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(self.bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+		let xOffset: Int = (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
 
 		// The available height range
 		let range: ClosedRange<CGFloat> = 1 ... max(1, integralRect.maxY)
@@ -190,7 +190,7 @@ extension DSFSparklineOverlay.Stackline {
 
 		let first = available.first!
 		if first.offset != 0 {
-			var clip = self.bounds
+			var clip = bounds
 			clip.origin.x = first.element.x
 			clip.size.width -= first.element.x
 			context.clip(to: clip)

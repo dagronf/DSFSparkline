@@ -1,15 +1,14 @@
 //
 //  File.swift
+//  
 //
-//
-//  Created by Darren Ford on 3/2/21.
+//  Created by Darren Ford on 24/2/21.
 //
 
 import QuartzCore
 
+class DSFSparklineRendererLayer: CALayer {
 
-
-@objc public class DSFSparklineOverlay: CALayer {
 	override public init() {
 		super.init()
 		self.anchorPoint = CGPoint(x: 0, y: 0)
@@ -28,7 +27,4 @@ import QuartzCore
 		self.isOpaque = false
 	}
 
-	open func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-		fatalError("must be implemented in overridden classes")
-	}
 }
