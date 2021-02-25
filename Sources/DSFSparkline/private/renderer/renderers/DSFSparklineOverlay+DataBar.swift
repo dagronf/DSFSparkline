@@ -9,19 +9,7 @@ import QuartzCore
 
 public extension DSFSparklineOverlay {
 
-	@objc(DSFSparklineOverlayDataBar) class DataBar: DSFSparklineOverlay {
-
-		/// The data to be displayed in the pie.
-		///
-		/// The values become a percentage of the total value stored within the
-		/// dataStore, and as such each value ends up being drawn as a fraction of the total.
-		/// So for example, if you want the pie chart to represent the number of red cars vs. number of
-		/// blue cars, you just set the values directly.
-		@objc public var dataSource: [CGFloat] = [] {
-			didSet {
-				self.dataDidChange()
-			}
-		}
+	@objc(DSFSparklineOverlayDataBar) class DataBar: DSFSparklineOverlay.StaticDataSource {
 
 		/// The maximum _total_ value. If the datasource values total is greater than this value, it clips the display
 		@objc public var maximumTotalValue: CGFloat = -1 {
@@ -31,14 +19,14 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The 'undrawn' color for the graph
-		@objc public var unsetColor: DSFColor? {
+		@objc public var unsetColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
 		/// The stroke color for the chart
-		@objc public var strokeColor: DSFColor? {
+		@objc public var strokeColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -64,6 +52,24 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		override func dataDidChange() {
+			super.dataDidChange()
+
+			// Precalculate the total.
+			self.total = self.dataSource.reduce(0) { $0 + $1 }
+
+			if self.animated {
+				self.startAnimateIn()
+			}
+			else {
+				self.fractionComplete = 1.0
+				self.setNeedsDisplay()
+			}
+		}
+
+		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+			self.drawDataBarGraph(context: context, bounds: bounds, scale: scale)
+		}
 
 		// MARK: - Privates
 
@@ -74,19 +80,6 @@ public extension DSFSparklineOverlay {
 }
 
 private extension DSFSparklineOverlay.DataBar {
-
-	func dataDidChange() {
-		// Precalculate the total.
-		self.total = self.dataSource.reduce(0) { $0 + $1 }
-
-		if self.animated {
-			self.startAnimateIn()
-		}
-		else {
-			self.fractionComplete = 1.0
-			self.setNeedsDisplay()
-		}
-	}
 
 	func startAnimateIn() {
 
@@ -120,7 +113,7 @@ private extension DSFSparklineOverlay.DataBar {
 
 		context.clip(to: rect)
 
-		if self.maximumTotalValue > 0, let unsetColor = self.unsetColor?.cgColor {
+		if self.maximumTotalValue > 0, let unsetColor = self.unsetColor {
 			let cbheight = max(2, rect.height / 6)
 			let center = rect.midY
 			let centerBar = CGRect(x: rect.minX, y: center - (cbheight / 2), width: rect.width, height: cbheight)
@@ -147,7 +140,7 @@ private extension DSFSparklineOverlay.DataBar {
 
 				if segment.offset > 0, let strokeColor = self.strokeColor {
 					state.usingGState { separator in
-						separator.setStrokeColor(strokeColor.cgColor)
+						separator.setStrokeColor(strokeColor)
 						separator.setLineWidth(self.lineWidth)
 						separator.move(to: CGPoint(x: position, y: rect.minY))
 						separator.addLine(to: CGPoint(x: position, y: rect.maxY))

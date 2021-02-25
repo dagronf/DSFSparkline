@@ -88,6 +88,8 @@ public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 		}
 	}
 
+	// MARK: - Initializers
+
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.configure()
@@ -104,6 +106,10 @@ public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 
 		self.pieOverlay.strokeColor = self.strokeColor?.cgColor
 		self.pieOverlay.lineWidth = self.lineWidth
+
+		self.pieOverlay.animated = self.animated
+		self.pieOverlay.animationDuration = self.animationDuration
+
 		self.pieOverlay.dataSource = self.dataSource
 	}
 

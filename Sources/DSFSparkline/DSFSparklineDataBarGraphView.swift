@@ -29,7 +29,10 @@ import UIKit
 
 /// A sparkline that draws a simple pie chart
 @IBDesignable
-public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
+public class DSFSparklineDataBarGraphView: DSFSparklineRendererView {
+
+	let databarOverlay = DSFSparklineOverlay.DataBar()
+
 	/// The data to be displayed in the data bar.
 	///
 	/// The values become a percentage of the total value stored within the
@@ -38,7 +41,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	/// blue cars, you just set the values directly.
 	@objc public var dataSource: [CGFloat] = [] {
 		didSet {
-			self.dataDidChange()
+			self.databarOverlay.dataSource = self.dataSource
 		}
 	}
 
@@ -47,7 +50,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	/// The maximum _total_ value. If the datasource values total is greater than this value, it clips the display
 	@IBInspectable public var maximumTotalValue: CGFloat = -1 {
 		didSet {
-			self.updateDisplay()
+			self.databarOverlay.maximumTotalValue = self.maximumTotalValue
 		}
 	}
 
@@ -57,13 +60,13 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	#if os(macOS)
 	@IBInspectable public var unsetColor: NSColor? {
 		didSet {
-			self.updateDisplay()
+			self.databarOverlay.unsetColor = self.unsetColor?.cgColor
 		}
 	}
 	#else
 	@IBInspectable public var unsetColor: UIColor? {
 		didSet {
-			self.updateDisplay()
+			self.databarOverlay.unsetColor = self.unsetColor?.cgColor
 		}
 	}
 	#endif
@@ -74,13 +77,13 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	#if os(macOS)
 	@IBInspectable public var strokeColor: NSColor? {
 		didSet {
-			self.updateDisplay()
+			self.databarOverlay.strokeColor = self.strokeColor?.cgColor
 		}
 	}
 	#else
 	@IBInspectable public var strokeColor: UIColor? {
 		didSet {
-			self.updateDisplay()
+			self.databarOverlay.strokeColor = self.strokeColor?.cgColor
 		}
 	}
 	#endif
@@ -93,16 +96,51 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	}
 
 	/// Should the pie chart animate in?
-	@IBInspectable public var animated: Bool = false
+	@IBInspectable public var animated: Bool = false {
+		didSet {
+			self.databarOverlay.animated = self.animated
+		}
+	}
 
 	/// The length of the animate-in duration
-	@IBInspectable public var animationDuration: CGFloat = 0.25
+	@IBInspectable public var animationDuration: CGFloat = 0.25 {
+		didSet {
+			self.databarOverlay.animationDuration = self.animationDuration
+		}
+	}
 
 	/// The palette to use when drawing the pie chart
 	@objc public var palette = DSFSparklinePalette.shared {
 		didSet {
-			self.updateDisplay()
+			self.databarOverlay.palette = self.palette
 		}
+	}
+
+	// MARK: - Initializers
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.databarOverlay)
+		self.databarOverlay.setNeedsDisplay()
+
+		self.databarOverlay.unsetColor = self.unsetColor?.cgColor
+		self.databarOverlay.strokeColor = self.strokeColor?.cgColor
+		self.databarOverlay.lineWidth = self.lineWidth
+		self.databarOverlay.maximumTotalValue = self.maximumTotalValue
+
+		self.databarOverlay.animated = self.animated
+		self.databarOverlay.animationDuration = self.animationDuration
+
+		self.databarOverlay.dataSource = self.dataSource
 	}
 
 	// MARK: - Privates
@@ -110,4 +148,20 @@ public class DSFSparklineDataBarGraphView: DSFSparklineCoreView {
 	internal var animator = ArbitraryAnimator()
 	internal var fractionComplete: CGFloat = 0
 	internal var total: CGFloat = 0.0
+}
+
+public extension DSFSparklineDataBarGraphView {
+	override func prepareForInterfaceBuilder() {
+		super.prepareForInterfaceBuilder()
+
+		#if TARGET_INTERFACE_BUILDER
+		self.animated = false
+		self.dataSource = [
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+		]
+		#endif
+	}
 }

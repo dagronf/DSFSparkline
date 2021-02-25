@@ -15,9 +15,9 @@ fileprivate let fourthDataSourceDataBar: [CGFloat] = [3, 4, 5]
 
 fileprivate let palette1 = DSFSparklinePalette([.systemRed, .systemOrange, .systemYellow])
 fileprivate let grays = DSFSparklinePalette([
-	DSFColor.init(white: 1.00, alpha: 1),
-	DSFColor.init(white: 0.66, alpha: 1),
-	DSFColor.init(white: 0.33, alpha: 1)
+	DSFColor.init(white: 0.80, alpha: 1),
+	DSFColor.init(white: 0.60, alpha: 1),
+	DSFColor.init(white: 0.40, alpha: 1)
 ])
 
 

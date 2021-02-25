@@ -52,7 +52,6 @@ struct StripesDemoView: View {
 			Text("Global annual mean temperature anomaly")
 
 			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
-															 integral: true,
 															 barSpacing: 1,
 															 gradient: self.gradient)
 				.frame(height: 30)
@@ -86,18 +85,24 @@ struct StripesDemoView: View {
 
 			Text("Australian annual mean temperature anomaly")
 
-			DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
-															 barSpacing: 1,
-															 gradient: self.gradient2)
-				.frame(height: 25)
-				.padding(5)
-				.border(Color.gray.opacity(0.2), width: 1)
-
-			DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
-															 gradient: self.gradient2)
-				.frame(height: 25)
-				.padding(5)
-				.border(Color.gray.opacity(0.2), width: 1)
+			HStack {
+				Text("integral")
+				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+																 integral: true,
+																 barSpacing: 1,
+																 gradient: self.gradient2)
+					.frame(height: 25)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+			}
+			HStack {
+				Text("fractional")
+				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+																 gradient: self.gradient2)
+					.frame(height: 25)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+			}
 
 			VStack {
 				Text("Gradient with buckets")

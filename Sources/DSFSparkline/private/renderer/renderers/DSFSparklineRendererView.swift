@@ -68,7 +68,7 @@ extension DSFSparklineRendererView {
 	public func addOverlay(_ overlay: DSFSparklineOverlay) {
 		self.rootLayer.addSublayer(overlay)
 
-		overlay.contentsScale = self.retinaScale()
+		//overlay.contentsScale = self.retinaScale()
 
 		overlay.bounds = self.bounds
 		overlay.delegate = self.renderDelegate
