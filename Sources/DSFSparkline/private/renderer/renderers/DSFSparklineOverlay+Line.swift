@@ -22,12 +22,6 @@ public extension DSFSparklineOverlay {
 				self.setNeedsDisplay()
 			}
 		}
-		/// Shade the area under the line
-		@objc public var lineShading: Bool = true {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
 		/// Draw a shadow under the line
 		@objc public var shadowed: Bool = false {
 			didSet {
@@ -94,7 +88,7 @@ private extension DSFSparklineOverlay.Line {
 				outer.clip(to: clipRect)
 			}
 
-			if self.lineShading {
+			if self.wantsPrimaryFill {
 				outer.usingGState { ctx in
 
 					let clipper = path.mutableCopy()!
@@ -114,33 +108,37 @@ private extension DSFSparklineOverlay.Line {
 							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 						)
 					}
-					else {
-						ctx.setFillColor(self.primaryFillColor)
+					else if let fill = self.primaryFillColor {
+						ctx.setFillColor(fill)
 						ctx.fillPath()
 					}
 				}
 			}
 
-			outer.usingGState { ctx in
-				ctx.addPath(path)
-				ctx.setStrokeColor(self.primaryLineColor)
-				ctx.setLineWidth(self.lineWidth)
+			if let strokeColor = self.primaryStrokeColor {
+				outer.usingGState { ctx in
+					ctx.addPath(path)
+					ctx.setStrokeColor(strokeColor)
+					ctx.setLineWidth(self.lineWidth)
 
-				if shadowed {
-					ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
-									  blur: 1.0,
-									  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+					if shadowed {
+						ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
+										  blur: 1.0,
+										  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+					}
+					ctx.setLineJoin(.round)
+					ctx.strokePath()
 				}
-				ctx.setLineJoin(.round)
-				ctx.strokePath()
 			}
 
 			/// Draw the markers the same color as the line for the moment
 			if !allP.isEmpty {
-				outer.usingGState { ctx in
-					ctx.addPath(allP)
-					ctx.setFillColor(self.primaryLineColor)
-					ctx.fillPath()
+				if let strokeColor = self.primaryStrokeColor {
+					outer.usingGState { ctx in
+						ctx.addPath(allP)
+						ctx.setFillColor(strokeColor)
+						ctx.fillPath()
+					}
 				}
 			}
 		}
@@ -207,7 +205,9 @@ private extension DSFSparklineOverlay.Line {
 					inner.clip(to: split.remainder)
 				}
 
-				if self.lineShading {
+				let hasFill = (which == 0) ? self.wantsPrimaryFill : self.wantsSecondaryFill
+
+				if hasFill {
 					inner.usingGState { ctx in
 
 						let altY = which == 0 ? drawRect.maxY : drawRect.minY
@@ -222,7 +222,7 @@ private extension DSFSparklineOverlay.Line {
 						ctx.addPath(clipper)
 						ctx.clip()
 
-						let gradient = (which == 0) ? self.primaryGradient : self.secondaryGradientReal
+						let gradient = (which == 0) ? self.primaryGradient : self.secondaryGradient
 						if let grad = gradient {
 							ctx.drawLinearGradient(
 								grad, start: CGPoint(x: drawRect.minX, y: drawRect.maxY),
@@ -231,43 +231,50 @@ private extension DSFSparklineOverlay.Line {
 							)
 						}
 						else {
-							let fill = (which == 0) ? self.primaryFillColor : self.secondaryFillColorReal
-							ctx.setFillColor(fill)
-							ctx.fill(drawRect)
+							if let fill = (which == 0) ? self.primaryFillColor : self.secondaryFillColor {
+								ctx.setFillColor(fill)
+								ctx.fill(drawRect)
+							}
 						}
 					}
 				}
 
-				let whichColor = which == 0 ? self.primaryLineColor : self.secondaryLineColorReal
+				let whichColor = (which == 0) ? self.primaryStrokeColor : self.secondaryStrokeColor
 
-				inner.usingGState { ctx in
-					ctx.addPath(path)
-					ctx.setStrokeColor(whichColor)
-					ctx.setLineWidth(self.lineWidth)
+				if let stroke = whichColor {
+					inner.usingGState { ctx in
+						ctx.addPath(path)
+						ctx.setStrokeColor(stroke)
+						ctx.setLineWidth(self.lineWidth)
 
-					if shadowed {
-						ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
-										  blur: 1.0,
-										  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+						if shadowed {
+							ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
+											  blur: 1.0,
+											  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+						}
+						ctx.setLineJoin(.round)
+						ctx.strokePath()
 					}
-					ctx.setLineJoin(.round)
-					ctx.strokePath()
 				}
 			}
 		}
 
 		if !pPoints.isEmpty {
-			context.usingGState { ctx in
-				ctx.addPath(pPoints)
-				ctx.setFillColor(self.primaryLineColor)
-				ctx.fillPath()
+			if let stroke = self.primaryStrokeColor {
+				context.usingGState { ctx in
+					ctx.addPath(pPoints)
+					ctx.setFillColor(stroke)
+					ctx.fillPath()
+				}
 			}
 		}
 		if !nPoints.isEmpty {
-			context.usingGState { ctx in
-				ctx.addPath(nPoints)
-				ctx.setFillColor(self.secondaryLineColorReal)
-				ctx.fillPath()
+			if let stroke = self.secondaryStrokeColor {
+				context.usingGState { ctx in
+					ctx.addPath(nPoints)
+					ctx.setFillColor(stroke)
+					ctx.fillPath()
+				}
 			}
 		}
 

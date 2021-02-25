@@ -8,46 +8,61 @@
 import QuartzCore
 
 public extension DSFSparklineOverlay {
-	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineDataSourceOverlay {
+
+	/// A graph that can be centered around the datasource's zero-line
+	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineOverlay.ZeroLine {
+
+		/// Should the graph be centered at the zero line?
+		@objc public var centeredAtZeroLine: Bool = false {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		/// The value of the 'zero line' for this graph.
+		@objc public var zeroLineValue: CGFloat = 0.0 {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		// MARK: - Primary
 
 		/// The primary color for the sparkline
-		@objc public var primaryLineColor: CGColor = .black {
+		@objc public var primaryStrokeColor: CGColor? = .black {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
-		@objc public var primaryFillColor: CGColor = .black {
+		@objc public var primaryFillColor: CGColor? = .black {
 			didSet {
 				self.setNeedsDisplay()
 			}
-		}
-
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryLineColor: CGColor? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryLineColorReal: CGColor {
-			self.secondaryLineColor ?? self.primaryLineColor
-		}
-
-		/// The color used to fill below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryFillColor: CGColor? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		@objc public var secondaryFillColorReal: CGColor {
-			self.secondaryFillColor ?? self.primaryFillColor
 		}
 
 		// Optional gradient colors
 		@objc public var primaryGradient: CGGradient? {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		@inlinable var wantsPrimaryFill: Bool {
+			return self.primaryFillColor != nil || self.primaryGradient != nil
+		}
+
+		// MARK: - Secondary
+
+		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
+		@objc public var secondaryStrokeColor: CGColor? {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		/// The color used to fill below the zero line. If nil, is the same as the graph color
+		@objc public var secondaryFillColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -59,8 +74,13 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		@objc public var secondaryGradientReal: CGGradient? {
-			return self.secondaryGradient ?? self.primaryGradient
+		@inlinable var wantsSecondaryFill: Bool {
+			return self.secondaryGradient != nil || self.secondaryFillColor != nil
 		}
+
+		@inlinable var wantsSecondaryStroke: Bool {
+			return self.secondaryStrokeColor != nil
+		}
+
 	}
 }

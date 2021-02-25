@@ -31,9 +31,12 @@ import UIKit
 @IBDesignable
 public class DSFSparklineDotGraphView: DSFSparklineView {
 
+	let overlay = DSFSparklineOverlay.Dot()
+
 	/// Are the values drawn from the top down?
 	@IBInspectable public var upsideDown: Bool = false {
 		didSet {
+			self.overlay.upsideDown = self.upsideDown
 			self.updateDisplay()
 		}
 	}
@@ -41,6 +44,7 @@ public class DSFSparklineDotGraphView: DSFSparklineView {
 	/// The number of vertical buckets to break the input data up into
 	@IBInspectable public var verticalDotCount: UInt = 10 {
 		didSet {
+			self.overlay.verticalDotCount = self.verticalDotCount
 			self.updateDisplay()
 		}
 	}
@@ -59,4 +63,29 @@ public class DSFSparklineDotGraphView: DSFSparklineView {
 		}
 	}
 	#endif
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.overlay.setNeedsDisplay()
+	}
+
+	override func colorDidChange() {
+		super.colorDidChange()
+
+		self.overlay.upsideDown = self.upsideDown
+		self.overlay.verticalDotCount = self.verticalDotCount
+
+		self.overlay.onColor = self.graphColor.cgColor
+		self.overlay.offColor = self.unsetGraphColor.cgColor
+	}
 }

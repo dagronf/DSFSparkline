@@ -30,42 +30,79 @@ import UIKit
 /// A sparkline that draws a line graph
 @IBDesignable
 public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
+
+	let overlay = DSFSparklineOverlay.Line()
+
 	/// The width for the line drawn on the graph
 	@IBInspectable public var lineWidth: CGFloat = 1.5 {
 		didSet {
-			self.updateDisplay()
+			self.colorDidChange()
 		}
 	}
 	
 	/// Interpolate a curve between the points
 	@IBInspectable public var interpolated: Bool = false {
 		didSet {
-			self.updateDisplay()
+			self.colorDidChange()
 		}
 	}
 	
 	/// Shade the area under the line
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
-			self.updateDisplay()
+			//self.overlay.lineShading = self.lineShading
 		}
 	}
 	
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false {
 		didSet {
-			self.updateDisplay()
+			self.colorDidChange()
 		}
 	}
 
 	/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
 	@IBInspectable public var markerSize: CGFloat = -1 {
 		didSet {
-			self.updateDisplay()
+			self.colorDidChange()
 		}
 	}
 
 	// Optional gradient colors
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?
+
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.colorDidChange()
+	}
+
+	override func colorDidChange() {
+		super.colorDidChange()
+
+		self.overlay.lineWidth = self.lineWidth
+		self.overlay.interpolated = self.interpolated
+		self.overlay.shadowed = self.shadowed
+		self.overlay.markerSize = self.markerSize
+
+		self.overlay.primaryStrokeColor = self.graphColor.cgColor
+		self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.4).cgColor
+
+		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
+		self.overlay.secondaryFillColor = self.lowerColor.withAlphaComponent(0.4).cgColor
+
+		self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
+	}
+
 }

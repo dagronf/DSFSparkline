@@ -33,6 +33,8 @@ import UIKit
 @IBDesignable
 public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 
+	let zerolineOverlay = DSFSparklineOverlay.ZeroLine()
+
 	/// Draw a dotted line at the zero point on the y-axis
 	@IBInspectable public var showZeroLine: Bool = false {
 		didSet {
@@ -160,6 +162,22 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 			}
 		}
 	}
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configureZeroLine()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configureZeroLine()
+	}
+
+	func configureZeroLine() {
+		self.addOverlay(self.zerolineOverlay)
+	}
+
+
 
 	private var creatableHighlightRangeDefinition: DSFSparklineHighlightRangeDefinition {
 		if let item = self.highlightRangeDefinition.first {

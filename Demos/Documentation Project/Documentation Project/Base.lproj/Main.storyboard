@@ -945,6 +945,9 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="YES"/>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="lowerGraphColor">
+                                                                        <color key="value" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </customView>
                                                         </gridCell>

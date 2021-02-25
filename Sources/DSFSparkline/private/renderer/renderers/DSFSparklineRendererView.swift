@@ -18,6 +18,10 @@ import UIKit
 	}
 	#endif
 
+	lazy var renderDelegate: RendererDelegate = {
+		return RendererDelegate(view: self)
+	}()
+
 	var rootLayer: CALayer {
 		#if os(macOS)
 		return self.layer!
@@ -64,14 +68,15 @@ extension DSFSparklineRendererView {
 	public func addOverlay(_ overlay: DSFSparklineOverlay) {
 		self.rootLayer.addSublayer(overlay)
 
-		let scale = self.window?.backingScaleFactor ?? 2
-		overlay.contentsScale = scale
+		overlay.contentsScale = self.retinaScale()
 
 		overlay.bounds = self.bounds
-		#if os(macOS)
-		overlay.delegate = self
-		#endif
+		overlay.delegate = self.renderDelegate
+
+		self.syncLayers()
+		overlay.setNeedsLayout()
 		overlay.setNeedsDisplay()
+
 	}
 
 	public func removeOverlay(_ overlay: DSFSparklineOverlay) {
@@ -82,6 +87,7 @@ extension DSFSparklineRendererView {
 		CATransaction.setDisableActions(true)
 		self.rootLayer.sublayers?.forEach { layer in
 			layer.bounds = self.bounds
+			layer.contentsScale = self.retinaScale()
 			layer.setNeedsDisplay()
 		}
 	}
@@ -91,32 +97,29 @@ extension DSFSparklineRendererView {
 		super.layout()
 		self.syncLayers()
 	}
-	
+
 	#else
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 		self.syncLayers()
 	}
-	override public func draw(_ layer: CALayer, in ctx: CGContext) {
-		layer.contentsScale = self.contentScaleFactor
-		super.draw(layer, in: ctx)
-
-		if let l = layer as? DSFSparklineOverlay {
-			_ = l.drawGraph(context: ctx, bounds: self.bounds, hostedIn: self)
-		}
-	}
 	#endif
 }
 
-#if os(macOS)
-extension DSFSparklineRendererView: CALayerDelegate {
-	public func draw(_ layer: CALayer, in ctx: CGContext) {
-		let scale = self.window?.backingScaleFactor ?? 2
-		layer.contentsScale = scale
+class RendererDelegate: NSObject, CALayerDelegate {
 
+	let view: DSFView
+
+	init(view: DSFView) {
+		self.view = view
+		super.init()
+	}
+
+	func draw(_ layer: CALayer, in ctx: CGContext) {
 		if let l = layer as? DSFSparklineOverlay {
-			_ = l.drawGraph(context: ctx, bounds: self.bounds, scale: self.retinaScale())
+			let scale = view.retinaScale()
+			l.contentsScale = scale
+			_ = l.drawGraph(context: ctx, bounds: view.bounds, scale: scale)
 		}
 	}
 }
-#endif

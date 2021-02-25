@@ -29,7 +29,7 @@ import UIKit
 
 /// A sparkline that draws a simple pie chart
 @IBDesignable
-public class DSFSparklinePieGraphView: DSFSparklineCoreView {
+public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 	/// The data to be displayed in the pie.
 	///
 	/// The values become a percentage of the total value stored within the

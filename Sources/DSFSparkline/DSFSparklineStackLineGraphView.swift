@@ -30,6 +30,9 @@ import UIKit
 /// A stack line sparkline type
 @IBDesignable
 public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
+
+	let overlay = DSFSparklineOverlay.Stackline()
+
 	/// The width for the line drawn on the graph
 	@IBInspectable public var lineWidth: CGFloat = 1 {
 		didSet {
@@ -40,6 +43,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Shade the area under the line
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
+			self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.3).cgColor
 			self.updateDisplay()
 		}
 	}
@@ -53,4 +57,51 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.overlay.setNeedsDisplay()
+	}
+
+	override public func colorDidChange() {
+		super.colorDidChange()
+
+		// Update the gradients to match the color change
+
+		self.gradient = CGGradient(
+			colorsSpace: nil,
+			colors: [self.graphColor.withAlphaComponent(0.4).cgColor,
+						self.graphColor.withAlphaComponent(0.2).cgColor] as CFArray,
+			locations: [1.0, 0.0]
+		)!
+
+		let lc = self.lowerColor
+		self.lowerGradient = CGGradient(
+			colorsSpace: nil,
+			colors: [lc.withAlphaComponent(0.4).cgColor,
+						lc.withAlphaComponent(0.2).cgColor] as CFArray,
+			locations: [1.0, 0.0]
+		)!
+
+		self.overlay.lineWidth = self.lineWidth
+
+		self.overlay.primaryStrokeColor = self.graphColor.cgColor
+		self.overlay.primaryFillColor   = self.graphColor.withAlphaComponent(0.4).cgColor
+
+		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
+		self.overlay.secondaryFillColor   = self.lowerColor.withAlphaComponent(0.4).cgColor
+
+		self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
+	}
+
 }

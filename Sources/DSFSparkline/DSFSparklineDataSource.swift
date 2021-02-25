@@ -206,3 +206,30 @@ extension DSFSparklineDataSource {
 		NotificationCenter.default.post(name: DSFSparklineDataSource.DataChangedNotification, object: self)
 	}
 }
+
+public extension DSFSparklineDataSource {
+
+	/// Return the vertical fractional position within the data window that represents
+	/// zero for the current set of data.
+	func fractionalZeroPosition() -> CGFloat {
+		return fractionalPosition(for: 0.0)
+	}
+
+	/// Return the vertical fractional position within the data window that represents
+	/// the zero line value for the current set of data.
+	func fractionalPosition(for value: CGFloat) -> CGFloat {
+		let result: CGFloat
+		if let r = self.range {
+			// If a fixed range is specified, calculate the zero line from the specified range
+			let full = r.upperBound - r.lowerBound		// full range width
+			result = abs(value - r.lowerBound) / full
+		}
+		else {
+			// If no fixed range is specified, calculate the zero line position using the current range of the data.
+			result = self.normalize(value: value)
+		}
+
+		// Clamp to 0.0 -> 1.0
+		return min(max(result, 0.0), 1.0)
+	}
+}

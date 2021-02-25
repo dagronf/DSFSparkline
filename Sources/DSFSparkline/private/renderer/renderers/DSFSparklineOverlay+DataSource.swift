@@ -15,19 +15,19 @@ import QuartzCore
 		}
 	}
 
-	/// Should the graph be centered at the zero line?
-	@objc public var centeredAtZeroLine: Bool = false {
-		didSet {
-			self.setNeedsDisplay()
-		}
-	}
-
-	/// The value of the 'zero line' for this graph.
-	@objc public var zeroLineValue: CGFloat = 0.0 {
-		didSet {
-			self.setNeedsDisplay()
-		}
-	}
+//	/// Should the graph be centered at the zero line?
+//	@objc public var centeredAtZeroLine: Bool = false {
+//		didSet {
+//			self.setNeedsDisplay()
+//		}
+//	}
+//
+//	/// The value of the 'zero line' for this graph.
+//	@objc public var zeroLineValue: CGFloat = 0.0 {
+//		didSet {
+//			self.setNeedsDisplay()
+//		}
+//	}
 
 	// Listen for changes in the data and update appropriately
 	private var dataObserver: NSObjectProtocol?
@@ -45,11 +45,8 @@ import QuartzCore
 		}
 	}
 
-	@objc public init(dataSource: DSFSparklineDataSource? = nil,
-							zeroLineValue: CGFloat = 0.0)
-	{
+	@objc public init(dataSource: DSFSparklineDataSource? = nil) {
 		self.dataSource = dataSource
-		self.zeroLineValue = zeroLineValue
 		super.init()
 	}
 

@@ -30,17 +30,50 @@ import UIKit
 /// A sparkline graph that displays bars
 @IBDesignable
 public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
+
+	let overlay = DSFSparklineOverlay.Bar()
+
 	/// The line width (in pixels) to use when drawing the border of each bar
 	@IBInspectable public var lineWidth: UInt = 1 {
 		didSet {
-			self.updateDisplay()
+			self.overlay.lineWidth = self.lineWidth
 		}
 	}
 
 	/// The spacing (in pixels) between each bar
 	@IBInspectable public var barSpacing: UInt = 1 {
 		didSet {
-			self.updateDisplay()
+			self.overlay.barSpacing = self.barSpacing
 		}
+	}
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.overlay.setNeedsDisplay()
+	}
+
+	override func colorDidChange() {
+		super.colorDidChange()
+
+		self.overlay.lineWidth = self.lineWidth
+		self.overlay.barSpacing = self.barSpacing
+
+		self.overlay.primaryStrokeColor = self.graphColor.cgColor
+		self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.4).cgColor
+
+		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
+		self.overlay.secondaryFillColor = self.lowerColor.withAlphaComponent(0.4).cgColor
+
+		self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 	}
 }

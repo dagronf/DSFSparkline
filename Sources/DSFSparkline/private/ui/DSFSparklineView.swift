@@ -28,7 +28,7 @@ import UIKit
 #endif
 
 @IBDesignable
-@objc public class DSFSparklineView: DSFSparklineCoreView {
+@objc public class DSFSparklineView: DSFSparklineRendererView {
 
 	#if TARGET_INTERFACE_BUILDER
 	/// Need this to hold on to the datasource when using designable, or else it disappears due to being weak
@@ -44,8 +44,14 @@ import UIKit
 			if self.windowSizeSetInXib {
 				self.dataSource?.windowSize = self.graphWindowSize
 			}
-
 			self.updateDataObserver()
+
+			self.rootLayer.sublayers?.forEach { layer in
+				if let l = layer as? DSFSparklineDataSourceOverlay {
+					l.dataSource = self.dataSource
+				}
+			}
+
 			self.updateDisplay()
 		}
 	}
@@ -66,6 +72,14 @@ import UIKit
 		didSet {
 			self.colorDidChange()
 		}
+	}
+	#endif
+
+	#if os(macOS)
+	/// Force an update when the view moves to the window
+	public override func viewWillMove(toSuperview newSuperview: DSFView?) {
+		super.viewWillMove(toSuperview: newSuperview)
+		self.colorDidChange()
 	}
 	#endif
 
@@ -126,29 +140,3 @@ extension DSFSparklineView {
 	}
 }
 
-extension DSFSparklineDataSource {
-
-	/// Return the vertical fractional position within the data window that represents
-	/// zero for the current set of data.
-	func fractionalZeroPosition() -> CGFloat {
-		return fractionalPosition(for: 0.0)
-	}
-
-	/// Return the vertical fractional position within the data window that represents
-	/// the zero line value for the current set of data.
-	func fractionalPosition(for value: CGFloat) -> CGFloat {
-		let result: CGFloat
-		if let r = self.range {
-			// If a fixed range is specified, calculate the zero line from the specified range
-			let full = r.upperBound - r.lowerBound		// full range width
-			result = abs(value - r.lowerBound) / full
-		}
-		else {
-			// If no fixed range is specified, calculate the zero line position using the current range of the data.
-			result = self.normalize(value: value)
-		}
-
-		// Clamp to 0.0 -> 1.0
-		return min(max(result, 0.0), 1.0)
-	}
-}

@@ -12,7 +12,7 @@ public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayRangeHighlight) class RangeHighlight: DSFSparklineDataSourceOverlay {
 
 		/// The color to fill the specified range
-		@objc public var fillColor: CGColor = CGColor(gray: 0.5, alpha: 0.5) {
+		@objc public var fillColor: CGColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.5, 0.5, 0.5, 0.5])! {
 			didSet {
 				self.setNeedsDisplay()
 			}

@@ -11,7 +11,7 @@ public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayBar) class Bar: Centerable {
 
 		/// The width for the line drawn on the graph
-		@objc public var lineWidth: CGFloat = 1.5 {
+		@objc public var lineWidth: UInt = 1 {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -29,6 +29,14 @@ public extension DSFSparklineOverlay {
 				self.setNeedsDisplay()
 			}
 		}
+
+		/// The width for the line drawn on the graph
+		@objc public var upperColor: DSFColor = .black {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
 
 		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
@@ -92,35 +100,39 @@ extension DSFSparklineOverlay.Bar {
 			let path = CGMutablePath()
 			path.addRects(bars)
 
-			outer.usingGState { fillCtx in
-				fillCtx.addPath(path)
-				if let gradient = self.primaryGradient {
-					fillCtx.clip()
-					fillCtx.drawLinearGradient(
-						gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-						end: CGPoint(x: 0.0, y: bounds.minY),
-						options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-					)
-				}
-				else {
-					fillCtx.setFillColor(self.primaryFillColor)
-					fillCtx.fillPath()
+			if self.wantsPrimaryFill {
+				outer.usingGState { fillCtx in
+					fillCtx.addPath(path)
+					if let gradient = self.primaryGradient {
+						fillCtx.clip()
+						fillCtx.drawLinearGradient(
+							gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+							end: CGPoint(x: 0.0, y: bounds.minY),
+							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+						)
+					}
+					else if let fill = self.primaryFillColor {
+						fillCtx.setFillColor(fill)
+						fillCtx.fillPath()
+					}
 				}
 			}
 
-			outer.usingGState { strokeCtx in
+			if let stroke = self.primaryStrokeColor {
+				outer.usingGState { strokeCtx in
 
-				if self.shadowed {
-					strokeCtx.setShadow(
-						offset: CGSize(width: 0.5, height: 0.5),
-						blur: 1.0,
-						color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+					if self.shadowed {
+						strokeCtx.setShadow(
+							offset: CGSize(width: 0.5, height: 0.5),
+							blur: 1.0,
+							color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+					}
+
+					strokeCtx.addPath(path)
+					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
+					strokeCtx.setStrokeColor(stroke)
+					strokeCtx.drawPath(using: .stroke)
 				}
-
-				strokeCtx.addPath(path)
-				strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
-				strokeCtx.setStrokeColor(self.primaryLineColor)
-				strokeCtx.drawPath(using: .stroke)
 			}
 		}
 		return bounds
@@ -180,55 +192,65 @@ extension DSFSparklineOverlay.Bar {
 			if !positivePath.isEmpty {
 				let path = CGMutablePath()
 				path.addRects(positivePath)
-				outer.usingGState { fillCtx in
-					fillCtx.addPath(path)
-					if let gradient = self.primaryGradient {
-						fillCtx.clip()
-						fillCtx.drawLinearGradient(
-							gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-							end: CGPoint(x: 0.0, y: bounds.minY),
-							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-						)
-					}
-					else {
-						fillCtx.setFillColor(self.primaryFillColor)
-						fillCtx.fillPath()
+
+				if self.wantsPrimaryFill {
+					outer.usingGState { fillCtx in
+						fillCtx.addPath(path)
+						if let gradient = self.primaryGradient {
+							fillCtx.clip()
+							fillCtx.drawLinearGradient(
+								gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+								end: CGPoint(x: 0.0, y: bounds.minY),
+								options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+							)
+						}
+						else if let fill = self.primaryFillColor {
+							fillCtx.setFillColor(fill)
+							fillCtx.fillPath()
+						}
 					}
 				}
 
-				outer.usingGState { strokeCtx in
-					strokeCtx.addPath(path)
-					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
-					strokeCtx.setStrokeColor(self.primaryLineColor)
-					strokeCtx.strokePath()
+				if let stroke = self.primaryStrokeColor {
+					outer.usingGState { strokeCtx in
+						strokeCtx.addPath(path)
+						strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
+						strokeCtx.setStrokeColor(stroke)
+						strokeCtx.strokePath()
+					}
 				}
 			}
 
 			if !negativePath.isEmpty {
 				let path = CGMutablePath()
 				path.addRects(negativePath)
-				outer.usingGState { fillCtx in
-					fillCtx.addPath(path)
 
-					if let gradient = self.secondaryGradientReal {
-						fillCtx.clip()
-						fillCtx.drawLinearGradient(
-							gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-							end: CGPoint(x: 0.0, y: bounds.minY),
-							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-						)
-					}
-					else {
-						fillCtx.setFillColor(self.secondaryFillColorReal)
-						fillCtx.fillPath()
+				if self.wantsSecondaryFill {
+					outer.usingGState { fillCtx in
+						fillCtx.addPath(path)
+
+						if let gradient = self.secondaryGradient {
+							fillCtx.clip()
+							fillCtx.drawLinearGradient(
+								gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+								end: CGPoint(x: 0.0, y: bounds.minY),
+								options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+							)
+						}
+						else if let stroke = self.secondaryFillColor {
+							fillCtx.setFillColor(stroke)
+							fillCtx.fillPath()
+						}
 					}
 				}
 
-				outer.usingGState { strokeCtx in
-					strokeCtx.addPath(path)
-					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
-					strokeCtx.setStrokeColor(self.secondaryLineColorReal)
-					strokeCtx.strokePath()
+				if let stroke = self.secondaryStrokeColor {
+					outer.usingGState { strokeCtx in
+						strokeCtx.addPath(path)
+						strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
+						strokeCtx.setStrokeColor(stroke)
+						strokeCtx.strokePath()
+					}
 				}
 			}
 		}
