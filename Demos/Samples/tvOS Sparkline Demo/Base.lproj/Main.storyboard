@@ -72,6 +72,11 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
                                                 <color key="value" systemColor="systemOrangeColor"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showHighlightRange" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
+                                                <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="0.1570424340956704" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="highlightRangeString" value="0,15"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbq-YT-X12" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">

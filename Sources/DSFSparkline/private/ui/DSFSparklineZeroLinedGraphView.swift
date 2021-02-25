@@ -33,11 +33,19 @@ import UIKit
 @IBDesignable
 public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 
+	// The zero-line overlay
 	let zerolineOverlay = DSFSparklineOverlay.ZeroLine()
+
+	// A fixed interface-builder defined highlight
+	let ibHighlightOverlay = DSFSparklineOverlay.RangeHighlight()
+
+	// An array of additional highlights
+	var highlightOverlay: [DSFSparklineOverlay.RangeHighlight] = []
 
 	/// Draw a dotted line at the zero point on the y-axis
 	@IBInspectable public var showZeroLine: Bool = false {
 		didSet {
+			self.zerolineOverlay.isHidden = !self.showZeroLine
 			self.updateDisplay()
 		}
 	}
@@ -119,6 +127,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	/// Draw a dotted line at the zero point on the y-axis
 	@IBInspectable public var showHighlightRange: Bool = false {
 		didSet {
+			self.ibHighlightOverlay.isHidden = !self.showHighlightRange
 			self.updateDisplay()
 		}
 	}
@@ -127,14 +136,14 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	#if os(macOS)
 	@IBInspectable public var highlightColor = NSColor.gray {
 		didSet {
-			self.creatableHighlightRangeDefinition.highlightColor = self.highlightColor
+			self.ibHighlightOverlay.fillColor = self.highlightColor.cgColor
 			self.colorDidChange()
 		}
 	}
 	#else
 	@IBInspectable public var highlightColor: UIColor = .systemGray {
 		didSet {
-			self.creatableHighlightRangeDefinition.highlightColor = self.highlightColor
+			self.ibHighlightOverlay.fillColor = self.highlightColor.cgColor
 			self.colorDidChange()
 		}
 	}
@@ -150,7 +159,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 					.compactMap { Float($0) } // Convert to float array if possible
 					.compactMap { CGFloat($0) } // Convert to CGFloat array
 				if floats.count == 2, floats[0] < floats[1] {
-					self.creatableHighlightRangeDefinition.range = floats[0] ..< floats[1]
+					self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
 				}
 				else {
 					self.highlightRangeDefinition = []
@@ -175,22 +184,27 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 
 	func configureZeroLine() {
 		self.addOverlay(self.zerolineOverlay)
-	}
+		self.zerolineOverlay.zPosition = -5
+		self.addOverlay(self.ibHighlightOverlay)
+		self.ibHighlightOverlay.zPosition = -10
 
-
-
-	private var creatableHighlightRangeDefinition: DSFSparklineHighlightRangeDefinition {
-		if let item = self.highlightRangeDefinition.first {
-			return item
-		}
-
-		let new = DSFSparklineHighlightRangeDefinition(lowerBound: 0, upperBound: 1)
-		self.highlightRangeDefinition = [new]
-		return new
+		//self.addOverlay(self.highlightOverlay)
 	}
 
 	@objc public var highlightRangeDefinition: [DSFSparklineHighlightRangeDefinition] = [] {
+		willSet {
+			self.highlightOverlay.forEach { $0.removeFromSuperlayer() }
+			self.highlightOverlay = []
+		}
+
 		didSet {
+			self.highlightRangeDefinition.forEach { r in
+				let item = DSFSparklineOverlay.RangeHighlight()
+				item.highlightRange = r.range
+				item.fillColor = r.highlightColor.cgColor
+				item.zPosition = -10
+				self.addOverlay(item)
+			}
 			self.updateDisplay()
 		}
 	}
@@ -211,59 +225,5 @@ public extension DSFSparklineZeroLineGraphView {
 		self.zeroLineWidth = definition.lineWidth
 		self.zeroLineColor = definition.color
 		self.zeroLineDashStyle = definition.lineDashStyle
-	}
-}
-
-// MARK: - Drawing
-
-public extension DSFSparklineZeroLineGraphView {
-
-	#if os(macOS)
-	override func draw(_ dirtyRect: NSRect) {
-		super.draw(dirtyRect)
-		if let ctx = NSGraphicsContext.current?.cgContext {
-			self.drawAdditional(primary: ctx)
-		}
-	}
-	#else
-	override func draw(_ rect: CGRect) {
-		super.draw(rect)
-		if let ctx = UIGraphicsGetCurrentContext() {
-			self.drawAdditional(primary: ctx)
-		}
-	}
-	#endif
-
-	func drawAdditional(primary: CGContext) {
-
-		guard let dataSource = self.dataSource else { return }
-
-		let integ = self.bounds.integral
-		for def in self.highlightRangeDefinition {
-
-			let lb = 1.0 - dataSource.normalize(value: def.range.lowerBound)
-			let ub = 1.0 - dataSource.normalize(value: def.range.upperBound)
-
-			primary.usingGState { ctx in
-				ctx.setFillColor(def.highlightColor.cgColor)
-				let r = CGRect(x: 0, y: ub * integ.height, width: integ.width, height: (lb - ub) * integ.height)
-				ctx.addRect(r)
-				ctx.fillPath()
-			}
-		}
-
-		// Show the zero point if wanted
-		if self.showZeroLine {
-			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
-			let zeroPos = self.bounds.height - (frac * self.bounds.height)
-
-			primary.usingGState { ctx in
-				let color = self.zeroLineColor
-				ctx.setLineWidth(self.zeroLineWidth / self.retinaScale())
-				ctx.setStrokeColor(color.cgColor)
-				ctx.setLineDash(phase: 0.0, lengths: self.zeroLineDashStyle)
-				ctx.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
-			}
-		}
 	}
 }
