@@ -48,7 +48,9 @@ public class DSFSparklineBitmap: NSObject {
 
 		// Loop through each overlay and ask it to draw
 		self.overlays.forEach { overlay in
-			bounds = overlay.drawGraph(context: bitmapContext, bounds: bounds, scale: scale)
+			bitmapContext.usingGState { ctx in
+				bounds = overlay.drawGraph(context: ctx, bounds: bounds, scale: scale)
+			}
 		}
 
 		return bitmapContext.makeImage()

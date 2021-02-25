@@ -90,7 +90,7 @@ extension ViewController {
 		
 		let lineOverlay = DSFSparklineOverlay.Line()
 		lineOverlay.dataSource = LineSource1
-		lineOverlay.primaryLineColor = NSColor.textColor.cgColor
+		lineOverlay.primaryStrokeColor = NSColor.textColor.cgColor
 		lineOverlay.primaryFillColor = NSColor.textColor.withAlphaComponent(0.3).cgColor
 		lineOverlay.primaryGradient = CGGradient.Create([
 			(position: 1.0, color: NSColor.textColor.withAlphaComponent(0.8).cgColor),
@@ -100,7 +100,6 @@ extension ViewController {
 		lineOverlay.secondaryFillColor = NSColor.systemRed.cgColor
 
 		lineOverlay.lineWidth = 1
-		lineOverlay.lineShading = true
 		lineOverlay.markerSize = 4
 		lineOverlay.centeredAtZeroLine = true
 		line1.addOverlay(lineOverlay)
@@ -124,10 +123,16 @@ extension ViewController {
 		bar0.dataSource = LineSource1
 		bar0.barSpacing = 3
 		bar0.centeredAtZeroLine = true
-		bar0.primaryLineColor = NSColor.systemBlue.cgColor
+		bar0.primaryStrokeColor = NSColor.systemBlue.cgColor
 		bar0.primaryGradient = CGGradient.Create([
 			(position: 1.0, color: NSColor.systemBlue.withAlphaComponent(0.8).cgColor),
 			(position: 0.0, color: NSColor.systemBlue.withAlphaComponent(0.1).cgColor)
+		])
+
+		bar0.secondaryStrokeColor = NSColor.systemPurple.cgColor
+		bar0.secondaryGradient = CGGradient.Create([
+			(position: 1.0, color: NSColor.systemPurple.withAlphaComponent(0.8).cgColor),
+			(position: 0.0, color: NSColor.systemPurple.withAlphaComponent(0.1).cgColor)
 		])
 		bar1.addOverlay(bar0)
 
@@ -155,10 +160,10 @@ extension ViewController {
 		stack1.shadowed = true
 		stack1.centeredAtZeroLine = true
 		stack1.lineWidth = 1
-		stack1.primaryLineColor = NSColor.systemPurple.cgColor
+		stack1.primaryStrokeColor = NSColor.systemPurple.cgColor
 		stack1.primaryFillColor = NSColor.systemPurple.withAlphaComponent(0.7).cgColor
-//		stack1.secondaryLineColor = NSColor.systemYellow.cgColor
-//		stack1.secondaryFillColor = NSColor.systemYellow.withAlphaComponent(0.7).cgColor
+		stack1.secondaryStrokeColor = NSColor.systemYellow.cgColor
+		stack1.secondaryFillColor = NSColor.systemYellow.withAlphaComponent(0.7).cgColor
 
 		stackline1.addOverlay(stack1)
 
