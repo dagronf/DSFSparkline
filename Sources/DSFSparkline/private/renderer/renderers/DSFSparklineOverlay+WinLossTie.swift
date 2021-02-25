@@ -10,8 +10,10 @@ import QuartzCore
 public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayWinLossTie) class WinLossTie: DSFSparklineDataSourceOverlay {
 
-		static let green = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 1])!
-		static let red = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 1])!
+		static let greenStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 1])!
+		static let greenFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 0.3])!
+		static let redStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 1])!
+		static let redFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 0.3])!
 
 		/// The width of the stroke for the tablet
 		@objc public var lineWidth: UInt = 1 {
@@ -28,25 +30,47 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'win' boxes
-		@objc public var winColor: CGColor = WinLossTie.green {
+		@objc public var winStroke: CGColor = WinLossTie.greenStroke {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		/// The color to draw the 'win' boxes
+		@objc public var winFill: CGColor = WinLossTie.greenFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
 		/// The color to draw the 'loss' boxes
-		@objc public var lossColor: CGColor = WinLossTie.red {
+		@objc public var lossStroke: CGColor = WinLossTie.redStroke {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		/// The color to draw the 'loss' boxes
+		@objc public var lossFill: CGColor = WinLossTie.redFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
 		/// The color to draw the 'tie' boxes
-		@objc public var tieColor: CGColor? {
+		@objc public var tieStroke: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
+
+		/// The color to draw the 'tie' boxes
+		@objc public var tieFill: CGColor? {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
 
 		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			self.drawWinLossGraph(context: context, bounds: bounds, scale: scale)
@@ -120,8 +144,8 @@ private extension DSFSparklineOverlay.WinLossTie {
 			if !winPath.isEmpty {
 				outer.usingGState { winState in
 					winState.addPath(winPath)
-					winState.setFillColor(self.winColor.copy(alpha: 0.3)!)
-					winState.setStrokeColor(self.winColor)
+					winState.setFillColor(self.winFill)
+					winState.setStrokeColor(self.winStroke)
 					winState.setLineWidth(graphLineWidth)
 					winState.drawPath(using: .fillStroke)
 				}
@@ -130,22 +154,31 @@ private extension DSFSparklineOverlay.WinLossTie {
 			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
 					lossState.addPath(lossPath)
-					lossState.setFillColor(self.lossColor.copy(alpha: 0.3)!)
-					lossState.setStrokeColor(self.lossColor)
+					lossState.setFillColor(self.lossFill)
+					lossState.setStrokeColor(self.lossStroke)
 					lossState.setLineWidth(graphLineWidth)
 					lossState.drawPath(using: .fillStroke)
 				}
 			}
 
-			if let tieColor = self.tieColor, !tiePath.isEmpty {
-				outer.usingGState { tieState in
-					tieState.addPath(tiePath)
-					tieState.setLineWidth(graphLineWidth)
+			if !tiePath.isEmpty,
+				self.tieFill != nil || self.tieStroke != nil {
 
-					let tieAlpha = min(1, tieColor.alpha + 0.1)
-					tieState.setFillColor(tieColor)
-					tieState.setStrokeColor(tieColor.copy(alpha: tieAlpha)!)
-					tieState.drawPath(using: .fillStroke)
+				if let fill = self.tieFill {
+					outer.usingGState { tieState in
+						tieState.addPath(tiePath)
+						tieState.setFillColor(fill)
+						tieState.drawPath(using: .fill)
+					}
+				}
+
+				if let stroke = self.tieStroke {
+					outer.usingGState { tieState in
+						tieState.addPath(tiePath)
+						tieState.setLineWidth(graphLineWidth)
+						tieState.setStrokeColor(stroke)
+						tieState.drawPath(using: .stroke)
+					}
 				}
 			}
 		}

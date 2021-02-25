@@ -108,8 +108,33 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 		self.overlay.lineWidth = self.lineWidth
 		self.overlay.barSpacing = self.barSpacing
 
-		self.overlay.winColor = self.winColor.cgColor
-		self.overlay.lossColor = self.lossColor.cgColor
-		self.overlay.tieColor = self.tieColor?.cgColor
+		self.overlay.winFill = self.winColor.withAlphaComponent(0.3).cgColor
+		self.overlay.winStroke = self.winColor.cgColor
+
+		self.overlay.lossFill = self.lossColor.withAlphaComponent(0.3).cgColor
+		self.overlay.lossStroke = self.lossColor.cgColor
+
+
+		self.overlay.tieStroke = self.tieColor?.cgColor
+		self.overlay.tieFill = self.tieColor?.withAlphaComponent(0.3).cgColor
 	}
+}
+
+extension DSFSparklineWinLossGraphView {
+
+	public override func prepareForInterfaceBuilder() {
+
+		let e = 0 ..< self.graphWindowSize
+		let data = e.map { arg in return Int.random(in: -1 ... 1) }
+
+		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
+		self.dataSource = ds
+		ds.set(values: data.map { CGFloat($0) })
+
+		#if TARGET_INTERFACE_BUILDER
+		/// Need this to hold on to the datasource, or else it disappears due to being weak
+		self.ibDataSource = ds
+		#endif
+	}
+
 }

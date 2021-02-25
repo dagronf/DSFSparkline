@@ -114,3 +114,19 @@ public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 	internal var fractionComplete: CGFloat = 0
 	internal var total: CGFloat = 0.0
 }
+
+extension DSFSparklinePieGraphView {
+	public override func prepareForInterfaceBuilder() {
+		super.prepareForInterfaceBuilder()
+
+		#if TARGET_INTERFACE_BUILDER
+		self.animated = false
+		self.dataSource = [
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+			CGFloat(UInt.random(in: 1 ... 9)),
+		]
+		#endif
+	}
+}

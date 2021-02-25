@@ -455,7 +455,7 @@
                                                         <integer key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="winColor">
-                                                        <color key="value" red="0.0" green="0.0011863744366218028" blue="0.27758248928373896" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="value" red="0.0048598507420000003" green="0.096086271109999996" blue="0.57499289509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="lossColor">
                                                         <color key="value" red="0.60687201845962391" green="0.010440673658578765" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

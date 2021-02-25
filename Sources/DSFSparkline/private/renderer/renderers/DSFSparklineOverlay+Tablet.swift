@@ -10,6 +10,12 @@ import QuartzCore
 public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayTablet) class Tablet: DSFSparklineDataSourceOverlay {
 
+		static let greenStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 1])!
+		static let greenFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 0.3])!
+		static let redStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 1])!
+		static let redFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 0.3])!
+
+
 		/// The width of the stroke for the tablet
 		@objc public var lineWidth: CGFloat = 1.0 {
 			didSet {
@@ -24,15 +30,29 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		/// The color to draw the 'win' boxes
-		@objc public var winColor = DSFColor.systemGreen {
+		/// The color to draw the win tablets
+		@objc public var winStrokeColor: CGColor = Tablet.greenStroke {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
-		/// The color to draw the 'loss' boxes
-		@objc public var lossColor = DSFColor.systemRed {
+		/// The color to draw the 'win' boxes
+		@objc public var winFillColor: CGColor = Tablet.greenFill {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		/// The color to draw the win tablets
+		@objc public var lossStrokeColor: CGColor = Tablet.redStroke {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		/// The color to draw the 'win' boxes
+		@objc public var lossFillColor: CGColor = Tablet.redFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -99,8 +119,8 @@ private extension DSFSparklineOverlay.Tablet {
 			if !winPath.isEmpty {
 				outer.usingGState { winState in
 					winState.addPath(winPath)
-					winState.setFillColor(self.winColor.withAlphaComponent(0.3).cgColor)
-					winState.setStrokeColor(self.winColor.cgColor)
+					winState.setFillColor(self.winFillColor)
+					winState.setStrokeColor(self.winStrokeColor)
 					winState.setLineWidth(self.lineWidth)
 					winState.drawPath(using: .fillStroke)
 				}
@@ -109,9 +129,10 @@ private extension DSFSparklineOverlay.Tablet {
 			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
 					lossState.addPath(lossPath)
-					lossState.setStrokeColor(self.lossColor.cgColor)
+					lossState.setFillColor(self.lossFillColor)
+					lossState.setStrokeColor(self.lossStrokeColor)
 					lossState.setLineWidth(self.lineWidth)
-					lossState.drawPath(using: .stroke)
+					lossState.drawPath(using: .fillStroke)
 				}
 			}
 		}

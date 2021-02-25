@@ -30,6 +30,11 @@ import UIKit
 /// A tablet-style sparkline. Similar to win/loss except rendering as a row of filled/unfilled circles
 @IBDesignable
 public class DSFSparklineTabletGraphView: DSFSparklineView {
+
+	let overlay = DSFSparklineOverlay.Tablet()
+
+	static let clear: CGColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 0])!
+
 	/// The width of the stroke for the tablet
 	@IBInspectable public var lineWidth: CGFloat = 1.0 {
 		didSet {
@@ -46,31 +51,76 @@ public class DSFSparklineTabletGraphView: DSFSparklineView {
 
 	#if os(macOS)
 	/// The color to draw the 'win' boxes
-	@IBInspectable public var winColor = NSColor.systemGreen {
+	@IBInspectable public var winColor: NSColor = NSColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 
 	/// The color to draw the 'loss' boxes
-	@IBInspectable public var lossColor = NSColor.systemRed {
+	@IBInspectable public var lossColor: NSColor = NSColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
 	/// The color to draw the 'win' boxes
-	@IBInspectable public var winColor = UIColor.systemGreen {
+	@IBInspectable public var winColor: UIColor = UIColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 
 	/// The color to draw the 'loss' boxes
-	@IBInspectable public var lossColor = UIColor.systemRed {
+	@IBInspectable public var lossColor: UIColor = UIColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#endif
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.overlay.setNeedsDisplay()
+	}
+
+	override func colorDidChange() {
+		super.colorDidChange()
+
+		self.overlay.lineWidth = self.lineWidth
+		self.overlay.barSpacing = self.barSpacing
+
+		self.overlay.winFillColor = self.winColor.withAlphaComponent(0.3).cgColor
+		self.overlay.winStrokeColor = self.winColor.cgColor
+
+		self.overlay.lossFillColor = Self.clear //self.lossColor.withAlphaComponent(0.3).cgColor
+		self.overlay.lossStrokeColor = self.lossColor.cgColor
+	}
+}
+
+extension DSFSparklineTabletGraphView {
+
+	public override func prepareForInterfaceBuilder() {
+		let e = 0 ..< self.graphWindowSize
+		let data = e.map { arg in return Int.random(in: -1 ... 1) }
+
+		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
+		self.dataSource = ds
+		ds.set(values: data.map { CGFloat($0) })
+
+		#if TARGET_INTERFACE_BUILDER
+		/// Need this to hold on to the datasource, or else it disappears due to being weak
+		self.ibDataSource = ds
+		#endif
+	}
 }
