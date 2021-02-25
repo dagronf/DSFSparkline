@@ -1,27 +1,45 @@
 //
-//  DSFSparklineOverlayLine.swift
-//  
+//  DSFSparklineOverlay+Line.swift
+//  DSFSparklines
 //
-//  Created by Darren Ford on 14/2/21.
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
+//
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import QuartzCore
 
 public extension DSFSparklineOverlay {
+	/// A line graph sparkline
 	@objc(DSFSparklineOverlayLine) class Line: Centerable {
-
 		/// The width for the line drawn on the graph
 		@objc public var lineWidth: CGFloat = 1.5 {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
+
 		/// Interpolate a curve between the points
 		@objc public var interpolated: Bool = false {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
+
 		/// Draw a shadow under the line
 		@objc public var shadowed: Bool = false {
 			didSet {
@@ -36,7 +54,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
 				return self.drawCenteredGraph(context: context, bounds: bounds, scale: scale)
 			}
@@ -48,11 +66,10 @@ public extension DSFSparklineOverlay {
 }
 
 private extension DSFSparklineOverlay.Line {
-
-	func drawLineGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-
+	func drawLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource,
-				dataSource.counter != 0  else {
+				dataSource.counter != 0 else
+		{
 			// There's no line if there's either no data or just a single point
 			// https://github.com/dagronf/DSFSparkline/issues/3#issuecomment-770324047
 			return bounds
@@ -146,10 +163,10 @@ private extension DSFSparklineOverlay.Line {
 		return drawRect
 	}
 
-	func drawCenteredGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-
+	func drawCenteredGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource,
-				dataSource.counter != 0  else {
+				dataSource.counter != 0 else
+		{
 			// There's no line if there's either no data or just a single point
 			// https://github.com/dagronf/DSFSparkline/issues/3#issuecomment-770324047
 			return bounds

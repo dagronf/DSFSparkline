@@ -54,6 +54,13 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 			self.updateDisplay()
 		}
 	}
+
+	/// Should the graph be centered at the zero line?
+	@IBInspectable public var centeredAtZeroLine: Bool = false {
+		didSet {
+			self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
+		}
+	}
 	
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?

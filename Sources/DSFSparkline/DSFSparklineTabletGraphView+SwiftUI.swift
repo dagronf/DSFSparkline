@@ -37,9 +37,9 @@ public extension DSFSparklineTabletGraphView {
 		/// The 'loss' color for the sparkline
 		let lossColor: DSFColor
 
-		/// The line width (in pixels) to use when drawing the border of each bar
+		/// The line width (in pixels) to use when drawing the border of each tablet
 		let lineWidth: CGFloat
-		/// The spacing (in pixels) between each bar
+		/// The spacing (in pixels) between each tablet
 		let barSpacing: CGFloat
 
 		/// Create a bar graph sparkline
@@ -47,8 +47,8 @@ public extension DSFSparklineTabletGraphView {
 		///   - dataSource: The data source for the graph
 		///   - winColor: The 'win' color for the sparkline
 		///   - lossColor: The 'loss' color for the sparkline
-		///   - lineWidth: The width of the line around each bar
-		///   - barSpacing: The spacing between the bars
+		///   - lineWidth: The width of the line around each tablet
+		///   - barSpacing: The spacing between the tablets
 		public init(dataSource: DSFSparklineDataSource,
 						winColor: DSFColor = .systemGreen,
 						lossColor: DSFColor = .systemRed,

@@ -1,16 +1,31 @@
 //
-//  DSFSparklineOverlay+ZeroLine.swift
+//  DSFSparklineOverlay+GridLines.swift
+//  DSFSparklines
 //
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
-//  Created by Darren Ford on 3/2/21.
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import QuartzCore
 
 public extension DSFSparklineOverlay {
-
-	@objc(DSFSparklineOverlayGridLines) class GridLines: DSFSparklineDataSourceOverlay {
-
+	/// An overlay that draws grid lines at specified vertical points on the sparkline
+	@objc(DSFSparklineOverlayGridLines) class GridLines: DSFSparklineOverlay.DataSource {
 		/// The color of the dotted line at the zero point on the y-axis
 		@objc public var strokeColor: CGColor {
 			didSet {
@@ -32,72 +47,53 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		/// The y-values for the lines
+		/// The y-values within the range of the datasource for the lines
 		@objc public var floatValues: [CGFloat] = [] {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
-		/// A string representation of the line dash lengths for the zero line, eg. "1,3,4,2". If you want a solid line, specify "-"
-		///
-		/// Primarily used for Interface Builder integration
-		@objc public func setDashStyleString(_ dashStyleString: String) {
-			if dashStyleString == "-" {
-				// Solid line
-				self.dashStyle = []
-			}
-			else {
-				let components = dashStyleString.split(separator: ",")
-				let floats: [CGFloat] = components
-					.map { String($0) } // Convert to string array
-					.compactMap { Float($0) } // Convert to float array if possible
-					.compactMap { CGFloat($0) } // Convert to CGFloat array
-				if components.count == floats.count {
-					self.dashStyle = floats
-				}
-				else {
-					Swift.print("ERROR: Zero Line Style string format is incompatible (\(dashStyleString) -> \(components))")
-				}
-			}
-		}
-
 		@objc public init(dataSource: DSFSparklineDataSource? = nil,
-								floatValues: [CGFloat] = [],
+								floatValues _: [CGFloat] = [],
 								strokeColor: CGColor = DSFColor.gray.cgColor,
 								strokeWidth: CGFloat = 1.0,
-								dashStyle: [CGFloat] = [1.0, 1.0]) {
+								dashStyle: [CGFloat] = [1.0, 1.0])
+		{
 			self.strokeColor = strokeColor
 			self.strokeWidth = strokeWidth
 			self.dashStyle = dashStyle
 
 			super.init(dataSource: dataSource)
-
-			self.contentsScale = 2
 		}
 
-		required init?(coder: NSCoder) {
+		@available(*, unavailable)
+		required init?(coder _: NSCoder) {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		open override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-			guard let dataSource = self.dataSource else {
-				return bounds
-			}
+		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+			return self.drawGridLines(context: context, bounds: bounds, scale: scale)
+		}
+	}
+}
 
-			let drawRect = bounds.integral
-
-			context.setLineWidth(self.strokeWidth)
-			context.setStrokeColor(self.strokeColor)
-			context.setLineDash(phase: 0.0, lengths: self.dashStyle)
-
-			self.floatValues.forEach { value in
-				let fractional = dataSource.fractionalPosition(for: value)
-				let zeroPos = drawRect.height - (fractional * drawRect.height).rounded(.towardZero)
-				context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos),
-																 CGPoint(x: drawRect.width, y: zeroPos)])
-			}
+extension DSFSparklineOverlay.GridLines {
+	func drawGridLines(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+		guard let dataSource = self.dataSource else {
 			return bounds
 		}
+
+		context.setLineWidth(self.strokeWidth)
+		context.setStrokeColor(self.strokeColor)
+		context.setLineDash(phase: 0.0, lengths: self.dashStyle)
+
+		self.floatValues.forEach { value in
+			let fractional = dataSource.fractionalPosition(for: value)
+			let zeroPos = bounds.height - (fractional * bounds.height).rounded(.towardZero)
+			context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos),
+															 CGPoint(x: bounds.width, y: zeroPos)])
+		}
+		return bounds
 	}
 }

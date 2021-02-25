@@ -115,6 +115,7 @@
                                                         <integer key="value" value="30"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="centeredAtZeroLine" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="zeroLineDashStyleString" value="4,4"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ai9-lk-hdF" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">

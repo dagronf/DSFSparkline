@@ -130,14 +130,14 @@ struct ActiveView: View {
 	
 	@State var selectedType = 1
 	
-	let gradient = DSFGradient(posts: [
-		DSFGradient.Post(color: DSFColor.systemRed.cgColor, location: 0),
-		DSFGradient.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
-		DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
-		DSFGradient.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
-		DSFGradient.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
-		DSFGradient.Post(color: DSFColor.systemIndigo.cgColor, location: 5 / 6),
-		DSFGradient.Post(color: DSFColor.systemPurple.cgColor, location: 6 / 6),
+	let gradient = DSFGradientBucket(posts: [
+		DSFGradientBucket.Post(color: DSFColor.systemRed.cgColor, location: 0),
+		DSFGradientBucket.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
+		DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
+		DSFGradientBucket.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
+		DSFGradientBucket.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
+		DSFGradientBucket.Post(color: DSFColor.systemIndigo.cgColor, location: 5 / 6),
+		DSFGradientBucket.Post(color: DSFColor.systemPurple.cgColor, location: 6 / 6),
 	])
 	
 	var body: some View {

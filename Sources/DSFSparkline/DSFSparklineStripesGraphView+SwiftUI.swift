@@ -35,11 +35,11 @@ public extension DSFSparklineStripesGraphView {
 		let barSpacing: UInt
 		let integral: Bool
 
-		let gradient: DSFGradient
+		let gradient: DSFGradientBucket
 
-		static public let shared = DSFGradient(posts: [
-			DSFGradient.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 0),
-			DSFGradient.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 1)
+		static public let shared = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 0),
+			DSFGradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 1)
 		])
 
 		/// Create a databar graph
@@ -55,7 +55,7 @@ public extension DSFSparklineStripesGraphView {
 		public init(dataSource: DSFSparklineDataSource,
 						integral: Bool = false,
 						barSpacing: UInt = 0,
-						gradient: DSFGradient = Self.shared)
+						gradient: DSFGradientBucket = Self.shared)
 		{
 			self.dataSource = dataSource
 			self.integral = integral

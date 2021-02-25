@@ -1,8 +1,24 @@
 //
-//  File.swift
+//  DSFSparklineSurfaceBitmap.swift
+//  DSFSparklines
 //
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
-//  Created by Darren Ford on 24/2/21.
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import CoreGraphics
@@ -11,15 +27,12 @@ import Foundation
 /// A surface for drawing a sparkline into an image
 @objc public class DSFSparklineSurfaceBitmap: NSObject {
 
-	// The overlays to use when generating the image
-	private var overlays: [DSFSparklineOverlay] = []
-
-	/// Add a sparkline overlay to the bitmap
+	/// Add a sparkline overlay to the surface
 	@objc public func addOverlay(_ overlay: DSFSparklineOverlay) {
 		self.overlays.append(overlay)
 	}
 
-	/// Return a CGImage representation of the sparklilne
+	/// Return a CGImage representation of the sparklline
 	/// - Parameters:
 	///   - size: The dimension in pixels
 	///   - scale: The scale to use (eg. retina == 2)
@@ -43,6 +56,11 @@ import Foundation
 
 		return bitmapContext.makeImage()
 	}
+
+	// MARK: Private
+
+	// The overlays to use when generating the image
+	private var overlays: [DSFSparklineOverlay] = []
 }
 
 // MARK: - AppKit Additions
@@ -51,6 +69,7 @@ import Foundation
 
 import AppKit
 public extension DSFSparklineSurfaceBitmap {
+	/// Generate an NSImage for the contents of the surface
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> NSImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
 			return nil
@@ -65,6 +84,7 @@ public extension DSFSparklineSurfaceBitmap {
 
 import UIKit
 public extension DSFSparklineSurfaceBitmap {
+	/// Generate a UIImage for the contents of the surface
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> UIImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
 			return nil

@@ -68,10 +68,18 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	// MARK: Zero-line display
 
 	/// The width of the dotted line at the zero point on the y-axis
-	@IBInspectable public var zeroLineWidth: CGFloat = 1.0
+	@IBInspectable public var zeroLineWidth: CGFloat = 1.0 {
+		didSet {
+			self.zerolineOverlay.strokeWidth = zeroLineWidth
+		}
+	}
 
 	/// The line style for the dotted line. Use [] to specify a solid line.
-	@objc public var zeroLineDashStyle: [CGFloat] = [1.0, 1.0]
+	@objc public var zeroLineDashStyle: [CGFloat] = [1.0, 1.0] {
+		didSet {
+			self.zerolineOverlay.dashStyle = zeroLineDashStyle
+		}
+	}
 
 	/// A string representation of the line dash lengths for the zero line, eg. "1,3,4,2". If you want a solid line, specify "-"
 	///
@@ -83,13 +91,9 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 				self.zeroLineDashStyle = []
 			}
 			else {
-				let components = self.zeroLineDashStyleString.split(separator: ",")
-				let floats: [CGFloat] = components
-					.map { String($0) } // Convert to string array
-					.compactMap { Float($0) } // Convert to float array if possible
-					.compactMap { CGFloat($0) } // Convert to CGFloat array
-				if components.count == floats.count {
-					self.zeroLineDashStyle = floats
+				let components = self.zeroLineDashStyleString.extractCGFloats()
+				if components.count >= 2 {
+					self.zeroLineDashStyle = components
 				}
 				else {
 					Swift.print("ERROR: Zero Line Style string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
@@ -101,8 +105,12 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	// MARK: Zero-line centering
 
-	/// Should the graph be centered at the zero line?
-	@IBInspectable public var centeredAtZeroLine: Bool = false
+//	/// Should the graph be centered at the zero line?
+//	@IBInspectable public var centeredAtZeroLine: Bool = false {
+//		didSet {
+//			self.
+//		}
+//	}
 
 	/// The color used to draw values below the zero line. If nil, is the same as the graph color
 	#if os(macOS)
@@ -149,22 +157,13 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	/// A string of the format "0.1,0.7"
 	@IBInspectable public var highlightRangeString: String? = nil {
 		didSet {
-			if let rangeStr = highlightRangeString {
-				let components = rangeStr.split(separator: ",")
-				let floats: [CGFloat] = components
-					.map { String($0) } // Convert to string array
-					.compactMap { Float($0) } // Convert to float array if possible
-					.compactMap { CGFloat($0) } // Convert to CGFloat array
-				if floats.count == 2, floats[0] < floats[1] {
-					self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
-				}
-				else {
-					self.highlightRangeDefinition = []
-					Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
-				}
+			let floats = self.highlightRangeString?.extractCGFloats() ?? []
+			if floats.count == 2, floats[0] < floats[1] {
+				self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
 			}
 			else {
 				self.highlightRangeDefinition = []
+				Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(floats))")
 			}
 		}
 	}

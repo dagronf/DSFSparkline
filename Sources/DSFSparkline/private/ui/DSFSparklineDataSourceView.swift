@@ -48,7 +48,7 @@ import UIKit
 			self.updateDataObserver()
 
 			self.rootLayer.sublayers?.forEach { layer in
-				if let l = layer as? DSFSparklineDataSourceOverlay {
+				if let l = layer as? DSFSparklineOverlay.DataSource {
 					l.dataSource = self.dataSource
 				}
 			}

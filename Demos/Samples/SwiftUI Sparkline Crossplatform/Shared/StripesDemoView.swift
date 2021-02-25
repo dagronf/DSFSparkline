@@ -11,36 +11,45 @@ import DSFSparkline
 
 struct StripesDemoView: View {
 
-	let gradient = DSFGradient(
+	let gradient = DSFGradientBucket(
 		posts: [
-			DSFGradient.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
-			DSFGradient.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
-			DSFGradient.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
+			DSFGradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
+			DSFGradientBucket.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
+			DSFGradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
 		]
 	)
 
-	let gradient2: DSFGradient = {
-		let g = DSFGradient(posts: [
-			DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 0),
-			DSFGradient.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+	let gradientBucketed = DSFGradientBucket(
+		posts: [
+			DSFGradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
+			DSFGradientBucket.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
+			DSFGradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
+		],
+		bucketCount: 6
+	)
+
+	let gradient2: DSFGradientBucket = {
+		let g = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 0),
+			DSFGradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
 		])
 		g.bucketCount = 4
 		return g
 	}()
 
-	let gradient3: DSFGradient = {
-		let g = DSFGradient(posts: [
-			DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 0),
-			DSFGradient.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+	let gradient3: DSFGradientBucket = {
+		let g = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 0),
+			DSFGradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
 		])
 		g.bucketCount = 5
 		return g
 	}()
 
-	let gradient4: DSFGradient = {
-		let g = DSFGradient(posts: [
-			DSFGradient.Post(r: 0.0, g: 0.0, b: 0.0, location: 0),
-			DSFGradient.Post(r: 1.0, g: 1.0, b: 1.0, location: 1.0)
+	let gradient4: DSFGradientBucket = {
+		let g = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(r: 0.0, g: 0.0, b: 0.0, location: 0),
+			DSFGradientBucket.Post(r: 1.0, g: 1.0, b: 1.0, location: 1.0)
 		])
 		g.bucketCount = 8
 		return g
@@ -49,14 +58,25 @@ struct StripesDemoView: View {
 	var body: some View {
 		VStack {
 
-			Text("Global annual mean temperature anomaly")
+			VStack {
+				Text("Global annual mean temperature anomaly")
+				DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+																 barSpacing: 1,
+																 gradient: self.gradient)
+					.frame(height: 30)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+			}
 
-			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
-															 barSpacing: 1,
-															 gradient: self.gradient)
-				.frame(height: 30)
-				.padding(5)
-				.border(Color.gray.opacity(0.2), width: 1)
+			VStack {
+				Text("Global annual mean temperature anomaly (6 color buckets)")
+				DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+																 barSpacing: 1,
+																 gradient: self.gradientBucketed)
+					.frame(height: 30)
+					.padding(5)
+					.border(Color.gray.opacity(0.2), width: 1)
+			}
 
 			DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
 														 graphColor: DSFColor.systemTeal,
@@ -66,22 +86,41 @@ struct StripesDemoView: View {
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 
-			Text("Global annual mean temperature anomaly overlaid")
+			VStack {
+				Text("Global annual mean temperature anomaly overlaid")
 
-			ZStack {
+				ZStack {
 
-				DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
-																 gradient: self.gradient)
-				DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
-															 graphColor: DSFColor.black,
-															 lineWidth: 1.5,
-															 interpolated: true,
-															 lineShading: true)
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+																	 gradient: self.gradient)
+					DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
+																 graphColor: DSFColor.black,
+																 lineWidth: 1.5,
+																 interpolated: true,
+																 lineShading: true)
+				}
+				.frame(height: 40)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
 			}
-			.frame(height: 40)
-			.padding(5)
-			.border(Color.gray.opacity(0.2), width: 1)
 
+			VStack {
+				Text("Global annual mean temperature anomaly overlaid (6 color buckets)")
+
+				ZStack {
+
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+																	 gradient: self.gradientBucketed)
+					DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
+																 graphColor: DSFColor.black,
+																 lineWidth: 1,
+																 interpolated: true,
+																 lineShading: true)
+				}
+				.frame(height: 40)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+			}
 
 
 			Text("Australian annual mean temperature anomaly")
@@ -90,7 +129,7 @@ struct StripesDemoView: View {
 				Text("integral").frame(width: 70, alignment: Alignment.trailing)
 				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
 																 integral: true,
-																 barSpacing: 1,
+																 barSpacing: 2,
 																 gradient: self.gradient2)
 					.frame(height: 25)
 					.padding(5)
@@ -106,7 +145,6 @@ struct StripesDemoView: View {
 			}
 
 			VStack {
-				Text("Gradient with buckets")
 				HStack {
 					VStack {
 						DSFSparklineStripesGraphView.SwiftUI(dataSource: GradientTestDataSource,

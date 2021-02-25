@@ -98,7 +98,7 @@ public class DSFSparklineTabletGraphView: DSFSparklineDataSourceView {
 		super.colorDidChange()
 
 		self.overlay.lineWidth = self.lineWidth
-		self.overlay.barSpacing = self.barSpacing
+		self.overlay.tabletSpacing = self.barSpacing		// backwards compatible naming here
 
 		self.overlay.winFillColor = self.winColor.withAlphaComponent(0.3).cgColor
 		self.overlay.winStrokeColor = self.winColor.cgColor

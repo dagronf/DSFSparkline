@@ -1,8 +1,24 @@
 //
-//  File.swift
-//  
+//  DSFSparklineOverlay+DataBar.swift
+//  DSFSparklines
 //
-//  Created by Darren Ford on 24/2/21.
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
+//
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import QuartzCore
@@ -18,26 +34,38 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		/// The 'undrawn' color for the graph
+		/// The 'undrawn' color for the graph.
+		///
+		/// If a maximum total value is defined, and the datasource doesn't completely fill the total, then
+		/// the empty section of the databar is drawn using this color.
 		@objc public var unsetColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
-		/// The stroke color for the chart
+		/// The stroke color for the line(s) to be drawn between each segment of the databar.
 		@objc public var strokeColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
-		/// The width of the stroke line
+		/// The width of the stroke line to be drawn between each segment of the databar.  if 0, no stroke is drawn
 		@objc public var lineWidth: CGFloat = 0.5 {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
+
+		/// The palette to use when drawing the databar
+		@objc public var palette = DSFSparklinePalette.shared {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
+		// MARK: Animation support
 
 		/// Should the pie chart animate in?
 		@objc public var animated: Bool = false
@@ -45,12 +73,7 @@ public extension DSFSparklineOverlay {
 		/// The length of the animate-in duration
 		@objc public var animationDuration: CGFloat = 0.25
 
-		/// The palette to use when drawing the pie chart
-		@objc public var palette = DSFSparklinePalette.shared {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
+		// MARK: Data change
 
 		override func dataDidChange() {
 			super.dataDidChange()

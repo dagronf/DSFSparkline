@@ -1,18 +1,37 @@
 //
 //  DSFSparklineOverlay+RangeHighlight.swift
+//  DSFSparklines
 //
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
-//  Created by Darren Ford on 3/2/21.
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import QuartzCore
 
 public extension DSFSparklineOverlay {
 
-	@objc(DSFSparklineOverlayRangeHighlight) class RangeHighlight: DSFSparklineDataSourceOverlay {
+	/// An overlay that draws a color range on the sparkline
+	@objc(DSFSparklineOverlayRangeHighlight) class RangeHighlight: DSFSparklineOverlay.DataSource {
+
+		static let defaultFillColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.5, 0.5, 0.5, 0.5])!
 
 		/// The color to fill the specified range
-		@objc public var fillColor: CGColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.5, 0.5, 0.5, 0.5])! {
+		@objc public var fillColor: CGColor = RangeHighlight.defaultFillColor {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -28,30 +47,6 @@ public extension DSFSparklineOverlay {
 		/// objective-c compatible highlight range setting
 		@objc public func setHighlightRange(lowerBound: CGFloat, upperBound: CGFloat) {
 			self.highlightRange = lowerBound ..< upperBound
-		}
-
-		@objc public var highlightRangeString: String? = nil {
-			didSet {
-				if let rangeStr = highlightRangeString {
-					let components = rangeStr.split(separator: ",")
-					let floats: [CGFloat] = components
-						.map { String($0) } 				// Convert to string array
-						.compactMap { Float($0) } 		// Convert to float array if possible
-						.compactMap { CGFloat($0) } 	// Convert to CGFloat array
-					if floats.count == 2, floats[0] < floats[1] {
-						self.highlightRange = floats[0] ..< floats[1]
-					}
-					else {
-						self.highlightRange = nil
-						Swift.print("ERROR: Highlight range string format is incompatible (\(self.highlightRangeString ?? "nil") -> \(components))")
-					}
-				}
-				else {
-					self.highlightRange = nil
-				}
-
-				self.setNeedsDisplay()
-			}
 		}
 
 		public init(dataSource: DSFSparklineDataSource? = nil,

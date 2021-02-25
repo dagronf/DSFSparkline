@@ -181,3 +181,15 @@ extension CGColor {
 	}
 }
 #endif
+
+extension String {
+	func extractCGFloats() -> [CGFloat] {
+		let components = self.split(separator: ",")
+		let floats: [CGFloat] = components
+			.map { String($0) } // Convert to string array
+			.compactMap { Float($0) } // Convert to float array if possible
+			.compactMap { CGFloat($0) } // Convert to CGFloat array
+		return floats
+	}
+}
+

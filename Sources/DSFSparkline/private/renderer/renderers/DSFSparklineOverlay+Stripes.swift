@@ -1,23 +1,39 @@
 //
-//  File.swift
+//  DSFSparklineOverlay+Stripes.swift
+//  DSFSparklines
 //
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
-//  Created by Darren Ford on 24/2/21.
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import QuartzCore
 
 public extension DSFSparklineOverlay {
-	@objc(DSFSparklineOverlayStripes) class Stripes: DSFSparklineDataSourceOverlay {
+	@objc(DSFSparklineOverlayStripes) class Stripes: DSFSparklineOverlay.DataSource {
 
 		// A default gradient pattern
-		static let defaultGradient = DSFGradient(posts: [
-			DSFGradient.Post(color: DSFColor.systemRed.cgColor, location: 0),
-			DSFGradient.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
-			DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
-			DSFGradient.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
-			DSFGradient.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
-			DSFGradient.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 6),
+		static let defaultGradient = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(color: DSFColor.systemRed.cgColor, location: 0),
+			DSFGradientBucket.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
+			DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
+			DSFGradientBucket.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
+			DSFGradientBucket.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
+			DSFGradientBucket.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 6),
 		])
 
 		/// The width of the stroke for the tablet
@@ -38,7 +54,7 @@ public extension DSFSparklineOverlay {
 		///
 		/// Note that transparent gradients display strangely and not as I would expect them to.
 		/// Stick with solid colors in your gradient for the current time.
-		@objc public var gradient: DSFGradient = Stripes.defaultGradient {
+		@objc public var gradient: DSFGradientBucket = Stripes.defaultGradient {
 			didSet {
 				self.setNeedsDisplay()
 			}
