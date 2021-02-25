@@ -9,8 +9,8 @@ import SwiftUI
 
 import DSFSparkline
 
-let b1: DSFSparklineBitmap = {
-	let b = DSFSparklineBitmap()
+let b1: DSFSparklineSurfaceBitmap = {
+	let b = DSFSparklineSurfaceBitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
 
@@ -31,8 +31,8 @@ let b1: DSFSparklineBitmap = {
 	return b
 }()
 
-let b2: DSFSparklineBitmap = {
-	let b = DSFSparklineBitmap()
+let b2: DSFSparklineSurfaceBitmap = {
+	let b = DSFSparklineSurfaceBitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
 
@@ -51,7 +51,7 @@ struct BitmapGenerationView: View {
 	func makeImage(_ nsImage: NSImage) -> Image {
 		return Image(nsImage: nsImage)
 	}
-	func generate(_ bitmap: DSFSparklineBitmap) -> NSImage {
+	func generate(_ bitmap: DSFSparklineSurfaceBitmap) -> NSImage {
 		guard let image = bitmap.image(size: CGSize(width: 200, height: 40), scale: 2) else {
 			return NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: nil)!
 		}
@@ -62,7 +62,7 @@ struct BitmapGenerationView: View {
 		return Image(uiImage: uiImage)
 	}
 
-	func generate(_ bitmap: DSFSparklineBitmap) -> UIImage {
+	func generate(_ bitmap: DSFSparklineSurfaceBitmap) -> UIImage {
 		guard let image = bitmap.image(size: CGSize(width: 200, height: 40), scale: 2) else {
 			return UIImage(systemName: "exclamationmark.triangle.fill")!
 		}

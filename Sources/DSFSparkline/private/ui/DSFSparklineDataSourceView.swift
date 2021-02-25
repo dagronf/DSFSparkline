@@ -1,5 +1,5 @@
 //
-//  DSFSparklineView.swift
+//  DSFSparklineDataSourceView.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 16/12/19.
@@ -27,8 +27,9 @@ import Cocoa
 import UIKit
 #endif
 
+/// A Sparkline View with an attached datasource.
 @IBDesignable
-@objc public class DSFSparklineView: DSFSparklineRendererView {
+@objc public class DSFSparklineDataSourceView: DSFSparklineSurfaceView {
 
 	#if TARGET_INTERFACE_BUILDER
 	/// Need this to hold on to the datasource when using designable, or else it disappears due to being weak
@@ -97,7 +98,7 @@ import UIKit
 	private var windowSizeSetInXib = false
 }
 
-extension DSFSparklineView {
+extension DSFSparklineDataSourceView {
 
 	private func updateDataObserver() {
 		self.dataObserver = nil

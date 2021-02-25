@@ -8,7 +8,8 @@
 import CoreGraphics
 import Foundation
 
-@objc public class DSFSparklineBitmap: NSObject {
+/// A surface for drawing a sparkline into an image
+@objc public class DSFSparklineSurfaceBitmap: NSObject {
 
 	// The overlays to use when generating the image
 	private var overlays: [DSFSparklineOverlay] = []
@@ -48,7 +49,7 @@ import Foundation
 
 #if canImport(AppKit)
 import AppKit
-public extension DSFSparklineBitmap {
+public extension DSFSparklineSurfaceBitmap {
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> NSImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
 			return nil
@@ -62,7 +63,7 @@ public extension DSFSparklineBitmap {
 
 #if canImport(UIKit)
 import UIKit
-public extension DSFSparklineBitmap {
+public extension DSFSparklineSurfaceBitmap {
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> UIImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
 			return nil
@@ -78,7 +79,7 @@ public extension DSFSparklineBitmap {
 
 // MARK: - Private
 
-private extension DSFSparklineBitmap {
+private extension DSFSparklineSurfaceBitmap {
 	// Generate a bitmap context for the specified rect and scale
 	func generateBitmapContext(rect: CGRect, scale: CGFloat) -> CGContext? {
 		let colorSpace = CGColorSpaceCreateDeviceRGB()

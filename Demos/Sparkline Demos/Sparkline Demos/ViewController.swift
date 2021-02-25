@@ -17,9 +17,9 @@ class ViewController: NSViewController {
 
 
 
-	@IBOutlet weak var line1: DSFSparklineRendererView!
-	@IBOutlet weak var bar1: DSFSparklineRendererView!
-	@IBOutlet weak var stackline1: DSFSparklineRendererView!
+	@IBOutlet weak var line1: DSFSparklineSurfaceView!
+	@IBOutlet weak var bar1: DSFSparklineSurfaceView!
+	@IBOutlet weak var stackline1: DSFSparklineSurfaceView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -172,7 +172,7 @@ extension ViewController {
 			self.imageView.layer?.backgroundColor = .black
 			self.imageView2.layer?.backgroundColor = .white
 
-			let b = DSFSparklineBitmap()
+			let b = DSFSparklineSurfaceBitmap()
 			b.addOverlay(h2)
 			b.addOverlay(h3)
 			b.addOverlay(zeroLine2)

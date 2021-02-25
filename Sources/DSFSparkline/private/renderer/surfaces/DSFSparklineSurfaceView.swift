@@ -11,7 +11,10 @@ import Cocoa
 import UIKit
 #endif
 
-@objc public class DSFSparklineRendererView: DSFView {
+/// A surface for drawing a sparkline into a view.
+///
+/// Represents the generic base class for a view.
+@objc public class DSFSparklineSurfaceView: DSFView {
 	#if os(macOS)
 	override public var isFlipped: Bool {
 		return true
@@ -64,7 +67,7 @@ import UIKit
 	}
 }
 
-extension DSFSparklineRendererView {
+extension DSFSparklineSurfaceView {
 
 	/// Add a sparkline overlay to the view
 	public func addOverlay(_ overlay: DSFSparklineOverlay) {

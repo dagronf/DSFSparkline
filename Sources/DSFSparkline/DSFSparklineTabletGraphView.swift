@@ -29,7 +29,7 @@ import UIKit
 
 /// A tablet-style sparkline. Similar to win/loss except rendering as a row of filled/unfilled circles
 @IBDesignable
-public class DSFSparklineTabletGraphView: DSFSparklineView {
+public class DSFSparklineTabletGraphView: DSFSparklineDataSourceView {
 
 	let overlay = DSFSparklineOverlay.Tablet()
 

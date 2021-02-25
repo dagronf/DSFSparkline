@@ -109,6 +109,7 @@ public extension DSFSparklineDataSource {
 public extension DSFSparklineDataSource {
 	
 	/// Add a new value. If there are more values than the window size, the oldest value is discarded
+	@discardableResult
 	@objc func push(value: CGFloat) -> Bool {
 		defer {
 			self.notifyDataChange()

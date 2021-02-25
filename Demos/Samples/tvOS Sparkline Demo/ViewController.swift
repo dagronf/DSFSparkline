@@ -11,7 +11,7 @@ import DSFSparkline
 
 class ViewController: UIViewController {
 
-	@IBOutlet weak var green: DSFSparklineView!
+	@IBOutlet weak var green: DSFSparklineDataSourceView!
 	var greenDataSource = DSFSparklineDataSource(range: -11 ... 11)
 
 	@IBOutlet weak var red: DSFSparklineLineGraphView!

@@ -100,6 +100,7 @@ class SparklineWindow<T> where T: BinaryFloatingPoint {
 	/// Push a new value into the sparkline. If the value is outside a specified range, then
 	/// - Parameter value: The value to push into the sparkline
 	/// - Return whether the
+	@discardableResult
 	public func push(value: T) -> Bool {
 		let plotValue: T
 		if let r = self.data.yRange, !r.contains(value) {

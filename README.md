@@ -584,7 +584,7 @@ You can set where the 'zero' line draws via the `zeroLineValue` on the datasourc
 
 * Renamed `SLColor` and `SLView` to `DSFColor` and `DSFView` for module naming consistency.
 
-* I removed `windowSize` from the core `DSFSparklineView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which should only be called from Interface Builder.  If you want to set the windowSize from your xib file, set the `graphWindowSize` inspectable.
+* I removed `windowSize` from the core `DSFSparklineDataSourceView`. `windowSize` is related to data, and should never have been part of the UI definition.  I've provided a replacement purely for `IBDesignable` support called `graphWindowSize` which should only be called from Interface Builder.  If you want to set the windowSize from your xib file, set the `graphWindowSize` inspectable.
 
 	If you see warnings in the log like 
 `2020-12-07 18:22:51.619867+1100 iOS Sparkline Demo[75174:1459637] Failed to set (windowSize) user defined inspected property on (DSFSparkline.DSFSparklineBarGraphView): [<DSFSparkline.DSFSparklineBarGraphView 0x7fe2eb10f2b0> setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key windowSize.

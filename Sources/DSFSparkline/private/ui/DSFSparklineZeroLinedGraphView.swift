@@ -31,7 +31,7 @@ import UIKit
 
 /// A view that can draw a zero-point line. Should never be used directly, just to inherit from for other graph types
 @IBDesignable
-public class DSFSparklineZeroLineGraphView: DSFSparklineView {
+public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	// The zero-line overlay
 	let zerolineOverlay = DSFSparklineOverlay.ZeroLine()

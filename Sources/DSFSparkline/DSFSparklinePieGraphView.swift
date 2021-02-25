@@ -29,7 +29,7 @@ import UIKit
 
 /// A sparkline that draws a simple pie chart
 @IBDesignable
-public class DSFSparklinePieGraphView: DSFSparklineRendererView {
+public class DSFSparklinePieGraphView: DSFSparklineSurfaceView {
 
 	let pieOverlay = DSFSparklineOverlay.Pie()
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -734,19 +733,19 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="UPR-Q9-dIr" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="UPR-Q9-dIr" customClass="DSFSparklineSurfaceView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="166" width="440" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="eWz-xZ-May"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="b91-5U-48Y" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="b91-5U-48Y" customClass="DSFSparklineSurfaceView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="83" width="440" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="P3e-ND-ZAG"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="q0y-3a-uGf" customClass="DSFSparklineRendererView" customModule="DSFSparkline">
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="q0y-3a-uGf" customClass="DSFSparklineSurfaceView" customModule="DSFSparkline">
                                         <rect key="frame" x="0.0" y="0.0" width="440" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="J68-vK-RS1"/>

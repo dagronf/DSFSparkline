@@ -29,7 +29,7 @@ import UIKit
 
 /// A sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 @IBDesignable
-public class DSFSparklineDotGraphView: DSFSparklineView {
+public class DSFSparklineDotGraphView: DSFSparklineDataSourceView {
 
 	let overlay = DSFSparklineOverlay.Dot()
 

@@ -24,22 +24,22 @@ class ViewController: NSViewController {
 	}
 
 
-	@IBOutlet weak var sparkCrash: DSFSparklineView!
+	@IBOutlet weak var sparkCrash: DSFSparklineDataSourceView!
 	var sparkCrashDatasource = DSFSparklineDataSource(range: -10 ... 10)
 
-	@IBOutlet weak var sparkCrash2: DSFSparklineView!
+	@IBOutlet weak var sparkCrash2: DSFSparklineDataSourceView!
 	var sparkCrash2Datasource = DSFSparklineDataSource(range: -13 ... 13)
 
-	@IBOutlet weak var sparkDeprecation: DSFSparklineView!
+	@IBOutlet weak var sparkDeprecation: DSFSparklineDataSourceView!
 	var sparkDeprecationDatasource = DSFSparklineDataSource(range: -10 ... 10)
 
-	@IBOutlet weak var sparkIntervention: DSFSparklineView!
+	@IBOutlet weak var sparkIntervention: DSFSparklineDataSourceView!
 	var sparkInterventionDatasource = DSFSparklineDataSource()
 
-	@IBOutlet weak var sparkNetworkError: DSFSparklineView!
+	@IBOutlet weak var sparkNetworkError: DSFSparklineDataSourceView!
 	var sparkNetworkErrorDatasource = DSFSparklineDataSource(range: -10 ... 30)
 
-	@IBOutlet weak var sparkTransmissionError: DSFSparklineView!
+	@IBOutlet weak var sparkTransmissionError: DSFSparklineDataSourceView!
 	var sparkTransmissionErrorDatasource = DSFSparklineDataSource(range: 0 ... 1)
 
 	@IBOutlet weak var sparkPacketRejection: DSFSparklineWinLossGraphView!
@@ -50,15 +50,15 @@ class ViewController: NSViewController {
 
 
 
-	@IBOutlet weak var fakeSparkCpu1: DSFSparklineView!
+	@IBOutlet weak var fakeSparkCpu1: DSFSparklineDataSourceView!
 	var fakeSparkCpu1Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
-	@IBOutlet weak var fakeSparkCpu2: DSFSparklineView!
+	@IBOutlet weak var fakeSparkCpu2: DSFSparklineDataSourceView!
 	var fakeSparkCpu2Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
-	@IBOutlet weak var fakeSparkCpu3: DSFSparklineView!
+	@IBOutlet weak var fakeSparkCpu3: DSFSparklineDataSourceView!
 	var fakeSparkCpu3Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
-	@IBOutlet weak var fakeSparkCpu4: DSFSparklineView!
+	@IBOutlet weak var fakeSparkCpu4: DSFSparklineDataSourceView!
 	var fakeSparkCpu4Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
-	@IBOutlet weak var fakeSparkCpu5: DSFSparklineView!
+	@IBOutlet weak var fakeSparkCpu5: DSFSparklineDataSourceView!
 	var fakeSparkCpu5Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
 
 	@IBOutlet weak var sparkStaticData: DSFSparklineLineGraphView!
