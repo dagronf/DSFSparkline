@@ -9,6 +9,17 @@ import QuartzCore
 
 public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayStripes) class Stripes: DSFSparklineDataSourceOverlay {
+
+		// A default gradient pattern
+		static let defaultGradient = DSFGradient(posts: [
+			DSFGradient.Post(color: DSFColor.systemRed.cgColor, location: 0),
+			DSFGradient.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
+			DSFGradient.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
+			DSFGradient.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
+			DSFGradient.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
+			DSFGradient.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 6),
+		])
+
 		/// The width of the stroke for the tablet
 		@objc public var integral: Bool = true {
 			didSet {
@@ -17,7 +28,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The spacing (in pixels) between each bar
-		@objc public var barSpacing: CGFloat = 1.0 {
+		@objc public var barSpacing: UInt = 1 {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -27,7 +38,7 @@ public extension DSFSparklineOverlay {
 		///
 		/// Note that transparent gradients display strangely and not as I would expect them to.
 		/// Stick with solid colors in your gradient for the current time.
-		@objc public var gradient: DSFGradient? {
+		@objc public var gradient: DSFGradient = Stripes.defaultGradient {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -46,9 +57,7 @@ public extension DSFSparklineOverlay {
 
 private extension DSFSparklineOverlay.Stripes {
 	func drawStripeGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-		guard let dataSource = self.dataSource,
-				let gradient = self.gradient else
-		{
+		guard let dataSource = self.dataSource else {
 			return bounds
 		}
 
@@ -93,9 +102,7 @@ private extension DSFSparklineOverlay.Stripes {
 	}
 
 	private func drawStripeGraphFloat(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
-		guard let dataSource = self.dataSource,
-				let gradient = self.gradient else
-		{
+		guard let dataSource = self.dataSource else {
 			return bounds
 		}
 

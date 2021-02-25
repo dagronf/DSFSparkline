@@ -30,8 +30,12 @@ import UIKit
 /// A sparkline graph that displays solid color bars with a gradient (like the climate graph)
 @IBDesignable
 public class DSFSparklineStripesGraphView: DSFSparklineView {
+
+	let overlay = DSFSparklineOverlay.Stripes()
+
 	@IBInspectable public var integral: Bool = true {
 		didSet {
+			self.colorDidChange()
 			self.updateDisplay()
 		}
 	}
@@ -39,6 +43,7 @@ public class DSFSparklineStripesGraphView: DSFSparklineView {
 	/// The spacing (in pixels) between each bar
 	@IBInspectable public var barSpacing: UInt = 0 {
 		didSet {
+			self.colorDidChange()
 			self.updateDisplay()
 		}
 	}
@@ -49,7 +54,35 @@ public class DSFSparklineStripesGraphView: DSFSparklineView {
 	/// Stick with solid colors in your gradient for the current time.
 	@objc public var gradient: DSFGradient? {
 		didSet {
-			self.updateGradient()
+			self.colorDidChange()
+			self.updateDisplay()
 		}
+	}
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+
+		self.colorDidChange()
+
+		self.overlay.setNeedsDisplay()
+	}
+
+	override func colorDidChange() {
+		super.colorDidChange()
+
+		self.overlay.integral = self.integral
+		self.overlay.barSpacing = self.barSpacing
+
+		self.overlay.gradient = self.gradient ?? DSFSparklineOverlay.Stripes.defaultGradient
 	}
 }

@@ -52,6 +52,7 @@ struct StripesDemoView: View {
 			Text("Global annual mean temperature anomaly")
 
 			DSFSparklineStripesGraphView.SwiftUI(dataSource: WorldDataSource,
+															 integral: true,
 															 barSpacing: 1,
 															 gradient: self.gradient)
 				.frame(height: 30)
