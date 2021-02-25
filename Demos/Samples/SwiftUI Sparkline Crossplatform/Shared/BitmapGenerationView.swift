@@ -9,7 +9,7 @@ import SwiftUI
 
 import DSFSparkline
 
-let b1: DSFSparklineSurfaceBitmap = {
+fileprivate let b1: DSFSparklineSurfaceBitmap = {
 	let b = DSFSparklineSurfaceBitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
@@ -31,7 +31,7 @@ let b1: DSFSparklineSurfaceBitmap = {
 	return b
 }()
 
-let b2: DSFSparklineSurfaceBitmap = {
+fileprivate let b2: DSFSparklineSurfaceBitmap = {
 	let b = DSFSparklineSurfaceBitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
@@ -45,14 +45,30 @@ let b2: DSFSparklineSurfaceBitmap = {
 	return b
 }()
 
+
+fileprivate let tablet1: DSFSparklineSurfaceBitmap = {
+	let b = DSFSparklineSurfaceBitmap()
+
+	let l = DSFSparklineOverlay.Tablet()
+	l.lossFillColor = CGColor.clear
+
+	let dataSource = DSFSparklineDataSource(
+		values: [-1, 5, 3, -7, -2, 2, 5, -1, 5, 3, -7, -2, 2, 5, -1, 5, 3, -7, -2, 2, 5])
+	l.dataSource = dataSource
+	b.addOverlay(l)
+
+	return b
+}()
+
+
 struct BitmapGenerationView: View {
 
 	#if os(macOS)
 	func makeImage(_ nsImage: NSImage) -> Image {
 		return Image(nsImage: nsImage)
 	}
-	func generate(_ bitmap: DSFSparklineSurfaceBitmap) -> NSImage {
-		guard let image = bitmap.image(size: CGSize(width: 200, height: 40), scale: 2) else {
+	func generate(_ bitmap: DSFSparklineSurfaceBitmap, size: CGSize) -> NSImage {
+		guard let image = bitmap.image(size: size, scale: 2) else {
 			return NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: nil)!
 		}
 		return image
@@ -62,8 +78,8 @@ struct BitmapGenerationView: View {
 		return Image(uiImage: uiImage)
 	}
 
-	func generate(_ bitmap: DSFSparklineSurfaceBitmap) -> UIImage {
-		guard let image = bitmap.image(size: CGSize(width: 200, height: 40), scale: 2) else {
+	func generate(_ bitmap: DSFSparklineSurfaceBitmap, size: CGSize) -> UIImage {
+		guard let image = bitmap.image(size: size, scale: 2) else {
 			return UIImage(systemName: "exclamationmark.triangle.fill")!
 		}
 		return image
@@ -74,11 +90,15 @@ struct BitmapGenerationView: View {
 
 	var body: some View {
 		VStack {
-			makeImage(self.generate(b1))
+			makeImage(self.generate(b1, size: CGSize(width: 200, height: 40)))
 				.padding(4)
 				.border(Color.gray)
 
-			makeImage(self.generate(b2))
+			makeImage(self.generate(b2, size: CGSize(width: 200, height: 40)))
+				.padding(4)
+				.border(Color.gray)
+
+			makeImage(self.generate(tablet1, size: CGSize(width: 400, height: 20)))
 				.padding(4)
 				.border(Color.gray)
 		}

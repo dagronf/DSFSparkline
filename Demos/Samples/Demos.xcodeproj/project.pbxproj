@@ -51,6 +51,8 @@
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
+		23529A7425E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
+		23529A7525E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
 		236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FC25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FD25C1392B00F2BACF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57EA25C1392A00F2BACF /* ContentView.swift */; };
@@ -175,6 +177,7 @@
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		23529A5825E847B900DFA52D /* iOS Sparkline Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Sparkline Demo.entitlements"; sourceTree = "<group>"; };
+		23529A7325E84D2A00DFA52D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
 		236A57EA25C1392A00F2BACF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		236A57EB25C1392B00F2BACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 				236A57EB25C1392B00F2BACF /* Assets.xcassets */,
 				238053E425DCD14600B996B5 /* OverlayView.swift */,
 				237B827725E7891D00B3DE23 /* BitmapGenerationView.swift */,
+				23529A7325E84D2A00DFA52D /* Extensions.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1078,6 +1082,7 @@
 				236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */,
 				23FC810025DB3FC50047A800 /* ReportView.swift in Sources */,
 				23FC814025DB4E5D0047A800 /* LineDemoContentView.swift in Sources */,
+				23529A7425E84D2A00DFA52D /* Extensions.swift in Sources */,
 				23FC812025DB47A20047A800 /* WinLossGraphContentView.swift in Sources */,
 				238053E525DCD14600B996B5 /* OverlayView.swift in Sources */,
 				23FC81B425DB59E70047A800 /* DotGraphView.swift in Sources */,
@@ -1099,6 +1104,7 @@
 				236A57FC25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */,
 				23FC810125DB3FC50047A800 /* ReportView.swift in Sources */,
 				23FC814125DB4E5D0047A800 /* LineDemoContentView.swift in Sources */,
+				23529A7525E84D2A00DFA52D /* Extensions.swift in Sources */,
 				23FC812125DB47A20047A800 /* WinLossGraphContentView.swift in Sources */,
 				238053E625DCD14600B996B5 /* OverlayView.swift in Sources */,
 				23FC81B525DB59E70047A800 /* DotGraphView.swift in Sources */,
