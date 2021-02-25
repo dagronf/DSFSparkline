@@ -110,6 +110,7 @@ private extension DSFSparklineOverlay.Line {
 					}
 					else if let fill = self.primaryFillColor {
 						ctx.setFillColor(fill)
+						ctx.fill(drawRect)
 						ctx.fillPath()
 					}
 				}

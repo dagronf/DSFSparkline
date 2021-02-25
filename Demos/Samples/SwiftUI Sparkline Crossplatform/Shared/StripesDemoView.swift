@@ -75,7 +75,8 @@ struct StripesDemoView: View {
 				DSFSparklineLineGraphView.SwiftUI(dataSource: WorldDataSource,
 															 graphColor: DSFColor.black,
 															 lineWidth: 1.5,
-															 lineShading: false)
+															 interpolated: true,
+															 lineShading: true)
 			}
 			.frame(height: 40)
 			.padding(5)
@@ -86,7 +87,7 @@ struct StripesDemoView: View {
 			Text("Australian annual mean temperature anomaly")
 
 			HStack {
-				Text("integral")
+				Text("integral").frame(width: 70, alignment: Alignment.trailing)
 				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
 																 integral: true,
 																 barSpacing: 1,
@@ -96,7 +97,7 @@ struct StripesDemoView: View {
 					.border(Color.gray.opacity(0.2), width: 1)
 			}
 			HStack {
-				Text("fractional")
+				Text("fractional").frame(width: 70, alignment: Alignment.trailing)
 				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
 																 gradient: self.gradient2)
 					.frame(height: 25)

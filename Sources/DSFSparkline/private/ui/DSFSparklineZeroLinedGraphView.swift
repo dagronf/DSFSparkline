@@ -54,13 +54,13 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	#if os(macOS)
 	@IBInspectable public var zeroLineColor = NSColor.gray {
 		didSet {
-			self.colorDidChange()
+			self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
 		}
 	}
 	#else
 	@IBInspectable public var zeroLineColor: UIColor = .systemGray {
 		didSet {
-			self.colorDidChange()
+			self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
 		}
 	}
 	#endif
@@ -128,7 +128,6 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	@IBInspectable public var showHighlightRange: Bool = false {
 		didSet {
 			self.ibHighlightOverlay.isHidden = !self.showHighlightRange
-			self.updateDisplay()
 		}
 	}
 
@@ -137,14 +136,12 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 	@IBInspectable public var highlightColor = NSColor.gray {
 		didSet {
 			self.ibHighlightOverlay.fillColor = self.highlightColor.cgColor
-			self.colorDidChange()
 		}
 	}
 	#else
 	@IBInspectable public var highlightColor: UIColor = .systemGray {
 		didSet {
 			self.ibHighlightOverlay.fillColor = self.highlightColor.cgColor
-			self.colorDidChange()
 		}
 	}
 	#endif

@@ -36,35 +36,40 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph
 	@IBInspectable public var lineWidth: CGFloat = 1.5 {
 		didSet {
-			self.colorDidChange()
+			self.overlay.lineWidth = self.lineWidth
 		}
 	}
 	
 	/// Interpolate a curve between the points
 	@IBInspectable public var interpolated: Bool = false {
 		didSet {
-			self.colorDidChange()
+			self.overlay.interpolated = self.interpolated
 		}
 	}
 	
 	/// Shade the area under the line
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
-			//self.overlay.lineShading = self.lineShading
+			if lineShading == true {
+				self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.4).cgColor
+			}
+			else {
+				self.overlay.primaryFillColor = nil
+			}
 		}
 	}
 	
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false {
 		didSet {
-			self.colorDidChange()
+			self.overlay.shadowed = self.shadowed
 		}
 	}
 
 	/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
 	@IBInspectable public var markerSize: CGFloat = -1 {
 		didSet {
-			self.colorDidChange()
+			self.overlay.markerSize = self.markerSize
 		}
 	}
 

@@ -97,10 +97,17 @@ extension DSFSparklineRendererView {
 		super.layout()
 		self.syncLayers()
 	}
-
+	public override func viewDidMoveToWindow() {
+		super.viewDidMoveToWindow()
+		self.syncLayers()
+	}
 	#else
 	public override func layoutSubviews() {
 		super.layoutSubviews()
+		self.syncLayers()
+	}
+	public override func didMoveToWindow() {
+		super.didMoveToWindow()
 		self.syncLayers()
 	}
 	#endif

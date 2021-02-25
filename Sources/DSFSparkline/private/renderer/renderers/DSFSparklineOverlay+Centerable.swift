@@ -35,7 +35,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		@objc public var primaryFillColor: CGColor? = .black {
+		@objc public var primaryFillColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
