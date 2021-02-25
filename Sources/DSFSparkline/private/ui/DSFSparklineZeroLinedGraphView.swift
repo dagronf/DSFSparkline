@@ -184,6 +184,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 		self.zerolineOverlay.zPosition = -5
 		self.addOverlay(self.ibHighlightOverlay)
 		self.ibHighlightOverlay.zPosition = -10
+		self.ibHighlightOverlay.dataSource = self.dataSource
 
 		//self.addOverlay(self.highlightOverlay)
 	}
@@ -198,9 +199,11 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineView {
 			self.highlightRangeDefinition.forEach { r in
 				let item = DSFSparklineOverlay.RangeHighlight()
 				item.highlightRange = r.range
+				item.dataSource = self.dataSource
 				item.fillColor = r.highlightColor.cgColor
 				item.zPosition = -10
 				self.addOverlay(item)
+				self.highlightOverlay.append(item)
 			}
 			self.updateDisplay()
 		}

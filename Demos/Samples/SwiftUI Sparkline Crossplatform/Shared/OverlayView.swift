@@ -8,6 +8,16 @@
 import SwiftUI
 import DSFSparkline
 
+extension DSFColor {
+	static var primaryTextColor: DSFColor {
+		#if os(macOS)
+		return NSColor.textColor
+		#else
+		return UIColor.label
+		#endif
+	}
+}
+
 struct OverlayView: View {
 	var body: some View {
 		VStack {
@@ -23,7 +33,7 @@ struct OverlayView: View {
 				)
 				DSFSparklineLineGraphView.SwiftUI(
 					dataSource: ds1,
-					graphColor: .gray,
+					graphColor: DSFColor.primaryTextColor,
 					lineWidth: 1,
 					interpolated: true,
 					lineShading: false
