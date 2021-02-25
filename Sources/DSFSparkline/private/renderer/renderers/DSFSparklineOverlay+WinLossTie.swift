@@ -10,6 +10,9 @@ import QuartzCore
 public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayWinLossTie) class WinLossTie: DSFSparklineDataSourceOverlay {
 
+		static let green = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 1])!
+		static let red = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 1])!
+
 		/// The width of the stroke for the tablet
 		@objc public var lineWidth: UInt = 1 {
 			didSet {
@@ -25,21 +28,21 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'win' boxes
-		@objc public var winColor: DSFColor = DSFColor.systemGreen {
+		@objc public var winColor: CGColor = WinLossTie.green {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
 		/// The color to draw the 'loss' boxes
-		@objc public var lossColor: DSFColor = DSFColor.systemRed {
+		@objc public var lossColor: CGColor = WinLossTie.red {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
 		/// The color to draw the 'tie' boxes
-		@objc public var tieColor: DSFColor? {
+		@objc public var tieColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -117,8 +120,8 @@ private extension DSFSparklineOverlay.WinLossTie {
 			if !winPath.isEmpty {
 				outer.usingGState { winState in
 					winState.addPath(winPath)
-					winState.setFillColor(self.winColor.withAlphaComponent(0.3).cgColor)
-					winState.setStrokeColor(self.winColor.cgColor)
+					winState.setFillColor(self.winColor.copy(alpha: 0.3)!)
+					winState.setStrokeColor(self.winColor)
 					winState.setLineWidth(graphLineWidth)
 					winState.drawPath(using: .fillStroke)
 				}
@@ -127,8 +130,8 @@ private extension DSFSparklineOverlay.WinLossTie {
 			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
 					lossState.addPath(lossPath)
-					lossState.setFillColor(self.lossColor.withAlphaComponent(0.3).cgColor)
-					lossState.setStrokeColor(self.lossColor.cgColor)
+					lossState.setFillColor(self.lossColor.copy(alpha: 0.3)!)
+					lossState.setStrokeColor(self.lossColor)
 					lossState.setLineWidth(graphLineWidth)
 					lossState.drawPath(using: .fillStroke)
 				}
@@ -139,9 +142,9 @@ private extension DSFSparklineOverlay.WinLossTie {
 					tieState.addPath(tiePath)
 					tieState.setLineWidth(graphLineWidth)
 
-					let tieAlpha = min(1, tieColor.cgColor.alpha + 0.1)
-					tieState.setFillColor(tieColor.cgColor)
-					tieState.setStrokeColor(tieColor.withAlphaComponent(tieAlpha).cgColor)
+					let tieAlpha = min(1, tieColor.alpha + 0.1)
+					tieState.setFillColor(tieColor)
+					tieState.setStrokeColor(tieColor.copy(alpha: tieAlpha)!)
 					tieState.drawPath(using: .fillStroke)
 				}
 			}

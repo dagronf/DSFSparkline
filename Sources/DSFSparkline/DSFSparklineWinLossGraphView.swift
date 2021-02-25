@@ -30,6 +30,8 @@ import UIKit
 @IBDesignable
 public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 
+	let overlay = DSFSparklineOverlay.WinLossTie()
+
 	/// The line width (in pixels) to use when drawing the border of each bar
 	@IBInspectable public var lineWidth: UInt = 1 {
 		didSet {
@@ -83,4 +85,31 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 		}
 	}
 	#endif
+
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.overlay.setNeedsDisplay()
+	}
+
+	override func colorDidChange() {
+		super.colorDidChange()
+
+		self.overlay.lineWidth = self.lineWidth
+		self.overlay.barSpacing = self.barSpacing
+
+		self.overlay.winColor = self.winColor.cgColor
+		self.overlay.lossColor = self.lossColor.cgColor
+		self.overlay.tieColor = self.tieColor?.cgColor
+	}
 }

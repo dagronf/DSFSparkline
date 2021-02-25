@@ -30,6 +30,9 @@ import UIKit
 /// A sparkline that draws a simple pie chart
 @IBDesignable
 public class DSFSparklinePieGraphView: DSFSparklineRendererView {
+
+	let pieOverlay = DSFSparklineOverlay.Pie()
+
 	/// The data to be displayed in the pie.
 	///
 	/// The values become a percentage of the total value stored within the
@@ -38,7 +41,7 @@ public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 	/// blue cars, you just set the values directly.
 	@objc public var dataSource: [CGFloat] = [] {
 		didSet {
-			self.dataDidChange()
+			self.pieOverlay.dataSource = self.dataSource
 		}
 	}
 
@@ -46,13 +49,13 @@ public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 	#if os(macOS)
 	@IBInspectable public var strokeColor: NSColor? {
 		didSet {
-			self.updateDisplay()
+			self.pieOverlay.strokeColor = self.strokeColor?.cgColor
 		}
 	}
 	#else
 	@IBInspectable public var strokeColor: UIColor? {
 		didSet {
-			self.updateDisplay()
+			self.pieOverlay.strokeColor = self.strokeColor?.cgColor
 		}
 	}
 	#endif
@@ -60,21 +63,48 @@ public class DSFSparklinePieGraphView: DSFSparklineRendererView {
 	/// The width of the stroke line
 	@IBInspectable public var lineWidth: CGFloat = 0.5 {
 		didSet {
-			self.updateDisplay()
+			self.pieOverlay.lineWidth = self.lineWidth
 		}
 	}
 
 	/// Should the pie chart animate in?
-	@IBInspectable public var animated: Bool = false
+	@IBInspectable public var animated: Bool = false {
+		didSet {
+			self.pieOverlay.animated = self.animated
+		}
+	}
 
 	/// The length of the animate-in duration
-	@IBInspectable public var animationDuration: CGFloat = 0.25
+	@IBInspectable public var animationDuration: CGFloat = 0.25 {
+		didSet {
+			self.pieOverlay.animationDuration = self.animationDuration
+		}
+	}
 
 	/// The palette to use when drawing the pie chart
 	@objc public var palette = DSFSparklinePalette.shared {
 		didSet {
-			self.updateDisplay()
+			self.pieOverlay.palette = self.palette
 		}
+	}
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	func configure() {
+		self.addOverlay(self.pieOverlay)
+		self.pieOverlay.setNeedsDisplay()
+
+		self.pieOverlay.strokeColor = self.strokeColor?.cgColor
+		self.pieOverlay.lineWidth = self.lineWidth
+		self.pieOverlay.dataSource = self.dataSource
 	}
 
 	// MARK: - Privates
