@@ -85,15 +85,17 @@ public extension DSFSparklineOverlay {
 				return bounds
 			}
 
+			let drawRect = bounds.integral
+
 			context.setLineWidth(self.strokeWidth)
 			context.setStrokeColor(self.strokeColor)
 			context.setLineDash(phase: 0.0, lengths: self.dashStyle)
 
 			self.floatValues.forEach { value in
 				let fractional = dataSource.fractionalPosition(for: value)
-				let zeroPos = self.bounds.height - (fractional * self.bounds.height)
+				let zeroPos = drawRect.height - (fractional * drawRect.height).rounded(.towardZero)
 				context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos),
-																 CGPoint(x: self.bounds.width, y: zeroPos)])
+																 CGPoint(x: drawRect.width, y: zeroPos)])
 			}
 			return bounds
 		}

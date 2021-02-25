@@ -18,7 +18,8 @@ import UIKit
 	}
 	#endif
 
-	lazy var renderDelegate: RendererDelegate = {
+	// Render delegate instance
+	lazy private var renderDelegate: RendererDelegate = {
 		return RendererDelegate(view: self)
 	}()
 
@@ -42,7 +43,7 @@ import UIKit
 		self.setup()
 	}
 
-	func setup() {
+	private func setup() {
 		#if os(macOS)
 		self.wantsLayer = true
 		#else
@@ -65,10 +66,9 @@ import UIKit
 
 extension DSFSparklineRendererView {
 
+	/// Add a sparkline overlay to the view
 	public func addOverlay(_ overlay: DSFSparklineOverlay) {
 		self.rootLayer.addSublayer(overlay)
-
-		//overlay.contentsScale = self.retinaScale()
 
 		overlay.bounds = self.bounds
 		overlay.delegate = self.renderDelegate
@@ -76,9 +76,9 @@ extension DSFSparklineRendererView {
 		self.syncLayers()
 		overlay.setNeedsLayout()
 		overlay.setNeedsDisplay()
-
 	}
 
+	/// Remove a sparkline overlay to the view
 	public func removeOverlay(_ overlay: DSFSparklineOverlay) {
 		overlay.removeFromSuperlayer()
 	}
@@ -113,7 +113,8 @@ extension DSFSparklineRendererView {
 	#endif
 }
 
-class RendererDelegate: NSObject, CALayerDelegate {
+// the draw delegate for the overlay layers
+fileprivate class RendererDelegate: NSObject, CALayerDelegate {
 
 	let view: DSFView
 

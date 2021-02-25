@@ -59,6 +59,8 @@
 		236A580025C1392B00F2BACF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 236A57EB25C1392B00F2BACF /* Assets.xcassets */; };
 		237B824725E77B3800B3DE23 /* BarDemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B824625E77B3800B3DE23 /* BarDemoContentView.swift */; };
 		237B824825E77B3800B3DE23 /* BarDemoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B824625E77B3800B3DE23 /* BarDemoContentView.swift */; };
+		237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B827725E7891D00B3DE23 /* BitmapGenerationView.swift */; };
+		237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B827725E7891D00B3DE23 /* BitmapGenerationView.swift */; };
 		238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053C625DCC2B100B996B5 /* ActiveView.swift */; };
 		238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053C625DCC2B100B996B5 /* ActiveView.swift */; };
 		238053E525DCD14600B996B5 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053E425DCD14600B996B5 /* OverlayView.swift */; };
@@ -181,6 +183,7 @@
 		236A57F925C1392B00F2BACF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		236A57FA25C1392B00F2BACF /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		237B824625E77B3800B3DE23 /* BarDemoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarDemoContentView.swift; sourceTree = "<group>"; };
+		237B827725E7891D00B3DE23 /* BitmapGenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitmapGenerationView.swift; sourceTree = "<group>"; };
 		238053C625DCC2B100B996B5 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		238053E425DCD14600B996B5 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		23E2278923B5846E00E59122 /* macOS Table Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Table Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +392,7 @@
 				236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */,
 				236A57EB25C1392B00F2BACF /* Assets.xcassets */,
 				238053E425DCD14600B996B5 /* OverlayView.swift */,
+				237B827725E7891D00B3DE23 /* BitmapGenerationView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1063,6 +1067,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */,
+				237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				23FC81DD25DB60760047A800 /* StripesDemoView.swift in Sources */,
 				23FC819F25DB59160047A800 /* DataBarGraphContent.swift in Sources */,
 				23FC817525DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,
@@ -1083,6 +1088,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */,
+				237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				23FC81DE25DB60760047A800 /* StripesDemoView.swift in Sources */,
 				23FC81A025DB59160047A800 /* DataBarGraphContent.swift in Sources */,
 				23FC817625DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,

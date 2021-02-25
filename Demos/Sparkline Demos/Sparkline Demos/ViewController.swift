@@ -179,10 +179,9 @@ extension ViewController {
 			b.addOverlay(stack1)
 
 			let r = CGSize(width: 400, height: 40)
-			if let image = b.generateImage(size: r, scale: 2) {
-				let nsi = NSImage(cgImage: image, size: r)
-				self.imageView.image = nsi
-				self.imageView2.image = nsi
+			if let image = b.image(size: r, scale: 2) {
+				self.imageView.image = image
+				self.imageView2.image = image
 			}
 		}
 

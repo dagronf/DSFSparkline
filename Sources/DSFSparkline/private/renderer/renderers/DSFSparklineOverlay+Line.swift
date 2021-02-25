@@ -60,7 +60,7 @@ private extension DSFSparklineOverlay.Line {
 
 		// Adjust the inset so that markers can draw unclipped if they are asked for
 		let inset = self.markerSize > 0 ? self.markerSize / 2 : self.lineWidth
-		let drawRect = self.bounds.insetBy(dx: inset, dy: inset)
+		let drawRect = bounds.insetBy(dx: inset, dy: inset)
 
 		let normy = dataSource.normalized
 		let xDiff = drawRect.width / CGFloat(normy.count - 1)
@@ -83,8 +83,8 @@ private extension DSFSparklineOverlay.Line {
 		context.usingGState { outer in
 
 			if dataSource.counter < dataSource.windowSize {
-				let pos = self.bounds.minX + (CGFloat(dataSource.counter) * xDiff)
-				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				let pos = bounds.minX + (CGFloat(dataSource.counter) * xDiff)
+				let clipRect = bounds.divided(atDistance: pos, from: .maxXEdge).slice
 				outer.clip(to: clipRect)
 			}
 
@@ -111,7 +111,6 @@ private extension DSFSparklineOverlay.Line {
 					else if let fill = self.primaryFillColor {
 						ctx.setFillColor(fill)
 						ctx.fill(drawRect)
-						ctx.fillPath()
 					}
 				}
 			}
@@ -158,7 +157,7 @@ private extension DSFSparklineOverlay.Line {
 
 		// Adjust the inset so that markers can draw unclipped if they are asked for
 		let inset = self.markerSize > 0 ? self.markerSize / 2 : self.lineWidth
-		let drawRect = self.bounds.insetBy(dx: inset, dy: inset)
+		let drawRect = bounds.insetBy(dx: inset, dy: inset)
 
 		let normy = dataSource.normalized
 		let xDiff = drawRect.width / CGFloat(normy.count - 1)
