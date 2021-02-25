@@ -180,9 +180,9 @@ extension DSFSparklineOverlay.Bar {
 				else {
 					let yy = (value.element - centre) * height
 					let r = CGRect(x: x,
-										y: centroid,
+										y: centroid + 1,
 										width: xDiff - 1 - (CGFloat(self.barSpacing)),
-										height: -yy - CGFloat(self.lineWidth))
+										height: -yy - CGFloat(self.lineWidth) + 1)
 					negativePath.append(r.integral)
 				}
 			}
