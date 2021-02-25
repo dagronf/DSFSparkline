@@ -47,7 +47,8 @@ import Foundation
 
 // MARK: - AppKit Additions
 
-#if canImport(AppKit)
+#if os(macOS)
+
 import AppKit
 public extension DSFSparklineSurfaceBitmap {
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> NSImage? {
@@ -57,11 +58,11 @@ public extension DSFSparklineSurfaceBitmap {
 		return NSImage(cgImage: cgImage, size: size)
 	}
 }
-#endif
+
+#else
 
 // MARK: - UIKit Additions
 
-#if canImport(UIKit)
 import UIKit
 public extension DSFSparklineSurfaceBitmap {
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> UIImage? {
@@ -75,6 +76,7 @@ public extension DSFSparklineSurfaceBitmap {
 		)
 	}
 }
+
 #endif
 
 // MARK: - Private

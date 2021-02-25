@@ -174,6 +174,7 @@
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		23529A5825E847B900DFA52D /* iOS Sparkline Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Sparkline Demo.entitlements"; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
 		236A57EA25C1392A00F2BACF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		236A57EB25C1392B00F2BACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -335,6 +336,7 @@
 		23102BC223B02AED001A621D /* iOS Sparkline Demo */ = {
 			isa = PBXGroup;
 			children = (
+				23529A5825E847B900DFA52D /* iOS Sparkline Demo.entitlements */,
 				23102BC323B02AED001A621D /* AppDelegate.swift */,
 				23102BC523B02AED001A621D /* SceneDelegate.swift */,
 				23102BC723B02AED001A621D /* ViewController.swift */,
@@ -1400,6 +1402,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "iOS Sparkline Demo/iOS Sparkline Demo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1422,6 +1425,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "iOS Sparkline Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1432,10 +1436,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.iOS-Sparkline-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -1473,6 +1478,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "iOS Sparkline Demo/iOS Sparkline Demo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1489,6 +1495,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "iOS Sparkline Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1498,10 +1505,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.sparklines.iOS-Sparkline-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
