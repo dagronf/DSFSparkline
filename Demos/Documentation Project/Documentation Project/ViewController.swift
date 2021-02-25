@@ -319,15 +319,15 @@ class ViewController: NSViewController {
 		self.databarTotal6.dataSource = [9, 9, 4]
 		self.databarTotal6.maximumTotalValue = 60
 
-		let gradient1 = DSFGradient(posts: [
-			DSFGradient.Post(r: 0, g: 0, b: 1, location: 0.0),
-			DSFGradient.Post(r: 1, g: 1, b: 1, location: 0.5),
-			DSFGradient.Post(r: 1, g: 0, b: 0, location: 1.0),
+		let gradient1 = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(r: 0, g: 0, b: 1, location: 0.0),
+			DSFGradientBucket.Post(r: 1, g: 1, b: 1, location: 0.5),
+			DSFGradientBucket.Post(r: 1, g: 0, b: 0, location: 1.0),
 		])
 
-		let gradient2 = DSFGradient(posts: [
-			DSFGradient.Post(color: NSColor.systemYellow.cgColor, location: 0),
-			DSFGradient.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+		let gradient2 = DSFGradientBucket(posts: [
+			DSFGradientBucket.Post(color: NSColor.systemYellow.cgColor, location: 0),
+			DSFGradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
 		])
 
 		self.stripes1.gradient = gradient1
