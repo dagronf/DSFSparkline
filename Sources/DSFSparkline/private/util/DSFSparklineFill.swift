@@ -36,6 +36,31 @@ import Foundation
 		self.gradient = gradient
 	}
 
+	public init(colors: [CGColor]) {
+		assert(colors.count >= 2)
+
+		let locations: [CGFloat] = {
+			if colors.count == 2 { return [1, 0] }
+
+			var tmp: [CGFloat] = []
+			let divisor: CGFloat = 1.0 / CGFloat((colors.count - 2) + 1)
+			var tmpVal: CGFloat = 1.0
+			while tmpVal >= 0 {
+				tmp.append(tmpVal)
+				tmpVal -= divisor
+			}
+			return tmp
+		}()
+
+		let gradient = CGGradient(
+			colorsSpace: nil,
+			colors: colors as CFArray,
+			locations: locations)
+
+		self.gradient = gradient
+	}
+
+
 	@objc public func fill(context: CGContext, bounds: CGRect) {
 		if let gradient = self.gradient {
 			context.drawLinearGradient(

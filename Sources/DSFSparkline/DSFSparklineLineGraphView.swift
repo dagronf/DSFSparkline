@@ -108,13 +108,25 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 		self.overlay.shadowed = self.shadowed
 		self.overlay.markerSize = self.markerSize
 
-		self.overlay.primaryStrokeColor = self.graphColor.cgColor
-		self.overlay.primaryFill = DSFSparklineFill(flatColor: self.graphColor.withAlphaComponent(0.4).cgColor)
-
-		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
-		self.overlay.secondaryFill = DSFSparklineFill(flatColor: self.lowerColor.withAlphaComponent(0.4).cgColor)
-
 		self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
-	}
 
+		self.overlay.primaryStrokeColor = self.graphColor.cgColor
+		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
+
+		// Backwards compatibility
+		let color = self.graphColor
+		let fill = DSFSparklineFill(colors: [
+			color.withAlphaComponent(0.4).cgColor,
+			color.withAlphaComponent(0.2).cgColor
+		])
+		self.overlay.primaryFill = fill
+
+		if let lowerColor = self.lowerGraphColor {
+			let fill = DSFSparklineFill(colors: [
+				lowerColor.withAlphaComponent(0.4).cgColor,
+				lowerColor.withAlphaComponent(0.2).cgColor
+			])
+			self.overlay.secondaryFill = fill
+		}
+	}
 }
