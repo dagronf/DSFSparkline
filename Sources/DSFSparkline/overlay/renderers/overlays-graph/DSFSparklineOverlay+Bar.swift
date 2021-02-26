@@ -29,7 +29,7 @@ import UIKit
 
 public extension DSFSparklineOverlay {
 
-	/// A bar graph
+	/// A bar graph overlay
 	@objc(DSFSparklineOverlayBar) class Bar: Centerable {
 
 		/// The width for the line drawn on the graph

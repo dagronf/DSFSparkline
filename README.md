@@ -32,6 +32,17 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 * Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
 * Optional highlighting ranges (or multiple!) on a graph.
 * Center bar/line/stackline graphs around the zero line
+* Build stacklines by overlaying 
+
+## Overlays
+
+Sparkline overlays represent the components of a sparkline, for example, 
+
+
+
+
+# Legacy
+
 
 ## Available types
 

@@ -24,7 +24,10 @@
 import QuartzCore
 
 public extension DSFSparklineOverlay {
-	/// A graph that can be centered around the datasource's zero-line
+	/// A graph that can be centered around the datasource's zero-line.
+	///
+	/// You don't generally create this class yourself, you inherit from it if your overlay type can be
+	/// centered around the zero-line of the data.
 	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineOverlay.ZeroLine {
 		/// Should the graph be centered at the zero line defined in the datasource?
 		@objc public var centeredAtZeroLine: Bool = false {

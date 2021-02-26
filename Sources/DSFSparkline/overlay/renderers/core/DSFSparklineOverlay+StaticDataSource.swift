@@ -24,7 +24,7 @@
 import QuartzCore
 
 public extension DSFSparklineOverlay {
-	/// A data source that is (generally) a static set of data, like for a pie chart
+	/// A data source that displays a static set of data, like for a pie chart
 	@objc(DSFSparklineOverlayStaticDataSource) class StaticDataSource: DSFSparklineOverlay {
 		/// The data to be displayed in this graph
 		///
