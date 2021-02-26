@@ -29,29 +29,39 @@ import UIKit
 
 /// A highlight range definition
 @objc public class DSFSparklineHighlightRangeDefinition: NSObject {
-	#if os(macOS)
-	public static let DefaultColor = DSFColor.quaternaryLabelColor
-	#else
-	public static let DefaultColor = DSFColor.systemGray
-	#endif
+	public static let DefaultFill = DSFSparklineFill(flatColor: DSFColor.systemGray.cgColor)
 
 	/// The range in the sparkline to highlight
 	public var range: Range<CGFloat>
 
-	/// The highlight color to use
-	@objc public var highlightColor: DSFColor
+	/// The highlight fill to use
+	@objc public var fill: DSFSparklineFill
 
-	public init(range: Range<CGFloat>, highlightColor: DSFColor = DefaultColor) {
+	public init(range: Range<CGFloat>, fill: DSFSparklineFill = DefaultFill) {
 		self.range = range
-		self.highlightColor = highlightColor
+		self.fill = fill
+		super.init()
+	}
+
+	public init(range: Range<CGFloat>, fillColor: CGColor) {
+		self.range = range
+		self.fill = DSFSparklineFill(flatColor: fillColor)
 		super.init()
 	}
 
 	/// Objective-C compatible initializer. Lowerbound MUST be less than upperbound!
-	@objc public init(lowerBound: CGFloat, upperBound: CGFloat, highlightColor: DSFColor = DefaultColor) {
+	@objc public init(lowerBound: CGFloat, upperBound: CGFloat, fill: DSFSparklineFill = DefaultFill) {
 		assert(lowerBound < upperBound)
 		self.range = lowerBound ..< upperBound
-		self.highlightColor = highlightColor
+		self.fill = fill
+		super.init()
+	}
+
+	/// Objective-C compatible initializer. Lowerbound MUST be less than upperbound!
+	@objc public init(lowerBound: CGFloat, upperBound: CGFloat, fillColor: CGColor) {
+		assert(lowerBound < upperBound)
+		self.range = lowerBound ..< upperBound
+		self.fill = DSFSparklineFill(flatColor: fillColor)
 		super.init()
 	}
 }

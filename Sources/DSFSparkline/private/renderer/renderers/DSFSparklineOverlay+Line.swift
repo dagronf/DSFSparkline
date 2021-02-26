@@ -128,7 +128,7 @@ private extension DSFSparklineOverlay.Line {
 					ctx.setLineWidth(self.lineWidth)
 
 					if shadowed {
-						ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
+						ctx.setShadow(offset: CGSize(width: 0.5, height: -0.5),
 										  blur: 1.0,
 										  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
 					}

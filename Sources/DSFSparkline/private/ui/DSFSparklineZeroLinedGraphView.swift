@@ -139,17 +139,17 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 		}
 	}
 
-	/// The color of the dotted line at the zero point on the y-axis
+	/// The color of the highlight to be used
 	#if os(macOS)
 	@IBInspectable public var highlightColor = NSColor.gray {
 		didSet {
-			self.ibHighlightOverlay.fillColor = self.highlightColor.cgColor
+			self.ibHighlightOverlay.fill = DSFSparklineFill(flatColor: self.highlightColor.cgColor)
 		}
 	}
 	#else
 	@IBInspectable public var highlightColor: UIColor = .systemGray {
 		didSet {
-			self.ibHighlightOverlay.fillColor = self.highlightColor.cgColor
+			self.ibHighlightOverlay.fill = DSFSparklineFill(flatColor: self.highlightColor.cgColor)
 		}
 	}
 	#endif
@@ -199,7 +199,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 				let item = DSFSparklineOverlay.RangeHighlight()
 				item.highlightRange = r.range
 				item.dataSource = self.dataSource
-				item.fillColor = r.highlightColor.cgColor
+				item.fill = r.fill
 				item.zPosition = -10
 				self.addOverlay(item)
 				self.highlightOverlay.append(item)
@@ -210,7 +210,10 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	public override func prepareForInterfaceBuilder() {
 		if self.showHighlightRange {
-			self.highlightRangeDefinition = [DSFSparklineHighlightRangeDefinition(range: -3 ..< 3, highlightColor: self.highlightColor)]
+			self.highlightRangeDefinition = [
+				DSFSparklineHighlightRangeDefinition(range: -3 ..< 3,
+																 fill: DSFSparklineFill(flatColor: self.highlightColor.cgColor))
+			]
 		}
 		super.prepareForInterfaceBuilder()
 	}

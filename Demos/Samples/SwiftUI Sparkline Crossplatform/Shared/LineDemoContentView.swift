@@ -210,15 +210,15 @@ struct LineDemoLineRanges: View {
 				highlightDefinitions: [
 					DSFSparklineHighlightRangeDefinition(
 						range: 0.7 ..< 1.0,
-						highlightColor: DSFColor.red.withAlphaComponent(0.15)
+						fillColor: DSFColor.red.withAlphaComponent(0.15).cgColor
 					),
 					DSFSparklineHighlightRangeDefinition(
 						range: 0.3 ..< 0.7,
-						highlightColor: DSFColor.yellow.withAlphaComponent(0.15)
+						fillColor: DSFColor.yellow.withAlphaComponent(0.15).cgColor
 					),
 					DSFSparklineHighlightRangeDefinition(
 						range: 0.0 ..< 0.3,
-						highlightColor: DSFColor.green.withAlphaComponent(0.15)
+						fillColor: DSFColor.green.withAlphaComponent(0.15).cgColor
 					)
 				]
 			)
@@ -234,7 +234,7 @@ struct LineDemoLineRanges: View {
 				highlightDefinitions: [
 					DSFSparklineHighlightRangeDefinition(
 						range: 0.4 ..< 0.6,
-						highlightColor: DSFColor.systemGray.withAlphaComponent(0.3)
+						fillColor: DSFColor.systemGray.withAlphaComponent(0.3).cgColor
 					)
 				]
 			)

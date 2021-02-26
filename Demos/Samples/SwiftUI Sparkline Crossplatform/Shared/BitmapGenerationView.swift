@@ -24,7 +24,10 @@ fileprivate let b1: DSFSparklineSurfaceBitmap = {
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.primaryTextColor.cgColor
-	l.primaryFillColor = DSFColor.primaryTextColor.withAlphaComponent(0.3).cgColor
+	l.primaryFill = DSFSparklineFill(colors: [
+		DSFColor.systemRed.cgColor,
+		DSFColor.systemBlue.cgColor,
+	])
 	l.dataSource = dataSource
 	b.addOverlay(l)
 
@@ -39,6 +42,22 @@ fileprivate let b2: DSFSparklineSurfaceBitmap = {
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.black.cgColor
 	l.strokeWidth = 1.0
+	l.dataSource = dataSource
+	b.addOverlay(l)
+
+	return b
+}()
+
+fileprivate let b3: DSFSparklineSurfaceBitmap = {
+	let b = DSFSparklineSurfaceBitmap()
+
+	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4])
+
+	let l = DSFSparklineOverlay.Line()
+	l.primaryStrokeColor = DSFColor.systemPink.cgColor
+	l.strokeWidth = 1.0
+	l.shadowed = true
+	l.markerSize = 6
 	l.dataSource = dataSource
 	b.addOverlay(l)
 
@@ -95,6 +114,10 @@ struct BitmapGenerationView: View {
 				.border(Color.gray)
 
 			makeImage(self.generate(b2, size: CGSize(width: 200, height: 40)))
+				.padding(4)
+				.border(Color.gray)
+
+			makeImage(self.generate(b3, size: CGSize(width: 200, height: 40)))
 				.padding(4)
 				.border(Color.gray)
 

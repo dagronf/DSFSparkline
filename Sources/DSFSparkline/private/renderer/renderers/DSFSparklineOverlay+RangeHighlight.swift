@@ -28,10 +28,12 @@ public extension DSFSparklineOverlay {
 	/// An overlay that draws a color range on the sparkline
 	@objc(DSFSparklineOverlayRangeHighlight) class RangeHighlight: DSFSparklineOverlay.DataSource {
 
-		static let defaultFillColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.5, 0.5, 0.5, 0.5])!
+		static public let defaultFill =
+			DSFSparklineFill(flatColor: CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(),
+															components: [0.5, 0.5, 0.5, 0.5])!)
 
 		/// The color to fill the specified range
-		@objc public var fillColor: CGColor = RangeHighlight.defaultFillColor {
+		@objc public var fill: DSFSparklineFill = RangeHighlight.defaultFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -51,17 +53,17 @@ public extension DSFSparklineOverlay {
 
 		public init(dataSource: DSFSparklineDataSource? = nil,
 						range: Range<CGFloat>? = nil,
-						fillColor: CGColor = DSFColor.gray.cgColor) {
+						fill: DSFSparklineFill = RangeHighlight.defaultFill) {
 			self.highlightRange = range
-			self.fillColor = fillColor
+			self.fill = fill
 
 			super.init(dataSource: dataSource)
 		}
 
 		@objc public init(lowerBound: CGFloat, upperBound: CGFloat,
-								fillColor: CGColor = DSFColor.gray.cgColor) {
+								fill: DSFSparklineFill = RangeHighlight.defaultFill) {
 			self.highlightRange = lowerBound ..< upperBound
-			self.fillColor = fillColor
+			self.fill = fill
 			super.init()
 		}
 
@@ -81,10 +83,10 @@ public extension DSFSparklineOverlay {
 			let lb = 1.0 - dataSource.normalize(value: range.lowerBound)
 			let ub = 1.0 - dataSource.normalize(value: range.upperBound)
 
-			context.setFillColor(self.fillColor)
 			let r = CGRect(x: 0, y: ub * integ.height, width: integ.width, height: (lb - ub) * integ.height)
-			context.addRect(r)
-			context.fillPath()
+			context.clip(to: r)
+			
+			self.fill.fill(context: context, bounds: integ)
 
 			return bounds
 		}
