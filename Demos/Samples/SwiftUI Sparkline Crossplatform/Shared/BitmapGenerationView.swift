@@ -56,7 +56,7 @@ fileprivate let b3: DSFSparklineSurface.Bitmap = {
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.systemPink.cgColor
 	l.strokeWidth = 1.0
-	l.shadow = DSFSparkline.Shadow.default
+	l.shadow = NSShadow(blurRadius: 2.0, offset: CGSize(width: 1, height: -1), color: DSFColor.gray.withAlphaComponent(0.5))
 	l.markerSize = 6
 	l.dataSource = dataSource
 	b.addOverlay(l)

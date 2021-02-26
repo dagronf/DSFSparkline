@@ -95,7 +95,14 @@ private extension DSFSparklineOverlay.Line {
 		}
 
 		// Adjust the inset so that markers can draw unclipped if they are asked for
-		let inset = self.markerSize > 0 ? self.markerSize / 2 : self.lineWidth
+
+		// If there's a shadow, inset by the maximum shadow offset + blur radius
+		let shadowOffset = max(self.shadow?.shadowOffset.width ?? 0,
+									  self.shadow?.shadowOffset.height ?? 0) +
+									  (self.shadow?.shadowBlurRadius ?? 0)
+
+		let inset = (self.markerSize > 0 ? self.markerSize / 2 : self.lineWidth) + shadowOffset
+
 		let drawRect = bounds.insetBy(dx: inset, dy: inset)
 
 		let normy = dataSource.normalized
@@ -268,28 +275,33 @@ private extension DSFSparklineOverlay.Line {
 			}
 		}
 
-		if !pPoints.isEmpty {
-			if let stroke = self.primaryStrokeColor {
-				context.usingGState { ctx in
-					ctx.addPath(pPoints)
-					if let shadow = self.shadow {
-						ctx.setShadow(shadow)
-					}
-					ctx.setFillColor(stroke)
-					ctx.fillPath()
+		// Draw the positive markers
+
+		if !pPoints.isEmpty,
+			let stroke = self.primaryStrokeColor {
+			context.usingGState { ctx in
+				ctx.addPath(pPoints)
+				if let shadow = self.shadow {
+					ctx.setShadow(shadow)
 				}
+				ctx.setFillColor(stroke)
+				ctx.fillPath()
 			}
 		}
-		if !nPoints.isEmpty {
-			if let stroke = self.secondaryStrokeColor {
-				context.usingGState { ctx in
-					ctx.addPath(nPoints)
-					if let shadow = self.shadow {
-						ctx.setShadow(shadow)
-					}
-					ctx.setFillColor(stroke)
-					ctx.fillPath()
+
+		// Draw the negative markers
+		// If the secondary stroke isn't defined, use the primary stroke if it is defined (or else we get markers only
+		// on the top part of the graph)
+
+		if !nPoints.isEmpty,
+			let stroke = firstNotNil([self.secondaryStrokeColor, self.primaryStrokeColor]) {
+			context.usingGState { ctx in
+				ctx.addPath(nPoints)
+				if let shadow = self.shadow {
+					ctx.setShadow(shadow)
 				}
+				ctx.setFillColor(stroke)
+				ctx.fillPath()
 			}
 		}
 

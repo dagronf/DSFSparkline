@@ -51,7 +51,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false {
 		didSet {
-			self.overlay.shadow = self.shadowed ? DSFSparkline.Shadow.default : nil
+			self.overlay.shadow = self.shadowed ? NSShadow.sparklineDefault : nil
 		}
 	}
 

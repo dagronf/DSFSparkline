@@ -1,5 +1,5 @@
 //
-//  DSFGradientBucket.swift
+//  DSFSparkline+GradientBucket.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 15/2/2021.

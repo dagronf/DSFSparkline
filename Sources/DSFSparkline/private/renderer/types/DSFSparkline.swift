@@ -27,16 +27,4 @@ import Cocoa
 import UIKit
 #endif
 
-@objc public class DSFSparkline: NSObject {
-}
-
-
-public extension DSFSparkline {
-	@objc(DSFSparklineShadow) class Shadow: NSObject {
-		/// The default shadow
-		@objc(DSFSparklineShadowDefault) public static let `default` =
-			NSShadow(blurRadius: 1.0,
-						offset: CGSize(width: 0.5, height: 0.5),
-						color: DSFColor.black.withAlphaComponent(0.3))
-	}
-}
+@objc public class DSFSparkline: NSObject { }

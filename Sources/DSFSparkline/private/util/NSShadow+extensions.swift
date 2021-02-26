@@ -27,12 +27,22 @@ import Cocoa
 import UIKit
 #endif
 
-extension NSShadow {
-	convenience init(blurRadius: CGFloat, offset: CGSize, color: DSFColor) {
+public extension NSShadow {
+	@objc convenience init(blurRadius: CGFloat, offset: CGSize, color: DSFColor) {
 		self.init()
 
 		self.shadowBlurRadius = blurRadius
 		self.shadowOffset = offset
 		self.shadowColor = color
 	}
+}
+
+// Static definition of the 'default' shadow.
+private let _NSShadowDefaultValue = NSShadow(blurRadius: 1.0,
+															offset: CGSize(width: 0.5, height: 0.5),
+															color: DSFColor.black.withAlphaComponent(0.3))
+
+internal extension NSShadow {
+	/// The default shadow
+	@objc static let sparklineDefault = _NSShadowDefaultValue
 }

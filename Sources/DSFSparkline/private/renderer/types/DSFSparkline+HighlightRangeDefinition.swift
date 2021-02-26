@@ -1,5 +1,5 @@
 //
-//  DSFSparklineHighlightRangeDefinition.swift
+//  DSFSparkline+HighlightRangeDefinition.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 25/01/21.

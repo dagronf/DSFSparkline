@@ -192,3 +192,11 @@ extension String {
 		return floats
 	}
 }
+
+// Returns the first item in the specified array which is non-nil. If all elements are nil, returns nil
+@inlinable internal func firstNotNil<T>(_ items: [T?]) -> T? {
+	if let first = items.first(where: { $0 != nil }) {
+		return first
+	}
+	return nil
+}
