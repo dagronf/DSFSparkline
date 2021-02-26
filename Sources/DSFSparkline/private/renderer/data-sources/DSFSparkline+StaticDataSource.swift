@@ -26,6 +26,7 @@ import Foundation
 
 public extension DSFSparkline {
 
+	/// A simple data source containing an array of values.
 	@objc class StaticDataSource: NSObject {
 		let values: [CGFloat]
 

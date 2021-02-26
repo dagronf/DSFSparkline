@@ -24,13 +24,6 @@
 import Foundation
 import CoreGraphics
 
-// In order to clean up some of the code, I've moved the declaration of the data source into a
-// DSFSparkline 'namespace' to match with the new DSFSparkline.StaticDataSource type
-//
-// A simple name change (DSFSparklineDataSource -> DSFSparkline.DataSource) in your code will fix this issue
-@available(*, deprecated, message: "Move to using DSFSparkline.DataSource instead (simple name change)")
-public typealias DSFSparklineDataSource = DSFSparkline.DataSource
-
 public extension DSFSparkline {
 
 	/// A datasource for a sparkline
@@ -244,3 +237,10 @@ public extension DSFSparkline.DataSource {
 		return min(max(result, 0.0), 1.0)
 	}
 }
+
+// In order to clean up some of the code, I've moved the declaration of the data source into a
+// DSFSparkline 'namespace' to match with the new DSFSparkline.StaticDataSource type
+//
+// A simple name change (DSFSparklineDataSource -> DSFSparkline.DataSource) in your code will fix this issue
+@available(*, deprecated, message: "Move to using DSFSparkline.DataSource instead (simple name change)")
+public typealias DSFSparklineDataSource = DSFSparkline.DataSource
