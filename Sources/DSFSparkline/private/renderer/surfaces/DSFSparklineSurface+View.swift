@@ -1,5 +1,5 @@
 //
-//  DSFSparklineSurfaceView.swift
+//  DSFSparklineSurface+View.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 26/2/21.
