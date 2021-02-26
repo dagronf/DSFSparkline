@@ -138,7 +138,7 @@ struct BarCenteredZeroLine2: View {
 			graphColor: DSFColor.systemGreen,
 			lineWidth: 1,
 			showZeroLine: true,
-			zeroLineDefinition: DSFSparklineZeroLineDefinition(
+			zeroLineDefinition: DSFSparkline.ZeroLineDefinition(
 				color: DSFColor.systemGray,
 				lineWidth: 1,
 				lineDashStyle: []),

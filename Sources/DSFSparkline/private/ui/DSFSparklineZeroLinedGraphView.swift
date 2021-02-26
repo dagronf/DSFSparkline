@@ -223,7 +223,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 public extension DSFSparklineZeroLineGraphView {
 
 	/// Configure the zero line using the ZeroLineDefinition 
-	func setZeroLineDefinition(_ definition: DSFSparklineZeroLineDefinition) {
+	func setZeroLineDefinition(_ definition: DSFSparkline.ZeroLineDefinition) {
 		self.zeroLineWidth = definition.lineWidth
 		self.zeroLineColor = definition.color
 		self.zeroLineDashStyle = definition.lineDashStyle

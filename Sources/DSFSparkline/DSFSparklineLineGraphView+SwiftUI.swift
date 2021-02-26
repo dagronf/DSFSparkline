@@ -36,7 +36,7 @@ public extension DSFSparklineLineGraphView {
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
-		let zeroLineDefinition: DSFSparklineZeroLineDefinition
+		let zeroLineDefinition: DSFSparkline.ZeroLineDefinition
 
 		/// The width for the line drawn on the graph
 		let lineWidth: CGFloat
@@ -79,7 +79,7 @@ public extension DSFSparklineLineGraphView {
 						lineShading: Bool = true,
 						shadowed: Bool = false,
 						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
+						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
 						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [],

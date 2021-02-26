@@ -90,14 +90,16 @@ extension ViewController {
 		
 		let lineOverlay = DSFSparklineOverlay.Line()
 		lineOverlay.dataSource = LineSource1
+		lineOverlay.shadow = DSFSparkline.Shadow.default
 		lineOverlay.primaryStrokeColor = NSColor.textColor.cgColor
-		lineOverlay.primaryFillColor = NSColor.textColor.withAlphaComponent(0.3).cgColor
-		lineOverlay.primaryGradient = CGGradient.Create([
-			(position: 1.0, color: NSColor.textColor.withAlphaComponent(0.8).cgColor),
-			(position: 0.0, color: NSColor.textColor.withAlphaComponent(0.1).cgColor)
-		])
+		lineOverlay.primaryFill = DSFSparkline.Fill(flatColor: NSColor.textColor.withAlphaComponent(0.3).cgColor)
+//		lineOverlay.primaryGradient = CGGradient.Create([
+//			(position: 1.0, color: NSColor.textColor.withAlphaComponent(0.8).cgColor),
+//			(position: 0.0, color: NSColor.textColor.withAlphaComponent(0.1).cgColor)
+//		])
 
-		lineOverlay.secondaryFillColor = NSColor.systemRed.cgColor
+		lineOverlay.secondaryFill = DSFSparkline.Fill(flatColor: NSColor.systemRed.cgColor)
+		lineOverlay.secondaryStrokeColor = NSColor.systemRed.cgColor
 
 		lineOverlay.lineWidth = 1
 		lineOverlay.markerSize = 4
@@ -124,15 +126,15 @@ extension ViewController {
 		bar0.barSpacing = 3
 		bar0.centeredAtZeroLine = true
 		bar0.primaryStrokeColor = NSColor.systemBlue.cgColor
-		bar0.primaryGradient = CGGradient.Create([
-			(position: 1.0, color: NSColor.systemBlue.withAlphaComponent(0.8).cgColor),
-			(position: 0.0, color: NSColor.systemBlue.withAlphaComponent(0.1).cgColor)
+		bar0.primaryFill = DSFSparkline.Fill(colors: [
+			NSColor.systemBlue.withAlphaComponent(0.8).cgColor,
+			NSColor.systemBlue.withAlphaComponent(0.1).cgColor
 		])
 
 		bar0.secondaryStrokeColor = NSColor.systemPurple.cgColor
-		bar0.secondaryGradient = CGGradient.Create([
-			(position: 1.0, color: NSColor.systemPurple.withAlphaComponent(0.8).cgColor),
-			(position: 0.0, color: NSColor.systemPurple.withAlphaComponent(0.1).cgColor)
+		bar0.secondaryFill = DSFSparkline.Fill(colors: [
+			NSColor.systemPurple.withAlphaComponent(0.8).cgColor,
+			NSColor.systemPurple.withAlphaComponent(0.1).cgColor
 		])
 		bar1.addOverlay(bar0)
 
@@ -140,13 +142,13 @@ extension ViewController {
 
 		let h2 = DSFSparklineOverlay.RangeHighlight()
 		h2.dataSource = LineSource1
-		h2.fillColor = NSColor.gray.withAlphaComponent(0.2).cgColor
+		h2.fill = DSFSparkline.Fill(flatColor: NSColor.gray.withAlphaComponent(0.2).cgColor)
 		h2.highlightRange = 0.3 ..< 0.7
 		stackline1.addOverlay(h2)
 
 		let h3 = DSFSparklineOverlay.RangeHighlight()
 		h3.dataSource = LineSource1
-		h3.fillColor = NSColor.systemRed.withAlphaComponent(0.1).cgColor
+		h3.fill = DSFSparkline.Fill(flatColor: NSColor.systemRed.withAlphaComponent(0.1).cgColor)
 		h3.highlightRange = 0.0 ..< 0.3
 		stackline1.addOverlay(h3)
 
@@ -157,13 +159,13 @@ extension ViewController {
 
 		let stack1 = DSFSparklineOverlay.Stackline()
 		stack1.dataSource = LineSource1
-		stack1.shadowed = true
+		stack1.shadow = DSFSparkline.Shadow.default
 		stack1.centeredAtZeroLine = true
 		stack1.lineWidth = 1
 		stack1.primaryStrokeColor = NSColor.systemPurple.cgColor
-		stack1.primaryFillColor = NSColor.systemPurple.withAlphaComponent(0.7).cgColor
+		stack1.primaryFill = DSFSparkline.Fill(flatColor: NSColor.systemPurple.withAlphaComponent(0.7).cgColor)
 		stack1.secondaryStrokeColor = NSColor.systemYellow.cgColor
-		stack1.secondaryFillColor = NSColor.systemYellow.withAlphaComponent(0.7).cgColor
+		stack1.secondaryFill = DSFSparkline.Fill(flatColor: NSColor.systemYellow.withAlphaComponent(0.7).cgColor)
 
 		stackline1.addOverlay(stack1)
 
@@ -172,7 +174,7 @@ extension ViewController {
 			self.imageView.layer?.backgroundColor = .black
 			self.imageView2.layer?.backgroundColor = .white
 
-			let b = DSFSparklineSurfaceBitmap()
+			let b = DSFSparklineSurface.Bitmap()
 			b.addOverlay(h2)
 			b.addOverlay(h3)
 			b.addOverlay(zeroLine2)

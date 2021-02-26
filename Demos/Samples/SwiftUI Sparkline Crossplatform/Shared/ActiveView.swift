@@ -16,7 +16,7 @@ struct UpperGraph: View {
 	let graphColor: DSFColor
 	
 	let showZeroLine: Bool
-	var zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared
+	var zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared
 	
 	let interpolated: Bool
 	let lineShading: Bool
@@ -65,7 +65,7 @@ struct UpperGraph_Previews: PreviewProvider {
 					  dataSource: PreviewUpperGraphDataSource,
 					  graphColor: DSFColor.systemOrange,
 					  showZeroLine: true,
-					  zeroLineDefinition: DSFSparklineZeroLineDefinition(),
+					  zeroLineDefinition: DSFSparkline.ZeroLineDefinition(),
 					  interpolated: true,
 					  lineShading: true,
 					  shadowed: true)
@@ -122,7 +122,7 @@ func MakeActiveView() -> ActiveView {
 struct ActiveView: View {
 	let dataSource: DataSource
 	
-	let BigCyanZeroLine = DSFSparklineZeroLineDefinition(
+	let BigCyanZeroLine = DSFSparkline.ZeroLineDefinition(
 		color: .cyan,
 		lineWidth: 3,
 		lineDashStyle: [4, 1, 2, 1]

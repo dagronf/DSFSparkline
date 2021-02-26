@@ -56,7 +56,7 @@ struct WinLossGraphContentView: View {
 				tieColor: DSFColor.systemYellow.withAlphaComponent(0.2),
 				barSpacing: 3,
 				showZeroLine: true,
-				zeroLineDefinition: DSFSparklineZeroLineDefinition(color: .systemGray)
+				zeroLineDefinition: DSFSparkline.ZeroLineDefinition(color: .systemGray)
 			)
 			.frame(width: 330.0, height: 34.0)
 			.padding(5)

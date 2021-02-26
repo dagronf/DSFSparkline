@@ -46,7 +46,7 @@ public extension DSFSparklineWinLossGraphView {
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
-		let zeroLineDefinition: DSFSparklineZeroLineDefinition
+		let zeroLineDefinition: DSFSparkline.ZeroLineDefinition
 
 		/// Create a bar graph sparkline
 		/// - Parameters:
@@ -65,7 +65,7 @@ public extension DSFSparklineWinLossGraphView {
 						lineWidth: UInt = 1,
 						barSpacing: UInt = 1,
 						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared)
+						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared)
 		{
 			self.dataSource = dataSource
 

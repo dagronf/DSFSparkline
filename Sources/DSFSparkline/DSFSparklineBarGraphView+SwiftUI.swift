@@ -40,7 +40,7 @@ public extension DSFSparklineBarGraphView {
 		/// Draw a dotted line at the zero point on the y-axis
 		let showZeroLine: Bool
 		/// The drawing definition for the zero line point
-		let zeroLineDefinition: DSFSparklineZeroLineDefinition
+		let zeroLineDefinition: DSFSparkline.ZeroLineDefinition
 
 
 		/// Should the line graph be centered around the zero-line?
@@ -67,7 +67,7 @@ public extension DSFSparklineBarGraphView {
 						lineWidth: UInt = 1,
 						barSpacing: UInt = 1,
 						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparklineZeroLineDefinition = .shared,
+						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
 						showHighlightRange: Bool = false,

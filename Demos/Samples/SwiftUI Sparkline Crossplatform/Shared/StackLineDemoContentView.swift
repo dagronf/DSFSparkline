@@ -139,7 +139,7 @@ struct StackLineCenteredZeroLine2: View {
 			lineWidth: 0.5,
 			shadowed: false,
 			showZeroLine: true,
-			zeroLineDefinition: DSFSparklineZeroLineDefinition(
+			zeroLineDefinition: DSFSparkline.ZeroLineDefinition(
 				color: DSFColor.systemGray,
 				lineWidth: 1,
 				lineDashStyle: []
