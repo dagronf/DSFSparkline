@@ -102,5 +102,9 @@ public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 			])
 			self.overlay.secondaryFill = fill
 		}
+		else {
+			// Fallback - if secondary fill not defined the compatibility view is to use the primary fill view
+			self.overlay.secondaryFill = self.overlay.primaryFill
+		}
 	}
 }

@@ -184,4 +184,80 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 	}
 }
 
+
+
+
+
+
+
+public struct DSFSparklineSurfaceSwiftUI {
+
+}
+
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+extension DSFSparklineSurfaceSwiftUI: DSFViewRepresentable {
+
+	#if os(macOS)
+	public typealias NSViewType = DSFSparklineSurfaceView
+	#else
+	public typealias UIViewType = DSFSparklineSurfaceView
+	#endif
+
+	public class Coordinator: NSObject {
+		let parent: DSFSparklineSurfaceSwiftUI
+		init(_ sparkline: DSFSparklineSurfaceSwiftUI) {
+			self.parent = sparkline
+		}
+	}
+
+	public func makeCoordinator() -> Coordinator {
+		Coordinator(self)
+	}
+
+	private func makeSurface(_: Context) -> DSFSparklineSurfaceView {
+		let view = DSFSparklineSurfaceView(frame: .zero)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}
+
+}
+
+
+// MARK: - iOS/tvOS Specific
+
+@available(iOS 13.0, tvOS 13.0, macOS 9999.0, *)
+public extension DSFSparklineSurfaceSwiftUI {
+	func makeUIView(context: Context) -> DSFSparklineSurfaceView {
+		return self.makeSurface(context)
+	}
+
+	func updateUIView(_ view: DSFSparklineSurfaceView, context _: Context) {
+		self.updateView(view)
+	}
+}
+
+// MARK: - macOS Specific
+
+@available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
+public extension DSFSparklineSurfaceSwiftUI {
+	func makeNSView(context: Context) -> DSFSparklineSurfaceView {
+		return self.makeSurface(context)
+	}
+
+	func updateNSView(_ nsView: DSFSparklineSurfaceView, context _: Context) {
+		self.updateView(nsView)
+	}
+}
+
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
+public extension DSFSparklineSurfaceSwiftUI {
+	func updateView(_ view: DSFSparklineSurfaceView) {
+
+	}
+}
+
+
+
+
 #endif

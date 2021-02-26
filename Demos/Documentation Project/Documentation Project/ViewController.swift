@@ -275,14 +275,14 @@ class ViewController: NSViewController {
 		self.tablet1.dataSource = winLossDataSource1
 
 
-		self.pie1.dataSource = [10, 30, 20]
-		self.pie2.dataSource = [33, 33, 33]
-		self.pie3.dataSource = [40, 5, 80]
-		self.pie4.dataSource = [1, 2, 3]
-		self.pie5.dataSource = [66.7, 66, 66.9]
-		self.pie6.dataSource = [9, 9, 4]
-		self.pie7.dataSource = [0.5, 0.1, 0.1]
-		self.pie8.dataSource = [1000, 2000, 300]
+		self.pie1.dataSource = DSFSparkline.StaticDataSource([10, 30, 20])
+		self.pie2.dataSource = DSFSparkline.StaticDataSource([33, 33, 33])
+		self.pie3.dataSource = DSFSparkline.StaticDataSource([40, 5, 80])
+		self.pie4.dataSource = DSFSparkline.StaticDataSource([1, 2, 3])
+		self.pie5.dataSource = DSFSparkline.StaticDataSource([66.7, 66, 66.9])
+		self.pie6.dataSource = DSFSparkline.StaticDataSource([9, 9, 4])
+		self.pie7.dataSource = DSFSparkline.StaticDataSource([0.5, 0.1, 0.1])
+		self.pie8.dataSource = DSFSparkline.StaticDataSource([1000, 2000, 300])
 
 		let palette = DSFSparkline.Palette([
 			DSFColor(deviceRed: 0, green: 0, blue: 1, alpha: 1),
@@ -298,25 +298,25 @@ class ViewController: NSViewController {
 
 		///
 
-		self.databarPercent1.dataSource = [10, 30, 20]
-		self.databarPercent2.dataSource = [33, 33, 33]
-		self.databarPercent3.dataSource = [40, 5, 80]
-		self.databarPercent4.dataSource = [1, 2, 3]
-		self.databarPercent5.dataSource = [66.7, 66, 66.9]
-		self.databarPercent6.dataSource = [9, 9, 4]
+		self.databarPercent1.dataSource = DSFSparkline.StaticDataSource([10, 30, 20])
+		self.databarPercent2.dataSource = DSFSparkline.StaticDataSource([33, 33, 33])
+		self.databarPercent3.dataSource = DSFSparkline.StaticDataSource([40, 5, 80])
+		self.databarPercent4.dataSource = DSFSparkline.StaticDataSource([1, 2, 3])
+		self.databarPercent5.dataSource = DSFSparkline.StaticDataSource([66.7, 66, 66.9])
+		self.databarPercent6.dataSource = DSFSparkline.StaticDataSource([9, 9, 4])
 
 
-		self.databarTotal1.dataSource = [8, 19, 20]
+		self.databarTotal1.dataSource = DSFSparkline.StaticDataSource([8, 19, 20])
 		self.databarTotal1.maximumTotalValue = 60
-		self.databarTotal2.dataSource = [20, 20, 20]
+		self.databarTotal2.dataSource = DSFSparkline.StaticDataSource([20, 20, 20])
 		self.databarTotal2.maximumTotalValue = 60
-		self.databarTotal3.dataSource = [30, 5, 12]
+		self.databarTotal3.dataSource = DSFSparkline.StaticDataSource([30, 5, 12])
 		self.databarTotal3.maximumTotalValue = 60
-		self.databarTotal4.dataSource = [10, 15, 20]
+		self.databarTotal4.dataSource = DSFSparkline.StaticDataSource([10, 15, 20])
 		self.databarTotal4.maximumTotalValue = 60
-		self.databarTotal5.dataSource = [25, 10, 12]
+		self.databarTotal5.dataSource = DSFSparkline.StaticDataSource([25, 10, 12])
 		self.databarTotal5.maximumTotalValue = 60
-		self.databarTotal6.dataSource = [9, 9, 4]
+		self.databarTotal6.dataSource = DSFSparkline.StaticDataSource([9, 9, 4])
 		self.databarTotal6.maximumTotalValue = 60
 
 		let gradient1 = DSFSparkline.GradientBucket(posts: [

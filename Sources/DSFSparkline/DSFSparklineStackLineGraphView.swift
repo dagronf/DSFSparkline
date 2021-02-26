@@ -30,7 +30,6 @@ import UIKit
 /// A stack line sparkline type
 @IBDesignable
 public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
-
 	let overlay = DSFSparklineOverlay.Stackline()
 
 	/// The width for the line drawn on the graph
@@ -39,7 +38,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 			self.updateDisplay()
 		}
 	}
-	
+
 	/// Shade the area under the line
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
@@ -47,7 +46,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 			self.updateDisplay()
 		}
 	}
-	
+
 	/// Draw a shadow under the line
 	@IBInspectable public var shadowed: Bool = false {
 		didSet {
@@ -61,11 +60,11 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 			self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 		}
 	}
-	
+
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?
 
-	public override init(frame: CGRect) {
+	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		self.configure()
 	}
@@ -88,7 +87,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 		self.gradient = CGGradient(
 			colorsSpace: nil,
 			colors: [self.graphColor.withAlphaComponent(0.4).cgColor,
-						self.graphColor.withAlphaComponent(0.2).cgColor] as CFArray,
+			         self.graphColor.withAlphaComponent(0.2).cgColor] as CFArray,
 			locations: [1.0, 0.0]
 		)!
 
@@ -96,7 +95,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 		self.lowerGradient = CGGradient(
 			colorsSpace: nil,
 			colors: [lc.withAlphaComponent(0.4).cgColor,
-						lc.withAlphaComponent(0.2).cgColor] as CFArray,
+			         lc.withAlphaComponent(0.2).cgColor] as CFArray,
 			locations: [1.0, 0.0]
 		)!
 
@@ -111,18 +110,20 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 		let color = self.graphColor
 		let fill = DSFSparkline.Fill(colors: [
 			color.withAlphaComponent(0.4).cgColor,
-			color.withAlphaComponent(0.2).cgColor
+			color.withAlphaComponent(0.2).cgColor,
 		])
 		self.overlay.primaryFill = fill
 
 		if let lowerColor = self.lowerGraphColor {
 			let fill = DSFSparkline.Fill(colors: [
 				lowerColor.withAlphaComponent(0.4).cgColor,
-				lowerColor.withAlphaComponent(0.2).cgColor
+				lowerColor.withAlphaComponent(0.2).cgColor,
 			])
 			self.overlay.secondaryFill = fill
 		}
-
+		else {
+			// Fallback - if secondary fill not defined the compatibility view is to use the primary fill view
+			self.overlay.secondaryFill = self.overlay.primaryFill
+		}
 	}
-
 }

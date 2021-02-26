@@ -15,10 +15,10 @@ fileprivate let grays = DSFSparkline.Palette([
 	DSFColor.init(white: 0.33, alpha: 1)
 ])
 
-fileprivate let firstDataSource: [CGFloat] = [10, 40, 25]
-fileprivate let secondDataSource: [CGFloat] = [33, 33, 33]
-fileprivate let thirdDataSource: [CGFloat] = [85, 10, 19]
-fileprivate let fourthDataSource: [CGFloat] = [3, 4, 5]
+fileprivate let firstDataSource = DSFSparkline.StaticDataSource([10, 40, 25])
+fileprivate let secondDataSource = DSFSparkline.StaticDataSource([33, 33, 33])
+fileprivate let thirdDataSource = DSFSparkline.StaticDataSource( [85, 10, 19])
+fileprivate let fourthDataSource = DSFSparkline.StaticDataSource([3, 4, 5])
 
 struct PieGraphDemoView: View {
     var body: some View {
@@ -78,14 +78,14 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count)),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
 				)
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count)),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
@@ -93,7 +93,7 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [5, 2, 4, 8],
+					dataSource: DSFSparkline.StaticDataSource([5, 2, 4, 8]),
 					strokeColor: DSFColor.gray,
 					lineWidth: 1
 				)
@@ -110,7 +110,7 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count)),
 					strokeColor: DSFColor.black,
 					lineWidth: 2,
 					animated: true,
@@ -119,7 +119,7 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count)),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
@@ -129,7 +129,7 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [5, 2, 4, 8],
+					dataSource: DSFSparkline.StaticDataSource([5, 2, 4, 8]),
 					strokeColor: DSFColor.gray,
 					lineWidth: 1,
 					animated: true,

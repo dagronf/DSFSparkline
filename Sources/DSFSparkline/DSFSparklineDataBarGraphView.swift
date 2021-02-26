@@ -39,7 +39,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 	/// dataStore, and as such each value ends up being drawn as a fraction of the total.
 	/// So for example, if you want the pie chart to represent the number of red cars vs. number of
 	/// blue cars, you just set the values directly.
-	@objc public var dataSource: [CGFloat] = [] {
+	@objc public var dataSource = DSFSparkline.StaticDataSource() {
 		didSet {
 			self.databarOverlay.dataSource = self.dataSource
 		}

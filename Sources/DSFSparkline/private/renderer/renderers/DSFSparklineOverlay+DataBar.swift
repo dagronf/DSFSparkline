@@ -78,9 +78,6 @@ public extension DSFSparklineOverlay {
 		override func dataDidChange() {
 			super.dataDidChange()
 
-			// Precalculate the total.
-			self.total = self.dataSource.reduce(0) { $0 + $1 }
-
 			if self.animated {
 				self.startAnimateIn()
 			}
@@ -98,7 +95,6 @@ public extension DSFSparklineOverlay {
 
 		internal var animator = ArbitraryAnimator()
 		internal var fractionComplete: CGFloat = 0
-		internal var total: CGFloat = 0.0
 	}
 }
 
@@ -128,7 +124,7 @@ private extension DSFSparklineOverlay.DataBar {
 			return bounds
 		}
 
-		let total = self.maximumTotalValue > 0 ? self.maximumTotalValue : self.total
+		let total = self.maximumTotalValue > 0 ? self.maximumTotalValue : self.dataSource.total
 
 		let rect = bounds.integral
 		var position: CGFloat = rect.minX
@@ -150,7 +146,7 @@ private extension DSFSparklineOverlay.DataBar {
 			}
 		}
 
-		for segment in self.dataSource.enumerated() {
+		for segment in self.dataSource.values.enumerated() {
 			context.usingGState { state in
 
 				state.setFillColor(self.palette.cgColorAtOffset(segment.offset))

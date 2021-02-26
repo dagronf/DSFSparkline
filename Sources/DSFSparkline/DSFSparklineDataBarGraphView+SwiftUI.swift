@@ -29,7 +29,7 @@ import SwiftUI
 public extension DSFSparklineDataBarGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: [CGFloat]
+		let dataSource: DSFSparkline.StaticDataSource
 		/// Maximum total value.  If -1, this value is i
 		let maximumTotalValue: CGFloat
 		/// The 'undrawn' color for the graph
@@ -59,7 +59,7 @@ public extension DSFSparklineDataBarGraphView {
 		///   - lineWidth: The width of the separator lines
 		///   - animated: If set, animates any datasource value changes
 		///   - animationDuration: The duration for the animate-in animation
-		public init(dataSource: [CGFloat],
+		public init(dataSource: DSFSparkline.StaticDataSource,
 						maximumTotalValue: CGFloat = -1,
 						palette: DSFSparkline.Palette = .shared,
 						unsetColor: DSFColor? = nil,

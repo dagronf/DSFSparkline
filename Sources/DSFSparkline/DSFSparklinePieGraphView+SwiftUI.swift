@@ -29,7 +29,7 @@ import SwiftUI
 public extension DSFSparklinePieGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: [CGFloat]
+		let dataSource: DSFSparkline.StaticDataSource
 		/// Palette to use when coloring the chart
 		let palette: DSFSparkline.Palette
 
@@ -47,7 +47,7 @@ public extension DSFSparklinePieGraphView {
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
-		public init(dataSource: [CGFloat],
+		public init(dataSource: DSFSparkline.StaticDataSource,
 						palette: DSFSparkline.Palette = .shared,
 						strokeColor: DSFColor? = nil,
 						lineWidth: CGFloat = 1.0,

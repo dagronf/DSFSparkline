@@ -217,6 +217,38 @@ struct LineDemoAreaCenteredMarkers: View {
 	}
 }
 
+struct LineDemoAreaCenteredMarkersNoLowerColor: View {
+	var body: some View {
+		Text("Line centered with markers, single color")
+		HStack {
+			DSFSparklineLineGraphView.SwiftUI(
+				dataSource: LineSource1,
+				graphColor: DSFColor.systemGreen,
+				lineWidth: 0.5,
+				showZeroLine: true,
+				centeredAtZeroLine: true,
+				markerSize: 4
+			)
+			.frame(height: 40.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+
+			DSFSparklineLineGraphView.SwiftUI(
+				dataSource: LineSource1,
+				graphColor: DSFColor.systemGreen,
+				interpolated: true,
+				showZeroLine: true,
+				centeredAtZeroLine: true,
+				markerSize: 4
+			)
+			.frame(height: 40.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+		}
+	}
+}
+
+
 struct LineDemoLineRanges: View {
 	var body: some View {
 		Text("Line with ranges")
@@ -274,6 +306,7 @@ struct LineDemoContentView: View {
 				LineDemoArea()
 				LineDemoAreaCentered()
 				LineDemoAreaCenteredMarkers()
+				LineDemoAreaCenteredMarkersNoLowerColor()
 				LineDemoLineRanges()
 			}
 			.frame(width: 400.0)

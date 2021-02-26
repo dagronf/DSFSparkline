@@ -1,5 +1,5 @@
 //
-//  DSFSparklineOverlay+StaticDataSource.swift
+//  DSFSparkline+StaticDataSource.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 26/2/21.
@@ -21,25 +21,27 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
 
-public extension DSFSparklineOverlay {
-	/// A data source that is (generally) a static set of data, like for a pie chart
-	@objc(DSFSparklineOverlayStaticDataSource) class StaticDataSource: DSFSparklineOverlay {
-		/// The data to be displayed in this graph
-		///
-		/// The values become a percentage of the total value stored within the
-		/// dataStore, and as such each value ends up being drawn as a fraction of the total.
-		/// So for example, if you want the pie chart to represent the number of red cars vs. number of
-		/// blue cars, you just set the values directly.
-		@objc public var dataSource = DSFSparkline.StaticDataSource() {
-			didSet {
-				self.dataDidChange()
-			}
+import Foundation
+
+public extension DSFSparkline {
+
+	@objc class StaticDataSource: NSObject {
+		let values: [CGFloat]
+
+		/// The total of all the values within the datasource
+		@objc public let total: CGFloat
+
+		@objc public override init() {
+			self.values = []
+			self.total = 0
+			super.init()
 		}
 
-		func dataDidChange() {
-			// Do nothing
+		@objc public init(_ values: [CGFloat]) {
+			self.values = values
+			self.total = values.reduce(0) { $0 + $1 }
+			super.init()
 		}
 	}
 }

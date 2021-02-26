@@ -181,12 +181,12 @@ struct ReportView: View {
 							.frame(width: 120)
 
 							DSFSparklinePieGraphView.SwiftUI(
-								dataSource: salesItems[number].values
+								dataSource: DSFSparkline.StaticDataSource(salesItems[number].values)
 							)
 							.frame(width: 28, height: 28)
 
 							DSFSparklineDataBarGraphView.SwiftUI(
-								dataSource: salesItems[number].values,
+								dataSource: DSFSparkline.StaticDataSource(salesItems[number].values),
 								maximumTotalValue: salesItems[number].maximumTotal,
 								unsetColor: DSFColor.black.withAlphaComponent(0.2)
 							)

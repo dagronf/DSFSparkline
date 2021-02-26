@@ -8,10 +8,10 @@
 import SwiftUI
 import DSFSparkline
 
-fileprivate let firstDataSourceDataBar: [CGFloat] = [10, 40, 25]
-fileprivate let secondDataSourceDataBar: [CGFloat] = [33, 33, 33]
-fileprivate let thirdDataSourceDataBar: [CGFloat] = [85, 10, 19]
-fileprivate let fourthDataSourceDataBar: [CGFloat] = [3, 4, 5]
+fileprivate let firstDataSourceDataBar = DSFSparkline.StaticDataSource([10, 40, 25])
+fileprivate let secondDataSourceDataBar = DSFSparkline.StaticDataSource([33, 33, 33])
+fileprivate let thirdDataSourceDataBar = DSFSparkline.StaticDataSource([85, 10, 19])
+fileprivate let fourthDataSourceDataBar = DSFSparkline.StaticDataSource([3, 4, 5])
 
 fileprivate let palette1 = DSFSparkline.Palette([.systemRed, .systemOrange, .systemYellow])
 fileprivate let grays = DSFSparkline.Palette([
@@ -82,14 +82,14 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count)),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
 				)
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count)),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
@@ -97,7 +97,7 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [5, 2, 4, 8],
+					dataSource: DSFSparkline.StaticDataSource([5, 2, 4, 8]),
 					strokeColor: DSFColor.gray,
 					lineWidth: 1
 				)
@@ -114,7 +114,7 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count)),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
 					animated: true,
@@ -123,7 +123,7 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
+					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count)),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
@@ -133,7 +133,7 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [5, 2, 4, 8],
+					dataSource: DSFSparkline.StaticDataSource([5, 2, 4, 8]),
 					strokeColor: DSFColor.gray,
 					lineWidth: 1,
 					animated: true,
@@ -149,7 +149,7 @@ struct DataBarGraphContent: View {
 					VStack(spacing: 8) {
 						Text("No Background Color")
 						DSFSparklineDataBarGraphView.SwiftUI(
-							dataSource: [2, 4, 8],
+							dataSource: DSFSparkline.StaticDataSource([2, 4, 8]),
 							maximumTotalValue: 20,
 							palette: palette1,
 							lineWidth: 1,
@@ -161,7 +161,7 @@ struct DataBarGraphContent: View {
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
-							dataSource: [5, 10, 5],
+							dataSource: DSFSparkline.StaticDataSource([5, 10, 5]),
 							maximumTotalValue: 20,
 							palette: palette1,
 							lineWidth: 1,
@@ -173,7 +173,7 @@ struct DataBarGraphContent: View {
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
-							dataSource: [1, 3, 5],
+							dataSource: DSFSparkline.StaticDataSource([1, 3, 5]),
 							maximumTotalValue: 20,
 							palette: palette1,
 							lineWidth: 1,
@@ -190,7 +190,7 @@ struct DataBarGraphContent: View {
 						Text("Background color defined")
 
 						DSFSparklineDataBarGraphView.SwiftUI(
-							dataSource: [3, 3, 5],
+							dataSource: DSFSparkline.StaticDataSource([3, 3, 5]),
 							maximumTotalValue: 14,
 							palette: palette1,
 							unsetColor: DSFColor.black,
@@ -204,7 +204,7 @@ struct DataBarGraphContent: View {
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
-							dataSource: [12, 2, 5],
+							dataSource: DSFSparkline.StaticDataSource([12, 2, 5]),
 							maximumTotalValue: 20,
 							palette: palette1,
 							unsetColor: DSFColor.black,
@@ -218,7 +218,7 @@ struct DataBarGraphContent: View {
 						.border(Color.gray.opacity(0.3), width: 0.5)
 
 						DSFSparklineDataBarGraphView.SwiftUI(
-							dataSource: [1, 10, 5],
+							dataSource: DSFSparkline.StaticDataSource([1, 10, 5]),
 							maximumTotalValue: 20,
 							palette: palette1,
 							unsetColor: DSFColor.black,

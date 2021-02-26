@@ -55,10 +55,6 @@ public extension DSFSparklineOverlay {
 
 		override func dataDidChange() {
 			super.dataDidChange()
-
-			// Precalculate the total.
-			self.total = self.dataSource.reduce(0) { $0 + $1 }
-
 			if self.animated {
 				self.startAnimateIn()
 			}
@@ -76,7 +72,6 @@ public extension DSFSparklineOverlay {
 
 		internal var animator = ArbitraryAnimator()
 		internal var fractionComplete: CGFloat = 0
-		internal var total: CGFloat = 0.0
 	}
 }
 
@@ -114,14 +109,14 @@ private extension DSFSparklineOverlay.Pie {
 		// the starting angle is -90 degrees (top of the circle, as the context is flipped). By default, 0 is the right hand side of the circle, with the positive angle being in an anti-clockwise direction (same as a unit circle in maths).
 		var startAngle = -CGFloat.pi * 0.5
 
-		for segment in self.dataSource.enumerated() { // loop through the values array
+		for segment in self.dataSource.values.enumerated() { // loop through the values array
 			context.usingGState { state in
 
 				// set fill color to the segment color
 				state.setFillColor(self.palette.cgColorAtOffset(segment.offset))
 
 				// update the end angle of the segment
-				let fraEndAngle = startAngle + (2 * .pi * (segment.element / total)) * fractionComplete
+				let fraEndAngle = startAngle + (2 * .pi * (segment.element / self.dataSource.total)) * fractionComplete
 
 				// move to the center of the pie chart
 				state.move(to: viewCenter)
@@ -144,11 +139,11 @@ private extension DSFSparklineOverlay.Pie {
 			context.setStrokeColor(stroke)
 			context.setLineWidth(self.lineWidth)
 
-			for segment in self.dataSource.enumerated() { // loop through the values array
+			for segment in self.dataSource.values.enumerated() { // loop through the values array
 				context.usingGState { state in
 
 					// update the end angle of the segment
-					let fraEndAngle = startAngle + (2 * .pi * (segment.element / total)) * fractionComplete
+					let fraEndAngle = startAngle + (2 * .pi * (segment.element / self.dataSource.total)) * fractionComplete
 
 					// move to the center of the pie chart
 					state.move(to: viewCenter)
