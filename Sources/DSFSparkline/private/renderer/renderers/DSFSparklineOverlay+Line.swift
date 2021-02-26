@@ -21,7 +21,11 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+#if os(macOS)
+import Cocoa
+#else
+import UIKit
+#endif
 
 public extension DSFSparklineOverlay {
 	/// A line graph sparkline
@@ -41,7 +45,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// Draw a shadow under the line
-		@objc public var shadowed: Bool = false {
+		@objc public var shadow: NSShadow? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -62,6 +66,21 @@ public extension DSFSparklineOverlay {
 				return self.drawLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
+	}
+}
+
+extension CGContext {
+	@inlinable func setShadow(_ shadow: NSShadow) {
+
+		#if os(macOS)
+		let color = shadow.shadowColor
+		#else
+		let color = shadow.shadowColor as? UIColor
+		#endif
+
+		self.setShadow(offset: shadow.shadowOffset,
+							blur: shadow.shadowBlurRadius,
+							color: color?.cgColor)
 	}
 }
 
@@ -127,10 +146,8 @@ private extension DSFSparklineOverlay.Line {
 					ctx.setStrokeColor(strokeColor)
 					ctx.setLineWidth(self.lineWidth)
 
-					if shadowed {
-						ctx.setShadow(offset: CGSize(width: 0.5, height: -0.5),
-										  blur: 1.0,
-										  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+					if let shadow = self.shadow {
+						ctx.setShadow(shadow)
 					}
 					ctx.setLineJoin(.round)
 					ctx.strokePath()
@@ -143,6 +160,9 @@ private extension DSFSparklineOverlay.Line {
 					outer.usingGState { ctx in
 						ctx.addPath(allP)
 						ctx.setFillColor(strokeColor)
+						if let shadow = self.shadow {
+							ctx.setShadow(shadow)
+						}
 						ctx.fillPath()
 					}
 				}
@@ -238,11 +258,8 @@ private extension DSFSparklineOverlay.Line {
 						ctx.addPath(path)
 						ctx.setStrokeColor(stroke)
 						ctx.setLineWidth(self.lineWidth)
-
-						if shadowed {
-							ctx.setShadow(offset: CGSize(width: 0.5, height: 0.5),
-											  blur: 1.0,
-											  color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+						if let shadow = self.shadow {
+							ctx.setShadow(shadow)
 						}
 						ctx.setLineJoin(.round)
 						ctx.strokePath()
@@ -255,6 +272,9 @@ private extension DSFSparklineOverlay.Line {
 			if let stroke = self.primaryStrokeColor {
 				context.usingGState { ctx in
 					ctx.addPath(pPoints)
+					if let shadow = self.shadow {
+						ctx.setShadow(shadow)
+					}
 					ctx.setFillColor(stroke)
 					ctx.fillPath()
 				}
@@ -264,6 +284,9 @@ private extension DSFSparklineOverlay.Line {
 			if let stroke = self.secondaryStrokeColor {
 				context.usingGState { ctx in
 					ctx.addPath(nPoints)
+					if let shadow = self.shadow {
+						ctx.setShadow(shadow)
+					}
 					ctx.setFillColor(stroke)
 					ctx.fillPath()
 				}

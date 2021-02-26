@@ -24,7 +24,7 @@ fileprivate let b1: DSFSparklineSurfaceBitmap = {
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.primaryTextColor.cgColor
-	l.primaryFill = DSFSparklineFill(colors: [
+	l.primaryFill = DSFSparkline.Fill(colors: [
 		DSFColor.systemRed.cgColor,
 		DSFColor.systemBlue.cgColor,
 	])
@@ -56,7 +56,7 @@ fileprivate let b3: DSFSparklineSurfaceBitmap = {
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.systemPink.cgColor
 	l.strokeWidth = 1.0
-	l.shadowed = true
+	l.shadow = DSFSparkline.Shadow.default
 	l.markerSize = 6
 	l.dataSource = dataSource
 	b.addOverlay(l)

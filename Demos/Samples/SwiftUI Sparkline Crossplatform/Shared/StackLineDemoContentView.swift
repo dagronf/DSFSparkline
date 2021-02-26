@@ -5,9 +5,8 @@
 //  Created by Darren Ford on 16/2/21.
 //
 
-import SwiftUI
 import DSFSparkline
-
+import SwiftUI
 
 struct StackLineBasic: View {
 	var body: some View {
@@ -15,7 +14,8 @@ struct StackLineBasic: View {
 		DSFSparklineStackLineGraphView.SwiftUI(
 			dataSource: UpDataSource1,
 			graphColor: DSFColor.systemGray,
-			lineWidth: 1
+			lineWidth: 1,
+			shadowed: true
 		)
 		.frame(height: 40.0)
 		.padding(5)
@@ -54,7 +54,6 @@ struct StackLineCenteredZeroLine: View {
 	}
 }
 
-
 struct StackLineCenteredZeroLineColored: View {
 	var body: some View {
 		Text("Stackline centered around zero-line, lower color")
@@ -62,7 +61,7 @@ struct StackLineCenteredZeroLineColored: View {
 			dataSource: UpDataSource1,
 			graphColor: DSFColor.systemGreen,
 			lineWidth: 1,
-			//showZeroLine: true,
+			shadowed: true,
 			centeredAtZeroLine: true,
 			lowerGraphColor: DSFColor.systemRed
 		)
@@ -84,7 +83,7 @@ struct StackLineRange: View {
 				DSFSparklineHighlightRangeDefinition(
 					range: 20 ..< 80,
 					fillColor: DSFColor.systemGray.withAlphaComponent(0.2).cgColor
-				)
+				),
 			]
 		)
 		.frame(width: 250.0, height: 59.0)
@@ -122,7 +121,7 @@ struct StackLineRange2: View {
 				DSFSparklineHighlightRangeDefinition(
 					range: 0.3 ..< 0.7,
 					fillColor: DSFColor.systemPink.withAlphaComponent(0.1).cgColor
-				)
+				),
 			]
 		)
 		.frame(width: 330.0, height: 59.0)
@@ -143,7 +142,8 @@ struct StackLineCenteredZeroLine2: View {
 			zeroLineDefinition: DSFSparklineZeroLineDefinition(
 				color: DSFColor.systemGray,
 				lineWidth: 1,
-				lineDashStyle: []),
+				lineDashStyle: []
+			),
 			centeredAtZeroLine: true,
 			lowerGraphColor: DSFColor.systemPink
 		)
@@ -152,7 +152,6 @@ struct StackLineCenteredZeroLine2: View {
 		.border(Color.gray.opacity(0.2), width: 1)
 	}
 }
-
 
 struct StackLineDemoContentView: View {
 	var body: some View {
@@ -172,36 +171,32 @@ struct StackLineDemoContentView: View {
 }
 
 struct StackLineDemoContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        StackLineDemoContentView()
-    }
+	static var previews: some View {
+		StackLineDemoContentView()
+	}
 }
 
-
-
-
-
-fileprivate var UpDataSource1: DSFSparklineDataSource = {
+private var UpDataSource1: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.4)
-	//d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
-
+	// d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
+	
 	d.push(values: [
-				0.85, 0.04, 0.24, 0.13, 0.51, 0.93, 0.26, 0.69, 0.16, 0.39,
-				0.19, 0.12, 0.28, 0.42, 0.42, 0.48, 0.29, 0.05, 0.87, 0.28
+		0.85, 0.04, 0.24, 0.13, 0.51, 0.93, 0.26, 0.69, 0.16, 0.39,
+		0.19, 0.12, 0.28, 0.42, 0.42, 0.48, 0.29, 0.05, 0.87, 0.28,
 	])
-
+	
 	return d
 }()
 
-fileprivate var UpDataSource2: DSFSparklineDataSource = {
+private var UpDataSource2: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 8, range: 0 ... 100)
 	d.push(values: [100, 0, 25, 50, 75, 10, 10, 88])
 	return d
 }()
 
-fileprivate var UpDataSource3: DSFSparklineDataSource = {
+private var UpDataSource3: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 21, range: -1 ... 1)
-
+	
 	var sins: CGFloat = 0.0
 	let r: Range<Int> = 0 ..< 21
 	let vars: [CGFloat] = r.map { sin(CGFloat($0)) }
@@ -209,7 +204,7 @@ fileprivate var UpDataSource3: DSFSparklineDataSource = {
 	return d
 }()
 
-fileprivate var UpDataSource4: DSFSparklineDataSource = {
+private var UpDataSource4: DSFSparklineDataSource = {
 	let d = DSFSparklineDataSource(windowSize: 21, range: 0 ... 1)
 	d.zeroLineValue = 0.5
 	d.push(values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0])

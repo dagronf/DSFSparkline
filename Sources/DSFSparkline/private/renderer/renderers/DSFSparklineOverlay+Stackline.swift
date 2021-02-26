@@ -21,7 +21,11 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+#if os(macOS)
+import Cocoa
+#else
+import UIKit
+#endif
 
 public extension DSFSparklineOverlay {
 	/// A stackline graph
@@ -41,7 +45,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// Draw a shadow under the line
-		@objc public var shadowed: Bool = false {
+		@objc public var shadow: NSShadow? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -139,17 +143,8 @@ extension DSFSparklineOverlay.Stackline {
 				outer.setStrokeColor(stroke)
 				outer.setLineWidth(self.lineWidth)
 
-				if self.shadowed {
-					let yoff: CGFloat
-					#if os(macOS)
-					yoff = -0.5 // macos is flipped
-					#else
-					yoff = 0.5
-					#endif
-
-					outer.setShadow(offset: CGSize(width: 0.5, height: yoff),
-										 blur: 1.0,
-										 color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+				if let shadow = self.shadow {
+					outer.setShadow(shadow)
 				}
 
 				outer.strokePath()
@@ -262,12 +257,8 @@ extension DSFSparklineOverlay.Stackline {
 							inner.setStrokeColor(strokeColor)
 							inner.setLineWidth(self.lineWidth)
 
-							if self.shadowed {
-								inner.setShadow(
-									offset: CGSize(width: 0.5, height: 0.5),
-									blur: 1.0,
-									color: DSFColor.black.withAlphaComponent(0.3).cgColor
-								)
+							if let shadow = self.shadow {
+								inner.setShadow(shadow)
 							}
 
 							inner.strokePath()

@@ -29,15 +29,15 @@ import UIKit
 
 /// A highlight range definition
 @objc public class DSFSparklineHighlightRangeDefinition: NSObject {
-	public static let DefaultFill = DSFSparklineFill(flatColor: DSFColor.systemGray.cgColor)
+	public static let DefaultFill = DSFSparkline.Fill(flatColor: DSFColor.systemGray.cgColor)
 
 	/// The range in the sparkline to highlight
 	public var range: Range<CGFloat>
 
 	/// The highlight fill to use
-	@objc public var fill: DSFSparklineFill
+	@objc public var fill: DSFSparkline.Fill
 
-	public init(range: Range<CGFloat>, fill: DSFSparklineFill = DefaultFill) {
+	public init(range: Range<CGFloat>, fill: DSFSparkline.Fill = DefaultFill) {
 		self.range = range
 		self.fill = fill
 		super.init()
@@ -45,12 +45,12 @@ import UIKit
 
 	public init(range: Range<CGFloat>, fillColor: CGColor) {
 		self.range = range
-		self.fill = DSFSparklineFill(flatColor: fillColor)
+		self.fill = DSFSparkline.Fill(flatColor: fillColor)
 		super.init()
 	}
 
 	/// Objective-C compatible initializer. Lowerbound MUST be less than upperbound!
-	@objc public init(lowerBound: CGFloat, upperBound: CGFloat, fill: DSFSparklineFill = DefaultFill) {
+	@objc public init(lowerBound: CGFloat, upperBound: CGFloat, fill: DSFSparkline.Fill = DefaultFill) {
 		assert(lowerBound < upperBound)
 		self.range = lowerBound ..< upperBound
 		self.fill = fill
@@ -61,7 +61,7 @@ import UIKit
 	@objc public init(lowerBound: CGFloat, upperBound: CGFloat, fillColor: CGColor) {
 		assert(lowerBound < upperBound)
 		self.range = lowerBound ..< upperBound
-		self.fill = DSFSparklineFill(flatColor: fillColor)
+		self.fill = DSFSparkline.Fill(flatColor: fillColor)
 		super.init()
 	}
 }

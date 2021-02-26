@@ -21,7 +21,11 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+#if os(macOS)
+import Cocoa
+#else
+import UIKit
+#endif
 
 public extension DSFSparklineOverlay {
 
@@ -42,7 +46,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// Draw a shadow under the line
-		@objc public var shadowed: Bool = false {
+		@objc public var shadow: NSShadow? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -58,8 +62,6 @@ public extension DSFSparklineOverlay {
 		}
 	}
 }
-
-
 
 extension DSFSparklineOverlay.Bar {
 	private func drawBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
@@ -123,11 +125,8 @@ extension DSFSparklineOverlay.Bar {
 			if let stroke = self.primaryStrokeColor {
 				outer.usingGState { strokeCtx in
 
-					if self.shadowed {
-						strokeCtx.setShadow(
-							offset: CGSize(width: 0.5, height: 0.5),
-							blur: 1.0,
-							color: DSFColor.black.withAlphaComponent(0.3).cgColor)
+					if let shadow = self.shadow {
+						strokeCtx.setShadow(shadow)
 					}
 
 					strokeCtx.addPath(path)

@@ -1,5 +1,5 @@
 //
-//  DSFSparklineOverlay+Centerable.swift
+//  DSFSparklineDefinitions.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 26/2/21.
@@ -21,48 +21,18 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+#if os(macOS)
+import Cocoa
+#else
+import UIKit
+#endif
 
-public extension DSFSparklineOverlay {
-	/// A graph that can be centered around the datasource's zero-line
-	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineOverlay.ZeroLine {
-		/// Should the graph be centered at the zero line defined in the datasource?
-		@objc public var centeredAtZeroLine: Bool = false {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		// MARK: - Primary
-
-		/// The primary color for the sparkline
-		@objc public var primaryStrokeColor: CGColor? = .black {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The primary fill color for the sparkline
-		@objc public var primaryFill: DSFSparkline.Fill? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		// MARK: - Secondary
-
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryStrokeColor: CGColor? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The primary fill color for the sparkline
-		@objc public var secondaryFill: DSFSparkline.Fill? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
+@objc public class DSFSparkline: NSObject {
+	@objc(DSFSparklineShadow) public class Shadow: NSObject {
+		/// The default shadow
+		@objc(DSFSparklineShadowDefault) public static let `default` =
+			NSShadow(blurRadius: 1.0,
+						offset: CGSize(width: 0.5, height: 0.5),
+						color: DSFColor.black.withAlphaComponent(0.3))
 	}
 }

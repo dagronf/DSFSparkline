@@ -192,4 +192,3 @@ extension String {
 		return floats
 	}
 }
-

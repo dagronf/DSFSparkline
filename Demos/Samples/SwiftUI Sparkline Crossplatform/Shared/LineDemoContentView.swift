@@ -28,7 +28,8 @@ struct LineDemoBasic: View {
 					dataSource: LineSource1,
 					graphColor: GraphColor,
 					lineWidth: 1,
-					lineShading: false
+					lineShading: false,
+					shadowed: true
 				)
 				.frame(height: 40.0)
 				.padding(5)
@@ -75,6 +76,23 @@ struct LineDemoBasicMarkers: View {
 			.padding(5)
 			.border(Color.gray.opacity(0.2), width: 1)
 		}
+	}
+}
+
+struct LineDemoMarkersAndShadow: View {
+	var body: some View {
+		Text("Line with markers and shadow")
+		DSFSparklineLineGraphView.SwiftUI(
+			dataSource: LineSource1,
+			graphColor: GraphColor,
+			lineWidth: 1,
+			lineShading: false,
+			shadowed: true,
+			markerSize: 4
+		)
+		.frame(height: 40.0)
+		.padding(5)
+		.border(Color.gray.opacity(0.2), width: 1)
 	}
 }
 
@@ -251,6 +269,7 @@ struct LineDemoContentView: View {
 			VStack {
 				LineDemoBasic()
 				LineDemoBasicMarkers()
+				LineDemoMarkersAndShadow()
 				LineDemoBasicZeroLine()
 				LineDemoArea()
 				LineDemoAreaCentered()

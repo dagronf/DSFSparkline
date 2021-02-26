@@ -24,54 +24,57 @@
 import CoreGraphics
 import Foundation
 
-@objc public class DSFSparklineFill: NSObject {
-	@objc public var gradient: CGGradient?
-	@objc public var flat: CGColor?
+public extension DSFSparkline {
 
-	@objc public init(flatColor: CGColor) {
-		self.flat = flatColor
-	}
+	@objc(DSFSparklineFill) class Fill: NSObject {
+		@objc public var gradient: CGGradient?
+		@objc public var flat: CGColor?
 
-	@objc public init(gradient: CGGradient) {
-		self.gradient = gradient
-	}
-
-	public init(colors: [CGColor]) {
-		assert(colors.count >= 2)
-
-		let locations: [CGFloat] = {
-			if colors.count == 2 { return [1, 0] }
-
-			var tmp: [CGFloat] = []
-			let divisor: CGFloat = 1.0 / CGFloat((colors.count - 2) + 1)
-			var tmpVal: CGFloat = 1.0
-			while tmpVal >= 0 {
-				tmp.append(tmpVal)
-				tmpVal -= divisor
-			}
-			return tmp
-		}()
-
-		let gradient = CGGradient(
-			colorsSpace: nil,
-			colors: colors as CFArray,
-			locations: locations)
-
-		self.gradient = gradient
-	}
-
-
-	@objc public func fill(context: CGContext, bounds: CGRect) {
-		if let gradient = self.gradient {
-			context.drawLinearGradient(
-				gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-				end: CGPoint(x: 0.0, y: bounds.minY),
-				options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-			)
+		@objc public init(flatColor: CGColor) {
+			self.flat = flatColor
 		}
-		else if let fill = self.flat {
-			context.setFillColor(fill)
-			context.fill(bounds)
+
+		@objc public init(gradient: CGGradient) {
+			self.gradient = gradient
+		}
+
+		public init(colors: [CGColor]) {
+			assert(colors.count >= 2)
+
+			let locations: [CGFloat] = {
+				if colors.count == 2 { return [1, 0] }
+
+				var tmp: [CGFloat] = []
+				let divisor: CGFloat = 1.0 / CGFloat((colors.count - 2) + 1)
+				var tmpVal: CGFloat = 1.0
+				while tmpVal >= 0 {
+					tmp.append(tmpVal)
+					tmpVal -= divisor
+				}
+				return tmp
+			}()
+
+			let gradient = CGGradient(
+				colorsSpace: nil,
+				colors: colors as CFArray,
+				locations: locations)
+
+			self.gradient = gradient
+		}
+
+
+		@objc public func fill(context: CGContext, bounds: CGRect) {
+			if let gradient = self.gradient {
+				context.drawLinearGradient(
+					gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+					end: CGPoint(x: 0.0, y: bounds.minY),
+					options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+				)
+			}
+			else if let fill = self.flat {
+				context.setFillColor(fill)
+				context.fill(bounds)
+			}
 		}
 	}
 }
