@@ -24,6 +24,8 @@
 import SwiftUI
 
 public extension DSFSparklineSurface {
+
+	/// A surface for creating a sparkline using overlays
 	struct SwiftUI {
 		let overlays: [DSFSparklineOverlay]
 

@@ -30,7 +30,7 @@ import SwiftUI
 public extension DSFSparklineTabletGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: DSFSparklineDataSource
+		let dataSource: DSFSparkline.DataSource
 
 		/// The 'win' color for the sparkline
 		let winColor: DSFColor
@@ -49,7 +49,7 @@ public extension DSFSparklineTabletGraphView {
 		///   - lossColor: The 'loss' color for the sparkline
 		///   - lineWidth: The width of the line around each tablet
 		///   - barSpacing: The spacing between the tablets
-		public init(dataSource: DSFSparklineDataSource,
+		public init(dataSource: DSFSparkline.DataSource,
 						winColor: DSFColor = .systemGreen,
 						lossColor: DSFColor = .systemRed,
 						lineWidth: CGFloat = 1,

@@ -18,10 +18,10 @@ func WinLossCreate() -> some View {
 
 struct WinLossGraphContentView: View {
 
-	let leftDataSource: DSFSparklineDataSource
-	let rightDataSource: DSFSparklineDataSource
-	let upDataSource: DSFSparklineDataSource
-	let tablet1: DSFSparklineDataSource
+	let leftDataSource: DSFSparkline.DataSource
+	let rightDataSource: DSFSparkline.DataSource
+	let upDataSource: DSFSparkline.DataSource
+	let tablet1: DSFSparkline.DataSource
 
 	var body: some View {
 		VStack(spacing: 8) {
@@ -90,26 +90,26 @@ struct WinLossGraphContentView: View {
 	}
 }
 
-var WinLossDataSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: -1.0 ... 1)
+var WinLossDataSource1: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 10, range: -1.0 ... 1)
 	d.push(values: [1, -1, 0, 1, -1, -1, 1, -1, 0, 1])
 	return d
 }()
 
-var WinLossDataSource2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: -1.0 ... 1.0)
+var WinLossDataSource2: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 10, range: -1.0 ... 1.0)
 	d.push(values: [20, 10, 0, -10, -20, -30, 40, 50, 0, 70])
 	return d
 }()
 
-var WinLossDataSource3: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: -1 ... 1)
+var WinLossDataSource3: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: -1 ... 1)
 	d.push(values: [1, 1, 1, -1, 1, 0, -1, -1, 1, 1, 1, -1, -1, 1, 1, 0, -1, 1, 1, 1])
 	return d
 }()
 
-var TabletDataSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: -1 ... 1)
+var TabletDataSource1: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: -1 ... 1)
 	d.push(values: [1, 1, 1, -1, 1, 0, -1, -1, 1, 1, 1, -1, -1, 1, 1, 0, -1, 1, 1, 1])
 	return d
 }()

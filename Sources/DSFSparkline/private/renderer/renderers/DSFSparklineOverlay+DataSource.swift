@@ -30,7 +30,7 @@ public extension DSFSparklineOverlay {
 	/// Generally you don't create one of these yourself, you subclass it
 	@objc(DSFSparklineDataSourceOverlay) class DataSource : DSFSparklineOverlay {
 		/// The datasource for displaying the overlay
-		@objc public var dataSource: DSFSparklineDataSource? {
+		@objc public var dataSource: DSFSparkline.DataSource? {
 			didSet {
 				self.updateDataObserver()
 			}
@@ -43,7 +43,7 @@ public extension DSFSparklineOverlay {
 			self.dataObserver = nil
 			if let datasource = self.dataSource {
 				self.dataObserver = NotificationCenter.default.addObserver(
-					forName: DSFSparklineDataSource.DataChangedNotification,
+					forName: DSFSparkline.DataSource.DataChangedNotification,
 					object: datasource,
 					queue: nil, using: { [weak self] _ in
 						self?.setNeedsDisplay()
@@ -52,7 +52,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		@objc public init(dataSource: DSFSparklineDataSource? = nil) {
+		@objc public init(dataSource: DSFSparkline.DataSource? = nil) {
 			self.dataSource = dataSource
 			super.init()
 		}

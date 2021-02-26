@@ -29,7 +29,7 @@ import SwiftUI
 public extension DSFSparklineWinLossGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: DSFSparklineDataSource
+		let dataSource: DSFSparkline.DataSource
 
 		/// The 'win' color for the sparkline
 		let winColor: DSFColor
@@ -58,7 +58,7 @@ public extension DSFSparklineWinLossGraphView {
 		///   - barSpacing: The spacing between the bars
 		///   - showZeroLine: Show or hide a 'zero line' horizontal line
 		///   - zeroLineDefinition: the settings for drawing the zero line
-		public init(dataSource: DSFSparklineDataSource,
+		public init(dataSource: DSFSparkline.DataSource,
 						winColor: DSFColor = .systemGreen,
 						lossColor: DSFColor = .systemRed,
 						tieColor: DSFColor? = nil,

@@ -157,8 +157,8 @@ class ViewController: NSViewController {
 		nameMap["stripes-integral"] = self.stripes2
 	}
 
-	fileprivate var lineSource: DSFSparklineDataSource = {
-		let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.3)
+	fileprivate var lineSource: DSFSparkline.DataSource = {
+		let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.3)
 		d.push(values: [
 			0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.87, 0.44, 0.02, 0.27,
 			0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50
@@ -166,8 +166,8 @@ class ViewController: NSViewController {
 		return d
 	}()
 
-	fileprivate var dotSource: DSFSparklineDataSource = {
-		let d = DSFSparklineDataSource(windowSize: 70, range: 0 ... 1)
+	fileprivate var dotSource: DSFSparkline.DataSource = {
+		let d = DSFSparkline.DataSource(windowSize: 70, range: 0 ... 1)
 		d.push(values: [
 			0.73, 0.86, 0.72, 0.35, 0.36, 0.09, 0.06, 0.89, 0.94, 0.22,
 			0.52, 0.74, 0.53, 0.89, 0.34, 0.67, 0.88, 0.00, 0.78, 0.99,
@@ -180,20 +180,20 @@ class ViewController: NSViewController {
 		return d
 	}()
 
-	fileprivate var winLossDataSource1: DSFSparklineDataSource = {
-		let d = DSFSparklineDataSource(windowSize: 10, range: -1.0 ... 1)
+	fileprivate var winLossDataSource1: DSFSparkline.DataSource = {
+		let d = DSFSparkline.DataSource(windowSize: 10, range: -1.0 ... 1)
 		d.push(values: [1, -1, 0, 1, -1, -1, 1, -1, 0, 1])
 		return d
 	}()
 
-	fileprivate var landOceanTempAnomolies: DSFSparklineDataSource = {
-		let e = DSFSparklineDataSource(windowSize: UInt(land_ocean_temp_anomolies.count))
+	fileprivate var landOceanTempAnomolies: DSFSparkline.DataSource = {
+		let e = DSFSparkline.DataSource(windowSize: UInt(land_ocean_temp_anomolies.count))
 		e.set(values: land_ocean_temp_anomolies)
 		return e
 	}()
 
-	fileprivate var twiggle: DSFSparklineDataSource = {
-		let e = DSFSparklineDataSource(windowSize: 50)
+	fileprivate var twiggle: DSFSparkline.DataSource = {
+		let e = DSFSparkline.DataSource(windowSize: 50)
 
 		var v: Int = 0
 		let vv: [CGFloat] = (0 ..< 24).map { value in
@@ -208,15 +208,15 @@ class ViewController: NSViewController {
 		return e
 	}()
 
-	fileprivate var world: DSFSparklineDataSource = {
-		let e = DSFSparklineDataSource(windowSize: UInt(rawData.count))
+	fileprivate var world: DSFSparkline.DataSource = {
+		let e = DSFSparkline.DataSource(windowSize: UInt(rawData.count))
 		e.set(values: rawData)
 		return e
 	}()
 
 
-	fileprivate var australianAnomaly: DSFSparklineDataSource = {
-		let e = DSFSparklineDataSource(windowSize: UInt(temperature.count))
+	fileprivate var australianAnomaly: DSFSparkline.DataSource = {
+		let e = DSFSparkline.DataSource(windowSize: UInt(temperature.count))
 		e.set(values: temperature)
 		return e
 	}()

@@ -8,8 +8,8 @@
 import SwiftUI
 import DSFSparkline
 
-fileprivate var data1: DSFSparklineDataSource = {
-	let e = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
+fileprivate var data1: DSFSparkline.DataSource = {
+	let e = DSFSparkline.DataSource(windowSize: 100, range: 0 ... 100)
 	let values: [CGFloat] = (0 ..< 100).map { _ in
 		CGFloat.random(in: 0 ... 100)
 	}
@@ -17,8 +17,8 @@ fileprivate var data1: DSFSparklineDataSource = {
 	return e
 }()
 
-fileprivate var animData1: DSFSparklineDataSource = {
-	let e = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
+fileprivate var animData1: DSFSparkline.DataSource = {
+	let e = DSFSparkline.DataSource(windowSize: 100, range: 0 ... 100)
 	return e
 }()
 

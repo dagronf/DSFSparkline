@@ -15,9 +15,9 @@ class ViewController: NSViewController {
 
 	let count = 200
 
-	var inDataSources: [DSFSparklineDataSource] = []
-	var outDataSources: [DSFSparklineDataSource] = []
-	var cpuDataSources: [DSFSparklineDataSource] = []
+	var inDataSources: [DSFSparkline.DataSource] = []
+	var outDataSources: [DSFSparkline.DataSource] = []
+	var cpuDataSources: [DSFSparkline.DataSource] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -25,10 +25,10 @@ class ViewController: NSViewController {
 		// Do any additional setup after loading the view.
 
 		(0 ..< count).forEach { _ in
-			inDataSources.append(DSFSparklineDataSource(windowSize: 50, range: -1.5 ... 1.5))
-			outDataSources.append(DSFSparklineDataSource(windowSize: 50, range: -1.5 ... 1.5))
+			inDataSources.append(DSFSparkline.DataSource(windowSize: 50, range: -1.5 ... 1.5))
+			outDataSources.append(DSFSparkline.DataSource(windowSize: 50, range: -1.5 ... 1.5))
 
-			cpuDataSources.append(DSFSparklineDataSource(windowSize: 100, range: 0 ... 100))
+			cpuDataSources.append(DSFSparkline.DataSource(windowSize: 100, range: 0 ... 100))
 		}
 
 		self.tableView.reloadData()

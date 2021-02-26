@@ -8,8 +8,8 @@
 import SwiftUI
 import DSFSparkline
 
-var LineSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.5)
+var LineSource1: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.5)
 	d.push(values: [
 		0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.87, 0.44, 0.02, 0.27,
 		0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50

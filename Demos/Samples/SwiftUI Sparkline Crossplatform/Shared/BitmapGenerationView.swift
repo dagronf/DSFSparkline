@@ -12,7 +12,7 @@ import DSFSparkline
 fileprivate let b1: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
 
-	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
+	let dataSource = DSFSparkline.DataSource(values: [1, 5, 3, 4], range: 0 ... 6)
 
 	let li = DSFSparklineOverlay.GridLines()
 	li.dataSource = dataSource
@@ -37,7 +37,7 @@ fileprivate let b1: DSFSparklineSurface.Bitmap = {
 fileprivate let b2: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
 
-	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
+	let dataSource = DSFSparkline.DataSource(values: [1, 5, 3, 4], range: 0 ... 6)
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.black.cgColor
@@ -51,7 +51,7 @@ fileprivate let b2: DSFSparklineSurface.Bitmap = {
 fileprivate let b3: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
 
-	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4])
+	let dataSource = DSFSparkline.DataSource(values: [1, 5, 3, 4])
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.systemPink.cgColor
@@ -67,7 +67,7 @@ fileprivate let b3: DSFSparklineSurface.Bitmap = {
 fileprivate let b4: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
 
-	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4])
+	let dataSource = DSFSparkline.DataSource(values: [1, 5, 3, 4])
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.systemPink.cgColor
@@ -87,7 +87,7 @@ fileprivate let tablet1: DSFSparklineSurface.Bitmap = {
 	let l = DSFSparklineOverlay.Tablet()
 	l.lossFillColor = CGColor.clear
 
-	let dataSource = DSFSparklineDataSource(
+	let dataSource = DSFSparkline.DataSource(
 		values: [-1, 5, 3, -7, -2, 2, 5, -1, 5, 3, -7, -2, 2, 5, -1, 5, 3, -7, -2, 2, 5])
 	l.dataSource = dataSource
 	b.addOverlay(l)

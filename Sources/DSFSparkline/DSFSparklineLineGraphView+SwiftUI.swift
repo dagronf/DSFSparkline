@@ -29,7 +29,7 @@ import SwiftUI
 public extension DSFSparklineLineGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: DSFSparklineDataSource
+		let dataSource: DSFSparkline.DataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
 
@@ -72,7 +72,7 @@ public extension DSFSparklineLineGraphView {
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
 		///   - markerSize: The size of the markers to draw. If the markerSize is less than 0, markers will not draw
-		public init(dataSource: DSFSparklineDataSource,
+		public init(dataSource: DSFSparkline.DataSource,
 						graphColor: DSFColor,
 						lineWidth: CGFloat = 1.5,
 						interpolated: Bool = false,

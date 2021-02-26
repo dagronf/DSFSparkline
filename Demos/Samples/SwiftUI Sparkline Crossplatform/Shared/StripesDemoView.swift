@@ -186,15 +186,15 @@ struct StripesDemoView_Previews: PreviewProvider {
 
 // MARK: -
 
-fileprivate var GradientTestDataSource: DSFSparklineDataSource = {
-	let e = DSFSparklineDataSource()
+fileprivate var GradientTestDataSource: DSFSparkline.DataSource = {
+	let e = DSFSparkline.DataSource()
 	e.set(values: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0,
 						1, 2, 3, 4, 5, 6, 7, 8, 9])
 	return e
 }()
 
-fileprivate var GradientTestDataSource2: DSFSparklineDataSource = {
-	let e = DSFSparklineDataSource()
+fileprivate var GradientTestDataSource2: DSFSparkline.DataSource = {
+	let e = DSFSparkline.DataSource()
 	e.set(values: [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0,
 						1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 	return e
@@ -202,8 +202,8 @@ fileprivate var GradientTestDataSource2: DSFSparklineDataSource = {
 
 // MARK: - World definition
 
-fileprivate var WorldDataSource: DSFSparklineDataSource = {
-	let e = DSFSparklineDataSource(windowSize: UInt(WorldRawData.count))
+fileprivate var WorldDataSource: DSFSparkline.DataSource = {
+	let e = DSFSparkline.DataSource(windowSize: UInt(WorldRawData.count))
 	e.set(values: WorldRawData)
 	return e
 }()
@@ -388,8 +388,8 @@ let WorldRawData: [CGFloat] = [
 
 // MARK: - Australia Mean Temp Deviation
 
-fileprivate var australianAnomaly: DSFSparklineDataSource = {
-	let e = DSFSparklineDataSource(windowSize: UInt(AustraliaMeanTempDeviation.count))
+fileprivate var australianAnomaly: DSFSparkline.DataSource = {
+	let e = DSFSparkline.DataSource(windowSize: UInt(AustraliaMeanTempDeviation.count))
 	e.set(values: AustraliaMeanTempDeviation)
 	return e
 }()

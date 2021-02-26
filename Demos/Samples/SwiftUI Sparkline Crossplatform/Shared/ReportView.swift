@@ -12,7 +12,7 @@ struct UserResults {
 	let name: String
 	var values: [Int]
 	
-	let dataSource = DSFSparklineDataSource(windowSize: 5)
+	let dataSource = DSFSparkline.DataSource(windowSize: 5)
 	
 	init(name: String, values: [Int]) {
 		self.name = name
@@ -173,7 +173,7 @@ struct ReportView: View {
 							}
 
 							DSFSparklineLineGraphView.SwiftUI(
-								dataSource: DSFSparklineDataSource(values: salesItems[number].values),
+								dataSource: DSFSparkline.DataSource(values: salesItems[number].values),
 								graphColor: DSFColor.systemBlue,
 								lineShading: false,
 								markerSize: 6
@@ -209,7 +209,7 @@ struct ReportView_Previews: PreviewProvider {
 	}
 }
 
-let NasdaqFeb2020Feb2021DataSource = DSFSparklineDataSource(values: NasdaqFeb2020Feb2021)
+let NasdaqFeb2020Feb2021DataSource = DSFSparkline.DataSource(values: NasdaqFeb2020Feb2021)
 let NasdaqFeb2020Feb2021: [CGFloat] = [
 	8965.61,
 	8980.78,
@@ -469,8 +469,8 @@ let NasdaqFeb2020Feb2021: [CGFloat] = [
 
 
 
-let GoldFeb2020Feb2021DataSource: DSFSparklineDataSource = {
-	let s = DSFSparklineDataSource(zeroLineValue: 1775.4)
+let GoldFeb2020Feb2021DataSource: DSFSparkline.DataSource = {
+	let s = DSFSparkline.DataSource(zeroLineValue: 1775.4)
 	s.push(values: GoldFeb2020Feb2021)
 	return s
 }()

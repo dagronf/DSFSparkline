@@ -30,7 +30,7 @@ public extension DSFSparklineStripesGraphView {
 	struct SwiftUI {
 
 		/// Datasource for the graph
-		let dataSource: DSFSparklineDataSource
+		let dataSource: DSFSparkline.DataSource
 
 		let barSpacing: UInt
 		let integral: Bool
@@ -52,7 +52,7 @@ public extension DSFSparklineStripesGraphView {
 		///   - lineWidth: The width of the separator lines
 		///   - animated: If set, animates any datasource value changes
 		///   - animationDuration: The duration for the animate-in animation
-		public init(dataSource: DSFSparklineDataSource,
+		public init(dataSource: DSFSparkline.DataSource,
 						integral: Bool = false,
 						barSpacing: UInt = 0,
 						gradient: DSFSparkline.GradientBucket = Self.shared)

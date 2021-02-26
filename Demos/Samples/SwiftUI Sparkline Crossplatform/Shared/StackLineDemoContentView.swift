@@ -176,8 +176,8 @@ struct StackLineDemoContentView_Previews: PreviewProvider {
 	}
 }
 
-private var UpDataSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.4)
+private var UpDataSource1: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.4)
 	// d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
 	
 	d.push(values: [
@@ -188,14 +188,14 @@ private var UpDataSource1: DSFSparklineDataSource = {
 	return d
 }()
 
-private var UpDataSource2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 8, range: 0 ... 100)
+private var UpDataSource2: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 8, range: 0 ... 100)
 	d.push(values: [100, 0, 25, 50, 75, 10, 10, 88])
 	return d
 }()
 
-private var UpDataSource3: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 21, range: -1 ... 1)
+private var UpDataSource3: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 21, range: -1 ... 1)
 	
 	var sins: CGFloat = 0.0
 	let r: Range<Int> = 0 ..< 21
@@ -204,8 +204,8 @@ private var UpDataSource3: DSFSparklineDataSource = {
 	return d
 }()
 
-private var UpDataSource4: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 21, range: 0 ... 1)
+private var UpDataSource4: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 21, range: 0 ... 1)
 	d.zeroLineValue = 0.5
 	d.push(values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0])
 	return d

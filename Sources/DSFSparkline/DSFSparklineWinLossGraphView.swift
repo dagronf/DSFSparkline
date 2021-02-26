@@ -127,7 +127,7 @@ extension DSFSparklineWinLossGraphView {
 		let e = 0 ..< self.graphWindowSize
 		let data = e.map { arg in return Int.random(in: -1 ... 1) }
 
-		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
+		let ds = DSFSparkline.DataSource(windowSize: self.graphWindowSize)
 		self.dataSource = ds
 		ds.set(values: data.map { CGFloat($0) })
 

@@ -14,7 +14,7 @@ class GridViewController: NSViewController {
 
 	let sz = 32
 
-	var dataSources: [[DSFSparklineDataSource]] = []
+	var dataSources: [[DSFSparkline.DataSource]] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -29,7 +29,7 @@ class GridViewController: NSViewController {
 
 		(0 ... sz).forEach { row in
 			let item = (0 ... sz).map { _ in
-				DSFSparklineDataSource(windowSize: 30, range: -1 ... 1)
+				DSFSparkline.DataSource(windowSize: 30, range: -1 ... 1)
 			}
 			dataSources.append(item)
 		}

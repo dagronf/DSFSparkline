@@ -46,8 +46,8 @@ struct OverlayView: View {
 	}
 }
 
-var ds1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: -55 ... 55, zeroLineValue: 0)
+var ds1: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: -55 ... 55, zeroLineValue: 0)
 	d.set(values: [
 				18, -5, 11, 12, -21, 48, 41, -19, -28, 3,
 				28, -27, -21, -45, -48, -39, 33, -4, 35, 37]

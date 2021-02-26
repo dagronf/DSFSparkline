@@ -28,7 +28,7 @@ import SwiftUI
 public extension DSFSparklineBarGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: DSFSparklineDataSource
+		let dataSource: DSFSparkline.DataSource
 
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
@@ -62,7 +62,7 @@ public extension DSFSparklineBarGraphView {
 		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
-		public init(dataSource: DSFSparklineDataSource,
+		public init(dataSource: DSFSparkline.DataSource,
 						graphColor: DSFColor,
 						lineWidth: UInt = 1,
 						barSpacing: UInt = 1,

@@ -40,7 +40,7 @@ import UIKit
 	private var dataObserver: NSObjectProtocol?
 
 	/// The source of data for the sparkline
-	@objc weak public var dataSource: DSFSparklineDataSource? {
+	@objc weak public var dataSource: DSFSparkline.DataSource? {
 		didSet {
 			if self.windowSizeSetInXib {
 				self.dataSource?.windowSize = self.graphWindowSize
@@ -104,7 +104,7 @@ extension DSFSparklineDataSourceView {
 		self.dataObserver = nil
 		if self.dataSource != nil {
 			self.dataObserver = NotificationCenter.default.addObserver(
-				forName: DSFSparklineDataSource.DataChangedNotification,
+				forName: DSFSparkline.DataSource.DataChangedNotification,
 				object: self.dataSource!,
 				queue: nil, using: { [weak self] (notification) in
 					self?.updateDisplay()
@@ -130,7 +130,7 @@ extension DSFSparklineDataSourceView {
 		let e = 0 ..< self.graphWindowSize
 		let data = e.map { arg in return CGFloat.random(in: -10.0 ... 10.0) }
 
-		let ds = DSFSparklineDataSource(windowSize: self.graphWindowSize)
+		let ds = DSFSparkline.DataSource(windowSize: self.graphWindowSize)
 		self.dataSource = ds
 		ds.set(values: data)
 

@@ -25,52 +25,52 @@ class ViewController: NSViewController {
 
 
 	@IBOutlet weak var sparkCrash: DSFSparklineDataSourceView!
-	var sparkCrashDatasource = DSFSparklineDataSource(range: -10 ... 10)
+	var sparkCrashDatasource = DSFSparkline.DataSource(range: -10 ... 10)
 
 	@IBOutlet weak var sparkCrash2: DSFSparklineDataSourceView!
-	var sparkCrash2Datasource = DSFSparklineDataSource(range: -13 ... 13)
+	var sparkCrash2Datasource = DSFSparkline.DataSource(range: -13 ... 13)
 
 	@IBOutlet weak var sparkDeprecation: DSFSparklineDataSourceView!
-	var sparkDeprecationDatasource = DSFSparklineDataSource(range: -10 ... 10)
+	var sparkDeprecationDatasource = DSFSparkline.DataSource(range: -10 ... 10)
 
 	@IBOutlet weak var sparkIntervention: DSFSparklineDataSourceView!
-	var sparkInterventionDatasource = DSFSparklineDataSource()
+	var sparkInterventionDatasource = DSFSparkline.DataSource()
 
 	@IBOutlet weak var sparkNetworkError: DSFSparklineDataSourceView!
-	var sparkNetworkErrorDatasource = DSFSparklineDataSource(range: -10 ... 30)
+	var sparkNetworkErrorDatasource = DSFSparkline.DataSource(range: -10 ... 30)
 
 	@IBOutlet weak var sparkTransmissionError: DSFSparklineDataSourceView!
-	var sparkTransmissionErrorDatasource = DSFSparklineDataSource(range: 0 ... 1)
+	var sparkTransmissionErrorDatasource = DSFSparkline.DataSource(range: 0 ... 1)
 
 	@IBOutlet weak var sparkPacketRejection: DSFSparklineWinLossGraphView!
-	var sparkPacketRejectionDatasource = DSFSparklineDataSource(windowSize: 10, range: -1 ... 1)
+	var sparkPacketRejectionDatasource = DSFSparkline.DataSource(windowSize: 10, range: -1 ... 1)
 
 	@IBOutlet weak var stackLineView: DSFSparklineStackLineGraphView!
-	var stackLineViewDatasource = DSFSparklineDataSource(range: 0 ... 10)
+	var stackLineViewDatasource = DSFSparkline.DataSource(range: 0 ... 10)
 
 
 
 	@IBOutlet weak var fakeSparkCpu1: DSFSparklineDataSourceView!
-	var fakeSparkCpu1Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
+	var fakeSparkCpu1Datasource = DSFSparkline.DataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu2: DSFSparklineDataSourceView!
-	var fakeSparkCpu2Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
+	var fakeSparkCpu2Datasource = DSFSparkline.DataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu3: DSFSparklineDataSourceView!
-	var fakeSparkCpu3Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
+	var fakeSparkCpu3Datasource = DSFSparkline.DataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu4: DSFSparklineDataSourceView!
-	var fakeSparkCpu4Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
+	var fakeSparkCpu4Datasource = DSFSparkline.DataSource(range: 0 ... 1, zeroLineValue: 0.8)
 	@IBOutlet weak var fakeSparkCpu5: DSFSparklineDataSourceView!
-	var fakeSparkCpu5Datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
+	var fakeSparkCpu5Datasource = DSFSparkline.DataSource(range: 0 ... 1, zeroLineValue: 0.8)
 
 	@IBOutlet weak var sparkStaticData: DSFSparklineLineGraphView!
-	var sparkStaticDatasource = DSFSparklineDataSource(range: -20 ... 50)
+	var sparkStaticDatasource = DSFSparkline.DataSource(range: -20 ... 50)
 
 	@IBOutlet weak var cpuStack: NSStackView!
 
 	@IBOutlet weak var cpuDotView: DSFSparklineDotGraphView!
-	var cpuDotViewDatasource = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
+	var cpuDotViewDatasource = DSFSparkline.DataSource(windowSize: 100, range: 0 ... 100)
 
 	@IBOutlet weak var cpu2DotView: DSFSparklineDotGraphView!
-	var cpu2DotViewDatasource = DSFSparklineDataSource(windowSize: 100, range: 0 ... 100)
+	var cpu2DotViewDatasource = DSFSparkline.DataSource(windowSize: 100, range: 0 ... 100)
 
 
 	let cpuUsage = MyCpuUsage()
@@ -153,7 +153,7 @@ class ViewController: NSViewController {
 		}
 	}
 
-	var cpuDataSources: [DSFSparklineDataSource] = []
+	var cpuDataSources: [DSFSparkline.DataSource] = []
 
 }
 
@@ -172,8 +172,8 @@ extension ViewController: CPUDelegate {
 			cpuDataSources.removeAll()
 
 			usage.forEach { _ in
-				let cpu = DSFSparklineBarGraphView.init(frame: CGRect(x: 0, y: 0, width: cpuStack.frame.width, height: 32))
-				let ds = DSFSparklineDataSource(range: 0 ... 100)
+				let cpu = DSFSparklineBarGraphView(frame: CGRect(x: 0, y: 0, width: cpuStack.frame.width, height: 32))
+				let ds = DSFSparkline.DataSource(range: 0 ... 100)
 				ds.windowSize = 30
 				cpu.dataSource = ds
 				self.cpuDataSources.append(ds)

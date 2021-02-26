@@ -1,9 +1,9 @@
 //
-//  DSFSparklineDataSource.swift
+//  DSFSparkline+DataSource.swift
 //  DSFSparklines
 //
-//  Created by Darren Ford on 21/12/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Created by Darren Ford on 26/2/21.
+//  Copyright © 2021 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -24,43 +24,53 @@
 import Foundation
 import CoreGraphics
 
-/// A datasource for a sparkline
-@objc public class DSFSparklineDataSource: NSObject {
+// In order to clean up some of the code, I've moved the declaration of the data source into a
+// DSFSparkline 'namespace' to match with the new DSFSparkline.StaticDataSource type
+//
+// A simple name change (DSFSparklineDataSource -> DSFSparkline.DataSource) in your code will fix this issue
+@available(*, deprecated, message: "Move to using DSFSparkline.DataSource instead (simple name change)")
+public typealias DSFSparklineDataSource = DSFSparkline.DataSource
 
-	@objc(DSFSparklineDataSourceDataChangedNotification)
-	static let DataChangedNotification = NSNotification.Name("DSFSparklineDataSource.DataChanged")
+public extension DSFSparkline {
 
-	private let sparkline = SparklineWindow<CGFloat>(windowSize: 10)
+	/// A datasource for a sparkline
+	@objc(DSFSparklineDataSource) class DataSource: NSObject {
 
-	@objc public override init() {
-		super.init()
-	}
+		@objc(DSFSparklineDataSourceDataChangedNotification)
+		static let DataChangedNotification = NSNotification.Name("DSFSparklineDataSource.DataChanged")
 
-	public init(windowSize: UInt? = nil,
-					range: ClosedRange<CGFloat>? = nil,
-					zeroLineValue: CGFloat? = nil) {
-		self.sparkline.yRange = range
-		if let zValue = zeroLineValue {
-			self.sparkline.zeroLineValue = zValue
+		private let sparkline = SparklineWindow<CGFloat>(windowSize: 10)
+
+		@objc public override init() {
+			super.init()
 		}
-		if let ws = windowSize {
-			self.sparkline.windowSize = ws
-		}
-	}
 
-	/// Create a datasource from a series of values
-	/// - Parameters:
-	///   - values: The values to initially assign to the datasource
-	///   - range: (optional) The maximum range to represent.
-	public convenience init(values: [CGFloat], range: ClosedRange<CGFloat>? = nil) {
-		self.init(windowSize: UInt(values.count), range: range)
-		self.set(values: values)
+		public init(windowSize: UInt? = nil,
+						range: ClosedRange<CGFloat>? = nil,
+						zeroLineValue: CGFloat? = nil) {
+			self.sparkline.yRange = range
+			if let zValue = zeroLineValue {
+				self.sparkline.zeroLineValue = zValue
+			}
+			if let ws = windowSize {
+				self.sparkline.windowSize = ws
+			}
+		}
+
+		/// Create a datasource from a series of values
+		/// - Parameters:
+		///   - values: The values to initially assign to the datasource
+		///   - range: (optional) The maximum range to represent.
+		public convenience init(values: [CGFloat], range: ClosedRange<CGFloat>? = nil) {
+			self.init(windowSize: UInt(values.count), range: range)
+			self.set(values: values)
+		}
 	}
 }
 
 // MARK: - Value handling
 
-public extension DSFSparklineDataSource {
+public extension DSFSparkline.DataSource {
 
 	/// The series of data points with the most recent being the last array entry
 	@objc var data: [CGFloat] {
@@ -106,7 +116,7 @@ public extension DSFSparklineDataSource {
 }
 
 
-public extension DSFSparklineDataSource {
+public extension DSFSparkline.DataSource {
 	
 	/// Add a new value. If there are more values than the window size, the oldest value is discarded
 	@discardableResult
@@ -138,7 +148,7 @@ public extension DSFSparklineDataSource {
 
 // MARK: - Range support (Swift)
 
-public extension DSFSparklineDataSource {
+public extension DSFSparkline.DataSource {
 
 	/// The current minimum/maximum range for the values, or nil if there is no range specified
 	var range: ClosedRange<CGFloat>? {
@@ -154,7 +164,7 @@ public extension DSFSparklineDataSource {
 
 // MARK: - Range support (Objc)
 
-public extension DSFSparklineDataSource {
+public extension DSFSparkline.DataSource {
 
 	/// Returns the lower bound for the current set of values.  If no values are present, returns CGFloat.greatestFiniteMagnitude
 	@objc var lowerBound: CGFloat {
@@ -190,7 +200,7 @@ public extension DSFSparklineDataSource {
 
 // MARK: - Internal
 
-extension DSFSparklineDataSource {
+extension DSFSparkline.DataSource {
 	var counter: UInt {
 		return self.sparkline.counter
 	}
@@ -204,11 +214,11 @@ extension DSFSparklineDataSource {
 	}
 
 	fileprivate func notifyDataChange() {
-		NotificationCenter.default.post(name: DSFSparklineDataSource.DataChangedNotification, object: self)
+		NotificationCenter.default.post(name: DSFSparkline.DataSource.DataChangedNotification, object: self)
 	}
 }
 
-public extension DSFSparklineDataSource {
+public extension DSFSparkline.DataSource {
 
 	/// Return the vertical fractional position within the data window that represents
 	/// zero for the current set of data.

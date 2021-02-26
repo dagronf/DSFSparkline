@@ -12,7 +12,7 @@ import DSFSparkline
 struct UpperGraph: View {
 	let label: String
 	
-	let dataSource: DSFSparklineDataSource
+	let dataSource: DSFSparkline.DataSource
 	let graphColor: DSFColor
 	
 	let showZeroLine: Bool
@@ -53,8 +53,8 @@ struct UpperGraph: View {
 	}
 }
 
-var PreviewUpperGraphDataSource: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0.0 ... 100.0, zeroLineValue: 25)
+var PreviewUpperGraphDataSource: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 10, range: 0.0 ... 100.0, zeroLineValue: 25)
 	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
 	return d
 }()
@@ -74,32 +74,32 @@ struct UpperGraph_Previews: PreviewProvider {
 
 /////////////
 
-var PreviewGlobalDataSource1: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: 0 ... 1.0)
+var PreviewGlobalDataSource1: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 10, range: 0 ... 1.0)
 	d.push(values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
 	return d
 }()
 
-var PreviewGlobalDataSource2: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 10, range: -1.0 ... 1.0)
+var PreviewGlobalDataSource2: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 10, range: -1.0 ... 1.0)
 	d.push(values: [-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5])
 	return d
 }()
 
-var PreviewGlobalDataSource3: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+var PreviewGlobalDataSource3: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: 0.0 ... 100.0)
 	d.push(values: [50, 40, 30, 20, 10, 0, 100, 90, 80, 70])
 	return d
 }()
 
-var PreviewGlobalDataSource4: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+var PreviewGlobalDataSource4: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: 0.0 ... 100.0)
 	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
 	return d
 }()
 
-var PreviewGlobalDataSource5: DSFSparklineDataSource = {
-	let d = DSFSparklineDataSource(windowSize: 20, range: 0.0 ... 100.0)
+var PreviewGlobalDataSource5: DSFSparkline.DataSource = {
+	let d = DSFSparkline.DataSource(windowSize: 20, range: 0.0 ... 100.0)
 	d.push(values: [20, 77, 90, 22, 4, 16, 66, 99, 88, 44])
 	return d
 }()
@@ -298,27 +298,27 @@ struct ActiveView: View {
 }
 
 let globalSource = DataSource(
-	DSFSparklineDataSource(windowSize: 30),
-	DSFSparklineDataSource(range: -1.0 ... 1.0),
-	DSFSparklineDataSource(range: -100 ... 100),
-	DSFSparklineDataSource(range: 0 ... 100),
-	DSFSparklineDataSource(range: 0 ... 100, zeroLineValue: 80)
+	DSFSparkline.DataSource(windowSize: 30),
+	DSFSparkline.DataSource(range: -1.0 ... 1.0),
+	DSFSparkline.DataSource(range: -100 ... 100),
+	DSFSparkline.DataSource(range: 0 ... 100),
+	DSFSparkline.DataSource(range: 0 ... 100, zeroLineValue: 80)
 )
 
 class DataSource {
-	let PreviewGlobalDataSource1: DSFSparklineDataSource // = DSFSparklineDataSource(windowSize: 30)
-	let PreviewGlobalDataSource2: DSFSparklineDataSource // = DSFSparklineDataSource(range: -1.0 ... 1.0)
-	let PreviewGlobalDataSource3: DSFSparklineDataSource // = DSFSparklineDataSource(range: -100 ... 100)
-	let PreviewGlobalDataSource4: DSFSparklineDataSource // = DSFSparklineDataSource(range: 0 ... 100)
-	let PreviewGlobalDataSource5: DSFSparklineDataSource // = DSFSparklineDataSource(range: 0 ... 100, zeroLineValue: 80)
+	let PreviewGlobalDataSource1: DSFSparkline.DataSource
+	let PreviewGlobalDataSource2: DSFSparkline.DataSource
+	let PreviewGlobalDataSource3: DSFSparkline.DataSource
+	let PreviewGlobalDataSource4: DSFSparkline.DataSource
+	let PreviewGlobalDataSource5: DSFSparkline.DataSource
 	
 	var shouldStop: Bool = false
 	
-	init(_ d1: DSFSparklineDataSource,
-		  _ d2: DSFSparklineDataSource,
-		  _ d3: DSFSparklineDataSource,
-		  _ d4: DSFSparklineDataSource,
-		  _ d5: DSFSparklineDataSource)
+	init(_ d1: DSFSparkline.DataSource,
+		  _ d2: DSFSparkline.DataSource,
+		  _ d3: DSFSparkline.DataSource,
+		  _ d4: DSFSparkline.DataSource,
+		  _ d5: DSFSparkline.DataSource)
 	{
 		self.PreviewGlobalDataSource1 = d1
 		self.PreviewGlobalDataSource2 = d2

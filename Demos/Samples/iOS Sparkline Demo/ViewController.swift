@@ -12,28 +12,28 @@ import DSFSparkline
 class ViewController: UIViewController {
 	@IBOutlet var spark1: DSFSparklineLineGraphView!
 	@IBOutlet var spark12: DSFSparklineLineGraphView!
-	var spark1ds = DSFSparklineDataSource(windowSize: 50, range: -10 ... 30)
+	var spark1ds = DSFSparkline.DataSource(windowSize: 50, range: -10 ... 30)
 	@IBOutlet var spark2: DSFSparklineLineGraphView!
-	var spark2ds = DSFSparklineDataSource(windowSize: 50, range: -12 ... 12)
+	var spark2ds = DSFSparkline.DataSource(windowSize: 50, range: -12 ... 12)
 	@IBOutlet var spark3: DSFSparklineBarGraphView!
-	var spark3ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
+	var spark3ds = DSFSparkline.DataSource(windowSize: 30, range: -10 ... 10)
 	@IBOutlet var spark4: DSFSparklineBarGraphView!
-	var spark4ds = DSFSparklineDataSource(windowSize: 30, range: -10 ... 10)
+	var spark4ds = DSFSparkline.DataSource(windowSize: 30, range: -10 ... 10)
 
 	@IBOutlet var dot1: DSFSparklineDotGraphView!
-	var dot1ds = DSFSparklineDataSource(windowSize: 80, range: -10 ... 10)
+	var dot1ds = DSFSparkline.DataSource(windowSize: 80, range: -10 ... 10)
 
 	@IBOutlet var s1: DSFSparklineBarGraphView!
-	var ds1 = DSFSparklineDataSource(range: -10 ... 10)
+	var ds1 = DSFSparkline.DataSource(range: -10 ... 10)
 	@IBOutlet var s2: DSFSparklineBarGraphView!
-	var ds2 = DSFSparklineDataSource(range: -10 ... 10)
+	var ds2 = DSFSparkline.DataSource(range: -10 ... 10)
 	@IBOutlet var s3: DSFSparklineBarGraphView!
-	var ds3 = DSFSparklineDataSource(range: -10 ... 10)
+	var ds3 = DSFSparkline.DataSource(range: -10 ... 10)
 	@IBOutlet var s4: DSFSparklineBarGraphView!
-	var ds4 = DSFSparklineDataSource(range: -10 ... 10)
+	var ds4 = DSFSparkline.DataSource(range: -10 ... 10)
 
 	@IBOutlet var winLoss1: DSFSparklineWinLossGraphView!
-	var wl1 = DSFSparklineDataSource(range: -1 ... 1)
+	var wl1 = DSFSparkline.DataSource(range: -1 ... 1)
 
 	@IBOutlet var winLoss2: DSFSparklineWinLossGraphView!
 
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
 	@IBOutlet var tabletView2: DSFSparklineTabletGraphView!
 
 	@IBOutlet var stacklineGraphView: DSFSparklineStackLineGraphView!
-	var sl1 = DSFSparklineDataSource(range: 0 ... 10)
+	var sl1 = DSFSparkline.DataSource(range: 0 ... 10)
 
 	@IBOutlet var stacklineGraphView2: DSFSparklineStackLineGraphView!
 

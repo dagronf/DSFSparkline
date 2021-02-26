@@ -51,7 +51,7 @@ public extension DSFSparklineOverlay {
 			self.highlightRange = lowerBound ..< upperBound
 		}
 
-		public init(dataSource: DSFSparklineDataSource? = nil,
+		public init(dataSource: DSFSparkline.DataSource? = nil,
 						range: Range<CGFloat>? = nil,
 						fill: DSFSparkline.Fill = RangeHighlight.defaultFill) {
 			self.highlightRange = range

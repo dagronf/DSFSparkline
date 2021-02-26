@@ -28,7 +28,7 @@ import SwiftUI
 public extension DSFSparklineDotGraphView {
 	struct SwiftUI {
 		/// Datasource for the graph
-		let dataSource: DSFSparklineDataSource
+		let dataSource: DSFSparkline.DataSource
 		/// The primary color for the sparkline
 		let graphColor: DSFColor
 
@@ -46,7 +46,7 @@ public extension DSFSparklineDotGraphView {
 		///   - unsetGraphColor: The color of the dots that are not set
 		///   - verticalDotCount: The number of dots vertically
 		///   - upsideDown: Draw the graph upside down
-		public init(dataSource: DSFSparklineDataSource,
+		public init(dataSource: DSFSparkline.DataSource,
 						graphColor: DSFColor,
 						unsetGraphColor: DSFColor = DSFColor.clear,
 						verticalDotCount: UInt = 10,
