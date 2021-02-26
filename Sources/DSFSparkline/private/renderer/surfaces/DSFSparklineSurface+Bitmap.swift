@@ -1,5 +1,5 @@
 //
-//  DSFSparklineSurfaceBitmap.swift
+//  DSFSparklineSurface+Bitmap.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 26/2/21.
@@ -24,43 +24,46 @@
 import CoreGraphics
 import Foundation
 
+public extension DSFSparklineSurface {
+
 /// A surface for drawing a sparkline into an image
-@objc public class DSFSparklineSurfaceBitmap: NSObject {
+	@objc(DSFSparklineSurfaceBitmap) class Bitmap: DSFSparklineSurface {
 
-	/// Add a sparkline overlay to the surface
-	@objc public func addOverlay(_ overlay: DSFSparklineOverlay) {
-		self.overlays.append(overlay)
-	}
-
-	/// Return a CGImage representation of the sparklline
-	/// - Parameters:
-	///   - size: The dimension in pixels
-	///   - scale: The scale to use (eg. retina == 2)
-	/// - Returns: A CGImage representation, or nil if the image couldn't be generated
-	@objc public func cgImage(size: CGSize, scale: CGFloat = 2) -> CGImage? {
-		let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-
-		// Create the bitmap context to draw into
-		guard let bitmapContext = self.generateBitmapContext(rect: rect, scale: scale) else {
-			return nil
+		/// Add a sparkline overlay to the surface
+		@objc public func addOverlay(_ overlay: DSFSparklineOverlay) {
+			self.overlays.append(overlay)
 		}
 
-		var bounds: CGRect = rect
+		/// Return a CGImage representation of the sparklline
+		/// - Parameters:
+		///   - size: The dimension in pixels
+		///   - scale: The scale to use (eg. retina == 2)
+		/// - Returns: A CGImage representation, or nil if the image couldn't be generated
+		@objc public func cgImage(size: CGSize, scale: CGFloat = 2) -> CGImage? {
+			let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
 
-		// Loop through each overlay and ask it to draw
-		self.overlays.forEach { overlay in
-			bitmapContext.usingGState { ctx in
-				bounds = overlay.drawGraph(context: ctx, bounds: bounds, scale: scale)
+			// Create the bitmap context to draw into
+			guard let bitmapContext = self.generateBitmapContext(rect: rect, scale: scale) else {
+				return nil
 			}
+
+			var bounds: CGRect = rect
+
+			// Loop through each overlay and ask it to draw
+			self.overlays.forEach { overlay in
+				bitmapContext.usingGState { ctx in
+					bounds = overlay.drawGraph(context: ctx, bounds: bounds, scale: scale)
+				}
+			}
+
+			return bitmapContext.makeImage()
 		}
 
-		return bitmapContext.makeImage()
+		// MARK: Private
+
+		// The overlays to use when generating the image
+		private var overlays: [DSFSparklineOverlay] = []
 	}
-
-	// MARK: Private
-
-	// The overlays to use when generating the image
-	private var overlays: [DSFSparklineOverlay] = []
 }
 
 // MARK: - AppKit Additions
@@ -68,7 +71,7 @@ import Foundation
 #if os(macOS)
 
 import AppKit
-public extension DSFSparklineSurfaceBitmap {
+public extension DSFSparklineSurface.Bitmap {
 	/// Generate an NSImage for the contents of the surface
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> NSImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
@@ -83,7 +86,7 @@ public extension DSFSparklineSurfaceBitmap {
 // MARK: - UIKit Additions
 
 import UIKit
-public extension DSFSparklineSurfaceBitmap {
+public extension DSFSparklineSurface.Bitmap {
 	/// Generate a UIImage for the contents of the surface
 	@objc func image(size: CGSize, scale: CGFloat = 2) -> UIImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
@@ -101,7 +104,7 @@ public extension DSFSparklineSurfaceBitmap {
 
 // MARK: - Private
 
-private extension DSFSparklineSurfaceBitmap {
+private extension DSFSparklineSurface.Bitmap {
 	// Generate a bitmap context for the specified rect and scale
 	func generateBitmapContext(rect: CGRect, scale: CGFloat) -> CGContext? {
 		let colorSpace = CGColorSpaceCreateDeviceRGB()

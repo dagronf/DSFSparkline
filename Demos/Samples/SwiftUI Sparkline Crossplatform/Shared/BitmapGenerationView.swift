@@ -9,8 +9,8 @@ import SwiftUI
 
 import DSFSparkline
 
-fileprivate let b1: DSFSparklineSurfaceBitmap = {
-	let b = DSFSparklineSurfaceBitmap()
+fileprivate let b1: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
 
@@ -34,8 +34,8 @@ fileprivate let b1: DSFSparklineSurfaceBitmap = {
 	return b
 }()
 
-fileprivate let b2: DSFSparklineSurfaceBitmap = {
-	let b = DSFSparklineSurfaceBitmap()
+fileprivate let b2: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4], range: 0 ... 6)
 
@@ -48,8 +48,8 @@ fileprivate let b2: DSFSparklineSurfaceBitmap = {
 	return b
 }()
 
-fileprivate let b3: DSFSparklineSurfaceBitmap = {
-	let b = DSFSparklineSurfaceBitmap()
+fileprivate let b3: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
 
 	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4])
 
@@ -65,8 +65,8 @@ fileprivate let b3: DSFSparklineSurfaceBitmap = {
 }()
 
 
-fileprivate let tablet1: DSFSparklineSurfaceBitmap = {
-	let b = DSFSparklineSurfaceBitmap()
+fileprivate let tablet1: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
 
 	let l = DSFSparklineOverlay.Tablet()
 	l.lossFillColor = CGColor.clear
@@ -86,7 +86,7 @@ struct BitmapGenerationView: View {
 	func makeImage(_ nsImage: NSImage) -> Image {
 		return Image(nsImage: nsImage)
 	}
-	func generate(_ bitmap: DSFSparklineSurfaceBitmap, size: CGSize) -> NSImage {
+	func generate(_ bitmap: DSFSparklineSurface.Bitmap, size: CGSize) -> NSImage {
 		guard let image = bitmap.image(size: size, scale: 2) else {
 			return NSImage(systemSymbolName: "exclamationmark.triangle.fill", accessibilityDescription: nil)!
 		}
@@ -97,7 +97,7 @@ struct BitmapGenerationView: View {
 		return Image(uiImage: uiImage)
 	}
 
-	func generate(_ bitmap: DSFSparklineSurfaceBitmap, size: CGSize) -> UIImage {
+	func generate(_ bitmap: DSFSparklineSurface.Bitmap, size: CGSize) -> UIImage {
 		guard let image = bitmap.image(size: size, scale: 2) else {
 			return UIImage(systemName: "exclamationmark.triangle.fill")!
 		}
