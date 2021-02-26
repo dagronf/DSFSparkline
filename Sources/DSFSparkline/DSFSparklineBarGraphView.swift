@@ -76,10 +76,10 @@ public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 		self.overlay.barSpacing = self.barSpacing
 
 		self.overlay.primaryStrokeColor = self.graphColor.cgColor
-		self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.4).cgColor
+		self.overlay.primaryFill = DSFSparklineFill(flatColor: self.graphColor.withAlphaComponent(0.4).cgColor)
 
 		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
-		self.overlay.secondaryFillColor = self.lowerColor.withAlphaComponent(0.4).cgColor
+		self.overlay.secondaryFill = DSFSparklineFill(flatColor: self.lowerColor.withAlphaComponent(0.4).cgColor)
 
 		self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 	}

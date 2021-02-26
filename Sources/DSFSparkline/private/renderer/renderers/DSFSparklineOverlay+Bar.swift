@@ -59,6 +59,8 @@ public extension DSFSparklineOverlay {
 	}
 }
 
+
+
 extension DSFSparklineOverlay.Bar {
 	private func drawBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource else {
@@ -110,21 +112,11 @@ extension DSFSparklineOverlay.Bar {
 			let path = CGMutablePath()
 			path.addRects(bars)
 
-			if self.wantsPrimaryFill {
+			if let primaryFill = self.primaryFill {
 				outer.usingGState { fillCtx in
 					fillCtx.addPath(path)
-					if let gradient = self.primaryGradient {
-						fillCtx.clip()
-						fillCtx.drawLinearGradient(
-							gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-							end: CGPoint(x: 0.0, y: bounds.minY),
-							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-						)
-					}
-					else if let fill = self.primaryFillColor {
-						fillCtx.setFillColor(fill)
-						fillCtx.fillPath()
-					}
+					fillCtx.clip()
+					primaryFill.fill(context: fillCtx, bounds: bounds)
 				}
 			}
 
@@ -203,21 +195,11 @@ extension DSFSparklineOverlay.Bar {
 				let path = CGMutablePath()
 				path.addRects(positivePath)
 
-				if self.wantsPrimaryFill {
+				if let primaryFill = self.primaryFill {
 					outer.usingGState { fillCtx in
 						fillCtx.addPath(path)
-						if let gradient = self.primaryGradient {
-							fillCtx.clip()
-							fillCtx.drawLinearGradient(
-								gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-								end: CGPoint(x: 0.0, y: bounds.minY),
-								options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-							)
-						}
-						else if let fill = self.primaryFillColor {
-							fillCtx.setFillColor(fill)
-							fillCtx.fillPath()
-						}
+						fillCtx.clip()
+						primaryFill.fill(context: fillCtx, bounds: bounds)
 					}
 				}
 
@@ -235,22 +217,11 @@ extension DSFSparklineOverlay.Bar {
 				let path = CGMutablePath()
 				path.addRects(negativePath)
 
-				if self.wantsSecondaryFill {
+				if let secondaryFill = self.secondaryFill {
 					outer.usingGState { fillCtx in
 						fillCtx.addPath(path)
-
-						if let gradient = self.secondaryGradient {
-							fillCtx.clip()
-							fillCtx.drawLinearGradient(
-								gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-								end: CGPoint(x: 0.0, y: bounds.minY),
-								options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-							)
-						}
-						else if let stroke = self.secondaryFillColor {
-							fillCtx.setFillColor(stroke)
-							fillCtx.fillPath()
-						}
+						fillCtx.clip()
+						secondaryFill.fill(context: fillCtx, bounds: bounds)
 					}
 				}
 

@@ -130,18 +130,8 @@ extension DSFSparklineOverlay.Stackline {
 				fillPath.closeSubpath()
 
 				fillCtx.addPath(fillPath)
-				if let gradient = self.primaryGradient {
-					fillCtx.clip()
-					fillCtx.drawLinearGradient(
-						gradient, start: CGPoint(x: bounds.minX, y: integralRect.maxY),
-						end: CGPoint(x: bounds.minX, y: integralRect.minY),
-						options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-					)
-				}
-				else if let fill = self.primaryFillColor {
-					fillCtx.setFillColor(fill)
-					fillCtx.fillPath()
-				}
+				fillCtx.clip()
+				self.primaryFill?.fill(context: fillCtx, bounds: integralRect)
 			}
 
 			if let stroke = self.primaryStrokeColor {
@@ -255,23 +245,13 @@ extension DSFSparklineOverlay.Stackline {
 							inner.clip(to: split.remainder)
 						}
 
-						let hasFill = (which == 0) ? self.wantsPrimaryFill : self.wantsSecondaryFill
+						let fillItem = (which == 0) ? self.primaryFill : self.secondaryFill
 
-						if hasFill {
+						if let fill = fillItem {
 							inner.usingGState { fillCtx in
 								fillCtx.addPath(linePath)
-								if let gradient = (which == 0) ? self.primaryGradient : self.secondaryGradient {
-									fillCtx.clip()
-									fillCtx.drawLinearGradient(
-										gradient, start: CGPoint(x: bounds.minX, y: integralRect.maxY),
-										end: CGPoint(x: bounds.minX, y: integralRect.minY),
-										options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-									)
-								}
-								else if let fill = (which == 0) ? self.primaryFillColor : self.secondaryFillColor {
-									fillCtx.setFillColor(fill)
-									fillCtx.fillPath()
-								}
+								fillCtx.clip()
+								fill.fill(context: fillCtx, bounds: integralRect)
 							}
 						}
 

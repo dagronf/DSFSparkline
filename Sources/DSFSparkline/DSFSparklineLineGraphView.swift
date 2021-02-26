@@ -51,10 +51,10 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
 			if lineShading == true {
-				self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.4).cgColor
+				self.overlay.primaryFill = DSFSparklineFill(flatColor: self.graphColor.withAlphaComponent(0.4).cgColor)
 			}
 			else {
-				self.overlay.primaryFillColor = nil
+				self.overlay.primaryFill = nil
 			}
 		}
 	}
@@ -109,10 +109,10 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 		self.overlay.markerSize = self.markerSize
 
 		self.overlay.primaryStrokeColor = self.graphColor.cgColor
-		self.overlay.primaryFillColor = self.graphColor.withAlphaComponent(0.4).cgColor
+		self.overlay.primaryFill = DSFSparklineFill(flatColor: self.graphColor.withAlphaComponent(0.4).cgColor)
 
 		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor
-		self.overlay.secondaryFillColor = self.lowerColor.withAlphaComponent(0.4).cgColor
+		self.overlay.secondaryFill = DSFSparklineFill(flatColor: self.lowerColor.withAlphaComponent(0.4).cgColor)
 
 		self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 	}

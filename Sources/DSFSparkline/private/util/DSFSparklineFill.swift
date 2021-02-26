@@ -1,5 +1,5 @@
 //
-//  DSFSparklineOverlay+Centerable.swift
+//  DSFSparklineFill.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 26/2/21.
@@ -21,48 +21,32 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+import CoreGraphics
+import Foundation
 
-public extension DSFSparklineOverlay {
-	/// A graph that can be centered around the datasource's zero-line
-	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineOverlay.ZeroLine {
-		/// Should the graph be centered at the zero line defined in the datasource?
-		@objc public var centeredAtZeroLine: Bool = false {
-			didSet {
-				self.setNeedsDisplay()
-			}
+@objc public class DSFSparklineFill: NSObject {
+	@objc public var gradient: CGGradient?
+	@objc public var flat: CGColor?
+
+	@objc public init(flatColor: CGColor) {
+		self.flat = flatColor
+	}
+
+	@objc public init(gradient: CGGradient) {
+		self.gradient = gradient
+	}
+
+	@objc public func fill(context: CGContext, bounds: CGRect) {
+		if let gradient = self.gradient {
+			context.drawLinearGradient(
+				gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
+				end: CGPoint(x: 0.0, y: bounds.minY),
+				options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+			)
 		}
-
-		// MARK: - Primary
-
-		/// The primary color for the sparkline
-		@objc public var primaryStrokeColor: CGColor? = .black {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The primary fill color for the sparkline
-		@objc public var primaryFill: DSFSparklineFill? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		// MARK: - Secondary
-
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
-		@objc public var secondaryStrokeColor: CGColor? {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
-
-		/// The primary fill color for the sparkline
-		@objc public var secondaryFill: DSFSparklineFill? {
-			didSet {
-				self.setNeedsDisplay()
-			}
+		else if let fill = self.flat {
+			context.setFillColor(fill)
+			context.fill(bounds)
 		}
 	}
 }

@@ -105,7 +105,7 @@ private extension DSFSparklineOverlay.Line {
 				outer.clip(to: clipRect)
 			}
 
-			if self.wantsPrimaryFill {
+			if let fill = self.primaryFill {
 				outer.usingGState { ctx in
 
 					let clipper = path.mutableCopy()!
@@ -117,18 +117,7 @@ private extension DSFSparklineOverlay.Line {
 
 					ctx.addPath(clipper)
 					ctx.clip()
-
-					if let gradient = self.primaryGradient {
-						ctx.drawLinearGradient(
-							gradient, start: CGPoint(x: 0.0, y: drawRect.maxY),
-							end: CGPoint(x: 0.0, y: drawRect.minY),
-							options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-						)
-					}
-					else if let fill = self.primaryFillColor {
-						ctx.setFillColor(fill)
-						ctx.fill(drawRect)
-					}
+					fill.fill(context: ctx, bounds: drawRect)
 				}
 			}
 
@@ -222,9 +211,9 @@ private extension DSFSparklineOverlay.Line {
 					inner.clip(to: split.remainder)
 				}
 
-				let hasFill = (which == 0) ? self.wantsPrimaryFill : self.wantsSecondaryFill
+				let fillItem = (which == 0) ? self.primaryFill : self.secondaryFill
 
-				if hasFill {
+				if let fill = fillItem {
 					inner.usingGState { ctx in
 
 						let altY = which == 0 ? drawRect.maxY : drawRect.minY
@@ -238,21 +227,7 @@ private extension DSFSparklineOverlay.Line {
 
 						ctx.addPath(clipper)
 						ctx.clip()
-
-						let gradient = (which == 0) ? self.primaryGradient : self.secondaryGradient
-						if let grad = gradient {
-							ctx.drawLinearGradient(
-								grad, start: CGPoint(x: drawRect.minX, y: drawRect.maxY),
-								end: CGPoint(x: drawRect.minX, y: drawRect.minY),
-								options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
-							)
-						}
-						else {
-							if let fill = (which == 0) ? self.primaryFillColor : self.secondaryFillColor {
-								ctx.setFillColor(fill)
-								ctx.fill(drawRect)
-							}
-						}
+						fill.fill(context: ctx, bounds: drawRect)
 					}
 				}
 
