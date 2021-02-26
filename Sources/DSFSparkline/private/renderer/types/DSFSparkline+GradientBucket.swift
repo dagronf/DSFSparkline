@@ -24,6 +24,8 @@
 import Foundation
 import CoreGraphics
 
+public extension DSFSparkline {
+
 /// A class that represents buckets of color within a gradient within the RGB colorspace.
 ///
 /// Defines a smooth transition between colors.
@@ -32,7 +34,7 @@ import CoreGraphics
 /// A gradient object can also be 'bucketed', so that rather than a smooth transition the gradient output is
 /// broken up into equal buckets containing a color
 
-@objc(DSFGradient) public class DSFGradientBucket: NSObject {
+@objc(DSFGradientBucket) class GradientBucket: NSObject {
 
 	static let rgbSpace = CGColorSpaceCreateDeviceRGB()
 	static let EmptyColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 0])!
@@ -177,11 +179,12 @@ import CoreGraphics
 		return Self.EmptyColor
 	}
 }
+}
 
-public extension DSFGradientBucket {
+public extension DSFSparkline.GradientBucket {
 
 	/// A gradient 'post' represents an absolute color at a fractional point within the gradient.
-	@objc(DSFGradientPost) class Post: NSObject {
+	@objc(DSFGradientBucketPost) class Post: NSObject {
 
 		/// The color at the location
 		let color: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat, c: CGColor)

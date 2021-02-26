@@ -13,8 +13,8 @@ fileprivate let secondDataSourceDataBar: [CGFloat] = [33, 33, 33]
 fileprivate let thirdDataSourceDataBar: [CGFloat] = [85, 10, 19]
 fileprivate let fourthDataSourceDataBar: [CGFloat] = [3, 4, 5]
 
-fileprivate let palette1 = DSFSparklinePalette([.systemRed, .systemOrange, .systemYellow])
-fileprivate let grays = DSFSparklinePalette([
+fileprivate let palette1 = DSFSparkline.Palette([.systemRed, .systemOrange, .systemYellow])
+fileprivate let grays = DSFSparkline.Palette([
 	DSFColor.init(white: 0.80, alpha: 1),
 	DSFColor.init(white: 0.60, alpha: 1),
 	DSFColor.init(white: 0.40, alpha: 1)
@@ -82,14 +82,14 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.shared.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
 				)
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.sharedGrays.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
@@ -114,7 +114,7 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.shared.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
 					animated: true,
@@ -123,7 +123,7 @@ struct DataBarGraphContent: View {
 				.frame(width: 96, height: 36)
 
 				DSFSparklineDataBarGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.sharedGrays.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,

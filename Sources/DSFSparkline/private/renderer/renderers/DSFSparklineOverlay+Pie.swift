@@ -27,7 +27,7 @@ public extension DSFSparklineOverlay {
 	/// A pie graph
 	@objc(DSFSparklineOverlayPie) class Pie: DSFSparklineOverlay.StaticDataSource {
 		/// The palette to use when drawing the pie chart
-		@objc public var palette = DSFSparklinePalette.shared {
+		@objc public var palette = DSFSparkline.Palette.shared {
 			didSet {
 				self.setNeedsDisplay()
 			}

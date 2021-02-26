@@ -11,45 +11,45 @@ import DSFSparkline
 
 struct StripesDemoView: View {
 
-	let gradient = DSFGradientBucket(
+	let gradient = DSFSparkline.GradientBucket(
 		posts: [
-			DSFGradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
-			DSFGradientBucket.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
-			DSFGradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
+			DSFSparkline.GradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
+			DSFSparkline.GradientBucket.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
+			DSFSparkline.GradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
 		]
 	)
 
-	let gradientBucketed = DSFGradientBucket(
+	let gradientBucketed = DSFSparkline.GradientBucket(
 		posts: [
-			DSFGradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
-			DSFGradientBucket.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
-			DSFGradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
+			DSFSparkline.GradientBucket.Post(color: CGColor(red: 0, green: 0, blue: 1, alpha: 1), location: 0),
+			DSFSparkline.GradientBucket.Post(color: CGColor(red: 1, green: 1, blue: 1, alpha: 1), location: 0.5),
+			DSFSparkline.GradientBucket.Post(color: CGColor(red: 1, green: 0, blue: 0, alpha: 1), location: 1)
 		],
 		bucketCount: 6
 	)
 
-	let gradient2: DSFGradientBucket = {
-		let g = DSFGradientBucket(posts: [
-			DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 0),
-			DSFGradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+	let gradient2: DSFSparkline.GradientBucket = {
+		let g = DSFSparkline.GradientBucket(posts: [
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 0),
+			DSFSparkline.GradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
 		])
 		g.bucketCount = 4
 		return g
 	}()
 
-	let gradient3: DSFGradientBucket = {
-		let g = DSFGradientBucket(posts: [
-			DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 0),
-			DSFGradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+	let gradient3: DSFSparkline.GradientBucket = {
+		let g = DSFSparkline.GradientBucket(posts: [
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 0),
+			DSFSparkline.GradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
 		])
 		g.bucketCount = 5
 		return g
 	}()
 
-	let gradient4: DSFGradientBucket = {
-		let g = DSFGradientBucket(posts: [
-			DSFGradientBucket.Post(r: 0.0, g: 0.0, b: 0.0, location: 0),
-			DSFGradientBucket.Post(r: 1.0, g: 1.0, b: 1.0, location: 1.0)
+	let gradient4: DSFSparkline.GradientBucket = {
+		let g = DSFSparkline.GradientBucket(posts: [
+			DSFSparkline.GradientBucket.Post(r: 0.0, g: 0.0, b: 0.0, location: 0),
+			DSFSparkline.GradientBucket.Post(r: 1.0, g: 1.0, b: 1.0, location: 1.0)
 		])
 		g.bucketCount = 8
 		return g

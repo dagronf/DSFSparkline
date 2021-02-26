@@ -36,7 +36,7 @@ public extension DSFSparklineDataBarGraphView {
 		let unsetColor: DSFColor?
 
 		/// Palette to use when coloring the chart
-		let palette: DSFSparklinePalette
+		let palette: DSFSparkline.Palette
 
 		/// Stroke Color
 		let strokeColor: DSFColor?
@@ -61,7 +61,7 @@ public extension DSFSparklineDataBarGraphView {
 		///   - animationDuration: The duration for the animate-in animation
 		public init(dataSource: [CGFloat],
 						maximumTotalValue: CGFloat = -1,
-						palette: DSFSparklinePalette = .shared,
+						palette: DSFSparkline.Palette = .shared,
 						unsetColor: DSFColor? = nil,
 						strokeColor: DSFColor? = nil,
 						lineWidth: CGFloat = 1.0,

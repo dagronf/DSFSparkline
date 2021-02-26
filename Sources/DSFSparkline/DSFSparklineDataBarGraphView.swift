@@ -110,7 +110,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 	}
 
 	/// The palette to use when drawing the pie chart
-	@objc public var palette = DSFSparklinePalette.shared {
+	@objc public var palette = DSFSparkline.Palette.shared {
 		didSet {
 			self.databarOverlay.palette = self.palette
 		}

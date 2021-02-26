@@ -284,15 +284,15 @@ class ViewController: NSViewController {
 		self.pie7.dataSource = [0.5, 0.1, 0.1]
 		self.pie8.dataSource = [1000, 2000, 300]
 
-		let palette = DSFSparklinePalette([
+		let palette = DSFSparkline.Palette([
 			DSFColor(deviceRed: 0, green: 0, blue: 1, alpha: 1),
 			DSFColor(deviceRed: 0.33, green: 0.33, blue: 1, alpha: 1),
 			DSFColor(deviceRed: 0.66, green: 0.66, blue: 1, alpha: 1)
 		])
-		self.pie2.palette = DSFSparklinePalette.sharedGrays
+		self.pie2.palette = DSFSparkline.Palette.sharedGrays
 		self.pie4.palette = palette
 		self.pie6.palette = palette
-		self.pie6.palette = DSFSparklinePalette.sharedGrays
+		self.pie6.palette = DSFSparkline.Palette.sharedGrays
 		self.pie8.palette = palette
 
 
@@ -319,15 +319,15 @@ class ViewController: NSViewController {
 		self.databarTotal6.dataSource = [9, 9, 4]
 		self.databarTotal6.maximumTotalValue = 60
 
-		let gradient1 = DSFGradientBucket(posts: [
-			DSFGradientBucket.Post(r: 0, g: 0, b: 1, location: 0.0),
-			DSFGradientBucket.Post(r: 1, g: 1, b: 1, location: 0.5),
-			DSFGradientBucket.Post(r: 1, g: 0, b: 0, location: 1.0),
+		let gradient1 = DSFSparkline.GradientBucket(posts: [
+			DSFSparkline.GradientBucket.Post(r: 0, g: 0, b: 1, location: 0.0),
+			DSFSparkline.GradientBucket.Post(r: 1, g: 1, b: 1, location: 0.5),
+			DSFSparkline.GradientBucket.Post(r: 1, g: 0, b: 0, location: 1.0),
 		])
 
-		let gradient2 = DSFGradientBucket(posts: [
-			DSFGradientBucket.Post(color: NSColor.systemYellow.cgColor, location: 0),
-			DSFGradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
+		let gradient2 = DSFSparkline.GradientBucket(posts: [
+			DSFSparkline.GradientBucket.Post(color: NSColor.systemYellow.cgColor, location: 0),
+			DSFSparkline.GradientBucket.Post(r: 0.3, g: 0, b: 0.3, location: 1.0)
 		])
 
 		self.stripes1.gradient = gradient1

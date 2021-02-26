@@ -8,8 +8,8 @@
 import SwiftUI
 import DSFSparkline
 
-fileprivate let palette1 = DSFSparklinePalette([.systemRed, .systemOrange, .systemYellow])
-fileprivate let grays = DSFSparklinePalette([
+fileprivate let palette1 = DSFSparkline.Palette([.systemRed, .systemOrange, .systemYellow])
+fileprivate let grays = DSFSparkline.Palette([
 	DSFColor.init(white: 1.00, alpha: 1),
 	DSFColor.init(white: 0.66, alpha: 1),
 	DSFColor.init(white: 0.33, alpha: 1)
@@ -78,14 +78,14 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.shared.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
 				)
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.sharedGrays.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1
@@ -110,7 +110,7 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.shared.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count),
 					strokeColor: DSFColor.black,
 					lineWidth: 2,
 					animated: true,
@@ -119,7 +119,7 @@ struct PieGraphDemoView: View {
 				.frame(width: 36, height: 36)
 
 				DSFSparklinePieGraphView.SwiftUI(
-					dataSource: [CGFloat](repeating: 10.0, count: DSFSparklinePalette.sharedGrays.colors.count),
+					dataSource: [CGFloat](repeating: 10.0, count: DSFSparkline.Palette.sharedGrays.colors.count),
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,

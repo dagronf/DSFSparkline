@@ -27,13 +27,13 @@ public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayStripes) class Stripes: DSFSparklineOverlay.DataSource {
 
 		// A default gradient pattern
-		static let defaultGradient = DSFGradientBucket(posts: [
-			DSFGradientBucket.Post(color: DSFColor.systemRed.cgColor, location: 0),
-			DSFGradientBucket.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
-			DSFGradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
-			DSFGradientBucket.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
-			DSFGradientBucket.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
-			DSFGradientBucket.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 6),
+		static let defaultGradient = DSFSparkline.GradientBucket(posts: [
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemRed.cgColor, location: 0),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 6),
 		])
 
 		/// The width of the stroke for the tablet
@@ -54,7 +54,7 @@ public extension DSFSparklineOverlay {
 		///
 		/// Note that transparent gradients display strangely and not as I would expect them to.
 		/// Stick with solid colors in your gradient for the current time.
-		@objc public var gradient: DSFGradientBucket = Stripes.defaultGradient {
+		@objc public var gradient: DSFSparkline.GradientBucket = Stripes.defaultGradient {
 			didSet {
 				self.setNeedsDisplay()
 			}

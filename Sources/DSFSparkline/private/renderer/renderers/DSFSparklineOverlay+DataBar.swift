@@ -59,7 +59,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The palette to use when drawing the databar
-		@objc public var palette = DSFSparklinePalette.shared {
+		@objc public var palette = DSFSparkline.Palette.shared {
 			didSet {
 				self.setNeedsDisplay()
 			}

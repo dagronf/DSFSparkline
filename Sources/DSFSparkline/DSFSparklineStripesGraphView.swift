@@ -52,7 +52,7 @@ public class DSFSparklineStripesGraphView: DSFSparklineDataSourceView {
 	///
 	/// Note that transparent gradients display strangely and not as I would expect them to.
 	/// Stick with solid colors in your gradient for the current time.
-	@objc public var gradient: DSFGradientBucket? {
+	@objc public var gradient: DSFSparkline.GradientBucket? {
 		didSet {
 			self.colorDidChange()
 			self.updateDisplay()

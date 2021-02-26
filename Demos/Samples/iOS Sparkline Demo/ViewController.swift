@@ -83,7 +83,7 @@ class ViewController: UIViewController {
 		self.stacklineGraphView.dataSource = self.sl1
 		self.stacklineGraphView2.dataSource = self.sl1
 
-		let palette = DSFSparklinePalette(
+		let palette = DSFSparkline.Palette(
 			[
 				DSFColor(red: 0.6, green: 0.6, blue: 1, alpha: 1),
 				DSFColor(red: 0.4, green: 0.4, blue: 1, alpha: 1),

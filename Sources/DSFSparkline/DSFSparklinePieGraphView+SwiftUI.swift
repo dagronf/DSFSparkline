@@ -31,7 +31,7 @@ public extension DSFSparklinePieGraphView {
 		/// Datasource for the graph
 		let dataSource: [CGFloat]
 		/// Palette to use when coloring the chart
-		let palette: DSFSparklinePalette
+		let palette: DSFSparkline.Palette
 
 		/// Stroke Color
 		let strokeColor: DSFColor?
@@ -48,7 +48,7 @@ public extension DSFSparklinePieGraphView {
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
 		public init(dataSource: [CGFloat],
-						palette: DSFSparklinePalette = .shared,
+						palette: DSFSparkline.Palette = .shared,
 						strokeColor: DSFColor? = nil,
 						lineWidth: CGFloat = 1.0,
 						animated: Bool = false,
