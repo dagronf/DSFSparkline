@@ -1,5 +1,5 @@
 //
-//  DSFSparklineDefinitions.swift
+//  DSFSparkline.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 26/2/21.
@@ -28,7 +28,11 @@ import UIKit
 #endif
 
 @objc public class DSFSparkline: NSObject {
-	@objc(DSFSparklineShadow) public class Shadow: NSObject {
+}
+
+
+public extension DSFSparkline {
+	@objc(DSFSparklineShadow) class Shadow: NSObject {
 		/// The default shadow
 		@objc(DSFSparklineShadowDefault) public static let `default` =
 			NSShadow(blurRadius: 1.0,
