@@ -29,7 +29,8 @@ struct ContentView: View {
 		Item(id: 8, name: "Active"),
 		Item(id: 9, name: "Overlay"),
 		Item(id: 10, name: "Bar"),
-		Item(id: 11, name: "Bitmap Testing")
+		Item(id: 11, name: "Bitmap Testing"),
+		Item(id: 12, name: "SwiftUI Overlays")
 	]
 
 	var body: some View {
@@ -67,6 +68,7 @@ struct DetailView: View {
 			case 9: OverlayView()
 			case 10: BarDemoContentView()
 			case 11: BitmapGenerationView()
+			case 12: SwiftUIView()
 			default: fatalError()
 			}
 		}

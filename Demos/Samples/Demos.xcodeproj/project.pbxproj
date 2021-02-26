@@ -51,6 +51,8 @@
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
 		232F732323B5BE2A00FA3A3F /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F732223B5BE2A00FA3A3F /* GridViewController.swift */; };
+		2346EF3025E8D13A00050570 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346EF2F25E8D13A00050570 /* SwiftUIView.swift */; };
+		2346EF3125E8D13A00050570 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346EF2F25E8D13A00050570 /* SwiftUIView.swift */; };
 		23529A7425E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
 		23529A7525E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
 		236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
@@ -176,6 +178,7 @@
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		2346EF2F25E8D13A00050570 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		23529A5825E847B900DFA52D /* iOS Sparkline Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Sparkline Demo.entitlements"; sourceTree = "<group>"; };
 		23529A7325E84D2A00DFA52D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
@@ -399,6 +402,7 @@
 				238053E425DCD14600B996B5 /* OverlayView.swift */,
 				237B827725E7891D00B3DE23 /* BitmapGenerationView.swift */,
 				23529A7325E84D2A00DFA52D /* Extensions.swift */,
+				2346EF2F25E8D13A00050570 /* SwiftUIView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1074,6 +1078,7 @@
 			files = (
 				238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */,
 				237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
+				2346EF3025E8D13A00050570 /* SwiftUIView.swift in Sources */,
 				23FC81DD25DB60760047A800 /* StripesDemoView.swift in Sources */,
 				23FC819F25DB59160047A800 /* DataBarGraphContent.swift in Sources */,
 				23FC817525DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,
@@ -1096,6 +1101,7 @@
 			files = (
 				238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */,
 				237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
+				2346EF3125E8D13A00050570 /* SwiftUIView.swift in Sources */,
 				23FC81DE25DB60760047A800 /* StripesDemoView.swift in Sources */,
 				23FC81A025DB59160047A800 /* DataBarGraphContent.swift in Sources */,
 				23FC817625DB547E0047A800 /* StackLineDemoContentView.swift in Sources */,

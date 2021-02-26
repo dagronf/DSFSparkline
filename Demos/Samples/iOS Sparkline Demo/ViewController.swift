@@ -91,7 +91,7 @@ class ViewController: UIViewController {
 		])
 
 		self.pie0.palette = .sharedGrays
-		self.pie0.dataSource = [5, 5, 5, 5, 5]
+		self.pie0.dataSource = DSFSparkline.StaticDataSource([5, 5, 5, 5, 5])
 
 		self.pie1.palette = palette
 		self.pie2.palette = palette
@@ -136,11 +136,11 @@ class ViewController: UIViewController {
 
 	@IBAction func updateValues(_: Any) {
 		let v1 = UInt.random(count: 4, range: 1 ... 10).map { CGFloat($0) }
-		self.pie1.dataSource = v1
-		self.pie2.dataSource = v1
+		self.pie1.dataSource = DSFSparkline.StaticDataSource(v1)
+		self.pie2.dataSource = DSFSparkline.StaticDataSource(v1)
 		let v2 = UInt.random(count: 4, range: 1 ... 10).map { CGFloat($0) }
-		self.pie3.dataSource = v2
-		self.pie4.dataSource = v2
+		self.pie3.dataSource = DSFSparkline.StaticDataSource(v2)
+		self.pie4.dataSource = DSFSparkline.StaticDataSource(v2)
 	}
 }
 

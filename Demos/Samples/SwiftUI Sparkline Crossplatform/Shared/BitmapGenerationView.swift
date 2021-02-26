@@ -64,6 +64,22 @@ fileprivate let b3: DSFSparklineSurface.Bitmap = {
 	return b
 }()
 
+fileprivate let b4: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
+
+	let dataSource = DSFSparklineDataSource(values: [1, 5, 3, 4])
+
+	let l = DSFSparklineOverlay.Line()
+	l.primaryStrokeColor = DSFColor.systemPink.cgColor
+	l.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemPink.withAlphaComponent(0.3).cgColor)
+	l.strokeWidth = 3.0
+	l.interpolated = true
+	l.markerSize = 6
+	l.dataSource = dataSource
+	b.addOverlay(l)
+
+	return b
+}()
 
 fileprivate let tablet1: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
@@ -105,21 +121,30 @@ struct BitmapGenerationView: View {
 	}
 	#endif
 
-
-
 	var body: some View {
 		VStack {
-			makeImage(self.generate(b1, size: CGSize(width: 200, height: 40)))
-				.padding(4)
-				.border(Color.gray)
 
-			makeImage(self.generate(b2, size: CGSize(width: 200, height: 40)))
-				.padding(4)
-				.border(Color.gray)
+			Text("Sparkline images created using DSFSparklineSurface.Bitmap")
 
-			makeImage(self.generate(b3, size: CGSize(width: 200, height: 40)))
-				.padding(4)
-				.border(Color.gray)
+			HStack {
+				makeImage(self.generate(b1, size: CGSize(width: 200, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+
+				makeImage(self.generate(b2, size: CGSize(width: 200, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+			}
+
+			HStack {
+				makeImage(self.generate(b3, size: CGSize(width: 200, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+
+				makeImage(self.generate(b4, size: CGSize(width: 200, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+			}
 
 			makeImage(self.generate(tablet1, size: CGSize(width: 400, height: 20)))
 				.padding(4)

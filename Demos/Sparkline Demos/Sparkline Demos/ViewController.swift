@@ -90,7 +90,7 @@ extension ViewController {
 		
 		let lineOverlay = DSFSparklineOverlay.Line()
 		lineOverlay.dataSource = LineSource1
-		lineOverlay.shadow = DSFSparkline.Shadow.default
+		lineOverlay.shadow = NSShadow(blurRadius: 1.0, offset: CGSize(width: 0.5, height: 0.5), color: DSFColor.black.withAlphaComponent(0.3))
 		lineOverlay.primaryStrokeColor = NSColor.textColor.cgColor
 		lineOverlay.primaryFill = DSFSparkline.Fill(flatColor: NSColor.textColor.withAlphaComponent(0.3).cgColor)
 //		lineOverlay.primaryGradient = CGGradient.Create([
@@ -159,7 +159,7 @@ extension ViewController {
 
 		let stack1 = DSFSparklineOverlay.Stackline()
 		stack1.dataSource = LineSource1
-		stack1.shadow = DSFSparkline.Shadow.default
+		stack1.shadow = NSShadow(blurRadius: 1.0, offset: CGSize(width: 0.5, height: 0.5), color: DSFColor.black.withAlphaComponent(0.3))
 		stack1.centeredAtZeroLine = true
 		stack1.lineWidth = 1
 		stack1.primaryStrokeColor = NSColor.systemPurple.cgColor
