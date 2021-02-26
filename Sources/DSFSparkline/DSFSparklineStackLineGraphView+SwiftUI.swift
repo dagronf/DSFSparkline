@@ -51,7 +51,7 @@ public extension DSFSparklineStackLineGraphView {
 		let lowerGraphColor: DSFColor?
 
 		/// Highlight y-ranges within the graph
-		let highlightDefinitions: [DSFSparklineHighlightRangeDefinition]
+		let highlightDefinitions: [DSFSparkline.HighlightRangeDefinition]
 
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
@@ -74,7 +74,7 @@ public extension DSFSparklineStackLineGraphView {
 						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
-						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [])
+						highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [])
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor

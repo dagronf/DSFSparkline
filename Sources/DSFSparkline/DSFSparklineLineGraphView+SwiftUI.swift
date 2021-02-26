@@ -53,7 +53,7 @@ public extension DSFSparklineLineGraphView {
 		let lowerGraphColor: DSFColor?
 
 		/// Highlight y-ranges within the graph
-		let highlightDefinitions: [DSFSparklineHighlightRangeDefinition]
+		let highlightDefinitions: [DSFSparkline.HighlightRangeDefinition]
 
 		/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
 		let markerSize: CGFloat
@@ -82,7 +82,7 @@ public extension DSFSparklineLineGraphView {
 						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
-						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [],
+						highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
 						markerSize: CGFloat = -1)
 		{
 			self.dataSource = dataSource

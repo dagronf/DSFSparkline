@@ -49,7 +49,7 @@ public extension DSFSparklineBarGraphView {
 		let lowerGraphColor: DSFColor?
 
 		/// Highlight y-ranges within the graph
-		let highlightDefinitions: [DSFSparklineHighlightRangeDefinition]
+		let highlightDefinitions: [DSFSparkline.HighlightRangeDefinition]
 
 		/// Create a bar graph sparkline
 		/// - Parameters:
@@ -71,7 +71,7 @@ public extension DSFSparklineBarGraphView {
 						centeredAtZeroLine: Bool = false,
 						lowerGraphColor: DSFColor? = nil,
 						showHighlightRange: Bool = false,
-						highlightDefinitions: [DSFSparklineHighlightRangeDefinition] = [])
+						highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [])
 		{
 			self.dataSource = dataSource
 			self.graphColor = graphColor

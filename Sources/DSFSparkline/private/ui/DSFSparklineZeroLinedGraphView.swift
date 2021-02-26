@@ -188,7 +188,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 		//self.addOverlay(self.highlightOverlay)
 	}
 
-	@objc public var highlightRangeDefinition: [DSFSparklineHighlightRangeDefinition] = [] {
+	@objc public var highlightRangeDefinition: [DSFSparkline.HighlightRangeDefinition] = [] {
 		willSet {
 			self.highlightOverlay.forEach { $0.removeFromSuperlayer() }
 			self.highlightOverlay = []
@@ -211,7 +211,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	public override func prepareForInterfaceBuilder() {
 		if self.showHighlightRange {
 			self.highlightRangeDefinition = [
-				DSFSparklineHighlightRangeDefinition(range: -3 ..< 3,
+				DSFSparkline.HighlightRangeDefinition(range: -3 ..< 3,
 																 fill: DSFSparkline.Fill(flatColor: self.highlightColor.cgColor))
 			]
 		}

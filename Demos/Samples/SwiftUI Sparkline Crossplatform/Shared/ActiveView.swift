@@ -156,7 +156,7 @@ struct ActiveView: View {
 																	showZeroLine: true,
 																	showHighlightRange: true,
 																	highlightDefinitions: [
-																		DSFSparklineHighlightRangeDefinition(
+																		DSFSparkline.HighlightRangeDefinition(
 																			range: 0 ..< 0.5,
 																			fillColor: DSFColor.gray.withAlphaComponent(0.3).cgColor
 																		),

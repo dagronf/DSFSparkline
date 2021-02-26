@@ -226,15 +226,15 @@ struct LineDemoLineRanges: View {
 				graphColor: GraphColor,
 				lineShading: false,
 				highlightDefinitions: [
-					DSFSparklineHighlightRangeDefinition(
+					DSFSparkline.HighlightRangeDefinition(
 						range: 0.7 ..< 1.0,
 						fillColor: DSFColor.red.withAlphaComponent(0.15).cgColor
 					),
-					DSFSparklineHighlightRangeDefinition(
+					DSFSparkline.HighlightRangeDefinition(
 						range: 0.3 ..< 0.7,
 						fillColor: DSFColor.yellow.withAlphaComponent(0.15).cgColor
 					),
-					DSFSparklineHighlightRangeDefinition(
+					DSFSparkline.HighlightRangeDefinition(
 						range: 0.0 ..< 0.3,
 						fillColor: DSFColor.green.withAlphaComponent(0.15).cgColor
 					)
@@ -250,7 +250,7 @@ struct LineDemoLineRanges: View {
 				interpolated: true,
 				lineShading: false,
 				highlightDefinitions: [
-					DSFSparklineHighlightRangeDefinition(
+					DSFSparkline.HighlightRangeDefinition(
 						range: 0.4 ..< 0.6,
 						fillColor: DSFColor.systemGray.withAlphaComponent(0.3).cgColor
 					)

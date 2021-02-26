@@ -83,13 +83,12 @@ class ViewController: UIViewController {
 		self.stacklineGraphView.dataSource = self.sl1
 		self.stacklineGraphView2.dataSource = self.sl1
 
-		let palette = DSFSparkline.Palette(
-			[
-				DSFColor(red: 0.6, green: 0.6, blue: 1, alpha: 1),
-				DSFColor(red: 0.4, green: 0.4, blue: 1, alpha: 1),
-				DSFColor(red: 0.2, green: 0.2, blue: 1, alpha: 1),
-				DSFColor(red: 0.0, green: 0.0, blue: 1, alpha: 1),
-			])
+		let palette = DSFSparkline.Palette([
+			DSFColor(red: 0.6, green: 0.6, blue: 1, alpha: 1),
+			DSFColor(red: 0.4, green: 0.4, blue: 1, alpha: 1),
+			DSFColor(red: 0.2, green: 0.2, blue: 1, alpha: 1),
+			DSFColor(red: 0.0, green: 0.0, blue: 1, alpha: 1),
+		])
 
 		self.pie0.palette = .sharedGrays
 		self.pie0.dataSource = [5, 5, 5, 5, 5]

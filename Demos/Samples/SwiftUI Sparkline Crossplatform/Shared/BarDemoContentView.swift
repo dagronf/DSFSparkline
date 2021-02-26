@@ -83,7 +83,7 @@ struct BarRange: View {
 			lineWidth: 1,
 			showZeroLine: true,
 			highlightDefinitions: [
-				DSFSparklineHighlightRangeDefinition(
+				DSFSparkline.HighlightRangeDefinition(
 					range: 20 ..< 80,
 					fillColor: DSFColor.systemGray.withAlphaComponent(0.2).cgColor
 				)
@@ -118,7 +118,7 @@ struct BarRange2: View {
 			lineWidth: 1,
 			showZeroLine: true,
 			highlightDefinitions: [
-				DSFSparklineHighlightRangeDefinition(
+				DSFSparkline.HighlightRangeDefinition(
 					range: 0.3 ..< 0.7,
 					fillColor: DSFColor.systemPink.withAlphaComponent(0.1).cgColor
 				)
