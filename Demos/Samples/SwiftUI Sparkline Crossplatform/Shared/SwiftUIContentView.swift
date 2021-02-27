@@ -17,12 +17,28 @@ fileprivate var lineOverlayDataSource: DSFSparkline.DataSource = {
 	return d
 }()
 
+// The overlay representing the zero-line for the graph
 fileprivate let lineZeroOverlay: DSFSparklineOverlay = {
 	let zeroLine = DSFSparklineOverlay.ZeroLine()
 	zeroLine.dataSource = LineSource1
 	return zeroLine
 }()
 
+// A simple grid.
+fileprivate let gridOverlay: DSFSparklineOverlay = {
+	let grid = DSFSparklineOverlay.GridLines()
+	grid.dataSource = lineOverlayDataSource
+
+	grid.floatValues = [0,0, 0.2, 0.4, 0.6, 0.8, 1.0]
+	grid.strokeColor = DSFColor.systemGray.withAlphaComponent(0.3).cgColor
+	grid.strokeWidth = 0.5
+	grid.dashStyle = [1, 1]
+
+	return grid
+}()
+
+
+// The actual line graph
 fileprivate let lineOverlay: DSFSparklineOverlay = {
 	let lineOverlay = DSFSparklineOverlay.Line()
 	lineOverlay.dataSource = lineOverlayDataSource
@@ -40,20 +56,9 @@ fileprivate let lineOverlay: DSFSparklineOverlay = {
 	return lineOverlay
 }()
 
-fileprivate let gridOverlay: DSFSparklineOverlay = {
-	let grid = DSFSparklineOverlay.GridLines()
-	grid.dataSource = lineOverlayDataSource
-
-	grid.floatValues = [0,0, 0.2, 0.4, 0.6, 0.8, 1.0]
-	grid.strokeColor = DSFColor.systemGray.withAlphaComponent(0.3).cgColor
-	grid.strokeWidth = 0.5
-	grid.dashStyle = [1, 1]
-
-	return grid
-}()
 
 
-struct SwiftUIView: View {
+struct SwiftUIContentView: View {
 
 	let animator = Animator()
 
@@ -62,10 +67,11 @@ struct SwiftUIView: View {
 
 			Text("A SwiftUI view using overlays")
 
+			// Add the surface
 			DSFSparklineSurface.SwiftUI([
-				lineZeroOverlay,
-				gridOverlay,
-				lineOverlay
+				lineZeroOverlay,            // overlay 1 - zero-line
+				gridOverlay,                // overlay 2 - grid
+				lineOverlay                 // overlay 3 - line graph
 			])
 			.frame(width: 300, height: 50)
 			.onAppear {
@@ -84,6 +90,7 @@ class Animator {
 				return
 			}
 
+			// push a new value into the graph's data source
 			let cr2 = CGFloat.random(in: lineOverlayDataSource.range!) // -1 ... 1)
 			_ = lineOverlayDataSource.push(value: cr2)
 
@@ -96,6 +103,6 @@ class Animator {
 
 struct SwiftUIView_Previews: PreviewProvider {
 	static var previews: some View {
-		SwiftUIView()
+		SwiftUIContentView()
 	}
 }
