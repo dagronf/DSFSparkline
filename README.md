@@ -75,13 +75,13 @@ A dynamic graph automatically updates its overlays as values are 'pushed' onto i
 
 This provides the ability to show a historical data set over the breadth of the graph.
 
-* `DSFSparklineLineGraphView`
-* `DSFSparklineStackLineGraphView`
-* `DSFSparklineBarGraphView`
-* `DSFSparklineStripesGraphView`
-* `DSFSparklineDotGraphView`
-* `DSFSparklineWinLossGraphView`
-* `DSFSparklineTabletGraphView`
+* `DSFSparklineOverlay.Line`
+* `DSFSparklineOverlay.StackLine`
+* `DSFSparklineOverlay.Bar`
+* `DSFSparklineOverlay.Stripes`
+* `DSFSparklineOverlay.Dot`
+* `DSFSparklineOverlay.WinLossTie`
+* `DSFSparklineOverlay.Tablet`
 
 #### Static
 

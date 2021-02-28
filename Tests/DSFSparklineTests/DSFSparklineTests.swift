@@ -141,14 +141,14 @@ class DSFSparklineTests: XCTestCase {
 	func testDataSource() {
 
 		// Check that truncating to range works
-		let ds = DSFSparklineDataSource(windowSize: 10, range: -10 ... 10)
+		let ds = DSFSparkline.DataSource(windowSize: 10, range: -10 ... 10)
 		XCTAssertTrue(ds.push(value: 5))
 		XCTAssertTrue(ds.push(value: 50))
 		XCTAssertEqual(ds.data, [0, 0, 0, 0, 0, 0, 0, 0, 5, 10])
 		XCTAssertEqual(ds.normalized, [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.75, 1.0])
 
 		// With no range, adding 5 here makes the implicit range to 0 ... 5
-		let ds2 = DSFSparklineDataSource(windowSize: 5)
+		let ds2 = DSFSparkline.DataSource(windowSize: 5)
 		XCTAssertTrue(ds2.push(value: 5))
 		XCTAssertEqual(ds2.data, [0, 0, 0, 0, 5])
 		XCTAssertEqual(ds2.normalized, [0, 0, 0, 0, 1])
@@ -184,7 +184,7 @@ class DSFSparklineTests: XCTestCase {
 
 
 	func testAddValues() {
-		let ds = DSFSparklineDataSource(windowSize: 5)
+		let ds = DSFSparkline.DataSource(windowSize: 5)
 		ds.push(values: [1.1, 2.2, 3.3])
 		XCTAssertEqual(ds.data, [0, 0, 1.1, 2.2, 3.3])
 		XCTAssertTrue(ds.push(value: 1.2))

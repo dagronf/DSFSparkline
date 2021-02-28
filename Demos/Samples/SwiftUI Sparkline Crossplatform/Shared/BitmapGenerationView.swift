@@ -110,7 +110,18 @@ fileprivate let tablet1: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
 
 	let l = DSFSparklineOverlay.Tablet()
-	l.lossFillColor = CGColor.clear
+
+	l.winStrokeColor = DSFColor.systemGreen.withAlphaComponent(0.5).cgColor
+	l.winFill = DSFSparkline.Fill.Gradient(colors: [
+		DSFColor.systemGreen.withAlphaComponent(0.8).cgColor,
+		DSFColor.systemGreen.withAlphaComponent(0.2).cgColor
+	])
+
+	l.lossStrokeColor = DSFColor.systemRed.withAlphaComponent(0.5).cgColor
+	l.lossFill = DSFSparkline.Fill.Gradient(colors: [
+		DSFColor.systemRed.withAlphaComponent(0.2).cgColor,
+		DSFColor.systemRed.withAlphaComponent(0.6).cgColor
+	])
 
 	let dataSource = DSFSparkline.DataSource(
 		values: [-1, 5, 3, -7, -2, 2, 5, -1, 5, 3, -7, -2, 2, 5, -1, 5, 3, -7, -2, 2, 5])

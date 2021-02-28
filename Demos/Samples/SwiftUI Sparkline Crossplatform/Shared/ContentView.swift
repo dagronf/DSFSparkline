@@ -20,16 +20,17 @@ struct ContentView: View {
 	let items: [Item] = [
 		Item(id: 0, name: "ReportView"),
 		Item(id: 1, name: "WinLossTie"),
-		Item(id: 2, name: "Line"),
-		Item(id: 3, name: "Stackline"),
-		Item(id: 4, name: "Pie Chart"),
-		Item(id: 5, name: "Databar"),
-		Item(id: 6, name: "Dot"),
-		Item(id: 7, name: "Stripes"),
-		Item(id: 8, name: "Active"),
-		Item(id: 9, name: "Bar"),
-		Item(id: 10, name: "Bitmap Testing"),
-		Item(id: 11, name: "SwiftUI Overlays")
+		Item(id: 2, name: "Tablet"),
+		Item(id: 3, name: "Line"),
+		Item(id: 4, name: "Stackline"),
+		Item(id: 5, name: "Pie Chart"),
+		Item(id: 6, name: "Databar"),
+		Item(id: 7, name: "Dot"),
+		Item(id: 8, name: "Stripes"),
+		Item(id: 9, name: "Active"),
+		Item(id: 10, name: "Bar"),
+		Item(id: 11, name: "Bitmap Testing"),
+		Item(id: 12, name: "SwiftUI Overlays")
 	]
 
 	var body: some View {
@@ -57,16 +58,17 @@ struct DetailView: View {
 			switch item.id {
 			case 0: ReportView()
 			case 1: WinLossCreate()
-			case 2: LineDemoContentView()
-			case 3: StackLineDemoContentView()
-			case 4: PieGraphDemoView()
-			case 5: DataBarGraphContent()
-			case 6: DotGraphView()
-			case 7: StripesDemoView()
-			case 8: MakeActiveView()
-			case 9: BarDemoContentView()
-			case 10: BitmapGenerationView()
-			case 11: SwiftUIView(shouldAnimate: true)
+			case 2: TabletView(shouldAnimate: true)
+			case 3: LineDemoContentView()
+			case 4: StackLineDemoContentView()
+			case 5: PieGraphDemoView()
+			case 6: DataBarGraphContent()
+			case 7: DotGraphView()
+			case 8: StripesDemoView()
+			case 9: MakeActiveView()
+			case 10: BarDemoContentView()
+			case 11: BitmapGenerationView()
+			case 12: SwiftUIView(shouldAnimate: true)
 			default: fatalError()
 			}
 		}

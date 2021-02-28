@@ -28,9 +28,10 @@ public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayTablet) class Tablet: DSFSparklineOverlay.DataSource {
 
 		static let greenStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 1])!
-		static let greenFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 0.3])!
 		static let redStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 1])!
-		static let redFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 0.3])!
+
+		static let greenFill = DSFSparkline.Fill.Color(CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 0.3])!)
+		static let redFill = DSFSparkline.Fill.Color(CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 0.3])!)
 
 
 		/// The width of the stroke for the tablet
@@ -55,7 +56,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'win' boxes
-		@objc public var winFillColor: CGColor = Tablet.greenFill {
+		@objc public var winFill: DSFSparklineFillable? = Tablet.greenFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -69,7 +70,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'win' boxes
-		@objc public var lossFillColor: CGColor = Tablet.redFill {
+		@objc public var lossFill: DSFSparklineFillable? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -91,7 +92,7 @@ private extension DSFSparklineOverlay.Tablet {
 		let windowSize = CGFloat(dataSource.windowSize)
 
 		// The amount of space left in the rect once we've removed the bar spacing for all elements
-		let w = integralRect.width - (windowSize * (self.tabletSpacing + self.lineWidth))
+		let w = integralRect.width - (windowSize * (self.tabletSpacing + self.lineWidth)) - 2*self.lineWidth
 
 		// The size of a circle
 		let circleSize = min(w / CGFloat(windowSize), integralRect.height)
@@ -135,21 +136,33 @@ private extension DSFSparklineOverlay.Tablet {
 
 			if !winPath.isEmpty {
 				outer.usingGState { winState in
+					if let fill = self.winFill {
+						winState.usingGState { (fillCtx) in
+							winState.addPath(winPath)
+							winState.clip()
+							fill.fill(context: fillCtx, bounds: integralRect)
+						}
+					}
 					winState.addPath(winPath)
-					winState.setFillColor(self.winFillColor)
 					winState.setStrokeColor(self.winStrokeColor)
 					winState.setLineWidth(self.lineWidth)
-					winState.drawPath(using: .fillStroke)
+					winState.drawPath(using: .stroke)
 				}
 			}
 
 			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
+					if let fill = self.lossFill {
+						lossState.usingGState { (fillCtx) in
+							lossState.addPath(lossPath)
+							lossState.clip()
+							fill.fill(context: fillCtx, bounds: integralRect)
+						}
+					}
 					lossState.addPath(lossPath)
-					lossState.setFillColor(self.lossFillColor)
 					lossState.setStrokeColor(self.lossStrokeColor)
 					lossState.setLineWidth(self.lineWidth)
-					lossState.drawPath(using: .fillStroke)
+					lossState.drawPath(using: .stroke)
 				}
 			}
 		}

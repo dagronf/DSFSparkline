@@ -231,7 +231,7 @@ struct SwiftUILineGraphContentView: View {
 
 	let shouldAnimate: Bool
 
-	let animator = Animator()
+	fileprivate let animator = Animator()
 
 	var body: some View {
 		VStack {
@@ -279,7 +279,7 @@ struct SwiftUILineGraphContentView: View {
 	}
 }
 
-class Animator {
+fileprivate class Animator {
 	func updateWithNewValues() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
 			guard let `self` = self else {

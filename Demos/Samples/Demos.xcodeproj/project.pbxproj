@@ -73,6 +73,8 @@
 		238053E625DCD14600B996B5 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238053E425DCD14600B996B5 /* OverlayView.swift */; };
 		238DB6DC25EB2141009197AB /* StripesOverlaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238DB6DB25EB2141009197AB /* StripesOverlaidView.swift */; };
 		238DB6DD25EB2141009197AB /* StripesOverlaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238DB6DB25EB2141009197AB /* StripesOverlaidView.swift */; };
+		238DB6EA25EB3A2E009197AB /* TabletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238DB6E925EB3A2E009197AB /* TabletView.swift */; };
+		238DB6EB25EB3A2F009197AB /* TabletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238DB6E925EB3A2E009197AB /* TabletView.swift */; };
 		23E2278C23B5846E00E59122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278B23B5846E00E59122 /* AppDelegate.swift */; };
 		23E2278E23B5846E00E59122 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E2278D23B5846E00E59122 /* ViewController.swift */; };
 		23E2279023B5846E00E59122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23E2278F23B5846E00E59122 /* Assets.xcassets */; };
@@ -199,6 +201,7 @@
 		238053C625DCC2B100B996B5 /* ActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveView.swift; sourceTree = "<group>"; };
 		238053E425DCD14600B996B5 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		238DB6DB25EB2141009197AB /* StripesOverlaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripesOverlaidView.swift; sourceTree = "<group>"; };
+		238DB6E925EB3A2E009197AB /* TabletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabletView.swift; sourceTree = "<group>"; };
 		23E2278923B5846E00E59122 /* macOS Table Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "macOS Table Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23E2278B23B5846E00E59122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23E2278D23B5846E00E59122 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -411,6 +414,7 @@
 				23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */,
 				23FC819225DB586B0047A800 /* PieGraphDemoView.swift */,
 				23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */,
+				238DB6E925EB3A2E009197AB /* TabletView.swift */,
 				23FC819E25DB59160047A800 /* DataBarGraphContent.swift */,
 				23FC81B325DB59E70047A800 /* DotGraphView.swift */,
 				23FC817425DB547E0047A800 /* StackLineDemoContentView.swift */,
@@ -1093,6 +1097,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */,
+				238DB6EA25EB3A2E009197AB /* TabletView.swift in Sources */,
 				237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				232BAF6D25EB16210090C447 /* SwiftUIView.swift in Sources */,
 				2346EF3025E8D13A00050570 /* SwiftUIContentView.swift in Sources */,
@@ -1118,6 +1123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */,
+				238DB6EB25EB3A2F009197AB /* TabletView.swift in Sources */,
 				237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				232BAF6E25EB16210090C447 /* SwiftUIView.swift in Sources */,
 				2346EF3125E8D13A00050570 /* SwiftUIContentView.swift in Sources */,
