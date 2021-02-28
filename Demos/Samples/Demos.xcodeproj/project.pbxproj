@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -692,7 +692,6 @@
 			);
 			mainGroup = 23102B4423B0165B001A621D;
 			packageReferences = (
-				23F7646925D6C4C400E63649 /* XCRemoteSwiftPackageReference "DSFStepperView" */,
 			);
 			productRefGroup = 23102B5123B0245A001A621D /* Products */;
 			projectDirPath = "";
@@ -2374,17 +2373,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		23F7646925D6C4C400E63649 /* XCRemoteSwiftPackageReference "DSFStepperView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dagronf/DSFStepperView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 23102B4523B0165B001A621D /* Project object */;
 }
