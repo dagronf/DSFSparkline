@@ -143,7 +143,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	#if os(macOS)
 	@IBInspectable public var highlightColor = NSColor.gray {
 		didSet {
-			self.ibHighlightOverlay.fill = DSFSparkline.Fill(flatColor: self.highlightColor.cgColor)
+			self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightColor.cgColor)
 		}
 	}
 	#else
@@ -211,8 +211,9 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	public override func prepareForInterfaceBuilder() {
 		if self.showHighlightRange {
 			self.highlightRangeDefinition = [
-				DSFSparkline.HighlightRangeDefinition(range: -3 ..< 3,
-																 fill: DSFSparkline.Fill(flatColor: self.highlightColor.cgColor))
+				DSFSparkline.HighlightRangeDefinition(
+					range: -3 ..< 3,
+					fill: DSFSparkline.Fill.Color(self.highlightColor.cgColor))
 			]
 		}
 		super.prepareForInterfaceBuilder()

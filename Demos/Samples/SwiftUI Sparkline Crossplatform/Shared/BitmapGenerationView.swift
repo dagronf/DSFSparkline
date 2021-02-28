@@ -24,10 +24,35 @@ fileprivate let b1: DSFSparklineSurface.Bitmap = {
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.primaryTextColor.cgColor
-	l.primaryFill = DSFSparkline.Fill(colors: [
+	l.primaryFill = DSFSparkline.Fill.Gradient(colors: [
 		DSFColor.systemRed.cgColor,
 		DSFColor.systemBlue.cgColor,
 	])
+	l.dataSource = dataSource
+	b.addOverlay(l)
+
+	return b
+}()
+
+fileprivate let b200: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
+
+	let dataSource = DSFSparkline.DataSource(values: [1, 5, 3, 4], range: 0 ... 6)
+
+	let li = DSFSparklineOverlay.GridLines()
+	li.dataSource = dataSource
+	li.floatValues = [1, 3, 5]
+	li.strokeWidth = 0.5
+	li.dashStyle = [0.5, 0.5]
+	li.strokeColor = DSFColor.gray.withAlphaComponent(0.3).cgColor
+	b.addOverlay(li)
+
+	let l = DSFSparklineOverlay.Line()
+	l.primaryStrokeColor = DSFColor.primaryTextColor.cgColor
+	l.primaryFill = DSFSparkline.Fill.Gradient(colors: [
+		DSFColor.systemRed.cgColor,
+		DSFColor.systemBlue.cgColor,
+	], isHorizontal: true)
 	l.dataSource = dataSource
 	b.addOverlay(l)
 
@@ -71,7 +96,7 @@ fileprivate let b4: DSFSparklineSurface.Bitmap = {
 
 	let l = DSFSparklineOverlay.Line()
 	l.primaryStrokeColor = DSFColor.systemPink.cgColor
-	l.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemPink.withAlphaComponent(0.3).cgColor)
+	l.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemPink.withAlphaComponent(0.3).cgColor)
 	l.strokeWidth = 3.0
 	l.interpolated = true
 	l.markerSize = 6
@@ -128,6 +153,10 @@ struct BitmapGenerationView: View {
 
 			HStack {
 				makeImage(self.generate(b1, size: CGSize(width: 200, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+
+				makeImage(self.generate(b200, size: CGSize(width: 200, height: 40)))
 					.padding(4)
 					.border(Color.gray)
 

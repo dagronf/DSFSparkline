@@ -42,7 +42,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	/// Shade the area under the line
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
-			self.overlay.primaryFill = DSFSparkline.Fill(flatColor: self.graphColor.withAlphaComponent(0.3).cgColor)
+			self.overlay.primaryFill = DSFSparkline.Fill.Color(self.graphColor.withAlphaComponent(0.3).cgColor)
 			self.updateDisplay()
 		}
 	}
@@ -108,14 +108,14 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 
 		// Backwards compatibility
 		let color = self.graphColor
-		let fill = DSFSparkline.Fill(colors: [
+		let fill = DSFSparkline.Fill.Gradient(colors: [
 			color.withAlphaComponent(0.4).cgColor,
 			color.withAlphaComponent(0.2).cgColor,
 		])
 		self.overlay.primaryFill = fill
 
 		if let lowerColor = self.lowerGraphColor {
-			let fill = DSFSparkline.Fill(colors: [
+			let fill = DSFSparkline.Fill.Gradient(colors: [
 				lowerColor.withAlphaComponent(0.4).cgColor,
 				lowerColor.withAlphaComponent(0.2).cgColor,
 			])

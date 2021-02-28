@@ -24,22 +24,59 @@
 import CoreGraphics
 import Foundation
 
+/// A protocol definition for objects that can 'fill' a rectangle within a context with a color/gradient/pattern etc
+@objc public protocol DSFSparklineFillable: NSObjectProtocol {
+	@objc func fill(context: CGContext, bounds: CGRect)
+}
+
 public extension DSFSparkline {
+	/// Defining a namespace for fillables
+	class Fill { }
+}
 
-	@objc(DSFSparklineFill) class Fill: NSObject {
-		@objc public var gradient: CGGradient?
-		@objc public var flat: CGColor?
+// MARK: - Solid color fill
 
-		@objc public init(flatColor: CGColor) {
-			self.flat = flatColor
+public extension DSFSparkline.Fill {
+
+	/// The solid color fill
+	@objc(DSFSparklineFillColor) class `Color`: NSObject, DSFSparklineFillable {
+
+		@objc public var color: CGColor
+		@objc public init(_ color: CGColor) {
+			self.color = color
 		}
 
-		@objc public init(gradient: CGGradient) {
+		public func fill(context: CGContext, bounds: CGRect) {
+			context.setFillColor(color)
+			context.fill(bounds)
+		}
+	}
+}
+
+// MARK: - Gradient fill
+
+public extension DSFSparkline.Fill {
+
+	/// The gradient fill (vertical only at the moment)
+	@objc(DSFSparklineFillGradient) class `Gradient`: NSObject, DSFSparklineFillable {
+
+		/// The gradient to use when filling
+		@objc public var gradient: CGGradient
+
+		/// Is the gradient horizontal or vertical
+		@objc public var isHorizontal: Bool
+
+		/// Create a fill gradient
+		@objc public init(gradient: CGGradient, isHorizontal: Bool = false) {
 			self.gradient = gradient
+			self.isHorizontal = isHorizontal
 		}
 
-		public init(colors: [CGColor]) {
+		/// Create a fill gradient
+		public init(colors: [CGColor], isHorizontal: Bool = false) {
 			assert(colors.count >= 2)
+
+			self.isHorizontal = isHorizontal
 
 			let locations: [CGFloat] = {
 				if colors.count == 2 { return [1, 0] }
@@ -59,21 +96,25 @@ public extension DSFSparkline {
 				colors: colors as CFArray,
 				locations: locations)
 
-			self.gradient = gradient
+			self.gradient = gradient!
 		}
 
-
-		@objc public func fill(context: CGContext, bounds: CGRect) {
-			if let gradient = self.gradient {
+		public func fill(context: CGContext, bounds: CGRect) {
+			if isHorizontal {
 				context.drawLinearGradient(
-					gradient, start: CGPoint(x: 0.0, y: bounds.maxY),
-					end: CGPoint(x: 0.0, y: bounds.minY),
+					gradient,
+					start: CGPoint(x: bounds.minX, y: bounds.maxY),
+					end: CGPoint(x: bounds.maxX, y: bounds.maxY),
 					options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 				)
 			}
-			else if let fill = self.flat {
-				context.setFillColor(fill)
-				context.fill(bounds)
+			else {
+				context.drawLinearGradient(
+					gradient,
+					start: CGPoint(x: 0.0, y: bounds.maxY),
+					end: CGPoint(x: 0.0, y: bounds.minY),
+					options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
+				)
 			}
 		}
 	}

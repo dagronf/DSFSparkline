@@ -36,7 +36,7 @@ struct OverlayView: View {
 		b.dataSource = dataSource1
 		b.strokeWidth = 2
 		b.primaryStrokeColor = DSFColor.systemPink.cgColor
-		b.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemPink.withAlphaComponent(0.5).cgColor)
+		b.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemPink.withAlphaComponent(0.5).cgColor)
 		return b
 	}()
 
@@ -46,7 +46,7 @@ struct OverlayView: View {
 		l.strokeWidth = 1
 		l.interpolated = true
 		l.primaryStrokeColor = DSFColor.primaryTextColor.cgColor
-		l.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.primaryTextColor.withAlphaComponent(0.7).cgColor)
+		l.primaryFill = DSFSparkline.Fill.Color(DSFColor.primaryTextColor.withAlphaComponent(0.7).cgColor)
 		return l
 	}()
 
@@ -55,7 +55,7 @@ struct OverlayView: View {
 		b.dataSource = dataSource1
 		b.strokeWidth = 2
 		b.primaryStrokeColor = DSFColor.systemPink.cgColor
-		b.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemPink.withAlphaComponent(0.5).cgColor)
+		b.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemPink.withAlphaComponent(0.5).cgColor)
 		return b
 	}()
 
@@ -65,7 +65,7 @@ struct OverlayView: View {
 		l.strokeWidth = 1
 		l.interpolated = true
 		l.primaryStrokeColor = DSFColor.primaryTextColor.cgColor
-		l.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.primaryTextColor.withAlphaComponent(0.7).cgColor)
+		l.primaryFill = DSFSparkline.Fill.Color(DSFColor.primaryTextColor.withAlphaComponent(0.7).cgColor)
 		return l
 	}()
 

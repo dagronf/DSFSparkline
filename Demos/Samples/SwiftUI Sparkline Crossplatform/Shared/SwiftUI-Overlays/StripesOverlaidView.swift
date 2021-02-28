@@ -32,7 +32,7 @@ struct StripesOverlaidView: View {
 		l.strokeWidth = 1
 		l.interpolated = true
 		l.primaryStrokeColor = DSFColor.black.cgColor
-		l.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.black.withAlphaComponent(0.3).cgColor)
+		l.primaryFill = DSFSparkline.Fill.Color(DSFColor.black.withAlphaComponent(0.3).cgColor)
 		return l
 	}()
 

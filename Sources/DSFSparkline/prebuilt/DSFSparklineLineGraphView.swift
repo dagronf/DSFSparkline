@@ -51,7 +51,7 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	@IBInspectable public var lineShading: Bool = true {
 		didSet {
 			if lineShading == true {
-				self.overlay.primaryFill = DSFSparkline.Fill(flatColor: self.graphColor.withAlphaComponent(0.4).cgColor)
+				self.overlay.primaryFill = DSFSparkline.Fill.Color(self.graphColor.withAlphaComponent(0.4).cgColor)
 			}
 			else {
 				self.overlay.primaryFill = nil
@@ -115,14 +115,14 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 
 		// Backwards compatibility
 		let color = self.graphColor
-		let fill = DSFSparkline.Fill(colors: [
+		let fill = DSFSparkline.Fill.Gradient(colors: [
 			color.withAlphaComponent(0.4).cgColor,
 			color.withAlphaComponent(0.2).cgColor
 		])
 		self.overlay.primaryFill = fill
 
 		if let lowerColor = self.lowerGraphColor {
-			let fill = DSFSparkline.Fill(colors: [
+			let fill = DSFSparkline.Fill.Gradient(colors: [
 				lowerColor.withAlphaComponent(0.4).cgColor,
 				lowerColor.withAlphaComponent(0.2).cgColor
 			])

@@ -25,10 +25,10 @@ struct SwiftUIContentView_LineOnly: View {
 		lineOverlay.dataSource = lineOverlayDataSource
 
 		lineOverlay.primaryStrokeColor = DSFColor.systemGreen.cgColor
-		lineOverlay.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
+		lineOverlay.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.secondaryStrokeColor = DSFColor.systemRed.cgColor
-		lineOverlay.secondaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
+		lineOverlay.secondaryFill = DSFSparkline.Fill.Color(DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.strokeWidth = 2
 		lineOverlay.markerSize = 6
@@ -59,10 +59,10 @@ struct SwiftUIContentView_LineZeroLine: View {
 		lineOverlay.dataSource = lineOverlayDataSource
 
 		lineOverlay.primaryStrokeColor = DSFColor.systemGreen.cgColor
-		lineOverlay.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
+		lineOverlay.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.secondaryStrokeColor = DSFColor.systemRed.cgColor
-		lineOverlay.secondaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
+		lineOverlay.secondaryFill = DSFSparkline.Fill.Color(DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.strokeWidth = 2
 		lineOverlay.markerSize = 6
@@ -102,10 +102,10 @@ struct SwiftUIContentView_LineZeroLineGrid: View {
 		lineOverlay.dataSource = lineOverlayDataSource
 
 		lineOverlay.primaryStrokeColor = DSFColor.systemGreen.cgColor
-		lineOverlay.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
+		lineOverlay.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.secondaryStrokeColor = DSFColor.systemRed.cgColor
-		lineOverlay.secondaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
+		lineOverlay.secondaryFill = DSFSparkline.Fill.Color(DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.strokeWidth = 2
 		lineOverlay.markerSize = 6
@@ -156,10 +156,10 @@ struct SwiftUIContentView_LineZeroLineGridRanges: View {
 		lineOverlay.dataSource = lineOverlayDataSource
 
 		lineOverlay.primaryStrokeColor = DSFColor.systemGreen.cgColor
-		lineOverlay.primaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
+		lineOverlay.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemGreen.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.secondaryStrokeColor = DSFColor.systemRed.cgColor
-		lineOverlay.secondaryFill = DSFSparkline.Fill(flatColor: DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
+		lineOverlay.secondaryFill = DSFSparkline.Fill.Color(DSFColor.systemRed.withAlphaComponent(0.3).cgColor)
 
 		lineOverlay.strokeWidth = 2
 		lineOverlay.markerSize = 6
@@ -193,7 +193,7 @@ struct SwiftUIContentView_LineZeroLineGridRanges: View {
 		highlight.dataSource = lineOverlayDataSource
 
 		highlight.highlightRange = 0.0 ..< 0.2
-		highlight.fill = DSFSparkline.Fill(flatColor: DSFColor.systemRed.withAlphaComponent(0.1).cgColor)
+		highlight.fill = DSFSparkline.Fill.Color(DSFColor.systemRed.withAlphaComponent(0.1).cgColor)
 
 		return highlight
 	}()
@@ -203,7 +203,7 @@ struct SwiftUIContentView_LineZeroLineGridRanges: View {
 		highlight.dataSource = lineOverlayDataSource
 
 		highlight.highlightRange = 0.8 ..< 1.0
-		highlight.fill = DSFSparkline.Fill(flatColor: DSFColor.systemGreen.withAlphaComponent(0.1).cgColor)
+		highlight.fill = DSFSparkline.Fill.Color(DSFColor.systemGreen.withAlphaComponent(0.1).cgColor)
 
 		return highlight
 	}()

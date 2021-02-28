@@ -89,14 +89,14 @@ public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 
 		// Backwards compatibility
 		let color = self.graphColor
-		let fill = DSFSparkline.Fill(colors: [
+		let fill = DSFSparkline.Fill.Gradient(colors: [
 			color.withAlphaComponent(0.4).cgColor,
 			color.withAlphaComponent(0.2).cgColor
 		])
 		self.overlay.primaryFill = fill
 
 		if let lowerColor = self.lowerGraphColor {
-			let fill = DSFSparkline.Fill(colors: [
+			let fill = DSFSparkline.Fill.Gradient(colors: [
 				lowerColor.withAlphaComponent(0.4).cgColor,
 				lowerColor.withAlphaComponent(0.2).cgColor
 			])

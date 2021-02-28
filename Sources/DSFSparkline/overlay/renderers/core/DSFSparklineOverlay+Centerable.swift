@@ -46,7 +46,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The primary fill color for the sparkline
-		@objc public var primaryFill: DSFSparkline.Fill? {
+		@objc public var primaryFill: DSFSparklineFillable? {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -62,7 +62,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The fill color to use for parts of the graph below the zero-line (if centeredAtZeroLine=true)
-		@objc public var secondaryFill: DSFSparkline.Fill? {
+		@objc public var secondaryFill: DSFSparklineFillable? {
 			didSet {
 				self.setNeedsDisplay()
 			}
