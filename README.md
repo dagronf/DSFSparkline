@@ -52,16 +52,6 @@ bitmap.addOverlay(stack)                    // And add the overlay to the surfac
 let image = bitmap.image(width: 50, height: 25, scale: 2)
 ```
 
-
-## DataSource
-
-A data source provides data for a sparkline. A datasource can be shared between multiple overlays or prebuilt types (see below) to provide different 'views' of the data contained within the source.  And if a `DataSource` is updated, all sparkline ovelays observing that source will be automatically re-rendered.
-
-There are currently two types of datasource available
-
-* `DSFSparkline.DataSource` - A datasource that contains values that can be updated.
-* `DSFSparkline.StaticDataSource` - A datasource that contains a static set of values
-
 ## Surfaces
 
 A surface represents a destination for a sparkline. This library provides a number of built-in surfaces
@@ -70,9 +60,73 @@ A surface represents a destination for a sparkline. This library provides a numb
 * `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage` surface for creating a bitmap from a sparkline
 * `DSFSparklineSurface.SwiftUI` - A SwiftUI `View` surface.
 
+## DataSource
+
+A data source provides data for a sparkline. A datasource can be shared between multiple overlays or prebuilt types (see below) to provide different 'views' of the data contained within the source.  And if a `DataSource` is updated, all sparkline ovelays observing that source will be automatically re-rendered.
+
+There are currently two types of datasource available
+
+### DSFSparkline.DataSource
+
+A DataSource that contains values that can be updated by pushing new values into the source.
+
+<details>
+  <summary>More details</summary>
+
+#### WindowSize
+
+The DataSource defines a 'windowSize' - the maximum number of values to be drawn on the overlay. As values are pushed into the DataSource, any values that no longer `fit` within the DataSource window are discarded.
+
+#### Y-range
+
+The range defines the upper and lower values to be displayed in the sparkline. Any values pushed into the datasource will be capped when drawn to this range.
+
+If the range is not set (ie nil), then any overlays will automatically resize to fit the entire range of values within the source.  For example, with values as [1, 2, 3, 4] the range is implicitly set as 1 ... 4. If the values are [-10, 100, 33] the range is implicitly set as -10 ... 100
+
+```swift
+/// Swift
+dataSource.range = -1.0 ... 1.0
+```
+
+```objective-c
+/// Objective-C
+[dataSource setRangeWithLowerBound:-1.0 upperBound:1.0];
+```
+
+#### Zero-line value
+
+The zero-line defines the point the sparkline overlays should consider to be 'zero'. For example, graphs that can be centered (line, bar and stackline) use the zero-line value to define where the graph is centered around.
+
+The zero-line value defaults to zero.
+
+You can draw a zero-line for a sparkline by adding a `DSFSparklineOverlay.ZeroLine` to your surface.
+
+#### Adding values
+
+```swift
+/// Swift
+dataSource.push(value: 4.5)
+```
+
+```objective-c
+/// Objective-C
+[dataSource pushWithValue:@(4.5)];
+```
+
+</details>
+
+### DSFSparkline.StaticDataSource
+
+A datasource that contains a static set of values. Some types of sparkline use a single 'set' of data, providing no historical context.
+
+<details>
+  <summary> More details </summary>
+
+</details>
+
 ## Overlays
 
-Overlays represent the individual elements of a sparkline. You can add as many or as little to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
+Overlays represent the individual elements of a sparkline. You can add as many or as few to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
 
 An overlay represents a single 'component' of a sparkline.  For example, there is an overlay that highlights a y-range of data. Or, if you want some grid lines, you can add them using the gridlines overlay.
 
@@ -92,20 +146,167 @@ A dynamic graph automatically updates its overlays as values are 'pushed' onto i
 
 This provides the ability to show a historical data set over the breadth of the graph.
 
-* `DSFSparklineOverlay.Line` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small-interpolated.png" width="50"/>
-* `DSFSparklineOverlay.StackLine` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-simple-small.png" width="50"/>
-* `DSFSparklineOverlay.Bar` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-simple-small.png" width="50"/>
-* `DSFSparklineOverlay.Dot` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-simple-small.png" width="50"/>
-* `DSFSparklineOverlay.WinLossTie` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-small.png" width="50"/>
-* `DSFSparklineOverlay.Tablet` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet-small.png" width="80"/>
-* `DSFSparklineOverlay.Stripes` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-small.png" width="50"/>
+<details>
+  <summary>`DSFSparklineOverlay.Line` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small-interpolated.png" width="50"/> </summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+let line = DSFSparklineOverlay.Line()      // Create a line overlay
+line.strokeWidth = 1
+line.primaryFill = primaryFill
+line.dataSource = source                   // Assign the datasource to the overlay
+bitmap.addOverlay(line)                    // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 25, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+<details>
+  <summary>`DSFSparklineOverlay.StackLine` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-simple-small.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
+let stack = DSFSparklineOverlay.Stackline()  // Create a stackline overlay
+stack.dataSource = source                    // Assign the datasource to the overlay
+stack.strokeWidth = 1
+stack.primaryFill = primaryFill
+bitmap.addOverlay(stack)                     // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 25, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+<details>
+  <summary>`DSFSparklineOverlay.Bar` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-simple-small.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+let bar = DSFSparklineOverlay.Bar()         // Create a bar overlay
+bar.dataSource = source                     // Assign the datasource to the overlay
+bar.primaryFill = primaryFill
+bitmap.addOverlay(bar)                      // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 25, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+<details>
+  <summary>`DSFSparklineOverlay.Dot` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-simple-small.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()  // Create a bitmap surface
+let dot = DSFSparklineOverlay.Dot()        // Create a dot graph overlay
+dot = biggersource                         // Assign the datasource to the overlay
+bitmap.addOverlay(dot)                     // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 32, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+
+<details>
+  <summary>`DSFSparklineOverlay.WinLossTie` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-small.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()          // Create a bitmap surface
+let winLossTie = DSFSparklineOverlay.WinLossTie()  // Create a win-loss-tie overlay
+winLossTie.dataSource = winloss                    // Assign the datasource
+bitmap.addOverlay(winLossTie)                      // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 75, height: 12, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+<details>
+  <summary>`DSFSparklineOverlay.Tablet` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet-small.png" width="80"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
+let stack = DSFSparklineOverlay.Tablet()     // Create a tablet overlay
+stack.dataSource = winloss                   // Assign a datasource to the overlay
+bitmap.addOverlay(stack)                     // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 90, height: 16, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+
+<details>
+  <summary>`DSFSparklineOverlay.Stripes` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-small.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
+let stack = DSFSparklineOverlay.Stripes()    // Create a stripes overlay
+stack.dataSource = .init(values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+bitmap.addOverlay(stack)                     // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 90, height: 16, scale: 2)
+
+// Do something with 'image'
+```
+</details>
+
 
 #### Static
 
 A static graph has a fixed set of values (for example, a pie chart). The overlays update when a new static data source is assigned to it.
 
-* `DSFSparklinePieGraphView`
-* `DSFSparklineDataBarGraphView`
+<details>
+  <summary>`DSFSparklineOverlay.Pie` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie-simple.png" width="18"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()
+let pie = DSFSparklineOverlay.Pie()
+pie.dataSource = DSFSparkline.StaticDataSource([10, 55, 20])
+pie.lineWidth = 0.5
+pie.strokeColor = CGColor.black
+
+bitmap.addOverlay(pie)
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 18, height: 18, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
+
+<details>
+  <summary>`DSFSparklineOverlay.DataBar` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-simple.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()
+let stack = DSFSparklineOverlay.DataBar()
+stack.dataSource = DSFSparkline.StaticDataSource([10, 20, 30])
+stack.lineWidth = 0.5
+stack.strokeColor = CGColor.black
+
+bitmap.addOverlay(stack)
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 18, scale: 2)!
+
+// Do something with 'image'
+```
+</details>
 
 ### Component types
 
@@ -116,14 +317,6 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 | `DSFSparklineOverlay.ZeroLine` | Draw a horizontal line at the 'zero-line' position of the sparkline. The zero-line is defined by the datasource and is by default zero, however this can be changed. |
 | `DSFSparklineOverlay.RangeHighlight` | Highlight a range of y-values on the sparkline |
 | `DSFSparklineOverlay.GridLines` | Draw lines at specified y-values on the sparkline |
-
-# Prebuilt
-
-DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope. 
-
-If you've used `DSFSparklines` prior to v4, these are the original views that you used to display your sparklines.
-
-
 
 ## Available graph types
 
@@ -189,6 +382,12 @@ If you've used `DSFSparklines` prior to v4, these are the original views that yo
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
 
+
+## Prebuilt
+
+DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope. 
+
+If you've used `DSFSparklines` prior to v4, these are the original views that you used to display your sparklines.
 
 ## Overview
 

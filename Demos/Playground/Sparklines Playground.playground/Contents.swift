@@ -4,8 +4,14 @@ import DSFSparkline
 
 var str = "Playground demonstrating the generation of a sparkline bitmap"
 
+// Set this to 'true' to save the generated bitmaps out to the /tmp folder
+let shouldSaveImage = false
 
 func SaveImage(image: NSImage, path: URL) {
+
+	guard shouldSaveImage else {
+		return
+	}
 
 	guard let tiff = image.tiffRepresentation,
 			let imageRep = NSBitmapImageRep(data: tiff),
@@ -43,6 +49,13 @@ do {
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 50, height: 25, scale: 2)!
 	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-line.png"))
+
+
+	// Generate an image with retina scale
+	stack.interpolated = true
+	let image2 = bitmap.image(width: 50, height: 25, scale: 2)!
+	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/simple-line-interpolated.png"))
+
 }
 
 // MARK: - Simple bar graph
@@ -96,12 +109,6 @@ do {
 	let graph = DSFSparklineOverlay.WinLossTie()
 	graph.dataSource = winloss
 
-//	graph.winStroke  = DSFColor.black.withAlphaComponent(0.9).cgColor
-//	graph.winFill    = DSFSparkline.Fill.Color(DSFColor.black.withAlphaComponent(0.7).cgColor)
-//
-//	graph.lossStroke = DSFColor.black.withAlphaComponent(0.5).cgColor
-//	graph.lossFill   = DSFSparkline.Fill.Color(DSFColor.black.withAlphaComponent(0.2).cgColor)
-
 	graph.centerLine = .init(color: DSFColor.black, lineWidth: 0.5, lineDashStyle: [0.5, 0.5])
 	bitmap.addOverlay(graph)
 
@@ -137,6 +144,19 @@ do {
 	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-tablet.png"))
 }
 
+// MARK: - Simple stripes
+
+do {
+	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
+	let stack = DSFSparklineOverlay.Stripes()
+	stack.dataSource = .init(values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+	bitmap.addOverlay(stack)
+
+	// Generate an image with retina scale
+	let image = bitmap.image(width: 90, height: 16, scale: 2)!
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-stripes.png"))
+}
+
 // MARK: - Simple pie
 
 do {
@@ -166,7 +186,7 @@ do {
 	bitmap.addOverlay(stack)
 
 	// Generate an image with retina scale
-	let image = bitmap.image(width: 50, height: 25, scale: 2)!
+	let image = bitmap.image(width: 50, height: 18, scale: 2)!
 	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-databar.png"))
 
 	// databar with a maximum value defined
@@ -175,7 +195,7 @@ do {
 	stack.unsetColor = DSFColor.black.cgColor
 
 	// Generate an image with retina scale
-	let image2 = bitmap.image(width: 50, height: 25, scale: 2)!
+	let image2 = bitmap.image(width: 50, height: 18, scale: 2)!
 	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/simple-databar-maxvalue.png"))
 
 }
