@@ -36,7 +36,7 @@ public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 	/// The line width (in pixels) to use when drawing the border of each bar
 	@IBInspectable public var lineWidth: UInt = 1 {
 		didSet {
-			self.overlay.lineWidth = self.lineWidth
+			self.overlay.strokeWidth = self.lineWidth
 		}
 	}
 
@@ -79,7 +79,7 @@ public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 	override func colorDidChange() {
 		super.colorDidChange()
 
-		self.overlay.lineWidth = self.lineWidth
+		self.overlay.strokeWidth = self.lineWidth
 		self.overlay.barSpacing = self.barSpacing
 
 		self.overlay.primaryStrokeColor = self.graphColor.cgColor

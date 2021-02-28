@@ -31,7 +31,7 @@ public extension DSFSparklineOverlay {
 	/// A line graph sparkline
 	@objc(DSFSparklineOverlayLine) class Line: Centerable {
 		/// The width for the line drawn on the graph
-		@objc public var lineWidth: CGFloat = 1.5 {
+		@objc public var strokeWidth: CGFloat = 1.5 {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -101,7 +101,7 @@ private extension DSFSparklineOverlay.Line {
 									  self.shadow?.shadowOffset.height ?? 0) +
 									  (self.shadow?.shadowBlurRadius ?? 0)
 
-		let inset = (self.markerSize > 0 ? self.markerSize / 2 : self.lineWidth) + shadowOffset
+		let inset = (self.markerSize > 0 ? self.markerSize / 2 : self.strokeWidth) + shadowOffset
 
 		let drawRect = bounds.insetBy(dx: inset, dy: inset)
 
@@ -151,7 +151,7 @@ private extension DSFSparklineOverlay.Line {
 				outer.usingGState { ctx in
 					ctx.addPath(path)
 					ctx.setStrokeColor(strokeColor)
-					ctx.setLineWidth(self.lineWidth)
+					ctx.setLineWidth(self.strokeWidth)
 
 					if let shadow = self.shadow {
 						ctx.setShadow(shadow)
@@ -189,7 +189,7 @@ private extension DSFSparklineOverlay.Line {
 		}
 
 		// Adjust the inset so that markers can draw unclipped if they are asked for
-		let inset = self.markerSize > 0 ? self.markerSize / 2 : self.lineWidth
+		let inset = self.markerSize > 0 ? self.markerSize / 2 : self.strokeWidth
 		let drawRect = bounds.insetBy(dx: inset, dy: inset)
 
 		let normy = dataSource.normalized
@@ -264,7 +264,7 @@ private extension DSFSparklineOverlay.Line {
 					inner.usingGState { ctx in
 						ctx.addPath(path)
 						ctx.setStrokeColor(stroke)
-						ctx.setLineWidth(self.lineWidth)
+						ctx.setLineWidth(self.strokeWidth)
 						if let shadow = self.shadow {
 							ctx.setShadow(shadow)
 						}

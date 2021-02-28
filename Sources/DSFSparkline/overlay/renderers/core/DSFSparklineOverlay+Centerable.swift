@@ -28,7 +28,7 @@ public extension DSFSparklineOverlay {
 	///
 	/// You don't generally create this class yourself, you inherit from it if your overlay type can be
 	/// centered around the zero-line of the data.
-	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineOverlay.ZeroLine {
+	@objc(DSFSparklineOverlayCenterableGraph) class Centerable: DSFSparklineOverlay.DataSource {
 		/// Should the graph be centered at the zero line defined in the datasource?
 		@objc public var centeredAtZeroLine: Bool = false {
 			didSet {

@@ -36,7 +36,7 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	/// The width for the line drawn on the graph
 	@IBInspectable public var lineWidth: CGFloat = 1.5 {
 		didSet {
-			self.overlay.lineWidth = self.lineWidth
+			self.overlay.strokeWidth = self.lineWidth
 		}
 	}
 	
@@ -103,7 +103,7 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	override func colorDidChange() {
 		super.colorDidChange()
 
-		self.overlay.lineWidth = self.lineWidth
+		self.overlay.strokeWidth = self.lineWidth
 		self.overlay.interpolated = self.interpolated
 		self.overlay.shadow = self.shadowed ? NSShadow.sparklineDefault : nil
 		self.overlay.markerSize = self.markerSize

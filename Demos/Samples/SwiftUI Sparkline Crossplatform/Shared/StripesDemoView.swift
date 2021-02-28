@@ -202,7 +202,7 @@ fileprivate var GradientTestDataSource2: DSFSparkline.DataSource = {
 
 // MARK: - World definition
 
-fileprivate var WorldDataSource: DSFSparkline.DataSource = {
+let WorldDataSource: DSFSparkline.DataSource = {
 	let e = DSFSparkline.DataSource(windowSize: UInt(WorldRawData.count))
 	e.set(values: WorldRawData)
 	return e

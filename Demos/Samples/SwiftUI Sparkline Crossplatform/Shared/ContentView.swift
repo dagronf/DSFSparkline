@@ -27,10 +27,9 @@ struct ContentView: View {
 		Item(id: 6, name: "Dot"),
 		Item(id: 7, name: "Stripes"),
 		Item(id: 8, name: "Active"),
-		Item(id: 9, name: "Overlay"),
-		Item(id: 10, name: "Bar"),
-		Item(id: 11, name: "Bitmap Testing"),
-		Item(id: 12, name: "SwiftUI Overlays")
+		Item(id: 9, name: "Bar"),
+		Item(id: 10, name: "Bitmap Testing"),
+		Item(id: 11, name: "SwiftUI Overlays")
 	]
 
 	var body: some View {
@@ -65,10 +64,9 @@ struct DetailView: View {
 			case 6: DotGraphView()
 			case 7: StripesDemoView()
 			case 8: MakeActiveView()
-			case 9: OverlayView()
-			case 10: BarDemoContentView()
-			case 11: BitmapGenerationView()
-			case 12: SwiftUIContentView()
+			case 9: BarDemoContentView()
+			case 10: BitmapGenerationView()
+			case 11: SwiftUIView(shouldAnimate: true)
 			default: fatalError()
 			}
 		}

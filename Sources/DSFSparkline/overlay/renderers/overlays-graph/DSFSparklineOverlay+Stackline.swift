@@ -31,7 +31,7 @@ public extension DSFSparklineOverlay {
 	/// A stackline graph
 	@objc(DSFSparklineOverlayStackline) class Stackline: Centerable {
 		/// The width for the line drawn on the graph
-		@objc public var lineWidth: CGFloat = 1.5 {
+		@objc public var strokeWidth: CGFloat = 1.5 {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -141,7 +141,7 @@ extension DSFSparklineOverlay.Stackline {
 			if let stroke = self.primaryStrokeColor {
 				outer.addPath(linePath)
 				outer.setStrokeColor(stroke)
-				outer.setLineWidth(self.lineWidth)
+				outer.setLineWidth(self.strokeWidth)
 
 				if let shadow = self.shadow {
 					outer.setShadow(shadow)
@@ -255,7 +255,7 @@ extension DSFSparklineOverlay.Stackline {
 						if let strokeColor = whichStroke {
 							inner.addPath(linePath)
 							inner.setStrokeColor(strokeColor)
-							inner.setLineWidth(self.lineWidth)
+							inner.setLineWidth(self.strokeWidth)
 
 							if let shadow = self.shadow {
 								inner.setShadow(shadow)

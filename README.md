@@ -34,17 +34,60 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 * Center bar/line/stackline graphs around the zero line
 * Build stacklines by overlaying 
 
+## Data Sources
+
+A data source provides data for a sparkline. A datasource can be shared between multiple overlays or prebuilt types (see below) to provide different 'views' of the data contained within the source.  And if a `DataSource` is updated, all sparkline ovelays observing that source will be automatically re-rendered.
+
+There are currently two types of datasource available
+
+* `DSFSparkline.DataSource` - A datasource that contains values that can be updated.
+* `DSFSparkline.StaticDataSource` - A datasource that contains a static set of values
+
+
+## Surfaces
+
+A surface represents a destination for a sparkline. This library provides a number of built-in surfaces
+
+* `DSFSparklineSurfaceView` - An `NSView`/`UIView` surface for displaying a sparkline
+* `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage` surface for creating a bitmap from a sparkline
+* `DSFSparklineSurface.SwiftUI` - A SwiftUI compatible surface.
+
 ## Overlays
 
-Sparkline overlays represent the components of a sparkline, for example, 
+Overlays represent the components of a sparkline. You can add as many or as little to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
+
+An overlay represents a single 'component' of a sparkline.  For example, there is an overlay that highlights a y-range of data. Or, if you want some grid lines, you can add them using a separate overlay.
+
+You can add different instances of an overlay to the same sparkline. For example, if you want to add multiple range highlights you add multiple 'highlight' overlays to the sparkline surface.
+
+The order in which the overlays are added determine where in the z-order that they appear in the sparkline.  For example, you can choose to draw the grid on top of the graph if you want by adding the graph overlay BEFORE you add the grid overlay
+
+<center><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/overlay-demo.png" width="680"></center>
+
+The overlay allows your sparkline to be as complex or as simple as you want.
+
+### Graph types
+
+#### Dynamic
+
+#### Static
+
+### Component types
+
+|  Name  | Description  |
+|------------|------------|
+| `DSFSparklineOverlay.ZeroLine` | Draw a horizontal line at the 'zero-line' position of the sparkline. The zero-line is defined by the datasource and is by default zero, however this can be changed. |
+| `DSFSparklineOverlay.RangeHighlight` | Highlight a range of y-values on the sparkline |
+| `DSFSparklineOverlay.GridLines` | Draw lines at specified y-values on the sparkline |
+
+# Prebuilt
+
+DSFSparkline has a number of 'prebuilt' stack views available. If you've used this library prior to v4, these are the original types that you used to display your sparklines.
+
+The 'prebuilt' classes are themselves now built using overlays.
 
 
-
-
-# Legacy
-
-
-## Available types
+## Available graph types
 
 ### Line
 

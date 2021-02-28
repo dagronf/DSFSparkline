@@ -99,7 +99,7 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 			locations: [1.0, 0.0]
 		)!
 
-		self.overlay.lineWidth = self.lineWidth
+		self.overlay.strokeWidth = self.lineWidth
 
 		self.overlay.primaryStrokeColor = self.graphColor.cgColor
 		self.overlay.secondaryStrokeColor = self.lowerColor.cgColor

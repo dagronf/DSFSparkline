@@ -32,8 +32,8 @@ public extension DSFSparklineOverlay {
 	/// A bar graph overlay
 	@objc(DSFSparklineOverlayBar) class Bar: Centerable {
 
-		/// The width for the line drawn on the graph
-		@objc public var lineWidth: UInt = 1 {
+		/// The width for the line drawn on the graph (in pixels)
+		@objc public var strokeWidth: UInt = 1 {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -107,7 +107,7 @@ extension DSFSparklineOverlay.Bar {
 				let r = CGRect(x: xOffset + point.offset * componentWidth,
 									y: Int(integralRect.height) - yVal,
 									width: barWidth,
-									height: yVal - Int(self.lineWidth))
+									height: yVal - Int(self.strokeWidth))
 				bars.append(r.integral)
 			}
 
@@ -130,7 +130,7 @@ extension DSFSparklineOverlay.Bar {
 					}
 
 					strokeCtx.addPath(path)
-					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
+					strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.strokeWidth))
 					strokeCtx.setStrokeColor(stroke)
 					strokeCtx.drawPath(using: .stroke)
 				}
@@ -183,7 +183,7 @@ extension DSFSparklineOverlay.Bar {
 					let r = CGRect(x: x,
 										y: centroid + 1,
 										width: xDiff - 1 - (CGFloat(self.barSpacing)),
-										height: -yy - CGFloat(self.lineWidth) + 1)
+										height: -yy - CGFloat(self.strokeWidth) + 1)
 					negativePath.append(r.integral)
 				}
 			}
@@ -205,7 +205,7 @@ extension DSFSparklineOverlay.Bar {
 				if let stroke = self.primaryStrokeColor {
 					outer.usingGState { strokeCtx in
 						strokeCtx.addPath(path)
-						strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
+						strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.strokeWidth))
 						strokeCtx.setStrokeColor(stroke)
 						strokeCtx.strokePath()
 					}
@@ -227,7 +227,7 @@ extension DSFSparklineOverlay.Bar {
 				if let stroke = self.secondaryStrokeColor {
 					outer.usingGState { strokeCtx in
 						strokeCtx.addPath(path)
-						strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.lineWidth))
+						strokeCtx.setLineWidth(1.0 / scale * CGFloat(self.strokeWidth))
 						strokeCtx.setStrokeColor(stroke)
 						strokeCtx.strokePath()
 					}
