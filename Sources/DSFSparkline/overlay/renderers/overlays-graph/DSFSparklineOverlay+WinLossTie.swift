@@ -27,9 +27,9 @@ public extension DSFSparklineOverlay {
 	@objc(DSFSparklineOverlayWinLossTie) class WinLossTie: DSFSparklineOverlay.DataSource {
 
 		static let greenStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 1])!
-		static let greenFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 0.3])!
+		static let greenFill = DSFSparkline.Fill.Color(CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 1, 0, 0.3])!)
 		static let redStroke = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 1])!
-		static let redFill = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 0.3])!
+		static let redFill = DSFSparkline.Fill.Color(CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 0, 0, 0.3])!)
 
 		/// The width of the stroke for the tablet
 		@objc public var lineWidth: UInt = 1 {
@@ -53,7 +53,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'win' boxes
-		@objc public var winFill: CGColor = WinLossTie.greenFill {
+		@objc public var winFill: DSFSparklineFillable? = WinLossTie.greenFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -67,7 +67,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'loss' boxes
-		@objc public var lossFill: CGColor = WinLossTie.redFill {
+		@objc public var lossFill: DSFSparklineFillable? = WinLossTie.redFill {
 			didSet {
 				self.setNeedsDisplay()
 			}
@@ -81,12 +81,11 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw the 'tie' boxes
-		@objc public var tieFill: CGColor? {
+		@objc public var tieFill: DSFSparklineFillable? {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
-
 
 		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			self.drawWinLossGraph(context: context, bounds: bounds, scale: scale)
@@ -159,32 +158,45 @@ private extension DSFSparklineOverlay.WinLossTie {
 
 			if !winPath.isEmpty {
 				outer.usingGState { winState in
+					if let fill = self.winFill {
+						winState.usingGState { fillCtx in
+							fillCtx.addPath(winPath)
+							fillCtx.clip()
+							fill.fill(context: fillCtx, bounds: integralRect)
+						}
+					}
+
 					winState.addPath(winPath)
-					winState.setFillColor(self.winFill)
 					winState.setStrokeColor(self.winStroke)
 					winState.setLineWidth(graphLineWidth)
-					winState.drawPath(using: .fillStroke)
+					winState.drawPath(using: .stroke)
 				}
 			}
 
 			if !lossPath.isEmpty {
 				outer.usingGState { lossState in
+					if let fill = self.lossFill {
+						lossState.usingGState { fillCtx in
+							fillCtx.addPath(lossPath)
+							fillCtx.clip()
+							fill.fill(context: fillCtx, bounds: integralRect)
+						}
+					}
+
 					lossState.addPath(lossPath)
-					lossState.setFillColor(self.lossFill)
 					lossState.setStrokeColor(self.lossStroke)
 					lossState.setLineWidth(graphLineWidth)
-					lossState.drawPath(using: .fillStroke)
+					lossState.drawPath(using: .stroke)
 				}
 			}
 
-			if !tiePath.isEmpty,
-				self.tieFill != nil || self.tieStroke != nil {
+			if !tiePath.isEmpty, self.tieFill != nil || self.tieStroke != nil {
 
 				if let fill = self.tieFill {
 					outer.usingGState { tieState in
 						tieState.addPath(tiePath)
-						tieState.setFillColor(fill)
-						tieState.drawPath(using: .fill)
+						tieState.clip()
+						fill.fill(context: tieState, bounds: integralRect)
 					}
 				}
 

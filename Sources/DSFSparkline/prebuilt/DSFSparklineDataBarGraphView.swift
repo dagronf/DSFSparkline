@@ -156,12 +156,12 @@ public extension DSFSparklineDataBarGraphView {
 
 		#if TARGET_INTERFACE_BUILDER
 		self.animated = false
-		self.dataSource = [
+		self.dataSource = DSFSparkline.StaticDataSource([
 			CGFloat(UInt.random(in: 1 ... 9)),
 			CGFloat(UInt.random(in: 1 ... 9)),
 			CGFloat(UInt.random(in: 1 ... 9)),
 			CGFloat(UInt.random(in: 1 ... 9)),
-		]
+		])
 		#endif
 	}
 }

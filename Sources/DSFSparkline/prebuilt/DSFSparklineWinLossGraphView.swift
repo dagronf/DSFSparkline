@@ -108,15 +108,16 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 		self.overlay.lineWidth = self.lineWidth
 		self.overlay.barSpacing = self.barSpacing
 
-		self.overlay.winFill = self.winColor.withAlphaComponent(0.3).cgColor
+		self.overlay.winFill = DSFSparkline.Fill.Color(self.winColor.withAlphaComponent(0.3).cgColor)
 		self.overlay.winStroke = self.winColor.cgColor
 
-		self.overlay.lossFill = self.lossColor.withAlphaComponent(0.3).cgColor
+		self.overlay.lossFill = DSFSparkline.Fill.Color(self.lossColor.withAlphaComponent(0.3).cgColor)
 		self.overlay.lossStroke = self.lossColor.cgColor
 
-
 		self.overlay.tieStroke = self.tieColor?.cgColor
-		self.overlay.tieFill = self.tieColor?.withAlphaComponent(0.3).cgColor
+		if let tc = self.tieColor {
+			self.overlay.tieFill = DSFSparkline.Fill.Color(tc.withAlphaComponent(0.3).cgColor)
+		}
 	}
 }
 

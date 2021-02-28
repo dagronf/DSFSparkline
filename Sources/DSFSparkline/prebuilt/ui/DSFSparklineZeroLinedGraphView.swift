@@ -149,7 +149,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	#else
 	@IBInspectable public var highlightColor: UIColor = .systemGray {
 		didSet {
-			self.ibHighlightOverlay.fill = DSFSparkline.Fill(flatColor: self.highlightColor.cgColor)
+			self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightColor.cgColor)
 		}
 	}
 	#endif
