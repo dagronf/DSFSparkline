@@ -77,11 +77,33 @@ A DataSource that contains values that can be updated by pushing new values into
 
 The DataSource defines a 'windowSize' - the maximum number of values to be drawn on the overlay. As values are pushed into the DataSource, any values that no longer `fit` within the DataSource window are discarded.
 
+* If the window size is reduced, stored data is truncated.
+* If the window size is increased, the data store is padded with zeros
+
+<details>
+  <summary>Code example</summary>
+
+```swift
+/// Swift
+dataSource.windowSize = 30
+assert(dataSource.windowSize == 30)
+```
+
+```objective-c
+/// Objective-C
+[dataSource setWindowSize:30];
+assert([dataSource windowSize] == 30);
+```
+</details>
+
 #### Y-range
 
 The range defines the upper and lower values to be displayed in the sparkline. Any values pushed into the datasource will be capped when drawn to this range.
 
 If the range is not set (ie nil), then any overlays will automatically resize to fit the entire range of values within the source.  For example, with values as [1, 2, 3, 4] the range is implicitly set as 1 ... 4. If the values are [-10, 100, 33] the range is implicitly set as -10 ... 100
+
+<details>
+  <summary>Code example</summary>
 
 ```swift
 /// Swift
@@ -92,6 +114,7 @@ dataSource.range = -1.0 ... 1.0
 /// Objective-C
 [dataSource setRangeWithLowerBound:-1.0 upperBound:1.0];
 ```
+</details>
 
 #### Zero-line value
 
@@ -101,17 +124,65 @@ The zero-line value defaults to zero.
 
 You can draw a zero-line for a sparkline by adding a `DSFSparklineOverlay.ZeroLine` to your surface.
 
+<details>
+  <summary>Code example</summary>
+
+```swift
+/// Swift
+dataSource.zeroLineValue = 0.2
+```
+
+```objc
+/// Objective-C
+[dataSource setZeroLineValue:0.2];
+```
+</details>
+
 #### Adding values
+
+You can push new values into the datasource using the `push` functions. Values in the datasource older than the datasource's `windowSize` are discarded.  
+
+As values are pushed into the datasource, any overlays assigned this datasource will automatically update.
+
+<details>
+  <summary>Code example</summary>
 
 ```swift
 /// Swift
 dataSource.push(value: 4.5)
+dataSource.push(values: [6, 7, 8])
 ```
 
 ```objective-c
 /// Objective-C
 [dataSource pushWithValue:@(4.5)];
 ```
+</details>
+
+You replace all the values in a datasource the `set` functions. The set function also changes the `windowSize` for the datasource to the size of the values array passed in.
+
+Any overlays assigned this datasource will automatically update.
+
+<details>
+  <summary>Code example</summary>
+
+```swift
+/// Swift
+datasource.set(values: [
+   0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
+   0.0, -0.1, -0.2, -0.3, -0.4, -0.5, -0.6, -0.7, -0.8, -0.9, -1.0
+])
+```
+
+```objc
+/// Objective-C
+[datasource setWithValues:
+   @[@(0.0), @(0.1), @(0.2), @(0.3), @(0.4), @(0.5), @(0.6), @(0.7), @(0.8), @(0.9), @(1),
+     @(0.0), @(-0.1), @(-0.2), @(-0.3), @(-0.4), @(-0.5), @(-0.6), @(-0.7), @(-0.8), @(-0.9), @(-1)]];
+```
+
+</details>
+
 
 </details>
 
@@ -121,6 +192,16 @@ A datasource that contains a static set of values. Some types of sparkline use a
 
 <details>
   <summary> More details </summary>
+
+```swift
+/// Swift
+let dataSource = DSFSparkline.StaticDataSource([1, 2, 3])
+```
+
+```objc
+/// Objective-C
+DSFSparklineStaticDataSource* dataSource = [[DSFSparklineStaticDataSource alloc] init: @[@(1), @(2), @(3)]];
+```
 
 </details>
 
@@ -420,6 +501,10 @@ An optional range can be set on the data source, which means that the view will 
 You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource to 20)
 
 The zero-line can also be used to center certain graph types (currently line and bar). By default, the zero-line is set at 0.0.
+
+```objc
+[dataSource setZeroLineValue:0.2];
+```
 
 #### Highlighting ranges
 

@@ -28,8 +28,8 @@ import CoreGraphics
 public extension DSFSparkline {
 
 	/// A simple data source containing an array of values.
-	@objc class StaticDataSource: NSObject {
-		let values: [CGFloat]
+	@objc(DSFSparklineStaticDataSource) class StaticDataSource: NSObject {
+		@objc let values: [CGFloat]
 
 		/// The total of all the values within the datasource
 		@objc public let total: CGFloat
