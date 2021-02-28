@@ -33,7 +33,7 @@ import UIKit
 
 	#if TARGET_INTERFACE_BUILDER
 	/// Need this to hold on to the datasource when using designable, or else it disappears due to being weak
-	var ibDataSource: DSFSparklineDataSource?
+	var ibDataSource: DSFSparkline.DataSource?
 	#endif
 
 	// Listen for changes in the data and update appropriately

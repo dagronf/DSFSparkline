@@ -227,6 +227,32 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+
+		do {
+
+			let winloss = DSFSparkline.DataSource(values: [1, 1, 0, -1, 1, 1, 1, 0, 1, -1])
+
+			let bitmap = DSFSparklineSurface.Bitmap()
+
+			let zeroLine = DSFSparklineOverlay.ZeroLine()
+			zeroLine.dataSource = winloss
+			//	zeroLine.strokeWidth = 1.0
+			//	zeroLine.strokeColor = NSColor.textColor.cgColor
+			bitmap.addOverlay(zeroLine)
+
+			let graph = DSFSparklineOverlay.WinLossTie()
+			graph.dataSource = winloss
+			bitmap.addOverlay(graph)
+
+			// Generate an image with retina scale
+			let image = bitmap.image(width: 75, height: 16, scale: 2)
+			assert(image != nil)
+		}
+
+
+
+
+
 		self.buildNameMap()
 
 //		do {

@@ -87,6 +87,13 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		/// The line to separate the win and loss sections of the sparkline
+		@objc public var centerLine: DSFSparkline.ZeroLineDefinition? {
+			didSet {
+				self.setNeedsDisplay()
+			}
+		}
+
 		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			self.drawWinLossGraph(context: context, bounds: bounds, scale: scale)
 		}
@@ -129,6 +136,16 @@ private extension DSFSparklineOverlay.WinLossTie {
 			outer.setShouldAntialias(false)
 			outer.setRenderingIntent(.relativeColorimetric)
 			outer.interpolationQuality = .none
+
+			if let zeroLine = self.centerLine {
+				outer.usingGState { centerlineState in
+					let zeroPos = 0.5 * bounds.height
+					centerlineState.setLineWidth(zeroLine.lineWidth)
+					centerlineState.setStrokeColor(zeroLine.color.cgColor)
+					centerlineState.setLineDash(phase: 0.0, lengths: zeroLine.lineDashStyle)
+					centerlineState.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: bounds.width, y: zeroPos)])
+				}
+			}
 
 			if dataSource.counter < dataSource.windowSize {
 				let pos = Int(dataSource.counter) * componentWidth

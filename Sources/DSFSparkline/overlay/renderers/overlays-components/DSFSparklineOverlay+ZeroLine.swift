@@ -75,7 +75,7 @@ public extension DSFSparklineOverlay {
 			context.setLineWidth(self.strokeWidth)
 			context.setStrokeColor(self.strokeColor)
 			context.setLineDash(phase: 0.0, lengths: self.dashStyle)
-			context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: self.bounds.width, y: zeroPos)])
+			context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: bounds.width, y: zeroPos)])
 
 			return bounds
 		}

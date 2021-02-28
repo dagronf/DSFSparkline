@@ -122,7 +122,7 @@ private extension DSFSparklineOverlay.Stripes {
 			return bounds
 		}
 
-		let drawRect = self.bounds
+		let drawRect = bounds
 
 		// This represents the _full_ width of a bar within the graph, including the spacing.
 		let componentWidth = drawRect.width / CGFloat(dataSource.windowSize)

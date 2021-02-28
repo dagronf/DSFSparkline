@@ -71,8 +71,8 @@ extension DSFSparklineOverlay.Dot {
 		let height = drawRect.height
 		let dotHeight = floor(height / CGFloat(self.verticalDotCount))
 
-		let xOffset: CGFloat = self.bounds.width.truncatingRemainder(dividingBy: dotHeight) / 2.0
-		let yOffset: CGFloat = self.bounds.height.truncatingRemainder(dividingBy: dotHeight) / 2.0
+		let xOffset: CGFloat = bounds.width.truncatingRemainder(dividingBy: dotHeight) / 2.0
+		let yOffset: CGFloat = bounds.height.truncatingRemainder(dividingBy: dotHeight) / 2.0
 
 		var position = drawRect.width - dotHeight - xOffset
 

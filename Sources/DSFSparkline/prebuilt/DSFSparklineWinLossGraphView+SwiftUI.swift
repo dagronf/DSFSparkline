@@ -114,8 +114,9 @@ extension DSFSparklineWinLossGraphView.SwiftUI: DSFViewRepresentable {
 		view.barSpacing = self.barSpacing
 		view.lineWidth = self.lineWidth
 
-		view.showZeroLine = self.showZeroLine
-		view.setZeroLineDefinition(self.zeroLineDefinition)
+		view.centerlineColor = self.showZeroLine ? self.zeroLineDefinition.color : nil
+		view.centerlineWidth = self.zeroLineDefinition.lineWidth
+		view.centerlineDashStyle = self.zeroLineDefinition.lineDashStyle
 
 		return view
 	}
@@ -160,7 +161,9 @@ public extension DSFSparklineWinLossGraphView.SwiftUI {
 		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
 		UpdateIfNotEqual(result: &view.barSpacing, val: self.barSpacing)
 
-		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+		UpdateIfNotEqual(result: &view.centerlineColor, val: self.showZeroLine ? self.zeroLineDefinition.color : nil)
+		UpdateIfNotEqual(result: &view.centerlineWidth, val: self.zeroLineDefinition.lineWidth)
+		UpdateIfNotEqual(result: &view.centerlineDashStyle, val: self.zeroLineDefinition.lineDashStyle)
 
 		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
 	}

@@ -35,6 +35,24 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 * Build stacklines by overlaying 
 
 
+## TL;DR - Show me something!
+
+Create a retina-scale (144dpi) bitmap with a simple line graph
+
+```swift
+// A datasource with a simple set of data
+let source = DSFSparkline.DataSource(values: [4, 1, 8, 7, 5, 9, 3], range: 0 ... 10)
+
+let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+let stack = DSFSparklineOverlay.Line()      // Create a line overlay
+stack.dataSource = source                   // Assign the datasource to the overlay
+bitmap.addOverlay(stack)                    // And add the overlay to the surface.
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 25, scale: 2)
+```
+
+
 ## DataSource
 
 A data source provides data for a sparkline. A datasource can be shared between multiple overlays or prebuilt types (see below) to provide different 'views' of the data contained within the source.  And if a `DataSource` is updated, all sparkline ovelays observing that source will be automatically re-rendered.
@@ -44,14 +62,13 @@ There are currently two types of datasource available
 * `DSFSparkline.DataSource` - A datasource that contains values that can be updated.
 * `DSFSparkline.StaticDataSource` - A datasource that contains a static set of values
 
-
 ## Surfaces
 
 A surface represents a destination for a sparkline. This library provides a number of built-in surfaces
 
 * `DSFSparklineSurfaceView` - An `NSView`/`UIView` surface for displaying a sparkline
 * `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage` surface for creating a bitmap from a sparkline
-* `DSFSparklineSurface.SwiftUI` - A SwiftUI compatible surface.
+* `DSFSparklineSurface.SwiftUI` - A SwiftUI `View` surface.
 
 ## Overlays
 
@@ -540,10 +557,10 @@ Each graph type provides its own SwiftUI view (appending `.SwiftUI` to the class
 ```swift
 struct SparklineView: View {
 
-   let leftDataSource: DSFSparklineDataSource
-   let rightDataSource: DSFSparklineDataSource
+   let leftDataSource: DSFSparkline.DataSource
+   let rightDataSource: DSFSparkline.DataSource
    
-   let BigCyanZeroLine = DSFSparklineZeroLineDefinition(
+   let BigCyanZeroLine = DSFSparkline.ZeroLineDefinition(
       color: .cyan,
       lineWidth: 3,
       lineDashStyle: [4,1,2,1]

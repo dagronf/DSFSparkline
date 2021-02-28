@@ -72,8 +72,26 @@ public extension DSFSparklineSurface {
 
 import AppKit
 public extension DSFSparklineSurface.Bitmap {
-	/// Generate an NSImage for the contents of the surface
-	@objc func image(size: CGSize, scale: CGFloat = 2) -> NSImage? {
+	/// Generate an NSImage with the contents of the surface
+	/// - Parameters:
+	///   - size: The dimensions of the image
+	///   - scale: The scale for the returned image. For example, for a retina scale (144dpi) image, scale == 2
+	/// - Returns: The created image, or nil if something went wrong
+	@objc func image(size: CGSize, scale: CGFloat = 1) -> NSImage? {
+		guard let cgImage = self.cgImage(size: size, scale: scale) else {
+			return nil
+		}
+		return NSImage(cgImage: cgImage, size: size)
+	}
+
+	/// Generate an NSImage with the contents of the surface
+	/// - Parameters:
+	///   - width: The width of the resultant image
+	///   - height: The height of the resultant image
+	///   - scale: The scale for the returned image. For example, for a retina scale (144dpi) image, scale == 2
+	/// - Returns: The created image, or nil if something went wrong
+	@objc func image(width: CGFloat, height: CGFloat, scale: CGFloat = 1) -> NSImage? {
+		let size = CGSize(width: width, height: height)
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
 			return nil
 		}
@@ -87,9 +105,30 @@ public extension DSFSparklineSurface.Bitmap {
 
 import UIKit
 public extension DSFSparklineSurface.Bitmap {
-	/// Generate a UIImage for the contents of the surface
-	@objc func image(size: CGSize, scale: CGFloat = 2) -> UIImage? {
+	/// Generate an NSImage with the contents of the surface
+	/// - Parameters:
+	///   - size: The dimensions of the image
+	///   - scale: The scale for the returned image. For example, for a retina scale (144dpi) image, scale == 2
+	/// - Returns: The created image, or nil if something went wrong
+	@objc func image(size: CGSize, scale: CGFloat = 1) -> UIImage? {
 		guard let cgImage = self.cgImage(size: size, scale: scale) else {
+			return nil
+		}
+		return UIImage(
+			cgImage: cgImage,
+			scale: scale,
+			orientation: UIImage.Orientation.up
+		)
+	}
+
+	/// Generate an NSImage with the contents of the surface
+	/// - Parameters:
+	///   - width: The width of the resultant image
+	///   - height: The height of the resultant image
+	///   - scale: The scale for the returned image. For example, for a retina scale (144dpi) image, scale == 2
+	/// - Returns: The created image, or nil if something went wrong
+	@objc func image(width: CGFloat, height: CGFloat, scale: CGFloat = 1) -> UIImage? {
+		guard let cgImage = self.cgImage(size: CGSize(width: width, height: height), scale: scale) else {
 			return nil
 		}
 		return UIImage(

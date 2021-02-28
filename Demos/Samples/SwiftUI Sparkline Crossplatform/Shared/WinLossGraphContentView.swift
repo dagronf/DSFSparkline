@@ -45,7 +45,7 @@ struct WinLossGraphContentView: View {
 			.padding(5)
 			.border(Color.gray.opacity(0.2), width: 1)
 
-			Text("Win/Loss/Tie with zero-line")
+			Text("Win/Loss/Tie with center-line")
 
 			DSFSparklineWinLossGraphView.SwiftUI(
 				dataSource: upDataSource,

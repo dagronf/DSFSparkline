@@ -28,7 +28,7 @@ import UIKit
 #endif
 
 @IBDesignable
-public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
+public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 
 	let overlay = DSFSparklineOverlay.WinLossTie()
 
@@ -86,6 +86,58 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 	}
 	#endif
 
+	// MARK: - Centerline Definitions
+
+	/// The centerline color. If nil, then no centerline is drawn
+	#if os(macOS)
+	@IBInspectable public var centerlineColor: NSColor? = nil {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	#else
+	@IBInspectable public var centerlineColor: UIColor? = nil {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+	#endif
+
+	// The width of the zero line
+	@IBInspectable public var centerlineWidth: CGFloat = 1 {
+		didSet {
+			self.colorDidChange()
+		}
+	}
+
+	/// The pattern for drawing the line
+	var centerlineDashStyle: [CGFloat] = [1,1]
+
+	/// A string representation of the line dash lengths for the center line, eg. "1,3,4,2".
+	/// If you want a solid line, specify "-"
+	///
+	/// Primarily used for Interface Builder integration
+	@IBInspectable public var centerlineDashStyleString: String = "1,1" {
+		didSet {
+			if self.centerlineDashStyleString == "-" {
+				// Solid line
+				self.centerlineDashStyle = []
+			}
+			else {
+				let components = self.centerlineDashStyleString.extractCGFloats()
+				if components.count >= 2 {
+					self.centerlineDashStyle = components
+				}
+				else {
+					Swift.print("ERROR: Zero Line Style string format is incompatible (\(self.centerlineDashStyleString) -> \(components))")
+					self.centerlineDashStyle = []
+				}
+			}
+			self.colorDidChange()
+		}
+	}
+
+	// MARK: - Initializers
 
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -118,6 +170,17 @@ public class DSFSparklineWinLossGraphView: DSFSparklineZeroLineGraphView {
 		if let tc = self.tieColor {
 			self.overlay.tieFill = DSFSparkline.Fill.Color(tc.withAlphaComponent(0.3).cgColor)
 		}
+
+		if let color = self.centerlineColor {
+			self.overlay.centerLine = .init(color: color,
+													  lineWidth: self.centerlineWidth,
+													  lineDashStyle: self.centerlineDashStyle)
+		}
+		else {
+			self.overlay.centerLine = nil
+		}
+
+		self.updateDisplay()
 	}
 }
 
