@@ -699,10 +699,10 @@
 			targets = (
 				239716B923B554DD0034A4D4 /* All Demos */,
 				23102B4F23B0245A001A621D /* macOS Sparkline Demo */,
-				23102BC023B02AED001A621D /* iOS Sparkline Demo */,
 				23102BD823B02B0A001A621D /* macOS Sparkline Demo Objc */,
-				23102BF023B02B32001A621D /* tvOS Sparkline Demo */,
 				23E2278823B5846E00E59122 /* macOS Table Demo */,
+				23102BC023B02AED001A621D /* iOS Sparkline Demo */,
+				23102BF023B02B32001A621D /* tvOS Sparkline Demo */,
 				236A57EF25C1392B00F2BACF /* SwiftUI Sparkline Demo (iOS) */,
 				236A57F625C1392B00F2BACF /* SwiftUI Sparkline Demo (macOS) */,
 			);
