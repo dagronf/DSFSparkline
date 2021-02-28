@@ -54,14 +54,14 @@ public extension DSFSparklineOverlay {
 
 		// MARK: - Secondary
 
-		/// The color used to draw lines below the zero line. If nil, is the same as the graph color
+		/// The color used to draw lines below the zero-line (if centeredAtZeroLine=true)
 		@objc public var secondaryStrokeColor: CGColor? {
 			didSet {
 				self.setNeedsDisplay()
 			}
 		}
 
-		/// The primary fill color for the sparkline
+		/// The fill color to use for parts of the graph below the zero-line (if centeredAtZeroLine=true)
 		@objc public var secondaryFill: DSFSparkline.Fill? {
 			didSet {
 				self.setNeedsDisplay()

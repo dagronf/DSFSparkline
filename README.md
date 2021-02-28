@@ -34,7 +34,8 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 * Center bar/line/stackline graphs around the zero line
 * Build stacklines by overlaying 
 
-## Data Sources
+
+## DataSource
 
 A data source provides data for a sparkline. A datasource can be shared between multiple overlays or prebuilt types (see below) to provide different 'views' of the data contained within the source.  And if a `DataSource` is updated, all sparkline ovelays observing that source will be automatically re-rendered.
 
@@ -54,9 +55,9 @@ A surface represents a destination for a sparkline. This library provides a numb
 
 ## Overlays
 
-Overlays represent the components of a sparkline. You can add as many or as little to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
+Overlays represent the individual elements of a sparkline. You can add as many or as little to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
 
-An overlay represents a single 'component' of a sparkline.  For example, there is an overlay that highlights a y-range of data. Or, if you want some grid lines, you can add them using a separate overlay.
+An overlay represents a single 'component' of a sparkline.  For example, there is an overlay that highlights a y-range of data. Or, if you want some grid lines, you can add them using the gridlines overlay.
 
 You can add different instances of an overlay to the same sparkline. For example, if you want to add multiple range highlights you add multiple 'highlight' overlays to the sparkline surface.
 
@@ -70,9 +71,28 @@ The overlay allows your sparkline to be as complex or as simple as you want.
 
 #### Dynamic
 
+A dynamic graph automatically updates its overlays as values are 'pushed' onto its datasource. As data is added the assigned overlay is automatically updated to reflect the new data.  If more data is added via a push or set the data is added to the datasource, the associated view will automatically update to reflect the new data. Older data that no longer falls within the datasource window is discarded.
+
+This provides the ability to show a historical data set over the breadth of the graph.
+
+* `DSFSparklineLineGraphView`
+* `DSFSparklineStackLineGraphView`
+* `DSFSparklineBarGraphView`
+* `DSFSparklineStripesGraphView`
+* `DSFSparklineDotGraphView`
+* `DSFSparklineWinLossGraphView`
+* `DSFSparklineTabletGraphView`
+
 #### Static
 
+A static graph has a fixed set of values (for example, a pie chart). The overlays update when a new static data source is assigned to it.
+
+* `DSFSparklinePieGraphView`
+* `DSFSparklineDataBarGraphView`
+
 ### Component types
+
+A component represents an overlay that isn't a graph in itself.  Examples are grid lines, zero-lines, highlights etc.  A component uses the same datasource so that it aligns with the graph it is associated with.
 
 |  Name  | Description  |
 |------------|------------|
@@ -82,9 +102,10 @@ The overlay allows your sparkline to be as complex or as simple as you want.
 
 # Prebuilt
 
-DSFSparkline has a number of 'prebuilt' stack views available. If you've used this library prior to v4, these are the original types that you used to display your sparklines.
+DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope. 
 
-The 'prebuilt' classes are themselves now built using overlays.
+If you've used `DSFSparklines` prior to v4, these are the original views that you used to display your sparklines.
+
 
 
 ## Available graph types
