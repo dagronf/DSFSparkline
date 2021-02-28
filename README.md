@@ -75,13 +75,13 @@ A dynamic graph automatically updates its overlays as values are 'pushed' onto i
 
 This provides the ability to show a historical data set over the breadth of the graph.
 
-* `DSFSparklineOverlay.Line`
-* `DSFSparklineOverlay.StackLine`
-* `DSFSparklineOverlay.Bar`
-* `DSFSparklineOverlay.Stripes`
-* `DSFSparklineOverlay.Dot`
-* `DSFSparklineOverlay.WinLossTie`
-* `DSFSparklineOverlay.Tablet`
+* `DSFSparklineOverlay.Line` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small-interpolated.png" width="50"/>
+* `DSFSparklineOverlay.StackLine` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-simple-small.png" width="50"/>
+* `DSFSparklineOverlay.Bar` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-simple-small.png" width="50"/>
+* `DSFSparklineOverlay.Dot` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-simple-small.png" width="50"/>
+* `DSFSparklineOverlay.WinLossTie` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-small.png" width="50"/>
+* `DSFSparklineOverlay.Tablet` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet-small.png" width="80"/>
+* `DSFSparklineOverlay.Stripes` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-small.png" width="50"/>
 
 #### Static
 

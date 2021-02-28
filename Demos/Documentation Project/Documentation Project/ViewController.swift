@@ -43,6 +43,18 @@ let land_ocean_temp_anomolies: [CGFloat] = [
 	0.91, 0.83, 0.95
 ]
 
+var SimpleDataSet: DSFSparkline.DataSource = {
+	let s = DSFSparkline.DataSource(values: [1, 5, 2, 3, 6, 1, 4])
+	s.range = 0 ... 7
+	return s
+}()
+
+var SimpleWinLossDataSet: DSFSparkline.DataSource = {
+	let s = DSFSparkline.DataSource(values: [1, -5, -2, 3, 6, -1, 4])
+	return s
+}()
+
+
 class ViewController: NSViewController {
 
 	@IBOutlet weak var primaryScrollView: NSScrollView!
@@ -57,23 +69,35 @@ class ViewController: NSViewController {
 	@IBOutlet weak var lineMarkersStandardView: DSFSparklineLineGraphView!
 	@IBOutlet weak var lineMarkersCenteredView: DSFSparklineLineGraphView!
 
+	@IBOutlet weak var lineSimpleSmall: DSFSparklineLineGraphView!
+	@IBOutlet weak var lineSimpleSmallInterpolated: DSFSparklineLineGraphView!
 
 	@IBOutlet weak var barStandardView: DSFSparklineBarGraphView!
 	@IBOutlet weak var barCenteredView: DSFSparklineBarGraphView!
 
+	@IBOutlet weak var simpleBarSmall: DSFSparklineBarGraphView!
+
 	@IBOutlet weak var stackStandardView: DSFSparklineStackLineGraphView!
 	@IBOutlet weak var stackCenteredView: DSFSparklineStackLineGraphView!
+	@IBOutlet weak var stackSimpleSmall: DSFSparklineStackLineGraphView!
 
 	@IBOutlet weak var dotStandardView: DSFSparklineDotGraphView!
 	@IBOutlet weak var dotSecondView: DSFSparklineDotGraphView!
+	@IBOutlet weak var dotSmall: DSFSparklineDotGraphView!
 
 	@IBOutlet weak var winLoss: DSFSparklineWinLossGraphView!
 	@IBOutlet weak var winLossTie: DSFSparklineWinLossGraphView!
+	@IBOutlet weak var winLossSmall: DSFSparklineWinLossGraphView!
 
 	@IBOutlet weak var tablet1: DSFSparklineTabletGraphView!
+	@IBOutlet weak var tabletSmall: DSFSparklineTabletGraphView!
+
+
+
 
 	@IBOutlet weak var stripes1: DSFSparklineStripesGraphView!
 	@IBOutlet weak var stripes2: DSFSparklineStripesGraphView!
+	@IBOutlet weak var stripesSmall: DSFSparklineStripesGraphView!
 
 
 	@IBOutlet weak var pie1: DSFSparklinePieGraphView!
@@ -102,37 +126,6 @@ class ViewController: NSViewController {
 	@IBOutlet weak var databarTotal6: DSFSparklineDataBarGraphView!
 	@IBOutlet weak var databarTotalContainerView: NSView!
 
-
-
-//	lazy var nameMap: [String: NSView] = { [
-//		"line-standard": lineStandardView,
-//		"line-centered": lineCenteredView,
-//		"line-interpolated": lineInterpolatedStandardView,
-//		"line-interpolated-centered": lineInterpolatedCenteredView,
-//		"line-markers": lineMarkersStandardView,
-//		"line-markers-centered": lineMarkersCenteredView,
-//
-//		"bar-standard": barStandardView,
-//		"bar-centered": barCenteredView,
-//
-//		"stackline-standard": stackStandardView,
-//		"stackline-centered": stackCenteredView,
-//
-//		"dot-standard": dotStandardView,
-//		"dot-inverted": dotSecondView,
-//
-//		"win-loss": self.winLoss,
-//		"win-loss-tie": self.winLossTie,
-//
-//		"tablet": self.tablet1,
-//
-//		"pie": self.pieContainerView,
-//
-//		"databar": self.databarContainerView,
-//		"databar-max": self.databarTotalContainerView
-//	]
-//	}()
-
 	var nameMap: [String: NSView] = [:]
 	func buildNameMap() {
 		nameMap["line-standard"] = lineStandardView
@@ -141,20 +134,29 @@ class ViewController: NSViewController {
 		nameMap["line-interpolated-centered"] = lineInterpolatedCenteredView
 		nameMap["line-markers"] = lineMarkersStandardView
 		nameMap["line-markers-centered"] = lineMarkersCenteredView
+		nameMap["line-simple-small"] = lineSimpleSmall
+		nameMap["line-simple-small-interpolated"] = lineSimpleSmallInterpolated
 		nameMap["bar-standard"] = barStandardView
 		nameMap["bar-centered"] = barCenteredView
+		nameMap["bar-simple-small"] = simpleBarSmall
 		nameMap["stackline-standard"] = stackStandardView
 		nameMap["stackline-centered"] = stackCenteredView
+		nameMap["stackline-simple-small"] = stackSimpleSmall
+		nameMap["bar-simple-small"] = simpleBarSmall
 		nameMap["dot-standard"] = dotStandardView
 		nameMap["dot-inverted"] = dotSecondView
+		nameMap["dot-simple-small"] = dotSmall
 		nameMap["win-loss"] = self.winLoss
 		nameMap["win-loss-tie"] = self.winLossTie
+		nameMap["win-loss-small"] = self.winLossSmall
 		nameMap["tablet"] = self.tablet1
+		nameMap["tablet-small"] = self.tabletSmall
 		nameMap["pie"] = self.pieContainerView
 		nameMap["databar"] = self.databarContainerView
 		nameMap["databar-max"] = self.databarTotalContainerView
 		nameMap["stripes-standard"] = self.stripes1
 		nameMap["stripes-integral"] = self.stripes2
+		nameMap["stripes-small"] = self.stripesSmall
 	}
 
 	fileprivate var lineSource: DSFSparkline.DataSource = {
@@ -259,20 +261,28 @@ class ViewController: NSViewController {
 		self.lineMarkersStandardView.dataSource = lineSource
 		self.lineMarkersCenteredView.dataSource = lineSource
 
+		self.lineSimpleSmall.dataSource = SimpleDataSet
+		self.lineSimpleSmallInterpolated.dataSource = SimpleDataSet
 
 		self.barStandardView.dataSource = lineSource
 		self.barCenteredView.dataSource = lineSource
 
+		self.simpleBarSmall.dataSource = SimpleDataSet
+
 		self.stackStandardView.dataSource = lineSource
 		self.stackCenteredView.dataSource = lineSource
+		self.stackSimpleSmall.dataSource = SimpleDataSet
 
 		self.dotStandardView.dataSource = dotSource
 		self.dotSecondView.dataSource = dotSource
+		self.dotSmall.dataSource = SimpleDataSet
 
 		self.winLoss.dataSource = winLossDataSource1
 		self.winLossTie.dataSource = winLossDataSource1
+		self.winLossSmall.dataSource = SimpleWinLossDataSet
 
 		self.tablet1.dataSource = winLossDataSource1
+		self.tabletSmall.dataSource = SimpleWinLossDataSet
 
 
 		self.pie1.dataSource = DSFSparkline.StaticDataSource([10, 30, 20])
@@ -333,6 +343,10 @@ class ViewController: NSViewController {
 		self.stripes1.gradient = gradient1
 		self.stripes1.integral = false
 		self.stripes1.dataSource = world
+
+		self.stripesSmall.dataSource = world
+		self.stripesSmall.gradient = gradient1
+
 		//self.stripes1.dataSource = landOceanTempAnomolies
 		//self.stripes1.dataSource = twiggle
 

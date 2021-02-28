@@ -11,7 +11,7 @@ import DSFSparkline
 func WinLossCreate() -> some View {
 	return WinLossGraphContentView(
 		leftDataSource: WinLossDataSource1,
-		rightDataSource: WinLossDataSource2,
+		rightDataSource: WinLossDataSource2,	
 		upDataSource: WinLossDataSource3)
 }
 
