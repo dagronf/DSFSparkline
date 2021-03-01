@@ -28,23 +28,20 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 ## Features
 
 * Multiple graph styles support, such as line, bar, tablet etc.
+* Support for sparkline customizations, such as zero-line, grid lines, highlighting.
+* Prebuilt NSView/UIView/SwiftUI types for quick integration
 * Independently scalable for sparklines at any size
-* SwiftUI support for all sparkline types
-* Playground support
-* `IBDesignable` support so you can see and configure your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
-* Line graph can draw with discrete lines or fitted to a curve'
+* SwiftUI support for all sparkline types
+* `IBDesignable` support for prebuilt types so you can see and configure your sparklines in interface builder.
 * Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
-* Optional highlighting ranges (or multiple!) on a graph.
-* Center bar/line/stackline graphs around the zero line
-* Build stacklines by overlaying 
-
+* Playground support
 
 ## TL;DR - Show me something!
 
 <details>
-<summary>Create a retina-scale (144dpi) bitmap with a simple line graph</summary>
+<summary>Create a retina-scale (144dpi) bitmap with a simple line overlay graph</summary>
 
 ```swift
 // A datasource with a simple set of data
@@ -131,11 +128,26 @@ struct SuperCoolLineSpark: View {
 
 # Building your sparkline
 
-A sparkline comprises three fundamental building blocks 
+You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder.
+
+There's a simple Xcode Playground available in the `Demos/Playground` subfolder.
+
+### Using overlays
+
+There are three fundamental building blocks for an overlay sparkline. Overlay sparklines are more flexible and configurable than the pre-built views, but are more complex to set up and provides no support for @IBDesignable.
 
 * **A surface** - where it will draw
 * **A datasource** - the set of values to draw
 * **One or more overlays** - the 'layers' which render different components of the sparkline
+
+### Using prebuilt views
+
+A prebuilt view is useful to quickly add a sparkline via Interface Builder (while providing previews using @IBDesignable) or SwiftUI.  These views provide hard-coded styling (beyond the simple graph color) and a limit set of customizations.
+
+* **A datasource** - the set of values to draw
+* **A prebuilt view type** - the NSView/UIView/SwiftUI view to draw your sparkline
+
+If you've used `DSFSparklines` prior to v4, these are the original view types that you used to display your sparklines.
 
 ## Surface
 
@@ -484,18 +496,6 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 | `DSFSparklineOverlay.RangeHighlight` | Highlight a range of y-values on the sparkline |
 | `DSFSparklineOverlay.GridLines` | Draw lines at specified y-values on the sparkline |
 
-
-### Prebuilt sparkline views
-
-DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project, especially relating to Interface Builder (the pre-built types provide an `@IBDesignable` interface) so you can design the look of your graph from directly within Interface Builder.
-
-Every prebuilt sparkline view has a SwiftUI companion view.
-
-You can find a lot of examples of prebuilt sparkline views in projects in the `Demos` subfolder.
-
-If you've used `DSFSparklines` prior to v4, these are the original view types that you used to display your sparklines.
-
-
 <details>
   <summary>Available prebuilt types</summary>
 
@@ -575,6 +575,12 @@ struct SparklineView: View {
 <a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png" width="100"></a>
 
 </details>
+
+## Using prebuilt views
+
+DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project, especially relating to Interface Builder (the pre-built types provide an `@IBDesignable` interface) so you can design the look of your graph from directly within Interface Builder.
+
+Every prebuilt sparkline view has a SwiftUI companion view.
 
 <details>
 <summary>Prebuilt customizations</summary>
