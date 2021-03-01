@@ -815,7 +815,9 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ### `4.0.0`
 
-* Substantial re-write of the drawing code (that used to be directly in the views) into overlays and surfaces that are far more flexible (for example, being able to draw a sparkline bitmap without having to create a view)
+* Substantial re-architect of the drawing code (that used to be directly in the views) into overlays and surfaces that are far more flexible (for example, being able to draw a sparkline bitmap without having to create a view)
+
+The previous view/swiftui types are still available - they have been rebuilt on using the new overlay scheme and are referred to in documentation as 'prebuilt' types. This allowed backwards compatibility with previous versions of the library.  Note however that given that the prebuilt views have been re-written there is a possibility of slight visual differences.
 
 ### `3.7.0`
 
