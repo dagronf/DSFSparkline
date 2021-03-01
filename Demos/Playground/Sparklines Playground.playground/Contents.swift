@@ -58,6 +58,10 @@ do {
 	let image2 = bitmap.image(width: 50, height: 25, scale: 2)!
 	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/line-simple-small-interpolated.png"))
 
+	let attr = bitmap.attributedString(size: CGSize(width: 40, height: 18), scale: 2)!
+	var message = NSMutableAttributedString(string: "Inlined ")
+	message.append(attr)
+	message.append(NSAttributedString(string: " line graph"))
 }
 
 // MARK: - Simple bar graph

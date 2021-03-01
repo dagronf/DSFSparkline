@@ -139,6 +139,7 @@ public extension DSFSparklineSurface.Bitmap {
 	}
 }
 
+
 #endif
 
 // MARK: - Private

@@ -21,16 +21,28 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="814"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-rk-lDK">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1185"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pie Charts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSZ-K4-c3f">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NSAttributedString inlinable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1v-nq-25c" userLabel="NSAttributedString inlinable">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LlP-da-22M">
+                                                <rect key="frame" x="0.0" y="28.5" width="414" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pie Charts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSZ-K4-c3f">
+                                                <rect key="frame" x="0.0" y="57" width="414" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BNq-1g-xSf">
-                                                <rect key="frame" x="0.0" y="28.5" width="414" height="28"/>
+                                                <rect key="frame" x="0.0" y="85.5" width="414" height="28"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCX-QR-0r6" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
@@ -95,13 +107,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3M-Ro-ELV" userLabel="Simple Line Area">
-                                                <rect key="frame" x="0.0" y="64.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="121.5" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-7V-VA6" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="93" width="414" height="50"/>
+                                                <rect key="frame" x="0.0" y="150" width="414" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Hg5-cH-Cwa"/>
@@ -119,7 +131,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ai9-lk-hdF" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="151" width="414" height="50"/>
+                                                <rect key="frame" x="0.0" y="208" width="414" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="CBL-yz-QVv"/>
@@ -141,13 +153,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Centered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xw4-QX-axL" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="209" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="266" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="EqD-MM-1EB" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="237.5" width="414" height="75"/>
+                                                <rect key="frame" x="0.0" y="294.5" width="414" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="74r-FI-JvX"/>
@@ -190,13 +202,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej2-xW-q0D" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="320.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="377.5" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BBW-Jd-8WN" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="349" width="414" height="75"/>
+                                                <rect key="frame" x="0.0" y="406" width="414" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="jto-Po-hxQ"/>
@@ -215,13 +227,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar Centered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewW-in-PXp" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="432" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="489" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="SXc-Lq-HWV" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="460.5" width="414" height="75"/>
+                                                <rect key="frame" x="0.0" y="517.5" width="414" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="g83-0t-KFe"/>
@@ -247,13 +259,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar Zero-line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2j-hh-ltL" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="543.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="600.5" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="mAv-lQ-6fh">
-                                                <rect key="frame" x="0.0" y="572" width="414" height="75"/>
+                                                <rect key="frame" x="0.0" y="629" width="414" height="75"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-zA-Xyw" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
                                                         <rect key="frame" x="0.0" y="0.0" width="94.5" height="75"/>
@@ -341,13 +353,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-cZ-7X5" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="655" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="712" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="H0Y-0a-Ipr" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="683.5" width="414" height="75"/>
+                                                <rect key="frame" x="0.0" y="740.5" width="414" height="75"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="75" id="htz-bI-puc"/>
@@ -371,13 +383,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win/Loss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kon-AO-vHm" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="766.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="823.5" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="7N7-yg-gbp" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="795" width="414" height="25"/>
+                                                <rect key="frame" x="0.0" y="852" width="414" height="25"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="RR3-w6-hIY"/>
@@ -422,13 +434,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Win/Loss/Tie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hj-rY-a47" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="828" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="885" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-ri-mCl" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="856.5" width="414" height="45"/>
+                                                <rect key="frame" x="0.0" y="913.5" width="414" height="45"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="dj8-Mf-Qxy"/>
@@ -478,13 +490,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tablet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-3b-VoA" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="909.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="966.5" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="3MS-nZ-UwQ" customClass="DSFSparklineTabletGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="938" width="414" height="25"/>
+                                                <rect key="frame" x="0.0" y="995" width="414" height="25"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="bm1-Ef-imf"/>
@@ -522,7 +534,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="5WL-JK-xwx" customClass="DSFSparklineTabletGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="971" width="414" height="14"/>
+                                                <rect key="frame" x="0.0" y="1028" width="414" height="14"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="kt0-j4-gCA"/>
@@ -566,13 +578,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stackline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sK-mM-LcA" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="993" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="1050" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="PEf-dy-zeY" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="1021.5" width="414" height="35"/>
+                                                <rect key="frame" x="0.0" y="1078.5" width="414" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="KCf-eA-M9U"/>
@@ -598,13 +610,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stackline Centered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HG-Bw-fz3" userLabel="Line Centered">
-                                                <rect key="frame" x="0.0" y="1064.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="1121.5" width="414" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="R2J-3t-GVH" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                                <rect key="frame" x="0.0" y="1093" width="414" height="35"/>
+                                                <rect key="frame" x="0.0" y="1150" width="414" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="nKQ-WS-e2v"/>
@@ -657,6 +669,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="attributedStringSupportLabel" destination="LlP-da-22M" id="0Zy-Dq-MdL"/>
                         <outlet property="dot1" destination="H0Y-0a-Ipr" id="Ygl-Op-bwl"/>
                         <outlet property="pie0" destination="xCX-QR-0r6" id="iFR-hz-MKF"/>
                         <outlet property="pie1" destination="ImA-fW-c0P" id="kSm-il-8cP"/>

@@ -51,9 +51,16 @@ class ViewController: UIViewController {
 	@IBOutlet var pie3: DSFSparklinePieGraphView!
 	@IBOutlet var pie4: DSFSparklinePieGraphView!
 
+
+	@IBOutlet weak var attributedStringSupportLabel: UILabel!
+
+
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+
+		// Setup the inline attributed string
+		self.configureAttributedString()
 
 		self.spark1.dataSource = self.spark1ds
 		self.spark12.dataSource = self.spark1ds
@@ -133,6 +140,30 @@ class ViewController: UIViewController {
 			self.addNewValue2()
 		}
 	}
+
+	func configureAttributedString() {
+		let source = DSFSparkline.DataSource(values: [4, 1, 8, 7, 5, 9, 3], range: 0 ... 10)
+
+		let baseColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.033,  0.277, 0.650, 1.000])!
+		let primaryStroke = baseColor // (gray: 0.0, alpha: 0.3))
+		let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
+
+		let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+		let line = DSFSparklineOverlay.Line()       // Create a line overlay
+		line.strokeWidth = 1
+		line.primaryStrokeColor = primaryStroke
+		line.primaryFill = primaryFill
+		line.dataSource = source                    // Assign the datasource to the overlay
+		bitmap.addOverlay(line)                     // And add the overlay to the surface.
+
+		let attr = bitmap.attributedString(size: CGSize(width: 40, height: 18), scale: 2)!
+		let message = NSMutableAttributedString(string: "Inlined ")
+		message.append(attr)
+		message.append(NSAttributedString(string: " line graph"))
+
+		self.attributedStringSupportLabel.attributedText = message
+	}
+
 
 	@IBAction func updateValues(_: Any) {
 		let v1 = UInt.random(count: 4, range: 1 ... 10).map { CGFloat($0) }

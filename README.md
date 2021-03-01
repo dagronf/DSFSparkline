@@ -37,6 +37,7 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 * `IBDesignable` support for prebuilt types so you can see and configure your sparklines in interface builder.
 * Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
 * Playground support
+* NSAttributedString support
 
 ## TL;DR - Show me something!
 
@@ -54,6 +55,9 @@ bitmap.addOverlay(stack)                    // And add the overlay to the surfac
 
 // Generate an image with retina scale
 let image = bitmap.image(width: 50, height: 25, scale: 2)
+
+// Embed a sparkline in an NSAttributedString
+let attributedString = bitmap.attributedString(size: CGSize(width: 40, height: 18), scale: 2)
 ```
 
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/>
@@ -153,7 +157,7 @@ A surface represents a destination for a sparkline. This library provides a numb
 
 * `DSFSparklineSurfaceView` - An `NSView`/`UIView` surface for displaying a sparkline
 * `DSFSparklineSurface.SwiftUI` - A SwiftUI `View` surface.
-* `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage` surface for creating a bitmap from a sparkline
+* `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage`/`NSAttributedString` surface for creating a bitmap from a sparkline.
 
 ## DataSource
 
@@ -807,11 +811,19 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 <a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png" width="400"></a>
 
+### NSAttributedString support
+
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/attributed-string.png" width="232">
+
 ### Animated
 
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `4.1.0`
+
+* Embed sparklines in NSAttributedString.
 
 ### `4.0.0`
 

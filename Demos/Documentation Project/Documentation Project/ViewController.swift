@@ -232,6 +232,30 @@ class ViewController: NSViewController {
 
 		self.buildNameMap()
 
+		do {
+			let source = DSFSparkline.DataSource(values: [4, 1, 8, 7, 5, 9, 3], range: 0 ... 10)
+
+			let baseColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.033,  0.277, 0.650, 1.000])!
+			let primaryStroke = baseColor // (gray: 0.0, alpha: 0.3))
+			let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
+
+			let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+			let line = DSFSparklineOverlay.Line()       // Create a line overlay
+			line.strokeWidth = 1
+			line.primaryStrokeColor = primaryStroke
+			line.primaryFill = primaryFill
+			line.dataSource = source                    // Assign the datasource to the overlay
+			bitmap.addOverlay(line)                     // And add the overlay to the surface.
+
+			let attr = bitmap.attributedString(size: CGSize(width: 40, height: 18), scale: 2)!
+			let message = NSMutableAttributedString(string: "Inlined ")
+			message.append(attr)
+			message.append(NSAttributedString(string: " line graph"))
+
+			Swift.print(message)
+		}
+
+
 //		do {
 //			guard let scroll = self.primaryScrollView,
 //					let documentView = scroll.documentView else {
