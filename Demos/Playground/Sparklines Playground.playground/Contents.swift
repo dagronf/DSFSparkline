@@ -5,7 +5,7 @@ import DSFSparkline
 var str = "Playground demonstrating the generation of a sparkline bitmap"
 
 // Set this to 'true' to save the generated bitmaps out to the /tmp folder
-let shouldSaveImage = false
+let shouldSaveImage = true //false
 
 func SaveImage(image: NSImage, path: URL) {
 
@@ -34,27 +34,29 @@ let biggersource = DSFSparkline.DataSource(values: [4, 1, 8, 7, 5, 9, 7, 6, 7, 8
 let winloss = DSFSparkline.DataSource(values: [1, 1, 0, -1, 1, 1, 1, 0, 1, -1])
 
 // Simple fill color
-let primaryFill = DSFSparkline.Fill.Color(CGColor(gray: 0.0, alpha: 0.3))
+let baseColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.033,  0.277, 0.650, 1.000])!
+let primaryStroke = baseColor // (gray: 0.0, alpha: 0.3))
+let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
 
 // MARK: - Simple line graph
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
-	let stack = DSFSparklineOverlay.Line()      // Create a line overlay
-	stack.strokeWidth = 1
-	stack.primaryFill = primaryFill
-	stack.dataSource = source                   // Assign the datasource to the overlay
-	bitmap.addOverlay(stack)                    // And add the overlay to the surface.
+	let line = DSFSparklineOverlay.Line()       // Create a line overlay
+	line.strokeWidth = 1
+	line.primaryStrokeColor = primaryStroke
+	line.primaryFill = primaryFill
+	line.dataSource = source                    // Assign the datasource to the overlay
+	bitmap.addOverlay(line)                     // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 50, height: 25, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-line.png"))
-
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/line-simple-small.png"))
 
 	// Generate an image with retina scale
-	stack.interpolated = true
+	line.interpolated = true
 	let image2 = bitmap.image(width: 50, height: 25, scale: 2)!
-	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/simple-line-interpolated.png"))
+	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/line-simple-small-interpolated.png"))
 
 }
 
@@ -62,115 +64,128 @@ do {
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
-	let stack = DSFSparklineOverlay.Bar()       // Create a line overlay
-	stack.dataSource = source                   // Assign the datasource to the overlay
-	stack.primaryFill = primaryFill
-	bitmap.addOverlay(stack)                    // And add the overlay to the surface.
+	let bar = DSFSparklineOverlay.Bar()         // Create a bar overlay
+	bar.dataSource = source                     // Assign the datasource to the overlay
+	bar.primaryStrokeColor = baseColor
+	bar.primaryFill = primaryFill
+	bitmap.addOverlay(bar)                      // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 50, height: 25, scale: 2)!
 
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-bar.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/bar-simple-small.png"))
 }
 
 // MARK: - Simple stackline graph
 
 do {
-	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
-	let stack = DSFSparklineOverlay.Stackline()  // Create a line overlay
-	stack.dataSource = source                    // Assign the datasource to the overlay
-	stack.strokeWidth = 1
-	stack.primaryFill = primaryFill
-	bitmap.addOverlay(stack)                     // And add the overlay to the surface.
+	let bitmap = DSFSparklineSurface.Bitmap()        // Create a bitmap surface
+	let stackline = DSFSparklineOverlay.Stackline()  // Create a stackline overlay
+	stackline.dataSource = source                    // Assign the datasource to the overlay
+	stackline.strokeWidth = 1
+	stackline.primaryStrokeColor = baseColor
+	stackline.primaryFill = primaryFill
+	bitmap.addOverlay(stackline)                     // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 50, height: 25, scale: 2)!
 
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-stack.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/stackline-simple-small.png"))
 }
 
 // MARK: - Simple dot graph
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
-	let stack = DSFSparklineOverlay.Dot()
-	stack.dataSource = biggersource              // Assign the datasource to the overlay
-	bitmap.addOverlay(stack)                     // And add the overlay to the surface.
+	let dot = DSFSparklineOverlay.Dot()          // Create a dot graph overlay
+	dot.dataSource = biggersource                // Assign the datasource to the overlay
+	dot.onColor = primaryStroke
+	bitmap.addOverlay(dot)                       // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 50, height: 32, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-dot.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/dot-simple-small.png"))
 }
 
 // MARK: - Simple win-loss graph
 
 do {
-	let bitmap = DSFSparklineSurface.Bitmap()
-	let graph = DSFSparklineOverlay.WinLossTie()
-	graph.dataSource = winloss
-
-	graph.centerLine = .init(color: DSFColor.black, lineWidth: 0.5, lineDashStyle: [0.5, 0.5])
-	bitmap.addOverlay(graph)
+	let bitmap = DSFSparklineSurface.Bitmap()       // Create a bitmap surface
+	let winLoss = DSFSparklineOverlay.WinLossTie()  // Create a win-loss graph overlay
+	winLoss.dataSource = winloss                    // Assign the datasource to the overlay
+	winLoss.centerLine = .init(color: DSFColor.gray, lineWidth: 0.5, lineDashStyle: [0.5, 0.5])
+	winLoss.winStroke = primaryStroke
+	winLoss.winFill = primaryFill
+	winLoss.lossStroke = primaryStroke
+	winLoss.lossFill = primaryFill
+	bitmap.addOverlay(winLoss)                      // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 75, height: 12, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-winloss.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/win-loss-small.png"))
 }
 
 do {
-	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
-	let stack = DSFSparklineOverlay.WinLossTie()
-	stack.dataSource = winloss
-	stack.tieFill = DSFSparkline.Fill.Color(DSFColor.systemYellow.withAlphaComponent(0.5).cgColor)
-	stack.tieStroke = DSFColor.systemYellow.withAlphaComponent(0.5).cgColor
-	bitmap.addOverlay(stack)
+	let bitmap = DSFSparklineSurface.Bitmap()          // Create a bitmap surface
+	let winlosstie = DSFSparklineOverlay.WinLossTie()  // Create a win-loss graph overlay
+	winlosstie.dataSource = winloss                    // Assign the datasource to the overlay
+	winlosstie.winStroke = primaryStroke
+	winlosstie.winFill = primaryFill
+	winlosstie.lossStroke = primaryStroke
+	winlosstie.lossFill = primaryFill
+	winlosstie.tieStroke = primaryStroke
+	winlosstie.tieFill = primaryFill
+	bitmap.addOverlay(winlosstie)                      // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 75, height: 16, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-winlosstie.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/win-loss-tie-small.png"))
 }
 
 // MARK: - Simple tablet graph
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
-	let stack = DSFSparklineOverlay.Tablet()
-	stack.dataSource = winloss
-	stack.lineWidth = 1
-	bitmap.addOverlay(stack)
+	let tablet = DSFSparklineOverlay.Tablet()    // Create a tablet graph overlay
+	tablet.dataSource = winloss                  // Assign the datasource to the overlay
+	tablet.lineWidth = 1
+	tablet.winStrokeColor = primaryStroke
+	tablet.winFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.7)!)
+	tablet.lossStrokeColor = primaryStroke
+	bitmap.addOverlay(tablet)                    // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 90, height: 16, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-tablet.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/tablet-small.png"))
 }
 
 // MARK: - Simple stripes
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
-	let stack = DSFSparklineOverlay.Stripes()
-	stack.dataSource = .init(values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-	bitmap.addOverlay(stack)
+	let stripe = DSFSparklineOverlay.Stripes()   // Create a stripe graph overlay
+	stripe.dataSource = .init(values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+	bitmap.addOverlay(stripe)                    // And add the overlay to the surface.
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 90, height: 16, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-stripes.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/stripes-small.png"))
 }
 
 // MARK: - Simple pie
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()
-	let stack = DSFSparklineOverlay.Pie()
-	stack.dataSource = DSFSparkline.StaticDataSource([10, 55, 20])
-	stack.lineWidth = 0.5
-	stack.strokeColor = CGColor.black
+	let pieGraph = DSFSparklineOverlay.Pie()
+	pieGraph.dataSource = DSFSparkline.StaticDataSource([10, 55, 20])
+	pieGraph.lineWidth = 0.5
+	pieGraph.strokeColor = CGColor.black
 
-	bitmap.addOverlay(stack)
+	bitmap.addOverlay(pieGraph)
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 18, height: 18, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-pie.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/pie-simple.png"))
 }
 
 
@@ -178,26 +193,25 @@ do {
 
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()
-	let stack = DSFSparklineOverlay.DataBar()
-	stack.dataSource = DSFSparkline.StaticDataSource([10, 20, 30])
-	stack.lineWidth = 0.5
-	stack.strokeColor = CGColor.black
+	let databar = DSFSparklineOverlay.DataBar()
+	databar.dataSource = DSFSparkline.StaticDataSource([10, 20, 30])
+	databar.lineWidth = 0.5
+	databar.strokeColor = CGColor.black
 
-	bitmap.addOverlay(stack)
+	bitmap.addOverlay(databar)
 
 	// Generate an image with retina scale
 	let image = bitmap.image(width: 50, height: 18, scale: 2)!
-	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/simple-databar.png"))
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/databar-simple.png"))
 
 	// databar with a maximum value defined
 
-	stack.maximumTotalValue = 100
-	stack.unsetColor = DSFColor.black.cgColor
+	databar.maximumTotalValue = 100
+	databar.unsetColor = DSFColor.black.cgColor
 
 	// Generate an image with retina scale
 	let image2 = bitmap.image(width: 50, height: 18, scale: 2)!
-	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/simple-databar-maxvalue.png"))
-
+	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/databar-simple-maxvalue.png"))
 }
 
 

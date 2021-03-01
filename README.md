@@ -63,8 +63,6 @@ let image = bitmap.image(width: 50, height: 25, scale: 2)
 <details>
 <summary>Create a Swift-UI line graph sparkline with zero-line and highlight range overlays</summary>
 
-You can run this demo in the 'Samples - 
-
 ```swift
 fileprivate let SwiftUIDemoDataSource: DSFSparkline.DataSource = {
    let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.5)
@@ -792,9 +790,6 @@ There are demos available in the `Demos` subfolder for each of the supported pla
 Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Screenshots
-
-<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/report-ex.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/report-ex.png" width="300"></a>
-
 
 ### In app
 
