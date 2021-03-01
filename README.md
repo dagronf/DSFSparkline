@@ -20,11 +20,17 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
     </a>
 </p>
 
+<center>
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/reportview.png">
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/reportview.png" width="300"/></a>
+</center>
+
 ## Features
 
 * Multiple graph styles support, such as line, bar, tablet etc.
 * Independently scalable for sparklines at any size
 * SwiftUI support for all sparkline types
+* Playground support
 * `IBDesignable` support so you can see and configure your sparklines in interface builder.
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
@@ -37,7 +43,8 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 
 ## TL;DR - Show me something!
 
-Create a retina-scale (144dpi) bitmap with a simple line graph
+<details>
+<summary>Create a retina-scale (144dpi) bitmap with a simple line graph</summary>
 
 ```swift
 // A datasource with a simple set of data
@@ -52,13 +59,91 @@ bitmap.addOverlay(stack)                    // And add the overlay to the surfac
 let image = bitmap.image(width: 50, height: 25, scale: 2)
 ```
 
-## Surfaces
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/>
+
+</details>
+
+<details>
+<summary>Create a Swift-UI line graph sparkline with zero-line and highlight range overlays</summary>
+
+You can run this demo in the 'Samples - 
+
+```swift
+fileprivate let SwiftUIDemoDataSource: DSFSparkline.DataSource = {
+   let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.5)
+     d.push(values: [
+        0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.87, 0.44, 0.02, 0.27,
+        0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50
+     ])
+     return d
+  }()
+
+struct SuperCoolLineSpark: View {
+   // The overlay representing the zero-line for the data source
+   var zeroOverlay: DSFSparklineOverlay = {
+      let zeroLine = DSFSparklineOverlay.ZeroLine()
+      zeroLine.dataSource = SwiftUIDemoDataSource
+      zeroLine.dashStyle = []
+      return zeroLine
+   }()
+
+   // The overlay to draw a highlight between range 0 ..< 0.2
+   var rangeOverlay: DSFSparklineOverlay = {
+      let highlight = DSFSparklineOverlay.RangeHighlight()
+      highlight.dataSource = SwiftUIDemoDataSource
+      highlight.highlightRange = 0.0 ..< 0.2
+      highlight.fill = DSFSparkline.Fill.Color(DSFColor.gray.withAlphaComponent(0.4).cgColor)
+      return highlight
+   }()
+
+   // The actual line graph
+   var lineOverlay: DSFSparklineOverlay = {
+      let lineOverlay = DSFSparklineOverlay.Line()
+      lineOverlay.dataSource = SwiftUIDemoDataSource
+
+      lineOverlay.primaryStrokeColor = DSFColor.systemBlue.cgColor
+      lineOverlay.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemBlue.withAlphaComponent(0.3).cgColor)
+
+      lineOverlay.secondaryStrokeColor = DSFColor.systemYellow.cgColor
+      lineOverlay.secondaryFill = DSFSparkline.Fill.Color(DSFColor.systemYellow.withAlphaComponent(0.3).cgColor)
+
+      lineOverlay.strokeWidth = 1
+      lineOverlay.markerSize = 4
+      lineOverlay.centeredAtZeroLine = true
+
+      return lineOverlay
+   }()
+
+   var body: some View {
+      DSFSparklineSurface.SwiftUI([
+         rangeOverlay,    // range highlight overlay
+         zeroOverlay,     // zero-line overlay
+         lineOverlay,     // line graph overlay
+      ])
+      .frame(width: 150, height: 40)
+   }
+}
+```
+
+<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swiftui-demo.png" width="165"/>
+
+</details>
+
+# Building your sparkline
+
+A sparkline comprises three fundamental building blocks 
+
+* **A surface** - where it will draw
+* **A datasource** - the set of values to draw
+* **One or more overlays** - the 'layers' which render different components of the sparkline
+
+## Surface
 
 A surface represents a destination for a sparkline. This library provides a number of built-in surfaces
 
 * `DSFSparklineSurfaceView` - An `NSView`/`UIView` surface for displaying a sparkline
-* `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage` surface for creating a bitmap from a sparkline
 * `DSFSparklineSurface.SwiftUI` - A SwiftUI `View` surface.
+* `DSFSparklineSurface.Bitmap` - A `NSImage`/`UIImage`/`CGImage` surface for creating a bitmap from a sparkline
 
 ## DataSource
 
@@ -207,9 +292,9 @@ DSFSparklineStaticDataSource* dataSource = [[DSFSparklineStaticDataSource alloc]
 
 ## Overlays
 
-Overlays represent the individual elements of a sparkline. You can add as many or as few to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
+Overlays represent the individual visual components of a sparkline. You can add as many or as few to your surface in any order. For example, you could overlay two different graph types onto the same surface using the same. And as overlays can share their datasource, all overlays using the same source will automatically update if the data changes (for example, in reponse to a `push`)
 
-An overlay represents a single 'component' of a sparkline.  For example, there is an overlay that highlights a y-range of data. Or, if you want some grid lines, you can add them using the gridlines overlay.
+For example, there is an overlay that highlights a y-range of data. Or, if you want some grid lines, you can add them using the gridlines overlay.
 
 You can add different instances of an overlay to the same sparkline. For example, if you want to add multiple range highlights you add multiple 'highlight' overlays to the sparkline surface.
 
@@ -399,119 +484,36 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 | `DSFSparklineOverlay.RangeHighlight` | Highlight a range of y-values on the sparkline |
 | `DSFSparklineOverlay.GridLines` | Draw lines at specified y-values on the sparkline |
 
-## Available graph types
 
-### Line
+### Prebuilt sparkline views
 
-|  Standard  | Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-centered.png" width="400">|
+DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project, especially relating to Interface Builder (the pre-built types provide an `@IBDesignable` interface) so you can design the look of your graph from directly within Interface Builder.
 
-|  Interpolated  | Interpolated Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated-centered.png" width="400">|
+Every prebuilt sparkline view has a SwiftUI companion view.
 
-|  Standard Markers  | Interpolated Markers |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
+You can find a lot of examples of prebuilt sparkline views in projects in the `Demos` subfolder.
 
-### Bar
-
-|  Standard  |  Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-centered.png" width="400">|
-
-### Stackline
-
-|  Standard  |  Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
-
-### Stripes
-
-|  Standard  |  Integral (pixel boundaries)  |
-|------------|-------------------------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-integral.png" width="400">|
-
-### Dot
-
-|  Standard  |  Inverted  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-inverted.png" width="400">|
-
-### Win/Loss
-
-|  Win/Loss  |  Win/Loss/Tie  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-tie.png" width="400">|
-
-### Tablet
-
-|  Standard  |
-|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
-
-### Pie
-
-|  Standard  |
-|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie.png" width="400">|
-
-### DataBar
-
-|  Percent  |  Total  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
+If you've used `DSFSparklines` prior to v4, these are the original view types that you used to display your sparklines.
 
 
-## Prebuilt
+<details>
+  <summary>Available prebuilt types</summary>
 
-DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope. 
+* `DSFSparklineLineGraphView` / `DSFSparklineLineGraphView.SwiftUI`
+* `DSFSparklineStackLineGraphView` / `DSFSparklineLineGraphView.SwiftUI`
+* `DSFSparklineBarGraphView` / `DSFSparklineBarGraphView.SwiftUI`
+* `DSFSparklineStripesGraphView` / `DSFSparklineStripesGraphView.SwiftUI`
+* `DSFSparklineDotGraphView` / `DSFSparklineDotGraphView.SwiftUI`
+* `DSFSparklineWinLossGraphView` / `DSFSparklineWinLossGraphView.SwiftUI`
+* `DSFSparklineTabletGraphView` / `DSFSparklineTabletGraphView.SwiftUI`
+* `DSFSparklinePieGraphView` / `DSFSparklinePieGraphView.SwiftUI`
+* `DSFSparklineDataBarGraphView` / `DSFSparklineDataBarGraphView.SwiftUI`
 
-If you've used `DSFSparklines` prior to v4, these are the original views that you used to display your sparklines.
+</details>
 
-## Overview
-
-The library is split into a data model and a view model.  A data source (model) is created and assigned to a view model in order to populate the sparkline.
-
-## Data Source types
-
-### Data Source (`DSFDataSource`)
-
-Represents the data to be displayed. The data source is assigned to the view model to provide data for drawing the sparkline. As data is changed the assigned view is automatically updated to reflect the new data.  If more data is added via a push or set the data is added to the datasource, the associated view will automatically update to reflect the new data. Older data that no longer falls within the window is discarded.
-
-This provides the ability to show a historical data set over the breadth of the graph.
-
-#### Graph types using `DSFDataSource`
-
-* `DSFSparklineLineGraphView`
-* `DSFSparklineStackLineGraphView`
-* `DSFSparklineBarGraphView`
-* `DSFSparklineStripesGraphView`
-* `DSFSparklineDotGraphView`
-* `DSFSparklineWinLossGraphView`
-* `DSFSparklineTabletGraphView`
-
-#### Range
-
-An optional range can be set on the data source, which means that the view will automatically clip any incoming data to that range.  Without a range specified, the sparkline's vertical display will grow and shrink to accomodate the full range of data.
-
-#### Zero line
-
-You can define a 'zero-line' to your line or bar graph.  The zero-line denotes the zero value on the graph.  The 'zero' value can be changed for a graph, so for example if your graph goes from 0 -> 100, you can draw the zero-line at 20 by setting the zero value on the datasource to 20)
-
-The zero-line can also be used to center certain graph types (currently line and bar). By default, the zero-line is set at 0.0.
-
-```objc
-[dataSource setZeroLineValue:0.2];
-```
-
-#### Highlighting ranges
-
-You can specify multiple ranges on a graph (line, bar, stackbar) to highlight. You might (for example) set a red highlight on the upper portion of a line graph to quickly indicate values that are 'dangerous'.
-
-#### Simple example
-
+<details>
+  <summary>Sample Swift code</summary>
+ 
 ```swift
 
 // Create the view
@@ -535,30 +537,47 @@ sparklineDataSource.push(values: [0.3, -0.2, 1.0])            // view automatica
 sparklineDataSource.set(values: [0.2, -0.2, 0.0, 0.9, 0.8])   // view automatically resets to new data
 
 ```
+  
+</details>
 
-### Static Data
-
-Some types of sparkline use a single 'set' of data, providing no historical context.
-
-Static data graph types also allow you to set a palette (`DSFSparklinePalette`) of colors to be used when drawing the graph. There is a default palette (kind of a rainbow!) that is used if you don't specify one yourself.
-
-#### Types
-
-* `DSFSparklinePieGraphView`
-* `DSFSparklineDataBarGraphView`
-
-#### Example
-
+<details>
+  <summary>Sample SwiftUI code</summary>
+  
 ```swift
-// Create the view
-let sparklinePieView1 = DSFSparklinePieGraphView(…)
-sparklinePieView.dataSource = [3, 2, 1]
+struct SparklineView: View {
 
-let sparklineDataBarView = DSFSparklineDataBarGraphView(…)
-sparklineDataBarView.palette = DSFSparklinePalette.sharedGrays
-sparklineDataBarView.maximumTotalValue = 10
-sparklineDataBarView.dataSource = [1, 2, 3]
+   let leftDataSource: DSFSparkline.DataSource
+   let rightDataSource: DSFSparkline.DataSource
+   
+   let BigCyanZeroLine = DSFSparkline.ZeroLineDefinition(
+      color: .cyan,
+      lineWidth: 3,
+      lineDashStyle: [4,1,2,1]
+   )
+   
+   var body: some View {
+      HStack {
+         DSFSparklineLineGraphView.SwiftUI(
+            dataSource: leftDataSource,
+            graphColor: DSFColor.red,
+            interpolated: true)
+         DSFSparklineBarGraphView.SwiftUI(
+            dataSource: rightDataSource,
+            graphColor: DSFColor.blue,
+            lineWidth: 2,
+            showZeroLine: true,
+            zeroLineDefinition: BigCyanZeroLine)
+      }
+   }
+}
 ```
+
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png" width="100"></a>
+
+</details>
+
+<details>
+<summary>Prebuilt customizations</summary>
 
 ## View Types and settings
 
@@ -570,7 +589,7 @@ Represents the viewable settings and display.  The current view types available 
 |-----------------------|------------------------|---------------------------------------------------------|
 | `graphColor`          | `NSColor`<br>`UIColor` | The color to use when drawing the sparkline             |
 
-#### Common elements for graphs that can display a zero line (Line/Bar)
+#### Common elements for graphs that can display a zero line (Line/Bar/Stackline)
 
 | Setting               | Type                    | Description                                             |
 |-----------------------|-------------------------|---------------------------------------------------------|
@@ -580,7 +599,7 @@ Represents the viewable settings and display.  The current view types available 
 | `zeroLineWidth`       | `CGFloat`               | The width of the 'zero line' on the y-axis              |
 | `zeroLineDashStyle`   | `[CGFloat]`             | The dash pattern to use when drawing the zero line      |
 
-#### Common elements for graphs that can be centered around the zero-line (Line/Bar)
+#### Common elements for graphs that can be centered around the zero-line (Line/Bar/Stackline)
 
 | Setting               | Type                    | Description                                                                               |
 |-----------------------|-------------------------|-------------------------------------------------------------------------------------------|
@@ -685,6 +704,73 @@ The majority of these settings are available both programatically and via `@IBIn
 
 The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
+</details>
+
+## Available graph types
+
+### Line
+
+|  Standard  | Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-centered.png" width="400">|
+
+|  Interpolated  | Interpolated Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated-centered.png" width="400">|
+
+|  Standard Markers  | Interpolated Markers |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
+
+### Bar
+
+|  Standard  |  Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-centered.png" width="400">|
+
+### Stackline
+
+|  Standard  |  Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
+
+### Stripes
+
+|  Standard  |  Integral (pixel boundaries)  |
+|------------|-------------------------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-integral.png" width="400">|
+
+### Dot
+
+|  Standard  |  Inverted  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-inverted.png" width="400">|
+
+### Win/Loss
+
+|  Win/Loss  |  Win/Loss/Tie  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-tie.png" width="400">|
+
+### Tablet
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
+
+### Pie
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie.png" width="400">|
+
+### DataBar
+
+|  Percent  |  Total  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
+
+
 ## Integration
 
 There are demos available in the `Demos` subfolder for each of the supported platforms.  The demos use CocoaPods so you'll need to `pod install` in the Demos folder.
@@ -698,175 +784,6 @@ There are demos available in the `Demos` subfolder for each of the supported pla
 #### Swift package manager
 
 Add `https://github.com/dagronf/DSFSparkline` to your project.
-
-## Usage
-
-```swift
-/// Swift
-import DSFSparkline
-```
-
-```objective-c
-/// Objective-C
-@import DSFSparkline;
-```
-
-### Window size and (optional) y-range
-
-#### Set the size of the display window
-
-* If the window size is reduced, stored data is truncated.
-* If the window size is increased, the data store is padded with zeros
-
-```swift
-/// Swift
-dataSource.windowSize = 30
-assert(dataSource.windowSize == 30)
-```
-
-```objective-c
-/// Objective-C
-[dataSource setWindowSize:30];
-assert([dataSource windowSize] == 30);
-```
-
-#### Set the y-range for the sparkline
-
-Changing the y-range does not change the stored data.  The y-range is used during drawing to truncate to the upper and lower bounds, so the range can be changed safely at any time.
-
-```swift
-/// Swift
-dataSource.range = -1.0 ... 1.0
-```
-
-```objective-c
-/// Objective-C
-[dataSource setRangeWithLowerBound:-1.0 upperBound:1.0];
-```
-
-#### Setting the 'zero line' value for the sparkline
-
-The 'zero line' represents the dotted line that is drawn horizontally across the line and bar graphs. By default, this zero line is set at 0.0 within the graph's window values. 
-
-You can change the 'zero line' to an arbitrary value using the `zeroLineValue` on the data source.
-
-```swift
-// Initialize to draw a dotted line at 0.8 
-let datasource = DSFSparklineDataSource(range: 0 ... 1, zeroLineValue: 0.8)
-
-// Change the data source to draw the zeroline at 0.3
-myDataSource.zeroLineValue = 0.3
-```
-
-To style the zero-line, use the graph member variables defined in **Common elements for graphs that can display a zero line (Line/Bar)**
-
-### Modifying or retrieving data
-
-#### Get the current set of data
-
-```swift
-/// Swift
-dataSource.data
-```
-
-```objective-c
-/// Objective-C
-[dataSource data];
-```
-
-#### Set data
-
-Note that this does not change the range value if a range has been set.  If values fall outside the y-range they will be truncated during drawing.  If no range has been set then the sparkline is scaled to fit the full y-range.
-
-```swift
-/// Swift
-dataSource.set(values: [1, 2, 3, 4, 5])
-```
-
-```objective-c
-/// Objective-C
-[dataSource setWithValues:@[@(1), @(2), @(3), @(4), @(5)]];
-```
-
-#### Push a new value onto the sparkline
-
-```swift
-/// Swift
-dataSource.push(value: 4.5)
-```
-
-```objective-c
-/// Objective-C
-[dataSource pushWithValue:@(4.5)];
-```
-
-#### Push an array of values onto the sparkline
-
-`dataSource.push(values: [x, y, z])` is equivalent to 
-
-```
-dataSource.push(value: x)
-dataSource.push(value: y)
-dataSource.push(value: z)
-```
-
-```swift
-/// Swift
-dataSource.push(values: [4.5, 10.3, 11])
-```
-
-```objective-c
-/// Objective-C
-[dataSource pushWithValues:@[@(4.5), @(10.3), @(11)]];
-```
-
-#### Reset the sparkline
-
-Reset the data to the lower bound for all data points in the window.  If no lower bound is set, all data values are set to zero.
-
-```swift
-/// Swift
-dataSource.reset()
-```
-
-```objective-c
-/// Objective-C
-[dataSource reset];
-```
-
-## SwiftUI Support
-
-Each graph type provides its own SwiftUI view (appending `.SwiftUI` to the class name). You can style the zero-line (if the graph supports it) using the `zeroLineDefinition` initialization parameter.
-
-```swift
-struct SparklineView: View {
-
-   let leftDataSource: DSFSparkline.DataSource
-   let rightDataSource: DSFSparkline.DataSource
-   
-   let BigCyanZeroLine = DSFSparkline.ZeroLineDefinition(
-      color: .cyan,
-      lineWidth: 3,
-      lineDashStyle: [4,1,2,1]
-   )
-   
-   var body: some View {
-      HStack {
-         DSFSparklineLineGraphView.SwiftUI(
-            dataSource: leftDataSource,
-            graphColor: DSFColor.red,
-            interpolated: true)
-         DSFSparklineBarGraphView.SwiftUI(
-            dataSource: rightDataSource,
-            graphColor: DSFColor.blue,
-            lineWidth: 2,
-            showZeroLine: true,
-            zeroLineDefinition: BigCyanZeroLine)
-      }
-   }
-}
-```
-<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swifui.png" width="300"></a>
 
 ## Screenshots
 
@@ -894,6 +811,10 @@ struct SparklineView: View {
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `4.0.0`
+
+* Substantial re-write of the drawing code (that used to be directly in the views) into overlays and surfaces that are far more flexible (for example, being able to draw a sparkline bitmap without having to create a view)
 
 ### `3.7.0`
 

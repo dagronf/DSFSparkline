@@ -12,6 +12,7 @@ struct SwiftUIView: View {
 	var body: some View {
 		ScrollView([.vertical, .horizontal]) {
 			VStack {
+				SuperCoolLineSpark()
 				OverlayView()
 				StripesOverlaidView()
 				SwiftUILineGraphContentView(shouldAnimate: shouldAnimate)
