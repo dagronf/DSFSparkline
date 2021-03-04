@@ -29,11 +29,11 @@ public extension DSFSparklineOverlay {
 		// A default gradient pattern
 		static let defaultGradient = DSFSparkline.GradientBucket(posts: [
 			DSFSparkline.GradientBucket.Post(color: DSFColor.systemRed.cgColor, location: 0),
-			DSFSparkline.GradientBucket.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 6),
-			DSFSparkline.GradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 6),
-			DSFSparkline.GradientBucket.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 6),
-			DSFSparkline.GradientBucket.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 6),
-			DSFSparkline.GradientBucket.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 6),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemOrange.cgColor, location: 1 / 5),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemYellow.cgColor, location: 2 / 5),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemGreen.cgColor, location: 3 / 5),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemBlue.cgColor, location: 4 / 5),
+			DSFSparkline.GradientBucket.Post(color: DSFColor.systemPurple.cgColor, location: 5 / 5),
 		])
 
 		/// The width of the stroke for the tablet

@@ -5,7 +5,7 @@ import DSFSparkline
 var str = "Playground demonstrating the generation of a sparkline bitmap"
 
 // Set this to 'true' to save the generated bitmaps out to the /tmp folder
-let shouldSaveImage = true //false
+let shouldSaveImage = false
 
 func SaveImage(image: NSImage, path: URL) {
 
@@ -168,6 +168,8 @@ do {
 do {
 	let bitmap = DSFSparklineSurface.Bitmap()    // Create a bitmap surface
 	let stripe = DSFSparklineOverlay.Stripes()   // Create a stripe graph overlay
+	stripe.integral = true
+	stripe.barSpacing = 1
 	stripe.dataSource = .init(values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 	bitmap.addOverlay(stripe)                    // And add the overlay to the surface.
 

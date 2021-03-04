@@ -50,7 +50,7 @@ typealias DSFViewRepresentable = UIViewRepresentable
 extension ExpressibleByIntegerLiteral where Self: Comparable {
 	/// Clamp a value to a closed range
 	/// - Parameter range: the range to clamp to
-	func clamped(to range: ClosedRange<Self>) -> Self {
+	@inlinable func clamped(to range: ClosedRange<Self>) -> Self {
 		return min(max(self, range.lowerBound), range.upperBound)
 	}
 }
