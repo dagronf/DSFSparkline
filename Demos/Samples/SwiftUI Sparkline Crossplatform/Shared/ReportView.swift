@@ -11,9 +11,9 @@ import SwiftUI
 struct UserResults {
 	let name: String
 	var values: [Int]
-	
+
 	let dataSource = DSFSparkline.DataSource(windowSize: 5)
-	
+
 	init(name: String, values: [Int]) {
 		self.name = name
 		self.values = values
@@ -34,7 +34,6 @@ struct SalesResult {
 }
 
 struct ReportView: View {
-
 	static func Make() -> ReportView {
 		return ReportView()
 	}
@@ -47,7 +46,7 @@ struct ReportView: View {
 		GridItem(.fixed(35), spacing: 2),
 		GridItem(.fixed(35), spacing: 2),
 	]
-	
+
 	let userItems1: [UserResults] = [
 		UserResults(name: "Aiden", values: [90, 120, 110, 130, 115]),
 		UserResults(name: "Ethan", values: [100, 95, 115, 120, 118]),
@@ -55,7 +54,7 @@ struct ReportView: View {
 		UserResults(name: "Lucas", values: [118, 120, 125, 128, 135]),
 		UserResults(name: "Noah", values: [130, 130, 125, 120, 90]),
 	]
-	
+
 	var gridItems2: [GridItem] = [
 		GridItem(.fixed(35), spacing: 2),
 		GridItem(.fixed(35), spacing: 2),
@@ -64,7 +63,7 @@ struct ReportView: View {
 		GridItem(.fixed(35), spacing: 2),
 		GridItem(.fixed(35), spacing: 2),
 	]
-	
+
 	let userItems2: [UserResults] = [
 		UserResults(name: "Aiden", values: [1, 1, -1, 1, -1, 1, 1, 1]),
 		UserResults(name: "Ethan", values: [1, 1, -1, 1, 1, -1, 1, -1]),
@@ -81,10 +80,39 @@ struct ReportView: View {
 		SalesResult(name: "Noah", values: [300, 100, 200, 270], maximumTotal: 1000),
 	]
 
+	func sparklineAttributedString() -> NSAttributedString {
+		let source = DSFSparkline.DataSource(values: [4, 1, 8, 7, 5, 9, 3], range: 0 ... 10)
+
+		let baseColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.033, 0.277, 0.650, 1.000])!
+		let primaryStroke = baseColor // (gray: 0.0, alpha: 0.3))
+		let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
+
+		let bitmap = DSFSparklineSurface.Bitmap() // Create a bitmap surface
+		let line = DSFSparklineOverlay.Line() // Create a line overlay
+		line.strokeWidth = 1
+		line.primaryStrokeColor = primaryStroke
+		line.primaryFill = primaryFill
+		line.dataSource = source // Assign the datasource to the overlay
+		bitmap.addOverlay(line) // And add the overlay to the surface.
+
+		let attr = bitmap.attributedString(size: CGSize(width: 40, height: 18), scale: 2)!
+		let message = NSMutableAttributedString(string: "Inlined - ")
+		message.append(attr)
+		message.append(NSAttributedString(string: " - line graph"))
+
+		message.addAttributes([.foregroundColor: DSFColor.primaryTextColor], range: NSRange(location: 0, length: message.length))
+
+		return message
+	}
+
 	var body: some View {
 		ScrollView([.vertical, .horizontal]) {
 			VStack {
 				VStack {
+					AttributedText(self.sparklineAttributedString())
+						.frame(maxWidth: .infinity, maxHeight: .infinity)
+						.padding(20)
+
 					HStack {
 						Text("NASDAQ Feb 2020 -> Feb 2021").frame(width: 300)
 						DSFSparklineLineGraphView.SwiftUI(dataSource: NasdaqFeb2020Feb2021DataSource,
@@ -105,7 +133,7 @@ struct ReportView: View {
 				.padding(EdgeInsets(top: 16, leading: 0, bottom: 25, trailing: 0))
 
 				Text("Exam Results")
-				
+
 				LazyHGrid(rows: gridItems1) {
 					ForEach(0 ..< 5, id: \.self) { number in
 						HStack {
@@ -127,9 +155,9 @@ struct ReportView: View {
 					}
 				}
 				.frame(maxWidth: .infinity)
-				
+
 				Text("Team Wins/Losses")
-				
+
 				LazyHGrid(rows: gridItems2) {
 					ForEach(0 ..< 5, id: \.self) { number in
 						HStack {
@@ -191,7 +219,6 @@ struct ReportView: View {
 								unsetColor: DSFColor.black.withAlphaComponent(0.2)
 							)
 							.frame(width: 120)
-
 						}
 						.padding(4)
 						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
@@ -466,8 +493,6 @@ let NasdaqFeb2020Feb2021: [CGFloat] = [
 	13597.96,
 	13119.43,
 ]
-
-
 
 let GoldFeb2020Feb2021DataSource: DSFSparkline.DataSource = {
 	let s = DSFSparkline.DataSource(zeroLineValue: 1775.4)

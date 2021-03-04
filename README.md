@@ -821,6 +821,11 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Changes
 
+### `4.1.1`
+
+* Fixed gradient bucket count issue. 
+* Added AttributedString SwiftUI demo to the ReportView demo. Demo uses [The SwiftUI Lab Attributed String](https://swiftui-lab.com/attributed-strings-with-swiftui/) with AppKit bug fix for width calculation.
+
 ### `4.1.0`
 
 * Embed sparklines in NSAttributedString.
@@ -908,6 +913,8 @@ it means that you have a `windowSize` value set in your .xib file.  Remove it an
 * Fix for zero line being upside-down
 
 ## License
+
+MIT. Use it for anything you want, just attribute my work. Let me know if you do use it somewhere, I'd love to hear about it!
 
 ```
 MIT License
