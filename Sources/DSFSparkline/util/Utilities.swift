@@ -200,3 +200,49 @@ extension String {
 	}
 	return nil
 }
+
+class LCTextLayer : CATextLayer {
+
+	 // REF: http://lists.apple.com/archives/quartz-dev/2008/Aug/msg00016.html
+	 // CREDIT: David Hoerl - https://github.com/dhoerl
+	 // USAGE: To fix the vertical alignment issue that currently exists within the CATextLayer class. Change made to the yDiff calculation.
+
+	 override func draw(in context: CGContext) {
+		  let height = self.bounds.size.height
+		  let fontSize = self.fontSize
+		  let yDiff = (height-fontSize)/2 - fontSize/10
+
+		  context.saveGState()
+		  context.translateBy(x: 0, y: yDiff) // Use -yDiff when in non-flipped coordinates (like macOS's default)
+		  super.draw(in: context)
+		  context.restoreGState()
+	 }
+}
+
+
+extension CGColor {
+	/// Returns a black or white contrasting color for this color
+	/// - Parameter defaultColor: If the color cannot be converted to the genericRGB colorspace, or the input color is .clear, the fallback color
+	/// - Returns: black or white depending on which provides the greatest contrast to this color
+	func flatContrastColor(defaultColor: CGColor = CGColor.DefaultBlack) -> CGColor {
+		guard self != CGColor.clear,
+			let rgbColor = self.converted(to: CGColorSpace(name: CGColorSpace.sRGB)!,
+													intent: .perceptual,
+													options: nil) else {
+			return defaultColor
+		}
+
+		let r = 0.299 * rgbColor.components![0]
+		let g = 0.587 * rgbColor.components![1]
+		let b = 0.114 * rgbColor.components![2]
+		let avgGray: CGFloat = 1 - (r + g + b)
+		return (avgGray >= 0.45) ? CGColor.DefaultWhite : CGColor.DefaultBlack
+	}
+}
+
+extension CGColor {
+
+	static let DefaultWhite = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 1, 1, 1])!
+	static let DefaultBlack = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 1])!
+	static let DefaultClear = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 1, 1, 0])!
+}
