@@ -821,6 +821,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Changes
 
+### `4.1.2`
+
+* Fixed compile issue [Cannot find type 'NSTextAttachment' in scope" crashes when using SwiftPackage](https://github.com/dagronf/DSFSparkline/issues/5)
+
 ### `4.1.1`
 
 * Fixed gradient bucket count issue. 

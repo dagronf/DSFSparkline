@@ -74,6 +74,7 @@ public extension DSFSparklineSurface.Bitmap {
 
 // MARK: - UIKit Additions
 
+import UIKit
 public extension DSFSparklineSurface.Bitmap {
 
 	/// Returns an NSTextAttachment containing an image of the sparkline
