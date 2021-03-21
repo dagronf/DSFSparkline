@@ -17,7 +17,7 @@ public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 
 	private let overlay = DSFSparklineOverlay.SimplePercentBar()
 
-	@objc public var displayStyle: DSFSparklineOverlay.SimplePercentBar.Style = DSFSparklineOverlay.SimplePercentBar.Style() {
+	@objc public var displayStyle: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style() {
 		didSet {
 			self.overlay.displayStyle = displayStyle
 			self.updateDisplay()

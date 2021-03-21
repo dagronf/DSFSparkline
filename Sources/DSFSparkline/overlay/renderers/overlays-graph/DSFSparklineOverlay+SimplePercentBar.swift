@@ -24,11 +24,9 @@
 import QuartzCore
 import SwiftUI
 
-public extension DSFSparklineOverlay {
-
-	@objc(DSFSparklineOverlaySimplePercentBar) class SimplePercentBar: DSFSparklineOverlay {
-
-		@objc(DSFSparklineOverlaySimplePercentBarStyle) public class Style: NSObject {
+public extension DSFSparkline {
+	class PercentBar {
+		@objc(DSFSparklinePercentBarStyle) public class Style: NSObject {
 			/// The graph background color
 			@objc public var backgroundColor: CGColor = CGColor.DefaultClear
 			/// The color of text when drawn on the background
@@ -40,7 +38,7 @@ public extension DSFSparklineOverlay {
 			@objc public var barTextColor: CGColor = CGColor.DefaultWhite
 
 			/// The formatter to use
-			@objc public var numberFormatter: NumberFormatter = SimplePercentBar.defaultFormatter
+			@objc public var numberFormatter: NumberFormatter = Style.defaultFormatter
 
 			@objc public var font: DSFFont = DSFFont.systemFont(ofSize: 12.0)
 			@objc public var fontSize: CGFloat {
@@ -56,15 +54,22 @@ public extension DSFSparklineOverlay {
 				return self.numberFormatter.string(from: NSNumber(value: Double(value))) ?? ""
 			}
 
+			static let defaultFormatter: NumberFormatter = {
+				let f = NumberFormatter()
+				f.numberStyle = .percent
+				f.minimumFractionDigits = 0
+				f.maximumFractionDigits = 0
+				return f
+			}()
 		}
+	}
+}
 
-		static let defaultFormatter: NumberFormatter = {
-			let f = NumberFormatter()
-			f.numberStyle = .percent
-			f.minimumFractionDigits = 0
-			f.maximumFractionDigits = 0
-			return f
-		}()
+public extension DSFSparklineOverlay {
+
+	@objc(DSFSparklineOverlaySimplePercentBar) class SimplePercentBar: DSFSparklineOverlay {
+
+
 
 		let textLayer = LCTextLayer()
 		let fractionLayer = CAShapeLayer()
@@ -80,20 +85,22 @@ public extension DSFSparklineOverlay {
 
 		// MARK: - Style
 
-		@objc public var displayStyle: Style = Style() {
+		@objc public var displayStyle = DSFSparkline.PercentBar.Style() {
 			didSet {
 				self.syncStyle()
 				self.dataDidChange()
 			}
 		}
 
-		public init(style: Style = Style(), value: CGFloat = 0) {
+		public init(style: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style(), value: CGFloat = 0) {
 			super.init()
 
 			self.addSublayer(self.fractionLayer)
 			self.addSublayer(self.textLayer)
 
 			self.fractionLayer.zPosition = -3
+			self.fractionLayer.cornerRadius = 3
+
 			self.textLayer.contentsScale = 2
 
 			self.displayStyle = style
@@ -172,8 +179,6 @@ public extension DSFSparklineOverlay.SimplePercentBar {
 
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
-
-		self.fractionLayer.cornerRadius = 3
 
 		let fraction = (self.fractional).clamped(to: 0 ... 1)
 		let complete = self.fractionComplete * fraction

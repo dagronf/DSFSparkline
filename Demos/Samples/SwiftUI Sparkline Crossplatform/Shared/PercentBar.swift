@@ -25,8 +25,8 @@ struct PercentBar: View {
 		return lineOverlay
 	}()
 
-	var style: DSFSparklineOverlay.SimplePercentBar.Style = {
-		let s = DSFSparklineOverlay.SimplePercentBar.Style()
+	var style: DSFSparkline.PercentBar.Style = {
+		let s = DSFSparkline.PercentBar.Style()
 		s.backgroundColor = DSFColor.systemBlue.cgColor
 		s.backgroundTextColor = CGColor(gray: 1.0, alpha: 1.0)
 		s.barColor = DSFColor.systemYellow.cgColor
@@ -40,17 +40,16 @@ struct PercentBar: View {
 
 	var body: some View {
 		VStack {
-			DSFSparklineSurface.SwiftUI([
-				DSFSparklineOverlay.SimplePercentBar(style: style, value: 0.75)
-			])
+			DSFSparklinePercentBarGraphView.SwiftUI(
+				style: style, value: 0.75
+			)
 			.frame(height: 20)
-			DSFSparklineSurface.SwiftUI([
-				DSFSparklineOverlay.SimplePercentBar(style: style, value: v1)
-			])
+			DSFSparklinePercentBarGraphView.SwiftUI(
+				style: style, value: 0.22
+			)
 			.frame(height: 20)
-			DSFSparklineSurface.SwiftUI([
-				DSFSparklineOverlay.SimplePercentBar(style: style, value: 0.1)
-			])
+			DSFSparklinePercentBarGraphView.SwiftUI(
+				style: style, value: Double(v1))
 			.frame(height: 20)
 			Button("do") {
 				self.v1 = 0.22
