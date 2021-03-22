@@ -709,11 +709,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="macOS_Sparkline_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="aLR-YP-GED">
-                        <rect key="frame" x="0.0" y="0.0" width="511" height="679"/>
+                        <rect key="frame" x="0.0" y="0.0" width="618" height="728"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <gridView xPlacement="leading" yPlacement="center" rowAlignment="none" rowSpacing="11" columnSpacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="GBP-Ic-3tg">
-                                <rect key="frame" x="20" y="99" width="440" height="560"/>
+                                <rect key="frame" x="20" y="107" width="558" height="601"/>
                                 <rows>
                                     <gridRow id="LWT-zz-Wli"/>
                                     <gridRow id="a9M-Aq-5EU"/>
@@ -725,6 +725,7 @@
                                     <gridRow id="ldh-b2-9YP"/>
                                     <gridRow id="jbP-L9-XJx"/>
                                     <gridRow id="H5O-EY-kNw"/>
+                                    <gridRow id="K76-XG-Qsl"/>
                                     <gridRow id="JXA-C4-Qhm"/>
                                     <gridRow id="67c-qk-plU"/>
                                     <gridRow id="BE0-WA-Esz"/>
@@ -738,7 +739,7 @@
                                 <gridCells>
                                     <gridCell row="LWT-zz-Wli" column="mND-oT-fMP" headOfMergedCell="SvU-3Q-xSO" id="SvU-3Q-xSO">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wkB-t0-cET">
-                                            <rect key="frame" x="-2" y="544" width="37" height="16"/>
+                                            <rect key="frame" x="-2" y="585" width="37" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="f6g-SZ-dX3">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -750,7 +751,7 @@
                                     <gridCell row="LWT-zz-Wli" column="BAq-tP-YvS" headOfMergedCell="SvU-3Q-xSO" id="dOo-dw-e60"/>
                                     <gridCell row="a9M-Aq-5EU" column="mND-oT-fMP" id="uRY-xS-tms">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Br9-aV-51P">
-                                            <rect key="frame" x="-2" y="509" width="43" height="16"/>
+                                            <rect key="frame" x="-2" y="550" width="43" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Crash" id="kP2-gU-xGS">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
@@ -760,7 +761,7 @@
                                     </gridCell>
                                     <gridCell row="a9M-Aq-5EU" column="lKi-gS-TNi" id="Vor-4M-4U8">
                                         <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-lZ-xkS">
-                                            <rect key="frame" x="140" y="509" width="66" height="16"/>
+                                            <rect key="frame" x="140" y="550" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="2,822" id="F4H-Da-4TV">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -770,7 +771,7 @@
                                     </gridCell>
                                     <gridCell row="a9M-Aq-5EU" column="BAq-tP-YvS" id="f5q-yf-nDE">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="OiD-9p-Pec" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="501" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="542" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="aoL-Bw-P6f"/>
                                             </constraints>
@@ -791,7 +792,7 @@
                                     </gridCell>
                                     <gridCell row="aLC-sK-pHI" column="mND-oT-fMP" id="fbP-A9-Cu9">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSS-Et-Ewc">
-                                            <rect key="frame" x="-2" y="466" width="65" height="16"/>
+                                            <rect key="frame" x="-2" y="507" width="65" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Crash (2)" id="EoP-4H-Ynb">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" red="0.42787649500000002" green="1" blue="0.33720872619999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -801,7 +802,7 @@
                                     </gridCell>
                                     <gridCell row="aLC-sK-pHI" column="lKi-gS-TNi" id="GQX-bs-orJ">
                                         <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8YD-kP-XpR">
-                                            <rect key="frame" x="140" y="466" width="66" height="16"/>
+                                            <rect key="frame" x="140" y="507" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="2,822" id="UzH-Ep-LAw">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -811,7 +812,7 @@
                                     </gridCell>
                                     <gridCell row="aLC-sK-pHI" column="BAq-tP-YvS" id="udP-F5-0Sd">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="7rQ-DQ-1cR" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="458" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="499" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="Ybe-gn-KCp"/>
                                             </constraints>
@@ -846,7 +847,7 @@
                                     </gridCell>
                                     <gridCell row="rOA-HK-JHa" column="mND-oT-fMP" id="e3L-YV-l2s">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rqu-Ag-2nU">
-                                            <rect key="frame" x="-2" y="423" width="76" height="16"/>
+                                            <rect key="frame" x="-2" y="464" width="76" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Static Data" id="dMM-dY-w8K">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -857,7 +858,7 @@
                                     <gridCell row="rOA-HK-JHa" column="lKi-gS-TNi" id="raf-BR-nMc"/>
                                     <gridCell row="rOA-HK-JHa" column="BAq-tP-YvS" id="lIF-PY-sE4">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="tNT-lg-8kA" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="415" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="456" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="gsf-Ye-tOh"/>
                                             </constraints>
@@ -878,7 +879,7 @@
                                     </gridCell>
                                     <gridCell row="mUE-ZI-8yG" column="mND-oT-fMP" id="JUi-AP-7D1">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FJq-ps-Fbl">
-                                            <rect key="frame" x="-2" y="380" width="84" height="16"/>
+                                            <rect key="frame" x="-2" y="421" width="84" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Deprecation" id="v5M-wK-vP3">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
@@ -888,7 +889,7 @@
                                     </gridCell>
                                     <gridCell row="mUE-ZI-8yG" column="lKi-gS-TNi" id="Uj1-kZ-1G2">
                                         <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v9-x6-8ah">
-                                            <rect key="frame" x="140" y="380" width="66" height="16"/>
+                                            <rect key="frame" x="140" y="421" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="3,037" id="27w-5h-CaQ">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -898,7 +899,7 @@
                                     </gridCell>
                                     <gridCell row="mUE-ZI-8yG" column="BAq-tP-YvS" id="Smp-Jf-JPv">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="n87-Qb-hCp" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="372" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="413" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="B8l-YI-Etj"/>
                                             </constraints>
@@ -917,7 +918,7 @@
                                     </gridCell>
                                     <gridCell row="Mqg-XJ-bG5" column="mND-oT-fMP" id="Hpv-lY-5Ya">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3wx-H0-7Ow">
-                                            <rect key="frame" x="-2" y="337" width="83" height="16"/>
+                                            <rect key="frame" x="-2" y="378" width="83" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Intervention" id="Xxi-QW-iJp">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
@@ -927,7 +928,7 @@
                                     </gridCell>
                                     <gridCell row="Mqg-XJ-bG5" column="lKi-gS-TNi" id="mkn-W6-Pdk">
                                         <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-NK-WRY">
-                                            <rect key="frame" x="140" y="337" width="66" height="16"/>
+                                            <rect key="frame" x="140" y="378" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="162" id="11w-7T-MxN">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -937,7 +938,7 @@
                                     </gridCell>
                                     <gridCell row="Mqg-XJ-bG5" column="BAq-tP-YvS" id="Gd0-vA-1Yb">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="BEz-6V-bx1" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="329" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="370" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="1W5-NG-iuE"/>
                                             </constraints>
@@ -954,7 +955,7 @@
                                     </gridCell>
                                     <gridCell row="Urz-a5-acf" column="mND-oT-fMP" id="KTh-ec-gUg">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ied-wV-JMz">
-                                            <rect key="frame" x="-2" y="294" width="95" height="16"/>
+                                            <rect key="frame" x="-2" y="335" width="95" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Network Error" id="ljv-BH-AcY">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
@@ -964,7 +965,7 @@
                                     </gridCell>
                                     <gridCell row="Urz-a5-acf" column="lKi-gS-TNi" id="hgr-d2-dil">
                                         <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0me-JO-0hc">
-                                            <rect key="frame" x="140" y="294" width="66" height="16"/>
+                                            <rect key="frame" x="140" y="335" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="30,382" id="buR-jG-fao">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -974,7 +975,7 @@
                                     </gridCell>
                                     <gridCell row="Urz-a5-acf" column="BAq-tP-YvS" id="h1q-mq-bhM">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="bTX-f3-3gr" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="286" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="327" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="jjG-zN-x95"/>
                                             </constraints>
@@ -1004,7 +1005,7 @@
                                     </gridCell>
                                     <gridCell row="ldh-b2-9YP" column="mND-oT-fMP" id="ycW-i5-37X">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-U5-VUl">
-                                            <rect key="frame" x="-2" y="251" width="126" height="16"/>
+                                            <rect key="frame" x="-2" y="292" width="126" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Transmission Error" id="ZEn-qy-J3w">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
@@ -1014,7 +1015,7 @@
                                     </gridCell>
                                     <gridCell row="ldh-b2-9YP" column="lKi-gS-TNi" id="EH2-jW-C5V">
                                         <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xOP-wC-3ic">
-                                            <rect key="frame" x="140" y="251" width="66" height="16"/>
+                                            <rect key="frame" x="140" y="292" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="11" id="W0P-Gr-AOH">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1024,7 +1025,7 @@
                                     </gridCell>
                                     <gridCell row="ldh-b2-9YP" column="BAq-tP-YvS" id="3MP-Ub-yd0">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="DpK-RA-KO6" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="243" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="284" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="8EG-Wx-EQV"/>
                                             </constraints>
@@ -1045,7 +1046,7 @@
                                     </gridCell>
                                     <gridCell row="jbP-L9-XJx" column="mND-oT-fMP" id="Bh6-7L-opA">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-fI-UTe">
-                                            <rect key="frame" x="-2" y="208" width="112" height="16"/>
+                                            <rect key="frame" x="-2" y="249" width="112" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Packet Rejection" id="iAV-45-pDZ">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
@@ -1056,7 +1057,7 @@
                                     <gridCell row="jbP-L9-XJx" column="lKi-gS-TNi" id="5vM-G3-i4C"/>
                                     <gridCell row="jbP-L9-XJx" column="BAq-tP-YvS" id="M0M-de-hKM">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="py7-t6-7BU" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="200" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="241" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="DNH-g1-HFa"/>
                                             </constraints>
@@ -1078,7 +1079,7 @@
                                     </gridCell>
                                     <gridCell row="H5O-EY-kNw" column="mND-oT-fMP" id="NCf-hd-cVW">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xpk-48-kFy">
-                                            <rect key="frame" x="-2" y="165" width="81" height="16"/>
+                                            <rect key="frame" x="-2" y="206" width="81" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Throughput" id="Waa-6g-5xP">
                                                 <font key="font" metaFont="systemBold"/>
                                                 <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
@@ -1089,7 +1090,7 @@
                                     <gridCell row="H5O-EY-kNw" column="lKi-gS-TNi" id="dGm-a2-bim"/>
                                     <gridCell row="H5O-EY-kNw" column="BAq-tP-YvS" id="4QV-Du-MVb">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="Q4u-Fj-eiP" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="157" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="198" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="ATZ-jw-nM7"/>
                                             </constraints>
@@ -1113,6 +1114,86 @@
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>
+                                    <gridCell row="K76-XG-Qsl" column="mND-oT-fMP" id="ncE-AV-s8y">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gjW-nV-VPb">
+                                            <rect key="frame" x="-2" y="164" width="69" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Total Loss" id="Scb-jz-QgE">
+                                                <font key="font" metaFont="systemBold"/>
+                                                <color key="textColor" name="systemBrownColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="K76-XG-Qsl" column="lKi-gS-TNi" id="JrP-5T-sFF"/>
+                                    <gridCell row="K76-XG-Qsl" column="BAq-tP-YvS" id="6kx-eg-5oh">
+                                        <stackView key="contentView" distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lcb-gV-qL0">
+                                            <rect key="frame" x="224" y="157" width="334" height="30"/>
+                                            <subviews>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="zlJ-ct-id6" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                    <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="8vN-tq-EPf"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="18"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                            <color key="value" name="systemBrownColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                            <color key="value" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                            <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                            <real key="value" value="0.12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                            <color key="value" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="0.27824719424175126" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </customView>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="c5M-fi-374" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                    <rect key="frame" x="171" y="0.0" width="163" height="30"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                            <real key="value" value="18"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                            <color key="value" name="systemBrownColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                            <color key="value" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                            <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                            <real key="value" value="0.80000000000000004"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                            <color key="value" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="0.27824719424175126" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </customView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="c5M-fi-374" firstAttribute="height" secondItem="zlJ-ct-id6" secondAttribute="height" id="IoF-xS-efq"/>
+                                            </constraints>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                    </gridCell>
                                     <gridCell row="JXA-C4-Qhm" column="mND-oT-fMP" id="rtY-KS-thC">
                                         <box key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="izb-56-HRE">
                                             <rect key="frame" x="0.0" y="143" width="122" height="5"/>
@@ -1125,7 +1206,7 @@
                                     </gridCell>
                                     <gridCell row="JXA-C4-Qhm" column="BAq-tP-YvS" id="O1U-Bj-YCH">
                                         <box key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="LVs-rq-aL8">
-                                            <rect key="frame" x="224" y="143" width="216" height="5"/>
+                                            <rect key="frame" x="224" y="143" width="334" height="5"/>
                                         </box>
                                     </gridCell>
                                     <gridCell row="67c-qk-plU" column="mND-oT-fMP" id="UJ0-bn-zJc">
@@ -1279,7 +1360,7 @@
                                     <gridCell row="BE0-WA-Esz" column="lKi-gS-TNi" id="OdA-8y-x7P"/>
                                     <gridCell row="BE0-WA-Esz" column="BAq-tP-YvS" id="G3t-xd-11p">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="AVo-hu-76v" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="43" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="43" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="ifW-Lb-JMn"/>
                                             </constraints>
@@ -1303,7 +1384,7 @@
                                     <gridCell row="17y-ez-wQ3" column="lKi-gS-TNi" id="lod-vY-vX8"/>
                                     <gridCell row="17y-ez-wQ3" column="BAq-tP-YvS" id="lPs-p4-TB6">
                                         <customView key="contentView" horizontalHuggingPriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="ZVQ-x6-UGu" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="224" y="0.0" width="216" height="32"/>
+                                            <rect key="frame" x="224" y="0.0" width="334" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="5m2-fH-yfx"/>
                                             </constraints>
@@ -1327,13 +1408,13 @@
                                 </gridCells>
                             </gridView>
                             <scrollView verticalHuggingPriority="50" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDr-oU-WDb">
-                                <rect key="frame" x="20" y="20" width="471" height="71"/>
+                                <rect key="frame" x="20" y="20" width="578" height="79"/>
                                 <clipView key="contentView" id="MSZ-hg-s8h">
-                                    <rect key="frame" x="1" y="1" width="469" height="69"/>
+                                    <rect key="frame" x="1" y="1" width="576" height="77"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-Xu-3pN">
-                                            <rect key="frame" x="0.0" y="0.0" width="469" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="576" height="0.0"/>
                                         </stackView>
                                     </subviews>
                                     <constraints>

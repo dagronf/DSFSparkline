@@ -132,6 +132,15 @@ fileprivate let tablet1: DSFSparklineSurface.Bitmap = {
 }()
 
 
+fileprivate let percentBar: DSFSparklineSurface.Bitmap = {
+	let bitmap = DSFSparklineSurface.Bitmap()
+	let percentbar = DSFSparklineOverlay.PercentBar(value: 0.42)
+	bitmap.addOverlay(percentbar)
+
+	// Generate an image with retina scale
+	return bitmap
+}()
+
 struct BitmapGenerationView: View {
 
 	#if os(macOS)
@@ -162,7 +171,7 @@ struct BitmapGenerationView: View {
 
 			Text("Sparkline images created using DSFSparklineSurface.Bitmap")
 
-			HStack {
+			VStack {
 				makeImage(self.generate(b1, size: CGSize(width: 200, height: 40)))
 					.padding(4)
 					.border(Color.gray)
@@ -176,7 +185,9 @@ struct BitmapGenerationView: View {
 					.border(Color.gray)
 			}
 
-			HStack {
+			Divider()
+
+			VStack {
 				makeImage(self.generate(b3, size: CGSize(width: 200, height: 40)))
 					.padding(4)
 					.border(Color.gray)
@@ -186,7 +197,15 @@ struct BitmapGenerationView: View {
 					.border(Color.gray)
 			}
 
+			Divider()
+
 			makeImage(self.generate(tablet1, size: CGSize(width: 400, height: 20)))
+				.padding(4)
+				.border(Color.gray)
+
+			Divider()
+
+			makeImage(self.generate(percentBar, size: CGSize(width: 400, height: 20)))
 				.padding(4)
 				.border(Color.gray)
 		}

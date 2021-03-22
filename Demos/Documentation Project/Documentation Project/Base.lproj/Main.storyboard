@@ -737,7 +737,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="856" height="486"/>
                                             <subviews>
                                                 <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="16" columnSpacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-4e-Vtx">
-                                                    <rect key="frame" x="20" y="20" width="816" height="784"/>
+                                                    <rect key="frame" x="20" y="20" width="816" height="864"/>
                                                     <rows>
                                                         <gridRow height="64" id="47u-jo-OYT"/>
                                                         <gridRow height="64" id="rf1-Sg-8OA"/>
@@ -749,6 +749,7 @@
                                                         <gridRow id="utc-Nl-zmD"/>
                                                         <gridRow id="6oS-Fm-DQZ"/>
                                                         <gridRow id="hsD-F4-k8U"/>
+                                                        <gridRow id="r5p-Hs-XDA"/>
                                                     </rows>
                                                     <columns>
                                                         <gridColumn width="400" id="Fgv-Q3-Ekz"/>
@@ -757,7 +758,7 @@
                                                     <gridCells>
                                                         <gridCell row="47u-jo-OYT" column="Fgv-Q3-Ekz" id="fBp-FV-8td">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-zq-3Kb" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="720" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="800" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="PeM-5L-g65"/>
                                                                     <constraint firstAttribute="width" constant="400" id="cmV-xb-fqd"/>
@@ -777,7 +778,7 @@
                                                         </gridCell>
                                                         <gridCell row="47u-jo-OYT" column="Wsh-KX-sd2" id="paB-Kc-fn9">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Lwo-B5-fXw" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="720" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="800" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="AmA-sQ-cTd"/>
                                                                     <constraint firstAttribute="width" constant="400" id="k5B-GP-KV6"/>
@@ -798,7 +799,7 @@
                                                         </gridCell>
                                                         <gridCell row="rf1-Sg-8OA" column="Fgv-Q3-Ekz" id="WZQ-gH-xjR">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="9Uq-bZ-Qih" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="640" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="720" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="CAC-zl-i43"/>
                                                                     <constraint firstAttribute="height" constant="64" id="I7X-h3-4It"/>
@@ -818,7 +819,7 @@
                                                         </gridCell>
                                                         <gridCell row="rf1-Sg-8OA" column="Wsh-KX-sd2" id="guE-UA-jgS">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="aCQ-sL-A3S" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="640" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="720" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="Z6T-Sr-UR1"/>
                                                                     <constraint firstAttribute="height" constant="64" id="niz-rm-4pc"/>
@@ -840,7 +841,7 @@
                                                         </gridCell>
                                                         <gridCell row="5sQ-Aa-yfE" column="Fgv-Q3-Ekz" id="Pq1-kd-r9g">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="O21-tc-rhl" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="560" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="640" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="O3G-bL-oZv"/>
                                                                     <constraint firstAttribute="height" constant="64" id="SvM-kG-FwN"/>
@@ -863,7 +864,7 @@
                                                         </gridCell>
                                                         <gridCell row="5sQ-Aa-yfE" column="Wsh-KX-sd2" id="a5N-JY-mYJ">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-or-Kg8" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="560" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="640" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="SUb-RU-Pfj"/>
                                                                     <constraint firstAttribute="height" constant="64" id="VVP-5w-JVc"/>
@@ -884,7 +885,7 @@
                                                         </gridCell>
                                                         <gridCell row="kkS-K4-DXg" column="Fgv-Q3-Ekz" id="dRo-n6-uEO">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="i6C-86-GhI" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="480" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="560" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="KWz-06-o4D"/>
                                                                     <constraint firstAttribute="width" constant="400" id="n8Y-Xv-w4H"/>
@@ -898,7 +899,7 @@
                                                         </gridCell>
                                                         <gridCell row="kkS-K4-DXg" column="Wsh-KX-sd2" id="Hbx-jo-sRD">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="RNH-ZJ-Tq5" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="480" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="560" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="79F-vE-19C"/>
                                                                     <constraint firstAttribute="height" constant="64" id="ARW-OU-fq3"/>
@@ -917,7 +918,7 @@
                                                         </gridCell>
                                                         <gridCell row="S0C-Pu-lmw" column="Fgv-Q3-Ekz" id="dMp-6n-HZH">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="umI-Ph-yaN" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="400" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="480" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="VbZ-wX-ctJ"/>
                                                                     <constraint firstAttribute="width" constant="400" id="uLo-0U-xH8"/>
@@ -934,7 +935,7 @@
                                                         </gridCell>
                                                         <gridCell row="S0C-Pu-lmw" column="Wsh-KX-sd2" id="OPb-9q-brt">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="UO4-nH-tLy" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="400" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="480" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="1Ka-V0-teG"/>
                                                                     <constraint firstAttribute="height" constant="64" id="N4E-sn-5XV"/>
@@ -953,7 +954,7 @@
                                                         </gridCell>
                                                         <gridCell row="HB5-mQ-V2B" column="Fgv-Q3-Ekz" id="Jha-X7-k9q">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-8N-hcb" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="320" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="400" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="1E2-oL-g5b"/>
                                                                     <constraint firstAttribute="width" constant="400" id="cEQ-iv-2P5"/>
@@ -967,7 +968,7 @@
                                                         </gridCell>
                                                         <gridCell row="HB5-mQ-V2B" column="Wsh-KX-sd2" id="CfV-5c-n4Z">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="G7g-fC-Oe0" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="320" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="400" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="9O7-rm-mHW"/>
                                                                     <constraint firstAttribute="width" constant="400" id="SFi-bH-u15"/>
@@ -988,7 +989,7 @@
                                                         </gridCell>
                                                         <gridCell row="luz-is-ypo" column="Fgv-Q3-Ekz" id="moa-qM-lWG">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-wT-484" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="240" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="320" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="bHl-GZ-huh"/>
                                                                     <constraint firstAttribute="width" constant="400" id="jTA-am-ERC"/>
@@ -1000,7 +1001,7 @@
                                                         </gridCell>
                                                         <gridCell row="luz-is-ypo" column="Wsh-KX-sd2" id="jdF-Kd-tgU">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Wfv-p8-aS4" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="240" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="320" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="26K-LL-4cx"/>
                                                                     <constraint firstAttribute="height" constant="64" id="7dQ-9H-bCq"/>
@@ -1020,7 +1021,7 @@
                                                         </gridCell>
                                                         <gridCell row="utc-Nl-zmD" column="Fgv-Q3-Ekz" id="V9N-iI-Ii8">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Qh3-wL-K7r" customClass="DSFSparklineTabletGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="160" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="240" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="KpC-kg-bkX"/>
                                                                     <constraint firstAttribute="height" constant="64" id="lHG-nv-eiV"/>
@@ -1029,7 +1030,7 @@
                                                         </gridCell>
                                                         <gridCell row="utc-Nl-zmD" column="Wsh-KX-sd2" id="6nP-TW-gBi">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Gi0-4d-DPA">
-                                                                <rect key="frame" x="416" y="160" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="240" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e41-yn-7PI">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1174,7 +1175,7 @@
                                                         </gridCell>
                                                         <gridCell row="6oS-Fm-DQZ" column="Fgv-Q3-Ekz" id="L2t-rF-mxM">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-ly-t6H">
-                                                                <rect key="frame" x="0.0" y="80" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="160" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ciX-I1-78t">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1274,7 +1275,7 @@
                                                         </gridCell>
                                                         <gridCell row="6oS-Fm-DQZ" column="Wsh-KX-sd2" id="o1i-xH-1W5">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="3Ek-ZN-wI3">
-                                                                <rect key="frame" x="416" y="80" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="160" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfH-1l-1b2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1398,7 +1399,7 @@
                                                         </gridCell>
                                                         <gridCell row="hsD-F4-k8U" column="Fgv-Q3-Ekz" id="YXd-2q-lkN">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="CVK-JB-TRV" customClass="DSFSparklineStripesGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="80" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="Mui-ep-2bF"/>
                                                                     <constraint firstAttribute="height" constant="64" id="zoX-5w-x4D"/>
@@ -1407,10 +1408,387 @@
                                                         </gridCell>
                                                         <gridCell row="hsD-F4-k8U" column="Wsh-KX-sd2" id="ySw-8S-UHd">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="0Tg-Zl-izg" customClass="DSFSparklineStripesGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="0.0" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="80" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="F5a-fW-LzZ"/>
                                                                     <constraint firstAttribute="height" constant="64" id="TpU-wg-ZQW"/>
+                                                                </constraints>
+                                                            </customView>
+                                                        </gridCell>
+                                                        <gridCell row="r5p-Hs-XDA" column="Fgv-Q3-Ekz" id="jVF-u6-UIQ">
+                                                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Mq-lN0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
+                                                                <subviews>
+                                                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odc-s6-dkH">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
+                                                                        <subviews>
+                                                                            <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eew-N2-owo">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="196" height="64"/>
+                                                                                <subviews>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="EuU-hj-8tS" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="44" width="108" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.34000000000000002"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                                                <real key="value" value="13"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="X44-fu-3QS" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="22" width="108" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.94999999999999996"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                                                <real key="value" value="13"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="fsE-VY-XfE" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="108" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.050000000000000003"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                                                <real key="value" value="13"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                </subviews>
+                                                                                <visibilityPriorities>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                </visibilityPriorities>
+                                                                                <customSpacing>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                </customSpacing>
+                                                                            </stackView>
+                                                                            <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="100" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="100" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aT9-Pf-kdZ">
+                                                                                <rect key="frame" x="204" y="0.0" width="196" height="64"/>
+                                                                                <subviews>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="lno-lz-z95" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="44" width="65" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.34000000000000002"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="lDn-Oe-f0d" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="22" width="65" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.94999999999999996"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="qg3-ol-Urh" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.050000000000000003"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                </subviews>
+                                                                                <visibilityPriorities>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                </visibilityPriorities>
+                                                                                <customSpacing>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                </customSpacing>
+                                                                            </stackView>
+                                                                        </subviews>
+                                                                        <visibilityPriorities>
+                                                                            <integer value="1000"/>
+                                                                            <integer value="1000"/>
+                                                                        </visibilityPriorities>
+                                                                        <customSpacing>
+                                                                            <real value="3.4028234663852886e+38"/>
+                                                                            <real value="3.4028234663852886e+38"/>
+                                                                        </customSpacing>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="400" id="3je-oj-njX"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="odc-s6-dkH" secondAttribute="bottom" id="FBu-Fq-ttG"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="odc-s6-dkH" secondAttribute="trailing" id="JSP-s5-1f9"/>
+                                                                    <constraint firstAttribute="height" constant="64" id="N7T-pJ-10B"/>
+                                                                    <constraint firstItem="odc-s6-dkH" firstAttribute="leading" secondItem="7sC-Mq-lN0" secondAttribute="leading" id="jiW-JU-HM3"/>
+                                                                    <constraint firstItem="odc-s6-dkH" firstAttribute="top" secondItem="7sC-Mq-lN0" secondAttribute="top" id="tuF-tb-9i7"/>
+                                                                </constraints>
+                                                            </customView>
+                                                        </gridCell>
+                                                        <gridCell row="r5p-Hs-XDA" column="Wsh-KX-sd2" id="Dho-2h-Zpo">
+                                                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-9C-8wg">
+                                                                <rect key="frame" x="416" y="0.0" width="400" height="64"/>
+                                                                <subviews>
+                                                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vO-5V-49J">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
+                                                                        <subviews>
+                                                                            <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fNK-JC-qNL">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="196" height="64"/>
+                                                                                <subviews>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="gMf-rh-Cfd" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="44" width="108" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.34000000000000002"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" name="systemTealColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                                                <real key="value" value="13"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="0.0"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="KTC-Iq-Pfi" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="22" width="108" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.94999999999999996"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" name="systemTealColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                                                <real key="value" value="13"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="0.0"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="2uw-IM-Zhb" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="108" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.050000000000000003"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" name="systemTealColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" name="systemIndigoColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Menlo Bold"/>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                                                <real key="value" value="13"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="0.0"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                </subviews>
+                                                                                <visibilityPriorities>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                </visibilityPriorities>
+                                                                                <customSpacing>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                </customSpacing>
+                                                                            </stackView>
+                                                                            <stackView distribution="fillEqually" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="100" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="100" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57F-X8-W0r">
+                                                                                <rect key="frame" x="204" y="0.0" width="196" height="64"/>
+                                                                                <subviews>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CF6-xS-CM1" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="44" width="65" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.34000000000000002"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.27175578010000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="0.0"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="RfN-Jv-RX3" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="22" width="65" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.94999999999999996"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.27175578010000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="0.0"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="nGY-2t-ljt" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="20"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                                                <real key="value" value="0.050000000000000003"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                                                                <color key="value" name="systemPinkColor" catalog="System" colorSpace="catalog"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                                                                <color key="value" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.27175578010000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                                <real key="value" value="0.0"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </customView>
+                                                                                </subviews>
+                                                                                <visibilityPriorities>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                    <integer value="1000"/>
+                                                                                </visibilityPriorities>
+                                                                                <customSpacing>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                    <real value="3.4028234663852886e+38"/>
+                                                                                </customSpacing>
+                                                                            </stackView>
+                                                                        </subviews>
+                                                                        <visibilityPriorities>
+                                                                            <integer value="1000"/>
+                                                                            <integer value="1000"/>
+                                                                        </visibilityPriorities>
+                                                                        <customSpacing>
+                                                                            <real value="3.4028234663852886e+38"/>
+                                                                            <real value="3.4028234663852886e+38"/>
+                                                                        </customSpacing>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="9vO-5V-49J" secondAttribute="trailing" id="J6R-bk-XFU"/>
+                                                                    <constraint firstAttribute="width" constant="400" id="JBE-Ng-aJY"/>
+                                                                    <constraint firstItem="9vO-5V-49J" firstAttribute="leading" secondItem="Fm2-9C-8wg" secondAttribute="leading" id="M57-ww-OQv"/>
+                                                                    <constraint firstItem="9vO-5V-49J" firstAttribute="top" secondItem="Fm2-9C-8wg" secondAttribute="top" id="NWU-em-dzV"/>
+                                                                    <constraint firstAttribute="height" constant="64" id="RoN-nx-04e"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="9vO-5V-49J" secondAttribute="bottom" id="sxd-9I-0Zx"/>
                                                                 </constraints>
                                                             </customView>
                                                         </gridCell>
@@ -1472,6 +1850,14 @@
                         <outlet property="lineMarkersCenteredView" destination="fJm-or-Kg8" id="HR7-2M-c0L"/>
                         <outlet property="lineMarkersStandardView" destination="O21-tc-rhl" id="6fU-lL-FWH"/>
                         <outlet property="lineStandardView" destination="P1e-zq-3Kb" id="mWV-lg-Nt7"/>
+                        <outlet property="percentBarGraph1" destination="CF6-xS-CM1" id="W3a-hK-81l"/>
+                        <outlet property="percentBarGraph11" destination="gMf-rh-Cfd" id="bSH-xZ-wEj"/>
+                        <outlet property="percentBarGraph12" destination="KTC-Iq-Pfi" id="jq1-SD-liw"/>
+                        <outlet property="percentBarGraph13" destination="2uw-IM-Zhb" id="Y84-n1-APi"/>
+                        <outlet property="percentBarGraph2" destination="RfN-Jv-RX3" id="NDe-EU-9zK"/>
+                        <outlet property="percentBarGraph3" destination="nGY-2t-ljt" id="xar-n5-x0K"/>
+                        <outlet property="percentBarTotalContainerView" destination="7sC-Mq-lN0" id="DAG-zM-bjb"/>
+                        <outlet property="percentBarTotalContainerView2" destination="Fm2-9C-8wg" id="ic0-sR-31C"/>
                         <outlet property="pie1" destination="5tQ-mY-7Fh" id="MrB-ne-ul2"/>
                         <outlet property="pie2" destination="GNz-4m-0t3" id="fRA-CP-VIn"/>
                         <outlet property="pie3" destination="8nY-fj-FYr" id="0Gz-cF-o0c"/>

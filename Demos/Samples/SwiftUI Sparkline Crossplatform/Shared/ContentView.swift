@@ -70,7 +70,7 @@ struct DetailView: View {
 			case 10: BarDemoContentView()
 			case 11: BitmapGenerationView()
 			case 12: SwiftUIView(shouldAnimate: true)
-			case 13: PercentBar()
+			case 13: PercentBar(shouldAnimate: true)
 			default: fatalError()
 			}
 		}

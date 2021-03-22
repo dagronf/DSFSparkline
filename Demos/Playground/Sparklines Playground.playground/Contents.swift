@@ -221,6 +221,32 @@ do {
 }
 
 
+// MARK: - simple percent bar
+
+do {
+	let style = DSFSparkline.PercentBar.Style()
+	style.underBarColor = CGColor(gray: 0.8, alpha: 1.0)
+	style.font = DSFFont(name: "Menlo", size: 10)!
+	style.barEdgeInsets = DSFEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+
+	let bitmap = DSFSparklineSurface.Bitmap()
+	let percentbar = DSFSparklineOverlay.PercentBar(style: style, value: 0.3)
+
+	bitmap.addOverlay(percentbar)
+
+	// Generate an image with retina scale
+	let image = bitmap.image(width: 50, height: 18, scale: 2)!
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/percentbar.png"))
+
+	percentbar.value = 0.7
+	style.showLabel = false
+	percentbar.displayStyle = style
+	// Generate an image with retina scale
+	let image2 = bitmap.image(width: 50, height: 18, scale: 2)!
+	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/percentbar2.png"))
+}
+
+
 
 /// MARK: - A more complex sparkline
 

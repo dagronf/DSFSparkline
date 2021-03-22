@@ -128,6 +128,77 @@ struct SuperCoolLineSpark: View {
 
 </details>
 
+## Available graph types
+
+### Line
+
+|  Standard  | Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-centered.png" width="400">|
+
+|  Interpolated  | Interpolated Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated-centered.png" width="400">|
+
+|  Standard Markers  | Interpolated Markers |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
+
+### Bar
+
+|  Standard  |  Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-centered.png" width="400">|
+
+### Stackline
+
+|  Standard  |  Centered  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
+
+### Stripes
+
+|  Standard  |  Integral (pixel boundaries)  |
+|------------|-------------------------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-integral.png" width="400">|
+
+### Dot
+
+|  Standard  |  Inverted  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-inverted.png" width="400">|
+
+### Win/Loss
+
+|  Win/Loss  |  Win/Loss/Tie  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-tie.png" width="400">|
+
+### Tablet
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
+
+### Pie
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie.png" width="400">|
+
+### DataBar
+
+|  Percent  |  Total  |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
+
+### PercentBar
+
+|    |    |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar-2.png" width="400">|
+
+
 # Building your sparkline
 
 You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder.
@@ -488,6 +559,23 @@ let image = bitmap.image(width: 50, height: 18, scale: 2)!
 ```
 </details>
 
+<details>
+  <summary>`DSFSparklineOverlay.PercentBar` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percentbar.png" width="50"/>  <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percentbar2.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()
+let percentBar = DSFSparklineOverlay.PercentBar(value: 0.3)
+
+bitmap.addOverlay(percentBar)
+
+// Generate an image with retina scale
+let image = bitmap.image(width: 50, height: 18, scale: 2)!
+
+// Do something with 'image'
+```
+
+</details>
+
 ### Component types
 
 A component represents an overlay that isn't a graph in itself.  Examples are grid lines, zero-lines, highlights etc.  A component uses the same datasource so that it aligns with the graph it is associated with.
@@ -510,6 +598,7 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 * `DSFSparklineTabletGraphView` / `DSFSparklineTabletGraphView.SwiftUI`
 * `DSFSparklinePieGraphView` / `DSFSparklinePieGraphView.SwiftUI`
 * `DSFSparklineDataBarGraphView` / `DSFSparklineDataBarGraphView.SwiftUI`
+* `DSFSparklinePercentBarGraphView` / `DSFSparklinePercentBarGraphView.SwiftUI`
 
 </details>
 
@@ -611,7 +700,7 @@ Represents the viewable settings and display.  The current view types available 
 
 | Setting               | Type                    | Description                                                                               |
 |-----------------------|-------------------------|-------------------------------------------------------------------------------------------|
-| `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line?                                            |
+| `centeredAtZeroLine`  | `Bool`                  | Should the graph be centered at the zero line? |
 | `lowerGraphColor`     | `NSColor`<br/>`UIColor` | The color used to draw values below the zero line. If nil, is the same as the graph color |
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
@@ -619,12 +708,12 @@ Represents the viewable settings and display.  The current view types available 
 A simple line graph
 
 | Setting         | Type            | Description                                                                                                        |
-|-----------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
-| `dataSource`    | `DSFDataSource` | The source of data for the graph                                                                                   |
-| `lineWidth`     | `CGFloat`       | The width of the line                                                                                              |
-| `interpolation` | `Bool`          | Interpolate a curve between the points                                                                             |
-| `lineShading`   | `Bool`          | Shade the area under the line                                                                                      |
-| `shadowed`      | `Bool`          | Draw a shadow under the line                                                                                       |
+|-----------------|-----------------|----------------------------------|
+| `dataSource`    | `DSFDataSource` | The source of data for the graph |
+| `lineWidth`     | `CGFloat`       | The width of the line |
+| `interpolation` | `Bool`          | Interpolate a curve between the points |
+| `lineShading`   | `Bool`          | Shade the area under the line |
+| `shadowed`      | `Bool`          | Draw a shadow under the line |
 | `markerSize`    | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
@@ -712,72 +801,26 @@ The majority of these settings are available both programatically and via `@IBIn
 
 The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
+### Percent Bar graph customizations (`DSFSparklinePercentBarGraphView`)
+
+| Setting             | Type                   | Description                                                                                                            |
+|---------------------|------------------------|--------------------------------------------------------|
+| `value`        | `CGFloat`            | The value to display in the pie chart |
+| `displayStyle` | `Style` | The style to apply when drawing the graph |
+| `cornerRadius`           | `CGFloat`  | The corner radius for the bar. |
+| `showLabel` | `Bool` | Should we draw a text label on the percent bar? |
+| `underBarColor` | `NSColor`<br>`UIColor` | The background of the bar color for the percent bar chart |
+| `underBarTextColor` | `NSColor`<br>`UIColor` | The color for text displayed on the background |
+| `barColor` | `NSColor`<br>`UIColor` | The bar color for the percent bar chart |
+| `barTextColor` | `NSColor`<br>`UIColor` | The color for text displayed on the bar |
+| `fontName` | `String` | The name of the label font |
+| `fontSize` | `CGFloat` | The size of the label font  |
+| `shouldAnimate` | `Bool` | If true, when the data source is set the segments animate into view |
+| `animationDuration` | `CGFloat` | The duration of the animation |
+
+The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
+
 </details>
-
-## Available graph types
-
-### Line
-
-|  Standard  | Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-centered.png" width="400">|
-
-|  Interpolated  | Interpolated Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-interpolated-centered.png" width="400">|
-
-|  Standard Markers  | Interpolated Markers |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
-
-### Bar
-
-|  Standard  |  Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-centered.png" width="400">|
-
-### Stackline
-
-|  Standard  |  Centered  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
-
-### Stripes
-
-|  Standard  |  Integral (pixel boundaries)  |
-|------------|-------------------------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-integral.png" width="400">|
-
-### Dot
-
-|  Standard  |  Inverted  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-inverted.png" width="400">|
-
-### Win/Loss
-
-|  Win/Loss  |  Win/Loss/Tie  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-tie.png" width="400">|
-
-### Tablet
-
-|  Standard  |
-|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
-
-### Pie
-
-|  Standard  |
-|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie.png" width="400">|
-
-### DataBar
-
-|  Percent  |  Total  |
-|------------|------------|
-|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
-
 
 ## Integration
 

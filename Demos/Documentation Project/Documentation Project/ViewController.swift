@@ -112,6 +112,18 @@ class ViewController: NSViewController {
 	@IBOutlet weak var databarTotal6: DSFSparklineDataBarGraphView!
 	@IBOutlet weak var databarTotalContainerView: NSView!
 
+	@IBOutlet weak var percentBarTotalContainerView: NSView!
+	@IBOutlet weak var percentBarTotalContainerView2: NSView!
+
+	@IBOutlet weak var percentBarGraph1: DSFSparklinePercentBarGraphView!
+	@IBOutlet weak var percentBarGraph2: DSFSparklinePercentBarGraphView!
+	@IBOutlet weak var percentBarGraph3: DSFSparklinePercentBarGraphView!
+
+	@IBOutlet weak var percentBarGraph11: DSFSparklinePercentBarGraphView!
+	@IBOutlet weak var percentBarGraph12: DSFSparklinePercentBarGraphView!
+	@IBOutlet weak var percentBarGraph13: DSFSparklinePercentBarGraphView!
+
+
 	var nameMap: [String: NSView] = [:]
 	func buildNameMap() {
 		nameMap["line-standard"] = lineStandardView
@@ -134,6 +146,8 @@ class ViewController: NSViewController {
 		nameMap["databar-max"] = self.databarTotalContainerView
 		nameMap["stripes-standard"] = self.stripes1
 		nameMap["stripes-integral"] = self.stripes2
+		nameMap["percent-bar"] = self.percentBarTotalContainerView
+		nameMap["percent-bar-2"] = self.percentBarTotalContainerView2
 	}
 
 	fileprivate var lineSource: DSFSparkline.DataSource = {
@@ -231,6 +245,16 @@ class ViewController: NSViewController {
 
 
 		self.buildNameMap()
+
+
+		self.percentBarGraph1.displayStyle.barEdgeInsets = NSEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+		self.percentBarGraph2.displayStyle.barEdgeInsets = NSEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+		self.percentBarGraph3.displayStyle.barEdgeInsets = NSEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+
+		self.percentBarGraph11.displayStyle.barEdgeInsets = NSEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+		self.percentBarGraph12.displayStyle.barEdgeInsets = NSEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+		self.percentBarGraph13.displayStyle.barEdgeInsets = NSEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+
 
 		do {
 			let source = DSFSparkline.DataSource(values: [4, 1, 8, 7, 5, 9, 3], range: 0 ... 10)

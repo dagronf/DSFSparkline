@@ -29,11 +29,13 @@ import Cocoa
 public typealias DSFColor = NSColor
 public typealias DSFView = NSView
 public typealias DSFFont = NSFont
+public typealias DSFEdgeInsets = NSEdgeInsets
 #else
 import UIKit
 public typealias DSFColor = UIColor
 public typealias DSFView = UIView
 public typealias DSFFont = UIFont
+public typealias DSFEdgeInsets = UIEdgeInsets
 #endif
 
 #if canImport(SwiftUI)
@@ -201,22 +203,23 @@ extension String {
 	return nil
 }
 
+// A CATextLayer that vertically centers its content
 class LCTextLayer : CATextLayer {
 
-	 // REF: http://lists.apple.com/archives/quartz-dev/2008/Aug/msg00016.html
-	 // CREDIT: David Hoerl - https://github.com/dhoerl
-	 // USAGE: To fix the vertical alignment issue that currently exists within the CATextLayer class. Change made to the yDiff calculation.
+	// REF: http://lists.apple.com/archives/quartz-dev/2008/Aug/msg00016.html
+	// CREDIT: David Hoerl - https://github.com/dhoerl
+	// USAGE: To fix the vertical alignment issue that currently exists within the CATextLayer class. Change made to the yDiff calculation.
 
-	 override func draw(in context: CGContext) {
-		  let height = self.bounds.size.height
-		  let fontSize = self.fontSize
-		  let yDiff = (height-fontSize)/2 - fontSize/10
+	override func draw(in context: CGContext) {
+		let height = self.bounds.size.height
+		let fontSize = self.fontSize
+		let yDiff = (height-fontSize)/2 - fontSize/10
 
-		  context.saveGState()
-		  context.translateBy(x: 0, y: yDiff) // Use -yDiff when in non-flipped coordinates (like macOS's default)
-		  super.draw(in: context)
-		  context.restoreGState()
-	 }
+		context.saveGState()
+		context.translateBy(x: 0, y: yDiff) // Use -yDiff when in non-flipped coordinates (like macOS's default)
+		super.draw(in: context)
+		context.restoreGState()
+	}
 }
 
 
@@ -246,3 +249,86 @@ extension CGColor {
 	static let DefaultBlack = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 1])!
 	static let DefaultClear = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 1, 1, 0])!
 }
+
+// MARK: - CATextLayer extensions
+
+extension CATextLayer {
+	func font() -> DSFFont? {
+		if let f = self.font as? DSFFont {
+			return f //return DSFFont(name: f.fontName, size: self.fontSize)
+		}
+		else if let s = self.font as? String {
+			return DSFFont(name: s, size: self.fontSize)
+		}
+		else {
+			return nil
+		}
+	}
+
+	func attributedString() -> NSAttributedString {
+		if let asv = self.string as? NSAttributedString {
+			return asv
+		}
+		else if let s = self.string as? String {
+			let attrs = [NSAttributedString.Key.font: self.font() as Any]
+			return NSAttributedString(string: s, attributes: attrs)
+		}
+		else {
+			fatalError()
+		}
+	}
+
+	/// Get the required bounds for the text layer content given `size` constraints
+	func textBounds(for size: CGSize) -> CGSize {
+
+		#if os(macOS)
+		let options: NSString.DrawingOptions = [NSString.DrawingOptions.usesFontLeading, NSString.DrawingOptions.usesLineFragmentOrigin]
+		#else
+		let options: NSStringDrawingOptions = [NSStringDrawingOptions.usesFontLeading, NSStringDrawingOptions.usesLineFragmentOrigin]
+		#endif
+
+		let ttt = self.attributedString()
+		let br = ttt.boundingRect(
+			with: CGSize(width: size.width, height: size.height),
+			options: options,
+			context: nil)
+		return br.size
+	}
+}
+
+extension CATransaction {
+	/// Perform 'body' without implicit animations
+	///
+	/// - Parameters:
+	///   - body: The block to execute without implicit animations
+	///
+	/// Example :-
+	/// ```
+	/// CATransaction.withDisabledActions {
+	///     self.checkerboardLayer.image.frame = self.bounds
+	///     ...
+	/// }
+	/// ```
+	class func withDisabledActions<T>(_ body: () throws -> T) rethrows -> T {
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
+		defer {
+			CATransaction.commit()
+		}
+		return try body()
+	}
+}
+
+#if os(macOS)
+extension CGRect {
+	/// Inset this rect by the amount specified in `insets`.
+	@inlinable func inset(by insets: NSEdgeInsets) -> CGRect {
+		var result = self
+		result.origin.x    += insets.left
+		result.origin.y    += insets.top
+		result.size.width  -= (insets.left + insets.right)
+		result.size.height -= (insets.top  + insets.bottom)
+		return result
+	}
+}
+#endif

@@ -52,6 +52,17 @@ public extension DSFSparklineSurface {
 			// Loop through each overlay and ask it to draw
 			self.overlays.forEach { overlay in
 				bitmapContext.usingGState { ctx in
+					overlay.frame = bounds
+					overlay.setNeedsDisplay()
+					overlay.contentsScale = scale
+					#if os(macOS)
+					overlay.isGeometryFlipped = true
+					#endif
+
+					// Render the layer content
+					overlay.render(in: ctx)
+
+					// Render any bitmap content
 					bounds = overlay.drawGraph(context: ctx, bounds: bounds, scale: scale)
 				}
 			}

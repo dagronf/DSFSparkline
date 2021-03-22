@@ -1,5 +1,5 @@
 //
-//  DSFSparklinePieGraphView+SwiftUI.swift
+//  DSFSparklinePercentBarGraphView+SwiftUI.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 12/2/21.
@@ -27,15 +27,17 @@ import SwiftUI
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklinePercentBarGraphView {
+
+	/// The SwiftUI percent bar graph
 	struct SwiftUI {
 		/// Datasource for the graph
 		let style: DSFSparkline.PercentBar.Style
 		/// Palette to use when coloring the chart
 		let value: Double
-
+		
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
-		public init(style: DSFSparkline.PercentBar.Style,
+		public init(style: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style(),
 						value: Double)
 		{
 			self.style = style
@@ -51,21 +53,20 @@ extension DSFSparklinePercentBarGraphView.SwiftUI: DSFViewRepresentable {
 	#else
 	public typealias UIViewType = DSFSparklinePercentBarGraphView
 	#endif
-
+	
 	public class Coordinator: NSObject {
 		let parent: DSFSparklinePercentBarGraphView.SwiftUI
 		init(_ sparkline: DSFSparklinePercentBarGraphView.SwiftUI) {
 			self.parent = sparkline
 		}
 	}
-
+	
 	public func makeCoordinator() -> Coordinator {
 		Coordinator(self)
 	}
-
+	
 	func makePercentBar(_: Context) -> DSFSparklinePercentBarGraphView {
 		let view = DSFSparklinePercentBarGraphView(frame: .zero)
-		view.translatesAutoresizingMaskIntoConstraints = false
 		view.displayStyle = self.style
 		view.value = CGFloat(self.value)
 		return view
@@ -79,7 +80,7 @@ public extension DSFSparklinePercentBarGraphView.SwiftUI {
 	func makeUIView(context: Context) -> DSFSparklinePercentBarGraphView {
 		return self.makePercentBar(context)
 	}
-
+	
 	func updateUIView(_ view: DSFSparklinePercentBarGraphView, context _: Context) {
 		self.updateView(view)
 	}
@@ -92,7 +93,7 @@ public extension DSFSparklinePercentBarGraphView.SwiftUI {
 	func makeNSView(context: Context) -> DSFSparklinePercentBarGraphView {
 		return self.makePercentBar(context)
 	}
-
+	
 	func updateNSView(_ view: DSFSparklinePercentBarGraphView, context _: Context) {
 		self.updateView(view)
 	}
@@ -107,6 +108,5 @@ public extension DSFSparklinePercentBarGraphView.SwiftUI {
 		view.value = CGFloat(self.value)
 	}
 }
-
 
 #endif
