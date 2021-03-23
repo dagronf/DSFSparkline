@@ -1,5 +1,5 @@
 //
-//  DSFSparklineOverlay+SimplePercentBar.swift
+//  DSFSparklineOverlay+PercentBar.swift
 //  DSFSparklines
 //
 //  Created by Darren Ford on 16/3/21.
