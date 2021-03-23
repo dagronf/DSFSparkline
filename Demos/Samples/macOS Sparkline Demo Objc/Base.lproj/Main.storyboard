@@ -719,6 +719,38 @@
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="X3f-SW-jsr" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
                                             <rect key="frame" x="8" y="8" width="424" height="68"/>
+                                            <subviews>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="CiR-MG-fWQ" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
+                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="L2C-rR-4Ua"/>
+                                                        <constraint firstAttribute="height" constant="16" id="PSW-5b-40r"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                            <real key="value" value="0.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="underBarColor">
+                                                            <color key="value" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="barColor">
+                                                            <color key="value" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="barTextColor">
+                                                            <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="underBarTextColor">
+                                                            <color key="value" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="NO"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showLabel" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </customView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CiR-MG-fWQ" firstAttribute="leading" secondItem="X3f-SW-jsr" secondAttribute="leading" id="5J6-HG-AXp"/>
+                                                <constraint firstAttribute="bottom" secondItem="CiR-MG-fWQ" secondAttribute="bottom" id="AWX-R4-fcT"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                     <color key="value" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
@@ -889,6 +921,7 @@
                         <outlet property="barGraph" destination="Vfz-XG-Zqu" id="Xf1-ZW-Bdo"/>
                         <outlet property="centeredBarGraph" destination="2Sf-rx-WZW" id="QJR-nt-v8t"/>
                         <outlet property="lineGraph" destination="X3f-SW-jsr" id="WgW-zU-yGA"/>
+                        <outlet property="percentBarThroughput" destination="CiR-MG-fWQ" id="Btp-fr-9zD"/>
                         <outlet property="receiveGraph" destination="Yaa-RU-TFK" id="Hyh-4k-V0H"/>
                         <outlet property="sendGraph" destination="7Nz-0V-zTh" id="J2f-O8-wk7"/>
                     </connections>

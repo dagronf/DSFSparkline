@@ -25,6 +25,8 @@
 @property (weak) IBOutlet DSFSparklineDotGraphView *sendGraph;
 @property (nonatomic, strong) DSFSparklineDataSource* sendDataSource;
 
+@property (weak) IBOutlet DSFSparklinePercentBarGraphView *percentBarThroughput;
+
 @end
 
 @implementation ViewController
@@ -69,6 +71,10 @@
 	[[self sendGraph] setDataSource:[self sendDataSource]];
 	[[self sendDataSource] setRangeWithLowerBound:0.0 upperBound:1.0];
 
+	DSFSparklinePercentBarStyle* style = [[self percentBarThroughput] displayStyle];
+	[style setBarEdgeInsets: NSEdgeInsetsMake(1, 1, 1, 1)];
+	[style setAnimated:NO];
+
 	[self performUpdate];
 }
 
@@ -78,6 +84,8 @@
 		CGFloat v1 = drand48();
 
 		BOOL result = [[self dataSource] pushWithValue: (v1 * 2) - 1];
+		[[self percentBarThroughput] setValue:v1];
+
 		result = [[self barDataSource] pushWithValue: v1];
 
 //		v1 = drand48();
@@ -86,6 +94,7 @@
 
 		v1 = drand48();
 		result = [[self receiveDataSource] pushWithValue:v1];
+
 		v1 = drand48();
 		result = [[self sendDataSource] pushWithValue:v1];
 
