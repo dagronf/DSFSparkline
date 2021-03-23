@@ -25,7 +25,7 @@ import QuartzCore
 import SwiftUI
 
 public extension DSFSparkline {
-	enum PercentBar {
+	@objc class PercentBar: NSObject {
 		/// Percent Bar style class. Assigned values should be in the range 0 ... 1
 		@objc(DSFSparklinePercentBarStyle) public class Style: NSObject {
 			// MARK: Public
