@@ -55,6 +55,10 @@ class ViewController: UIViewController {
 	@IBOutlet weak var attributedStringSupportLabel: UILabel!
 
 
+	@IBOutlet weak var percentBar1: DSFSparklinePercentBarGraphView!
+	@IBOutlet weak var percentBar2: DSFSparklinePercentBarGraphView!
+	@IBOutlet weak var percentBar3: DSFSparklinePercentBarGraphView!
+
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -173,6 +177,15 @@ class ViewController: UIViewController {
 		self.pie3.dataSource = DSFSparkline.StaticDataSource(v2)
 		self.pie4.dataSource = DSFSparkline.StaticDataSource(v2)
 	}
+
+	@IBAction func newValuesForPercentBar(_ sender: Any) {
+		self.percentBar1.value = CGFloat(drand48())
+		self.percentBar2.value = CGFloat(drand48())
+		self.percentBar3.value = CGFloat(drand48())
+	}
+
+
+
 }
 
 extension CGFloat {

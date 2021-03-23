@@ -26,10 +26,8 @@ import SwiftUI
 
 public extension DSFSparkline {
 	enum PercentBar {
-
-		/// Percent Bar style class
+		/// Percent Bar style class. Assigned values should be in the range 0 ... 1
 		@objc(DSFSparklinePercentBarStyle) public class Style: NSObject {
-
 			// MARK: Public
 
 			/// The corner radius for the bar/underbar
@@ -85,19 +83,20 @@ public extension DSFSparkline {
 public extension DSFSparklineOverlay {
 	/// A percent bar sparkline
 	@objc(DSFSparklineOverlayPercentBar) class PercentBar: DSFSparklineOverlay {
-
-		/// The value assigned to the percent bar.
+		/// The value assigned to the percent bar. A value between 0.0 and 1.0
 		@objc public var value: CGFloat = 0.0 {
 			didSet {
-				self.valueChanged()
+				self.valueDidChange()
 			}
 		}
+
+		/// The value that is displayed in the control.  This is the clamped version of `value`
+		@objc public private(set) var displayValue: CGFloat = 0.0
 
 		/// The style to apply to the percent bar
 		@objc public var displayStyle = DSFSparkline.PercentBar.Style() {
 			didSet {
-				self.syncStyle()
-				self.dataDidChange()
+				self.displayStyleDidChange()
 			}
 		}
 
@@ -117,10 +116,10 @@ public extension DSFSparklineOverlay {
 
 			self.displayStyle = style
 
-			self.syncStyle()
+			self.displayStyleDidChange()
 
 			self.value = value
-			self.valueChanged()
+			self.valueDidChange()
 
 			self.setNeedsLayout()
 		}
@@ -130,36 +129,36 @@ public extension DSFSparklineOverlay {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		override public func drawGraph(context _: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
 			// Do nothing.  All the content is handled by layers
 			return bounds
 		}
 
 		// MARK: Layers
-		private let textLayer = LCTextLayer()        // Text layer
-		private let fractionLayer = CAShapeLayer()   // Bar layer
+
+		private let textLayer = LCTextLayer() // Text layer
+		private let fractionLayer = CAShapeLayer() // Bar layer
 
 		// MARK: Value helpers
-		private var previousValue: CGFloat = 0.0     // The previously assigned fractional value (for animation)
-		private var fractionValue: CGFloat = 0.0     // A guaranteed 0 ... 1 fractional value for the control
+
+		private var previousValue: CGFloat = 0.0 // The previously assigned fractional value (for animation)
 
 		// MARK: Animation
-		private var animator = ArbitraryAnimator()   //
+
+		private var animator = ArbitraryAnimator() //
 		private var fractionComplete: CGFloat = 0
 	}
 }
 
 extension DSFSparklineOverlay.PercentBar {
-
-	public override func layoutSublayers() {
+	override public func layoutSublayers() {
 		super.layoutSublayers()
 		self.layoutGraph()
 	}
 
 	private func layoutGraph() {
 		CATransaction.withDisabledActions {
-
-			let diff = self.fractionValue - self.previousValue
+			let diff = self.displayValue - self.previousValue
 			let fDiff = diff * self.fractionComplete
 
 			let complete = fDiff + self.previousValue
@@ -193,9 +192,19 @@ extension DSFSparklineOverlay.PercentBar {
 }
 
 private extension DSFSparklineOverlay.PercentBar {
+	func valueDidChange() {
+		// Store the previous value for our animation
+		self.previousValue = self.displayValue
+		// Make sure our internal fraction value is always 0 ... 1
+		self.displayValue = self.value.clamped(to: 0 ... 1)
+		// Recreate the text for the label
+		self.updateLabel()
+		// And notify that data changed
+		self.dataDidChange()
+	}
 
 	func updateLabel() {
-		let label = self.displayStyle.label(for: self.fractionValue)
+		let label = self.displayStyle.label(for: self.displayValue)
 		CATransaction.withDisabledActions {
 			self.textLayer.string = label
 		}
@@ -209,13 +218,6 @@ private extension DSFSparklineOverlay.PercentBar {
 			self.fractionComplete = 1.0
 			self.setNeedsDisplay()
 		}
-	}
-
-	func valueChanged() {
-		self.previousValue = self.fractionValue
-		self.fractionValue = self.value.clamped(to: 0 ... 1)
-		self.updateLabel()
-		self.dataDidChange()
 	}
 
 	func startAnimateIn() {
@@ -232,7 +234,7 @@ private extension DSFSparklineOverlay.PercentBar {
 		self.animator.start()
 	}
 
-	func syncStyle() {
+	func displayStyleDidChange() {
 		CATransaction.withDisabledActions {
 			self.cornerRadius = self.displayStyle.cornerRadius
 			self.backgroundColor = self.displayStyle.underBarColor
@@ -244,5 +246,6 @@ private extension DSFSparklineOverlay.PercentBar {
 			self.textLayer.font = CTFontCreateWithFontDescriptor(self.displayStyle.font.fontDescriptor, 0, nil)
 			self.textLayer.fontSize = self.displayStyle.fontSize
 		}
+		self.setNeedsDisplay()
 	}
 }
