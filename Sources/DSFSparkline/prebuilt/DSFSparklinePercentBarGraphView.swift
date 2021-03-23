@@ -159,6 +159,46 @@ public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 		}
 	}
 
+	/// The left inset for the bar
+	@IBInspectable public var leftInset: CGFloat = 0 {
+		didSet {
+			var insets = self.displayStyle.barEdgeInsets
+			insets.left = leftInset
+			self.displayStyle.barEdgeInsets = insets
+			self.displayUpdate()
+		}
+	}
+
+	/// The top inset for the bar
+	@IBInspectable public var topInset: CGFloat = 0 {
+		didSet {
+			var insets = self.displayStyle.barEdgeInsets
+			insets.top = topInset
+			self.displayStyle.barEdgeInsets = insets
+			self.displayUpdate()
+		}
+	}
+
+	/// The right inset for the bar
+	@IBInspectable public var rightInset: CGFloat = 0 {
+		didSet {
+			var insets = self.displayStyle.barEdgeInsets
+			insets.right = rightInset
+			self.displayStyle.barEdgeInsets = insets
+			self.displayUpdate()
+		}
+	}
+
+	/// The bottom inset for the bar
+	@IBInspectable public var bottomInset: CGFloat = 0 {
+		didSet {
+			var insets = self.displayStyle.barEdgeInsets
+			insets.bottom = bottomInset
+			self.displayStyle.barEdgeInsets = insets
+			self.displayUpdate()
+		}
+	}
+
 	// MARK: - Animation
 
 	/// Should the bar animate to new values?
