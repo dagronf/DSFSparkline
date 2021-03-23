@@ -25,6 +25,12 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/reportview.png" width="300"/></a>
 </center>
 
+## What is a sparkline?
+
+A sparkline is a very small chart, typically drawn without axes or coordinates. It presents the general shape of the variation (typically over time) in some measurement, such as temperature or stock market price, in a simple and highly condensed way. Sparklines are small enough to be embedded in text, or several sparklines may be grouped together as elements of a small multiple. Whereas the typical chart is designed to show as much data as possible, and is set off from the flow of text, sparklines are intended to be succinct, memorable, and located where they are discussed.
+
+[Source: Wikipedia](https://en.wikipedia.org/wiki/Sparkline)
+
 ## Features
 
 * Multiple graph styles support, such as line, bar, tablet etc.
@@ -34,10 +40,10 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 * y-range can automatically grow or shrink to encompass the full y-range of data.
 * y-range can be fixed and the sparkline will truncate to the specified range
 * SwiftUI support for all sparkline types
+* NSAttributedString support
 * `IBDesignable` support for prebuilt types so you can see and configure your sparklines in interface builder.
 * Optional drawing of a 'zero line' on the bar and line graphs (thanks [Tito Ciuro](https://github.com/tciuro))
 * Playground support
-* NSAttributedString support
 
 ## TL;DR - Show me something!
 
@@ -130,7 +136,9 @@ struct SuperCoolLineSpark: View {
 
 ## Available graph types
 
-### Line
+### Line <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/>
+
+A simple line sparkline. The line can be centered around a zero line to indicate positive and negative values. You can also add (optional) markers to the data points.
 
 |  Standard  | Centered  |
 |------------|------------|
@@ -144,66 +152,98 @@ struct SuperCoolLineSpark: View {
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
 
-### Bar
+### Bar <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-simple-small.png" width="50"/>
+
+A simple barchart sparkline. The bar can be centered around a zero line to indicate positive and negative values.
 
 |  Standard  |  Centered  |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-centered.png" width="400">|
 
-### Stackline
+### Stackline <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-simple-small.png" width="50"/>
+
+A stackline sparkline is similar to a bar chart except that it doesn't separate out individual columns. The stackline can be centered around a zero line to indicate positive and negative values.
 
 |  Standard  |  Centered  |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stackline-centered.png" width="400">|
 
-### Stripes
+### Stripes <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-small.png" width="50"/>
+
+A stripes graph.  A good example of a stripes graph is the 'warming stripes' [climate graph](https://www.climatecentral.org/showyourstripes).
+
+Values from the datasource are mapped to a supplied gradient
 
 |  Standard  |  Integral (pixel boundaries)  |
 |------------|-------------------------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/stripes-integral.png" width="400">|
 
-### Dot
+### Dot <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-simple-small.png" width="50"/>
+
+A dot sparkline reminiscent of Activity Viewer's CPU history graphs
 
 |  Standard  |  Inverted  |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/dot-inverted.png" width="400">|
 
-### Win/Loss
+### Win/Loss/Tie <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-small.png" width="50"/>
+
+A win-loss graph, where positive values in the datasource are represented as a 'win', negative values represented as a 'loss', and zero values are a 'tie'.
 
 |  Win/Loss  |  Win/Loss/Tie  |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/win-loss-tie.png" width="400">|
 
-### Tablet
+### Tablet <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet-small.png" width="80"/>
+
+A tablet graph, where positive values in the datasource are represented as a filled circle, negative values represented as an unfilled circle. The behaviour is identical to the win/loss graph.
 
 |  Standard  |
 |------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
 
-### Pie
+### Pie <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie-simple.png" width="18"/>
+
+A basic pie sparkline
 
 |  Standard  |
 |------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie.png" width="400">|
 
-### DataBar
+### DataBar <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-simple.png" width="50"/>
+
+A databar sparkline.  Supports percentage and totals types.
 
 |  Percent  |  Total  |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/databar-max.png" width="400">|
 
-### PercentBar
+### PercentBar <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percentbar.png" width="50"/>
+
+A percentbar sparkline takes a single value (0 ... 1) and draws a horizontal bar chart containing the value with an optional text label.
 
 |    |    |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar-2.png" width="400">|
 
+# Demos
+
+You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder, providing examples for macOS (swift and objc), iO, tvOS, macCatalyst and SwiftUI.
+
+There's also a simple Xcode Playground available in the `Demos/Playground` subfolder where you can play with the different sparkline types
 
 # Building your sparkline
 
-You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder.
+### Using prebuilt views
 
-There's a simple Xcode Playground available in the `Demos/Playground` subfolder.
+A prebuilt view is useful to quickly add a sparkline using SwiftUI or via Interface Builder (while providing previews using @IBDesignable). These views a slightly more limited set of styling and customizations but are much quicker to implement than using overlays directly.
+
+For the most part, the prebuilt types will be all you need.
+
+If you've used `DSFSparklines` prior to v4, these are the original view types that you used to display your sparklines.
+
+* **A datasource** - the set of values to draw
+* **A prebuilt view type** - the NSView/UIView/SwiftUI view to draw your sparkline
 
 ### Using overlays
 
@@ -212,15 +252,6 @@ There are three fundamental building blocks for an overlay sparkline. Overlay sp
 * **A surface** - where it will draw
 * **A datasource** - the set of values to draw
 * **One or more overlays** - the 'layers' which render different components of the sparkline
-
-### Using prebuilt views
-
-A prebuilt view is useful to quickly add a sparkline via Interface Builder (while providing previews using @IBDesignable) or SwiftUI.  These views provide hard-coded styling (beyond the simple graph color) and a limit set of customizations.
-
-* **A datasource** - the set of values to draw
-* **A prebuilt view type** - the NSView/UIView/SwiftUI view to draw your sparkline
-
-If you've used `DSFSparklines` prior to v4, these are the original view types that you used to display your sparklines.
 
 ## Surface
 
@@ -586,8 +617,13 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 | `DSFSparklineOverlay.RangeHighlight` | Highlight a range of y-values on the sparkline |
 | `DSFSparklineOverlay.GridLines` | Draw lines at specified y-values on the sparkline |
 
-<details>
-  <summary>Available prebuilt types</summary>
+## Using prebuilt views
+
+DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project, especially relating to Interface Builder (the pre-built types provide an `@IBDesignable` interface) so you can design the look of your graph from directly within Interface Builder.
+
+Every prebuilt sparkline view has a SwiftUI companion view.
+
+### Available prebuilt types
 
 * `DSFSparklineLineGraphView` / `DSFSparklineLineGraphView.SwiftUI`
 * `DSFSparklineStackLineGraphView` / `DSFSparklineLineGraphView.SwiftUI`
@@ -599,8 +635,6 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 * `DSFSparklinePieGraphView` / `DSFSparklinePieGraphView.SwiftUI`
 * `DSFSparklineDataBarGraphView` / `DSFSparklineDataBarGraphView.SwiftUI`
 * `DSFSparklinePercentBarGraphView` / `DSFSparklinePercentBarGraphView.SwiftUI`
-
-</details>
 
 <details>
   <summary>Sample Swift code</summary>
@@ -667,11 +701,6 @@ struct SparklineView: View {
 
 </details>
 
-## Using prebuilt views
-
-DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project, especially relating to Interface Builder (the pre-built types provide an `@IBDesignable` interface) so you can design the look of your graph from directly within Interface Builder.
-
-Every prebuilt sparkline view has a SwiftUI companion view.
 
 <details>
 <summary>Prebuilt customizations</summary>
@@ -705,8 +734,6 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 
-A simple line graph
-
 | Setting         | Type            | Description                                                                                                        |
 |-----------------|-----------------|----------------------------------|
 | `dataSource`    | `DSFDataSource` | The source of data for the graph |
@@ -718,8 +745,6 @@ A simple line graph
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
 
-A simple bar graph
-
 | Setting      | Type            | Description                      |
 |--------------|-----------------|----------------------------------|
 | `dataSource` | `DSFDataSource` | The source of data for the graph |
@@ -727,10 +752,6 @@ A simple bar graph
 | `barSpacing` | `CGFloat`       | The spacing between each bar     |
 
 ### Stripes graph customizations (`DSFSparklineStripesGraphView`)
-
-A stripes graph.  A good example of a stripes graph is the 'warming stripes' [climate graph](https://www.climatecentral.org/showyourstripes).
-
-Values from the datasource are mapped to a supplied gradient
 
 | Setting      | Type            | Description                                                         |
 |--------------|-----------------|---------------------------------------------------------------------|
@@ -740,8 +761,6 @@ Values from the datasource are mapped to a supplied gradient
 
 ### Dot graph customizations (`DSFSparklineDotGraphView`)
 
-A dot graph reminiscent of Activity Viewer
-
 | Setting           | Type                   | Description                                        |
 |-------------------|------------------------|----------------------------------------------------|
 | `dataSource`      | `DSFDataSource`        | The source of data for the graph                   |
@@ -749,8 +768,6 @@ A dot graph reminiscent of Activity Viewer
 | `unsetGraphColor` | `NSColor`<br>`UIColor` | The color to use when drawing the background       |
 
 ### Win/Loss graph customizations (`DSFSparklineWinLossGraphView`)
-
-A win-loss graph, where positive values in the datasource are represented as a 'win', negative values represented as a 'loss', and zero values are a 'tie'.
 
 | Setting        | Type                   | Description                       |
 |----------------|------------------------|-----------------------------------|
@@ -762,8 +779,6 @@ A win-loss graph, where positive values in the datasource are represented as a '
 | `tieColor`     | `NSColor`<br>`UIColor` | *(optional)* The color to use for a 'tie'. If nil, tie (0) values are not drawn<br>By default, 'tie' values are not drawn. |
 
 ### Tablet graph customizations (`DSFSparklineTabletGraphView`)
-
-A tablet graph, where positive values in the datasource are represented as a filled circle, negative values represented as an unfilled circle. The concept is identical to the win/loss graph except the renderering is different.
 
 | Setting      | Type                   | Description                                      |
 |--------------|------------------------|--------------------------------------------------|
@@ -784,8 +799,6 @@ A tablet graph, where positive values in the datasource are represented as a fil
 | `animated`          | `Bool`                 | If true, when the data source is set the segments animate into view                     |
 | `animationDuration` | `CGFloat `             | The duration of the animation                                                           |
 
-The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
-
 ### Databar graph customizations (`DSFSparklineDataBarGraphView`)
 
 | Setting             | Type                   | Description                                                                                                            |
@@ -798,8 +811,6 @@ The majority of these settings are available both programatically and via `@IBIn
 | `unsetColor`        | `NSColor`<br>`UIColor` | (optional) If the maximum value is set, if the segments don't fit the total this color is used as the background color |
 | `animated`          | `Bool`                 | If true, when the data source is set the segments animate into view                                                    |
 | `animationDuration` | `CGFloat`              | The duration of the animation                                                                                          |
-
-The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
 
 ### Percent Bar graph customizations (`DSFSparklinePercentBarGraphView`)
 
@@ -817,8 +828,10 @@ The majority of these settings are available both programatically and via `@IBIn
 | `fontSize` | `CGFloat` | The size of the label font  |
 | `shouldAnimate` | `Bool` | If true, when the data source is set the segments animate into view |
 | `animationDuration` | `CGFloat` | The duration of the animation |
-
-The majority of these settings are available both programatically and via `@IBInspectable` in Interface Builder.
+| `leftInset`.  | `CGFloat` | The bar's inset from the left of the control |
+| `topInset`    | `CGFloat` | The bar's inset from the top of the control |
+| `rightInset`  | `CGFloat` | The bar's inset from the right of the control |
+| `bottomInset` | `CGFloat` | The bar's inset from the bottom of the control |
 
 </details>
 
@@ -863,6 +876,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `4.2.0`
+
+* Added 'percent bar' sparkline type.
 
 ### `4.1.2`
 
