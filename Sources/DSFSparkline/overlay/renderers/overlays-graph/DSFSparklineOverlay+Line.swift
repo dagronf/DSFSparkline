@@ -69,21 +69,6 @@ public extension DSFSparklineOverlay {
 	}
 }
 
-extension CGContext {
-	@inlinable func setShadow(_ shadow: NSShadow) {
-
-		#if os(macOS)
-		let color = shadow.shadowColor
-		#else
-		let color = shadow.shadowColor as? UIColor
-		#endif
-
-		self.setShadow(offset: shadow.shadowOffset,
-							blur: shadow.shadowBlurRadius,
-							color: color?.cgColor)
-	}
-}
-
 private extension DSFSparklineOverlay.Line {
 	func drawLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
 		guard let dataSource = self.dataSource,
