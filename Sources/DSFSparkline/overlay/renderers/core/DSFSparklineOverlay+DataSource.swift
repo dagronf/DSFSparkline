@@ -43,6 +43,7 @@ public extension DSFSparklineOverlay {
 		// Listen for changes in the data and update appropriately
 		private var dataObserver: NSObjectProtocol?
 
+		// Update the observer to point to a new datasource
 		private func updateDataObserver() {
 			self.dataObserver = nil
 			if let datasource = self.dataSource {

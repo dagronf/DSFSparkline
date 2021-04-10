@@ -53,8 +53,8 @@ public extension DSFSparklineOverlay {
 		/// The length of the animate-in duration
 		@objc public var animationDuration: CGFloat = 0.25
 
-		override func dataSourceDidChange() {
-			super.dataSourceDidChange()
+		override func staticDataSourceDidChange() {
+			super.staticDataSourceDidChange()
 			if self.animated {
 				self.startAnimateIn()
 			}

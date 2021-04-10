@@ -47,3 +47,12 @@ public extension DSFSparkline {
 		}
 	}
 }
+
+public extension DSFSparkline.StaticDataSource {
+	override var description: String {
+		"""
+		StaticDataSource: count: \(values.count), totalValue: \(self.total)
+		   values: \(self.values)
+		"""
+	}
+}

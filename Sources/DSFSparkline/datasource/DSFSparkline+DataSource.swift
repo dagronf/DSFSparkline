@@ -29,25 +29,33 @@ public extension DSFSparkline {
 	/// A datasource for a sparkline
 	@objc(DSFSparklineDataSource) class DataSource: NSObject {
 
+		public static let DefaultWindowSize: UInt = 10
+
+		/// Notification sent when the content of the data source changes
 		@objc(DSFSparklineDataSourceDataChangedNotification)
 		static let DataChangedNotification = NSNotification.Name("DSFSparklineDataSource.DataChanged")
 
-		private let sparkline = SparklineWindow<CGFloat>(windowSize: 10)
+		private let sparkline: SparklineWindow<CGFloat>
 
 		@objc public override init() {
+			self.sparkline = SparklineWindow<CGFloat>(windowSize: DataSource.DefaultWindowSize)
 			super.init()
 		}
 
-		public init(windowSize: UInt? = nil,
+
+		/// Create a data source
+		/// - Parameters:
+		///   - windowSize: The size of the window to use
+		///   - range: (optional) the clamped y-range of data to display. Values outside this range are clamped
+		///   - zeroLineValue: the zero-line value for the source. Defaults to zero (0)
+		public init(windowSize: UInt = DataSource.DefaultWindowSize,
 						range: ClosedRange<CGFloat>? = nil,
-						zeroLineValue: CGFloat? = nil) {
+						zeroLineValue: CGFloat = 0) {
+			self.sparkline = SparklineWindow<CGFloat>(windowSize: windowSize)
 			self.sparkline.yRange = range
-			if let zValue = zeroLineValue {
-				self.sparkline.zeroLineValue = zValue
-			}
-			if let ws = windowSize {
-				self.sparkline.windowSize = ws
-			}
+			self.sparkline.zeroLineValue = zeroLineValue
+
+			super.init()
 		}
 
 		/// Create a datasource from a series of values
@@ -58,6 +66,16 @@ public extension DSFSparkline {
 			self.init(windowSize: UInt(values.count), range: range)
 			self.set(values: values)
 		}
+	}
+}
+
+public extension DSFSparkline.DataSource {
+	override var description: String {
+		"""
+		DataSource: windowSize: \(sparkline.windowSize), zeroLine: \(sparkline.zeroLineValue), range: \(String(describing: sparkline.yRange)), emptyCount: \(sparkline.emptyValueCount))
+			data: \(sparkline.raw)
+			norm: \(sparkline.normalized)
+		"""
 	}
 }
 
@@ -194,14 +212,18 @@ public extension DSFSparkline.DataSource {
 // MARK: - Internal
 
 extension DSFSparkline.DataSource {
+
+	/// The number of items added since last reset
 	var counter: UInt {
 		return self.sparkline.counter
 	}
 
+	// Normalize the specified value within 0.0 ... 1.0 for the current data
 	func normalize(value: CGFloat) -> CGFloat {
 		return self.sparkline.normalize(value: value)
 	}
 
+	// Normalize the zero-line value within 0.0 ... 1.0 for the current data
 	var normalizedZeroLineValue: CGFloat {
 		return self.normalize(value: self.zeroLineValue)
 	}

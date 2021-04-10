@@ -38,6 +38,17 @@ let baseColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [
 let primaryStroke = baseColor // (gray: 0.0, alpha: 0.3))
 let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
 
+do {
+	// A method to replace a value within a DataSource
+	let replaceSource = DSFSparkline.DataSource(values: [0,1,2,3,4,5,6,7])
+	Swift.print(replaceSource)
+
+	var currentData = replaceSource.data
+	currentData.replaceSubrange(3...3, with: [33])
+	replaceSource.set(values: currentData)
+	Swift.print(replaceSource)
+}
+
 // MARK: - Simple line graph
 
 do {
@@ -62,6 +73,21 @@ do {
 	var message = NSMutableAttributedString(string: "Inlined ")
 	message.append(attr)
 	message.append(NSAttributedString(string: " line graph"))
+
+	do {
+		let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+		let line = DSFSparklineOverlay.Line()       // Create a line overlay
+		line.strokeWidth = 1
+		line.primaryStrokeColor = primaryStroke
+		line.primaryFill = primaryFill
+		line.markerSize = 3
+		line.dataSource = source                    // Assign the datasource to the overlay
+		bitmap.addOverlay(line)                     // And add the overlay to the surface.
+
+		// Generate an image with retina scale
+		let image = bitmap.image(width: 50, height: 25, scale: 2)!
+	}
+
 }
 
 // MARK: - Simple bar graph
