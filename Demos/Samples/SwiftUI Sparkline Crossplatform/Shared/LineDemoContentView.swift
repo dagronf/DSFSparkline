@@ -295,6 +295,74 @@ struct LineDemoLineRanges: View {
 	}
 }
 
+struct LineDemoLineRanges2_Previews: PreviewProvider {
+	static var previews: some View {
+		LineDemoLineRanges2()
+	}
+}
+
+struct LineDemoLineRanges2: View {
+
+	let c0 = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.736,  0.169, 0.264, 1.000])!
+	let c1 = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.927,  0.393, 0.265, 1.000])!
+	let c2 = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.945,  0.593, 0.257, 1.000])!
+	let c3 = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.950,  0.856, 0.373, 1.000])!
+	let c4 = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.605,  0.815, 0.249, 1.000])!
+	let c5 = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.674,  0.938, 0.561, 1.000])!
+
+	let source: DSFSparkline.DataSource = {
+		let d = DSFSparkline.DataSource(windowSize: 12, range: 0 ... 50)
+		d.push(values: [
+			12, 12, 3, 16, 18, 22, 11, 26, 22, 45, 13, 10
+		])
+		return d
+	}()
+
+	var body: some View {
+		Text("More ranges")
+		HStack {
+			DSFSparklineLineGraphView.SwiftUI(
+				dataSource: source,
+				graphColor: DSFColor.white,
+				lineWidth: 4,
+				interpolated: true,
+				lineShading: false,
+				shadowed: true,
+				highlightDefinitions: [
+					DSFSparkline.HighlightRangeDefinition(
+						range: 0 ..< 5,
+						fillColor: c0
+					),
+					DSFSparkline.HighlightRangeDefinition(
+						range: 5 ..< 10,
+						fillColor: c1
+					),
+					DSFSparkline.HighlightRangeDefinition(
+						range: 10 ..< 15,
+						fillColor: c2
+					),
+					DSFSparkline.HighlightRangeDefinition(
+						range: 15 ..< 20,
+						fillColor: c3
+					),
+					DSFSparkline.HighlightRangeDefinition(
+						range: 20 ..< 25,
+						fillColor: c4
+					),
+					DSFSparkline.HighlightRangeDefinition(
+						range: 25 ..< 50,
+						fillColor: c5
+					),
+				]
+			)
+			.frame(height: 120.0)
+			.padding(5)
+			.border(Color.gray.opacity(0.2), width: 1)
+		}
+	}
+}
+
+
 struct LineDemoContentView: View {
 	var body: some View {
 		ScrollView([.vertical, .horizontal]) {
@@ -308,6 +376,7 @@ struct LineDemoContentView: View {
 				LineDemoAreaCenteredMarkers()
 				LineDemoAreaCenteredMarkersNoLowerColor()
 				LineDemoLineRanges()
+				LineDemoLineRanges2()
 			}
 			.frame(width: 400.0)
 			.padding(10)

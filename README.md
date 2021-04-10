@@ -31,6 +31,12 @@ A sparkline is a very small chart, typically drawn without axes or coordinates. 
 
 [Source: Wikipedia](https://en.wikipedia.org/wiki/Sparkline)
 
+## What ISN'T a sparkline?
+
+`DSFSparkline` **IS NOT** designed to be a full-featured graphing library. It was built to be lightweight, to create small, memorable charts within an app.
+
+If you need features like labelling, real-time updating, axis-labelling, interactivity, legends or beautiful charts at larger sizes, you might be better served by the [Charts library](https://github.com/danielgindi/Charts), [Core plot](https://github.com/core-plot/core-plot) or [SciChart (paid)](https://www.scichart.com/ios-chart-features/). You can find a whole lot more [here](https://iosexample.com/tag/charts/).
+
 ## Features
 
 * Multiple graph styles support, such as line, bar, tablet etc.

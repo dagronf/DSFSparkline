@@ -142,6 +142,7 @@ private extension DSFSparklineOverlay.Line {
 						ctx.setShadow(shadow)
 					}
 					ctx.setLineJoin(.round)
+					ctx.setLineCap(.round)
 					ctx.strokePath()
 				}
 			}
@@ -254,6 +255,7 @@ private extension DSFSparklineOverlay.Line {
 							ctx.setShadow(shadow)
 						}
 						ctx.setLineJoin(.round)
+						ctx.setLineCap(.round)
 						ctx.strokePath()
 					}
 				}
