@@ -32,7 +32,11 @@ public extension DSFSparklineOverlay {
 		/// The datasource for displaying the overlay
 		@objc public var dataSource: DSFSparkline.DataSource? {
 			didSet {
+				// Update our observer to detect changes to data in this new DataSource
 				self.updateDataObserver()
+
+				// And tell any listeners that the datasource was changed
+				self.dataSourceContentDidChange()
 			}
 		}
 
@@ -46,10 +50,15 @@ public extension DSFSparklineOverlay {
 					forName: DSFSparkline.DataSource.DataChangedNotification,
 					object: datasource,
 					queue: nil, using: { [weak self] _ in
-						self?.setNeedsDisplay()
+						self?.dataSourceContentDidChange()
 					}
 				)
 			}
+		}
+
+		/// Overridable to allow overlays to be notified when the content of the data source changes
+		internal func dataSourceContentDidChange() {
+			self.setNeedsDisplay()
 		}
 
 		@objc public init(dataSource: DSFSparkline.DataSource? = nil) {

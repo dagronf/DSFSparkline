@@ -34,11 +34,11 @@ public extension DSFSparklineOverlay {
 		/// blue cars, you just set the values directly.
 		@objc public var dataSource = DSFSparkline.StaticDataSource() {
 			didSet {
-				self.dataDidChange()
+				self.dataSourceDidChange()
 			}
 		}
 
-		func dataDidChange() {
+		func dataSourceDidChange() {
 			// Do nothing
 		}
 	}

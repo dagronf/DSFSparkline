@@ -75,8 +75,8 @@ public extension DSFSparklineOverlay {
 
 		// MARK: Data change
 
-		override func dataDidChange() {
-			super.dataDidChange()
+		override func dataSourceDidChange() {
+			super.dataSourceDidChange()
 
 			if self.animated {
 				self.startAnimateIn()
