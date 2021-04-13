@@ -51,21 +51,21 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			if self.centeredAtZeroLine {
-				return self.drawCenteredStackLineGraph(context: context, bounds: bounds, scale: scale)
+				self.drawCenteredStackLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawStackLineGraph(context: context, bounds: bounds, scale: scale)
+				self.drawStackLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
 }
 
 extension DSFSparklineOverlay.Stackline {
-	private func drawStackLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+	private func drawStackLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {
 		guard let dataSource = self.dataSource else {
-			return bounds
+			return
 		}
 
 		let integralRect = bounds.integral
@@ -96,7 +96,7 @@ extension DSFSparklineOverlay.Stackline {
 
 		if available.count == 0 {
 			// Nothing to do!
-			return bounds
+			return
 		}
 
 		context.usingGState { outer in
@@ -150,13 +150,11 @@ extension DSFSparklineOverlay.Stackline {
 				outer.strokePath()
 			}
 		}
-
-		return bounds
 	}
 
-	private func drawCenteredStackLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+	private func drawCenteredStackLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {
 		guard let dataSource = self.dataSource else {
-			return bounds
+			return
 		}
 
 		let integralRect = bounds.integral
@@ -187,7 +185,7 @@ extension DSFSparklineOverlay.Stackline {
 
 		if available.count == 0 {
 			// Nothing to do!
-			return bounds
+			return
 		}
 
 		let centroid = (1 - dataSource.normalizedZeroLineValue) * (integralHeight - 1)
@@ -267,6 +265,6 @@ extension DSFSparklineOverlay.Stackline {
 				}
 			}
 		}
-		return bounds
+		return
 	}
 }

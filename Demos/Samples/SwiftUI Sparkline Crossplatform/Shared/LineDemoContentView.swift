@@ -49,11 +49,11 @@ struct LineDemoBasic: View {
 	}
 }
 
-struct LineDemoBasic_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoBasic()
-	}
-}
+//struct LineDemoBasic_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoBasic()
+//	}
+//}
 
 struct LineDemoBasicMarkers: View {
 	var body: some View {
@@ -87,11 +87,11 @@ struct LineDemoBasicMarkers: View {
 	}
 }
 
-struct LineDemoBasicMarkers_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoBasicMarkers()
-	}
-}
+//struct LineDemoBasicMarkers_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoBasicMarkers()
+//	}
+//}
 
 struct LineDemoMarkersAndShadow: View {
 	var body: some View {
@@ -112,11 +112,11 @@ struct LineDemoMarkersAndShadow: View {
 	}
 }
 
-struct LineDemoMarkersAndShadow_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoMarkersAndShadow()
-	}
-}
+//struct LineDemoMarkersAndShadow_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoMarkersAndShadow()
+//	}
+//}
 
 struct LineDemoBasicZeroLine: View {
 	var body: some View {
@@ -150,11 +150,11 @@ struct LineDemoBasicZeroLine: View {
 	}
 }
 
-struct LineDemoBasicZeroLine_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoBasicZeroLine()
-	}
-}
+//struct LineDemoBasicZeroLine_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoBasicZeroLine()
+//	}
+//}
 
 struct LineDemoArea: View {
 	var body: some View {
@@ -185,11 +185,11 @@ struct LineDemoArea: View {
 	}
 }
 
-struct LineDemoArea_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoArea()
-	}
-}
+//struct LineDemoArea_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoArea()
+//	}
+//}
 
 
 struct LineDemoAreaCentered: View {
@@ -225,11 +225,11 @@ struct LineDemoAreaCentered: View {
 	}
 }
 
-struct LineDemoAreaCentered_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoAreaCentered()
-	}
-}
+//struct LineDemoAreaCentered_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoAreaCentered()
+//	}
+//}
 
 struct LineDemoAreaCenteredMarkers: View {
 	var body: some View {
@@ -266,12 +266,11 @@ struct LineDemoAreaCenteredMarkers: View {
 	}
 }
 
-struct LineDemoAreaCenteredMarkers_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoAreaCenteredMarkers()
-	}
-}
-
+//struct LineDemoAreaCenteredMarkers_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoAreaCenteredMarkers()
+//	}
+//}
 
 struct LineDemoAreaCenteredMarkersNoLowerColor: View {
 	var body: some View {
@@ -306,12 +305,11 @@ struct LineDemoAreaCenteredMarkersNoLowerColor: View {
 	}
 }
 
-struct LineDemoAreaCenteredMarkersNoLowerColor_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoAreaCenteredMarkersNoLowerColor()
-	}
-}
-
+//struct LineDemoAreaCenteredMarkersNoLowerColor_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoAreaCenteredMarkersNoLowerColor()
+//	}
+//}
 
 struct LineDemoLineRanges: View {
 	var body: some View {
@@ -361,11 +359,11 @@ struct LineDemoLineRanges: View {
 	}
 }
 
-struct LineDemoLineRanges2_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoLineRanges2()
-	}
-}
+//struct LineDemoLineRanges2_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoLineRanges2()
+//	}
+//}
 
 struct LineDemoLineRanges2: View {
 
@@ -522,11 +520,11 @@ struct LineDemoCustomMarkers: View {
 	}
 }
 
-struct LineDemoCustomMarkers_Previews: PreviewProvider {
-	static var previews: some View {
-		LineDemoCustomMarkers()
-	}
-}
+//struct LineDemoCustomMarkers_Previews: PreviewProvider {
+//	static var previews: some View {
+//		LineDemoCustomMarkers()
+//	}
+//}
 
 struct LineDemoContentView: View {
 	var body: some View {

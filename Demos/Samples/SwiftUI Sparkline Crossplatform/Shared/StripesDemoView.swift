@@ -125,23 +125,46 @@ struct StripesDemoView: View {
 
 			Text("Australian annual mean temperature anomaly")
 
-			HStack {
-				Text("integral").frame(width: 70, alignment: Alignment.trailing)
-				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
-																 integral: true,
-																 barSpacing: 2,
-																 gradient: self.gradient2)
-					.frame(height: 25)
-					.padding(5)
-					.border(Color.gray.opacity(0.2), width: 1)
-			}
-			HStack {
-				Text("fractional").frame(width: 70, alignment: Alignment.trailing)
-				DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
-																 gradient: self.gradient2)
-					.frame(height: 25)
-					.padding(5)
-					.border(Color.gray.opacity(0.2), width: 1)
+			VStack {
+				HStack {
+					Text("integral").frame(width: 70, alignment: Alignment.trailing)
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+																	 integral: true,
+																	 barSpacing: 2,
+																	 gradient: self.gradient2)
+						.frame(height: 25)
+						.padding(5)
+						.border(Color.gray.opacity(0.2), width: 1)
+				}
+				HStack {
+					Text("integral").frame(width: 70, alignment: Alignment.trailing)
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+																	 integral: true,
+																	 barSpacing: 0,
+																	 gradient: self.gradient2)
+						.frame(height: 25)
+						.padding(5)
+						.border(Color.gray.opacity(0.2), width: 1)
+				}
+
+				HStack {
+					Text("fractional").frame(width: 70, alignment: Alignment.trailing)
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+																	 barSpacing: 1,
+																	 gradient: self.gradient2)
+						.frame(height: 25)
+						.padding(5)
+						.border(Color.gray.opacity(0.2), width: 1)
+				}
+
+				HStack {
+					Text("fractional").frame(width: 70, alignment: Alignment.trailing)
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: australianAnomaly,
+																	 gradient: self.gradient2)
+						.frame(height: 25)
+						.padding(5)
+						.border(Color.gray.opacity(0.2), width: 1)
+				}
 			}
 
 			VStack {

@@ -94,16 +94,16 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawWinLossGraph(context: context, bounds: bounds, scale: scale)
 		}
 	}
 }
 
 private extension DSFSparklineOverlay.WinLossTie {
-	 func drawWinLossGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+	 func drawWinLossGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 		guard let dataSource = self.dataSource else {
-			return bounds
+			return
 		}
 
 		let integralRect = bounds.integral
@@ -227,6 +227,6 @@ private extension DSFSparklineOverlay.WinLossTie {
 				}
 			}
 		}
-		return bounds
+		return
 	}
 }

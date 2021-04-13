@@ -87,7 +87,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawDataBarGraph(context: context, bounds: bounds, scale: scale)
 		}
 
@@ -119,10 +119,8 @@ private extension DSFSparklineOverlay.DataBar {
 }
 
 private extension DSFSparklineOverlay.DataBar {
-	func drawDataBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-		if fractionComplete == 0 {
-			return bounds
-		}
+	func drawDataBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
+		if fractionComplete == 0 { return }
 
 		let total = self.maximumTotalValue > 0 ? self.maximumTotalValue : self.dataSource.total
 
@@ -171,6 +169,5 @@ private extension DSFSparklineOverlay.DataBar {
 				position = position + width
 			}
 		}
-		return bounds
 	}
 }

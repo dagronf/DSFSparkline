@@ -101,12 +101,28 @@ public extension DSFSparklineOverlay {
 
 		// MARK: - Draw handling
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		// Override the edge insets to make sure our line graph fits
+		public override func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+			// If there's a shadow, inset by the maximum shadow offset + blur radius
+			let shadowOffset: CGFloat = {
+				if let s = shadow {
+					return max(s.shadowOffset.width, s.shadowOffset.height) + s.shadowBlurRadius
+				}
+				else {
+					return 0
+				}
+			}()
+
+			let inset = (self.markerSize > 0 ? self.markerSize / 2 : self.strokeWidth) + shadowOffset
+			return DSFEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+		}
+
+		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			if self.centeredAtZeroLine {
-				return self.drawCenteredGraph(context: context, bounds: bounds, scale: scale)
+				self.drawCenteredGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawLineGraph(context: context, bounds: bounds, scale: scale)
+				self.drawLineGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
@@ -161,31 +177,20 @@ private extension DSFSparklineOverlay.Line {
 // MARK: - Sparkline drawing
 
 private extension DSFSparklineOverlay.Line {
-	func drawLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+	func drawLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {
 		guard let dataSource = self.dataSource,
 				dataSource.counter != 0 else
 		{
 			// There's no line if there's either no data or just a single point
 			// https://github.com/dagronf/DSFSparkline/issues/3#issuecomment-770324047
-			return bounds
+			return
 		}
 
-		// Adjust the inset so that markers can draw unclipped if they are asked for
-
-		// If there's a shadow, inset by the maximum shadow offset + blur radius
-		let shadowOffset = max(self.shadow?.shadowOffset.width ?? 0,
-									  self.shadow?.shadowOffset.height ?? 0) +
-									  (self.shadow?.shadowBlurRadius ?? 0)
-
-		let inset = (self.markerSize > 0 ? self.markerSize / 2 : self.strokeWidth) + shadowOffset
-
-		let drawRect = bounds.insetBy(dx: inset, dy: inset)
-
 		let normy = dataSource.normalized
-		let xDiff = drawRect.width / CGFloat(normy.count - 1)
+		let xDiff = bounds.width / CGFloat(normy.count - 1)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff + drawRect.minX,
-					  y: drawRect.height + drawRect.minY - ($0.element * drawRect.height))
+			CGPoint(x: CGFloat($0.offset) * xDiff + bounds.minX,
+					  y: bounds.height + bounds.minY - ($0.element * bounds.height))
 		}
 
 		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated)
@@ -211,15 +216,15 @@ private extension DSFSparklineOverlay.Line {
 				outer.usingGState { ctx in
 
 					let clipper = path.mutableCopy()!
-					clipper.addLine(to: CGPoint(x: drawRect.maxX, y: points.last!.y))
-					clipper.addLine(to: CGPoint(x: drawRect.maxX, y: drawRect.maxY))
-					clipper.addLine(to: CGPoint(x: drawRect.minX, y: drawRect.maxY))
-					clipper.addLine(to: CGPoint(x: drawRect.minX, y: points.first!.y))
+					clipper.addLine(to: CGPoint(x: bounds.maxX, y: points.last!.y))
+					clipper.addLine(to: CGPoint(x: bounds.maxX, y: bounds.maxY))
+					clipper.addLine(to: CGPoint(x: bounds.minX, y: bounds.maxY))
+					clipper.addLine(to: CGPoint(x: bounds.minX, y: points.first!.y))
 					clipper.closeSubpath()
 
 					ctx.addPath(clipper)
 					ctx.clip()
-					fill.fill(context: ctx, bounds: drawRect)
+					fill.fill(context: ctx, bounds: bounds)
 				}
 			}
 
@@ -247,31 +252,25 @@ private extension DSFSparklineOverlay.Line {
 				}
 			}
 		}
-
-		return drawRect
 	}
 
-	func drawCenteredGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+	func drawCenteredGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {
 		guard let dataSource = self.dataSource,
 				dataSource.counter != 0 else
 		{
 			// There's no line if there's either no data or just a single point
 			// https://github.com/dagronf/DSFSparkline/issues/3#issuecomment-770324047
-			return bounds
+			return
 		}
-
-		// Adjust the inset so that markers can draw unclipped if they are asked for
-		let inset = self.markerSize > 0 ? self.markerSize / 2 : self.strokeWidth
-		let drawRect = bounds.insetBy(dx: inset, dy: inset)
 
 		let normy = dataSource.normalized
-		let xDiff = drawRect.width / CGFloat(normy.count - 1)
+		let xDiff = bounds.width / CGFloat(normy.count - 1)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff + drawRect.minX,
-					  y: drawRect.height + drawRect.minY - ($0.element * drawRect.height))
+			CGPoint(x: CGFloat($0.offset) * xDiff + bounds.minX,
+					  y: bounds.height + bounds.minY - ($0.element * bounds.height))
 		}
 
-		let centroid = (1 - dataSource.normalizedZeroLineValue) * (drawRect.height - 1)
+		let centroid = (1 - dataSource.normalizedZeroLineValue) * (bounds.height - 1)
 
 		var markers: [Marker] = []
 
@@ -294,13 +293,13 @@ private extension DSFSparklineOverlay.Line {
 		for which in 0 ... 1 {
 			if dataSource.counter < dataSource.windowSize {
 				let pos = CGFloat(dataSource.counter) * xDiff
-				let clipRect = drawRect.divided(atDistance: pos, from: .maxXEdge).slice
+				let clipRect = bounds.divided(atDistance: pos, from: .maxXEdge).slice
 				context.clip(to: clipRect)
 			}
 
 			context.usingGState { inner in
 
-				let split = drawRect.divided(atDistance: centroid, from: .minYEdge)
+				let split = bounds.divided(atDistance: centroid, from: .minYEdge)
 
 				if which == 0 {
 					inner.clip(to: split.slice)
@@ -314,18 +313,18 @@ private extension DSFSparklineOverlay.Line {
 				if let fill = fillItem {
 					inner.usingGState { ctx in
 
-						let altY = which == 0 ? drawRect.maxY : drawRect.minY
+						let altY = which == 0 ? bounds.maxY : bounds.minY
 
 						let clipper = path.mutableCopy()!
-						clipper.addLine(to: CGPoint(x: drawRect.maxX, y: points.last!.y))
-						clipper.addLine(to: CGPoint(x: drawRect.maxX, y: altY))
-						clipper.addLine(to: CGPoint(x: drawRect.minX, y: altY))
-						clipper.addLine(to: CGPoint(x: drawRect.minX, y: points.first!.y))
+						clipper.addLine(to: CGPoint(x: bounds.maxX, y: points.last!.y))
+						clipper.addLine(to: CGPoint(x: bounds.maxX, y: altY))
+						clipper.addLine(to: CGPoint(x: bounds.minX, y: altY))
+						clipper.addLine(to: CGPoint(x: bounds.minX, y: points.first!.y))
 						clipper.closeSubpath()
 
 						ctx.addPath(clipper)
 						ctx.clip()
-						fill.fill(context: ctx, bounds: drawRect)
+						fill.fill(context: ctx, bounds: bounds)
 					}
 				}
 
@@ -354,7 +353,5 @@ private extension DSFSparklineOverlay.Line {
 				self.actualMarkerDrawingFunc(ctx, markers)
 			}
 		}
-
-		return drawRect
 	}
 }

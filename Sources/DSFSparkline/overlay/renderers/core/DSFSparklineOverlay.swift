@@ -58,8 +58,21 @@ import QuartzCore
 		self.actions = newActions
 	}
 
+	/// Return the minimum edge insets required to fit the graph within the specified rect
+	///
+	/// An example of this is a line graph with markers - if a data point is at zero, the marker will be clipped when drawn.
+	/// Overriding this var allows a graph to inset the drawing when required to handle clipping edge cases, while making
+	/// sure that grid lines, highlights etc. arrange themselves correctly draw within the range of the reduced graph size.
+	public func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+		return .zero
+	}
+
 	/// To be overridden by sub-classes to draw their content into the provided context
-	internal func drawGraph(context _: CGContext, bounds _: CGRect, scale _: CGFloat) -> CGRect {
+	/// - Parameters:
+	///   - context: The context to draw into
+	///   - bounds: The bounds in which to draw (which may NOT be the same as the bounds for the context!)
+	///   - scale: The scale for the current drawing context (eg. retina == 2)
+	internal func drawGraph(context _: CGContext, bounds _: CGRect, scale _: CGFloat) {
 		fatalError("must be implemented in overridden classes")
 	}
 }

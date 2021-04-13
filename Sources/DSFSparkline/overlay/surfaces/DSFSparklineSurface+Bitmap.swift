@@ -29,6 +29,13 @@ public extension DSFSparklineSurface {
 /// A surface for drawing a sparkline into an image
 	@objc(DSFSparklineSurfaceBitmap) class Bitmap: DSFSparklineSurface {
 
+		private func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+			/// Calculate the total inset required
+			return self.overlays.reduce(DSFEdgeInsets.zero) { (result, overlay) in
+				result.combineMaximum(using: overlay.edgeInsets(for: rect))
+			}
+		}
+
 		/// Add a sparkline overlay to the surface
 		@objc public func addOverlay(_ overlay: DSFSparklineOverlay) {
 			self.overlays.append(overlay)
@@ -47,7 +54,8 @@ public extension DSFSparklineSurface {
 				return nil
 			}
 
-			var bounds: CGRect = rect
+			// Calculate the inset required
+			let bounds = rect.inset(by: self.edgeInsets(for: rect))
 
 			// Loop through each overlay and ask it to draw
 			self.overlays.forEach { overlay in
@@ -63,7 +71,7 @@ public extension DSFSparklineSurface {
 					overlay.render(in: ctx)
 
 					// Render any bitmap content
-					bounds = overlay.drawGraph(context: ctx, bounds: bounds, scale: scale)
+					overlay.drawGraph(context: ctx, bounds: bounds, scale: scale)
 				}
 			}
 

@@ -55,11 +55,12 @@ public extension DSFSparklineOverlay {
 		}
 
 		@objc public init(dataSource: DSFSparkline.DataSource? = nil,
-								floatValues _: [CGFloat] = [],
+								floatValues: [CGFloat] = [],
 								strokeColor: CGColor = DSFColor.gray.cgColor,
 								strokeWidth: CGFloat = 1.0,
 								dashStyle: [CGFloat] = [1.0, 1.0])
 		{
+			self.floatValues = floatValues
 			self.strokeColor = strokeColor
 			self.strokeWidth = strokeWidth
 			self.dashStyle = dashStyle
@@ -72,17 +73,15 @@ public extension DSFSparklineOverlay {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-			return self.drawGridLines(context: context, bounds: bounds, scale: scale)
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
+			self.drawGridLines(context: context, bounds: bounds, scale: scale)
 		}
 	}
 }
 
 extension DSFSparklineOverlay.GridLines {
-	func drawGridLines(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
-		guard let dataSource = self.dataSource else {
-			return bounds
-		}
+	func drawGridLines(context: CGContext, bounds: CGRect, scale _: CGFloat) {
+		guard let dataSource = self.dataSource else { return }
 
 		context.setLineWidth(self.strokeWidth)
 		context.setStrokeColor(self.strokeColor)
@@ -90,10 +89,9 @@ extension DSFSparklineOverlay.GridLines {
 
 		self.floatValues.forEach { value in
 			let fractional = dataSource.fractionalPosition(for: value)
-			let zeroPos = bounds.height - (fractional * bounds.height).rounded(.towardZero)
-			context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos),
-															 CGPoint(x: bounds.width, y: zeroPos)])
+			let zeroPos = bounds.minY + bounds.height - (fractional * bounds.height).rounded(.towardZero)
+			context.strokeLineSegments(between: [CGPoint(x: bounds.minX, y: zeroPos),
+															 CGPoint(x: bounds.maxX, y: zeroPos)])
 		}
-		return bounds
 	}
 }

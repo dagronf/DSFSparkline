@@ -332,3 +332,16 @@ extension CGRect {
 	}
 }
 #endif
+
+extension DSFEdgeInsets {
+	/// A default zero inset
+	static let zero = DSFEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+	/// Calculate the maximum insets between the two edgeinset objects
+	@inlinable func combineMaximum(using other: DSFEdgeInsets) -> DSFEdgeInsets {
+		return DSFEdgeInsets(top: max(self.top, other.top),
+									left: max(self.left, other.left),
+									bottom: max(self.bottom, other.bottom),
+									right: max(self.right, other.right))
+	}
+}
