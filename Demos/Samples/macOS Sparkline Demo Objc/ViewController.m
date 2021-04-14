@@ -45,9 +45,10 @@
 	_sendDataSource = [[DSFSparklineDataSource alloc] init];
 
 	// Add a custom marker drawing function
-	[_lineGraph setMarkerDrawingFunc:^(CGContextRef context, NSArray<DSFSparklineOverlayLineMarker *> * markers) {
-		id ms = [markers subarrayWithRange:NSMakeRange([markers count] - 4, 4)];
+	[_lineGraph setMarkerDrawingBlock:^(CGContextRef context, NSArray<DSFSparklineOverlayLineMarker *> * markers) {
 
+		// Just draw the markers for the 4 most recent values
+		id ms = [markers subarrayWithRange:NSMakeRange([markers count] - 4, 4)];
 		for (DSFSparklineOverlayLineMarker* m in ms) {
 			CGContextSetFillColorWithColor(context, NSColor.whiteColor.CGColor);
 			CGContextSetShadowWithColor(context, CGSizeMake(1, 1), 4, NSColor.linkColor.CGColor);

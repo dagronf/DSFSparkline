@@ -73,9 +73,15 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 		}
 	}
 
-	@objc public var markerDrawingFunc: DSFSparklineOverlay.Line.MarkerDrawingFunction? = nil {
+	/// An optional drawing function for custom drawing markers. When nil, uses the standard circle for each marker
+	///
+	/// The `markerSize` value is used to determine the frameSize of each marker.
+	/// If `markerSize` is less than 1, this block will not be called.
+	///
+	/// Note that this function is called very frequently so make sure its performant!
+	@objc public var markerDrawingBlock: DSFSparklineOverlay.Line.MarkerDrawingBlock? = nil {
 		didSet {
-			self.overlay.markerDrawingFunc = self.markerDrawingFunc
+			self.overlay.markerDrawingBlock = self.markerDrawingBlock
 		}
 	}
 

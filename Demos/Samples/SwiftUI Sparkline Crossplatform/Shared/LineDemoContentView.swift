@@ -436,13 +436,13 @@ struct LineDemoCustomMarkers: View {
 		return d
 	}()
 
-	var drawCurrentValueMarker: DSFSparklineOverlay.Line.MarkerDrawingFunction = { context, markerFrames in
+	var drawCurrentValueMarker: DSFSparklineOverlay.Line.MarkerDrawingBlock = { context, markerFrames in
 		let l = markerFrames.last!
 		context.setFillColor(l.isPositiveValue ? DSFColor.systemGreen.cgColor : DSFColor.systemRed.cgColor)
 		context.fill(l.rect)
 	}
 
-	var customMarkerDrawing: DSFSparklineOverlay.Line.MarkerDrawingFunction = { context, markerFrames in
+	var customMarkerDrawing: DSFSparklineOverlay.Line.MarkerDrawingBlock = { context, markerFrames in
 		let maxV = markerFrames.min { (a, b) -> Bool in a.value > b.value }!
 		let minV = markerFrames.min { (a, b) -> Bool in a.value < b.value }!
 
@@ -476,7 +476,7 @@ struct LineDemoCustomMarkers: View {
 					centeredAtZeroLine: true,
 					lowerGraphColor: DSFColor(red: 0.7, green: 0, blue: 0, alpha: 1.0),
 					markerSize: 4,
-					markerDrawingFunc: self.drawCurrentValueMarker
+					markerDrawingBlock: self.drawCurrentValueMarker
 				)
 				.frame(height: 40.0)
 				.padding(5)
@@ -493,7 +493,7 @@ struct LineDemoCustomMarkers: View {
 					centeredAtZeroLine: true,
 					lowerGraphColor: DSFColor(red: 0.7, green: 0, blue: 0, alpha: 1.0),
 					markerSize: 6,
-					markerDrawingFunc: self.customMarkerDrawing
+					markerDrawingBlock: self.customMarkerDrawing
 				)
 				.frame(height: 40.0)
 				.padding(5)

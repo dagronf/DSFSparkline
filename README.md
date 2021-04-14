@@ -146,7 +146,7 @@ struct SuperCoolLineSpark: View {
 
 A simple line sparkline. The line can be centered around a zero line to indicate positive and negative values. You can also add (optional) markers to the data points.
 
-You can custom-draw the markers by supplying a drawing callback function where you can customize which markers are drawn (for example, just the min and max values) and how they are drawn.
+You can custom-draw the markers by supplying a drawing callback block (`markerDrawingBlock`) where you can customize which markers are drawn (for example, just the min and max values) and how they are drawn.
 
 |  Standard  | Centered  |
 |------------|------------|
@@ -746,16 +746,16 @@ Represents the viewable settings and display.  The current view types available 
 
 ### Line graph customizations (`DSFSparklineLineGraphView`)
 
-| Setting         | Type            | Description                                                                                                        |
-|-----------------|-----------------|----------------------------------|
-| `dataSource`    | `DSFDataSource` | The source of data for the graph |
-| `lineWidth`     | `CGFloat`       | The width of the line |
-| `interpolation` | `Bool`          | Interpolate a curve between the points |
-| `lineShading`   | `Bool`          | Shade the area under the line |
-| `shadowed`      | `Bool`          | Draw a shadow under the line |
-| `markerSize`    | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
-| `markerSize`    | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
-|`drawMarkersFunc`| | A callback function to allow custom drawing of markers |
+| Setting           | Type            | Description                      |
+|-------------------|-----------------|----------------------------------|
+| `dataSource`      | `DSFDataSource` | The source of data for the graph |
+| `lineWidth`       | `CGFloat`       | The width of the line            |
+| `interpolation`   | `Bool`          | Interpolate a curve between the points |
+| `lineShading`     | `Bool`          | Shade the area under the line |
+| `shadowed`        | `Bool`          | Draw a shadow under the line |
+| `markerSize`      | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
+| `markerSize`      | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
+| `markerDrawingBlock` | | A callback block to allow custom drawing of markers (if `markerSize` is > 1) |
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
 

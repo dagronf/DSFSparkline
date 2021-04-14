@@ -80,25 +80,28 @@ public extension DSFSparklineOverlay {
 		/// - Parameters:
 		///   - context: The drawing context
 		///   - markerFrames: The Marker definitions for all of the markers within the current sparkline in left-to-right order
-		public typealias MarkerDrawingFunction = (_ context: CGContext, _ markerFrames: [Marker]) -> Void
+		public typealias MarkerDrawingBlock = (_ context: CGContext, _ markerFrames: [Marker]) -> Void
 
-		/// An optional drawing function for custom drawing markers
+		/// An optional drawing function for custom drawing markers.
+		///
+		/// The `markerSize` value is used to determine the frameSize of each marker.
+		/// If `markerSize` is less than 1, this block will not be called.
 		///
 		/// Note that this function is called very frequently so make sure its performant!
-		@objc public lazy var markerDrawingFunc: MarkerDrawingFunction? = nil
+		@objc public lazy var markerDrawingBlock: MarkerDrawingBlock? = nil
 
 		// Return the drawing function to use when drawing markers
-		private var actualMarkerDrawingFunc: MarkerDrawingFunction {
-			return self.markerDrawingFunc ?? self.DefaultMarkerDrawing
+		private var actualMarkerDrawingBlock: MarkerDrawingBlock {
+			return self.markerDrawingBlock ?? self.DefaultMarkerDrawingBlock
 		}
 
 		// Convert the default marker drawing function to a block
-		private lazy var DefaultMarkerDrawing: MarkerDrawingFunction = { context, markers in
+		private lazy var DefaultMarkerDrawingBlock: MarkerDrawingBlock = { context, markers in
 			DSFSparklineOverlay.Line.DefaultMarkerDrawingFunc(what: self, context: context, markers: markers)
 		}
 
 		deinit {
-			self.markerDrawingFunc = nil
+			self.markerDrawingBlock = nil
 		}
 
 		// MARK: - Draw handling
@@ -250,7 +253,7 @@ private extension DSFSparklineOverlay.Line {
 				outer.usingGState { ctx in
 					// For the standard line, all values are 'positive'
 					let markers = zip(dataSource.data, markersBounds).map { Marker(value: $0.0, rect: $0.1, isPositiveValue: true) }
-					self.actualMarkerDrawingFunc(ctx, markers)
+					self.actualMarkerDrawingBlock(ctx, markers)
 				}
 			}
 		}
@@ -352,7 +355,7 @@ private extension DSFSparklineOverlay.Line {
 
 		if self.markerSize > 0 {
 			context.usingGState { ctx in
-				self.actualMarkerDrawingFunc(ctx, markers)
+				self.actualMarkerDrawingBlock(ctx, markers)
 			}
 		}
 	}
