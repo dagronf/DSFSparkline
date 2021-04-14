@@ -52,7 +52,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+		internal override func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
 			guard let dataSource = self.dataSource else { return .zero }
 
 			let integralRect = bounds.integral

@@ -63,7 +63,7 @@ import QuartzCore
 	/// An example of this is a line graph with markers - if a data point is at zero, the marker will be clipped when drawn.
 	/// Overriding this var allows a graph to inset the drawing when required to handle clipping edge cases, while making
 	/// sure that grid lines, highlights etc. arrange themselves correctly draw within the range of the reduced graph size.
-	public func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+	internal func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
 		return .zero
 	}
 

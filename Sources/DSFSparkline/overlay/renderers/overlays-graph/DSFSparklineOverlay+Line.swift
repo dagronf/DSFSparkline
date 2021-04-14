@@ -67,7 +67,7 @@ public extension DSFSparklineOverlay {
 			@objc public let value: CGFloat
 			/// The rect representing the marker
 			@objc public let rect: CGRect
-			/// If the graph is a centering graph, whether this marker is considered to be positive or negative
+			/// If the graph is a centering graph, is this marker considered to be positive or negative?
 			@objc public let isPositiveValue: Bool
 			@objc public init(value: CGFloat, rect: CGRect, isPositiveValue: Bool) {
 				self.value = value
@@ -87,12 +87,14 @@ public extension DSFSparklineOverlay {
 		/// Note that this function is called very frequently so make sure its performant!
 		@objc public lazy var markerDrawingFunc: MarkerDrawingFunction? = nil
 
-		private lazy var DefaultMarkerDrawing: MarkerDrawingFunction = { context, markers in
-			DSFSparklineOverlay.Line.DefaultMarkerDrawingFunc(what: self, context: context, markers: markers)
-		}
-
+		// Return the drawing function to use when drawing markers
 		private var actualMarkerDrawingFunc: MarkerDrawingFunction {
 			return self.markerDrawingFunc ?? self.DefaultMarkerDrawing
+		}
+
+		// Convert the default marker drawing function to a block
+		private lazy var DefaultMarkerDrawing: MarkerDrawingFunction = { context, markers in
+			DSFSparklineOverlay.Line.DefaultMarkerDrawingFunc(what: self, context: context, markers: markers)
 		}
 
 		deinit {
@@ -102,7 +104,7 @@ public extension DSFSparklineOverlay {
 		// MARK: - Draw handling
 
 		// Override the edge insets to make sure our line graph fits
-		public override func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+		override internal func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
 			// If there's a shadow, inset by the maximum shadow offset + blur radius
 			let shadowOffset: CGFloat = {
 				if let s = shadow {
