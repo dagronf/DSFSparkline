@@ -443,26 +443,28 @@ struct LineDemoCustomMarkers: View {
 	}
 
 	var customMarkerDrawing: DSFSparklineOverlay.Line.MarkerDrawingBlock = { context, markerFrames in
-		let maxV = markerFrames.min { (a, b) -> Bool in a.value > b.value }!
-		let minV = markerFrames.min { (a, b) -> Bool in a.value < b.value }!
 
-		// Min
+		// Get the frames containing the minimum and maximum values
+		if let minMarker = markerFrames.min(by: { (a, b) -> Bool in a.value < b.value }),
+			let maxMarker = markerFrames.min(by: { (a, b) -> Bool in a.value > b.value }) {
 
-		context.setFillColor(DSFColor.systemRed.cgColor)
-		context.fill(minV.rect)
+			// Draw minimum marker
 
-		context.setLineWidth(0.5)
-		context.setStrokeColor(DSFColor.white.cgColor)
-		context.stroke(minV.rect)
+			context.setFillColor(DSFColor.systemRed.cgColor)
+			context.fill(minMarker.rect)
+			context.setLineWidth(0.5)
+			context.setStrokeColor(DSFColor.white.cgColor)
+			context.stroke(minMarker.rect)
 
-		// Max
+			// Draw maximum marker
 
-		context.setFillColor(DSFColor.systemGreen.cgColor)
-		context.fill(maxV.rect)
+			context.setFillColor(DSFColor.systemGreen.cgColor)
+			context.fill(maxMarker.rect)
 
-		context.setLineWidth(0.5)
-		context.setStrokeColor(DSFColor.white.cgColor)
-		context.stroke(maxV.rect)
+			context.setLineWidth(0.5)
+			context.setStrokeColor(DSFColor.white.cgColor)
+			context.stroke(maxMarker.rect)
+		}
 	}
 
 	var body: some View {

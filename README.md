@@ -164,6 +164,39 @@ You can custom-draw the markers by supplying a drawing callback block (`markerDr
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-custom-marker-1.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-custom-marker-2.png" width="400">|
 
+<details>
+  <summary>Swift example using custom markers</summary>
+  
+```swift
+//
+// A custom marker drawing function that draws the maximum value in green, the minimum value in red
+//
+self.myLineView.markerDrawingBlock = { context, markerFrames in
+   // Get the frames containing the minimum and maximum values
+   if let minMarker = markerFrames.min(by: { (a, b) -> Bool in a.value < b.value }),
+      let maxMarker = markerFrames.min(by: { (a, b) -> Bool in a.value > b.value }) {
+
+      // Draw minimum marker
+
+      context.setFillColor(DSFColor.systemRed.cgColor)
+      context.fill(minMarker.rect)
+      context.setLineWidth(0.5)
+      context.setStrokeColor(DSFColor.white.cgColor)
+      context.stroke(minMarker.rect)
+
+      // Draw maximum marker
+
+      context.setFillColor(DSFColor.systemGreen.cgColor)
+      context.fill(maxMarker.rect)
+
+      context.setLineWidth(0.5)
+      context.setStrokeColor(DSFColor.white.cgColor)
+      context.stroke(maxMarker.rect)
+   }
+}
+```
+</details>
+
 ### Bar <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-simple-small.png" width="50"/>
 
 A simple barchart sparkline. The bar can be centered around a zero line to indicate positive and negative values.
@@ -890,6 +923,11 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `4.3.0`
+
+* Added the ability to custom-draw markers for the 'line' sparkline type [(raised issue)](https://github.com/dagronf/DSFSparkline/issues/6)
+* Fixed a minor issue where insetting certain graph types to remove clipping (line with markers, bar) would mean that zeroline, highlight overlays and grids would be appear to be very slightly off.
 
 ### `4.2.0`
 
