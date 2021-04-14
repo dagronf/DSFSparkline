@@ -50,6 +50,8 @@
 		23102BFB23B02B33001A621D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFA23B02B33001A621D /* Assets.xcassets */; };
 		23102BFE23B02B33001A621D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23102BFC23B02B33001A621D /* LaunchScreen.storyboard */; };
 		23102C0423B03315001A621D /* cpuUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23102C0323B03315001A621D /* cpuUsage.swift */; };
+		2322C06B262651D5007D8112 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2322C06A262651D5007D8112 /* TestingView.swift */; };
+		2322C06C262651D5007D8112 /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2322C06A262651D5007D8112 /* TestingView.swift */; };
 		232BAF6D25EB16210090C447 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232BAF6C25EB16210090C447 /* SwiftUIView.swift */; };
 		232BAF6E25EB16210090C447 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232BAF6C25EB16210090C447 /* SwiftUIView.swift */; };
 		232D9ECE25EC7133004DFAFC /* SuperCoolLineSpark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232D9ECD25EC7133004DFAFC /* SuperCoolLineSpark.swift */; };
@@ -189,6 +191,7 @@
 		23102BFD23B02B33001A621D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23102BFF23B02B33001A621D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23102C0323B03315001A621D /* cpuUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cpuUsage.swift; sourceTree = "<group>"; };
+		2322C06A262651D5007D8112 /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
 		232BAF6C25EB16210090C447 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		232D9ECD25EC7133004DFAFC /* SuperCoolLineSpark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperCoolLineSpark.swift; sourceTree = "<group>"; };
 		232F732223B5BE2A00FA3A3F /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
@@ -435,6 +438,7 @@
 				232BAF6B25EB16000090C447 /* SwiftUI-Overlays */,
 				238DB6E925EB3A2E009197AB /* TabletView.swift */,
 				23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */,
+				2322C06A262651D5007D8112 /* TestingView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1111,6 +1115,7 @@
 				238DB6EA25EB3A2E009197AB /* TabletView.swift in Sources */,
 				237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				235A585B2603181A00266642 /* PercentBar.swift in Sources */,
+				2322C06B262651D5007D8112 /* TestingView.swift in Sources */,
 				232BAF6D25EB16210090C447 /* SwiftUIView.swift in Sources */,
 				2346EF3025E8D13A00050570 /* SwiftUIContentView.swift in Sources */,
 				23FC81DD25DB60760047A800 /* StripesDemoView.swift in Sources */,
@@ -1140,6 +1145,7 @@
 				238DB6EB25EB3A2F009197AB /* TabletView.swift in Sources */,
 				237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				235A585C2603181A00266642 /* PercentBar.swift in Sources */,
+				2322C06C262651D5007D8112 /* TestingView.swift in Sources */,
 				232BAF6E25EB16210090C447 /* SwiftUIView.swift in Sources */,
 				2346EF3125E8D13A00050570 /* SwiftUIContentView.swift in Sources */,
 				23FC81DE25DB60760047A800 /* StripesDemoView.swift in Sources */,

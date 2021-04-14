@@ -73,6 +73,12 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 		}
 	}
 
+	@objc public var markerDrawingFunc: DSFSparklineOverlay.Line.MarkerDrawingFunction? = nil {
+		didSet {
+			self.overlay.markerDrawingFunc = self.markerDrawingFunc
+		}
+	}
+
 	/// Should the graph be centered at the zero line?
 	@IBInspectable public var centeredAtZeroLine: Bool = false {
 		didSet {

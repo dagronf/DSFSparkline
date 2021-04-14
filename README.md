@@ -748,6 +748,8 @@ Represents the viewable settings and display.  The current view types available 
 | `lineShading`   | `Bool`          | Shade the area under the line |
 | `shadowed`      | `Bool`          | Draw a shadow under the line |
 | `markerSize`    | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
+| `markerSize`    | `CGFloat`       | (optional) Draw a marker of the specified size at every data point in the graph using the line color at that point |
+|`drawMarkersFunc`| | A callback function to allow custom drawing of markers |
 
 ### Bar graph customizations (`DSFSparklineBarGraphView`)
 

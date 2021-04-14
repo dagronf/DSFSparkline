@@ -30,6 +30,7 @@ import UIKit
 public extension DSFSparklineOverlay {
 	/// A line graph sparkline
 	@objc(DSFSparklineOverlayLine) class Line: Centerable {
+
 		/// The width for the line drawn on the graph
 		@objc public var strokeWidth: CGFloat = 1.5 {
 			didSet {
@@ -58,6 +59,44 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		// MARK: - Markers
+
+		/// Representation of a marker within the sparkline
+		@objc(DSFSparklineOverlayLineMarker) public class Marker: NSObject {
+			/// The raw data value for the marker
+			@objc public let value: CGFloat
+			/// The rect representing the marker
+			@objc public let rect: CGRect
+			/// If the graph is a centering graph, whether this marker is considered to be positive or negative
+			@objc public let isPositiveValue: Bool
+			@objc public init(value: CGFloat, rect: CGRect, isPositiveValue: Bool) {
+				self.value = value
+				self.rect = rect
+				self.isPositiveValue = isPositiveValue
+			}
+		}
+
+		/// Marker drawing callback
+		/// - Parameters:
+		///   - context: The drawing context
+		///   - markerFrames: The Marker definitions for all of the markers within the current sparkline in left-to-right order
+		public typealias MarkerDrawingFunction = (_ context: CGContext, _ markerFrames: [Marker]) -> Void
+
+		/// The drawing function for drawing the markers
+		///
+		/// Note that this function is called very frequently so make sure its performant!
+		@objc public lazy var markerDrawingFunc: MarkerDrawingFunction? = nil
+
+		private lazy var DefaultMarkerDrawing: MarkerDrawingFunction = { context, markers in
+			DSFSparklineOverlay.Line.DefaultMarkerDrawingFunc(what: self, context: context, markers: markers)
+		}
+
+		private var actualMarkerDrawingFunc: MarkerDrawingFunction {
+			return self.markerDrawingFunc ?? self.DefaultMarkerDrawing
+		}
+
+		// MARK: - Draw handling
+
 		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
 				return self.drawCenteredGraph(context: context, bounds: bounds, scale: scale)
@@ -68,6 +107,54 @@ public extension DSFSparklineOverlay {
 		}
 	}
 }
+
+// MARK: - Default marker drawing
+
+private extension DSFSparklineOverlay.Line {
+
+	// Default marker drawing
+	static func DefaultMarkerDrawingFunc(what: Line, context ctx: CGContext, markers: [Marker]) {
+		guard let primaryStrokeColor = what.primaryStrokeColor else { return }
+
+		let positiveMarkers = markers.filter { $0.isPositiveValue }
+		let negativeMarkers = markers.filter { $0.isPositiveValue == false }
+
+		// draw positives. For a non-centered graph, all values are 'positive'
+		if positiveMarkers.count > 0 {
+			ctx.usingGState { pCtx in
+				let path = CGMutablePath()
+				positiveMarkers.forEach { marker in
+					path.addPath(CGPath(ellipseIn: marker.rect, transform: nil))
+				}
+				pCtx.addPath(path)
+				pCtx.setFillColor(primaryStrokeColor)
+				if let shadow = what.shadow {
+					pCtx.setShadow(shadow)
+				}
+				pCtx.fillPath()
+			}
+		}
+
+		// draw negatives
+		if negativeMarkers.count > 0 {
+			let strokeColor = what.secondaryStrokeColor ?? primaryStrokeColor
+			ctx.usingGState { nCtx in
+				let path = CGMutablePath()
+				negativeMarkers.forEach { marker in
+					path.addPath(CGPath(ellipseIn: marker.rect, transform: nil))
+				}
+				nCtx.addPath(path)
+				nCtx.setFillColor(strokeColor)
+				if let shadow = what.shadow {
+					nCtx.setShadow(shadow)
+				}
+				nCtx.fillPath()
+			}
+		}
+	}
+}
+
+// MARK: - Sparkline drawing
 
 private extension DSFSparklineOverlay.Line {
 	func drawLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
@@ -99,12 +186,12 @@ private extension DSFSparklineOverlay.Line {
 
 		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated)
 
-		let allP = CGMutablePath()
+		var markersBounds: [CGRect] = []
 		if self.markerSize > 0 {
 			points.forEach { point in
 				let w = self.markerSize / 2
 				let r = CGRect(x: point.x - w, y: point.y - w, width: self.markerSize, height: self.markerSize)
-				allP.addPath(CGPath(ellipseIn: r, transform: nil))
+				markersBounds.append(r)
 			}
 		}
 
@@ -147,17 +234,12 @@ private extension DSFSparklineOverlay.Line {
 				}
 			}
 
-			/// Draw the markers the same color as the line for the moment
-			if !allP.isEmpty {
-				if let strokeColor = self.primaryStrokeColor {
-					outer.usingGState { ctx in
-						ctx.addPath(allP)
-						ctx.setFillColor(strokeColor)
-						if let shadow = self.shadow {
-							ctx.setShadow(shadow)
-						}
-						ctx.fillPath()
-					}
+			/// Draw the markers
+			if !markersBounds.isEmpty {
+				outer.usingGState { ctx in
+					// For the standard line, all values are 'positive'
+					let markers = zip(dataSource.data, markersBounds).map { Marker(value: $0.0, rect: $0.1, isPositiveValue: true) }
+					self.actualMarkerDrawingFunc(ctx, markers)
 				}
 			}
 		}
@@ -187,20 +269,19 @@ private extension DSFSparklineOverlay.Line {
 
 		let centroid = (1 - dataSource.normalizedZeroLineValue) * (drawRect.height - 1)
 
-		let pPoints = CGMutablePath()
-		let nPoints = CGMutablePath()
+		var markers: [Marker] = []
 
 		if self.markerSize > 0 {
 			points.enumerated().forEach { point in
 				let w = self.markerSize / 2
 				let r = CGRect(x: point.element.x - w, y: point.element.y - w,
 									width: self.markerSize, height: self.markerSize)
-				if dataSource.valueAtOffsetIsBelowZeroline(point.offset) {
-					nPoints.addPath(CGPath(ellipseIn: r, transform: nil))
-				}
-				else {
-					pPoints.addPath(CGPath(ellipseIn: r, transform: nil))
-				}
+
+				markers.append(
+					Marker(
+						value: dataSource.data[point.offset],
+						rect: r,
+						isPositiveValue: !dataSource.valueAtOffsetIsBelowZeroline(point.offset)))
 			}
 		}
 
@@ -262,33 +343,11 @@ private extension DSFSparklineOverlay.Line {
 			}
 		}
 
-		// Draw the positive markers
+		// Draw the markers
 
-		if !pPoints.isEmpty,
-			let stroke = self.primaryStrokeColor {
+		if self.markerSize > 0 {
 			context.usingGState { ctx in
-				ctx.addPath(pPoints)
-				if let shadow = self.shadow {
-					ctx.setShadow(shadow)
-				}
-				ctx.setFillColor(stroke)
-				ctx.fillPath()
-			}
-		}
-
-		// Draw the negative markers
-		// If the secondary stroke isn't defined, use the primary stroke if it is defined (or else we get markers only
-		// on the top part of the graph)
-
-		if !nPoints.isEmpty,
-			let stroke = firstNotNil([self.secondaryStrokeColor, self.primaryStrokeColor]) {
-			context.usingGState { ctx in
-				ctx.addPath(nPoints)
-				if let shadow = self.shadow {
-					ctx.setShadow(shadow)
-				}
-				ctx.setFillColor(stroke)
-				ctx.fillPath()
+				self.actualMarkerDrawingFunc(ctx, markers)
 			}
 		}
 

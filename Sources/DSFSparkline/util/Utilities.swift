@@ -84,7 +84,7 @@ extension CGContext {
 	///       ctx.fillPath(using: .evenOdd)
 	///    }
 	/// ```
-	func usingGState(stateBlock: (_ context: CGContext) throws -> Void) rethrows {
+	@inlinable func usingGState(stateBlock: (_ context: CGContext) throws -> Void) rethrows {
 		self.saveGState()
 		defer {
 			self.restoreGState()

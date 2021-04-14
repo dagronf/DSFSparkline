@@ -367,16 +367,24 @@ struct LineDemoContentView: View {
 	var body: some View {
 		ScrollView([.vertical, .horizontal]) {
 			VStack {
+				VStack {
 				LineDemoBasic()
 				LineDemoBasicMarkers()
 				LineDemoMarkersAndShadow()
 				LineDemoBasicZeroLine()
 				LineDemoArea()
+				}
+				VStack {
 				LineDemoAreaCentered()
 				LineDemoAreaCenteredMarkers()
 				LineDemoAreaCenteredMarkersNoLowerColor()
 				LineDemoLineRanges()
 				LineDemoLineRanges2()
+				}
+				VStack {
+					Text("Custom markers")
+					LineDemoCustomMarkersTest()
+				}
 			}
 			.frame(width: 400.0)
 			.padding(10)
