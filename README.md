@@ -146,6 +146,8 @@ struct SuperCoolLineSpark: View {
 
 A simple line sparkline. The line can be centered around a zero line to indicate positive and negative values. You can also add (optional) markers to the data points.
 
+You can custom-draw the markers by supplying a drawing callback function where you can customize which markers are drawn (for example, just the min and max values) and how they are drawn.
+
 |  Standard  | Centered  |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-standard.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-centered.png" width="400">|
@@ -157,6 +159,10 @@ A simple line sparkline. The line can be centered around a zero line to indicate
 |  Standard Markers  | Interpolated Markers |
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-markers-centered.png" width="400">|
+
+|  Custom Markers (min/max only)  | Custom Markers (Last 5 values) |
+|------------|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-custom-marker-1.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-custom-marker-2.png" width="400">|
 
 ### Bar <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/bar-simple-small.png" width="50"/>
 

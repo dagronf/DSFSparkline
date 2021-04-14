@@ -737,11 +737,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="856" height="486"/>
                                             <subviews>
                                                 <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="16" columnSpacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-4e-Vtx">
-                                                    <rect key="frame" x="20" y="20" width="816" height="864"/>
+                                                    <rect key="frame" x="20" y="20" width="816" height="944"/>
                                                     <rows>
                                                         <gridRow height="64" id="47u-jo-OYT"/>
                                                         <gridRow height="64" id="rf1-Sg-8OA"/>
                                                         <gridRow height="64" id="5sQ-Aa-yfE"/>
+                                                        <gridRow id="H3e-Ol-bBd"/>
                                                         <gridRow id="kkS-K4-DXg"/>
                                                         <gridRow id="S0C-Pu-lmw"/>
                                                         <gridRow id="HB5-mQ-V2B"/>
@@ -758,7 +759,7 @@
                                                     <gridCells>
                                                         <gridCell row="47u-jo-OYT" column="Fgv-Q3-Ekz" id="fBp-FV-8td">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-zq-3Kb" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="800" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="880" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="PeM-5L-g65"/>
                                                                     <constraint firstAttribute="width" constant="400" id="cmV-xb-fqd"/>
@@ -778,7 +779,7 @@
                                                         </gridCell>
                                                         <gridCell row="47u-jo-OYT" column="Wsh-KX-sd2" id="paB-Kc-fn9">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Lwo-B5-fXw" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="800" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="880" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="AmA-sQ-cTd"/>
                                                                     <constraint firstAttribute="width" constant="400" id="k5B-GP-KV6"/>
@@ -799,7 +800,7 @@
                                                         </gridCell>
                                                         <gridCell row="rf1-Sg-8OA" column="Fgv-Q3-Ekz" id="WZQ-gH-xjR">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="9Uq-bZ-Qih" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="720" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="800" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="CAC-zl-i43"/>
                                                                     <constraint firstAttribute="height" constant="64" id="I7X-h3-4It"/>
@@ -819,7 +820,7 @@
                                                         </gridCell>
                                                         <gridCell row="rf1-Sg-8OA" column="Wsh-KX-sd2" id="guE-UA-jgS">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="aCQ-sL-A3S" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="720" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="800" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="Z6T-Sr-UR1"/>
                                                                     <constraint firstAttribute="height" constant="64" id="niz-rm-4pc"/>
@@ -841,7 +842,7 @@
                                                         </gridCell>
                                                         <gridCell row="5sQ-Aa-yfE" column="Fgv-Q3-Ekz" id="Pq1-kd-r9g">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="O21-tc-rhl" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="640" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="720" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="O3G-bL-oZv"/>
                                                                     <constraint firstAttribute="height" constant="64" id="SvM-kG-FwN"/>
@@ -864,7 +865,7 @@
                                                         </gridCell>
                                                         <gridCell row="5sQ-Aa-yfE" column="Wsh-KX-sd2" id="a5N-JY-mYJ">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-or-Kg8" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="640" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="720" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="SUb-RU-Pfj"/>
                                                                     <constraint firstAttribute="height" constant="64" id="VVP-5w-JVc"/>
@@ -876,6 +877,48 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
                                                                         <real key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </customView>
+                                                        </gridCell>
+                                                        <gridCell row="H3e-Ol-bBd" column="Fgv-Q3-Ekz" id="rf2-AY-ih3">
+                                                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="43s-kw-e5c" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
+                                                                <rect key="frame" x="0.0" y="640" width="400" height="64"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="400" id="wCV-42-WtN"/>
+                                                                    <constraint firstAttribute="height" constant="64" id="wZy-pG-uWG"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                                        <color key="value" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
+                                                                        <real key="value" value="8"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="NO"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </customView>
+                                                        </gridCell>
+                                                        <gridCell row="H3e-Ol-bBd" column="Wsh-KX-sd2" id="QeP-6M-gU3">
+                                                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-LI-Nfa" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
+                                                                <rect key="frame" x="416" y="640" width="400" height="64"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="64" id="4Xb-LW-sk3"/>
+                                                                    <constraint firstAttribute="width" constant="400" id="kgg-2T-eNU"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
+                                                                        <color key="value" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
+                                                                        <real key="value" value="8"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="NO"/>
@@ -1848,6 +1891,8 @@
                         <outlet property="lineInterpolatedCenteredView" destination="aCQ-sL-A3S" id="r2B-N2-oPg"/>
                         <outlet property="lineInterpolatedStandardView" destination="9Uq-bZ-Qih" id="3bG-Yq-tKc"/>
                         <outlet property="lineMarkersCenteredView" destination="fJm-or-Kg8" id="HR7-2M-c0L"/>
+                        <outlet property="lineMarkersCustomMarkersView1" destination="43s-kw-e5c" id="PgM-kp-IcR"/>
+                        <outlet property="lineMarkersCustomMarkersView2" destination="2QD-LI-Nfa" id="qU8-rP-QoB"/>
                         <outlet property="lineMarkersStandardView" destination="O21-tc-rhl" id="6fU-lL-FWH"/>
                         <outlet property="lineStandardView" destination="P1e-zq-3Kb" id="mWV-lg-Nt7"/>
                         <outlet property="percentBarGraph1" destination="CF6-xS-CM1" id="W3a-hK-81l"/>

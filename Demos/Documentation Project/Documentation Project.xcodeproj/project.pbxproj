@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		236A660C2626C0C0004B70C9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A660B2626C0C0004B70C9 /* Utilities.swift */; };
 		23EE63DF25D875C7000C85E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE63DE25D875C7000C85E4 /* AppDelegate.swift */; };
 		23EE63E125D875C7000C85E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE63E025D875C7000C85E4 /* ViewController.swift */; };
 		23EE63E325D875C8000C85E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23EE63E225D875C8000C85E4 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		236A660B2626C0C0004B70C9 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		23EE63DB25D875C7000C85E4 /* Documentation Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Documentation Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EE63DE25D875C7000C85E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23EE63E025D875C7000C85E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				23EE640B25D877E7000C85E4 /* CenteringClipView.swift */,
 				23EE63E725D875C8000C85E4 /* Info.plist */,
 				23EE63E825D875C8000C85E4 /* Documentation_Project.entitlements */,
+				236A660B2626C0C0004B70C9 /* Utilities.swift */,
 			);
 			path = "Documentation Project";
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			files = (
 				23EE63E125D875C7000C85E4 /* ViewController.swift in Sources */,
 				23EE63DF25D875C7000C85E4 /* AppDelegate.swift in Sources */,
+				236A660C2626C0C0004B70C9 /* Utilities.swift in Sources */,
 				23EE640C25D877E7000C85E4 /* CenteringClipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

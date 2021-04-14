@@ -69,6 +69,12 @@ class ViewController: NSViewController {
 	@IBOutlet weak var lineMarkersStandardView: DSFSparklineLineGraphView!
 	@IBOutlet weak var lineMarkersCenteredView: DSFSparklineLineGraphView!
 
+	@IBOutlet weak var lineMarkersCustomMarkersView1: DSFSparklineLineGraphView!
+	@IBOutlet weak var lineMarkersCustomMarkersView2: DSFSparklineLineGraphView!
+
+
+
+
 	@IBOutlet weak var barStandardView: DSFSparklineBarGraphView!
 	@IBOutlet weak var barCenteredView: DSFSparklineBarGraphView!
 
@@ -132,6 +138,8 @@ class ViewController: NSViewController {
 		nameMap["line-interpolated-centered"] = lineInterpolatedCenteredView
 		nameMap["line-markers"] = lineMarkersStandardView
 		nameMap["line-markers-centered"] = lineMarkersCenteredView
+		nameMap["line-custom-marker-1"] = self.lineMarkersCustomMarkersView1
+		nameMap["line-custom-marker-2"] = self.lineMarkersCustomMarkersView2
 		nameMap["bar-standard"] = barStandardView
 		nameMap["bar-centered"] = barCenteredView
 		nameMap["stackline-standard"] = stackStandardView
@@ -311,6 +319,50 @@ class ViewController: NSViewController {
 
 		self.lineMarkersStandardView.dataSource = lineSource
 		self.lineMarkersCenteredView.dataSource = lineSource
+
+		self.lineMarkersCustomMarkersView1.dataSource = lineSource
+		self.lineMarkersCustomMarkersView1.markerDrawingFunc = { context, markerFrames in
+			let maxV = markerFrames.min { (a, b) -> Bool in a.value > b.value }!
+			let minV = markerFrames.min { (a, b) -> Bool in a.value < b.value }!
+
+			// Min
+
+			context.setFillColor(DSFColor.systemRed.cgColor)
+			context.fill(minV.rect)
+
+			context.setLineWidth(0.5)
+			context.setStrokeColor(DSFColor.white.cgColor)
+			context.stroke(minV.rect)
+
+			// Max
+
+			context.setFillColor(DSFColor.systemGreen.cgColor)
+			context.fill(maxV.rect)
+
+			context.setLineWidth(0.5)
+			context.setStrokeColor(DSFColor.white.cgColor)
+			context.stroke(maxV.rect)
+		}
+
+		self.lineMarkersCustomMarkersView2.dataSource = lineSource
+		self.lineMarkersCustomMarkersView2.markerDrawingFunc = { context, markerFrames in
+			let lastFrames = markerFrames.suffix(5)
+			lastFrames.forEach { marker in
+
+				let path = CGPath { p in
+					p.move(to: CGPoint(x: marker.rect.minX, y: marker.rect.midY))
+					p.addLine(to: CGPoint(x: marker.rect.maxX, y: marker.rect.midY))
+					p.move(to: CGPoint(x: marker.rect.midX, y: marker.rect.minY))
+					p.addLine(to: CGPoint(x: marker.rect.midX, y: marker.rect.maxY))
+				}
+
+				context.addPath(path)
+				context.setStrokeColor(DSFColor.systemBlue.cgColor)
+				context.setLineWidth(2)
+				context.strokePath()
+			}
+		}
+
 
 		self.barStandardView.dataSource = lineSource
 		self.barCenteredView.dataSource = lineSource
