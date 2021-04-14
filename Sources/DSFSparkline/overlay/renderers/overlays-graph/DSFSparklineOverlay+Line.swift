@@ -97,7 +97,7 @@ public extension DSFSparklineOverlay {
 
 		// MARK: - Draw handling
 
-		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
 				return self.drawCenteredGraph(context: context, bounds: bounds, scale: scale)
 			}

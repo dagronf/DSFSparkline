@@ -72,7 +72,7 @@ public extension DSFSparklineOverlay {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			return self.drawGridLines(context: context, bounds: bounds, scale: scale)
 		}
 	}

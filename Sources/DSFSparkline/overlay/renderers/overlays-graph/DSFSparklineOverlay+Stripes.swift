@@ -60,7 +60,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.integral {
 				return self.drawStripeGraph(context: context, bounds: bounds, scale: scale)
 			}

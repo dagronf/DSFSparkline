@@ -59,7 +59,7 @@ import QuartzCore
 	}
 
 	/// To be overridden by sub-classes to draw their content into the provided context
-	open func drawGraph(context _: CGContext, bounds _: CGRect, scale _: CGFloat) -> CGRect {
+	internal func drawGraph(context _: CGContext, bounds _: CGRect, scale _: CGFloat) -> CGRect {
 		fatalError("must be implemented in overridden classes")
 	}
 }

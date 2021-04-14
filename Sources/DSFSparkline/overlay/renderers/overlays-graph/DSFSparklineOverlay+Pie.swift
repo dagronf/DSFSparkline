@@ -64,7 +64,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		override public func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			self.drawPieGraph(context: context, bounds: bounds, scale: scale)
 		}
 

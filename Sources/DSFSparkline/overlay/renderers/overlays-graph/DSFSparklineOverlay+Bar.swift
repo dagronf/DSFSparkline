@@ -52,7 +52,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			if self.centeredAtZeroLine {
 				return self.drawCenteredBarGraph(context: context, bounds: bounds, scale: scale)
 			}

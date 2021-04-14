@@ -94,7 +94,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		public override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
 			self.drawWinLossGraph(context: context, bounds: bounds, scale: scale)
 		}
 	}
