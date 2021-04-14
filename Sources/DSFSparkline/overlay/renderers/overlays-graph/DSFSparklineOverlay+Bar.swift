@@ -52,22 +52,36 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		public override func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+			guard let dataSource = self.dataSource else { return .zero }
+
+			let integralRect = bounds.integral
+			let componentWidth = Int(integralRect.width) / Int(dataSource.windowSize)
+
+			// The left offset in order to center X the full range
+			let intOffset = Int(bounds.minX) + (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+			let xOffset = CGFloat(intOffset)
+			let yOffset = CGFloat(self.strokeWidth)
+
+			return DSFEdgeInsets(top: yOffset, left: xOffset, bottom: yOffset, right: xOffset)
+		}
+
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			if self.centeredAtZeroLine {
-				return self.drawCenteredBarGraph(context: context, bounds: bounds, scale: scale)
+				self.drawCenteredBarGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawBarGraph(context: context, bounds: bounds, scale: scale)
+				self.drawBarGraph(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
 }
 
 extension DSFSparklineOverlay.Bar {
-	private func drawBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-		guard let dataSource = self.dataSource else {
-			return bounds
-		}
+
+	private func drawBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
+
+		guard let dataSource = self.dataSource else { return }
 
 		let integralRect = bounds.integral
 
@@ -78,15 +92,16 @@ extension DSFSparklineOverlay.Bar {
 		let barWidth = componentWidth - Int(barSpacing)
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+		let xOffset: Int = Int(bounds.minX) + (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
 
 		// The available height range
-		let range: ClosedRange<CGFloat> = 2 ... max(2, integralRect.maxY - 2)
+		let range: ClosedRange<CGFloat> = 0 ... integralRect.maxY
 
 		let normy = dataSource.normalized
 		let xDiff = bounds.width / CGFloat(normy.count)
 		let points = normy.enumerated().map {
-			CGPoint(x: CGFloat($0.offset) * xDiff, y: ($0.element * (integralRect.height - 1)).clamped(to: range))
+			CGPoint(x: CGFloat($0.offset) * xDiff,
+					  y: ($0.element * (integralRect.height - 1) + integralRect.minY).clamped(to: range))
 		}
 
 		context.usingGState { outer in
@@ -105,7 +120,7 @@ extension DSFSparklineOverlay.Bar {
 			for point in points.enumerated() {
 				let yVal = Int(point.element.y.rounded(.down))
 				let r = CGRect(x: xOffset + point.offset * componentWidth,
-									y: Int(integralRect.height) - yVal,
+									y: Int(integralRect.minY) + Int(integralRect.height) - yVal,
 									width: barWidth,
 									height: yVal - Int(self.strokeWidth))
 				bars.append(r.integral)
@@ -136,14 +151,11 @@ extension DSFSparklineOverlay.Bar {
 				}
 			}
 		}
-		return bounds
 	}
 
-	private func drawCenteredBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+	private func drawCenteredBarGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 
-		guard let dataSource = self.dataSource else {
-			return bounds
-		}
+		guard let dataSource = self.dataSource else { return }
 
 		let drawRect = bounds
 		let height = drawRect.height - 1
@@ -169,9 +181,9 @@ extension DSFSparklineOverlay.Bar {
 			var negativePath: [CGRect] = []
 
 			for value in normy.enumerated() {
-				let x = CGFloat(value.offset) * xDiff
+				let x = bounds.minX + CGFloat(value.offset) * xDiff
 				if value.element >= centre {
-					let yy = (centre - value.element) * height
+					let yy = bounds.minY + ((centre - value.element) * height)
 					let r = CGRect(x: x,
 										y: centroid,
 										width: xDiff - 1 - (CGFloat(self.barSpacing)),
@@ -179,7 +191,7 @@ extension DSFSparklineOverlay.Bar {
 					positivePath.append(r.integral)
 				}
 				else {
-					let yy = (value.element - centre) * height
+					let yy = bounds.minY + ((value.element - centre) * height)
 					let r = CGRect(x: x,
 										y: centroid + 1,
 										width: xDiff - 1 - (CGFloat(self.barSpacing)),
@@ -234,7 +246,5 @@ extension DSFSparklineOverlay.Bar {
 				}
 			}
 		}
-
-		return bounds
 	}
 }

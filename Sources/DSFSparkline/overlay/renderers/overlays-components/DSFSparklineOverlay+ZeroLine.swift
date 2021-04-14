@@ -64,20 +64,17 @@ public extension DSFSparklineOverlay {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-			guard let dataSource = self.dataSource else {
-				return bounds
-			}
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
+			guard let dataSource = self.dataSource else { return }
 
 			let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
-			let zeroPos = bounds.height - (frac * bounds.height)
+			let zeroPos = bounds.height - (frac * bounds.height) + bounds.minY
 
 			context.setLineWidth(self.strokeWidth)
 			context.setStrokeColor(self.strokeColor)
 			context.setLineDash(phase: 0.0, lengths: self.dashStyle)
-			context.strokeLineSegments(between: [CGPoint(x: 0.0, y: zeroPos), CGPoint(x: bounds.width, y: zeroPos)])
-
-			return bounds
+			context.strokeLineSegments(
+				between: [CGPoint(x: bounds.minX, y: zeroPos), CGPoint(x: bounds.width + bounds.minX, y: zeroPos)])
 		}
 	}
 }

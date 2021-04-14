@@ -76,16 +76,16 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawTabletGraph(context: context, bounds: bounds, scale: scale)
 		}
 	}
 }
 
 private extension DSFSparklineOverlay.Tablet {
-	func drawTabletGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+	func drawTabletGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 		guard let dataSource = self.dataSource else {
-			return bounds
+			return
 		}
 
 		let integralRect = bounds.insetBy(dx: 0, dy: 1)
@@ -166,7 +166,5 @@ private extension DSFSparklineOverlay.Tablet {
 				}
 			}
 		}
-
-		return bounds
 	}
 }

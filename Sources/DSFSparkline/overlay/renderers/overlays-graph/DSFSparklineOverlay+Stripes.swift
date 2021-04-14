@@ -60,21 +60,21 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			if self.integral {
-				return self.drawStripeGraph(context: context, bounds: bounds, scale: scale)
+				self.drawStripeGraph(context: context, bounds: bounds, scale: scale)
 			}
 			else {
-				return self.drawStripeGraphFloat(context: context, bounds: bounds, scale: scale)
+				self.drawStripeGraphFloat(context: context, bounds: bounds, scale: scale)
 			}
 		}
 	}
 }
 
 private extension DSFSparklineOverlay.Stripes {
-	func drawStripeGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+	func drawStripeGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 		guard let dataSource = self.dataSource else {
-			return bounds
+			return
 		}
 
 		let integralRect = bounds.integral
@@ -86,7 +86,7 @@ private extension DSFSparklineOverlay.Stripes {
 		let barWidth = componentWidth - Int(barSpacing)
 
 		// The left offset in order to center X
-		let xOffset: Int = (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
+		let xOffset: Int = Int(self.bounds.minX) + (Int(bounds.width) - (componentWidth * Int(dataSource.windowSize))) / 2
 
 		let normalizedPoints = dataSource.normalized
 
@@ -114,12 +114,11 @@ private extension DSFSparklineOverlay.Stripes {
 				}
 			}
 		}
-		return bounds
 	}
 
-	private func drawStripeGraphFloat(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+	private func drawStripeGraphFloat(context: CGContext, bounds: CGRect, scale _: CGFloat) {
 		guard let dataSource = self.dataSource else {
-			return bounds
+			return
 		}
 
 		let drawRect = bounds
@@ -145,8 +144,8 @@ private extension DSFSparklineOverlay.Stripes {
 					let color = gradient.color(at: value.element)
 					inner.setFillColor(color)
 					let r = CGRect(
-						x: CGFloat(value.offset) * componentWidth - (barSpacing == 0 ? 0.5 : 0),
-						y: drawRect.minX,
+						x: bounds.minX + CGFloat(value.offset) * componentWidth - (barSpacing == 0 ? 0.5 : 0),
+						y: drawRect.minY,
 						width: barWidth + (barSpacing == 0 ? 0.5 : 0),
 						height: drawRect.height
 					)
@@ -155,6 +154,5 @@ private extension DSFSparklineOverlay.Stripes {
 				}
 			}
 		}
-		return bounds
 	}
 }

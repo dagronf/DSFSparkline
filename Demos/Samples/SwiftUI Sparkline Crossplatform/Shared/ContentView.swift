@@ -33,7 +33,6 @@ struct ContentView: View {
 		Item(id: 12, name: "SwiftUI Overlays"),
 		Item(id: 13, name: "Percent Bar"),
 
-
 		Item(id: 99, name: "Testing Harness")
 	]
 
@@ -76,6 +75,7 @@ struct DetailView: View {
 			case 13: PercentBar(shouldAnimate: true)
 
 			case 99: TestingView()
+
 			default: fatalError()
 			}
 		}

@@ -85,6 +85,10 @@ import UIKit
 
 extension DSFSparklineSurfaceView {
 
+	var overlays: [DSFSparklineOverlay] {
+		return self.rootLayer.sublayers?.compactMap { $0 as? DSFSparklineOverlay } ?? []
+	}
+
 	/// Add a sparkline overlay to the view
 	public func addOverlay(_ overlay: DSFSparklineOverlay) {
 		self.rootLayer.addSublayer(overlay)
@@ -100,6 +104,13 @@ extension DSFSparklineSurfaceView {
 	/// Remove a sparkline overlay to the view
 	public func removeOverlay(_ overlay: DSFSparklineOverlay) {
 		overlay.removeFromSuperlayer()
+	}
+
+	func edgeInsets(for rect: CGRect) -> DSFEdgeInsets {
+		/// Calculate the total inset required
+		return self.overlays.reduce(DSFEdgeInsets.zero) { (result, overlay) in
+			result.combineMaximum(using: overlay.edgeInsets(for: rect))
+		}
 	}
 
 	private func syncLayers() {
@@ -135,9 +146,9 @@ extension DSFSparklineSurfaceView {
 // the draw delegate for the overlay layers
 fileprivate class RendererDelegate: NSObject, CALayerDelegate {
 
-	let view: DSFView
+	let view: DSFSparklineSurfaceView
 
-	init(view: DSFView) {
+	init(view: DSFSparklineSurfaceView) {
 		self.view = view
 		super.init()
 	}
@@ -146,7 +157,8 @@ fileprivate class RendererDelegate: NSObject, CALayerDelegate {
 		if let l = layer as? DSFSparklineOverlay {
 			let scale = view.retinaScale()
 			l.contentsScale = scale
-			_ = l.drawGraph(context: ctx, bounds: view.bounds, scale: scale)
+			let insetBounds = view.edgeInsets(for: view.bounds)
+			l.drawGraph(context: ctx, bounds: view.bounds.inset(by: insetBounds), scale: scale)
 		}
 	}
 }

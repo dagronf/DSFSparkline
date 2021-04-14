@@ -64,7 +64,7 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
+		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawPieGraph(context: context, bounds: bounds, scale: scale)
 		}
 
@@ -93,9 +93,10 @@ private extension DSFSparklineOverlay.Pie {
 }
 
 private extension DSFSparklineOverlay.Pie {
-	func drawPieGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
+
+	func drawPieGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {
 		if fractionComplete == 0 {
-			return bounds
+			return
 		}
 
 		let rect = bounds.insetBy(dx: 1, dy: 1)
@@ -158,6 +159,5 @@ private extension DSFSparklineOverlay.Pie {
 				}
 			}
 		}
-		return bounds
 	}
 }

@@ -54,17 +54,15 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) -> CGRect {
-			return self.drawDotGraph(context: context, bounds: bounds, scale: scale)
+		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
+			self.drawDotGraph(context: context, bounds: bounds, scale: scale)
 		}
 	}
 }
 
 extension DSFSparklineOverlay.Dot {
-	private func drawDotGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) -> CGRect {
-		guard let dataSource = self.dataSource else {
-			return bounds
-		}
+	private func drawDotGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {
+		guard let dataSource = self.dataSource else { return }
 
 		let drawRect = bounds
 
@@ -120,9 +118,7 @@ extension DSFSparklineOverlay.Dot {
 			}
 		}
 
-		if uv.count > 0,
-			let offColor = self.offColor
-		{
+		if uv.count > 0, let offColor = self.offColor {
 			context.usingGState { state in
 				let path = CGMutablePath()
 				path.addRects(uv)
@@ -131,7 +127,5 @@ extension DSFSparklineOverlay.Dot {
 				state.drawPath(using: .fill)
 			}
 		}
-
-		return bounds
 	}
 }
