@@ -780,6 +780,9 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                     <integer key="value" value="30"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </subviews>

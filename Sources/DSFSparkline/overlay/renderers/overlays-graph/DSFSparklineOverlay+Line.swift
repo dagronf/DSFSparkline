@@ -82,7 +82,7 @@ public extension DSFSparklineOverlay {
 		///   - markerFrames: The Marker definitions for all of the markers within the current sparkline in left-to-right order
 		public typealias MarkerDrawingFunction = (_ context: CGContext, _ markerFrames: [Marker]) -> Void
 
-		/// The drawing function for drawing the markers
+		/// An optional drawing function for custom drawing markers
 		///
 		/// Note that this function is called very frequently so make sure its performant!
 		@objc public lazy var markerDrawingFunc: MarkerDrawingFunction? = nil
@@ -93,6 +93,10 @@ public extension DSFSparklineOverlay {
 
 		private var actualMarkerDrawingFunc: MarkerDrawingFunction {
 			return self.markerDrawingFunc ?? self.DefaultMarkerDrawing
+		}
+
+		deinit {
+			self.markerDrawingFunc = nil
 		}
 
 		// MARK: - Draw handling

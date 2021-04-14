@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let IsRunningInPreviewPane: Bool = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+
 @main
 struct SwiftUI_Sparkline_DemoApp: App {
     var body: some Scene {

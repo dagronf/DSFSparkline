@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 
+#import <CoreGraphics/CoreGraphics.h>
+
 @import DSFSparkline;
 
 @interface ViewController ()
@@ -41,6 +43,17 @@
 	_centeredBarDataSource = [[DSFSparklineDataSource alloc] init];
 	_receiveDataSource = [[DSFSparklineDataSource alloc] init];
 	_sendDataSource = [[DSFSparklineDataSource alloc] init];
+
+	// Add a custom marker drawing function
+	[_lineGraph setMarkerDrawingFunc:^(CGContextRef context, NSArray<DSFSparklineOverlayLineMarker *> * markers) {
+		id ms = [markers subarrayWithRange:NSMakeRange([markers count] - 4, 4)];
+
+		for (DSFSparklineOverlayLineMarker* m in ms) {
+			CGContextSetFillColorWithColor(context, NSColor.whiteColor.CGColor);
+			CGContextSetShadowWithColor(context, CGSizeMake(1, 1), 4, NSColor.linkColor.CGColor);
+			CGContextFillRect(context, [m rect]);
+		}
+	}];
 
 	[[self lineGraph] setDataSource:[self dataSource]];
 	[[self dataSource] setRangeWithLowerBound:-1.0 upperBound:1.0];
