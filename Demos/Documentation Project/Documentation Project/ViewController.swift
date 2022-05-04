@@ -321,7 +321,7 @@ class ViewController: NSViewController {
 		self.lineMarkersCenteredView.dataSource = lineSource
 
 		self.lineMarkersCustomMarkersView1.dataSource = lineSource
-		self.lineMarkersCustomMarkersView1.markerDrawingFunc = { context, markerFrames in
+		self.lineMarkersCustomMarkersView1.markerDrawingBlock = { context, markerFrames in
 			let maxV = markerFrames.min { (a, b) -> Bool in a.value > b.value }!
 			let minV = markerFrames.min { (a, b) -> Bool in a.value < b.value }!
 
@@ -345,7 +345,7 @@ class ViewController: NSViewController {
 		}
 
 		self.lineMarkersCustomMarkersView2.dataSource = lineSource
-		self.lineMarkersCustomMarkersView2.markerDrawingFunc = { context, markerFrames in
+		self.lineMarkersCustomMarkersView2.markerDrawingBlock = { context, markerFrames in
 			let lastFrames = markerFrames.suffix(5)
 			lastFrames.forEach { marker in
 

@@ -30,7 +30,7 @@ import UIKit
 public extension NSShadow {
 	@objc convenience init(blurRadius: CGFloat, offset: CGSize, color: DSFColor) {
 		self.init()
-
+		
 		self.shadowBlurRadius = blurRadius
 		self.shadowOffset = offset
 		self.shadowColor = color
@@ -39,23 +39,25 @@ public extension NSShadow {
 
 extension CGContext {
 	@inlinable func setShadow(_ shadow: NSShadow) {
-
-		#if os(macOS)
+#if os(macOS)
 		let color = shadow.shadowColor
-		#else
+#else
 		let color = shadow.shadowColor as? UIColor
-		#endif
-
-		self.setShadow(offset: shadow.shadowOffset,
-							blur: shadow.shadowBlurRadius,
-							color: color?.cgColor)
+#endif
+		
+		self.setShadow(
+			offset: shadow.shadowOffset,
+			blur: shadow.shadowBlurRadius,
+			color: color?.cgColor)
 	}
 }
 
 // Static definition of the 'default' shadow.
-private let _NSShadowDefaultValue = NSShadow(blurRadius: 1.0,
-															offset: CGSize(width: 0.5, height: 0.5),
-															color: DSFColor.black.withAlphaComponent(0.3))
+private let _NSShadowDefaultValue = NSShadow(
+	blurRadius: 1.0,
+	offset: CGSize(width: 0.5, height: 0.5),
+	color: DSFColor.black.withAlphaComponent(0.3)
+)
 
 internal extension NSShadow {
 	/// The default shadow
