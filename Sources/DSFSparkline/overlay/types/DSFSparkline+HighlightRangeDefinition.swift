@@ -66,6 +66,13 @@ public extension DSFSparkline {
 			self.fill = DSFSparkline.Fill.Color(fillColor)
 			super.init()
 		}
+
+		@objc public func copyHighlightRangeDefinition() -> HighlightRangeDefinition {
+			HighlightRangeDefinition(
+				lowerBound: self.range.lowerBound,
+				upperBound: self.range.upperBound,
+				fill: self.fill)
+		}
 	}
 }
 

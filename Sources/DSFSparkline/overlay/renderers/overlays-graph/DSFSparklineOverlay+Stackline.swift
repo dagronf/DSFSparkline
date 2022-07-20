@@ -51,6 +51,22 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		@objc public override init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.strokeWidth = orig.strokeWidth
+			self.barSpacing = orig.barSpacing
+			self.shadow = orig.shadow?.copy() as? NSShadow
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			if self.centeredAtZeroLine {
 				self.drawCenteredStackLineGraph(context: context, bounds: bounds, scale: scale)

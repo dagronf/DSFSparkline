@@ -65,10 +65,15 @@ public extension DSFSparkline {
 			super.init()
 		}
 
-		@inlinable func colorAtOffset(_ offset: Int) -> DSFColor {
+		@objc public func copyPalette() -> Palette {
+			let copied = self.colors.compactMap { $0.copy() as? DSFColor ?? .black }
+			return Palette(copied)
+		}
+
+		@inlinable @objc func colorAtOffset(_ offset: Int) -> DSFColor {
 			return self.colors[offset % self.colors.count]
 		}
-		@inlinable func cgColorAtOffset(_ offset: Int) -> CGColor {
+		@inlinable @objc func cgColorAtOffset(_ offset: Int) -> CGColor {
 			return self.cgColors[offset % self.colors.count] as! CGColor
 		}
 	}

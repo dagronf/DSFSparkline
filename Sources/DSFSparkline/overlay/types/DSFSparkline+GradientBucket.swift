@@ -67,7 +67,8 @@ public extension DSFSparkline {
 		}
 
 		/// Create a gradient
-		/// - Parameter posts: The colors to use evenly across the gradient fill
+		/// - Parameter colors: The colors to use evenly across the gradient fill
+		/// - Parameter bucketCount: The number of color buckets to create
 		public init(colors: [CGColor], bucketCount: UInt = 0) {
 			assert(colors.count > 1)
 			self.bucketCount = bucketCount
@@ -88,6 +89,14 @@ public extension DSFSparkline {
 			self.sortedPosts = self.sorted(posts)
 
 			self.buildBuckets()
+		}
+
+		/// Make a copy of the gradient bucket
+		@objc public func copyGradientBucket() -> GradientBucket {
+			GradientBucket(
+				posts: self.sortedPosts.map { $0.copyPost() },
+				bucketCount: self.bucketCount
+			)
 		}
 
 		// MARK: - Buckets
@@ -266,6 +275,17 @@ public extension DSFSparkline.GradientBucket {
 			self.color = (r1, g1, b1, a1, rgbColor)
 
 			super.init()
+		}
+
+		/// Make a copy of this gradient bucket post
+		@objc public func copyPost() -> Post {
+			return Post(
+				r: self.color.r,
+				g: self.color.g,
+				b: self.color.b,
+				a: self.color.a,
+				location: self.location
+			)
 		}
 
 		/// Create a post

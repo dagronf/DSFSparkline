@@ -53,6 +53,24 @@ public extension DSFSparklineOverlay {
 		/// The length of the animate-in duration
 		@objc public var animationDuration: CGFloat = 0.25
 
+		@objc public override init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.palette = orig.palette.copyPalette()
+			self.strokeColor = orig.strokeColor?.copy()
+			self.lineWidth = orig.lineWidth
+			self.animated = orig.animated
+			self.animationDuration = orig.animationDuration
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		override func staticDataSourceDidChange() {
 			super.staticDataSourceDidChange()
 			if self.animated {

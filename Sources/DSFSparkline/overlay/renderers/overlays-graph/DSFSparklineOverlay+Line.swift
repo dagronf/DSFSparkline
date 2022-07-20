@@ -100,6 +100,24 @@ public extension DSFSparklineOverlay {
 			DSFSparklineOverlay.Line.DefaultMarkerDrawingFunc(what: self, context: context, markers: markers)
 		}
 
+		public override init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.strokeWidth = orig.strokeWidth
+			self.interpolated = orig.interpolated
+			self.shadow = orig.shadow?.copy() as? NSShadow
+			self.markerSize = orig.markerSize
+			super.init(layer: layer)
+			self.markerDrawingBlock = orig.markerDrawingBlock
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		deinit {
 			self.markerDrawingBlock = nil
 		}

@@ -7,258 +7,264 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E1A6D50D5FB10ED0BEA27FC0CBE672 /* ArbitraryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */; };
-		02A2D53143EBCD81F4DF76725A3533E6 /* DSFSparklineStripesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */; };
-		03EE75573BC3A14A2E86DB7C1D81063C /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D279612BF5BAAC7C4119670173619 /* DSFSparklineBarGraphView+SwiftUI.swift */; };
-		065E3F094BA691BEB586AEE0DDAE508C /* DSFSparklineOverlay+RangeHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE312C33E37CC684749B39BDFA3388B /* DSFSparklineOverlay+RangeHighlight.swift */; };
-		08BB56EFCA64D321B9B4AFC66BB81346 /* DSFSparklineOverlay+ZeroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67845D70B826F559C837249FCF1565 /* DSFSparklineOverlay+ZeroLine.swift */; };
-		094DF3BC11E50662E4C47EB9D76C14D2 /* DSFSparkline+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C03FAE04FB06EC07D5FD1E2B32F12 /* DSFSparkline+DataSource.swift */; };
-		095B4F8C79FDB9797B6BC4BDB20B38C0 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CC8F8F7A00CB6ADBA959409047C29 /* DSFSparklinePercentBarGraphView+SwiftUI.swift */; };
-		0C9132A907CE3077DA808AE9AC52DDAA /* DSFSparkline+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40C00F00C43E8844D262DE040C3BEA /* DSFSparkline+Palette.swift */; };
-		0E3820512DE75B193B86A0C821664EBA /* DSFSparklineWinLossGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DA4C500F3CFEDA6D2CE8BA6146F91 /* DSFSparklineWinLossGraphView.swift */; };
-		0EDB409B1DF2CEE7C5B604153E56172D /* DSFSparkline+GradientBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234D2BA67FF07BC5A4B920B14A2D71B /* DSFSparkline+GradientBucket.swift */; };
-		0F5F8775C1C97DF5620BA11FD4C11367 /* DSFSparklineOverlay+Stackline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F7E411C5CFDF23910CEA064321AED1 /* DSFSparklineOverlay+Stackline.swift */; };
+		0209D9281FA8A4EB36E2FF7F5106DBFB /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC3CB933601AA2A45EF947236BABE6 /* DSFSparklineTabletGraphView+SwiftUI.swift */; };
+		0304A3A4D4C74C150E2C08063DFA6F31 /* DSFSparklineOverlay+GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D179BEF7D56A365121E61F1C1E547B /* DSFSparklineOverlay+GridLines.swift */; };
+		066F9F6EC634BC441C2A61C3D0B383E6 /* DSFSparklineDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3918BEBEA35CC082B72D3E3C4E32B55 /* DSFSparklineDataSourceView.swift */; };
+		07D8AFF90B67C4FCADF4570BC62A692F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5384808B46F61D60645CA4900CC402 /* UIKit.framework */; };
+		08CF747751C0C1555E5113F52ED7955C /* NSShadow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */; };
+		0996368CCE756F871927658F12663396 /* DSFSparklineOverlay+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */; };
+		0A94A4180B6B4F0A7337C3B69FE6560D /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83A2D990AA08FB9BB87FF0AD480378 /* DSFSparklineDataBarGraphView+SwiftUI.swift */; };
+		0C47CDF08033E1893F4D9E24D5895B07 /* DSFSparkline+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C03FAE04FB06EC07D5FD1E2B32F12 /* DSFSparkline+DataSource.swift */; };
+		0CAAEF3AE1F3259404019DEA4AABE756 /* SparklineWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6927C521DB09F265252AC1FD2842B86 /* SparklineWindow.swift */; };
+		0CD44D70C049D6F988CD4AEDE6C7C1EE /* DSFSparkline+FillGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB4508F8CF02407E422E0E2147176A /* DSFSparkline+FillGradient.swift */; };
+		0DCEDE5C0EB23A041A94DC438A4C4F39 /* DSFSparklineOverlay+PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3DEC96C401F41FD211FDEAD624F99 /* DSFSparklineOverlay+PercentBar.swift */; };
+		0E6582D7C8E2F7D405F4E2F0A38E21DB /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */; };
+		0FCA91A67EA2CB4622EA5931F08B9DC1 /* DSFSparklineOverlay+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB08130A0C8842C0D8000C836139789 /* DSFSparklineOverlay+Line.swift */; };
 		114ECD2332FCB71827BE6F8668CB0FDE /* Pods-SwiftUI Sparkline Demo (macOS)-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D8A5FF110F76446D498D8B6A64519BD /* Pods-SwiftUI Sparkline Demo (macOS)-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		123FC9F31E4EA2F0CE3F96250E2941AB /* DSFSparklineOverlay+Stackline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F7E411C5CFDF23910CEA064321AED1 /* DSFSparklineOverlay+Stackline.swift */; };
+		11DA57FD364D7672F06E2F4D296ACF71 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */; };
 		13BA59C488854A90038F3D288A7DCA01 /* Pods-tvOS Sparkline Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8442381C78342EFE137C4F10D42E7F /* Pods-tvOS Sparkline Demo-dummy.m */; };
-		1778FFD8632EAF87AC81B91D2FB849FA /* CGPath+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D27E45DAEF4100B78BEC6F05CA6FFF /* CGPath+Hermite.swift */; };
-		17980EE1ACC7DE4E19E806579341E10A /* DSFSparklineOverlay+ZeroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67845D70B826F559C837249FCF1565 /* DSFSparklineOverlay+ZeroLine.swift */; };
-		17A3D7B6E6901F40A0BFC8D73071E1DF /* DSFSparklinePieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FEAFF790EBF5A5DF52F6A58549A3D /* DSFSparklinePieGraphView.swift */; };
-		17EFBC30926AFF19440A75CC0ACDBD82 /* DSFSparkline+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1E18284C243E79D905EF43C9DFE0 /* DSFSparkline+Fill.swift */; };
-		188AB2BD3F506192DA87FB13D4EFADCF /* DSFSparklineDotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A7543784267FAAFDFCB887FE84DE0 /* DSFSparklineDotGraphView.swift */; };
+		13BD86EF666C75718172324DAB45C483 /* DSFSparklineOverlay+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB08130A0C8842C0D8000C836139789 /* DSFSparklineOverlay+Line.swift */; };
 		193319B05386CDF0C477E39D32EE0FC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1EC0F446E309ACCAC1BFDAED21D31 /* Foundation.framework */; };
-		19FFBE06969142F812AE6A598F6C744E /* DSFSparklineZeroLinedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416AF4BA756A8C0F9321CA631AFCF98 /* DSFSparklineZeroLinedGraphView.swift */; };
+		1983CED84E58E9FD7C444084BB6AC8A1 /* DSFSparklineLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFDEDD3566AC2F77F0EF49395E4D5 /* DSFSparklineLineGraphView.swift */; };
 		1A48A7B76015FEAEF9A6568FF7C57786 /* Pods-SwiftUI Sparkline Demo (iOS)-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 784684096214863ED63275FAD4E2EFC8 /* Pods-SwiftUI Sparkline Demo (iOS)-dummy.m */; };
-		1A502D4485C7F6BE0BAEE3B049B4A936 /* NSShadow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */; };
-		1C044CFE9F52008A7024DAD2BC823721 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFBE99DCC2F6C4EC7FB09729AFAEB3 /* Utilities.swift */; };
-		1D6F5CE148E03FA88FE776D331AD4AD5 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E298D5E11FF2F48D8713DC704B045CC /* DSFSparkline+HighlightRangeDefinition.swift */; };
-		1F79666BAA08B564D528805E5066165B /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB795211562918325C2E9F98CC5C743 /* DSFSparklineDotGraphView+SwiftUI.swift */; };
-		219892F27D43714A5DE34C8C00C3D483 /* DSFSparklineOverlay+PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3DEC96C401F41FD211FDEAD624F99 /* DSFSparklineOverlay+PercentBar.swift */; };
-		21AEBA0CFCD55E7541C6E646BEB88006 /* DSFSparkline+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */; };
-		2268DFB6D58192E5FF74AB15B9EE5AB6 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */; };
-		22AF93D605E20FBC65F65103D939636A /* DSFSparkline+ZeroLineDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F73E6A5383B9FE6736F4F8A96CC16 /* DSFSparkline+ZeroLineDefinition.swift */; };
-		23EEADAE3038D08375B82C5A78F9EF40 /* DSFSparkline+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1E18284C243E79D905EF43C9DFE0 /* DSFSparkline+Fill.swift */; };
-		25B95806129A8D4558075A24D17395A0 /* DSFSparklineOverlay+Centerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */; };
+		1AB9702101F5789E0C664056DA007AA5 /* DSFSparklineOverlay+Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C184C13325AE31BFB2EC7E8052B11 /* DSFSparklineOverlay+Dot.swift */; };
+		1BB27DD9A9BF2CD7ABACB4D1C1245EC2 /* DSFSparklineOverlay+PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3DEC96C401F41FD211FDEAD624F99 /* DSFSparklineOverlay+PercentBar.swift */; };
+		1CF3A8FA0CF90B831296E0AAFE58AC27 /* DSFSparklineStackLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A559CF120AF89CEF105D92408A8FC /* DSFSparklineStackLineGraphView.swift */; };
+		1ECECF8BB486B7AD501EC268EC55143B /* DSFSparklineOverlay+Centerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */; };
+		203F95E661B6E020874BA5C16D7B4BE3 /* DSFSparkline+FillGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB4508F8CF02407E422E0E2147176A /* DSFSparkline+FillGradient.swift */; };
+		2237B000261E96BBBCFECCE741C16F7A /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D279612BF5BAAC7C4119670173619 /* DSFSparklineBarGraphView+SwiftUI.swift */; };
+		2384359A6C76204623A4B34BE5BF04C5 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1365C8AF7F30110515BE1A888983CA /* DSFSparklineOverlay+StaticDataSource.swift */; };
+		25594D63A8AD7CC75E3A9E8991E18B7E /* DSFSparklineSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB9F206047B2E66FBC3FDE598DFAE9 /* DSFSparklineSurface.swift */; };
+		26E9BBD5952F598C521186F02A1F3996 /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D279612BF5BAAC7C4119670173619 /* DSFSparklineBarGraphView+SwiftUI.swift */; };
 		26F01A9D5ED7584F6DE7BFFB28D8585D /* Pods-SwiftUI Sparkline Demo (iOS)-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A79D4B05890DF940FACDACA883F226FC /* Pods-SwiftUI Sparkline Demo (iOS)-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		29321744803F79CDF5B24E65D3C6D4C9 /* DSFSparklineOverlay+WinLossTie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615B36409599FCEF7902640A7397F7C /* DSFSparklineOverlay+WinLossTie.swift */; };
-		2A5F857FB01FCB654E0B17B8082DD7D3 /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */; };
-		2AE0B8241C69E723BD507C5DAD68829F /* DSFSparklineOverlay+Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C184C13325AE31BFB2EC7E8052B11 /* DSFSparklineOverlay+Dot.swift */; };
+		27782E05BDF355E8CB442DE8BC7D3E8F /* DSFSparklineOverlay+Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9DB9306199512199E7718DFBCD2A /* DSFSparklineOverlay+Tablet.swift */; };
+		27D1200A9CAB8A0E42E17857A98AB131 /* DSFSparklineWinLossGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DA4C500F3CFEDA6D2CE8BA6146F91 /* DSFSparklineWinLossGraphView.swift */; };
 		2BAC42A76ACE05225088B6C3B710011B /* Pods-iOS Sparkline Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 807B0B994CD7BEA610B3E733DB8AB174 /* Pods-iOS Sparkline Demo-dummy.m */; };
-		2BF12DCFD02F1BE917FD75A3A3D1F177 /* DSFSparklinePieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FEAFF790EBF5A5DF52F6A58549A3D /* DSFSparklinePieGraphView.swift */; };
-		2D1B3293463E04D15467DC339CACE710 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFBE99DCC2F6C4EC7FB09729AFAEB3 /* Utilities.swift */; };
+		2C03A1A6DE30BA7C25A3A09E3EF19FF5 /* DSFSparklineOverlay+RangeHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE312C33E37CC684749B39BDFA3388B /* DSFSparklineOverlay+RangeHighlight.swift */; };
+		2D8A0D264F2A56C214F6DA11291AAC2E /* CGPath+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D27E45DAEF4100B78BEC6F05CA6FFF /* CGPath+Hermite.swift */; };
+		2EE1D92F84E971E876D980F2C9E0FAFF /* DSFSparkline+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */; };
+		32F4E591AF73DC94937893F31053FC8F /* DSFSparkline+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C03FAE04FB06EC07D5FD1E2B32F12 /* DSFSparkline+DataSource.swift */; };
 		33653D097B7F049F6B54AC5BC3F78C92 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42936F9C2F75FD4E864905B26CD51092 /* Cocoa.framework */; };
-		353E384A744168E961A8292404E7950F /* DSFSparklineOverlay+Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9DB9306199512199E7718DFBCD2A /* DSFSparklineOverlay+Tablet.swift */; };
-		357BA1EBBA573DDF6C7AE5E692E908BF /* DSFSparklineStackLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A559CF120AF89CEF105D92408A8FC /* DSFSparklineStackLineGraphView.swift */; };
-		37E06ED344EBA1C13E6086E4286FFA91 /* DSFSparkline+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40C00F00C43E8844D262DE040C3BEA /* DSFSparkline+Palette.swift */; };
-		3871DF3FE3195B4489C8C2AFE66B0C01 /* DSFSparkline+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */; };
-		396651421F8380EF1DF4CBA2AB68B458 /* DSFSparklineOverlay+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */; };
-		398579DA234680B47A85BFA194F54925 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83A2D990AA08FB9BB87FF0AD480378 /* DSFSparklineDataBarGraphView+SwiftUI.swift */; };
-		39E8235E913E839CFC19E1360073BB98 /* DSFSparklineOverlay+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB08130A0C8842C0D8000C836139789 /* DSFSparklineOverlay+Line.swift */; };
-		3AF0CA3B64A9BB227B2256156F9A8EDB /* DSFSparklineDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3918BEBEA35CC082B72D3E3C4E32B55 /* DSFSparklineDataSourceView.swift */; };
-		3D0E2B1D2D4E4A411B582A689D64A096 /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */; };
-		3D51E973585031A8D6EF31ACED888C19 /* DSFSparklineBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */; };
-		3E282C9272DD1F2AF96E8EA075B18492 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8BC76F0A8AA4FAB296870FD6E5D7E3 /* DSFSparklineLineGraphView+SwiftUI.swift */; };
-		3E902F932FBF21151AAAB77801119D5E /* DSFSparklineTabletGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A9D1840BF4D65F81142604C3B837 /* DSFSparklineTabletGraphView.swift */; };
-		3EB11A11D636A0EFD4B41247AC33B52D /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */; };
-		409FE4373A606E0666CD5B36250DB31D /* DSFSparklinePieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FEAFF790EBF5A5DF52F6A58549A3D /* DSFSparklinePieGraphView.swift */; };
-		41928E082B9E6E1C320B68833F624FEF /* DSFSparklineOverlay+RangeHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE312C33E37CC684749B39BDFA3388B /* DSFSparklineOverlay+RangeHighlight.swift */; };
-		423E01DFA7EFE8B17011F5FB045AEAFB /* DSFSparklineStackLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A559CF120AF89CEF105D92408A8FC /* DSFSparklineStackLineGraphView.swift */; };
-		44575814312A4F231E21D01B970B56DF /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC3CB933601AA2A45EF947236BABE6 /* DSFSparklineTabletGraphView+SwiftUI.swift */; };
-		45E24A1227EEC37B8B3B0D8DBD32F1FD /* DSFSparkline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B4B2DB60D8B4C3A14E8D126803028 /* DSFSparkline.swift */; };
-		492BFA0992FCC28A47FDC3B43BA8DF7D /* DSFSparkline+GradientBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234D2BA67FF07BC5A4B920B14A2D71B /* DSFSparkline+GradientBucket.swift */; };
-		492CF167F82A16F20C9C52849DD05FD1 /* DSFSparkline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B4B2DB60D8B4C3A14E8D126803028 /* DSFSparkline.swift */; };
-		4A1144F8377657881D1E3EF37B71DC2C /* DSFSparklineSurface+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */; };
-		4BE36C018F38626D02278CEA4FB7AD23 /* DSFSparklineDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3918BEBEA35CC082B72D3E3C4E32B55 /* DSFSparklineDataSourceView.swift */; };
-		4C8C14D4E1F2185F95A4D30359E5B2F1 /* DSFSparklineOverlay+WinLossTie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615B36409599FCEF7902640A7397F7C /* DSFSparklineOverlay+WinLossTie.swift */; };
-		4D36F7422C1CC65B4C4C4848C35DFD74 /* DSFSparklineWinLossGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DA4C500F3CFEDA6D2CE8BA6146F91 /* DSFSparklineWinLossGraphView.swift */; };
-		4DA6464CDAE67443D6D42CD348413273 /* DSFSparklineSurface+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */; };
-		4DAEAF26F9CED216D72648A05A833412 /* DSFSparkline+ZeroLineDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F73E6A5383B9FE6736F4F8A96CC16 /* DSFSparkline+ZeroLineDefinition.swift */; };
-		4DB436041167D25AB210492AD94B2DAD /* DSFSparklineBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */; };
-		4E19944A0BDCFE4CC32DDD4B3FFFDA41 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8BC76F0A8AA4FAB296870FD6E5D7E3 /* DSFSparklineLineGraphView+SwiftUI.swift */; };
-		4E9A5AE5A0F7270EB5BD1EED7EBAD179 /* DSFSparklineSurface+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */; };
-		4EC3D457DF0C70F53D0D9DD5E3DB24F3 /* DSFSparklineDataBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421E688D806D61FA0FB2C2B0D631CF2 /* DSFSparklineDataBarGraphView.swift */; };
-		50DFD19FF340A236A8EBED3210403266 /* DSFSparkline-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEC933372BEA2CEB089415E8E13058 /* DSFSparkline-iOS-dummy.m */; };
-		51A6917C50AFB8A3FF31442ADC6AC2DB /* SparklineWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6927C521DB09F265252AC1FD2842B86 /* SparklineWindow.swift */; };
-		51CDB1FB935D2CCE14B875E543D9EB87 /* DSFSparklineSurface+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D881F85D57B24AD2DE860E4439596764 /* DSFSparklineSurface+AttributedString.swift */; };
-		52080A4D3B61CF18A4607F370B856CB8 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */; };
-		520CD538CBAC315D32116D382F0980EF /* DSFSparklineStackLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A559CF120AF89CEF105D92408A8FC /* DSFSparklineStackLineGraphView.swift */; };
-		58024B6E1AE8FD601536BC42D82ED88D /* DSFSparklineSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB9F206047B2E66FBC3FDE598DFAE9 /* DSFSparklineSurface.swift */; };
-		58AB18B58E2317BBE9F2AF7A6AB54C43 /* DSFSparkline-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 770CE518F56845914DBE63E793391C47 /* DSFSparkline-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5923A60F141311DA946D672327EB057F /* DSFSparklineOverlay+Stackline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F7E411C5CFDF23910CEA064321AED1 /* DSFSparklineOverlay+Stackline.swift */; };
-		5A397B5E596264CC33F085FE64C17440 /* DSFSparkline+ZeroLineDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F73E6A5383B9FE6736F4F8A96CC16 /* DSFSparkline+ZeroLineDefinition.swift */; };
-		5AB23DCEFE2C7EA578FCA6F308C14237 /* DSFSparklineDataBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421E688D806D61FA0FB2C2B0D631CF2 /* DSFSparklineDataBarGraphView.swift */; };
+		345E91254338328A4D2570062C94E58D /* CGPath+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D27E45DAEF4100B78BEC6F05CA6FFF /* CGPath+Hermite.swift */; };
+		3BD01F4CF4CFAAAD600F2BA960783E7E /* DSFSparklineSurface+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */; };
+		3C0A3523C91A013EE533B07ACFF9D60E /* DSFSparklineOverlay+ZeroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67845D70B826F559C837249FCF1565 /* DSFSparklineOverlay+ZeroLine.swift */; };
+		3C43E8F5CDA2E1FE91FF0321A1CCBF8B /* DSFSparklineSurface+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */; };
+		437AF52B5524C07F38A8D066D990EDE7 /* DSFSparklineOverlay+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */; };
+		449A75E1BCD7A1231920E569DE5E23EC /* DSFSparklineLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFDEDD3566AC2F77F0EF49395E4D5 /* DSFSparklineLineGraphView.swift */; };
+		48284BB6C88B1BD197907D41F7BA9A49 /* DSFSparkline+FillColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D95081784474040004383AE9BDC0E1 /* DSFSparkline+FillColor.swift */; };
+		4877BD75DA6A36A53C5A39B3799A4C12 /* ArbitraryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */; };
+		491A0F1F4EC6362B3F17E3836197E2D3 /* DSFSparklineSurface+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D881F85D57B24AD2DE860E4439596764 /* DSFSparklineSurface+AttributedString.swift */; };
+		4ACB16972CD51B324FFDA6F94B812DE3 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CC8F8F7A00CB6ADBA959409047C29 /* DSFSparklinePercentBarGraphView+SwiftUI.swift */; };
+		4AF6C3BF97AF533CAEF53CDB1B922CF3 /* DSFSparklineSurface+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */; };
+		4B729AD8B422282555318DC7FE828036 /* ArbitraryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */; };
+		4D39E1B7E29366074F3921EF9AB8BC7E /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */; };
+		4D50A81372EBBC9EC49EA6714D5B443C /* DSFSparklineSurface+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */; };
+		4E3DE3285D51E4EA1EAAE2D1DF587CFF /* DSFSparklineSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB9F206047B2E66FBC3FDE598DFAE9 /* DSFSparklineSurface.swift */; };
+		50347C6E91AE040B68DADEF888858574 /* DSFSparklineBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */; };
+		50B4F1A52667EB86C9CF01BF8F65B14E /* DSFSparkline-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 770CE518F56845914DBE63E793391C47 /* DSFSparkline-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		512DA5CDF32CD5943807A23770E8CC3C /* DSFSparklineOverlay+Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */; };
+		5442CDBCCE4AC46975730B022B0307A1 /* DSFSparklineOverlay+Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */; };
+		5684B808BA839FA60127D5A20A20C738 /* DSFSparklineTabletGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A9D1840BF4D65F81142604C3B837 /* DSFSparklineTabletGraphView.swift */; };
+		56E335EA03B5C5AC9C90DFE187C99C5D /* DSFSparklineDataBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421E688D806D61FA0FB2C2B0D631CF2 /* DSFSparklineDataBarGraphView.swift */; };
+		583A47FBBCB069611CB826FB1F5EF57C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42936F9C2F75FD4E864905B26CD51092 /* Cocoa.framework */; };
+		58415A8759477D3A1EFB8B4FE4820753 /* DSFSparklineOverlay+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49CB3FF58097E1636571CCF6C4DF3F /* DSFSparklineOverlay+Pie.swift */; };
+		5842081C2ECA17CDBDB0AA26850D0F9A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFBE99DCC2F6C4EC7FB09729AFAEB3 /* Utilities.swift */; };
+		59C78E12ED8DD3B04663D044DDF93D17 /* DSFSparklineSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB9F206047B2E66FBC3FDE598DFAE9 /* DSFSparklineSurface.swift */; };
+		5A16C43AC3B9420FD3E4C012492E3ECD /* DSFSparkline+Fillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D12FA6D5B8A18F5B916E8CA366A15 /* DSFSparkline+Fillable.swift */; };
+		5B3759F4627D57A10AF75FE125AFB9E0 /* DSFSparkline+GradientBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753883ED47931FBB1848C630CE4C7E8D /* DSFSparkline+GradientBucket.swift */; };
 		5B381FEDF3973E25DBD1B2EE14A90729 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42936F9C2F75FD4E864905B26CD51092 /* Cocoa.framework */; };
+		5BB9BAA296E0B621145177C68C0FE118 /* DSFSparklineLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFDEDD3566AC2F77F0EF49395E4D5 /* DSFSparklineLineGraphView.swift */; };
+		5CC156FF95203FB1B3FD86A10C550209 /* DSFSparkline+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8E0289057438C1AC1B6D38E931B53 /* DSFSparkline+Palette.swift */; };
 		5D2E37A41AB998233F450CC525E0C44C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42936F9C2F75FD4E864905B26CD51092 /* Cocoa.framework */; };
 		5D92E990FBA123DDBBE30D8952D05415 /* Pods-macOS Table Demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6201700315067E1A5A573CE9899BAB98 /* Pods-macOS Table Demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5EA959C1B7C1C96E325ABFF6D0D6AE20 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E298D5E11FF2F48D8713DC704B045CC /* DSFSparkline+HighlightRangeDefinition.swift */; };
 		5EB612DF5279AA14961BDEA5F4D72561 /* Pods-SwiftUI Sparkline Demo (macOS)-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7317031E618E5C461DBCB774852034 /* Pods-SwiftUI Sparkline Demo (macOS)-dummy.m */; };
-		607480E01EE926391EEE25F5BACF21C9 /* DSFSparklinePercentBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BF2D2D119FEC82ABAF08C62060F62 /* DSFSparklinePercentBarGraphView.swift */; };
-		6448CB8A6A8373045BCA423B04EB954A /* DSFSparklineOverlay+DataBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7369065C8C8D4A51BB98CE0A16988 /* DSFSparklineOverlay+DataBar.swift */; };
-		65BE24880AD8ABC5D754113036679C7F /* DSFSparklineSurface+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D881F85D57B24AD2DE860E4439596764 /* DSFSparklineSurface+AttributedString.swift */; };
+		5ED4A8A4E498BF154BEDBF39DE27B343 /* DSFSparklineOverlay+Centerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */; };
+		5FC36153C65AF325DF1470C8CC22ED03 /* DSFSparkline+ZeroLineDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0616EEE1B58056214883410D77A34DBE /* DSFSparkline+ZeroLineDefinition.swift */; };
+		60A5A211CF6A1766C90C1772A770BFC4 /* DSFSparklineSurface+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */; };
+		6163AE6623054E7E44FC8460955575A8 /* DSFSparkline-tvOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F974A967ADADCFBC49191418E24DDE95 /* DSFSparkline-tvOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		642D91463BA82DC4F9DAE57FA2FA6C28 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1365C8AF7F30110515BE1A888983CA /* DSFSparklineOverlay+StaticDataSource.swift */; };
+		65737B7A85FC65F4F897118EEF7FE0CC /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */; };
+		665968C7D739507E3C092833568385D9 /* SparklineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C8A0C5BE9B23D5B6873282791EA7EF /* SparklineData.swift */; };
+		66AB6E2F558E362AC3A276725CE583CC /* DSFSparklineOverlay+GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D179BEF7D56A365121E61F1C1E547B /* DSFSparklineOverlay+GridLines.swift */; };
+		670E43EF6CDBCFF295B38EEA50980AF4 /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */; };
+		6742BD51530B4979CD30E372ADD98109 /* DSFSparkline-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3BA09E71F3B557FECCB73BCD6D52E0 /* DSFSparkline-macOS-dummy.m */; };
 		67B82246575303D966151FCA4E9E0CB6 /* Pods-macOS Sparkline Demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 54CC9F3C40FD28CBF8D344E486E89FB8 /* Pods-macOS Sparkline Demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		683CAA9E12F457C4EC032B8123056770 /* DSFSparklineDataBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421E688D806D61FA0FB2C2B0D631CF2 /* DSFSparklineDataBarGraphView.swift */; };
-		685A507A1B8368542E3A71095F160368 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */; };
-		68E66EE75D73AAEC7620CBB254AFC94F /* DSFSparklineOverlay+Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */; };
-		698D4C2C686802CB9A6C2F9AF45B0CFB /* DSFSparklineOverlay+Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9DB9306199512199E7718DFBCD2A /* DSFSparklineOverlay+Tablet.swift */; };
-		69993BC7D4E35EFE7894B7BC057D18E6 /* DSFSparklineOverlay+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49CB3FF58097E1636571CCF6C4DF3F /* DSFSparklineOverlay+Pie.swift */; };
-		6A94E0E1ACAB62C582405210AFB0006B /* DSFSparklineZeroLinedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416AF4BA756A8C0F9321CA631AFCF98 /* DSFSparklineZeroLinedGraphView.swift */; };
-		6A9896BE541986AE436FF663E896AF56 /* CGPath+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D27E45DAEF4100B78BEC6F05CA6FFF /* CGPath+Hermite.swift */; };
-		6AB2DC0E1FD4F5AE27CF6ED631906C34 /* DSFSparklineOverlay+Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */; };
-		6D5BB456B9109D03B586F2337EE78996 /* DSFSparklineSurface+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */; };
+		68BD41D2CA9B1C1271719242A9187ECE /* DSFSparkline+FillColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D95081784474040004383AE9BDC0E1 /* DSFSparkline+FillColor.swift */; };
+		6B6533F4EF823387A699151630C186C2 /* DSFSparkline-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F94169F983D458176880FA799C391 /* DSFSparkline-tvOS-dummy.m */; };
 		6DAB591FC8D167EF6DC065CE36AA3AFC /* Pods-macOS Sparkline Demo Objc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3209FA9D7A075927DB20BDCD28901F /* Pods-macOS Sparkline Demo Objc-dummy.m */; };
-		6EEBC3E640410E70CAC73DF6664DE984 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CC8F8F7A00CB6ADBA959409047C29 /* DSFSparklinePercentBarGraphView+SwiftUI.swift */; };
-		71A18A8DA5C54AC8603A9F7FCBFF53BF /* DSFSparklineSurface+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */; };
-		744091F60BB37B7098315CBB8A28CCCA /* SparklineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C8A0C5BE9B23D5B6873282791EA7EF /* SparklineData.swift */; };
-		74CC70A4F6B2255C232C4BFF530FE6B7 /* DSFSparklineDotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A7543784267FAAFDFCB887FE84DE0 /* DSFSparklineDotGraphView.swift */; };
-		74FDD44C45E5A8A74BCBC4B1338D6F59 /* SparklineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C8A0C5BE9B23D5B6873282791EA7EF /* SparklineData.swift */; };
-		752BC2264E1AC4D32E751B83EC94F29C /* DSFSparklineOverlay+Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9DB9306199512199E7718DFBCD2A /* DSFSparklineOverlay+Tablet.swift */; };
-		757CC1EB24E9DC9410A365EF5DCBFFE1 /* DSFSparkline+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C03FAE04FB06EC07D5FD1E2B32F12 /* DSFSparkline+DataSource.swift */; };
-		76BFE8FD540F579BA162BDB351213DAB /* DSFSparklineStripesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */; };
-		77CEA9C38F4728D5D7988BEB67A07297 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B5384808B46F61D60645CA4900CC402 /* UIKit.framework */; };
-		77F69FCC221B9458674B6E785596BB46 /* DSFSparkline-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8F94169F983D458176880FA799C391 /* DSFSparkline-tvOS-dummy.m */; };
-		78D460A6B01A23299F5A8C53B9083ABC /* DSFSparklineOverlay+PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3DEC96C401F41FD211FDEAD624F99 /* DSFSparklineOverlay+PercentBar.swift */; };
-		78E4ADE94E5BB69BB8D59B8A07435E10 /* DSFSparkline+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C03FAE04FB06EC07D5FD1E2B32F12 /* DSFSparkline+DataSource.swift */; };
-		794F7562DDF04CD2D1C5DCCE34E91508 /* DSFSparklineSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB9F206047B2E66FBC3FDE598DFAE9 /* DSFSparklineSurface.swift */; };
-		7B6770E41343A652EC1EC1099EC6E48B /* DSFSparklineSurface+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */; };
-		7C9D938035C1AD7F635A1BCC82CA5FFD /* DSFSparkline-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 137A9D20DC304B3D02CC675E7A5AAFE8 /* DSFSparkline-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D7CD59FEFB2B226FC7E222E8BDEE43D /* DSFSparklineOverlay+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49CB3FF58097E1636571CCF6C4DF3F /* DSFSparklineOverlay+Pie.swift */; };
-		7F09A88329BCC655A0676D0937423967 /* DSFSparkline+GradientBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0234D2BA67FF07BC5A4B920B14A2D71B /* DSFSparkline+GradientBucket.swift */; };
-		84A50BFEBF97642D837542F1A1E44B64 /* DSFSparklineOverlay+ZeroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67845D70B826F559C837249FCF1565 /* DSFSparklineOverlay+ZeroLine.swift */; };
-		861699D1C8AD95AC5E4C80D538A9BC8D /* DSFSparklineLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFDEDD3566AC2F77F0EF49395E4D5 /* DSFSparklineLineGraphView.swift */; };
-		8736506D06104B277F5EDE8EE35BB341 /* DSFSparklineOverlay+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49CB3FF58097E1636571CCF6C4DF3F /* DSFSparklineOverlay+Pie.swift */; };
-		885227A38CE47E4EA25ACE151FCA9A75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1EC0F446E309ACCAC1BFDAED21D31 /* Foundation.framework */; };
-		8B919E9F9E937324DDCC0092F443A505 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1365C8AF7F30110515BE1A888983CA /* DSFSparklineOverlay+StaticDataSource.swift */; };
-		8DE44E19ACE0D2F16DCF0D3FFD953667 /* DSFSparklineOverlay+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D0F55C5234C364274DFCC638A2397 /* DSFSparklineOverlay+DataSource.swift */; };
-		8EEAEC938DC073F50B5BAF128F92E1FA /* DSFSparklineOverlay+DataBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7369065C8C8D4A51BB98CE0A16988 /* DSFSparklineOverlay+DataBar.swift */; };
-		8FD5C75F91F3A7D7D435FD2258DB0470 /* CGPath+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D27E45DAEF4100B78BEC6F05CA6FFF /* CGPath+Hermite.swift */; };
-		90567165FCC4B57C4420ED08595B0C4E /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */; };
-		9359E8523B0302C6532543E01E8C11C9 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1365C8AF7F30110515BE1A888983CA /* DSFSparklineOverlay+StaticDataSource.swift */; };
-		93C6300493491CA802BF72152894155A /* DSFSparkline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92B4B2DB60D8B4C3A14E8D126803028 /* DSFSparkline.swift */; };
-		95FCBEDC68DC2B5757CBFF8C1C453DDC /* DSFSparklineOverlay+Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C184C13325AE31BFB2EC7E8052B11 /* DSFSparklineOverlay+Dot.swift */; };
-		979452703D33F4A61911CF53759F2EA6 /* DSFSparklineTabletGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A9D1840BF4D65F81142604C3B837 /* DSFSparklineTabletGraphView.swift */; };
-		9A5EF86F47CC74E2ADC5F92EE0C9FF30 /* DSFSparklineSurface+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D881F85D57B24AD2DE860E4439596764 /* DSFSparklineSurface+AttributedString.swift */; };
+		6E7A792737D5FBE9327D74508780E13C /* DSFSparklineDataBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421E688D806D61FA0FB2C2B0D631CF2 /* DSFSparklineDataBarGraphView.swift */; };
+		6F0C0F25E8FD2A33AA8DC0DF108C7311 /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D279612BF5BAAC7C4119670173619 /* DSFSparklineBarGraphView+SwiftUI.swift */; };
+		6F7FC561C977D0F557795B0654CA571C /* DSFSparklineDotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A7543784267FAAFDFCB887FE84DE0 /* DSFSparklineDotGraphView.swift */; };
+		70185BC2475C97E81B8CD76C55848FC9 /* DSFSparklineOverlay+Stackline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F7E411C5CFDF23910CEA064321AED1 /* DSFSparklineOverlay+Stackline.swift */; };
+		719AE7F524242C74817E84D8CDE1E506 /* DSFSparklineOverlay+Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C184C13325AE31BFB2EC7E8052B11 /* DSFSparklineOverlay+Dot.swift */; };
+		730279D984D1F387D6EC4260BCC682F9 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D453CA27D6F8EC98F4B21C77C03EE81 /* AppKit.framework */; };
+		7324EFC5CD7E4B9715BB4DA9DD906E46 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8BC76F0A8AA4FAB296870FD6E5D7E3 /* DSFSparklineLineGraphView+SwiftUI.swift */; };
+		732B0970443F71887EF983A5CC71194A /* DSFSparklineZeroLinedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416AF4BA756A8C0F9321CA631AFCF98 /* DSFSparklineZeroLinedGraphView.swift */; };
+		734661D69279CF8956AC302D064C521F /* DSFSparkline+FillColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D95081784474040004383AE9BDC0E1 /* DSFSparkline+FillColor.swift */; };
+		7486BB7678B13A5C3FC22D7283E2987F /* DSFSparkline+Fillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D12FA6D5B8A18F5B916E8CA366A15 /* DSFSparkline+Fillable.swift */; };
+		788B7A33C09AB3101DE337D6A484B7C7 /* ArbitraryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */; };
+		7A87072EA675B8C51DE7AE98B3380DC2 /* DSFSparklineOverlay+Stackline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F7E411C5CFDF23910CEA064321AED1 /* DSFSparklineOverlay+Stackline.swift */; };
+		7B019771E03C719DF0F71B990E7BB617 /* DSFSparklineOverlay+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D0F55C5234C364274DFCC638A2397 /* DSFSparklineOverlay+DataSource.swift */; };
+		7B4B66FA74533F13C50027FABE96443A /* DSFSparklineOverlay+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1365C8AF7F30110515BE1A888983CA /* DSFSparklineOverlay+StaticDataSource.swift */; };
+		7C693F8FB1D7361502036D51B551DEDF /* SparklineWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6927C521DB09F265252AC1FD2842B86 /* SparklineWindow.swift */; };
+		7FD7EAF226EFEE44EBD49C216CBE8541 /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB795211562918325C2E9F98CC5C743 /* DSFSparklineDotGraphView+SwiftUI.swift */; };
+		8179232D8A134E0D7506982A3A706ECC /* DSFSparklineOverlay+ZeroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67845D70B826F559C837249FCF1565 /* DSFSparklineOverlay+ZeroLine.swift */; };
+		81816FE5CB035FA2CAEFA1F3319F23B6 /* DSFSparkline+Fillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D12FA6D5B8A18F5B916E8CA366A15 /* DSFSparkline+Fillable.swift */; };
+		824AB8BE098CA454CAECBB047F228BAB /* DSFSparklineDotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A7543784267FAAFDFCB887FE84DE0 /* DSFSparklineDotGraphView.swift */; };
+		829A7D8F19DDAE0C45249CD54BAD6030 /* DSFSparklineStackLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A559CF120AF89CEF105D92408A8FC /* DSFSparklineStackLineGraphView.swift */; };
+		863A83BEEF95866895CC425FCF31304F /* DSFSparklineOverlay+GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D179BEF7D56A365121E61F1C1E547B /* DSFSparklineOverlay+GridLines.swift */; };
+		872EED9F9DB0F650BB401A1D4F540233 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFBE99DCC2F6C4EC7FB09729AFAEB3 /* Utilities.swift */; };
+		880E3E05F1078077D4D81B2150289BB5 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8BC76F0A8AA4FAB296870FD6E5D7E3 /* DSFSparklineLineGraphView+SwiftUI.swift */; };
+		8845AC6545287AF8B5C05AC23B399CD1 /* DSFSparklineSurface+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D881F85D57B24AD2DE860E4439596764 /* DSFSparklineSurface+AttributedString.swift */; };
+		89A078F1812FBC149CED62D353C1AB7E /* DSFSparklineBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */; };
+		89C248B34B3357CBA3FEF98F4E4C497F /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */; };
+		8AFA2FA63BA0BBA4A14BB17DE595AA00 /* DSFSparklineOverlay+WinLossTie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615B36409599FCEF7902640A7397F7C /* DSFSparklineOverlay+WinLossTie.swift */; };
+		8EEF69D3B06AE57C2CD183BFD976DE16 /* DSFSparklineOverlay+RangeHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE312C33E37CC684749B39BDFA3388B /* DSFSparklineOverlay+RangeHighlight.swift */; };
+		929ECEF0A09A14F779E23131C70A19CD /* DSFSparkline+ZeroLineDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0616EEE1B58056214883410D77A34DBE /* DSFSparkline+ZeroLineDefinition.swift */; };
+		94498337EAE0767A7851870F0832D4BD /* DSFSparklineOverlay+Centerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */; };
+		95FF7B1B00EC7D7A0865642FAE46DFC1 /* DSFSparklineDotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A7543784267FAAFDFCB887FE84DE0 /* DSFSparklineDotGraphView.swift */; };
+		9682741E2CE1C6836D67165F6FC20FCE /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB795211562918325C2E9F98CC5C743 /* DSFSparklineDotGraphView+SwiftUI.swift */; };
+		978C4F4301E3EEC08AEFD293D433F456 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */; };
+		98862B0B1F46232CCC4012B9DAB2636E /* DSFSparklineOverlay+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D0F55C5234C364274DFCC638A2397 /* DSFSparklineOverlay+DataSource.swift */; };
+		996E716C2E4F1C4D750A7821CD6161D1 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */; };
+		9A247E55CE102BAA06017C2446072CA3 /* DSFSparklineOverlay+DataBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7369065C8C8D4A51BB98CE0A16988 /* DSFSparklineOverlay+DataBar.swift */; };
+		9B45052856E17DC105A14C12AD87D6E0 /* DSFSparklineOverlay+PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3DEC96C401F41FD211FDEAD624F99 /* DSFSparklineOverlay+PercentBar.swift */; };
+		9BA3A71754A722944FA07F83286FA140 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11CA449B07A2AB03025A4496DDF8DB /* DSFSparkline+HighlightRangeDefinition.swift */; };
 		9C59A4269DD8E799649FAEFBAF81B898 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42936F9C2F75FD4E864905B26CD51092 /* Cocoa.framework */; };
-		9FC232D68B93C1E1AD215C727216970F /* DSFSparkline-tvOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F974A967ADADCFBC49191418E24DDE95 /* DSFSparkline-tvOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A34FD22DA1A7D7873E6ABD1DF097FF1C /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */; };
-		A5E770B24D22E1D60C56501051D93AD6 /* DSFSparklineOverlay+Centerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */; };
-		A857FE6A500DB861D44DFD4194F46114 /* DSFSparkline+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D40C00F00C43E8844D262DE040C3BEA /* DSFSparkline+Palette.swift */; };
-		A99686ECC59F529CFFFBACC7EEF3BD01 /* DSFSparklineSurface+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */; };
-		A9A695B0E6E176318B087E89AF43D1A5 /* DSFSparklineOverlay+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D0F55C5234C364274DFCC638A2397 /* DSFSparklineOverlay+DataSource.swift */; };
-		ABEEC5F0EAB46AB735C4ADAA287F3488 /* DSFSparklineTabletGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A9D1840BF4D65F81142604C3B837 /* DSFSparklineTabletGraphView.swift */; };
-		AD59C76BE167C77BB94592DBEEBF1CE1 /* NSShadow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */; };
-		ADBEE890172AC8A0DD4BD3CE14EA4A76 /* ArbitraryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */; };
-		AE2A4B005C282FE10D7521B3E2F9F37D /* DSFSparklineLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFDEDD3566AC2F77F0EF49395E4D5 /* DSFSparklineLineGraphView.swift */; };
-		AE888FF310D2C3801913FD2E493AFF39 /* DSFSparklineZeroLinedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416AF4BA756A8C0F9321CA631AFCF98 /* DSFSparklineZeroLinedGraphView.swift */; };
+		A1327ED42D6C77A9AFE8AB5B04A07D5D /* DSFSparkline+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8E0289057438C1AC1B6D38E931B53 /* DSFSparkline+Palette.swift */; };
+		A427FD784B6DD7DFA34F4DB652C042EE /* DSFSparklineOverlay+RangeHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE312C33E37CC684749B39BDFA3388B /* DSFSparklineOverlay+RangeHighlight.swift */; };
+		A5371EE98681292550FEC3906A22230D /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC3CB933601AA2A45EF947236BABE6 /* DSFSparklineTabletGraphView+SwiftUI.swift */; };
+		A595B8D16B2F3A8B7E60B52F0A738F25 /* DSFSparklineOverlay+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49CB3FF58097E1636571CCF6C4DF3F /* DSFSparklineOverlay+Pie.swift */; };
+		A5EC17014488E4BE5B2565E204F8F4FE /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CC8F8F7A00CB6ADBA959409047C29 /* DSFSparklinePercentBarGraphView+SwiftUI.swift */; };
+		A742A59356BD734E04BA4651E30D0E66 /* DSFSparklinePercentBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BF2D2D119FEC82ABAF08C62060F62 /* DSFSparklinePercentBarGraphView.swift */; };
+		A7AE8E2CD5D422644FB49C10A13AC892 /* DSFSparkline+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC8E0289057438C1AC1B6D38E931B53 /* DSFSparkline+Palette.swift */; };
+		A7AEFD48131AC0E24334AD66D38CBF4D /* DSFSparklinePieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FEAFF790EBF5A5DF52F6A58549A3D /* DSFSparklinePieGraphView.swift */; };
+		A80AF117C904EA2A04DFFFE9FB8DF5F7 /* DSFSparkline+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */; };
+		A98FD0E4B11564E78044169061AC3A9C /* DSFSparklineBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */; };
+		AA6357014FCC41D8F8A58B27C4B27C48 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83A2D990AA08FB9BB87FF0AD480378 /* DSFSparklineDataBarGraphView+SwiftUI.swift */; };
+		AE38CA12DE83027952081696317A1ED0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EFDA66A8F9985287C360F595465BC25 /* Foundation.framework */; };
+		AE601D2EAC8C51D0CE6B4BC33F2AAC31 /* DSFSparklineSurface+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D881F85D57B24AD2DE860E4439596764 /* DSFSparklineSurface+AttributedString.swift */; };
+		AE8EF466531F633091B2C83900CBC9EF /* DSFSparklineStripesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */; };
 		AECF0FBEE8DB1AD9FF4FE0F72F5D9622 /* Pods-tvOS Sparkline Demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C305396121B80824C8A34D41CC838CBB /* Pods-tvOS Sparkline Demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AF5B97269F508D01E24BAAA388AC978F /* DSFSparklineSurface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB9F206047B2E66FBC3FDE598DFAE9 /* DSFSparklineSurface.swift */; };
-		B01CEAB404B0B84483C22E2172FDDF15 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83A2D990AA08FB9BB87FF0AD480378 /* DSFSparklineDataBarGraphView+SwiftUI.swift */; };
-		B1E2F7E64261365EA4A0600853F50BBB /* DSFSparklineBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */; };
-		B92D830EDF971BDC64EC186ABE9BE86C /* DSFSparklinePercentBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BF2D2D119FEC82ABAF08C62060F62 /* DSFSparklinePercentBarGraphView.swift */; };
+		AF8482DD0B6D90FE2557C5AAF8DFF3EE /* DSFSparklineStripesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */; };
+		B2394739BA8CB8909C9B5A45C409A706 /* DSFSparklineOverlay+Stackline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F7E411C5CFDF23910CEA064321AED1 /* DSFSparklineOverlay+Stackline.swift */; };
+		B2BA3FB818CDF0C9F9938F2C1BAD05D3 /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC3CB933601AA2A45EF947236BABE6 /* DSFSparklineTabletGraphView+SwiftUI.swift */; };
+		B2CC2CA1ECE31824A59FAAFD3A8358EE /* DSFSparkline+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */; };
+		B3BAE77183E89E14DCC4E7D5A759ABD5 /* DSFSparklineOverlay+WinLossTie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615B36409599FCEF7902640A7397F7C /* DSFSparklineOverlay+WinLossTie.swift */; };
+		B3E401A7B416A22A1182AB39D27DCCE9 /* DSFSparklineOverlay+Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */; };
+		B4AB2BC0C227DA09B268FE22426EA8D2 /* DSFSparklineOverlay+Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9DB9306199512199E7718DFBCD2A /* DSFSparklineOverlay+Tablet.swift */; };
+		B60F03BBB5F64D6302EFDEC4CC62968C /* DSFSparklineZeroLinedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416AF4BA756A8C0F9321CA631AFCF98 /* DSFSparklineZeroLinedGraphView.swift */; };
+		B76DCC6843F18173D8814BE1B0CC4C1B /* DSFSparkline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0352618715444838EC37658653F0C419 /* DSFSparkline.swift */; };
+		B7728944D998E4B9F0ECE7F9068159AE /* DSFSparkline-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEC933372BEA2CEB089415E8E13058 /* DSFSparkline-iOS-dummy.m */; };
+		B8B4C2342F0A2153DEDEAB6688BD0EBF /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */; };
 		B930BB964193B1BF02CB0F22DA9DE11B /* Pods-macOS Sparkline Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D7EFDB6A63FA7B83E64D9DB98BB7D8 /* Pods-macOS Sparkline Demo-dummy.m */; };
-		BA1C3CA904F3FC8C12BE41918477DE6F /* DSFSparklineStripesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */; };
-		BA602C95E9A8B216C6334273C5F40100 /* DSFSparklineOverlay+Stripes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */; };
-		BAAF5EA1E20216DA0AE9E32A8053F2C8 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83A2D990AA08FB9BB87FF0AD480378 /* DSFSparklineDataBarGraphView+SwiftUI.swift */; };
-		BC3476E685F9902717BB03B54CDB5B24 /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB795211562918325C2E9F98CC5C743 /* DSFSparklineDotGraphView+SwiftUI.swift */; };
-		BC8A4CC9E9462979E334A860DCAEFC59 /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC3CB933601AA2A45EF947236BABE6 /* DSFSparklineTabletGraphView+SwiftUI.swift */; };
-		BD3D5252FECE69FCDC99E429D2A4FE7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42936F9C2F75FD4E864905B26CD51092 /* Cocoa.framework */; };
-		BD97DEAADBC6CDA3A9F387FA95342D3D /* DSFSparklineOverlay+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1365C8AF7F30110515BE1A888983CA /* DSFSparklineOverlay+StaticDataSource.swift */; };
-		BF6DAE78B45512F28F018F802E655972 /* DSFSparklineOverlay+Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C184C13325AE31BFB2EC7E8052B11 /* DSFSparklineOverlay+Dot.swift */; };
-		C73EF340A6A7779C97450D660E151D84 /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */; };
-		C7C0295F57162A0A4498B22AD576A3CC /* DSFSparklineOverlay+DataBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7369065C8C8D4A51BB98CE0A16988 /* DSFSparklineOverlay+DataBar.swift */; };
-		C83F8E2DFDB332FE5D23713F824F58F6 /* DSFSparkline+Fill.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DF1E18284C243E79D905EF43C9DFE0 /* DSFSparkline+Fill.swift */; };
-		C8CE153747805DCF898788FC6C8B519D /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D279612BF5BAAC7C4119670173619 /* DSFSparklineBarGraphView+SwiftUI.swift */; };
-		C8ED201DCC47C0F2AB84105E3ED815BC /* DSFSparklineWinLossGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DA4C500F3CFEDA6D2CE8BA6146F91 /* DSFSparklineWinLossGraphView.swift */; };
-		CA6BBEB956E7FD2D97A2A4BEBCC583F7 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E298D5E11FF2F48D8713DC704B045CC /* DSFSparkline+HighlightRangeDefinition.swift */; };
+		BA16D22BB5EE701B96A97FC2B43EC834 /* DSFSparklineOverlay+WinLossTie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615B36409599FCEF7902640A7397F7C /* DSFSparklineOverlay+WinLossTie.swift */; };
+		BC18DB003B326F376B4B7EDF8D6CF3C2 /* DSFSparkline+GradientBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753883ED47931FBB1848C630CE4C7E8D /* DSFSparkline+GradientBucket.swift */; };
+		BD8CB25886C5C77D01DFC6E87D802C68 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11CA449B07A2AB03025A4496DDF8DB /* DSFSparkline+HighlightRangeDefinition.swift */; };
+		C112FEA82E235059EE2723D8C0C1AD82 /* DSFSparklineSurface+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */; };
+		C135A97C16C35602DD30B0B332842251 /* DSFSparklineTabletGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A9D1840BF4D65F81142604C3B837 /* DSFSparklineTabletGraphView.swift */; };
+		C2AD44E7307E17453F765E0C8FE5DA05 /* DSFSparklineOverlay+ZeroLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC67845D70B826F559C837249FCF1565 /* DSFSparklineOverlay+ZeroLine.swift */; };
+		C4E0D123443994A529257F3840C0E368 /* DSFSparklineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C4DA2920C23BC01E82C89F1FFE926 /* DSFSparklineOverlay.swift */; };
+		C5B695FDD09CFA284C6920E5A114B917 /* DSFSparklineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C4DA2920C23BC01E82C89F1FFE926 /* DSFSparklineOverlay.swift */; };
+		C65947192DF1E373B621934200C9E096 /* DSFSparklineOverlay+DataBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7369065C8C8D4A51BB98CE0A16988 /* DSFSparklineOverlay+DataBar.swift */; };
+		C6AA0F8CC3E149CBD17957E6D38E40F7 /* DSFSparklineOverlay+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D0F55C5234C364274DFCC638A2397 /* DSFSparklineOverlay+DataSource.swift */; };
+		C88D64495C6EE247E3647E25DDEEABE0 /* DSFSparklinePieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FEAFF790EBF5A5DF52F6A58549A3D /* DSFSparklinePieGraphView.swift */; };
 		CAC18DF87B65B2F346DBA063F53D68EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EFDA66A8F9985287C360F595465BC25 /* Foundation.framework */; };
-		CB854C05DF9C7A4AA4555E9075B1CF90 /* DSFSparkline+StaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */; };
-		CD54874355F9E9ADA93DEB5F289712ED /* DSFSparklineOverlay+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB08130A0C8842C0D8000C836139789 /* DSFSparklineOverlay+Line.swift */; };
-		CE8BC2AED503137009C70B156E48A2D9 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */; };
-		CF4D933769966F0CB3FFAD9ED5143EDF /* SparklineWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6927C521DB09F265252AC1FD2842B86 /* SparklineWindow.swift */; };
+		CB44123E4DFF0F7F23E5E8F6ACF8B644 /* DSFSparklineOverlay+Dot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4C184C13325AE31BFB2EC7E8052B11 /* DSFSparklineOverlay+Dot.swift */; };
+		CB54090342C6F0AA4AC0817F18002237 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */; };
+		CCBA8CF2EAD9D450AA055EF4B9943439 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11CA449B07A2AB03025A4496DDF8DB /* DSFSparkline+HighlightRangeDefinition.swift */; };
+		CD88B90B769A7757068A571B3FBB94C1 /* DSFSparklineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C4DA2920C23BC01E82C89F1FFE926 /* DSFSparklineOverlay.swift */; };
+		CD8E8E9134FB0EC01F6FD6C14083AC9F /* DSFSparkline+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566C03FAE04FB06EC07D5FD1E2B32F12 /* DSFSparkline+DataSource.swift */; };
+		CFDAB7A0B5EDF45903E7028405C5377C /* SparklineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C8A0C5BE9B23D5B6873282791EA7EF /* SparklineData.swift */; };
 		D0048934E710AC1CB62E3A0E75B350C2 /* Pods-macOS Sparkline Demo Objc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB10BD8E5ED50C2073F2F5C23AF9384 /* Pods-macOS Sparkline Demo Objc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D02629BB45682396C5E2FF1E32067B48 /* DSFSparklineDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3918BEBEA35CC082B72D3E3C4E32B55 /* DSFSparklineDataSourceView.swift */; };
-		D238FDEC5A72FF02EC0621AD9D85AB01 /* DSFSparklineOverlay+RangeHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE312C33E37CC684749B39BDFA3388B /* DSFSparklineOverlay+RangeHighlight.swift */; };
-		D2DFE7A301216EBA119EBAD43640E6F3 /* DSFSparklineOverlay+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB08130A0C8842C0D8000C836139789 /* DSFSparklineOverlay+Line.swift */; };
-		D8FB2974E85B5E8F3810D9B00D2B8604 /* DSFSparklinePercentBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BF2D2D119FEC82ABAF08C62060F62 /* DSFSparklinePercentBarGraphView.swift */; };
-		DA4CDEA1E0EE5AAB4BE5FC7AD7ECF8C2 /* DSFSparklineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C4DA2920C23BC01E82C89F1FFE926 /* DSFSparklineOverlay.swift */; };
-		DB438976B2CBBE66E8D223FB3BDF057B /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */; };
-		DBCE17FA95980486D43E73B9F6F5476D /* DSFSparklineOverlay+GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D179BEF7D56A365121E61F1C1E547B /* DSFSparklineOverlay+GridLines.swift */; };
-		DE169B4D7CF6A45757D1471A4000A1C6 /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D279612BF5BAAC7C4119670173619 /* DSFSparklineBarGraphView+SwiftUI.swift */; };
-		E0E384322E0216D32DCE71D8FBB7983F /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CC8F8F7A00CB6ADBA959409047C29 /* DSFSparklinePercentBarGraphView+SwiftUI.swift */; };
-		E160FC6199CC5618A9706DBD952D9F06 /* DSFSparklineSurface+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */; };
-		E1E14376A39360582C1FB56B1657D230 /* DSFSparklineOverlay+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */; };
-		E57C6F2A518E4DDA65D718DF59CF1D79 /* DSFSparklineOverlay+PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E3DEC96C401F41FD211FDEAD624F99 /* DSFSparklineOverlay+PercentBar.swift */; };
-		E71837656E9E148EC572075E1ACBAE70 /* DSFSparkline-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3BA09E71F3B557FECCB73BCD6D52E0 /* DSFSparkline-macOS-dummy.m */; };
+		D2DF3FBDB899B13E6F8FEE4CE589D6F0 /* DSFSparkline+ZeroLineDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0616EEE1B58056214883410D77A34DBE /* DSFSparkline+ZeroLineDefinition.swift */; };
+		D344656D147A110340837E918B6C936E /* SparklineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C8A0C5BE9B23D5B6873282791EA7EF /* SparklineData.swift */; };
+		D3ABEE2CAB6703002DCE85E6694698D1 /* DSFSparkline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0352618715444838EC37658653F0C419 /* DSFSparkline.swift */; };
+		D577EA60A26DE049CD4739EE7F666676 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */; };
+		D826B29ACF6681C307C4F3BF584BBB5C /* DSFSparklinePercentBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BF2D2D119FEC82ABAF08C62060F62 /* DSFSparklinePercentBarGraphView.swift */; };
+		D872CEA3C4F3B5F85B6AABFD1EC73ECC /* DSFSparklineOverlay+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F49CB3FF58097E1636571CCF6C4DF3F /* DSFSparklineOverlay+Pie.swift */; };
+		D9B5B8253F37FD2E86E8AF9D87D9D0A3 /* DSFSparklineOverlay+Tablet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832A9DB9306199512199E7718DFBCD2A /* DSFSparklineOverlay+Tablet.swift */; };
+		D9B87C4A2EA4EF35F9C6900361452AA0 /* DSFSparkline+GradientBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753883ED47931FBB1848C630CE4C7E8D /* DSFSparkline+GradientBucket.swift */; };
+		DAFD0996AB6887DC0D16094649DA55F4 /* DSFSparkline+FillGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB4508F8CF02407E422E0E2147176A /* DSFSparkline+FillGradient.swift */; };
+		DC98035C691CECD0F49F77A0F6BE81C8 /* DSFSparklineStripesGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */; };
+		DDA89AB70D73998165DF6D3312435EAB /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A83A2D990AA08FB9BB87FF0AD480378 /* DSFSparklineDataBarGraphView+SwiftUI.swift */; };
+		DE127DA8671DD6C027E3D705C28AD55C /* DSFSparklineTabletGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72A9D1840BF4D65F81142604C3B837 /* DSFSparklineTabletGraphView.swift */; };
+		E06DAEE42AAFE86DBC14D03D374B6744 /* DSFSparkline-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 137A9D20DC304B3D02CC675E7A5AAFE8 /* DSFSparkline-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E0F32CAA54452796A5ABD267D1D47083 /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB795211562918325C2E9F98CC5C743 /* DSFSparklineDotGraphView+SwiftUI.swift */; };
+		E209297AB2398EA9D5D4AEE5D6777DC5 /* DSFSparklineOverlay+Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB08130A0C8842C0D8000C836139789 /* DSFSparklineOverlay+Line.swift */; };
+		E271F7D67EB4B15F5BD057FF988CF737 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8BC76F0A8AA4FAB296870FD6E5D7E3 /* DSFSparklineLineGraphView+SwiftUI.swift */; };
+		E2BAFDA44088D2E94AB9EAAC9B1E1160 /* DSFSparklinePieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6FEAFF790EBF5A5DF52F6A58549A3D /* DSFSparklinePieGraphView.swift */; };
+		E343AFF636ED75472AA03E56A0A3D1FA /* DSFSparkline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0352618715444838EC37658653F0C419 /* DSFSparkline.swift */; };
+		E4E1786D5E98E98CDE6AF6BF2FF60DB6 /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */; };
+		E58B9E5D68633514A0F8DE5C94BC4ADB /* DSFSparklineWinLossGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DA4C500F3CFEDA6D2CE8BA6146F91 /* DSFSparklineWinLossGraphView.swift */; };
 		E741AF7E2A94D830B56D123F4836F140 /* Pods-iOS Sparkline Demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E54801EBCD71CF090F9B9BE8AB7EF0F /* Pods-iOS Sparkline Demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB07000EA54DC82DA75D40EC5E074BF2 /* DSFSparklineOverlay+WinLossTie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615B36409599FCEF7902640A7397F7C /* DSFSparklineOverlay+WinLossTie.swift */; };
-		EB5B9DE24211C2E84F793A5D530E59A9 /* DSFSparklineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C4DA2920C23BC01E82C89F1FFE926 /* DSFSparklineOverlay.swift */; };
-		EB830CFB24E0FBC560ED28FA3DB7206F /* DSFSparklineOverlay+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3D0F55C5234C364274DFCC638A2397 /* DSFSparklineOverlay+DataSource.swift */; };
-		ED75567CC3246E767C7843EF171FFD7D /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB795211562918325C2E9F98CC5C743 /* DSFSparklineDotGraphView+SwiftUI.swift */; };
-		ED96073EF55D2F4BD733CC766BBB6FE7 /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDC3CB933601AA2A45EF947236BABE6 /* DSFSparklineTabletGraphView+SwiftUI.swift */; };
-		EF2571E4520522411587D93E1B94C4A3 /* DSFSparklineOverlay+GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D179BEF7D56A365121E61F1C1E547B /* DSFSparklineOverlay+GridLines.swift */; };
-		F03E666BBFC536BCF818BA569CCA0700 /* SparklineWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6927C521DB09F265252AC1FD2842B86 /* SparklineWindow.swift */; };
-		F0965D6EE7228AE901B0F49DF0055067 /* DSFSparklineOverlay+Centerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */; };
-		F2350E0C3A4AB064A14CE8CB7B0E7FE6 /* DSFSparklineOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827C4DA2920C23BC01E82C89F1FFE926 /* DSFSparklineOverlay.swift */; };
-		F25E6477FDFF17B3DA6AEAB9D4856253 /* DSFSparklineLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DDFDEDD3566AC2F77F0EF49395E4D5 /* DSFSparklineLineGraphView.swift */; };
-		F285454FC5562BBBE230D68A8B2DE67D /* DSFSparklineOverlay+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */; };
-		F2C08518395D5F2A9B72FB176DB48CA1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D453CA27D6F8EC98F4B21C77C03EE81 /* AppKit.framework */; };
-		F2D40F9C6858456FC5209006FD827F6D /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */; };
-		F310A85BF52A4F6C712487538D952915 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8BC76F0A8AA4FAB296870FD6E5D7E3 /* DSFSparklineLineGraphView+SwiftUI.swift */; };
-		F3B99F4DBF09F7AF563BD05B320CF895 /* SparklineData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C8A0C5BE9B23D5B6873282791EA7EF /* SparklineData.swift */; };
-		F7658C38CA6EB07F52089BF8D64F3C2A /* ArbitraryAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */; };
+		E7802FF55B70F6CB4726F93A7D9DBD4D /* DSFSparklinePercentBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791BF2D2D119FEC82ABAF08C62060F62 /* DSFSparklinePercentBarGraphView.swift */; };
+		E7CD54C7266C91681008061E4F9C2D2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1EC0F446E309ACCAC1BFDAED21D31 /* Foundation.framework */; };
+		E9D68DF9ED3F27EF11ABAEA3E427327E /* DSFSparklineSurface+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */; };
+		EDC9199C643C15F0E68D49764A37ACDE /* DSFSparklineOverlay+DataBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC7369065C8C8D4A51BB98CE0A16988 /* DSFSparklineOverlay+DataBar.swift */; };
+		EE9166E2DB990D210E670EA8EBF81F1C /* NSShadow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */; };
+		EFF2B19240E3E0C4B1238E22C82935ED /* DSFSparklineOverlay+Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */; };
+		F1A8466C7E13CD977DDBCF2624C76BA9 /* DSFSparklineDataBarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421E688D806D61FA0FB2C2B0D631CF2 /* DSFSparklineDataBarGraphView.swift */; };
+		F4922AE90E1D3B573CC79A3C84985FB3 /* DSFSparklineDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3918BEBEA35CC082B72D3E3C4E32B55 /* DSFSparklineDataSourceView.swift */; };
+		F4AD257F97F6D7BC1BF6E1EC046417C0 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496CC8F8F7A00CB6ADBA959409047C29 /* DSFSparklinePercentBarGraphView+SwiftUI.swift */; };
+		F5BCAA0429C65B1FC02A3EC09C52C037 /* DSFSparklineWinLossGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7DA4C500F3CFEDA6D2CE8BA6146F91 /* DSFSparklineWinLossGraphView.swift */; };
+		F695D28EB773003798CBBEDA6D784D39 /* DSFSparklineZeroLinedGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416AF4BA756A8C0F9321CA631AFCF98 /* DSFSparklineZeroLinedGraphView.swift */; };
+		F786A7AA739B36EC00E8BCFB7E12D722 /* DSFSparklineDataSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3918BEBEA35CC082B72D3E3C4E32B55 /* DSFSparklineDataSourceView.swift */; };
+		F8560C6D249AEFEE0C96F34F4E1A469A /* SparklineWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6927C521DB09F265252AC1FD2842B86 /* SparklineWindow.swift */; };
 		F85C3E72ED55CE7F76AADD5D22074FF5 /* Pods-macOS Table Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E920E3DC85CDEAC5489266EA33281636 /* Pods-macOS Table Demo-dummy.m */; };
-		F8A4586BE8F2F10D0240FDEF0A006CAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EFDA66A8F9985287C360F595465BC25 /* Foundation.framework */; };
-		F8B9F991F54FEAA7269DDCD4C5FFAFC3 /* DSFSparklineDotGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109A7543784267FAAFDFCB887FE84DE0 /* DSFSparklineDotGraphView.swift */; };
-		F95B69D9A4E3005045E6A0A266719221 /* DSFSparklineSurface+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */; };
+		F89D586C89A12BC89BC179D9755FA6F7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFBE99DCC2F6C4EC7FB09729AFAEB3 /* Utilities.swift */; };
+		FA305F63A01A6274627CE24662B29E72 /* DSFSparklineStackLineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2A559CF120AF89CEF105D92408A8FC /* DSFSparklineStackLineGraphView.swift */; };
+		FABB51CC1684C8D239F9E2CA155D7D17 /* DSFSparklineSurface+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */; };
 		FB23C12D24688702B7C4AEA014526578 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD1EC0F446E309ACCAC1BFDAED21D31 /* Foundation.framework */; };
-		FB651F82660AAA68185B11AFF85A0C75 /* NSShadow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */; };
-		FD6CB2D571063C601298B0A260EDBC05 /* DSFSparklineOverlay+GridLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D179BEF7D56A365121E61F1C1E547B /* DSFSparklineOverlay+GridLines.swift */; };
-		FF4D0DA7E87CD002B7B3D56F5F0DBFE2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EFBE99DCC2F6C4EC7FB09729AFAEB3 /* Utilities.swift */; };
+		FBAE0DBB947257A4C0BE53D4D95272DB /* NSShadow+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */; };
+		FC80DDA1F415549E7F5FD26B14D34D84 /* DSFSparklineSurface+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */; };
+		FFC91761CB2E29D6227543675B28B1E7 /* CGPath+Hermite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D27E45DAEF4100B78BEC6F05CA6FFF /* CGPath+Hermite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1865D6B7532D280C2A59CAC5360AD349 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 769D42E906449D472E8B253C8DF9FFDC;
-			remoteInfo = "DSFSparkline-iOS";
-		};
-		2060E50422D31AD96CF604F12D905F89 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 769D42E906449D472E8B253C8DF9FFDC;
-			remoteInfo = "DSFSparkline-iOS";
-		};
-		6E74073F2A64C920A8B208283D3E4B96 /* PBXContainerItemProxy */ = {
+		0DA3AFFD0B429ADB13E1FBE1E2220F8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F9FA870B221B2FB0F51EB55A64069375;
 			remoteInfo = "DSFSparkline-macOS";
 		};
-		7EE2ED35EE29500A5FCDD6BD19BCD906 /* PBXContainerItemProxy */ = {
+		2488E2257AF50A24F6BA0C7F07416FA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 769D42E906449D472E8B253C8DF9FFDC;
+			remoteInfo = "DSFSparkline-iOS";
+		};
+		4F72AF0F3CE863633D78D848EA0F7724 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9FA870B221B2FB0F51EB55A64069375;
+			remoteInfo = "DSFSparkline-macOS";
+		};
+		734842FCFDCA2FC71C3EBB34A4BB64F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9FA870B221B2FB0F51EB55A64069375;
+			remoteInfo = "DSFSparkline-macOS";
+		};
+		AE3C5210B40E7A2E67C4821E66A1E274 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5D4902C570B4C21867B4D126E09A7D23;
 			remoteInfo = "DSFSparkline-tvOS";
 		};
-		B65BE0B3056E02F4136DD9CC0057992F /* PBXContainerItemProxy */ = {
+		BC8A56F69AA0AEDCAD5EF537D3B391AC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F9FA870B221B2FB0F51EB55A64069375;
-			remoteInfo = "DSFSparkline-macOS";
+			remoteGlobalIDString = 769D42E906449D472E8B253C8DF9FFDC;
+			remoteInfo = "DSFSparkline-iOS";
 		};
-		E0C9CF488E05FAA46EDD31614CF6C463 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F9FA870B221B2FB0F51EB55A64069375;
-			remoteInfo = "DSFSparkline-macOS";
-		};
-		F60788979CE84D3F67182118EF29E472 /* PBXContainerItemProxy */ = {
+		D943258CB90654BE6863367804053A47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -269,9 +275,10 @@
 
 /* Begin PBXFileReference section */
 		013B0D0B4AD57ADA90DCB3AF821A654F /* Pods-tvOS Sparkline Demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-tvOS Sparkline Demo.modulemap"; sourceTree = "<group>"; };
-		0234D2BA67FF07BC5A4B920B14A2D71B /* DSFSparkline+GradientBucket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+GradientBucket.swift"; sourceTree = "<group>"; };
 		02DDCA457292B0A56CD155DB7F968519 /* DSFSparkline-macOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "DSFSparkline-macOS-Info.plist"; path = "../DSFSparkline-macOS/DSFSparkline-macOS-Info.plist"; sourceTree = "<group>"; };
+		0352618715444838EC37658653F0C419 /* DSFSparkline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DSFSparkline.swift; sourceTree = "<group>"; };
 		050E14C960485C7602DD14B9C57629C3 /* DSFSparklineOverlay+Stripes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineOverlay+Stripes.swift"; sourceTree = "<group>"; };
+		0616EEE1B58056214883410D77A34DBE /* DSFSparkline+ZeroLineDefinition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+ZeroLineDefinition.swift"; sourceTree = "<group>"; };
 		079EF3215B4FF7D5C160A7CFC76B9F86 /* Pods-iOS Sparkline Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iOS Sparkline Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0806380A96084ACF371FE7A441B6C485 /* Pods-macOS Sparkline Demo Objc-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-macOS Sparkline Demo Objc-acknowledgements.plist"; sourceTree = "<group>"; };
 		08402D0B8DEF943A2003CA0A44369D89 /* DSFSparklineWinLossGraphView+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineWinLossGraphView+SwiftUI.swift"; sourceTree = "<group>"; };
@@ -287,6 +294,7 @@
 		19643D17C0C5AA362DC1DC5E250B2478 /* DSFSparklineSurface+View.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineSurface+View.swift"; sourceTree = "<group>"; };
 		19B9CE477BEA94D038F83DECD0E6D5B6 /* DSFSparkline-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "DSFSparkline-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		1B0CA97B6E3EB6F0104CDFDFB52A6AAD /* Pods-SwiftUI Sparkline Demo (macOS).modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwiftUI Sparkline Demo (macOS).modulemap"; sourceTree = "<group>"; };
+		1D11CA449B07A2AB03025A4496DDF8DB /* DSFSparkline+HighlightRangeDefinition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+HighlightRangeDefinition.swift"; sourceTree = "<group>"; };
 		1DB68C263556DCF4138580FE6C335C47 /* Pods-tvOS Sparkline Demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-tvOS Sparkline Demo-frameworks.sh"; sourceTree = "<group>"; };
 		208DB3935F827D5665F1FFFEAA4A4551 /* DSFSparklineStripesGraphView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DSFSparklineStripesGraphView.swift; sourceTree = "<group>"; };
 		26B299FC6AE624CA2C63E5CF4AB1A5B4 /* DSFSparklineBarGraphView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DSFSparklineBarGraphView.swift; sourceTree = "<group>"; };
@@ -304,7 +312,6 @@
 		39FA8E52A1C10BC26CDE89FD6FE5E439 /* DSFSparklineSurface+Bitmap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineSurface+Bitmap.swift"; sourceTree = "<group>"; };
 		3B778F655A027649328AE3D7BE1A75B7 /* Pods-macOS Sparkline Demo Objc-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-macOS Sparkline Demo Objc-Info.plist"; sourceTree = "<group>"; };
 		3D8F94169F983D458176880FA799C391 /* DSFSparkline-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DSFSparkline-tvOS-dummy.m"; path = "../DSFSparkline-tvOS/DSFSparkline-tvOS-dummy.m"; sourceTree = "<group>"; };
-		3E298D5E11FF2F48D8713DC704B045CC /* DSFSparkline+HighlightRangeDefinition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+HighlightRangeDefinition.swift"; sourceTree = "<group>"; };
 		400A2AE1120E380278AB41A214AEF3E5 /* DSFSparklineOverlay+Bar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineOverlay+Bar.swift"; sourceTree = "<group>"; };
 		40A257A80E8C334ED6B16A6A3D078153 /* Pods-iOS Sparkline Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iOS Sparkline Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		42317C8AD659B7F39B5D2F776E683523 /* DSFSparklineSurface+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineSurface+SwiftUI.swift"; sourceTree = "<group>"; };
@@ -316,6 +323,7 @@
 		49EEA51571F33AAF0BF1BC0936467605 /* DSFSparklineStackLineGraphView+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineStackLineGraphView+SwiftUI.swift"; sourceTree = "<group>"; };
 		4C38E0016A1FF5263534DC2392671B89 /* Pods-macOS Sparkline Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-macOS Sparkline Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4DF25DD0880F62B28DCF513ABD2F1C3B /* DSFSparkline-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "DSFSparkline-macOS.modulemap"; path = "../DSFSparkline-macOS/DSFSparkline-macOS.modulemap"; sourceTree = "<group>"; };
+		4FC8E0289057438C1AC1B6D38E931B53 /* DSFSparkline+Palette.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+Palette.swift"; sourceTree = "<group>"; };
 		509340CD808BA677569E1F66D51C09AA /* DSFSparkline+StaticDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+StaticDataSource.swift"; sourceTree = "<group>"; };
 		532350BEE4AA59AD1235465C8441AF59 /* DSFSparkline-tvOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DSFSparkline-tvOS-prefix.pch"; path = "../DSFSparkline-tvOS/DSFSparkline-tvOS-prefix.pch"; sourceTree = "<group>"; };
 		54CC9F3C40FD28CBF8D344E486E89FB8 /* Pods-macOS Sparkline Demo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-macOS Sparkline Demo-umbrella.h"; sourceTree = "<group>"; };
@@ -326,15 +334,17 @@
 		5E58D4E879AA49319239D3BAA8B3DAAC /* Pods-iOS Sparkline Demo */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-iOS Sparkline Demo"; path = Pods_iOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61A333D141340DD33F7B283BA9B0959B /* DSFSparklineOverlay+Centerable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineOverlay+Centerable.swift"; sourceTree = "<group>"; };
 		6201700315067E1A5A573CE9899BAB98 /* Pods-macOS Table Demo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-macOS Table Demo-umbrella.h"; sourceTree = "<group>"; };
+		665D12FA6D5B8A18F5B916E8CA366A15 /* DSFSparkline+Fillable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+Fillable.swift"; sourceTree = "<group>"; };
 		6A4D4C7A42252785B74D8F4347F90D0A /* Pods-SwiftUI Sparkline Demo (iOS).modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwiftUI Sparkline Demo (iOS).modulemap"; sourceTree = "<group>"; };
 		6A4F311CD8048CFAD8171CF6D7AF714F /* NSShadow+extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSShadow+extensions.swift"; sourceTree = "<group>"; };
+		6ADB4508F8CF02407E422E0E2147176A /* DSFSparkline+FillGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+FillGradient.swift"; sourceTree = "<group>"; };
 		6D2D1986523E2BA062FF8B431ED9D42A /* Pods-tvOS Sparkline Demo */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-tvOS Sparkline Demo"; path = Pods_tvOS_Sparkline_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D40C00F00C43E8844D262DE040C3BEA /* DSFSparkline+Palette.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+Palette.swift"; sourceTree = "<group>"; };
 		6D453CA27D6F8EC98F4B21C77C03EE81 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AppKit.framework; sourceTree = DEVELOPER_DIR; };
 		6D6034B117F2D2F3E4E112930929E453 /* Pods-macOS Sparkline Demo Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-macOS Sparkline Demo Objc.debug.xcconfig"; sourceTree = "<group>"; };
 		7099A10C2EF2477C192E8F01E1FDC157 /* Pods-SwiftUI Sparkline Demo (macOS)-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftUI Sparkline Demo (macOS)-frameworks.sh"; sourceTree = "<group>"; };
 		73EE8C205BC0F40A3FD58B4CEAF345C1 /* Pods-macOS Sparkline Demo Objc */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-macOS Sparkline Demo Objc"; path = Pods_macOS_Sparkline_Demo_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		744F73E6A5383B9FE6736F4F8A96CC16 /* DSFSparkline+ZeroLineDefinition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+ZeroLineDefinition.swift"; sourceTree = "<group>"; };
+		753883ED47931FBB1848C630CE4C7E8D /* DSFSparkline+GradientBucket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+GradientBucket.swift"; sourceTree = "<group>"; };
+		75D95081784474040004383AE9BDC0E1 /* DSFSparkline+FillColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+FillColor.swift"; sourceTree = "<group>"; };
 		770CE518F56845914DBE63E793391C47 /* DSFSparkline-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DSFSparkline-macOS-umbrella.h"; path = "../DSFSparkline-macOS/DSFSparkline-macOS-umbrella.h"; sourceTree = "<group>"; };
 		77E3FEF683B3043D000AD5E27752817D /* Pods-macOS Sparkline Demo Objc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-macOS Sparkline Demo Objc.modulemap"; sourceTree = "<group>"; };
 		784684096214863ED63275FAD4E2EFC8 /* Pods-SwiftUI Sparkline Demo (iOS)-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftUI Sparkline Demo (iOS)-dummy.m"; sourceTree = "<group>"; };
@@ -382,7 +392,6 @@
 		ACC4006CBFB2B0E6C467826662F9AF7B /* Pods-iOS Sparkline Demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iOS Sparkline Demo.modulemap"; sourceTree = "<group>"; };
 		AE7317031E618E5C461DBCB774852034 /* Pods-SwiftUI Sparkline Demo (macOS)-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftUI Sparkline Demo (macOS)-dummy.m"; sourceTree = "<group>"; };
 		AF10D650524E2DF6144EAABEE55D04F2 /* ArbitraryAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ArbitraryAnimator.swift; sourceTree = "<group>"; };
-		B2DF1E18284C243E79D905EF43C9DFE0 /* DSFSparkline+Fill.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparkline+Fill.swift"; sourceTree = "<group>"; };
 		B37B172262172A63DB76AD4C5B88ACCB /* DSFSparklinePieGraphView+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklinePieGraphView+SwiftUI.swift"; sourceTree = "<group>"; };
 		B46A6791CBE1AB4A9D7DFEC524F980C1 /* Pods-macOS Table Demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-macOS Table Demo-frameworks.sh"; sourceTree = "<group>"; };
 		B6522C5E6080BF6084D547DC61229713 /* Pods-SwiftUI Sparkline Demo (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftUI Sparkline Demo (macOS).debug.xcconfig"; sourceTree = "<group>"; };
@@ -413,7 +422,6 @@
 		E309A7CD742F34187765BC928FC7B1B8 /* DSFSparkline-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "DSFSparkline-macOS.debug.xcconfig"; path = "../DSFSparkline-macOS/DSFSparkline-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		E8D0AA03F2CC9A5AE7E343E932E51F1E /* Pods-macOS Sparkline Demo Objc-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-macOS Sparkline Demo Objc-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E920E3DC85CDEAC5489266EA33281636 /* Pods-macOS Table Demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-macOS Table Demo-dummy.m"; sourceTree = "<group>"; };
-		E92B4B2DB60D8B4C3A14E8D126803028 /* DSFSparkline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DSFSparkline.swift; sourceTree = "<group>"; };
 		EDAA2ABFC8D75B68BE4D67EC7DF4622E /* Pods-macOS Table Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-macOS Table Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EF7B5BB12088C39EA22E6B0825411B67 /* DSFSparkline-tvOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "DSFSparkline-tvOS-Info.plist"; path = "../DSFSparkline-tvOS/DSFSparkline-tvOS-Info.plist"; sourceTree = "<group>"; };
 		F04E4E11B67881371C00FF052F68B7B2 /* DSFSparklineStripesGraphView+SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DSFSparklineStripesGraphView+SwiftUI.swift"; sourceTree = "<group>"; };
@@ -432,14 +440,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0F6CC8483CE617A021FF2925581D26E6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F8A4586BE8F2F10D0240FDEF0A006CAB /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		52B3ED7943DC3C99BBF516B5B69A20F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,12 +464,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6D6436CEEC88096A0C2400DC6D57FF58 /* Frameworks */ = {
+		828E9E5C0831349ECF6E8A0D19A1A327 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2C08518395D5F2A9B72FB176DB48CA1 /* AppKit.framework in Frameworks */,
-				BD3D5252FECE69FCDC99E429D2A4FE7D /* Cocoa.framework in Frameworks */,
+				AE38CA12DE83027952081696317A1ED0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +488,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A4E0B199ECD008E5C43390CF4BB1F887 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				730279D984D1F387D6EC4260BCC682F9 /* AppKit.framework in Frameworks */,
+				583A47FBBCB069611CB826FB1F5EF57C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B176615EEA2B16365F0993FB59F9CFD5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,20 +505,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E2002AE7BD39085653F7F90D42DB4ED0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				885227A38CE47E4EA25ACE151FCA9A75 /* Foundation.framework in Frameworks */,
-				77CEA9C38F4728D5D7988BEB67A07297 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E2331DD16FC8CF89F550231EF3CF12F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				33653D097B7F049F6B54AC5BC3F78C92 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9A8EF155D646427189CE41E313A47F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7CD54C7266C91681008061E4F9C2D2A /* Foundation.framework in Frameworks */,
+				07D8AFF90B67C4FCADF4570BC62A692F /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,20 +565,6 @@
 			);
 			name = "Pods-tvOS Sparkline Demo";
 			path = "Target Support Files/Pods-tvOS Sparkline Demo";
-			sourceTree = "<group>";
-		};
-		17BEC5E86DE142CE52F54D3589D5CFEE /* types */ = {
-			isa = PBXGroup;
-			children = (
-				E92B4B2DB60D8B4C3A14E8D126803028 /* DSFSparkline.swift */,
-				B2DF1E18284C243E79D905EF43C9DFE0 /* DSFSparkline+Fill.swift */,
-				0234D2BA67FF07BC5A4B920B14A2D71B /* DSFSparkline+GradientBucket.swift */,
-				3E298D5E11FF2F48D8713DC704B045CC /* DSFSparkline+HighlightRangeDefinition.swift */,
-				6D40C00F00C43E8844D262DE040C3BEA /* DSFSparkline+Palette.swift */,
-				744F73E6A5383B9FE6736F4F8A96CC16 /* DSFSparkline+ZeroLineDefinition.swift */,
-			);
-			name = types;
-			path = types;
 			sourceTree = "<group>";
 		};
 		2295C517F6CCBE152A3397D527B9508A /* Pods-macOS Table Demo */ = {
@@ -788,7 +782,7 @@
 			children = (
 				ACF29AE043E423216EF21DD5D149AE31 /* renderers */,
 				CFE0FB4CBA6E1188579297DDB66A4AB7 /* surfaces */,
-				17BEC5E86DE142CE52F54D3589D5CFEE /* types */,
+				E4D3113EE57C944D88A185DD62B42167 /* types */,
 			);
 			name = overlay;
 			path = Sources/DSFSparkline/overlay;
@@ -884,6 +878,17 @@
 			path = surfaces;
 			sourceTree = "<group>";
 		};
+		D2002F2701E75AC4E8CC73E7857AC77F /* fill */ = {
+			isa = PBXGroup;
+			children = (
+				665D12FA6D5B8A18F5B916E8CA366A15 /* DSFSparkline+Fillable.swift */,
+				75D95081784474040004383AE9BDC0E1 /* DSFSparkline+FillColor.swift */,
+				6ADB4508F8CF02407E422E0E2147176A /* DSFSparkline+FillGradient.swift */,
+			);
+			name = fill;
+			path = fill;
+			sourceTree = "<group>";
+		};
 		D905F7E6708026A5BBA3123B2B1E6BB1 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,6 +933,20 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		E4D3113EE57C944D88A185DD62B42167 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				0352618715444838EC37658653F0C419 /* DSFSparkline.swift */,
+				753883ED47931FBB1848C630CE4C7E8D /* DSFSparkline+GradientBucket.swift */,
+				1D11CA449B07A2AB03025A4496DDF8DB /* DSFSparkline+HighlightRangeDefinition.swift */,
+				4FC8E0289057438C1AC1B6D38E931B53 /* DSFSparkline+Palette.swift */,
+				0616EEE1B58056214883410D77A34DBE /* DSFSparkline+ZeroLineDefinition.swift */,
+				D2002F2701E75AC4E8CC73E7857AC77F /* fill */,
+			);
+			name = types;
+			path = types;
+			sourceTree = "<group>";
+		};
 		F4C2A0FA8F0328B703399A939D713ADA /* Pods-iOS Sparkline Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,19 +967,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		008F574164BDCD89AAE9C30217C6F994 /* Headers */ = {
+		147EC3EE88BD625C18CE8526CDC35C7C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C9D938035C1AD7F635A1BCC82CA5FFD /* DSFSparkline-iOS-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D83C9BFAE9AC85BFE400397D44CFB8B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				58AB18B58E2317BBE9F2AF7A6AB54C43 /* DSFSparkline-macOS-umbrella.h in Headers */,
+				50B4F1A52667EB86C9CF01BF8F65B14E /* DSFSparkline-macOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,19 +1007,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		91CD472B271A58BAE7F905971A7AFC3E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9FC232D68B93C1E1AD215C727216970F /* DSFSparkline-tvOS-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		AAD11182D4F4F0EDCF3AD73C9E1DE566 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5D92E990FBA123DDBBE30D8952D05415 /* Pods-macOS Table Demo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC9952E2E92ECAD2917E2023C6AADF76 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E06DAEE42AAFE86DBC14D03D374B6744 /* DSFSparkline-iOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C65E8792D81F0F6F0AC044897E0F231D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6163AE6623054E7E44FC8460955575A8 /* DSFSparkline-tvOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,7 +1062,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				14BBCA8F6E0C725461688608CD96BACF /* PBXTargetDependency */,
+				2C9125BC9CDEF73D281619FB0B0DA512 /* PBXTargetDependency */,
 			);
 			name = "Pods-macOS Sparkline Demo";
 			productName = Pods_macOS_Sparkline_Demo;
@@ -1062,7 +1081,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B6A31948F75BA9D7D1330789986A0E8B /* PBXTargetDependency */,
+				8D56B79D0CD33FDE78356C3A6BF10FB8 /* PBXTargetDependency */,
 			);
 			name = "Pods-tvOS Sparkline Demo";
 			productName = Pods_tvOS_Sparkline_Demo;
@@ -1071,12 +1090,12 @@
 		};
 		5D4902C570B4C21867B4D126E09A7D23 /* DSFSparkline-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CB80F30215912177389AB2D6E2FF6F8 /* Build configuration list for PBXNativeTarget "DSFSparkline-tvOS" */;
+			buildConfigurationList = F06AC55E54EA666F4428135ECB3AFAFF /* Build configuration list for PBXNativeTarget "DSFSparkline-tvOS" */;
 			buildPhases = (
-				91CD472B271A58BAE7F905971A7AFC3E /* Headers */,
-				EA4C0B17E39376C5233816FD710D2D08 /* Sources */,
-				0F6CC8483CE617A021FF2925581D26E6 /* Frameworks */,
-				1F3BF1E7C73189A5755A0F3EC443795C /* Resources */,
+				C65E8792D81F0F6F0AC044897E0F231D /* Headers */,
+				4D772E6F32FE8DCF14E1359FFC4CC772 /* Sources */,
+				828E9E5C0831349ECF6E8A0D19A1A327 /* Frameworks */,
+				7BBECEAF91866B07D06A9D20F73D2CA5 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1099,7 +1118,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E1E3E2C35599A26FEC5444095C150A20 /* PBXTargetDependency */,
+				B111252B8ED83B877EA1D1151DB50409 /* PBXTargetDependency */,
 			);
 			name = "Pods-SwiftUI Sparkline Demo (iOS)";
 			productName = Pods_SwiftUI_Sparkline_Demo__iOS_;
@@ -1108,12 +1127,12 @@
 		};
 		769D42E906449D472E8B253C8DF9FFDC /* DSFSparkline-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CB475DDA278DDC78DFD4905F0E85D3D /* Build configuration list for PBXNativeTarget "DSFSparkline-iOS" */;
+			buildConfigurationList = 4BD39D6CFC502D5EAD001D58FFEDA678 /* Build configuration list for PBXNativeTarget "DSFSparkline-iOS" */;
 			buildPhases = (
-				008F574164BDCD89AAE9C30217C6F994 /* Headers */,
-				636E7A67C0A40469AFAE2D1889BBAA55 /* Sources */,
-				E2002AE7BD39085653F7F90D42DB4ED0 /* Frameworks */,
-				87C00363834B7186C2197D1777C8A626 /* Resources */,
+				AC9952E2E92ECAD2917E2023C6AADF76 /* Headers */,
+				00BDA403A5C4F4836E1D55ED42AAB25A /* Sources */,
+				E9A8EF155D646427189CE41E313A47F2 /* Frameworks */,
+				0580DCE299932B09F332EAC925137D4C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1136,7 +1155,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				F336A40789A88D61BB36F0B19C30E6BF /* PBXTargetDependency */,
+				D5E7EF3C68CF9D097A03CEEB055B27A2 /* PBXTargetDependency */,
 			);
 			name = "Pods-iOS Sparkline Demo";
 			productName = Pods_iOS_Sparkline_Demo;
@@ -1155,7 +1174,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				8EDAD3AF633AA840A98412CFF8EE6A35 /* PBXTargetDependency */,
+				E0EC5A192AABA6CCF0E5F30A7C1F4A64 /* PBXTargetDependency */,
 			);
 			name = "Pods-macOS Table Demo";
 			productName = Pods_macOS_Table_Demo;
@@ -1174,7 +1193,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				11CFE634034154E0A1CDD2231BCA7BEA /* PBXTargetDependency */,
+				C24D6F2D9377A17433B9B6D6746BAE63 /* PBXTargetDependency */,
 			);
 			name = "Pods-SwiftUI Sparkline Demo (macOS)";
 			productName = Pods_SwiftUI_Sparkline_Demo__macOS_;
@@ -1193,7 +1212,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0DEC62399E01881F6823D9DECF716523 /* PBXTargetDependency */,
+				5C04EA0C1DBD2819005E569229467C07 /* PBXTargetDependency */,
 			);
 			name = "Pods-macOS Sparkline Demo Objc";
 			productName = Pods_macOS_Sparkline_Demo_Objc;
@@ -1202,12 +1221,12 @@
 		};
 		F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EADEC1DEB05C27262721B3F87383B748 /* Build configuration list for PBXNativeTarget "DSFSparkline-macOS" */;
+			buildConfigurationList = FD7BE2A14B3530FDC34E4F1E0A78A19E /* Build configuration list for PBXNativeTarget "DSFSparkline-macOS" */;
 			buildPhases = (
-				3D83C9BFAE9AC85BFE400397D44CFB8B /* Headers */,
-				103F9F7965266AFDC1BA3F4A1D04D0D1 /* Sources */,
-				6D6436CEEC88096A0C2400DC6D57FF58 /* Frameworks */,
-				C5BF5A861F25AB17FE29CF2BBDFAE2C9 /* Resources */,
+				147EC3EE88BD625C18CE8526CDC35C7C /* Headers */,
+				8FC95517BFB6D92F951A123823940431 /* Sources */,
+				A4E0B199ECD008E5C43390CF4BB1F887 /* Frameworks */,
+				524BC5BF5E5B308EC4F552C4EB23307F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1255,14 +1274,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		05CAF8828C75D26BCF97BB78BF0545B1 /* Resources */ = {
+		0580DCE299932B09F332EAC925137D4C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1F3BF1E7C73189A5755A0F3EC443795C /* Resources */ = {
+		05CAF8828C75D26BCF97BB78BF0545B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1283,21 +1302,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		524BC5BF5E5B308EC4F552C4EB23307F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BBECEAF91866B07D06A9D20F73D2CA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8233DE87FDC0ED10B540135CBBC726A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		87C00363834B7186C2197D1777C8A626 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5BF5A861F25AB17FE29CF2BBDFAE2C9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1328,69 +1347,71 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		103F9F7965266AFDC1BA3F4A1D04D0D1 /* Sources */ = {
+		00BDA403A5C4F4836E1D55ED42AAB25A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7658C38CA6EB07F52089BF8D64F3C2A /* ArbitraryAnimator.swift in Sources */,
-				1778FFD8632EAF87AC81B91D2FB849FA /* CGPath+Hermite.swift in Sources */,
-				492CF167F82A16F20C9C52849DD05FD1 /* DSFSparkline.swift in Sources */,
-				78E4ADE94E5BB69BB8D59B8A07435E10 /* DSFSparkline+DataSource.swift in Sources */,
-				17EFBC30926AFF19440A75CC0ACDBD82 /* DSFSparkline+Fill.swift in Sources */,
-				7F09A88329BCC655A0676D0937423967 /* DSFSparkline+GradientBucket.swift in Sources */,
-				5EA959C1B7C1C96E325ABFF6D0D6AE20 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */,
-				37E06ED344EBA1C13E6086E4286FFA91 /* DSFSparkline+Palette.swift in Sources */,
-				CB854C05DF9C7A4AA4555E9075B1CF90 /* DSFSparkline+StaticDataSource.swift in Sources */,
-				5A397B5E596264CC33F085FE64C17440 /* DSFSparkline+ZeroLineDefinition.swift in Sources */,
-				E71837656E9E148EC572075E1ACBAE70 /* DSFSparkline-macOS-dummy.m in Sources */,
-				B1E2F7E64261365EA4A0600853F50BBB /* DSFSparklineBarGraphView.swift in Sources */,
-				C8CE153747805DCF898788FC6C8B519D /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */,
-				683CAA9E12F457C4EC032B8123056770 /* DSFSparklineDataBarGraphView.swift in Sources */,
-				BAAF5EA1E20216DA0AE9E32A8053F2C8 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */,
-				4BE36C018F38626D02278CEA4FB7AD23 /* DSFSparklineDataSourceView.swift in Sources */,
-				188AB2BD3F506192DA87FB13D4EFADCF /* DSFSparklineDotGraphView.swift in Sources */,
-				ED75567CC3246E767C7843EF171FFD7D /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */,
-				861699D1C8AD95AC5E4C80D538A9BC8D /* DSFSparklineLineGraphView.swift in Sources */,
-				3E282C9272DD1F2AF96E8EA075B18492 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */,
-				F2350E0C3A4AB064A14CE8CB7B0E7FE6 /* DSFSparklineOverlay.swift in Sources */,
-				396651421F8380EF1DF4CBA2AB68B458 /* DSFSparklineOverlay+Bar.swift in Sources */,
-				A5E770B24D22E1D60C56501051D93AD6 /* DSFSparklineOverlay+Centerable.swift in Sources */,
-				6448CB8A6A8373045BCA423B04EB954A /* DSFSparklineOverlay+DataBar.swift in Sources */,
-				A9A695B0E6E176318B087E89AF43D1A5 /* DSFSparklineOverlay+DataSource.swift in Sources */,
-				2AE0B8241C69E723BD507C5DAD68829F /* DSFSparklineOverlay+Dot.swift in Sources */,
-				EF2571E4520522411587D93E1B94C4A3 /* DSFSparklineOverlay+GridLines.swift in Sources */,
-				D2DFE7A301216EBA119EBAD43640E6F3 /* DSFSparklineOverlay+Line.swift in Sources */,
-				78D460A6B01A23299F5A8C53B9083ABC /* DSFSparklineOverlay+PercentBar.swift in Sources */,
-				7D7CD59FEFB2B226FC7E222E8BDEE43D /* DSFSparklineOverlay+Pie.swift in Sources */,
-				D238FDEC5A72FF02EC0621AD9D85AB01 /* DSFSparklineOverlay+RangeHighlight.swift in Sources */,
-				123FC9F31E4EA2F0CE3F96250E2941AB /* DSFSparklineOverlay+Stackline.swift in Sources */,
-				BD97DEAADBC6CDA3A9F387FA95342D3D /* DSFSparklineOverlay+StaticDataSource.swift in Sources */,
-				6AB2DC0E1FD4F5AE27CF6ED631906C34 /* DSFSparklineOverlay+Stripes.swift in Sources */,
-				752BC2264E1AC4D32E751B83EC94F29C /* DSFSparklineOverlay+Tablet.swift in Sources */,
-				4C8C14D4E1F2185F95A4D30359E5B2F1 /* DSFSparklineOverlay+WinLossTie.swift in Sources */,
-				17980EE1ACC7DE4E19E806579341E10A /* DSFSparklineOverlay+ZeroLine.swift in Sources */,
-				B92D830EDF971BDC64EC186ABE9BE86C /* DSFSparklinePercentBarGraphView.swift in Sources */,
-				E0E384322E0216D32DCE71D8FBB7983F /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */,
-				17A3D7B6E6901F40A0BFC8D73071E1DF /* DSFSparklinePieGraphView.swift in Sources */,
-				CE8BC2AED503137009C70B156E48A2D9 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */,
-				357BA1EBBA573DDF6C7AE5E692E908BF /* DSFSparklineStackLineGraphView.swift in Sources */,
-				52080A4D3B61CF18A4607F370B856CB8 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */,
-				76BFE8FD540F579BA162BDB351213DAB /* DSFSparklineStripesGraphView.swift in Sources */,
-				2A5F857FB01FCB654E0B17B8082DD7D3 /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */,
-				794F7562DDF04CD2D1C5DCCE34E91508 /* DSFSparklineSurface.swift in Sources */,
-				9A5EF86F47CC74E2ADC5F92EE0C9FF30 /* DSFSparklineSurface+AttributedString.swift in Sources */,
-				71A18A8DA5C54AC8603A9F7FCBFF53BF /* DSFSparklineSurface+Bitmap.swift in Sources */,
-				E160FC6199CC5618A9706DBD952D9F06 /* DSFSparklineSurface+SwiftUI.swift in Sources */,
-				4DA6464CDAE67443D6D42CD348413273 /* DSFSparklineSurface+View.swift in Sources */,
-				979452703D33F4A61911CF53759F2EA6 /* DSFSparklineTabletGraphView.swift in Sources */,
-				BC8A4CC9E9462979E334A860DCAEFC59 /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */,
-				C8ED201DCC47C0F2AB84105E3ED815BC /* DSFSparklineWinLossGraphView.swift in Sources */,
-				3D0E2B1D2D4E4A411B582A689D64A096 /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */,
-				AE888FF310D2C3801913FD2E493AFF39 /* DSFSparklineZeroLinedGraphView.swift in Sources */,
-				1A502D4485C7F6BE0BAEE3B049B4A936 /* NSShadow+extensions.swift in Sources */,
-				74FDD44C45E5A8A74BCBC4B1338D6F59 /* SparklineData.swift in Sources */,
-				CF4D933769966F0CB3FFAD9ED5143EDF /* SparklineWindow.swift in Sources */,
-				FF4D0DA7E87CD002B7B3D56F5F0DBFE2 /* Utilities.swift in Sources */,
+				4877BD75DA6A36A53C5A39B3799A4C12 /* ArbitraryAnimator.swift in Sources */,
+				FFC91761CB2E29D6227543675B28B1E7 /* CGPath+Hermite.swift in Sources */,
+				D3ABEE2CAB6703002DCE85E6694698D1 /* DSFSparkline.swift in Sources */,
+				0C47CDF08033E1893F4D9E24D5895B07 /* DSFSparkline+DataSource.swift in Sources */,
+				5A16C43AC3B9420FD3E4C012492E3ECD /* DSFSparkline+Fillable.swift in Sources */,
+				734661D69279CF8956AC302D064C521F /* DSFSparkline+FillColor.swift in Sources */,
+				0CD44D70C049D6F988CD4AEDE6C7C1EE /* DSFSparkline+FillGradient.swift in Sources */,
+				BC18DB003B326F376B4B7EDF8D6CF3C2 /* DSFSparkline+GradientBucket.swift in Sources */,
+				CCBA8CF2EAD9D450AA055EF4B9943439 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */,
+				A1327ED42D6C77A9AFE8AB5B04A07D5D /* DSFSparkline+Palette.swift in Sources */,
+				B2CC2CA1ECE31824A59FAAFD3A8358EE /* DSFSparkline+StaticDataSource.swift in Sources */,
+				D2DF3FBDB899B13E6F8FEE4CE589D6F0 /* DSFSparkline+ZeroLineDefinition.swift in Sources */,
+				B7728944D998E4B9F0ECE7F9068159AE /* DSFSparkline-iOS-dummy.m in Sources */,
+				89A078F1812FBC149CED62D353C1AB7E /* DSFSparklineBarGraphView.swift in Sources */,
+				6F0C0F25E8FD2A33AA8DC0DF108C7311 /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */,
+				56E335EA03B5C5AC9C90DFE187C99C5D /* DSFSparklineDataBarGraphView.swift in Sources */,
+				AA6357014FCC41D8F8A58B27C4B27C48 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */,
+				066F9F6EC634BC441C2A61C3D0B383E6 /* DSFSparklineDataSourceView.swift in Sources */,
+				95FF7B1B00EC7D7A0865642FAE46DFC1 /* DSFSparklineDotGraphView.swift in Sources */,
+				E0F32CAA54452796A5ABD267D1D47083 /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */,
+				1983CED84E58E9FD7C444084BB6AC8A1 /* DSFSparklineLineGraphView.swift in Sources */,
+				E271F7D67EB4B15F5BD057FF988CF737 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */,
+				C5B695FDD09CFA284C6920E5A114B917 /* DSFSparklineOverlay.swift in Sources */,
+				0996368CCE756F871927658F12663396 /* DSFSparklineOverlay+Bar.swift in Sources */,
+				1ECECF8BB486B7AD501EC268EC55143B /* DSFSparklineOverlay+Centerable.swift in Sources */,
+				9A247E55CE102BAA06017C2446072CA3 /* DSFSparklineOverlay+DataBar.swift in Sources */,
+				98862B0B1F46232CCC4012B9DAB2636E /* DSFSparklineOverlay+DataSource.swift in Sources */,
+				719AE7F524242C74817E84D8CDE1E506 /* DSFSparklineOverlay+Dot.swift in Sources */,
+				0304A3A4D4C74C150E2C08063DFA6F31 /* DSFSparklineOverlay+GridLines.swift in Sources */,
+				E209297AB2398EA9D5D4AEE5D6777DC5 /* DSFSparklineOverlay+Line.swift in Sources */,
+				1BB27DD9A9BF2CD7ABACB4D1C1245EC2 /* DSFSparklineOverlay+PercentBar.swift in Sources */,
+				D872CEA3C4F3B5F85B6AABFD1EC73ECC /* DSFSparklineOverlay+Pie.swift in Sources */,
+				A427FD784B6DD7DFA34F4DB652C042EE /* DSFSparklineOverlay+RangeHighlight.swift in Sources */,
+				7A87072EA675B8C51DE7AE98B3380DC2 /* DSFSparklineOverlay+Stackline.swift in Sources */,
+				642D91463BA82DC4F9DAE57FA2FA6C28 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */,
+				512DA5CDF32CD5943807A23770E8CC3C /* DSFSparklineOverlay+Stripes.swift in Sources */,
+				27782E05BDF355E8CB442DE8BC7D3E8F /* DSFSparklineOverlay+Tablet.swift in Sources */,
+				8AFA2FA63BA0BBA4A14BB17DE595AA00 /* DSFSparklineOverlay+WinLossTie.swift in Sources */,
+				8179232D8A134E0D7506982A3A706ECC /* DSFSparklineOverlay+ZeroLine.swift in Sources */,
+				A742A59356BD734E04BA4651E30D0E66 /* DSFSparklinePercentBarGraphView.swift in Sources */,
+				F4AD257F97F6D7BC1BF6E1EC046417C0 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */,
+				E2BAFDA44088D2E94AB9EAAC9B1E1160 /* DSFSparklinePieGraphView.swift in Sources */,
+				978C4F4301E3EEC08AEFD293D433F456 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */,
+				829A7D8F19DDAE0C45249CD54BAD6030 /* DSFSparklineStackLineGraphView.swift in Sources */,
+				D577EA60A26DE049CD4739EE7F666676 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */,
+				AE8EF466531F633091B2C83900CBC9EF /* DSFSparklineStripesGraphView.swift in Sources */,
+				B8B4C2342F0A2153DEDEAB6688BD0EBF /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */,
+				4E3DE3285D51E4EA1EAAE2D1DF587CFF /* DSFSparklineSurface.swift in Sources */,
+				8845AC6545287AF8B5C05AC23B399CD1 /* DSFSparklineSurface+AttributedString.swift in Sources */,
+				FC80DDA1F415549E7F5FD26B14D34D84 /* DSFSparklineSurface+Bitmap.swift in Sources */,
+				C112FEA82E235059EE2723D8C0C1AD82 /* DSFSparklineSurface+SwiftUI.swift in Sources */,
+				4AF6C3BF97AF533CAEF53CDB1B922CF3 /* DSFSparklineSurface+View.swift in Sources */,
+				C135A97C16C35602DD30B0B332842251 /* DSFSparklineTabletGraphView.swift in Sources */,
+				0209D9281FA8A4EB36E2FF7F5106DBFB /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */,
+				27D1200A9CAB8A0E42E17857A98AB131 /* DSFSparklineWinLossGraphView.swift in Sources */,
+				E4E1786D5E98E98CDE6AF6BF2FF60DB6 /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */,
+				732B0970443F71887EF983A5CC71194A /* DSFSparklineZeroLinedGraphView.swift in Sources */,
+				FBAE0DBB947257A4C0BE53D4D95272DB /* NSShadow+extensions.swift in Sources */,
+				D344656D147A110340837E918B6C936E /* SparklineData.swift in Sources */,
+				7C693F8FB1D7361502036D51B551DEDF /* SparklineWindow.swift in Sources */,
+				872EED9F9DB0F650BB401A1D4F540233 /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1410,77 +1431,79 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4D772E6F32FE8DCF14E1359FFC4CC772 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				788B7A33C09AB3101DE337D6A484B7C7 /* ArbitraryAnimator.swift in Sources */,
+				2D8A0D264F2A56C214F6DA11291AAC2E /* CGPath+Hermite.swift in Sources */,
+				E343AFF636ED75472AA03E56A0A3D1FA /* DSFSparkline.swift in Sources */,
+				32F4E591AF73DC94937893F31053FC8F /* DSFSparkline+DataSource.swift in Sources */,
+				7486BB7678B13A5C3FC22D7283E2987F /* DSFSparkline+Fillable.swift in Sources */,
+				48284BB6C88B1BD197907D41F7BA9A49 /* DSFSparkline+FillColor.swift in Sources */,
+				DAFD0996AB6887DC0D16094649DA55F4 /* DSFSparkline+FillGradient.swift in Sources */,
+				5B3759F4627D57A10AF75FE125AFB9E0 /* DSFSparkline+GradientBucket.swift in Sources */,
+				BD8CB25886C5C77D01DFC6E87D802C68 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */,
+				5CC156FF95203FB1B3FD86A10C550209 /* DSFSparkline+Palette.swift in Sources */,
+				A80AF117C904EA2A04DFFFE9FB8DF5F7 /* DSFSparkline+StaticDataSource.swift in Sources */,
+				929ECEF0A09A14F779E23131C70A19CD /* DSFSparkline+ZeroLineDefinition.swift in Sources */,
+				6B6533F4EF823387A699151630C186C2 /* DSFSparkline-tvOS-dummy.m in Sources */,
+				A98FD0E4B11564E78044169061AC3A9C /* DSFSparklineBarGraphView.swift in Sources */,
+				26E9BBD5952F598C521186F02A1F3996 /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */,
+				6E7A792737D5FBE9327D74508780E13C /* DSFSparklineDataBarGraphView.swift in Sources */,
+				DDA89AB70D73998165DF6D3312435EAB /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */,
+				F4922AE90E1D3B573CC79A3C84985FB3 /* DSFSparklineDataSourceView.swift in Sources */,
+				824AB8BE098CA454CAECBB047F228BAB /* DSFSparklineDotGraphView.swift in Sources */,
+				7FD7EAF226EFEE44EBD49C216CBE8541 /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */,
+				5BB9BAA296E0B621145177C68C0FE118 /* DSFSparklineLineGraphView.swift in Sources */,
+				7324EFC5CD7E4B9715BB4DA9DD906E46 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */,
+				CD88B90B769A7757068A571B3FBB94C1 /* DSFSparklineOverlay.swift in Sources */,
+				EFF2B19240E3E0C4B1238E22C82935ED /* DSFSparklineOverlay+Bar.swift in Sources */,
+				94498337EAE0767A7851870F0832D4BD /* DSFSparklineOverlay+Centerable.swift in Sources */,
+				EDC9199C643C15F0E68D49764A37ACDE /* DSFSparklineOverlay+DataBar.swift in Sources */,
+				C6AA0F8CC3E149CBD17957E6D38E40F7 /* DSFSparklineOverlay+DataSource.swift in Sources */,
+				CB44123E4DFF0F7F23E5E8F6ACF8B644 /* DSFSparklineOverlay+Dot.swift in Sources */,
+				863A83BEEF95866895CC425FCF31304F /* DSFSparklineOverlay+GridLines.swift in Sources */,
+				0FCA91A67EA2CB4622EA5931F08B9DC1 /* DSFSparklineOverlay+Line.swift in Sources */,
+				9B45052856E17DC105A14C12AD87D6E0 /* DSFSparklineOverlay+PercentBar.swift in Sources */,
+				A595B8D16B2F3A8B7E60B52F0A738F25 /* DSFSparklineOverlay+Pie.swift in Sources */,
+				8EEF69D3B06AE57C2CD183BFD976DE16 /* DSFSparklineOverlay+RangeHighlight.swift in Sources */,
+				70185BC2475C97E81B8CD76C55848FC9 /* DSFSparklineOverlay+Stackline.swift in Sources */,
+				7B4B66FA74533F13C50027FABE96443A /* DSFSparklineOverlay+StaticDataSource.swift in Sources */,
+				B3E401A7B416A22A1182AB39D27DCCE9 /* DSFSparklineOverlay+Stripes.swift in Sources */,
+				B4AB2BC0C227DA09B268FE22426EA8D2 /* DSFSparklineOverlay+Tablet.swift in Sources */,
+				B3BAE77183E89E14DCC4E7D5A759ABD5 /* DSFSparklineOverlay+WinLossTie.swift in Sources */,
+				C2AD44E7307E17453F765E0C8FE5DA05 /* DSFSparklineOverlay+ZeroLine.swift in Sources */,
+				E7802FF55B70F6CB4726F93A7D9DBD4D /* DSFSparklinePercentBarGraphView.swift in Sources */,
+				A5EC17014488E4BE5B2565E204F8F4FE /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */,
+				C88D64495C6EE247E3647E25DDEEABE0 /* DSFSparklinePieGraphView.swift in Sources */,
+				996E716C2E4F1C4D750A7821CD6161D1 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */,
+				FA305F63A01A6274627CE24662B29E72 /* DSFSparklineStackLineGraphView.swift in Sources */,
+				11DA57FD364D7672F06E2F4D296ACF71 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */,
+				AF8482DD0B6D90FE2557C5AAF8DFF3EE /* DSFSparklineStripesGraphView.swift in Sources */,
+				65737B7A85FC65F4F897118EEF7FE0CC /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */,
+				59C78E12ED8DD3B04663D044DDF93D17 /* DSFSparklineSurface.swift in Sources */,
+				AE601D2EAC8C51D0CE6B4BC33F2AAC31 /* DSFSparklineSurface+AttributedString.swift in Sources */,
+				3C43E8F5CDA2E1FE91FF0321A1CCBF8B /* DSFSparklineSurface+Bitmap.swift in Sources */,
+				FABB51CC1684C8D239F9E2CA155D7D17 /* DSFSparklineSurface+SwiftUI.swift in Sources */,
+				E9D68DF9ED3F27EF11ABAEA3E427327E /* DSFSparklineSurface+View.swift in Sources */,
+				DE127DA8671DD6C027E3D705C28AD55C /* DSFSparklineTabletGraphView.swift in Sources */,
+				B2BA3FB818CDF0C9F9938F2C1BAD05D3 /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */,
+				E58B9E5D68633514A0F8DE5C94BC4ADB /* DSFSparklineWinLossGraphView.swift in Sources */,
+				0E6582D7C8E2F7D405F4E2F0A38E21DB /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */,
+				B60F03BBB5F64D6302EFDEC4CC62968C /* DSFSparklineZeroLinedGraphView.swift in Sources */,
+				08CF747751C0C1555E5113F52ED7955C /* NSShadow+extensions.swift in Sources */,
+				665968C7D739507E3C092833568385D9 /* SparklineData.swift in Sources */,
+				F8560C6D249AEFEE0C96F34F4E1A469A /* SparklineWindow.swift in Sources */,
+				F89D586C89A12BC89BC179D9755FA6F7 /* Utilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5B8997655D09EF2A4D7B03BE83950A48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6DAB591FC8D167EF6DC065CE36AA3AFC /* Pods-macOS Sparkline Demo Objc-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		636E7A67C0A40469AFAE2D1889BBAA55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				00E1A6D50D5FB10ED0BEA27FC0CBE672 /* ArbitraryAnimator.swift in Sources */,
-				6A9896BE541986AE436FF663E896AF56 /* CGPath+Hermite.swift in Sources */,
-				45E24A1227EEC37B8B3B0D8DBD32F1FD /* DSFSparkline.swift in Sources */,
-				094DF3BC11E50662E4C47EB9D76C14D2 /* DSFSparkline+DataSource.swift in Sources */,
-				C83F8E2DFDB332FE5D23713F824F58F6 /* DSFSparkline+Fill.swift in Sources */,
-				0EDB409B1DF2CEE7C5B604153E56172D /* DSFSparkline+GradientBucket.swift in Sources */,
-				CA6BBEB956E7FD2D97A2A4BEBCC583F7 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */,
-				0C9132A907CE3077DA808AE9AC52DDAA /* DSFSparkline+Palette.swift in Sources */,
-				21AEBA0CFCD55E7541C6E646BEB88006 /* DSFSparkline+StaticDataSource.swift in Sources */,
-				4DAEAF26F9CED216D72648A05A833412 /* DSFSparkline+ZeroLineDefinition.swift in Sources */,
-				50DFD19FF340A236A8EBED3210403266 /* DSFSparkline-iOS-dummy.m in Sources */,
-				4DB436041167D25AB210492AD94B2DAD /* DSFSparklineBarGraphView.swift in Sources */,
-				03EE75573BC3A14A2E86DB7C1D81063C /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */,
-				5AB23DCEFE2C7EA578FCA6F308C14237 /* DSFSparklineDataBarGraphView.swift in Sources */,
-				B01CEAB404B0B84483C22E2172FDDF15 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */,
-				D02629BB45682396C5E2FF1E32067B48 /* DSFSparklineDataSourceView.swift in Sources */,
-				74CC70A4F6B2255C232C4BFF530FE6B7 /* DSFSparklineDotGraphView.swift in Sources */,
-				BC3476E685F9902717BB03B54CDB5B24 /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */,
-				AE2A4B005C282FE10D7521B3E2F9F37D /* DSFSparklineLineGraphView.swift in Sources */,
-				F310A85BF52A4F6C712487538D952915 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */,
-				DA4CDEA1E0EE5AAB4BE5FC7AD7ECF8C2 /* DSFSparklineOverlay.swift in Sources */,
-				F285454FC5562BBBE230D68A8B2DE67D /* DSFSparklineOverlay+Bar.swift in Sources */,
-				25B95806129A8D4558075A24D17395A0 /* DSFSparklineOverlay+Centerable.swift in Sources */,
-				C7C0295F57162A0A4498B22AD576A3CC /* DSFSparklineOverlay+DataBar.swift in Sources */,
-				EB830CFB24E0FBC560ED28FA3DB7206F /* DSFSparklineOverlay+DataSource.swift in Sources */,
-				95FCBEDC68DC2B5757CBFF8C1C453DDC /* DSFSparklineOverlay+Dot.swift in Sources */,
-				DBCE17FA95980486D43E73B9F6F5476D /* DSFSparklineOverlay+GridLines.swift in Sources */,
-				39E8235E913E839CFC19E1360073BB98 /* DSFSparklineOverlay+Line.swift in Sources */,
-				E57C6F2A518E4DDA65D718DF59CF1D79 /* DSFSparklineOverlay+PercentBar.swift in Sources */,
-				8736506D06104B277F5EDE8EE35BB341 /* DSFSparklineOverlay+Pie.swift in Sources */,
-				065E3F094BA691BEB586AEE0DDAE508C /* DSFSparklineOverlay+RangeHighlight.swift in Sources */,
-				5923A60F141311DA946D672327EB057F /* DSFSparklineOverlay+Stackline.swift in Sources */,
-				9359E8523B0302C6532543E01E8C11C9 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */,
-				BA602C95E9A8B216C6334273C5F40100 /* DSFSparklineOverlay+Stripes.swift in Sources */,
-				353E384A744168E961A8292404E7950F /* DSFSparklineOverlay+Tablet.swift in Sources */,
-				29321744803F79CDF5B24E65D3C6D4C9 /* DSFSparklineOverlay+WinLossTie.swift in Sources */,
-				84A50BFEBF97642D837542F1A1E44B64 /* DSFSparklineOverlay+ZeroLine.swift in Sources */,
-				D8FB2974E85B5E8F3810D9B00D2B8604 /* DSFSparklinePercentBarGraphView.swift in Sources */,
-				6EEBC3E640410E70CAC73DF6664DE984 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */,
-				2BF12DCFD02F1BE917FD75A3A3D1F177 /* DSFSparklinePieGraphView.swift in Sources */,
-				3EB11A11D636A0EFD4B41247AC33B52D /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */,
-				423E01DFA7EFE8B17011F5FB045AEAFB /* DSFSparklineStackLineGraphView.swift in Sources */,
-				DB438976B2CBBE66E8D223FB3BDF057B /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */,
-				BA1C3CA904F3FC8C12BE41918477DE6F /* DSFSparklineStripesGraphView.swift in Sources */,
-				A34FD22DA1A7D7873E6ABD1DF097FF1C /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */,
-				AF5B97269F508D01E24BAAA388AC978F /* DSFSparklineSurface.swift in Sources */,
-				65BE24880AD8ABC5D754113036679C7F /* DSFSparklineSurface+AttributedString.swift in Sources */,
-				F95B69D9A4E3005045E6A0A266719221 /* DSFSparklineSurface+Bitmap.swift in Sources */,
-				A99686ECC59F529CFFFBACC7EEF3BD01 /* DSFSparklineSurface+SwiftUI.swift in Sources */,
-				6D5BB456B9109D03B586F2337EE78996 /* DSFSparklineSurface+View.swift in Sources */,
-				3E902F932FBF21151AAAB77801119D5E /* DSFSparklineTabletGraphView.swift in Sources */,
-				ED96073EF55D2F4BD733CC766BBB6FE7 /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */,
-				0E3820512DE75B193B86A0C821664EBA /* DSFSparklineWinLossGraphView.swift in Sources */,
-				F2D40F9C6858456FC5209006FD827F6D /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */,
-				19FFBE06969142F812AE6A598F6C744E /* DSFSparklineZeroLinedGraphView.swift in Sources */,
-				AD59C76BE167C77BB94592DBEEBF1CE1 /* NSShadow+extensions.swift in Sources */,
-				744091F60BB37B7098315CBB8A28CCCA /* SparklineData.swift in Sources */,
-				51A6917C50AFB8A3FF31442ADC6AC2DB /* SparklineWindow.swift in Sources */,
-				2D1B3293463E04D15467DC339CACE710 /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1500,6 +1523,74 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8FC95517BFB6D92F951A123823940431 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B729AD8B422282555318DC7FE828036 /* ArbitraryAnimator.swift in Sources */,
+				345E91254338328A4D2570062C94E58D /* CGPath+Hermite.swift in Sources */,
+				B76DCC6843F18173D8814BE1B0CC4C1B /* DSFSparkline.swift in Sources */,
+				CD8E8E9134FB0EC01F6FD6C14083AC9F /* DSFSparkline+DataSource.swift in Sources */,
+				81816FE5CB035FA2CAEFA1F3319F23B6 /* DSFSparkline+Fillable.swift in Sources */,
+				68BD41D2CA9B1C1271719242A9187ECE /* DSFSparkline+FillColor.swift in Sources */,
+				203F95E661B6E020874BA5C16D7B4BE3 /* DSFSparkline+FillGradient.swift in Sources */,
+				D9B87C4A2EA4EF35F9C6900361452AA0 /* DSFSparkline+GradientBucket.swift in Sources */,
+				9BA3A71754A722944FA07F83286FA140 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */,
+				A7AE8E2CD5D422644FB49C10A13AC892 /* DSFSparkline+Palette.swift in Sources */,
+				2EE1D92F84E971E876D980F2C9E0FAFF /* DSFSparkline+StaticDataSource.swift in Sources */,
+				5FC36153C65AF325DF1470C8CC22ED03 /* DSFSparkline+ZeroLineDefinition.swift in Sources */,
+				6742BD51530B4979CD30E372ADD98109 /* DSFSparkline-macOS-dummy.m in Sources */,
+				50347C6E91AE040B68DADEF888858574 /* DSFSparklineBarGraphView.swift in Sources */,
+				2237B000261E96BBBCFECCE741C16F7A /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */,
+				F1A8466C7E13CD977DDBCF2624C76BA9 /* DSFSparklineDataBarGraphView.swift in Sources */,
+				0A94A4180B6B4F0A7337C3B69FE6560D /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */,
+				F786A7AA739B36EC00E8BCFB7E12D722 /* DSFSparklineDataSourceView.swift in Sources */,
+				6F7FC561C977D0F557795B0654CA571C /* DSFSparklineDotGraphView.swift in Sources */,
+				9682741E2CE1C6836D67165F6FC20FCE /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */,
+				449A75E1BCD7A1231920E569DE5E23EC /* DSFSparklineLineGraphView.swift in Sources */,
+				880E3E05F1078077D4D81B2150289BB5 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */,
+				C4E0D123443994A529257F3840C0E368 /* DSFSparklineOverlay.swift in Sources */,
+				437AF52B5524C07F38A8D066D990EDE7 /* DSFSparklineOverlay+Bar.swift in Sources */,
+				5ED4A8A4E498BF154BEDBF39DE27B343 /* DSFSparklineOverlay+Centerable.swift in Sources */,
+				C65947192DF1E373B621934200C9E096 /* DSFSparklineOverlay+DataBar.swift in Sources */,
+				7B019771E03C719DF0F71B990E7BB617 /* DSFSparklineOverlay+DataSource.swift in Sources */,
+				1AB9702101F5789E0C664056DA007AA5 /* DSFSparklineOverlay+Dot.swift in Sources */,
+				66AB6E2F558E362AC3A276725CE583CC /* DSFSparklineOverlay+GridLines.swift in Sources */,
+				13BD86EF666C75718172324DAB45C483 /* DSFSparklineOverlay+Line.swift in Sources */,
+				0DCEDE5C0EB23A041A94DC438A4C4F39 /* DSFSparklineOverlay+PercentBar.swift in Sources */,
+				58415A8759477D3A1EFB8B4FE4820753 /* DSFSparklineOverlay+Pie.swift in Sources */,
+				2C03A1A6DE30BA7C25A3A09E3EF19FF5 /* DSFSparklineOverlay+RangeHighlight.swift in Sources */,
+				B2394739BA8CB8909C9B5A45C409A706 /* DSFSparklineOverlay+Stackline.swift in Sources */,
+				2384359A6C76204623A4B34BE5BF04C5 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */,
+				5442CDBCCE4AC46975730B022B0307A1 /* DSFSparklineOverlay+Stripes.swift in Sources */,
+				D9B5B8253F37FD2E86E8AF9D87D9D0A3 /* DSFSparklineOverlay+Tablet.swift in Sources */,
+				BA16D22BB5EE701B96A97FC2B43EC834 /* DSFSparklineOverlay+WinLossTie.swift in Sources */,
+				3C0A3523C91A013EE533B07ACFF9D60E /* DSFSparklineOverlay+ZeroLine.swift in Sources */,
+				D826B29ACF6681C307C4F3BF584BBB5C /* DSFSparklinePercentBarGraphView.swift in Sources */,
+				4ACB16972CD51B324FFDA6F94B812DE3 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */,
+				A7AEFD48131AC0E24334AD66D38CBF4D /* DSFSparklinePieGraphView.swift in Sources */,
+				4D39E1B7E29366074F3921EF9AB8BC7E /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */,
+				1CF3A8FA0CF90B831296E0AAFE58AC27 /* DSFSparklineStackLineGraphView.swift in Sources */,
+				CB54090342C6F0AA4AC0817F18002237 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */,
+				DC98035C691CECD0F49F77A0F6BE81C8 /* DSFSparklineStripesGraphView.swift in Sources */,
+				670E43EF6CDBCFF295B38EEA50980AF4 /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */,
+				25594D63A8AD7CC75E3A9E8991E18B7E /* DSFSparklineSurface.swift in Sources */,
+				491A0F1F4EC6362B3F17E3836197E2D3 /* DSFSparklineSurface+AttributedString.swift in Sources */,
+				4D50A81372EBBC9EC49EA6714D5B443C /* DSFSparklineSurface+Bitmap.swift in Sources */,
+				60A5A211CF6A1766C90C1772A770BFC4 /* DSFSparklineSurface+SwiftUI.swift in Sources */,
+				3BD01F4CF4CFAAAD600F2BA960783E7E /* DSFSparklineSurface+View.swift in Sources */,
+				5684B808BA839FA60127D5A20A20C738 /* DSFSparklineTabletGraphView.swift in Sources */,
+				A5371EE98681292550FEC3906A22230D /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */,
+				F5BCAA0429C65B1FC02A3EC09C52C037 /* DSFSparklineWinLossGraphView.swift in Sources */,
+				89C248B34B3357CBA3FEF98F4E4C497F /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */,
+				F695D28EB773003798CBBEDA6D784D39 /* DSFSparklineZeroLinedGraphView.swift in Sources */,
+				EE9166E2DB990D210E670EA8EBF81F1C /* NSShadow+extensions.swift in Sources */,
+				CFDAB7A0B5EDF45903E7028405C5377C /* SparklineData.swift in Sources */,
+				0CAAEF3AE1F3259404019DEA4AABE756 /* SparklineWindow.swift in Sources */,
+				5842081C2ECA17CDBDB0AA26850D0F9A /* Utilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA6AFFC3BFABC5084C63F7D7741E2DAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1516,116 +1607,50 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EA4C0B17E39376C5233816FD710D2D08 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ADBEE890172AC8A0DD4BD3CE14EA4A76 /* ArbitraryAnimator.swift in Sources */,
-				8FD5C75F91F3A7D7D435FD2258DB0470 /* CGPath+Hermite.swift in Sources */,
-				93C6300493491CA802BF72152894155A /* DSFSparkline.swift in Sources */,
-				757CC1EB24E9DC9410A365EF5DCBFFE1 /* DSFSparkline+DataSource.swift in Sources */,
-				23EEADAE3038D08375B82C5A78F9EF40 /* DSFSparkline+Fill.swift in Sources */,
-				492BFA0992FCC28A47FDC3B43BA8DF7D /* DSFSparkline+GradientBucket.swift in Sources */,
-				1D6F5CE148E03FA88FE776D331AD4AD5 /* DSFSparkline+HighlightRangeDefinition.swift in Sources */,
-				A857FE6A500DB861D44DFD4194F46114 /* DSFSparkline+Palette.swift in Sources */,
-				3871DF3FE3195B4489C8C2AFE66B0C01 /* DSFSparkline+StaticDataSource.swift in Sources */,
-				22AF93D605E20FBC65F65103D939636A /* DSFSparkline+ZeroLineDefinition.swift in Sources */,
-				77F69FCC221B9458674B6E785596BB46 /* DSFSparkline-tvOS-dummy.m in Sources */,
-				3D51E973585031A8D6EF31ACED888C19 /* DSFSparklineBarGraphView.swift in Sources */,
-				DE169B4D7CF6A45757D1471A4000A1C6 /* DSFSparklineBarGraphView+SwiftUI.swift in Sources */,
-				4EC3D457DF0C70F53D0D9DD5E3DB24F3 /* DSFSparklineDataBarGraphView.swift in Sources */,
-				398579DA234680B47A85BFA194F54925 /* DSFSparklineDataBarGraphView+SwiftUI.swift in Sources */,
-				3AF0CA3B64A9BB227B2256156F9A8EDB /* DSFSparklineDataSourceView.swift in Sources */,
-				F8B9F991F54FEAA7269DDCD4C5FFAFC3 /* DSFSparklineDotGraphView.swift in Sources */,
-				1F79666BAA08B564D528805E5066165B /* DSFSparklineDotGraphView+SwiftUI.swift in Sources */,
-				F25E6477FDFF17B3DA6AEAB9D4856253 /* DSFSparklineLineGraphView.swift in Sources */,
-				4E19944A0BDCFE4CC32DDD4B3FFFDA41 /* DSFSparklineLineGraphView+SwiftUI.swift in Sources */,
-				EB5B9DE24211C2E84F793A5D530E59A9 /* DSFSparklineOverlay.swift in Sources */,
-				E1E14376A39360582C1FB56B1657D230 /* DSFSparklineOverlay+Bar.swift in Sources */,
-				F0965D6EE7228AE901B0F49DF0055067 /* DSFSparklineOverlay+Centerable.swift in Sources */,
-				8EEAEC938DC073F50B5BAF128F92E1FA /* DSFSparklineOverlay+DataBar.swift in Sources */,
-				8DE44E19ACE0D2F16DCF0D3FFD953667 /* DSFSparklineOverlay+DataSource.swift in Sources */,
-				BF6DAE78B45512F28F018F802E655972 /* DSFSparklineOverlay+Dot.swift in Sources */,
-				FD6CB2D571063C601298B0A260EDBC05 /* DSFSparklineOverlay+GridLines.swift in Sources */,
-				CD54874355F9E9ADA93DEB5F289712ED /* DSFSparklineOverlay+Line.swift in Sources */,
-				219892F27D43714A5DE34C8C00C3D483 /* DSFSparklineOverlay+PercentBar.swift in Sources */,
-				69993BC7D4E35EFE7894B7BC057D18E6 /* DSFSparklineOverlay+Pie.swift in Sources */,
-				41928E082B9E6E1C320B68833F624FEF /* DSFSparklineOverlay+RangeHighlight.swift in Sources */,
-				0F5F8775C1C97DF5620BA11FD4C11367 /* DSFSparklineOverlay+Stackline.swift in Sources */,
-				8B919E9F9E937324DDCC0092F443A505 /* DSFSparklineOverlay+StaticDataSource.swift in Sources */,
-				68E66EE75D73AAEC7620CBB254AFC94F /* DSFSparklineOverlay+Stripes.swift in Sources */,
-				698D4C2C686802CB9A6C2F9AF45B0CFB /* DSFSparklineOverlay+Tablet.swift in Sources */,
-				EB07000EA54DC82DA75D40EC5E074BF2 /* DSFSparklineOverlay+WinLossTie.swift in Sources */,
-				08BB56EFCA64D321B9B4AFC66BB81346 /* DSFSparklineOverlay+ZeroLine.swift in Sources */,
-				607480E01EE926391EEE25F5BACF21C9 /* DSFSparklinePercentBarGraphView.swift in Sources */,
-				095B4F8C79FDB9797B6BC4BDB20B38C0 /* DSFSparklinePercentBarGraphView+SwiftUI.swift in Sources */,
-				409FE4373A606E0666CD5B36250DB31D /* DSFSparklinePieGraphView.swift in Sources */,
-				685A507A1B8368542E3A71095F160368 /* DSFSparklinePieGraphView+SwiftUI.swift in Sources */,
-				520CD538CBAC315D32116D382F0980EF /* DSFSparklineStackLineGraphView.swift in Sources */,
-				2268DFB6D58192E5FF74AB15B9EE5AB6 /* DSFSparklineStackLineGraphView+SwiftUI.swift in Sources */,
-				02A2D53143EBCD81F4DF76725A3533E6 /* DSFSparklineStripesGraphView.swift in Sources */,
-				C73EF340A6A7779C97450D660E151D84 /* DSFSparklineStripesGraphView+SwiftUI.swift in Sources */,
-				58024B6E1AE8FD601536BC42D82ED88D /* DSFSparklineSurface.swift in Sources */,
-				51CDB1FB935D2CCE14B875E543D9EB87 /* DSFSparklineSurface+AttributedString.swift in Sources */,
-				4A1144F8377657881D1E3EF37B71DC2C /* DSFSparklineSurface+Bitmap.swift in Sources */,
-				4E9A5AE5A0F7270EB5BD1EED7EBAD179 /* DSFSparklineSurface+SwiftUI.swift in Sources */,
-				7B6770E41343A652EC1EC1099EC6E48B /* DSFSparklineSurface+View.swift in Sources */,
-				ABEEC5F0EAB46AB735C4ADAA287F3488 /* DSFSparklineTabletGraphView.swift in Sources */,
-				44575814312A4F231E21D01B970B56DF /* DSFSparklineTabletGraphView+SwiftUI.swift in Sources */,
-				4D36F7422C1CC65B4C4C4848C35DFD74 /* DSFSparklineWinLossGraphView.swift in Sources */,
-				90567165FCC4B57C4420ED08595B0C4E /* DSFSparklineWinLossGraphView+SwiftUI.swift in Sources */,
-				6A94E0E1ACAB62C582405210AFB0006B /* DSFSparklineZeroLinedGraphView.swift in Sources */,
-				FB651F82660AAA68185B11AFF85A0C75 /* NSShadow+extensions.swift in Sources */,
-				F3B99F4DBF09F7AF563BD05B320CF895 /* SparklineData.swift in Sources */,
-				F03E666BBFC536BCF818BA569CCA0700 /* SparklineWindow.swift in Sources */,
-				1C044CFE9F52008A7024DAD2BC823721 /* Utilities.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0DEC62399E01881F6823D9DECF716523 /* PBXTargetDependency */ = {
+		2C9125BC9CDEF73D281619FB0B0DA512 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "DSFSparkline-macOS";
 			target = F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */;
-			targetProxy = F60788979CE84D3F67182118EF29E472 /* PBXContainerItemProxy */;
+			targetProxy = D943258CB90654BE6863367804053A47 /* PBXContainerItemProxy */;
 		};
-		11CFE634034154E0A1CDD2231BCA7BEA /* PBXTargetDependency */ = {
+		5C04EA0C1DBD2819005E569229467C07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "DSFSparkline-macOS";
 			target = F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */;
-			targetProxy = 6E74073F2A64C920A8B208283D3E4B96 /* PBXContainerItemProxy */;
+			targetProxy = 0DA3AFFD0B429ADB13E1FBE1E2220F8A /* PBXContainerItemProxy */;
 		};
-		14BBCA8F6E0C725461688608CD96BACF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "DSFSparkline-macOS";
-			target = F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */;
-			targetProxy = B65BE0B3056E02F4136DD9CC0057992F /* PBXContainerItemProxy */;
-		};
-		8EDAD3AF633AA840A98412CFF8EE6A35 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "DSFSparkline-macOS";
-			target = F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */;
-			targetProxy = E0C9CF488E05FAA46EDD31614CF6C463 /* PBXContainerItemProxy */;
-		};
-		B6A31948F75BA9D7D1330789986A0E8B /* PBXTargetDependency */ = {
+		8D56B79D0CD33FDE78356C3A6BF10FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "DSFSparkline-tvOS";
 			target = 5D4902C570B4C21867B4D126E09A7D23 /* DSFSparkline-tvOS */;
-			targetProxy = 7EE2ED35EE29500A5FCDD6BD19BCD906 /* PBXContainerItemProxy */;
+			targetProxy = AE3C5210B40E7A2E67C4821E66A1E274 /* PBXContainerItemProxy */;
 		};
-		E1E3E2C35599A26FEC5444095C150A20 /* PBXTargetDependency */ = {
+		B111252B8ED83B877EA1D1151DB50409 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "DSFSparkline-iOS";
 			target = 769D42E906449D472E8B253C8DF9FFDC /* DSFSparkline-iOS */;
-			targetProxy = 1865D6B7532D280C2A59CAC5360AD349 /* PBXContainerItemProxy */;
+			targetProxy = BC8A56F69AA0AEDCAD5EF537D3B391AC /* PBXContainerItemProxy */;
 		};
-		F336A40789A88D61BB36F0B19C30E6BF /* PBXTargetDependency */ = {
+		C24D6F2D9377A17433B9B6D6746BAE63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "DSFSparkline-macOS";
+			target = F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */;
+			targetProxy = 734842FCFDCA2FC71C3EBB34A4BB64F0 /* PBXContainerItemProxy */;
+		};
+		D5E7EF3C68CF9D097A03CEEB055B27A2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "DSFSparkline-iOS";
 			target = 769D42E906449D472E8B253C8DF9FFDC /* DSFSparkline-iOS */;
-			targetProxy = 2060E50422D31AD96CF604F12D905F89 /* PBXContainerItemProxy */;
+			targetProxy = 2488E2257AF50A24F6BA0C7F07416FA7 /* PBXContainerItemProxy */;
+		};
+		E0EC5A192AABA6CCF0E5F30A7C1F4A64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "DSFSparkline-macOS";
+			target = F9FA870B221B2FB0F51EB55A64069375 /* DSFSparkline-macOS */;
+			targetProxy = 4F72AF0F3CE863633D78D848EA0F7724 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1691,6 +1716,42 @@
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 				TVOS_DEPLOYMENT_TARGET = 13;
+			};
+			name = Release;
+		};
+		0B101D65EADB5864A8BFE70FFCCCC41E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19B9CE477BEA94D038F83DECD0E6D5B6 /* DSFSparkline-iOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-iOS/DSFSparkline-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DSFSparkline-iOS/DSFSparkline-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DSFSparkline-iOS/DSFSparkline-iOS.modulemap";
+				PRODUCT_MODULE_NAME = DSFSparkline;
+				PRODUCT_NAME = DSFSparkline;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1845,42 +1906,6 @@
 			};
 			name = Debug;
 		};
-		3AF9AF39705203FBA5D9FA7969ED6684 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19B9CE477BEA94D038F83DECD0E6D5B6 /* DSFSparkline-iOS.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-iOS/DSFSparkline-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DSFSparkline-iOS/DSFSparkline-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/DSFSparkline-iOS/DSFSparkline-iOS.modulemap";
-				PRODUCT_MODULE_NAME = DSFSparkline;
-				PRODUCT_NAME = DSFSparkline;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		4448F2A519C8B947354D4B033440B756 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE881AEF9C9360BA7E1B3FB98BE0EA60 /* Pods-tvOS Sparkline Demo.release.xcconfig */;
@@ -1913,42 +1938,6 @@
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 13;
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4D70F54C3A4D2F009A130AFAE9A2019B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE175F83AB8DC1F7EA5B2B7091875D91 /* DSFSparkline-macOS.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS.modulemap";
-				PRODUCT_MODULE_NAME = DSFSparkline;
-				PRODUCT_NAME = DSFSparkline;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2029,7 +2018,42 @@
 			};
 			name = Release;
 		};
-		7DCA0318CA685F249AE7FCC8D93C96CA /* Debug */ = {
+		6569D7CBABB65C9CF30DA6E4A2EC12CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9729FCB69A692E8507FA4C95E94B6025 /* DSFSparkline-tvOS.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS.modulemap";
+				PRODUCT_MODULE_NAME = DSFSparkline;
+				PRODUCT_NAME = DSFSparkline;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		672769DA8AFD06D2619197769794883D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47264C812E4202F8B64ACB303332B2C6 /* DSFSparkline-iOS.debug.xcconfig */;
 			buildSettings = {
@@ -2102,75 +2126,6 @@
 			};
 			name = Debug;
 		};
-		8F3A02AAF948E0B6AEF9C3C80789B6F1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D072D681877462C3EC8B1CCBB75AE40 /* DSFSparkline-tvOS.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS.modulemap";
-				PRODUCT_MODULE_NAME = DSFSparkline;
-				PRODUCT_NAME = DSFSparkline;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 11.4;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		93FACE3FD100E43FBE583D8556669D6E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9729FCB69A692E8507FA4C95E94B6025 /* DSFSparkline-tvOS.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS.modulemap";
-				PRODUCT_MODULE_NAME = DSFSparkline;
-				PRODUCT_NAME = DSFSparkline;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 11.4;
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		9994194AB568C94C2AEB6680351E59E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2236,42 +2191,6 @@
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 				TVOS_DEPLOYMENT_TARGET = 13;
-			};
-			name = Debug;
-		};
-		9BC874870E550AC578FE42A92A7DF229 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E309A7CD742F34187765BC928FC7B1B8 /* DSFSparkline-macOS.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS.modulemap";
-				PRODUCT_MODULE_NAME = DSFSparkline;
-				PRODUCT_NAME = DSFSparkline;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -2427,6 +2346,42 @@
 			};
 			name = Release;
 		};
+		C727A3CE86EBF11E06A7126A4E110300 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE175F83AB8DC1F7EA5B2B7091875D91 /* DSFSparkline-macOS.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS.modulemap";
+				PRODUCT_MODULE_NAME = DSFSparkline;
+				PRODUCT_NAME = DSFSparkline;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		E4953FE2C1FDCC164BBACCD3EB69E107 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2C1EE6E14DDDF6812B64B416D63FE111 /* Pods-tvOS Sparkline Demo.debug.xcconfig */;
@@ -2458,6 +2413,76 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 13;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F33BD6DABCAECCF2FB8C989868996CC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E309A7CD742F34187765BC928FC7B1B8 /* DSFSparkline-macOS.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/DSFSparkline-macOS/DSFSparkline-macOS.modulemap";
+				PRODUCT_MODULE_NAME = DSFSparkline;
+				PRODUCT_NAME = DSFSparkline;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F535E5D9E7DCDED81C11F25D7F9AE686 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D072D681877462C3EC8B1CCBB75AE40 /* DSFSparkline-tvOS.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DSFSparkline-tvOS/DSFSparkline-tvOS.modulemap";
+				PRODUCT_MODULE_NAME = DSFSparkline;
+				PRODUCT_NAME = DSFSparkline;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -2504,15 +2529,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CB475DDA278DDC78DFD4905F0E85D3D /* Build configuration list for PBXNativeTarget "DSFSparkline-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7DCA0318CA685F249AE7FCC8D93C96CA /* Debug */,
-				3AF9AF39705203FBA5D9FA7969ED6684 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		12062748627B89A977638EAA095AC6BD /* Build configuration list for PBXNativeTarget "Pods-tvOS Sparkline Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2540,6 +2556,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4BD39D6CFC502D5EAD001D58FFEDA678 /* Build configuration list for PBXNativeTarget "DSFSparkline-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				672769DA8AFD06D2619197769794883D /* Debug */,
+				0B101D65EADB5864A8BFE70FFCCCC41E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		64272B65940E371D3F2381CD22A02403 /* Build configuration list for PBXNativeTarget "Pods-macOS Table Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2554,15 +2579,6 @@
 			buildConfigurations = (
 				103CBB1E2107082C4E445C8C76711C7F /* Debug */,
 				C28A71E9FD739677F5CFCDFAB9D12199 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7CB80F30215912177389AB2D6E2FF6F8 /* Build configuration list for PBXNativeTarget "DSFSparkline-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8F3A02AAF948E0B6AEF9C3C80789B6F1 /* Debug */,
-				93FACE3FD100E43FBE583D8556669D6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2585,20 +2601,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EADEC1DEB05C27262721B3F87383B748 /* Build configuration list for PBXNativeTarget "DSFSparkline-macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9BC874870E550AC578FE42A92A7DF229 /* Debug */,
-				4D70F54C3A4D2F009A130AFAE9A2019B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		EC0ED721F35970BA28F5475D36B886E8 /* Build configuration list for PBXNativeTarget "Pods-SwiftUI Sparkline Demo (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89F91E2EE9F4D0A459D6638F13679418 /* Debug */,
 				B2547FF3622211A0B5C8C1882BAA6014 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F06AC55E54EA666F4428135ECB3AFAFF /* Build configuration list for PBXNativeTarget "DSFSparkline-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F535E5D9E7DCDED81C11F25D7F9AE686 /* Debug */,
+				6569D7CBABB65C9CF30DA6E4A2EC12CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD7BE2A14B3530FDC34E4F1E0A78A19E /* Build configuration list for PBXNativeTarget "DSFSparkline-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F33BD6DABCAECCF2FB8C989868996CC7 /* Debug */,
+				C727A3CE86EBF11E06A7126A4E110300 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

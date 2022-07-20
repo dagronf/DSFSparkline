@@ -83,6 +83,6 @@ public class DSFSparklineStripesGraphView: DSFSparklineDataSourceView {
 		self.overlay.integral = self.integral
 		self.overlay.barSpacing = self.barSpacing
 
-		self.overlay.gradient = self.gradient ?? DSFSparklineOverlay.Stripes.defaultGradient
+		self.overlay.gradient = self.gradient?.copyGradientBucket() ?? DSFSparklineOverlay.Stripes.defaultGradient
 	}
 }

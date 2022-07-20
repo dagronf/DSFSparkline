@@ -68,6 +68,15 @@ public extension DSFSparklineOverlay {
 			super.init(dataSource: dataSource)
 		}
 
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.floatValues = orig.floatValues
+			self.strokeColor = orig.strokeColor.copy() ?? .black
+			self.strokeWidth = orig.strokeWidth
+			self.dashStyle = orig.dashStyle
+			super.init(layer: layer)
+		}
+
 		@available(*, unavailable)
 		required init?(coder _: NSCoder) {
 			fatalError("init(coder:) has not been implemented")
