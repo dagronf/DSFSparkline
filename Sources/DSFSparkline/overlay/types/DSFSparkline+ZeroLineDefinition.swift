@@ -62,5 +62,13 @@ public extension DSFSparkline {
 			self.lineWidth = lineWidth
 			self.lineDashStyle = lineDashStyle
 		}
+
+		@objc public func copyZeroLineDefinition() -> ZeroLineDefinition {
+			ZeroLineDefinition(
+				color: self.color.copy() as? DSFColor ?? .black,
+				lineWidth: self.lineWidth,
+				lineDashStyle: self.lineDashStyle
+			)
+		}
 	}
 }

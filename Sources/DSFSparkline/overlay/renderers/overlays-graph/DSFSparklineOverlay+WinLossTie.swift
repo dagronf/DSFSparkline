@@ -94,6 +94,28 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		@objc public init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.lineWidth = orig.lineWidth
+			self.barSpacing = orig.barSpacing
+			self.winStroke = orig.winStroke
+			self.winFill = orig.winFill?.copyFill()
+			self.lossStroke = orig.lossStroke
+			self.lossFill = orig.lossFill?.copyFill()
+			self.tieStroke = orig.tieStroke
+			self.tieFill = orig.tieFill?.copyFill()
+			self.centerLine = orig.centerLine?.copyZeroLineDefinition()
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawWinLossGraph(context: context, bounds: bounds, scale: scale)
 		}

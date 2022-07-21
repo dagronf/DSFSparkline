@@ -1,9 +1,8 @@
 //
-//  DSFSparkline+Fill.swift
+//  DSFSparkline+FillGradient.swift
 //  DSFSparklines
 //
-//  Created by Darren Ford on 26/2/21.
-//  Copyright © 2021 Darren Ford. All rights reserved.
+//  Copyright © 2022 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -23,35 +22,6 @@
 
 import CoreGraphics
 import Foundation
-
-/// A protocol definition for objects that can 'fill' a rectangle within a context with a color/gradient/pattern etc
-@objc public protocol DSFSparklineFillable: NSObjectProtocol {
-	@objc func fill(context: CGContext, bounds: CGRect)
-}
-
-public extension DSFSparkline {
-	/// Defining a namespace for fillables
-	class Fill { }
-}
-
-// MARK: - Solid color fill
-
-public extension DSFSparkline.Fill {
-
-	/// The solid color fill
-	@objc(DSFSparklineFillColor) class `Color`: NSObject, DSFSparklineFillable {
-
-		@objc public var color: CGColor
-		@objc public init(_ color: CGColor) {
-			self.color = color
-		}
-
-		public func fill(context: CGContext, bounds: CGRect) {
-			context.setFillColor(color)
-			context.fill(bounds)
-		}
-	}
-}
 
 // MARK: - Gradient fill
 
@@ -99,7 +69,12 @@ public extension DSFSparkline.Fill {
 			self.gradient = gradient!
 		}
 
-		public func fill(context: CGContext, bounds: CGRect) {
+		/// Make a copy of a gradient
+		@objc public func copyFill() -> DSFSparklineFillable {
+			Gradient(gradient: self.gradient, isHorizontal: isHorizontal)
+		}
+
+		@objc public func fill(context: CGContext, bounds: CGRect) {
 			if isHorizontal {
 				context.drawLinearGradient(
 					gradient,

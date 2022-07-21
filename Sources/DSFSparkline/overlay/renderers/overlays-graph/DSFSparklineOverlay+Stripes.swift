@@ -60,6 +60,22 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		@objc public init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.integral = orig.integral
+			self.barSpacing = orig.barSpacing
+			self.gradient = orig.gradient.copyGradientBucket()
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			if self.integral {
 				self.drawStripeGraph(context: context, bounds: bounds, scale: scale)

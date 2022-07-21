@@ -38,6 +38,20 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		@objc public override init() {
+			super.init()
+		}
+
+		override public init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.dataSource = orig.dataSource
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		/// Overridable to allow overlays to be notified when the data source is changed
 		func staticDataSourceDidChange() {
 			// Do nothing

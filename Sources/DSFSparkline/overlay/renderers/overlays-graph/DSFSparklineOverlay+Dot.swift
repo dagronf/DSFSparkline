@@ -54,6 +54,23 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		@objc public init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.verticalDotCount = orig.verticalDotCount
+			self.onColor = orig.onColor.copy() ?? .black
+			self.offColor = orig.offColor?.copy()
+			self.upsideDown = orig.upsideDown
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawDotGraph(context: context, bounds: bounds, scale: scale)
 		}

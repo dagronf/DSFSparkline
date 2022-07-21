@@ -76,6 +76,25 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		@objc public init() {
+			super.init()
+		}
+
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.lineWidth = orig.lineWidth
+			self.tabletSpacing = orig.tabletSpacing
+			self.winStrokeColor = orig.winStrokeColor
+			self.winFill = orig.winFill?.copyFill()
+			self.lossStrokeColor = orig.lossStrokeColor
+			self.lossFill = orig.lossFill?.copyFill()
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
+
 		internal override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawTabletGraph(context: context, bounds: bounds, scale: scale)
 		}

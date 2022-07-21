@@ -67,5 +67,25 @@ public extension DSFSparklineOverlay {
 				self.setNeedsDisplay()
 			}
 		}
+
+		// MARK: - Initializers
+
+		@objc public init() {
+			super.init()
+		}
+
+		override public init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.centeredAtZeroLine = orig.centeredAtZeroLine
+			self.primaryStrokeColor = orig.primaryStrokeColor
+			self.primaryFill = orig.primaryFill?.copyFill()
+			self.secondaryStrokeColor = orig.secondaryStrokeColor
+			self.secondaryFill = orig.secondaryFill?.copyFill()
+			super.init(layer: layer)
+		}
+
+		required init?(coder: NSCoder) {
+			fatalError("init(coder:) has not been implemented")
+		}
 	}
 }

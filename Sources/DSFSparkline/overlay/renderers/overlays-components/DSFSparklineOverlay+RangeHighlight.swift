@@ -67,6 +67,13 @@ public extension DSFSparklineOverlay {
 			super.init()
 		}
 
+		public override init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.highlightRange = orig.highlightRange
+			self.fill = orig.fill.copyFill()
+			super.init(layer: layer)
+		}
+
 		required init?(coder: NSCoder) {
 			fatalError("init(coder:) has not been implemented")
 		}

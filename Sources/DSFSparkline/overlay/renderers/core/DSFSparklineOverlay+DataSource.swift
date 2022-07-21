@@ -62,12 +62,17 @@ public extension DSFSparklineOverlay {
 			self.setNeedsDisplay()
 		}
 
+		// MARK: Initializers
+
 		@objc public init(dataSource: DSFSparkline.DataSource? = nil) {
 			self.dataSource = dataSource
 			super.init()
 		}
 
 		override public init(layer: Any) {
+			guard let orig = layer as? Self else { fatalError() }
+			self.dataObserver = orig.dataObserver
+			self.dataSource = orig.dataSource
 			super.init(layer: layer)
 		}
 
