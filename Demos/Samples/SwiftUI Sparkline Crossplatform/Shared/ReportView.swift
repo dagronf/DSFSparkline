@@ -108,127 +108,171 @@ struct ReportView: View {
 	var body: some View {
 		ScrollView([.vertical, .horizontal]) {
 			VStack {
-				VStack {
-					AttributedText(self.sparklineAttributedString())
-						.frame(maxWidth: .infinity, maxHeight: .infinity)
-						.padding(20)
+				ReportHeaderView(attrString: self.sparklineAttributedString())
+					.padding(EdgeInsets(top: 16, leading: 0, bottom: 25, trailing: 0))
 
-					HStack {
-						Text("NASDAQ Feb 2020 -> Feb 2021").frame(width: 300)
-						DSFSparklineLineGraphView.SwiftUI(dataSource: NasdaqFeb2020Feb2021DataSource,
-																	 graphColor: DSFColor.systemRed,
-																	 lineWidth: 0.5)
-							.frame(width: 75, height: 20)
-					}
-					HStack {
-						Text("Gold Feb 2020 -> Feb 2021").frame(width: 300)
-						DSFSparklineLineGraphView.SwiftUI(dataSource: GoldFeb2020Feb2021DataSource,
-																	 graphColor: DSFColor.systemGreen,
-																	 lineWidth: 0.5,
-																	 centeredAtZeroLine: true,
-																	 lowerGraphColor: DSFColor.systemRed)
-							.frame(width: 75, height: 20)
-					}
-				}
-				.padding(EdgeInsets(top: 16, leading: 0, bottom: 25, trailing: 0))
+				ReportExamResults(gridItems1: self.gridItems1, userItems1: self.userItems1)
+					.frame(maxWidth: .infinity)
 
-				Text("Exam Results")
+				ReportTeamWinLosses(gridItems2: self.gridItems2, userItems2: self.userItems2)
+					.frame(maxWidth: .infinity)
 
-				LazyHGrid(rows: gridItems1) {
-					ForEach(0 ..< 5, id: \.self) { number in
-						HStack {
-							Text(userItems1[number].name)
-								.frame(width: 80, alignment: .leading)
-							ForEach(0 ..< 5, id: \.self) { count in
-								Text("\(userItems1[number].values[count])")
-									.frame(width: 30, alignment: .center)
-							}
-							DSFSparklineLineGraphView.SwiftUI(
-								dataSource: userItems1[number].dataSource,
-								graphColor: DSFColor.systemBlue,
-								lineShading: false
-							)
-							.frame(width: 120)
-						}
-						.padding(8)
-						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
-					}
-				}
-				.frame(maxWidth: .infinity)
-
-				Text("Team Wins/Losses")
-
-				LazyHGrid(rows: gridItems2) {
-					ForEach(0 ..< 5, id: \.self) { number in
-						HStack {
-							Text(userItems2[number].name)
-								.frame(width: 80, alignment: .leading)
-							ForEach(0 ..< 8, id: \.self) { count in
-								Text("\(userItems2[number].values[count])")
-									.frame(width: 25, alignment: .center)
-							}
-							DSFSparklineWinLossGraphView.SwiftUI(
-								dataSource: userItems2[number].dataSource,
-								barSpacing: 3,
-								showZeroLine: true,
-								zeroLineDefinition: .init(color: .systemGray,
-																  lineWidth: 1,
-																  lineDashStyle: [1, 1])
-							)
-							.frame(width: 120)
-							DSFSparklineTabletGraphView.SwiftUI(
-								dataSource: userItems2[number].dataSource,
-								barSpacing: 2
-							)
-							.frame(width: 200, height: 12)
-						}
-						.padding(4)
-						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
-					}
-				}
-				.frame(maxWidth: .infinity)
-
-				Text("Team Sales")
-
-				LazyHGrid(rows: gridItems2) {
-					ForEach(0 ..< 5, id: \.self) { number in
-						HStack(spacing: 10) {
-							Text(salesItems[number].name)
-								.frame(width: 80, alignment: .leading)
-							ForEach(0 ..< 4, id: \.self) { count in
-								Text("\(salesItems[number].values[count], specifier: "%.2f")")
-									.frame(width: 60, alignment: .trailing)
-							}
-
-							DSFSparklineLineGraphView.SwiftUI(
-								dataSource: DSFSparkline.DataSource(values: salesItems[number].values),
-								graphColor: DSFColor.systemBlue,
-								lineShading: false,
-								markerSize: 6
-							)
-							.frame(width: 120)
-
-							DSFSparklinePieGraphView.SwiftUI(
-								dataSource: DSFSparkline.StaticDataSource(salesItems[number].values)
-							)
-							.frame(width: 28, height: 28)
-
-							DSFSparklineDataBarGraphView.SwiftUI(
-								dataSource: DSFSparkline.StaticDataSource(salesItems[number].values),
-								maximumTotalValue: salesItems[number].maximumTotal,
-								unsetColor: DSFColor.black.withAlphaComponent(0.2)
-							)
-							.frame(width: 120)
-						}
-						.padding(4)
-						.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
-					}
-				}
-				.frame(maxWidth: .infinity)
+				ReportTeamSales(gridItems2: self.gridItems2, salesItems: self.salesItems)
+					.frame(maxWidth: .infinity)
 			}
 		}
 	}
 }
+
+struct ReportHeaderView: View {
+	let attrString: NSAttributedString
+	var body: some View {
+		VStack {
+			AttributedText(attrString)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+				.padding(20)
+
+			HStack {
+				Text("NASDAQ Feb 2020 -> Feb 2021").frame(width: 300)
+				DSFSparklineLineGraphView.SwiftUI(dataSource: NasdaqFeb2020Feb2021DataSource,
+															 graphColor: DSFColor.systemRed,
+															 lineWidth: 0.5)
+					.frame(width: 75, height: 20)
+			}
+			HStack {
+				Text("Gold Feb 2020 -> Feb 2021").frame(width: 300)
+				DSFSparklineLineGraphView.SwiftUI(dataSource: GoldFeb2020Feb2021DataSource,
+															 graphColor: DSFColor.systemGreen,
+															 lineWidth: 0.5,
+															 centeredAtZeroLine: true,
+															 lowerGraphColor: DSFColor.systemRed)
+					.frame(width: 75, height: 20)
+			}
+		}
+	}
+}
+
+struct ReportExamResults: View {
+
+	let gridItems1: [GridItem]
+	let userItems1: [UserResults]
+
+	var body: some View {
+		VStack {
+			Text("Exam Results")
+
+			LazyHGrid(rows: gridItems1) {
+				ForEach(0 ..< 5, id: \.self) { number in
+					HStack {
+						Text(userItems1[number].name)
+							.frame(width: 80, alignment: .leading)
+						ForEach(0 ..< 5, id: \.self) { count in
+							Text("\(userItems1[number].values[count])")
+								.frame(width: 30, alignment: .center)
+						}
+						DSFSparklineLineGraphView.SwiftUI(
+							dataSource: userItems1[number].dataSource,
+							graphColor: DSFColor.systemBlue,
+							lineShading: false
+						)
+						.frame(width: 120)
+					}
+					.padding(8)
+					.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
+				}
+			}
+		}
+	}
+}
+
+struct ReportTeamWinLosses: View {
+
+	let gridItems2: [GridItem]
+	let userItems2: [UserResults]
+
+	var body: some View {
+		VStack {
+			Text("Team Wins/Losses")
+
+			LazyHGrid(rows: gridItems2) {
+				ForEach(0 ..< 5, id: \.self) { number in
+					HStack {
+						Text(userItems2[number].name)
+							.frame(width: 80, alignment: .leading)
+						ForEach(0 ..< 8, id: \.self) { count in
+							Text("\(userItems2[number].values[count])")
+								.frame(width: 25, alignment: .center)
+						}
+						DSFSparklineWinLossGraphView.SwiftUI(
+							dataSource: userItems2[number].dataSource,
+							barSpacing: 3,
+							showZeroLine: true,
+							zeroLineDefinition: .init(color: .systemGray,
+															  lineWidth: 1,
+															  lineDashStyle: [1, 1])
+						)
+						.frame(width: 120)
+						DSFSparklineTabletGraphView.SwiftUI(
+							dataSource: userItems2[number].dataSource,
+							barSpacing: 2
+						)
+						.frame(width: 200, height: 12)
+					}
+					.padding(4)
+					.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
+				}
+			}
+		}
+	}
+}
+
+struct ReportTeamSales: View {
+
+	let gridItems2: [GridItem]
+	let salesItems: [SalesResult]
+
+	var body: some View {
+		VStack {
+			Text("Team Sales")
+
+			LazyHGrid(rows: gridItems2) {
+				ForEach(0 ..< 5, id: \.self) { number in
+					HStack(spacing: 10) {
+						Text(salesItems[number].name)
+							.frame(width: 80, alignment: .leading)
+						ForEach(0 ..< 4, id: \.self) { count in
+							Text("\(salesItems[number].values[count], specifier: "%.2f")")
+								.frame(width: 60, alignment: .trailing)
+						}
+
+						DSFSparklineLineGraphView.SwiftUI(
+							dataSource: DSFSparkline.DataSource(values: salesItems[number].values),
+							graphColor: DSFColor.systemBlue,
+							lineShading: false,
+							markerSize: 6
+						)
+						.frame(width: 120)
+
+						DSFSparklinePieGraphView.SwiftUI(
+							dataSource: DSFSparkline.StaticDataSource(salesItems[number].values)
+						)
+						.frame(width: 28, height: 28)
+
+						DSFSparklineDataBarGraphView.SwiftUI(
+							dataSource: DSFSparkline.StaticDataSource(salesItems[number].values),
+							maximumTotalValue: salesItems[number].maximumTotal,
+							unsetColor: DSFColor.black.withAlphaComponent(0.2)
+						)
+						.frame(width: 120)
+					}
+					.padding(4)
+					.background(number % 2 == 0 ? Color(Color.RGBColorSpace.sRGB, red: 0, green: 0, blue: 0, opacity: 0.1) : Color.clear)
+				}
+			}
+		}
+	}
+}
+
 
 struct ReportView_Previews: PreviewProvider {
 	static var previews: some View {
