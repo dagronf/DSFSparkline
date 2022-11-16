@@ -114,11 +114,12 @@ extension DSFSparklineSurfaceView {
 	}
 
 	private func syncLayers() {
-		CATransaction.setDisableActions(true)
-		self.rootLayer.sublayers?.forEach { layer in
-			layer.bounds = self.bounds
-			layer.contentsScale = self.retinaScale()
-			layer.setNeedsDisplay()
+		CATransaction.withDisabledActions {
+			self.rootLayer.sublayers?.forEach { layer in
+				layer.bounds = self.bounds
+				layer.contentsScale = self.retinaScale()
+				layer.setNeedsDisplay()
+			}
 		}
 	}
 
