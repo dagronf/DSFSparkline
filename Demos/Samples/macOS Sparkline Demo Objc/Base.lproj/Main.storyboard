@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -712,13 +712,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Throughput" translatesAutoresizingMaskIntoConstraints="NO" id="pA9-Os-r2C">
-                                <rect key="frame" x="17" y="384" width="446" height="102"/>
+                                <rect key="frame" x="17" y="382" width="446" height="102"/>
                                 <view key="contentView" id="gof-HN-L75">
-                                    <rect key="frame" x="3" y="3" width="440" height="84"/>
+                                    <rect key="frame" x="4" y="5" width="438" height="82"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="X3f-SW-jsr" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="8" width="424" height="68"/>
+                                            <rect key="frame" x="8" y="8" width="422" height="66"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="CiR-MG-fWQ" customClass="DSFSparklinePercentBarGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="16"/>
@@ -761,10 +761,19 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="bkR-H6-ebF" customClass="DSFSparklineWiperGaugeGraphView" customModule="DSFSparkline">
+                                                    <rect key="frame" x="0.0" y="15" width="75" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="53" id="lbZ-cQ-Rdb"/>
+                                                    </constraints>
+                                                </customView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="CiR-MG-fWQ" firstAttribute="leading" secondItem="X3f-SW-jsr" secondAttribute="leading" id="5J6-HG-AXp"/>
                                                 <constraint firstAttribute="bottom" secondItem="CiR-MG-fWQ" secondAttribute="bottom" id="AWX-R4-fcT"/>
+                                                <constraint firstItem="bkR-H6-ebF" firstAttribute="top" secondItem="X3f-SW-jsr" secondAttribute="top" constant="-2" id="L11-Ad-kEm"/>
+                                                <constraint firstItem="bkR-H6-ebF" firstAttribute="leading" secondItem="CiR-MG-fWQ" secondAttribute="leading" id="ajz-5I-I1d"/>
+                                                <constraint firstItem="bkR-H6-ebF" firstAttribute="trailing" secondItem="CiR-MG-fWQ" secondAttribute="trailing" id="vL3-3f-N4B"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
@@ -798,13 +807,13 @@
                                 </constraints>
                             </box>
                             <box title="Throughput" translatesAutoresizingMaskIntoConstraints="NO" id="hNC-qx-jV7">
-                                <rect key="frame" x="17" y="176" width="446" height="204"/>
+                                <rect key="frame" x="17" y="174" width="446" height="204"/>
                                 <view key="contentView" id="YWt-zc-gNz">
-                                    <rect key="frame" x="3" y="3" width="440" height="186"/>
+                                    <rect key="frame" x="4" y="5" width="438" height="184"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vfz-XG-Zqu" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="84" width="424" height="68"/>
+                                            <rect key="frame" x="8" y="84" width="422" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="68" id="ykB-AK-O22"/>
                                             </constraints>
@@ -823,7 +832,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="2Sf-rx-WZW" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="8" width="424" height="68"/>
+                                            <rect key="frame" x="8" y="8" width="422" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="68" id="wRV-AD-ZhK"/>
                                             </constraints>
@@ -860,13 +869,13 @@
                                 </constraints>
                             </box>
                             <box title="Received/Sent" translatesAutoresizingMaskIntoConstraints="NO" id="nk7-dk-fnU">
-                                <rect key="frame" x="17" y="16" width="446" height="155"/>
-                                <view key="contentView" id="aB3-uQ-T3N">
-                                    <rect key="frame" x="3" y="3" width="440" height="137"/>
+                                <rect key="frame" x="18" y="16" width="444" height="155"/>
+                                <view key="contentView" ambiguous="YES" id="aB3-uQ-T3N">
+                                    <rect key="frame" x="4" y="5" width="436" height="135"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-RU-TFK" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="69" width="424" height="60"/>
+                                        <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yaa-RU-TFK" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
+                                            <rect key="frame" x="8" y="67" width="420" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="gx4-36-Wnh"/>
                                             </constraints>
@@ -885,8 +894,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-0V-zTh" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                            <rect key="frame" x="8" y="8" width="424" height="60"/>
+                                        <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Nz-0V-zTh" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
+                                            <rect key="frame" x="8" y="6" width="420" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="lMC-gV-0Bo"/>
                                             </constraints>
@@ -942,6 +951,7 @@
                         <outlet property="percentBarThroughput" destination="CiR-MG-fWQ" id="Btp-fr-9zD"/>
                         <outlet property="receiveGraph" destination="Yaa-RU-TFK" id="Hyh-4k-V0H"/>
                         <outlet property="sendGraph" destination="7Nz-0V-zTh" id="J2f-O8-wk7"/>
+                        <outlet property="wiperGauge" destination="bkR-H6-ebF" id="pKa-uB-ZR3"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

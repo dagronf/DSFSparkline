@@ -121,6 +121,8 @@ class ViewController: NSViewController {
 	@IBOutlet weak var percentBarTotalContainerView: NSView!
 	@IBOutlet weak var percentBarTotalContainerView2: NSView!
 
+	@IBOutlet weak var wiperGauge: DSFSparklineWiperGaugeGraphView!
+
 	@IBOutlet weak var percentBarGraph1: DSFSparklinePercentBarGraphView!
 	@IBOutlet weak var percentBarGraph2: DSFSparklinePercentBarGraphView!
 	@IBOutlet weak var percentBarGraph3: DSFSparklinePercentBarGraphView!
@@ -129,6 +131,14 @@ class ViewController: NSViewController {
 	@IBOutlet weak var percentBarGraph12: DSFSparklinePercentBarGraphView!
 	@IBOutlet weak var percentBarGraph13: DSFSparklinePercentBarGraphView!
 
+	@IBOutlet weak var wiperContainer: NSView!
+	@IBOutlet weak var wiperGauge1: DSFSparklineWiperGaugeGraphView!
+	@IBOutlet weak var wiperGauge2: DSFSparklineWiperGaugeGraphView!
+	@IBOutlet weak var wiperGauge3: DSFSparklineWiperGaugeGraphView!
+	@IBOutlet weak var wiperGauge4: DSFSparklineWiperGaugeGraphView!
+	@IBOutlet weak var wiperGauge5: DSFSparklineWiperGaugeGraphView!
+	@IBOutlet weak var wiperGauge6: DSFSparklineWiperGaugeGraphView!
+	@IBOutlet weak var wiperGauge7: DSFSparklineWiperGaugeGraphView!
 
 	var nameMap: [String: NSView] = [:]
 	func buildNameMap() {
@@ -156,6 +166,7 @@ class ViewController: NSViewController {
 		nameMap["stripes-integral"] = self.stripes2
 		nameMap["percent-bar"] = self.percentBarTotalContainerView
 		nameMap["percent-bar-2"] = self.percentBarTotalContainerView2
+		nameMap["wiper-gauge"] = self.wiperContainer
 	}
 
 	fileprivate var lineSource: DSFSparkline.DataSource = {

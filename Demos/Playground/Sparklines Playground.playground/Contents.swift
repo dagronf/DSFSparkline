@@ -341,3 +341,17 @@ do {
 	let image = bitmap.image(size: r, scale: 2)
 
 }
+
+// MARK: - Simple wiper graph
+
+do {
+	let bitmap = DSFSparklineSurface.Bitmap()      // Create a bitmap surface
+	let wiper = DSFSparklineOverlay.WiperGauge()   // Create a wiper graph overlay
+	wiper.value = 0.75
+	wiper.valueColor = DSFSparkline.FillContainer(flatColor: baseColor)
+	bitmap.addOverlay(wiper)                       // And add the overlay to the surface.
+
+	// Generate an image with retina scale
+	let image = bitmap.image(width: 40, height: 20, scale: 2)!
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/wiper-small.png"))
+}

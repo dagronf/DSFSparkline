@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.author             = { "Darren Ford" => "dford_au-reg@yahoo.com" }
   s.social_media_url   = ""
   s.osx.deployment_target = "10.11"
-  s.ios.deployment_target = "11.4"
-  s.tvos.deployment_target = "11.4"
+  s.ios.deployment_target = "13"
+  s.tvos.deployment_target = "13"
   s.source       = { :git => ".git", :tag => s.version.to_s }
   s.subspec "Core" do |ss|
     ss.source_files  = "Sources/DSFSparkline/**/*.swift"
@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.ios.framework  = 'UIKit'
   s.osx.framework  = 'AppKit'
 
-  s.swift_version = "5.0"
+  s.swift_version = "5.4"
 end

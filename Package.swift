@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version: 5.4
 
 import PackageDescription
 
@@ -6,8 +6,8 @@ let package = Package(
 	name: "DSFSparkline",
 	platforms: [
 		.macOS(.v10_11),
-		.iOS(.v11),
-		.tvOS(.v11)
+		.iOS(.v13),
+		.tvOS(.v13)
 	],
 	products: [
 		.library(name: "DSFSparkline", targets: ["DSFSparkline"]),

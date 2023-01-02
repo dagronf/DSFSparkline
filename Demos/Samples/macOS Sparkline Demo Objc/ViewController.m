@@ -29,6 +29,9 @@
 
 @property (weak) IBOutlet DSFSparklinePercentBarGraphView *percentBarThroughput;
 
+@property (weak) IBOutlet DSFSparklineWiperGaugeGraphView *wiperGauge;
+
+
 @end
 
 @implementation ViewController
@@ -43,6 +46,8 @@
 	_centeredBarDataSource = [[DSFSparklineDataSource alloc] init];
 	_receiveDataSource = [[DSFSparklineDataSource alloc] init];
 	_sendDataSource = [[DSFSparklineDataSource alloc] init];
+
+	[_wiperGauge setAnimated:TRUE];
 
 	// Add a custom marker drawing function
 	[_lineGraph setMarkerDrawingBlock:^(CGContextRef context, NSArray<DSFSparklineOverlayLineMarker *> * markers) {
@@ -96,6 +101,7 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
 		CGFloat v1 = drand48();
+		[[self wiperGauge] setValue:v1];
 
 		BOOL result = [[self dataSource] pushWithValue: (v1 * 2) - 1];
 		[[self percentBarThroughput] setValue:v1];

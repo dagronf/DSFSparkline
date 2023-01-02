@@ -63,6 +63,8 @@
 		23529A7525E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
 		235A585B2603181A00266642 /* PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A585A2603181A00266642 /* PercentBar.swift */; };
 		235A585C2603181A00266642 /* PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A585A2603181A00266642 /* PercentBar.swift */; };
+		236417E729628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */; };
+		236417E829628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */; };
 		236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FC25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
 		236A57FD25C1392B00F2BACF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57EA25C1392A00F2BACF /* ContentView.swift */; };
@@ -199,6 +201,7 @@
 		23529A5825E847B900DFA52D /* iOS Sparkline Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Sparkline Demo.entitlements"; sourceTree = "<group>"; };
 		23529A7325E84D2A00DFA52D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		235A585A2603181A00266642 /* PercentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentBar.swift; sourceTree = "<group>"; };
+		236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiperGaugeDemoView.swift; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
 		236A57EA25C1392A00F2BACF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		236A57EB25C1392B00F2BACF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -438,6 +441,7 @@
 				232BAF6B25EB16000090C447 /* SwiftUI-Overlays */,
 				238DB6E925EB3A2E009197AB /* TabletView.swift */,
 				23FC811F25DB47A20047A800 /* WinLossGraphContentView.swift */,
+				236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */,
 				2322C06A262651D5007D8112 /* TestingView.swift */,
 			);
 			path = Shared;
@@ -1114,6 +1118,7 @@
 				238053C725DCC2B100B996B5 /* ActiveView.swift in Sources */,
 				238DB6EA25EB3A2E009197AB /* TabletView.swift in Sources */,
 				237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
+				236417E729628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */,
 				235A585B2603181A00266642 /* PercentBar.swift in Sources */,
 				2322C06B262651D5007D8112 /* TestingView.swift in Sources */,
 				232BAF6D25EB16210090C447 /* SwiftUIView.swift in Sources */,
@@ -1144,6 +1149,7 @@
 				238053C825DCC2B100B996B5 /* ActiveView.swift in Sources */,
 				238DB6EB25EB3A2F009197AB /* TabletView.swift in Sources */,
 				237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
+				236417E829628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */,
 				235A585C2603181A00266642 /* PercentBar.swift in Sources */,
 				2322C06C262651D5007D8112 /* TestingView.swift in Sources */,
 				232BAF6E25EB16210090C447 /* SwiftUIView.swift in Sources */,

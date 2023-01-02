@@ -271,6 +271,17 @@ A percentbar sparkline takes a single value (0 ... 1) and draws a horizontal bar
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar-2.png" width="400">|
 
+### Wiper Gauge <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet-small.png" width="80"/>
+
+A simple gauge with a single value (0 ... 1))
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/tablet.png" width="400">|
+
+### Pie <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/pie-simple.png" width="18"/>
+
+
 # Demos
 
 You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder, providing examples for macOS (swift and objc), iO, tvOS, macCatalyst and SwiftUI.
