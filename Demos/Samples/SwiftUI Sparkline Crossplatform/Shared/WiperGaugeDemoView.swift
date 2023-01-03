@@ -31,7 +31,7 @@ struct WiperGraphDemoView: View {
 				Text("Palette colors").font(.title2).bold()
 				HStack(spacing: 8) {
 					ForEach(0 ..< 7) {
-						DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(palette: palette2), value: Double($0) / 7.0 + 0.1)
+						DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: Double($0) / 7.0 + 0.1)
 							.frame(width: 48, height: 24)
 					}
 				}
@@ -42,7 +42,7 @@ struct WiperGraphDemoView: View {
 				HStack(spacing: 8) {
 					ForEach(0 ..< 6) {
 						DSFSparklineWiperGaugeGraphView.SwiftUI(
-							valueColor: DSFSparkline.FillContainer(flatColor: CGColor(srgbRed: 0.1, green: 0.4, blue: 1.0, alpha: 1)),
+							valueColor: DSFSparkline.ValueBasedFill(flatColor: CGColor(srgbRed: 0.1, green: 0.4, blue: 1.0, alpha: 1)),
 							value: Double($0) / 6.0 + 0.1
 						)
 						.frame(width: 48, height: 24)
@@ -55,12 +55,12 @@ struct WiperGraphDemoView: View {
 					Text("Palette colors (discrete)").font(.title2).bold()
 					HStack {
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(palette: palette2), value: randomValue)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue)
 								.frame(width: 64, height: 32)
 							Text("default")
 						}
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(palette: palette2), value: randomValue, animated: true)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue, animated: true)
 								.frame(width: 64, height: 32)
 							Text("animated")
 						}
@@ -80,12 +80,12 @@ struct WiperGraphDemoView: View {
 					}
 					HStack {
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(palette: palette2), value: randomValue)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue)
 								.frame(width: 128, height: 64)
 							Text("default")
 						}
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(palette: palette2), value: randomValue, animated: true)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue, animated: true)
 								.frame(width: 128, height: 64)
 							Text("animated")
 						}
@@ -95,17 +95,17 @@ struct WiperGraphDemoView: View {
 						Text("Value color types").font(.title2).bold()
 						HStack {
 							VStack {
-								DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(flatColor: CGColor(srgbRed: 0.1, green: 0.4, blue: 0.8, alpha: 1)), value: sliderValue)
+								DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(flatColor: CGColor(srgbRed: 0.1, green: 0.4, blue: 0.8, alpha: 1)), value: sliderValue)
 									.frame(width: 200, height: 100)
 								Text("Solid color")
 							}
 							VStack {
-								DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer(gradient: coldHot), value: sliderValue)
+								DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(gradient: coldHot), value: sliderValue)
 									.frame(width: 200, height: 100)
 								Text("Smooth gradient")
 							}
 							VStack {
-								DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.FillContainer.sharedPalette, value: sliderValue)
+								DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill.sharedPalette, value: sliderValue)
 									.frame(width: 200, height: 100)
 								Text("Bucket Color")
 							}

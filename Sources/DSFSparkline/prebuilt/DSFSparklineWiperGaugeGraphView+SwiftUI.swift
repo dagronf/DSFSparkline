@@ -30,7 +30,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 	struct SwiftUI {
 
 		/// Palette to use when coloring the chart
-		let valueColor: DSFSparkline.FillContainer
+		let valueColor: DSFSparkline.ValueBasedFill
 		/// The 'background' color for the value
 		let valueBackgroundColor: DSFColor?
 		/// The color of the upper arc for the control
@@ -44,7 +44,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 
 		/// Create a sparkline graph that displays a 0 ... 1 value as a gauge
 		public init(
-			valueColor: DSFSparkline.FillContainer,
+			valueColor: DSFSparkline.ValueBasedFill,
 			value: Double,
 			valueBackgroundColor: DSFColor? = nil,
 			upperArcColor: DSFColor? = nil,
@@ -68,7 +68,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			pointerColor: DSFColor? = nil,
 			animated: Bool = false
 		) {
-			self.valueColor = DSFSparkline.FillContainer(flatColor: valueColor.cgColor)
+			self.valueColor = DSFSparkline.ValueBasedFill(flatColor: valueColor.cgColor)
 			self.valueBackgroundColor = valueBackgroundColor
 			self.upperArcColor = upperArcColor
 			self.pointerColor = pointerColor

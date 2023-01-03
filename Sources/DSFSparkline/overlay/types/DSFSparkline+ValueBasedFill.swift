@@ -29,13 +29,14 @@ import UIKit
 #endif
 
 public extension DSFSparkline {
-	@objc(DSFSparklineFillContainer) class FillContainer: NSObject {
+	/// A fill color that (can) change depending on a fill value
+	@objc(DSFSparklineValueBasedFill) class ValueBasedFill: NSObject {
 
 		@objc public var isFlatColor: Bool { self.flatColor != nil }
 		@objc public var isPalette: Bool { self.palette != nil }
 		@objc public var isGradient: Bool { self.gradient != nil }
 
-		@objc public static let sharedPalette = FillContainer(palette: DSFSparkline.Palette.shared)
+		@objc public static let sharedPalette = ValueBasedFill(palette: DSFSparkline.Palette.shared)
 
 		private var flatColor: CGColor? = nil
 		private var palette: DSFSparkline.Palette? = nil
@@ -59,7 +60,7 @@ public extension DSFSparkline {
 			self.gradient = gradient?.copyGradientBucket()
 		}
 
-		func copyColorContainer() -> FillContainer {
+		func copyColorContainer() -> ValueBasedFill {
 			return .init(flatColor: self.flatColor, palette: self.palette, gradient: self.gradient)
 		}
 

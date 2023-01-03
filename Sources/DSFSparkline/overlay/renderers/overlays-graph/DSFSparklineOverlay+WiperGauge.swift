@@ -46,7 +46,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The palette to use when drawing the value part of the gauge
-		@objc public var valueColor: DSFSparkline.FillContainer = DSFSparkline.FillContainer.sharedPalette {
+		@objc public var valueColor: DSFSparkline.ValueBasedFill = DSFSparkline.ValueBasedFill.sharedPalette {
 			didSet {
 				self.updatePalette()
 			}
@@ -119,8 +119,6 @@ public extension DSFSparklineOverlay {
 
 		// Private
 
-		//private let dummyShape = CAShapeLayer()
-
 		private let wiperBackgroundShape = CAShapeLayer()
 		private let arcShape = CAShapeLayer()
 
@@ -134,7 +132,6 @@ public extension DSFSparklineOverlay {
 
 		private var currentValue__: CGFloat = 0.0 {
 			didSet {
-				self.updatePalette()
 				self.updateLayout()
 			}
 		}
@@ -156,9 +153,6 @@ public extension DSFSparklineOverlay {
 extension DSFSparklineOverlay.WiperGauge {
 	private func configure() {
 
-//		self.addSublayer(dummyShape)
-//		dummyShape.zPosition = -200
-
 		self.addSublayer(wiperBackgroundShape)
 		wiperBackgroundShape.zPosition = -110
 
@@ -173,21 +167,32 @@ extension DSFSparklineOverlay.WiperGauge {
 		pinion.zPosition = -70
 		self.addSublayer(arcline)
 		arcline.zPosition = -80
+
+		self.updatePalette()
 	}
 
 	private func updatePalette() {
+
+		wiperBackgroundShape.fillColor = self.wiperBackgroundColor
 
 		if self.valueColor.isPalette == false {
 			// We want paletted colors to fade when the color changes
 			CATransaction.setDisableActions(true)
 		}
 
-		arcColorInnerShape.strokeColor = self.valueColor.color(atFraction: self.value)
-		wiperBackgroundShape.fillColor = self.wiperBackgroundColor
+		// The outer ring
+		arcShape.fillColor = .clear
 		arcShape.strokeColor = self.gaugeUpperArcColor
-		arcInnerShape.strokeColor = self.valueBackgroundColor
 
+		// The color component of the arc
+		arcColorInnerShape.fillColor = self.valueColor.color(atFraction: self.value)
+		arcColorInnerShape.strokeColor = .clear
 
+		// The background color component of the arc
+		arcInnerShape.fillColor = self.valueBackgroundColor
+		arcInnerShape.strokeColor = .clear
+
+		// The pointer and the pinion
 		arcline.strokeColor = self.gaugePointerColor
 		pinion.fillColor = self.gaugePointerColor
 
@@ -229,8 +234,6 @@ extension DSFSparklineOverlay.WiperGauge {
 				destHeight = bb.height * dy
 				let x = (bb.width - destWidth) / 2.0
 				let y = (bb.height - destHeight) / 2.0
-				Swift.print("destWidth = \(destWidth), destHeight = \(destHeight)")
-				Swift.print("x = \(x), y = \(y)")
 				return CGRect(
 					x: x,
 					y: y,
@@ -239,10 +242,6 @@ extension DSFSparklineOverlay.WiperGauge {
 				)
 			}
 		}()
-
-//		dummyShape.path = CGPath(rect: rr, transform: nil)
-//		dummyShape.strokeColor = NSColor.green.cgColor
-//		dummyShape.lineWidth = 1
 
 		let sz = rr.size.height
 		let ptsize = sz / 12
@@ -254,18 +253,6 @@ extension DSFSparklineOverlay.WiperGauge {
 
 		// The gauge's pinion point
 		let centroidLocation = CGPoint(x: origin.x, y: bb.height - (bb.height - rr.height) / 2 - ptsize)
-		Swift.print("cl = \(centroidLocation)")
-		// Draw the background if specified
-
-//		if let wiperBackgroundColor = self.wiperBackgroundColor {
-//			let path = CGMutablePath()
-//			path.addArc(center: centroidLocation, radius: sz / 2, startAngle: .pi + 0.2, endAngle: 2.0 * .pi - 0.2, clockwise: false)
-//			wiperBackgroundShape.path = path
-//			wiperBackgroundShape.lineWidth = sz / 1.1
-//			wiperBackgroundShape.strokeColor = wiperBackgroundColor
-//			wiperBackgroundShape.fillColor = nil
-//			wiperBackgroundShape.lineJoin = .round
-//		}
 
 		// Draw the outer ring
 
@@ -273,9 +260,7 @@ extension DSFSparklineOverlay.WiperGauge {
 			let path = CGMutablePath()
 			path.addArc(center: centroidLocation, radius: sz - (ptsize * 2), startAngle: .pi + 0.2, endAngle: .pi - .pi - 0.2, clockwise: false)
 			arcShape.path = path
-			arcShape.fillColor = .clear
 			arcShape.lineWidth = ptsize
-			arcShape.strokeColor = self.gaugeUpperArcColor
 			arcShape.lineCap = .round
 		}
 
@@ -286,28 +271,28 @@ extension DSFSparklineOverlay.WiperGauge {
 
 		do {
 
-			let innerArcRadius = (sz / 1.9)
-			let innerArcWidth = (sz / 1.8)
+			// Color fill
 
 			do {
 				let colorstart = ((1.0 - frac) * fullSweep)
 
-				let path4 = CGMutablePath()
-				path4.addArc(center: centroidLocation, radius: innerArcRadius - ptsize, startAngle: .pi + 0.2, endAngle: .pi - .pi - 0.2 - colorstart, clockwise: false)
-				arcColorInnerShape.path = path4
-				arcColorInnerShape.lineWidth = innerArcWidth
-				arcColorInnerShape.fillColor = .clear
+				let pth = CGMutablePath()
+				pth.addArc(center: centroidLocation, radius: ptsize * 2, startAngle: .pi + 0.2, endAngle: .pi * 2 - 0.2 - colorstart, clockwise: false)
+				pth.addArc(center: centroidLocation, radius: (sz - (ptsize * 2)) / 1.15, startAngle: .pi * 2 - 0.2 - colorstart, endAngle: .pi + 0.2, clockwise: true)
+				pth.closeSubpath()
+				arcColorInnerShape.path = pth
 			}
+
+			// Background fill
 
 			do {
 				let colorstart = (frac * fullSweep)
 
-				let path3 = CGMutablePath()
-				path3.addArc(center: centroidLocation, radius: innerArcRadius - ptsize, startAngle: .pi + 0.2 + colorstart, endAngle: .pi - .pi - 0.2, clockwise: false)
-				arcInnerShape.path = path3
-				arcInnerShape.lineWidth = innerArcWidth
-				arcInnerShape.strokeColor = self.valueBackgroundColor
-				arcInnerShape.fillColor = .clear
+				let pth = CGMutablePath()
+				pth.addArc(center: centroidLocation, radius: ptsize * 2, startAngle: .pi + 0.2 + colorstart, endAngle: .pi * 2 - 0.2, clockwise: false)
+				pth.addArc(center: centroidLocation, radius: (sz - (ptsize * 2)) / 1.15, startAngle: .pi * 2 - 0.2, endAngle: .pi + 0.2 + colorstart, clockwise: true)
+				pth.closeSubpath()
+				arcInnerShape.path = pth
 			}
 		}
 
@@ -317,7 +302,6 @@ extension DSFSparklineOverlay.WiperGauge {
 			let dialPoint = CGPoint(x: centroidLocation.x - ptsize, y: centroidLocation.y - ptsize)
 			let pointy = CGRect(origin: dialPoint, size: CGSize(width: ptsize*2, height: ptsize*2))
 			let path2 = CGPath(ellipseIn: pointy, transform: nil)
-			pinion.fillColor = self.gaugePointerColor
 			pinion.path = path2
 		}
 
@@ -338,7 +322,6 @@ extension DSFSparklineOverlay.WiperGauge {
 			arcline.path = res
 			arcline.lineWidth = ptsize
 			arcline.lineCap = .round
-			arcline.strokeColor = self.gaugePointerColor
 		}
 	}
 

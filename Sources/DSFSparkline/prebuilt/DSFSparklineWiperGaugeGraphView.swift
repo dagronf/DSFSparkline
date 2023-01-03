@@ -26,7 +26,6 @@ import UIKit
 #endif
 
 /// A sparkline that draws a percent bar
-@available(iOS 13.0, *)
 @IBDesignable
 public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 
@@ -39,7 +38,7 @@ public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 		}
 	}
 
-	@objc public var valueColor = DSFSparkline.FillContainer.sharedPalette {
+	@objc public var valueColor = DSFSparkline.ValueBasedFill.sharedPalette {
 		didSet {
 			self.overlay.valueColor = valueColor
 		}
@@ -120,7 +119,6 @@ public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 	private let overlay = DSFSparklineOverlay.WiperGauge()
 }
 
-@available(iOS 13.0, *)
 extension DSFSparklineWiperGaugeGraphView {
 	public override func prepareForInterfaceBuilder() {
 		super.prepareForInterfaceBuilder()
@@ -133,7 +131,6 @@ extension DSFSparklineWiperGaugeGraphView {
 	}
 }
 
-@available(iOS 13.0, *)
 private extension DSFSparklineWiperGaugeGraphView {
 	func configure() {
 		self.addOverlay(self.overlay)
