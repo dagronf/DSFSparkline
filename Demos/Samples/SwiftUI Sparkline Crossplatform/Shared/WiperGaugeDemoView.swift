@@ -113,6 +113,18 @@ struct WiperGraphDemoView: View {
 						Slider(value: $sliderValue)
 							.frame(width: 200)
 					}
+					Divider()
+					VStack {
+						Text("Color components").font(.title2).bold()
+						DSFSparklineWiperGaugeGraphView.SwiftUI(
+							valueColor: DSFColor(red: 0.1, green: 0.4, blue: 0.8, alpha: 1),
+							value: sliderValue,
+							valueBackgroundColor: DSFColor.red,
+							upperArcColor: DSFColor.yellow,
+							pointerColor: DSFColor.green
+						)
+						.frame(width: 200, height: 100)
+					}
 				}
 			}
 		}

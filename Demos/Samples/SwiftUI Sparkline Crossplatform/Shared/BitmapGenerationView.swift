@@ -141,6 +141,16 @@ fileprivate let percentBar: DSFSparklineSurface.Bitmap = {
 	return bitmap
 }()
 
+fileprivate let wiperGauge: DSFSparklineSurface.Bitmap = {
+	let bitmap = DSFSparklineSurface.Bitmap()
+	let wiperGauge = DSFSparklineOverlay.WiperGauge()
+	wiperGauge.value = 0.35
+	bitmap.addOverlay(wiperGauge)
+
+	// Generate an image with retina scale
+	return bitmap
+}()
+
 struct BitmapGenerationView: View {
 
 	#if os(macOS)
@@ -205,9 +215,15 @@ struct BitmapGenerationView: View {
 
 			Divider()
 
-			makeImage(self.generate(percentBar, size: CGSize(width: 400, height: 20)))
-				.padding(4)
-				.border(Color.gray)
+			HStack {
+				makeImage(self.generate(percentBar, size: CGSize(width: 200, height: 20)))
+					.padding(4)
+					.border(Color.gray)
+
+				makeImage(self.generate(wiperGauge, size: CGSize(width: 80, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+			}
 		}
 	}
 }

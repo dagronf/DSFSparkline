@@ -762,17 +762,15 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </customView>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="bkR-H6-ebF" customClass="DSFSparklineWiperGaugeGraphView" customModule="DSFSparkline">
-                                                    <rect key="frame" x="0.0" y="15" width="75" height="53"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="53" id="lbZ-cQ-Rdb"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="0.0" y="14" width="75" height="48"/>
                                                 </customView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="CiR-MG-fWQ" firstAttribute="leading" secondItem="X3f-SW-jsr" secondAttribute="leading" id="5J6-HG-AXp"/>
                                                 <constraint firstAttribute="bottom" secondItem="CiR-MG-fWQ" secondAttribute="bottom" id="AWX-R4-fcT"/>
-                                                <constraint firstItem="bkR-H6-ebF" firstAttribute="top" secondItem="X3f-SW-jsr" secondAttribute="top" constant="-2" id="L11-Ad-kEm"/>
+                                                <constraint firstItem="bkR-H6-ebF" firstAttribute="top" secondItem="X3f-SW-jsr" secondAttribute="top" constant="4" id="L11-Ad-kEm"/>
                                                 <constraint firstItem="bkR-H6-ebF" firstAttribute="leading" secondItem="CiR-MG-fWQ" secondAttribute="leading" id="ajz-5I-I1d"/>
+                                                <constraint firstItem="CiR-MG-fWQ" firstAttribute="top" secondItem="bkR-H6-ebF" secondAttribute="bottom" constant="-2" id="cfE-qp-HaP"/>
                                                 <constraint firstItem="bkR-H6-ebF" firstAttribute="trailing" secondItem="CiR-MG-fWQ" secondAttribute="trailing" id="vL3-3f-N4B"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
