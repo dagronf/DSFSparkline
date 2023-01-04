@@ -271,9 +271,13 @@ A percentbar sparkline takes a single value (0 ... 1) and draws a horizontal bar
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar-2.png" width="400">|
 
-### Wiper Gauge <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge-simple.png" width="40"/>
+### WiperGauge <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge-simple.png" width="40"/>
 
-A simple gauge with a single value (0 ... 1)
+A simple gauge with a single value (0 ... 1). The color displayed in the gauge can be one of
+
+* a single flat color
+* a color mapped from a gradient to the value
+* a color mapped from a color bucket to the value
 
 |  Standard  |
 |------------|
@@ -706,6 +710,7 @@ Every prebuilt sparkline view has a SwiftUI companion view.
 * `DSFSparklinePieGraphView` / `DSFSparklinePieGraphView.SwiftUI`
 * `DSFSparklineDataBarGraphView` / `DSFSparklineDataBarGraphView.SwiftUI`
 * `DSFSparklinePercentBarGraphView` / `DSFSparklinePercentBarGraphView.SwiftUI`
+* `DSFSparklineWiperGaugeGraphView` / `DSFSparklineWiperGaugeGraphView.SwiftUI`
 
 <details>
   <summary>Sample Swift code</summary>
@@ -949,6 +954,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `4.6.0`
+
+* Added WiperGauge sparkline type
 
 ### `4.3.0`
 

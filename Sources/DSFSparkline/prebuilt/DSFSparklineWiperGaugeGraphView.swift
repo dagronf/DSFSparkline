@@ -69,7 +69,12 @@ public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 			self.overlay.gaugePointerColor = gaugePointerColor.cgColor
 		}
 	}
-
+	/// The color of the pointer component of the gauge
+	@IBInspectable public var gaugeBackgroundColor: NSColor? = nil {
+		didSet {
+			self.overlay.gaugeBackgroundColor = gaugeBackgroundColor?.cgColor
+		}
+	}
 	#else
 	@IBInspectable public var gaugeUpperArcColor: UIColor = .label {
 		didSet {
@@ -89,7 +94,12 @@ public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 			self.overlay.gaugePointerColor = gaugePointerColor.cgColor
 		}
 	}
-
+	/// The color of the pointer component of the gauge
+	@IBInspectable public var gaugeBackgroundColor: UIColor? = nil {
+		didSet {
+			self.overlay.gaugeBackgroundColor = gaugeBackgroundColor?.cgColor
+		}
+	}
 	#endif
 
 	// MARK: - Control
@@ -105,15 +115,6 @@ public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 		super.init(coder: coder)
 		self.configure()
 	}
-
-//	#if os(macOS)
-//	public override func updateLayer() {
-//		super.updateLayer()
-//
-//		self.overlay.strokeColor = strokeColor.cgColor
-//		self.overlay.valueBackgroundColor = valueBackgroundColor.cgColor
-//	}
-//	#endif
 
 	// The overlay
 	private let overlay = DSFSparklineOverlay.WiperGauge()

@@ -151,6 +151,21 @@ fileprivate let wiperGauge: DSFSparklineSurface.Bitmap = {
 	return bitmap
 }()
 
+fileprivate let wiperGauge2: DSFSparklineSurface.Bitmap = {
+	let bitmap = DSFSparklineSurface.Bitmap()
+	let wiperGauge = DSFSparklineOverlay.WiperGauge()
+	wiperGauge.value = 0.8
+	wiperGauge.valueColor = .init(flatColor: CGColor(srgbRed: 0.3, green: 1, blue: 0.3, alpha: 1))
+	wiperGauge.valueBackgroundColor = CGColor(srgbRed: 1, green: 0.3, blue: 0.3, alpha: 1)
+	wiperGauge.gaugeUpperArcColor = CGColor(gray: 0, alpha: 1)
+	wiperGauge.gaugePointerColor = CGColor(gray: 0.3, alpha: 1)
+	wiperGauge.gaugeBackgroundColor = CGColor(srgbRed: 1, green: 1, blue: 0.4, alpha: 1)
+	bitmap.addOverlay(wiperGauge)
+
+	// Generate an image with retina scale
+	return bitmap
+}()
+
 struct BitmapGenerationView: View {
 
 	#if os(macOS)
@@ -221,6 +236,10 @@ struct BitmapGenerationView: View {
 					.border(Color.gray)
 
 				makeImage(self.generate(wiperGauge, size: CGSize(width: 80, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+
+				makeImage(self.generate(wiperGauge2, size: CGSize(width: 80, height: 40)))
 					.padding(4)
 					.border(Color.gray)
 			}

@@ -763,6 +763,11 @@
                                                 </customView>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="bkR-H6-ebF" customClass="DSFSparklineWiperGaugeGraphView" customModule="DSFSparkline">
                                                     <rect key="frame" x="0.0" y="14" width="75" height="48"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="gaugeBackgroundColor">
+                                                            <color key="value" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </customView>
                                             </subviews>
                                             <constraints>

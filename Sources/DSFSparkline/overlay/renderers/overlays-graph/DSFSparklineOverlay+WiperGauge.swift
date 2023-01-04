@@ -32,6 +32,9 @@ import UIKit
 public extension DSFSparklineOverlay {
 	/// A pie graph
 	@objc(DSFSparklineOverlayWiperGauge) class WiperGauge: DSFSparklineOverlay.StaticDataSource {
+
+		// MARK: - Settings
+
 		/// The value to display in the gauge
 		@objc public var value: CGFloat = 0.0 {
 			didSet {
@@ -74,10 +77,16 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The color to draw in the background
-		@objc public var wiperBackgroundColor: CGColor? = _wiperBackgroundColor
+		@objc public var gaugeBackgroundColor: CGColor? = _gaugeBackgroundColor {
+			didSet {
+				self.updatePalette()
+			}
+		}
 
 		/// Should changes to `value` be animated?
 		@objc public var animated: Bool = false
+
+		// MARK: - Initializers
 
 		@objc public override init() {
 			super.init()
@@ -91,10 +100,10 @@ public extension DSFSparklineOverlay {
 			self.valueColor = orig.valueColor.copyColorContainer()
 			self.valueBackgroundColor = orig.valueBackgroundColor.copy() ?? CGColor(gray: 0, alpha: 0)
 
-			self.gaugeUpperArcColor = orig.gaugeUpperArcColor.copy() ?? CGColor(gray: 0, alpha: 1)
-
 			self.gaugePointerColor = orig.gaugePointerColor.copy() ?? CGColor(gray: 1, alpha: 1)
 			self.gaugeUpperArcColor = orig.gaugeUpperArcColor.copy() ?? CGColor(gray: 1, alpha: 1)
+
+			self.gaugeBackgroundColor = orig.gaugeBackgroundColor?.copy() ?? CGColor(gray: 0, alpha: 0)
 
 			self.animated = orig.animated
 
@@ -108,9 +117,7 @@ public extension DSFSparklineOverlay {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		override func staticDataSourceDidChange() {
-			super.staticDataSourceDidChange()
-		}
+		// MARK: - Private
 
 		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			// Do nothing.  All the content is handled by layers
@@ -132,11 +139,12 @@ public extension DSFSparklineOverlay {
 
 		private var currentValue__: CGFloat = 0.0 {
 			didSet {
+				self.updatePalette()
 				self.updateLayout()
 			}
 		}
 
-		private static let _wiperBackgroundColor: CGColor? = nil
+		private static let _gaugeBackgroundColor: CGColor? = nil
 
 		#if os(macOS)
 		private static let _valueBackgroundColor = NSColor.quaternaryLabelColor.cgColor
@@ -171,9 +179,11 @@ extension DSFSparklineOverlay.WiperGauge {
 		self.updatePalette()
 	}
 
+	// Update the colors used within the gauge
 	private func updatePalette() {
 
-		wiperBackgroundShape.fillColor = self.wiperBackgroundColor
+		// The gauge's background color
+		wiperBackgroundShape.fillColor = self.gaugeBackgroundColor
 
 		if self.valueColor.isPalette == false {
 			// We want paletted colors to fade when the color changes
@@ -253,6 +263,22 @@ extension DSFSparklineOverlay.WiperGauge {
 
 		// The gauge's pinion point
 		let centroidLocation = CGPoint(x: origin.x, y: bb.height - (bb.height - rr.height) / 2 - ptsize)
+
+		// Draw the background
+
+		do {
+			let pth = CGMutablePath()
+			pth.addArc(center: centroidLocation, radius: sz - ptsize, startAngle: .pi, endAngle: .pi * 2, clockwise: false)
+			let brect = CGRect(
+				x: centroidLocation.x - (sz - ptsize),
+				y: centroidLocation.y,
+				width: (sz - ptsize) * 2,
+				height: ptsize
+			)
+			pth.addRect(brect)
+			pth.closeSubpath()
+			wiperBackgroundShape.path = pth
+		}
 
 		// Draw the outer ring
 

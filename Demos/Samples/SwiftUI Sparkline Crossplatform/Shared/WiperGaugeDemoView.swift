@@ -121,7 +121,8 @@ struct WiperGraphDemoView: View {
 							value: sliderValue,
 							valueBackgroundColor: DSFColor.red,
 							upperArcColor: DSFColor.yellow,
-							pointerColor: DSFColor.green
+							pointerColor: DSFColor.green, 
+							backgroundColor: DSFColor.purple
 						)
 						.frame(width: 200, height: 100)
 					}

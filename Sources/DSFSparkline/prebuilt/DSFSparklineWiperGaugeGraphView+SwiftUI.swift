@@ -37,6 +37,8 @@ public extension DSFSparklineWiperGaugeGraphView {
 		let upperArcColor: DSFColor?
 		/// The color of the pointer
 		let pointerColor: DSFColor?
+		/// The background color for the gauge
+		let backgroundColor: DSFColor?
 		/// The value to display in the chart
 		let value: Double
 		/// Should changes to value be animated?
@@ -49,12 +51,14 @@ public extension DSFSparklineWiperGaugeGraphView {
 			valueBackgroundColor: DSFColor? = nil,
 			upperArcColor: DSFColor? = nil,
 			pointerColor: DSFColor? = nil,
+			backgroundColor: DSFColor? = nil,
 			animated: Bool = false
 		) {
 			self.valueColor = valueColor
 			self.valueBackgroundColor = valueBackgroundColor
 			self.upperArcColor = upperArcColor
 			self.pointerColor = pointerColor
+			self.backgroundColor = backgroundColor
 			self.value = value
 			self.animated = animated
 		}
@@ -66,12 +70,14 @@ public extension DSFSparklineWiperGaugeGraphView {
 			valueBackgroundColor: DSFColor? = nil,
 			upperArcColor: DSFColor? = nil,
 			pointerColor: DSFColor? = nil,
+			backgroundColor: DSFColor? = nil,
 			animated: Bool = false
 		) {
 			self.valueColor = DSFSparkline.ValueBasedFill(flatColor: valueColor.cgColor)
 			self.valueBackgroundColor = valueBackgroundColor
 			self.upperArcColor = upperArcColor
 			self.pointerColor = pointerColor
+			self.backgroundColor = backgroundColor
 			self.value = value
 			self.animated = animated
 		}
@@ -99,18 +105,7 @@ extension DSFSparklineWiperGaugeGraphView.SwiftUI: DSFViewRepresentable {
 	
 	func makeWiperGauge(_: Context) -> DSFSparklineWiperGaugeGraphView {
 		let view = DSFSparklineWiperGaugeGraphView(frame: .zero)
-		view.valueColor = self.valueColor
-		if let c = self.valueBackgroundColor {
-			view.valueBackgroundColor = c
-		}
-		if let c = self.upperArcColor {
-			view.gaugeUpperArcColor = c
-		}
-		if let c = self.pointerColor {
-			view.gaugePointerColor = c
-		}
-		view.value = CGFloat(self.value)
-		view.animated = self.animated
+		self.updateView(view)
 		return view
 	}
 }
