@@ -290,8 +290,8 @@ extension DSFSparklineOverlay.WiperGauge {
 			arcShape.lineCap = .round
 		}
 
-		let frac: Double = self.currentValue__
-		let fullSweep = .pi - 0.2 - 0.2
+		let frac: CGFloat = self.currentValue__
+		let fullSweep: CGFloat = .pi - 0.2 - 0.2
 
 		// Draw the inner sweeps
 
@@ -300,7 +300,7 @@ extension DSFSparklineOverlay.WiperGauge {
 			// Color fill
 
 			do {
-				let colorstart = ((1.0 - frac) * fullSweep)
+				let colorstart: CGFloat = ((1.0 - frac) * fullSweep)
 
 				let pth = CGMutablePath()
 				pth.addArc(center: centroidLocation, radius: ptsize * 2, startAngle: .pi + 0.2, endAngle: .pi * 2 - 0.2 - colorstart, clockwise: false)
@@ -312,7 +312,7 @@ extension DSFSparklineOverlay.WiperGauge {
 			// Background fill
 
 			do {
-				let colorstart = (frac * fullSweep)
+				let colorstart: CGFloat = (frac * fullSweep)
 
 				let pth = CGMutablePath()
 				pth.addArc(center: centroidLocation, radius: ptsize * 2, startAngle: .pi + 0.2 + colorstart, endAngle: .pi * 2 - 0.2, clockwise: false)

@@ -130,20 +130,27 @@ extension DSFSparklineWiperGaugeGraphView {
 		self.updateDisplay()
 		#endif
 	}
+	
+	public override func updateLayer() {
+		// Captured to handle dark/light mode changes
+		super.updateLayer()
+		self.updateColors()
+	}
 }
 
 private extension DSFSparklineWiperGaugeGraphView {
 	func configure() {
 		self.addOverlay(self.overlay)
 		self.overlay.value = self.value
-
+		self.overlay.animated = animated
+		self.updateColors()
+	}
+	
+	func updateColors() {
 		self.overlay.valueColor = self.valueColor
 		self.overlay.valueBackgroundColor = valueBackgroundColor.cgColor
-
-		self.overlay.animated = animated
 		self.overlay.gaugePointerColor = gaugePointerColor.cgColor
 		self.overlay.gaugeUpperArcColor = gaugeUpperArcColor.cgColor
-		
-		self.overlay.valueBackgroundColor = valueBackgroundColor.cgColor
+		self.overlay.gaugeBackgroundColor = gaugeBackgroundColor?.cgColor
 	}
 }
