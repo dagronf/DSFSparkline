@@ -943,7 +943,7 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ### SwiftUI
 
-<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png" width="400"></a>
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.jpg"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.jpg" width="400"></a>
 
 ### NSAttributedString support
 
