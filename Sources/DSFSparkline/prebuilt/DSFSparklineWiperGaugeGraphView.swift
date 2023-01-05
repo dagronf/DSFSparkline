@@ -130,12 +130,14 @@ extension DSFSparklineWiperGaugeGraphView {
 		self.updateDisplay()
 		#endif
 	}
-	
+
+	#if os(macOS)
 	public override func updateLayer() {
 		// Captured to handle dark/light mode changes
 		super.updateLayer()
 		self.updateColors()
 	}
+	#endif
 }
 
 private extension DSFSparklineWiperGaugeGraphView {
