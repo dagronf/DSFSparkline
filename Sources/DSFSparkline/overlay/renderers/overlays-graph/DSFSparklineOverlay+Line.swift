@@ -136,8 +136,24 @@ public extension DSFSparklineOverlay {
 				}
 			}()
 
+			// Standard inset taking into account marker sizes and shadow offsets
 			let inset = (self.markerSize > 0 ? self.markerSize / 2 : self.strokeWidth) + shadowOffset
-			return DSFEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+
+			// Interpolation inset
+			var interpolationInset: CGFloat = 0
+			if self.interpolated {
+				// Hermite curve matching can overshoot. Until I can find/implement a better curve algorithm that
+				// doesn't overshoot, we'll increase the height inset by a percentage of the height.
+				// The following number is somewhat magic - based on worst cast overshoot and some visual testing
+				interpolationInset = (self.bounds.height / 30) * 2.7
+			}
+
+			return DSFEdgeInsets(
+				top: inset + interpolationInset,
+				left: inset,
+				bottom: inset + interpolationInset,
+				right: inset
+			)
 		}
 
 		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
@@ -238,10 +254,14 @@ private extension DSFSparklineOverlay.Line {
 			if let fill = self.primaryFill {
 				outer.usingGState { ctx in
 
+					// Note that when using interpolated curves that the `bounds.maxY` value may NOT be zero as we've
+					// scaled the curved graph down to reduce curve clipping. The primary fill needs to extend
+					// down to the _full_ height of the graph or else we end up with a non-filled section at the lower
+					// part of the graph.
 					let clipper = path.mutableCopy()!
 					clipper.addLine(to: CGPoint(x: bounds.maxX, y: points.last!.y))
-					clipper.addLine(to: CGPoint(x: bounds.maxX, y: bounds.maxY))
-					clipper.addLine(to: CGPoint(x: bounds.minX, y: bounds.maxY))
+					clipper.addLine(to: CGPoint(x: bounds.maxX, y: self.bounds.maxY))
+					clipper.addLine(to: CGPoint(x: bounds.minX, y: self.bounds.maxY))
 					clipper.addLine(to: CGPoint(x: bounds.minX, y: points.first!.y))
 					clipper.closeSubpath()
 
