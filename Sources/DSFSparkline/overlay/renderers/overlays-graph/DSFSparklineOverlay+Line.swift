@@ -306,6 +306,7 @@ private extension DSFSparklineOverlay.Line {
 			return
 		}
 
+		// Map the graph points within the updated bounds
 		let normy = dataSource.normalized
 		let xDiff = bounds.width / CGFloat(normy.count - 1)
 		let points = normy.enumerated().map {
@@ -313,7 +314,9 @@ private extension DSFSparklineOverlay.Line {
 					  y: bounds.height + bounds.minY - ($0.element * bounds.height))
 		}
 
-		let centroid = (1 - dataSource.normalizedZeroLineValue) * (bounds.height - 1)
+		// Calculate the graph centroid
+		let frac = dataSource.fractionalPosition(for: dataSource.zeroLineValue)
+		let centroid = bounds.height - (frac * bounds.height) + bounds.minY
 
 		var markers: [Marker] = []
 
@@ -333,16 +336,25 @@ private extension DSFSparklineOverlay.Line {
 
 		let path = CGPath.pathWithPoints(points, smoothed: self.interpolated).mutableCopy()!
 
+		// A bounds which encompasses the full Y range
+		//let boundsFullY = self.bounds // CGRect(x: bounds.minX, y: self.bounds.minY, width: bounds.width, height: self.bounds.height)
+
+		let boundsFullY = CGRect(x: bounds.minX, y: self.bounds.minY, width: bounds.width, height: self.bounds.height)
+
 		for which in 0 ... 1 {
+
+			// If the data source doesn't have enough data to fill the graph, then clip to the last x value
 			if dataSource.counter < dataSource.windowSize {
 				let pos = CGFloat(dataSource.counter) * xDiff
-				let clipRect = bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				let clipRect = boundsFullY.divided(atDistance: pos, from: .maxXEdge).slice
 				context.clip(to: clipRect)
 			}
 
 			context.usingGState { inner in
 
-				let split = bounds.divided(atDistance: centroid, from: .minYEdge)
+				// We want to clip the drawing to the _full_ Y range, so that if an interpolated line graph is
+				// scaled to avoid clipping we don't end up with blank spaces at the top and bottom of the graph.
+				let split = boundsFullY.divided(atDistance: centroid, from: .minYEdge)
 
 				if which == 0 {
 					inner.clip(to: split.slice)
@@ -356,7 +368,11 @@ private extension DSFSparklineOverlay.Line {
 				if let fill = fillItem {
 					inner.usingGState { ctx in
 
-						let altY = which == 0 ? bounds.maxY : bounds.minY
+						// Note that when using interpolated curves that the `bounds.maxY` value may NOT be zero as we've
+						// scaled the curved graph down to reduce curve clipping. The primary fill needs to extend
+						// down to the _full_ height of the graph or else we end up with a non-filled section at the lower
+						// part of the graph.
+						let altY = which == 0 ? self.bounds.maxY : self.bounds.minY
 
 						let clipper = path.mutableCopy()!
 						clipper.addLine(to: CGPoint(x: bounds.maxX, y: points.last!.y))
@@ -367,7 +383,7 @@ private extension DSFSparklineOverlay.Line {
 
 						ctx.addPath(clipper)
 						ctx.clip()
-						fill.fill(context: ctx, bounds: bounds)
+						fill.fill(context: ctx, bounds: boundsFullY)
 					}
 				}
 

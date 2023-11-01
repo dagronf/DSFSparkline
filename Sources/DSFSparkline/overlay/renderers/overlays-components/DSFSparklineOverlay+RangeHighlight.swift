@@ -87,7 +87,12 @@ public extension DSFSparklineOverlay {
 			let lb = 1.0 - dataSource.normalize(value: range.lowerBound)
 			let ub = 1.0 - dataSource.normalize(value: range.upperBound)
 
-			let r = CGRect(x: bounds.minX, y: ub * bounds.height, width: bounds.width, height: (lb - ub) * bounds.height + bounds.minY)
+			let r = CGRect(
+				x: bounds.minX,
+				y: (ub * bounds.height) + bounds.minY,
+				width: bounds.width,
+				height: ((lb - ub) * bounds.height) + bounds.minY
+			)
 			context.clip(to: r)
 			
 			self.fill.fill(context: context, bounds: bounds)
