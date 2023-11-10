@@ -56,7 +56,6 @@ public extension DSFSparklineOverlay {
 		}
 
 		@objc public init(dataSource: DSFSparkline.DataSource? = nil,
-								zeroLineValue: CGFloat = 0.0,
 								strokeColor: CGColor = DSFColor.gray.cgColor,
 								strokeWidth: CGFloat = 1.0,
 								dashStyle: [CGFloat] = [1.0, 1.0]) {

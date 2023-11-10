@@ -250,7 +250,7 @@ private extension DSFSparklineOverlay.Line {
 
 			if dataSource.counter < dataSource.windowSize {
 				let pos = bounds.minX + (CGFloat(dataSource.counter) * xDiff)
-				let clipRect = bounds.divided(atDistance: pos, from: .maxXEdge).slice
+				let clipRect = self.bounds.divided(atDistance: pos, from: .maxXEdge).slice
 				outer.clip(to: clipRect)
 			}
 
@@ -270,7 +270,7 @@ private extension DSFSparklineOverlay.Line {
 
 					ctx.addPath(clipper)
 					ctx.clip()
-					fill.fill(context: ctx, bounds: bounds)
+					fill.fill(context: ctx, bounds: self.bounds)
 				}
 			}
 

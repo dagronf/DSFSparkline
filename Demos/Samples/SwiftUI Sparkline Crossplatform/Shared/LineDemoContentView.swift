@@ -531,6 +531,15 @@ struct LineGraphShowingBug13: View {
 		return d
 	}()
 
+	let source2: DSFSparkline.DataSource = {
+		let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.25)
+		d.push(values: [
+			0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.99, 0.99, 0.02, 0.07,
+			0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50
+		])
+		return d
+	}()
+
 	var body: some View {
 		VStack {
 			Text("Demonstrating interpolated line clipping")
@@ -546,7 +555,19 @@ struct LineGraphShowingBug13: View {
 					markerSize: 6
 				)
 				.border(Color.gray.opacity(0.2), width: 1)
-				.frame(width: 400, height: 200)
+				.frame(width: 200, height: 100)
+
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: self.source,
+					graphColor: DSFColor.systemIndigo,
+					lineWidth: 1,
+					interpolated: true,
+					lineShading: true,
+					shadowed: true,
+					markerSize: 6
+				)
+				.border(Color.gray.opacity(0.2), width: 1)
+				.frame(width: 200, height: 100)
 
 				DSFSparklineLineGraphView.SwiftUI(
 					dataSource: self.source,
@@ -560,7 +581,50 @@ struct LineGraphShowingBug13: View {
 					markerSize: 6
 				)
 				.border(Color.gray.opacity(0.2), width: 1)
-				.frame(width: 400, height: 200)
+				.frame(width: 200, height: 100)
+			}
+
+			HStack {
+				DSFSparklineSurface.SwiftUI([
+					DSFSparklineOverlay.GridLines(
+						dataSource: self.source2,
+						floatValues: [0, 0.25, 0.5, 0.75, 1.0],
+						strokeColor: CGColor(gray: 0.5, alpha: 0.3),
+						strokeWidth: 0.5,
+						dashStyle: [0.5, 0.5]
+					),
+					DSFSparklineOverlay.RangeHighlight(
+						dataSource: self.source2,
+						range: 0.75 ..< 1.0,
+						fill: DSFSparkline.Fill.Color(CGColor(red: 1, green: 0, blue: 0, alpha: 0.1))
+					),
+					DSFSparklineOverlay.RangeHighlight(
+						dataSource: self.source2,
+						range: 0.5 ..< 0.75,
+						fill: DSFSparkline.Fill.Color(CGColor(red: 1, green: 1, blue: 0, alpha: 0.1))
+					),
+					DSFSparklineOverlay.RangeHighlight(
+						dataSource: self.source2,
+						range: 0.0 ..< 0.5,
+						fill: DSFSparkline.Fill.Color(CGColor(red: 0, green: 1, blue: 0, alpha: 0.1))
+					),
+					DSFSparklineOverlay.ZeroLine(
+						dataSource: self.source2,
+						strokeColor: CGColor(red: 1, green: 0, blue: 1, alpha: 1),
+						strokeWidth: 1
+					),
+					{
+						let d = DSFSparklineOverlay.Line()
+						d.dataSource = self.source2
+						d.interpolated = true
+						d.primaryStrokeColor = CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1)
+						d.markerSize = 3
+						d.strokeWidth = 1.0
+						return d
+					}()
+				])
+				.frame(width: 200, height: 50)
+				.border(Color.gray.opacity(0.2), width: 1)
 			}
 		}
 	}
