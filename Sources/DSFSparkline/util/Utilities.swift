@@ -25,7 +25,7 @@ import Foundation
 import CoreGraphics.CGContext
 
 #if os(macOS)
-import Cocoa
+import AppKit
 public typealias DSFColor = NSColor
 public typealias DSFView = NSView
 public typealias DSFFont = NSFont

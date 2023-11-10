@@ -21,7 +21,14 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+import Foundation
+import CoreGraphics
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
 
 public extension DSFSparklineOverlay {
 	/// An overlay that draws grid lines at specified vertical points on the sparkline
