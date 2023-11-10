@@ -522,16 +522,60 @@ struct LineDemoCustomMarkers: View {
 	}
 }
 
-//struct LineDemoCustomMarkers_Previews: PreviewProvider {
-//	static var previews: some View {
-//		LineDemoCustomMarkers()
-//	}
-//}
+struct LineGraphShowingBug13: View {
+	let source: DSFSparkline.DataSource = {
+		let d = DSFSparkline.DataSource(windowSize: 20, /*range: 0 ... 1,*/ zeroLineValue: 0)
+		d.push(values: [
+			0, 5, 4.5, 10, 8, 0, 60, 60, -60, -60, 60, 60, -60, -60, 60, 55
+		])
+		return d
+	}()
+
+	var body: some View {
+		VStack {
+			Text("Demonstrating interpolated line clipping")
+			HStack {
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: self.source,
+					graphColor: DSFColor.systemIndigo,
+					lineWidth: 1,
+					lineShading: true,
+					shadowed: true,
+					centeredAtZeroLine: true,
+					lowerGraphColor: DSFColor.systemRed,
+					markerSize: 6
+				)
+				.border(Color.gray.opacity(0.2), width: 1)
+				.frame(width: 400, height: 200)
+
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: self.source,
+					graphColor: DSFColor.systemIndigo,
+					lineWidth: 1,
+					interpolated: true,
+					lineShading: true,
+					shadowed: true,
+					centeredAtZeroLine: true,
+					lowerGraphColor: DSFColor.systemRed,
+					markerSize: 6
+				)
+				.border(Color.gray.opacity(0.2), width: 1)
+				.frame(width: 400, height: 200)
+			}
+		}
+	}
+}
+
+struct LineGraphShowingBug13_Previews: PreviewProvider {
+	static var previews: some View {
+		LineGraphShowingBug13()
+	}
+}
 
 struct LineDemoContentView: View {
 	var body: some View {
 		ScrollView([.vertical, .horizontal]) {
-			VStack {
+			VStack(spacing: 8) {
 				VStack {
 					LineDemoBasic()
 					LineDemoBasicMarkers()
@@ -550,9 +594,11 @@ struct LineDemoContentView: View {
 					Text("Custom markers").font(.headline)
 					LineDemoCustomMarkers()
 				}
+				VStack {
+					LineGraphShowingBug13()
+				}
 			}
 			.frame(width: 400.0)
-			.padding(10)
 		}
 	}
 }
