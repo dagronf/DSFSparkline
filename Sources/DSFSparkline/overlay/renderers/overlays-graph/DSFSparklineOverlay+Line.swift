@@ -148,7 +148,10 @@ public extension DSFSparklineOverlay {
 				// Hermite curve matching can overshoot. Until I can find/implement a better curve algorithm that
 				// doesn't overshoot, we'll increase the height inset by a percentage of the height.
 				// The following number is somewhat magic - based on worst cast overshoot and some visual testing
-				interpolationInset = (self.bounds.height / 30) * 2.7
+				let rrr = self.currentPath().boundingBoxOfPath
+				if rrr.minY < 0 {
+					interpolationInset = abs(rrr.minY) / 1.3
+				}
 			}
 
 			return DSFEdgeInsets(
@@ -217,6 +220,21 @@ private extension DSFSparklineOverlay.Line {
 }
 
 // MARK: - Sparkline drawing
+
+private extension DSFSparklineOverlay.Line {
+	func currentPath() -> CGPath {
+		guard let dataSource = self.dataSource else { return CGPath(rect: .zero, transform: nil) }
+		let normy = dataSource.normalized
+		let xDiff = bounds.width / CGFloat(normy.count - 1)
+		let points = normy.enumerated().map {
+			CGPoint(
+				x: CGFloat($0.offset) * xDiff + bounds.minX,
+				y: bounds.height + bounds.minY - ($0.element * bounds.height)
+			)
+		}
+		return CGPath.pathWithPoints(points, smoothed: self.interpolated)
+	}
+}
 
 private extension DSFSparklineOverlay.Line {
 	func drawLineGraph(context: CGContext, bounds: CGRect, scale _: CGFloat) {

@@ -106,6 +106,48 @@ fileprivate let b4: DSFSparklineSurface.Bitmap = {
 	return b
 }()
 
+fileprivate let b5: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
+
+	let dataSource = DSFSparkline.DataSource(values: [4, 2, 9, 9, 0, 9, 0, 4])
+
+	let l = DSFSparklineOverlay.Line()
+	l.primaryStrokeColor = DSFColor.systemIndigo.cgColor
+	l.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemIndigo.withAlphaComponent(0.3).cgColor)
+	l.strokeWidth = 3.0
+	l.interpolated = true
+	l.markerSize = 6
+	l.dataSource = dataSource
+	b.addOverlay(l)
+
+	return b
+}()
+
+fileprivate let b6: DSFSparklineSurface.Bitmap = {
+	let b = DSFSparklineSurface.Bitmap()
+
+	let dataSource = DSFSparkline.DataSource(values: [4, 2, 9, 9, 0, 9, 0, 4])
+
+	let l = DSFSparklineOverlay.Line()
+	l.primaryStrokeColor = DSFColor.systemIndigo.cgColor
+	l.primaryFill = DSFSparkline.Fill.Color(DSFColor.systemIndigo.withAlphaComponent(0.3).cgColor)
+	l.strokeWidth = 3.0
+	l.interpolated = true
+	l.centeredAtZeroLine = true
+
+	l.markerSize = 6
+
+	dataSource.zeroLineValue = 5
+	l.dataSource = dataSource
+
+	l.secondaryStrokeColor = DSFColor.systemTeal.cgColor
+	l.secondaryFill = DSFSparkline.Fill.Color(DSFColor.systemTeal.withAlphaComponent(0.3).cgColor)
+
+	b.addOverlay(l)
+
+	return b
+}()
+
 fileprivate let tablet1: DSFSparklineSurface.Bitmap = {
 	let b = DSFSparklineSurface.Bitmap()
 
@@ -218,6 +260,17 @@ struct BitmapGenerationView: View {
 					.border(Color.gray)
 
 				makeImage(self.generate(b4, size: CGSize(width: 200, height: 40)))
+					.padding(4)
+					.border(Color.gray)
+			}
+
+			Divider()
+
+			HStack {
+				makeImage(self.generate(b5, size: CGSize(width: 100, height: 30)))
+					.padding(4)
+					.border(Color.gray)
+				makeImage(self.generate(b6, size: CGSize(width: 100, height: 30)))
 					.padding(4)
 					.border(Color.gray)
 			}
