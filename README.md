@@ -955,6 +955,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Changes
 
+### `5.0.0`
+
+* Fixed [occasional clipping](https://github.com/dagronf/DSFSparkline/issues/13) on interpolated line graphs.
+
 ### `4.6.0`
 
 * Added WiperGauge sparkline type
@@ -1070,7 +1074,7 @@ MIT. Use it for anything you want, just attribute my work. Let me know if you do
 ```
 MIT License
 
-Copyright (c) 2021 Darren Ford
+Copyright (c) 2023 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
