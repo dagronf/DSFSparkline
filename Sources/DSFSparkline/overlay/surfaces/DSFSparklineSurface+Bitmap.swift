@@ -54,13 +54,15 @@ public extension DSFSparklineSurface {
 				return nil
 			}
 
+			self.overlays.forEach { $0.frame = CGRect(origin: .zero, size: size) }
+
 			// Calculate the inset required
 			let bounds = rect.inset(by: self.edgeInsets(for: rect))
 
 			// Loop through each overlay and ask it to draw
 			self.overlays.forEach { overlay in
 				bitmapContext.usingGState { ctx in
-					overlay.frame = bounds
+					overlay.frame = rect
 					overlay.setNeedsDisplay()
 					overlay.contentsScale = scale
 					#if os(macOS)

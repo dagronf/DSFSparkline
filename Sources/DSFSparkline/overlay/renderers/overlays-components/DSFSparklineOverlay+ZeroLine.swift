@@ -21,7 +21,14 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import QuartzCore
+import Foundation
+import CoreGraphics
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
 
 public extension DSFSparklineOverlay {
 
@@ -49,7 +56,6 @@ public extension DSFSparklineOverlay {
 		}
 
 		@objc public init(dataSource: DSFSparkline.DataSource? = nil,
-								zeroLineValue: CGFloat = 0.0,
 								strokeColor: CGColor = DSFColor.gray.cgColor,
 								strokeWidth: CGFloat = 1.0,
 								dashStyle: [CGFloat] = [1.0, 1.0]) {

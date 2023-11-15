@@ -105,13 +105,6 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	// MARK: Zero-line centering
 
-//	/// Should the graph be centered at the zero line?
-//	@IBInspectable public var centeredAtZeroLine: Bool = false {
-//		didSet {
-//			self.
-//		}
-//	}
-
 	/// The color used to draw values below the zero line. If nil, is the same as the graph color
 	#if os(macOS)
 	@IBInspectable public var lowerGraphColor: NSColor? {
