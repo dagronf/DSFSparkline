@@ -33,20 +33,15 @@ import UIKit
 @IBDesignable
 public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
+	// MARK: Zero-line display
+
 	// The zero-line overlay
 	let zerolineOverlay = DSFSparklineOverlay.ZeroLine()
 
-	// A fixed interface-builder defined highlight
-	let ibHighlightOverlay = DSFSparklineOverlay.RangeHighlight()
-
-	// An array of additional highlights
-	var highlightOverlay: [DSFSparklineOverlay.RangeHighlight] = []
-
 	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var showZeroLine: Bool = false {
+	@IBInspectable public var zeroLineVisible: Bool = false {
 		didSet {
-			self.zerolineOverlay.isHidden = !self.showZeroLine
-			self.updateDisplay()
+			self.updateZeroLineSettings()
 		}
 	}
 
@@ -54,30 +49,28 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	#if os(macOS)
 	@IBInspectable public var zeroLineColor = NSColor.gray {
 		didSet {
-			self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
+			self.updateZeroLineSettings()
 		}
 	}
 	#else
 	@IBInspectable public var zeroLineColor: UIColor = .systemGray {
 		didSet {
-			self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
+			self.updateZeroLineSettings()
 		}
 	}
 	#endif
 
-	// MARK: Zero-line display
-
 	/// The width of the dotted line at the zero point on the y-axis
 	@IBInspectable public var zeroLineWidth: CGFloat = 1.0 {
 		didSet {
-			self.zerolineOverlay.strokeWidth = zeroLineWidth
+			self.updateZeroLineSettings()
 		}
 	}
 
 	/// The line style for the dotted line. Use [] to specify a solid line.
 	@objc public var zeroLineDashStyle: [CGFloat] = [1.0, 1.0] {
 		didSet {
-			self.zerolineOverlay.dashStyle = zeroLineDashStyle
+			self.updateZeroLineSettings()
 		}
 	}
 
@@ -86,20 +79,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	/// Primarily used for Interface Builder integration
 	@IBInspectable public var zeroLineDashStyleString: String = "1,1" {
 		didSet {
-			if self.zeroLineDashStyleString == "-" {
-				// Solid line
-				self.zeroLineDashStyle = []
-			}
-			else {
-				let components = self.zeroLineDashStyleString.extractCGFloats()
-				if components.count >= 2 {
-					self.zeroLineDashStyle = components
-				}
-				else {
-					Swift.print("ERROR: Zero Line Style string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
-				}
-			}
-			self.updateDisplay()
+			self.updateZeroLineSettings()
 		}
 	}
 
@@ -125,24 +105,32 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 		return self.lowerGraphColor ?? self.graphColor
 	}
 
-	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var showHighlightRange: Bool = false {
+	// MARK: - Highlight ranges
+
+	// A fixed interface-builder defined highlight
+	let ibHighlightOverlay = DSFSparklineOverlay.RangeHighlight()
+
+	// An array of additional highlights
+	var highlightOverlay: [DSFSparklineOverlay.RangeHighlight] = []
+
+	/// Draw a highlight for a range on the graph
+	@IBInspectable public var highlightRangeVisible: Bool = false {
 		didSet {
-			self.ibHighlightOverlay.isHidden = !self.showHighlightRange
+			self.updateHighlightSettings()
 		}
 	}
 
 	/// The color of the highlight to be used
 	#if os(macOS)
-	@IBInspectable public var highlightColor = NSColor.gray {
+	@IBInspectable public var highlightRangeColor = NSColor.gray {
 		didSet {
-			self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightColor.cgColor)
+			self.updateHighlightSettings()
 		}
 	}
 	#else
-	@IBInspectable public var highlightColor: UIColor = .systemGray {
+	@IBInspectable public var highlightRangeColor: UIColor = .systemGray {
 		didSet {
-			self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightColor.cgColor)
+			self.updateHighlightSettings()
 		}
 	}
 	#endif
@@ -150,35 +138,114 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	/// A string of the format "0.1,0.7"
 	@IBInspectable public var highlightRangeString: String? = nil {
 		didSet {
-			let floats = self.highlightRangeString?.extractCGFloats() ?? []
-			if floats.count == 2, floats[0] < floats[1] {
-				self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
-			}
-			else {
-				self.highlightRangeDefinition = []
-				Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(floats))")
-			}
+			self.updateHighlightSettings()
 		}
 	}
 
+	// MARK: - Grid lines support
+
+	// A fixed interface-builder defined highlight
+	let ibGridLinesOverlay = DSFSparklineOverlay.GridLines()
+
+	/// Draw a dotted line at the zero point on the y-axis
+	@IBInspectable public var gridLinesVisible: Bool = false {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+
+	@objc public var gridLinesValues: [CGFloat] = [] {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+
+	/// A string of the format "0.1,0.7"
+	@IBInspectable public var gridLinesValuesString: String? = nil {
+		didSet {
+			// Dash style
+			let floats = self.gridLinesValuesString?.extractCGFloats() ?? []
+			self.gridLinesValues = floats
+		}
+	}
+
+	#if os(macOS)
+	@IBInspectable public var gridLinesColor = NSColor.gray.withAlphaComponent(0.5) {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+	#else
+	@IBInspectable public var gridLinesColor: UIColor = .systemGray.withAlphaComponent(0.5) {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+	#endif
+
+	/// The width of the dotted line at the zero point on the y-axis
+	@IBInspectable public var gridLinesWidth: CGFloat = 1.0 {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+
+	/// The line style for the dotted line. Use [] to specify a solid line.
+	@objc public var gridLinesDashStyle: [CGFloat] = [1.0, 1.0] {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+
+	/// A string representation of the line dash lengths for grid lines, eg. "1,3,4,2". If you want a solid line, specify "-"
+	///
+	/// Primarily used for Interface Builder integration
+	@IBInspectable public var gridLinesDashStyleString: String = "1.0,1.0" {
+		didSet {
+			self.updateGridLinesSettings()
+		}
+	}
+
+	/// Set the grid line definition for the graph
+	@objc public func setGridLineDefinition(_ gridLineDefinition: DSFSparkline.GridLinesDefinition) {
+		self.gridLinesVisible = true
+		self.gridLinesColor = gridLineDefinition.color
+		self.gridLinesWidth = gridLineDefinition.width
+		self.gridLinesDashStyle = gridLineDefinition.dashStyle
+		self.gridLinesValues = gridLineDefinition.values
+	}
+
+	// MARK: - Init
+
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.configureZeroLine()
+		self.setup()
 	}
 
 	public required init?(coder: NSCoder) {
 		super.init(coder: coder)
-		self.configureZeroLine()
+		self.setup()
 	}
 
-	func configureZeroLine() {
+	private func setup() {
+
+		// The Zero line overlay
 		self.addOverlay(self.zerolineOverlay)
 		self.zerolineOverlay.zPosition = -5
+		self.updateZeroLineSettings()
+
+		// Highlight
 		self.addOverlay(self.ibHighlightOverlay)
 		self.ibHighlightOverlay.zPosition = -10
 		self.ibHighlightOverlay.dataSource = self.dataSource
+		self.updateHighlightSettings()
 
-		//self.addOverlay(self.highlightOverlay)
+		// Grid lines
+		self.addOverlay(self.ibGridLinesOverlay)
+		self.ibGridLinesOverlay.isHidden = self.gridLinesVisible
+		self.ibGridLinesOverlay.zPosition = -10
+		self.ibGridLinesOverlay.dataSource = self.dataSource
+		self.updateGridLinesSettings()
 	}
 
 	@objc public var highlightRangeDefinition: [DSFSparkline.HighlightRangeDefinition] = [] {
@@ -202,11 +269,11 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	}
 
 	public override func prepareForInterfaceBuilder() {
-		if self.showHighlightRange {
+		if self.highlightRangeVisible {
 			self.highlightRangeDefinition = [
 				DSFSparkline.HighlightRangeDefinition(
 					range: -3 ..< 3,
-					fill: DSFSparkline.Fill.Color(self.highlightColor.cgColor))
+					fill: DSFSparkline.Fill.Color(self.highlightRangeColor.cgColor))
 			]
 		}
 		super.prepareForInterfaceBuilder()
@@ -221,5 +288,60 @@ public extension DSFSparklineZeroLineGraphView {
 		self.zeroLineWidth = definition.lineWidth
 		self.zeroLineColor = definition.color
 		self.zeroLineDashStyle = definition.lineDashStyle
+	}
+}
+
+private extension DSFSparklineZeroLineGraphView {
+	func updateGridLinesSettings() {
+		self.ibGridLinesOverlay.isHidden = !self.gridLinesVisible
+		self.ibGridLinesOverlay.strokeWidth = self.gridLinesWidth
+		self.ibGridLinesOverlay.strokeColor = self.gridLinesColor.cgColor
+		self.ibGridLinesOverlay.dashStyle = self.gridLinesDashStyle
+
+		self.ibGridLinesOverlay.floatValues = self.gridLinesValues
+
+		self.updateDisplay()
+	}
+
+	private func updateZeroLineSettings() {
+		self.zerolineOverlay.isHidden = !self.zeroLineVisible
+		self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
+		self.zerolineOverlay.strokeWidth = self.zeroLineWidth
+		self.zerolineOverlay.dashStyle = self.zeroLineDashStyle
+
+		if self.zeroLineDashStyleString == "-" {
+			// Solid line
+			self.zeroLineDashStyle = []
+		}
+		else {
+			let components = self.zeroLineDashStyleString.extractCGFloats()
+			if components.count >= 2 {
+				self.zerolineOverlay.dashStyle = components
+			}
+			else {
+				Swift.print("ERROR: Zero Line Style string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
+			}
+		}
+
+		self.updateDisplay()
+	}
+
+	private func updateHighlightSettings() {
+		self.ibHighlightOverlay.isHidden = !self.highlightRangeVisible
+		self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightRangeColor.cgColor)
+
+		let floats = self.highlightRangeString?.extractCGFloats() ?? []
+		if floats.count == 2, floats[0] < floats[1] {
+			self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
+		}
+		else if floats.count == 0 {
+			// No ranges. This is fine
+			self.highlightRangeDefinition = []
+		}
+		else {
+			self.highlightRangeDefinition = []
+			Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(floats))")
+		}
+		self.updateDisplay()
 	}
 }

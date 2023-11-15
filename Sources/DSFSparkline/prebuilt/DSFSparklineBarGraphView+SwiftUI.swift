@@ -51,6 +51,8 @@ public extension DSFSparklineBarGraphView {
 		/// Highlight y-ranges within the graph
 		let highlightDefinitions: [DSFSparkline.HighlightRangeDefinition]
 
+		let gridLines: DSFSparkline.GridLinesDefinition?
+
 		/// Create a bar graph sparkline
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -62,17 +64,20 @@ public extension DSFSparklineBarGraphView {
 		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
-		public init(dataSource: DSFSparkline.DataSource,
-						graphColor: DSFColor,
-						lineWidth: UInt = 1,
-						barSpacing: UInt = 1,
-						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
-						centeredAtZeroLine: Bool = false,
-						lowerGraphColor: DSFColor? = nil,
-						showHighlightRange: Bool = false,
-						highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [])
-		{
+		///   - gridLines: The grid lines to draw on the graph
+		public init(
+			dataSource: DSFSparkline.DataSource,
+			graphColor: DSFColor,
+			lineWidth: UInt = 1,
+			barSpacing: UInt = 1,
+			showZeroLine: Bool = false,
+			zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
+			centeredAtZeroLine: Bool = false,
+			lowerGraphColor: DSFColor? = nil,
+			showHighlightRange: Bool = false,
+			highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
+			gridLines: DSFSparkline.GridLinesDefinition? = nil
+		) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 
@@ -86,6 +91,7 @@ public extension DSFSparklineBarGraphView {
 			self.barSpacing = barSpacing
 
 			self.highlightDefinitions = highlightDefinitions
+			self.gridLines = gridLines
 		}
 	}
 }
@@ -119,14 +125,14 @@ extension DSFSparklineBarGraphView.SwiftUI: DSFViewRepresentable {
 		view.barSpacing = self.barSpacing
 		view.lineWidth = self.lineWidth
 
-		view.showZeroLine = self.showZeroLine
+		view.zeroLineVisible = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		view.centeredAtZeroLine = self.centeredAtZeroLine
 		view.lowerGraphColor = self.lowerGraphColor
 
 		if self.highlightDefinitions.count > 0 {
-			view.showHighlightRange = true
+			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
 		return view
@@ -167,19 +173,26 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 		UpdateIfNotEqual(result: &view.barSpacing, val: self.barSpacing)
 		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
 
-		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+		UpdateIfNotEqual(result: &view.zeroLineVisible, val: self.showZeroLine)
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		UpdateIfNotEqual(result: &view.centeredAtZeroLine, val: self.centeredAtZeroLine)
 		UpdateIfNotEqual(result: &view.lowerGraphColor, val: self.lowerGraphColor)
 
 		if self.highlightDefinitions.count > 0 {
-			view.showHighlightRange = true
+			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
 		else {
-			view.showHighlightRange = false
+			view.highlightRangeVisible = false
 			view.highlightRangeDefinition = []
+		}
+
+		if let gridLines = self.gridLines {
+			view.setGridLineDefinition(gridLines)
+		}
+		else {
+			view.gridLinesVisible = false
 		}
 	}
 }

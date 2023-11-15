@@ -56,14 +56,15 @@ struct StackLineCenteredZeroLine: View {
 
 struct StackLineCenteredZeroLineColored: View {
 	var body: some View {
-		Text("Stackline centered around zero-line, lower color")
+		Text("Stackline centered around zero-line, lower color, grid lines")
 		DSFSparklineStackLineGraphView.SwiftUI(
 			dataSource: UpDataSource1,
 			graphColor: DSFColor.systemGreen,
 			lineWidth: 1,
 			shadowed: true,
 			centeredAtZeroLine: true,
-			lowerGraphColor: DSFColor.systemRed
+			lowerGraphColor: DSFColor.systemRed,
+			gridLines: .init(width: 0.5, values: [0, 0.1, 0.2, 0.3, 0.4 ,0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
 		)
 		.frame(height: 60.0)
 		.padding(5)

@@ -100,7 +100,7 @@ class ViewController: NSViewController {
 
 		stackLineView.dataSource = stackLineViewDatasource
 		//stackLineView.highlightRangeDefinition?.range = 3 ..< 7
-		stackLineView.showHighlightRange = true
+		stackLineView.highlightRangeVisible = true
 
 		fakeSparkCpu1.dataSource = fakeSparkCpu1Datasource
 		fakeSparkCpu2.dataSource = fakeSparkCpu2Datasource
