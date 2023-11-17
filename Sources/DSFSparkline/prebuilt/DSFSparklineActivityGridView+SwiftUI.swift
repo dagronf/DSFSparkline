@@ -51,7 +51,7 @@ public extension DSFSparklineActivityGridView {
 		///   - cellSpacing: The spacing between each cell
 		///   - range: The allowable upper/lower bounds for the input values
 		///   - colors: The color scheme to use
-		///   - cellBorderColor: <#cellBorderColor description#>
+		///   - cellBorderColor: The color for drawing the border of each cell
 		public init(
 			values: [Double],
 			verticalCellCount: UInt? = nil,
@@ -96,6 +96,24 @@ extension DSFSparklineActivityGridView.SwiftUI: DSFViewRepresentable {
 		self.updateView(view)
 		return view
 	}
+
+	#if os(macOS)
+	@available(macOS 13.0, *)
+	public func sizeThatFits(_ proposal: ProposedViewSize, nsView: DSFSparklineActivityGridView, context: Context) -> CGSize? {
+		return CGSize(
+			width: proposal.width ?? nsView.activityLayer.intrinsicWidth,
+			height: nsView.intrinsicContentSize.height
+		)
+	}
+	#else
+	@available(iOS 16.0, tvOS 16.0, *)
+	public func sizeThatFits(_ proposal: ProposedViewSize, uiView: DSFSparklineActivityGridView, context: Context) -> CGSize? {
+		return CGSize(
+			width: proposal.width ?? uiView.activityLayer.intrinsicWidth,
+			height: uiView.intrinsicContentSize.height
+		)
+	}
+	#endif
 }
 
 // MARK: - iOS/tvOS Specific

@@ -38,17 +38,18 @@ struct TestingView: View {
 			Toggle("Use Alternate Palette", isOn: $isLightMode)
 			DSFSparklineActivityGridView.SwiftUI(
 				values: inputData,
-				verticalCellCount: 7,
-				range: 0 ... 1, 
+				range: 0 ... 1,
 				colorScheme: isLightMode ? .init(palette: DefaultLight) : .init(palette: DefaultDark)
 			)
 			.onReceive(timer) { input in
 				self.inputData.insert(Double.random(in: 0 ... 1), at: 0)
 			}
-			.frame(height: 100)
-			.frame(maxWidth: .infinity)
-			.border(Color.black)
+			.border(Color.red)
 			.padding()
+
+			Text("Woooo!")
+
+			EmptyView()
 		}
 	}
 }

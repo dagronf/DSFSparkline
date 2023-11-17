@@ -118,13 +118,19 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 		super.layout()
 		self.activityLayer.frame = self.bounds
 	}
+	public override var intrinsicContentSize: NSSize {
+		NSSize(width: NSView.noIntrinsicMetric, height: self.activityLayer.intrinsicHeight)
+	}
 	#else
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 		self.activityLayer.frame = self.bounds
 	}
+	public override var intrinsicContentSize: CGSize {
+		CGSize(width: UIView.noIntrinsicMetric, height: self.activityLayer.intrinsicHeight)
+	}
 	#endif
 
 	// private
-	private let activityLayer = DSFSparklineOverlay.ActivityGrid()
+	internal let activityLayer = DSFSparklineOverlay.ActivityGrid()
 }

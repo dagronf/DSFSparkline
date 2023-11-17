@@ -89,6 +89,20 @@ public extension DSFSparklineOverlay {
 			self.setNeedsDisplay()
 		}
 
+		/// The expected height given the current settings
+		@objc public var intrinsicHeight: CGFloat {
+			(CGFloat(self.verticalCellCount) * (self.cellDimension + self.cellSpacing)) + self.cellSpacing
+		}
+
+		/// Minimum width for displaying the current values without padding
+		@objc public var intrinsicWidth: CGFloat {
+			var columnCount = self.dataSource.values.count / self.verticalCellCount
+			if (self.dataSource.values.count % self.verticalCellCount) > 0 {
+				columnCount += 1
+			}
+			return (CGFloat(columnCount) * (self.cellDimension + self.cellSpacing)) + self.cellSpacing
+		}
+
 		/// Returns the index within the datasource of the value at the given point
 		/// - Parameter point: The point within the activity graph to test
 		/// - Returns: The data source index for the point, or -1 if
@@ -121,7 +135,7 @@ public extension DSFSparklineOverlay {
 
 					let cell = CGRect(
 						x: xOffset,
-						y: CGFloat(index) * (self.cellDimension + self.cellSpacing),
+						y: CGFloat(index) * (self.cellDimension + self.cellSpacing) + self.cellSpacing,
 						width: self.cellDimension,
 						height: self.cellDimension
 					)
