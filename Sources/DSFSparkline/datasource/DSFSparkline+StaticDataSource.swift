@@ -34,17 +34,72 @@ public extension DSFSparkline {
 		/// The total of all the values within the datasource
 		@objc public let total: CGFloat
 
-		@objc public override init() {
-			self.values = []
-			self.total = 0
-			super.init()
+		/// The allowable range of values for this source
+		public let valueBounds: ClosedRange<CGFloat>?
+
+		/// Create an empty data source
+		@objc convenience public override init() {
+			self.init([])
 		}
 
 		@objc public init(_ values: [CGFloat]) {
 			self.values = values
 			self.total = values.reduce(0) { $0 + $1 }
+			self.valueBounds = nil
 			super.init()
 		}
+
+		/// Create a static data source with values and upper/lower bounds values
+		/// - Parameters:
+		///   - values: The values to be displayed
+		///   - lowerBound: The lower bounds of the data
+		///   - upperBound: The upper bounds of the data
+		@objc convenience public init(_ values: [CGFloat], lowerBound: CGFloat, upperBound: CGFloat) {
+			self.init(values, range: lowerBound ... upperBound)
+		}
+
+		/// Create a static data source with values and upper/lower bounds values
+		/// - Parameters:
+		///   - values: The values to be displayed
+		///   - range: The allowable range for each value
+		public init(_ values: [CGFloat], range: ClosedRange<CGFloat>) {
+			self.values = values.map { $0.clamped(to: range) }
+			self.total = values.reduce(0) { $0 + $1 }
+			self.valueBounds = range
+			super.init()
+		}
+
+		/// Return the fractional (0 ... 1) value for the specified value
+		/// - Parameter value: The value to convert to a fractional value within the range of the datasource
+		/// - Returns: A fractional value
+		@objc public func fractionalValue(for value: CGFloat) -> CGFloat {
+			if let r = valueBounds {
+				let v = value.clamped(to: r)
+				return (v - r.lowerBound) / (r.upperBound - r.lowerBound)
+			}
+			else {
+				return (value - self.min) / (self.max - self.min)
+			}
+		}
+
+		/// Return the fractional (0 ... 1) value for the specified value
+		/// - Parameter index: The indexed offset of the datasource to retrieve the fractional value for
+		/// - Returns: The fractional value, or -1 if index is out of bounds
+		public func fractionalValue(at index: Int) -> CGFloat? {
+			guard index < self.values.count else { return nil }
+			let valueAtIndex = self.values[index]
+			if let r = valueBounds {
+				return (valueAtIndex - r.lowerBound) / (r.upperBound - r.lowerBound)
+			}
+			else {
+				return (valueAtIndex - self.min) / (self.max - self.min)
+			}
+		}
+
+		/// The minimum value in the datasource
+		@objc public private(set) lazy var min: CGFloat = { self.values.min() ?? 0 }()
+		/// The maximum value in the datasource
+		@objc public private(set) lazy var max: CGFloat = { self.values.max() ?? 0 }()
 	}
 }
 
