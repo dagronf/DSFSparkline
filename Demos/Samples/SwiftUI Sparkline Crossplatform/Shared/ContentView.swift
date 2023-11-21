@@ -33,6 +33,7 @@ struct ContentView: View {
 		Item(id: 12, name: "SwiftUI Overlays"),
 		Item(id: 13, name: "Percent Bar"),
 		Item(id: 14, name: "Wiper Gauge"),
+		Item(id: 15, name: "Activity Grid"),
 
 		Item(id: 99, name: "Testing Harness")
 	]
@@ -75,6 +76,7 @@ struct DetailView: View {
 			case 12: SwiftUIView(shouldAnimate: true)
 			case 13: PercentBar(shouldAnimate: true)
 			case 14: WiperGraphDemoView()
+			case 15: ActivityGridView()
 
 			case 99: TestingView()
 

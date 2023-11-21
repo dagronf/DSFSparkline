@@ -64,10 +64,22 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 		)
 	}
 
+	/// The layout style for the grid
+	@objc public var cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle {
+		get { self.activityLayer.cellStyle }
+		set { self.activityLayer.cellStyle = newValue }
+	}
+
+	/// The layout style for the grid
+	@objc public var layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle {
+		get { self.activityLayer.layoutStyle }
+		set { self.activityLayer.layoutStyle = newValue }
+	}
+
 	/// The color scheme to use when drawing the cells
 	@objc public var colorScheme: DSFSparkline.ValueBasedFill {
-		get { self.activityLayer.colorScheme }
-		set { self.activityLayer.colorScheme = newValue }
+		get { self.activityLayer.cellStyle.fillStyle }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(fillStyle: newValue) }
 	}
 
 	/// The number of vertical cells in a column
@@ -78,23 +90,23 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 
 	/// The dimension of each cell
 	@objc public var cellDimension: CGFloat {
-		get { self.activityLayer.cellDimension }
-		set { self.activityLayer.cellDimension = newValue }
+		get { self.activityLayer.cellStyle.cellDimension }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(cellDimension: newValue) }
 	}
 
 	/// The spacing between each of the cells
 	@objc public var cellSpacing: CGFloat {
-		get { self.activityLayer.cellSpacing }
-		set { self.activityLayer.cellSpacing = newValue }
+		get { self.activityLayer.cellStyle.cellSpacing }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(cellSpacing: newValue) }
 	}
 
 	/// The border color for each individual cell
 	@objc public var cellBorderColor: DSFColor? {
 		get {
-			guard let c = self.activityLayer.cellBorderColor else { return nil }
+			guard let c = self.activityLayer.cellStyle.borderColor else { return nil }
 			return DSFColor(cgColor: c)
 		}
-		set { self.activityLayer.cellBorderColor = newValue?.cgColor }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(borderColor: newValue?.cgColor) }
 	}
 
 	/// Initializer

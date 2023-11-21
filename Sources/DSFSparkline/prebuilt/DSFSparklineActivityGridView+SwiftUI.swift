@@ -36,38 +36,30 @@ public extension DSFSparklineActivityGridView {
 	/// The SwiftUI percent bar graph
 	struct SwiftUI {
 		let values: [Double]
-		let verticalCellCount: UInt?
-		let cellDimension: Double?
-		let cellSpacing: Double?
 		let range: ClosedRange<Double>?
-		let colorScheme: DSFSparkline.ValueBasedFill?
-		let cellBorderColor: DSFColor?
+		let verticalCellCount: UInt?
+		let cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle
+		let layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle
 
 		/// Create an Activity Grid
 		/// - Parameters:
 		///   - values: The values to display
-		///   - verticalCellCount: The number of vertical cells
-		///   - cellDimension: Each cell's dimension
-		///   - cellSpacing: The spacing between each cell
 		///   - range: The allowable upper/lower bounds for the input values
-		///   - colors: The color scheme to use
-		///   - cellBorderColor: The color for drawing the border of each cell
+		///   - verticalCellCount: The number of vertical cells
+		///   - cellStyle: The stying to apply to each cell
+		///   - layoutStyle: The style for drawing the activity grid
 		public init(
 			values: [Double],
-			verticalCellCount: UInt? = nil,
-			cellDimension: Double? = nil,
-			cellSpacing: Double? = nil,
 			range: ClosedRange<Double>? = nil,
-			colorScheme: DSFSparkline.ValueBasedFill? = nil,
-			cellBorderColor: DSFColor? = nil
+			verticalCellCount: UInt? = nil,
+			cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle = .init(),
+			layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle = .github
 		) {
 			self.values = values
-			self.verticalCellCount = verticalCellCount
-			self.cellDimension = cellDimension
-			self.cellSpacing = cellSpacing
 			self.range = range
-			self.colorScheme = colorScheme
-			self.cellBorderColor = cellBorderColor
+			self.verticalCellCount = verticalCellCount
+			self.cellStyle = cellStyle
+			self.layoutStyle = layoutStyle
 		}
 	}
 }
@@ -156,10 +148,8 @@ public extension DSFSparklineActivityGridView.SwiftUI {
 			view.setValues(v)
 		}
 
-		if let c = self.colorScheme { view.colorScheme = c }
-		if let d = self.cellDimension { view.cellDimension = CGFloat(d) }
-		if let s = self.cellSpacing { view.cellSpacing = CGFloat(s) }
-		view.cellBorderColor = self.cellBorderColor
+		view.cellStyle = self.cellStyle
+		view.layoutStyle = self.layoutStyle
 	}
 }
 
