@@ -98,6 +98,7 @@ extension DSFView {
 	@objc func retinaScale() -> CGFloat {
 		return self.window?.screen?.backingScaleFactor ?? 1.0
 	}
+	func setNeedsDisplay() { self.needsDisplay = true }
 	#else
 	@objc func retinaScale() -> CGFloat {
 		return self.window?.screen.scale ?? 1.0

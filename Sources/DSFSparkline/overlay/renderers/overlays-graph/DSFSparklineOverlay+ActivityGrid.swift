@@ -21,7 +21,6 @@
 //
 
 import Foundation
-import QuartzCore
 
 #if os(macOS)
 import AppKit
@@ -33,69 +32,33 @@ public extension DSFSparklineOverlay {
 	/// A GitHub-style activity grid.
 	@objc(DSFSparklineOverlayActivityGrid) class ActivityGrid: DSFSparklineOverlay.StaticDataSource {
 		/// The number of vertical cells in a column
-		@objc public var verticalCellCount: Int = 7 {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
+		@objc @LayerInvalidating(.display) public var verticalCellCount: Int = 7
+
+		/// The number of horizontal cells in the grid.
+		///
+		/// If `horizontalCellCount` == 0, cells will be added to fill the entire width of the view
+		@objc @LayerInvalidating(.display) public var horizontalCellCount: Int = 0
 
 		/// The cell's drawing style
-		@objc public var cellStyle: CellStyle = CellStyle() {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
+		@objc @LayerInvalidating(.display) public var cellStyle: CellStyle = CellStyle()
 
 		/// The layout style for the grid
-		@objc public var layoutStyle: LayoutStyle = .github {
-			didSet {
-				self.setNeedsDisplay()
-			}
-		}
+		@objc @LayerInvalidating(.display) public var layoutStyle: LayoutStyle = .github
 
+		/// Called when the content of the data source changes
 		override func staticDataSourceDidChange() {
 			super.staticDataSourceDidChange()
 			self.setNeedsDisplay()
 		}
 
-		/// The expected height given the current settings
-		@objc public var intrinsicHeight: CGFloat {
-			return (CGFloat(self.verticalCellCount) * (self.cellStyle.cellDimension + self.cellStyle.cellSpacing)) + self.cellStyle.cellSpacing
-		}
-
-		/// Minimum width for displaying the current values without padding
-		@objc public var intrinsicWidth: CGFloat {
-			var columnCount = self.dataSource.values.count / self.verticalCellCount
-			if (self.dataSource.values.count % self.verticalCellCount) > 0 {
-				columnCount += 1
-			}
-			return (CGFloat(columnCount) * (self.cellStyle.cellDimension + self.cellStyle.cellSpacing)) + self.cellStyle.cellSpacing
-		}
-
-		/// Returns the index within the datasource of the value at the given point
-		/// - Parameter point: The point within the activity graph to test
-		/// - Returns: The data source index for the point, or -1 if
-		///            1. no cell was hit, or
-		///            2. the cell hit was outside of bounds of the data source
-		@objc public func indexAtPoint(_ point: CGPoint) -> Int {
-			self.cells.firstIndex { $0.contains(point) } ?? -1
-		}
-
-		/// Return the cell frame for the given index
-		/// - Parameter index: The index
-		/// - Returns: The cell bounds for the given index
-		@objc public func cellFrame(for index: Int) -> CGRect {
-			assert(index < self.cells.count)
-			return self.cells[index]
-		}
-
+		/// Draws the graph
 		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.cells.removeAll()
-			if self.layoutStyle == .defrag {
-				self.drawDefragStyle(context: context, bounds: bounds, scale: scale)
-			}
-			else {
+			switch self.layoutStyle {
+			case .github:
 				self.drawGithubStyle(context: context, bounds: bounds, scale: scale)
+			case .defrag:
+				self.drawDefragStyle(context: context, bounds: bounds, scale: scale)
 			}
 		}
 
@@ -123,38 +86,74 @@ public extension DSFSparklineOverlay {
 	}
 }
 
+public extension DSFSparklineOverlay.ActivityGrid {
+	/// Returns the index within the datasource of the value at the given point
+	/// - Parameter point: The point within the activity graph to test
+	/// - Returns: The data source index for the point, or -1 if
+	///            1. no cell was hit, or
+	///            2. the cell hit was outside of bounds of the data source
+	@objc func indexAtPoint(_ point: CGPoint) -> Int {
+		self.cells.firstIndex { $0.contains(point) } ?? -1
+	}
+
+	/// Return the cell frame for the given index
+	/// - Parameter index: The index
+	/// - Returns: The cell bounds for the given index
+	@objc func cellFrame(for index: Int) -> CGRect {
+		if index < self.cells.count {
+			return self.cells[index]
+		}
+
+		// If we get here, the indexed cell was not visible on screen
+		return .zero
+	}
+}
+
+extension DSFSparklineOverlay.ActivityGrid {
+	/// The expected height given the current settings
+	@objc public var intrinsicHeight: CGFloat {
+		if verticalCellCount <= 0 {
+			return DSFView.noIntrinsicMetric
+		}
+		return (CGFloat(self.verticalCellCount) * (self.cellStyle.cellDimension + self.cellStyle.cellSpacing)) + self.cellStyle.cellSpacing
+	}
+
+	/// Minimum width for displaying the current values without padding
+	@objc public var intrinsicWidth: CGFloat {
+		if horizontalCellCount <= 0 {
+			if verticalCellCount <= 0 {
+				return DSFView.noIntrinsicMetric
+			}
+			var columnCount = self.dataSource.values.count / self.verticalCellCount
+			if (self.dataSource.values.count % self.verticalCellCount) > 0 {
+				columnCount += 1
+			}
+			return (CGFloat(columnCount) * (self.cellStyle.cellDimension + self.cellStyle.cellSpacing)) + self.cellStyle.cellSpacing
+		}
+		else {
+			// Fixed horizontal count
+			return (CGFloat(horizontalCellCount) * (self.cellStyle.cellDimension + self.cellStyle.cellSpacing)) + self.cellStyle.cellSpacing
+		}
+	}
+
+	/// Intrinsic size for the grid
+	@inlinable var intrinsicSize: CGSize { CGSize(width: self.intrinsicWidth, height: self.intrinsicHeight) }
+}
+
 extension DSFSparklineOverlay.ActivityGrid {
 	private func drawGithubStyle(context: CGContext, bounds: CGRect, scale: CGFloat) {
-		var xOffset = bounds.width - self.cellStyle.cellSpacing - self.cellStyle.cellDimension
-
+		let style = self.cellStyle
+		var xOffset = bounds.width - style.cellSpacing - style.cellDimension
 		var dataOffset = 0
 		while xOffset > 0 {
 			(0 ..< verticalCellCount).reversed().forEach { index in
-				let fracValue = self.dataSource.fractionalValue(at: dataOffset) ?? 0.0
-
-				let color = self.cellStyle.fillStyle.color(atFraction: fracValue)
-
 				let cell = CGRect(
 					x: xOffset,
-					y: CGFloat(index) * (self.cellStyle.cellDimension + self.cellStyle.cellSpacing) + self.cellStyle.cellSpacing,
-					width: self.cellStyle.cellDimension,
-					height: self.cellStyle.cellDimension
+					y: CGFloat(index) * (style.cellDimension + style.cellSpacing) + style.cellSpacing,
+					width: style.cellDimension,
+					height: style.cellDimension
 				)
-				context.addPath(CGPath(roundedRect: cell, cornerWidth: 2.5, cornerHeight: 2.5, transform: nil))
-				context.setFillColor(color)
-				context.fillPath()
-
-				cells.append(cell)
-
-				if let c = self.cellStyle.borderColor {
-					let ins = cell.insetBy(dx: 0.25, dy: 0.25)
-					context.addPath(CGPath(roundedRect: ins, cornerWidth: 2, cornerHeight: 2, transform: nil))
-					context.setFillColor(.clear)
-					context.setStrokeColor(c)
-					context.setLineWidth(0.5)
-					context.strokePath()
-				}
-
+				self.drawCell(context: context, inRect: cell, index: dataOffset)
 				dataOffset += 1
 			}
 			xOffset -= (self.cellStyle.cellDimension + self.cellStyle.cellSpacing)
@@ -164,35 +163,63 @@ extension DSFSparklineOverlay.ActivityGrid {
 	private func drawDefragStyle(context: CGContext, bounds: CGRect, scale: CGFloat) {
 		var dataOffset = 0
 		var yOffset = self.cellStyle.cellSpacing
-		var xOffset = self.cellStyle.cellSpacing
+		let style = self.cellStyle
+		let sp = Int((bounds.width - style.cellSpacing) / (style.cellSpacing + style.cellDimension))
+		let horizontalCellCount = self.horizontalCellCount == 0 ? sp : self.horizontalCellCount
 
-		while yOffset <= (bounds.height - self.cellStyle.cellSpacing - self.cellStyle.cellDimension) {
-			while xOffset <= (bounds.width - self.cellStyle.cellSpacing - self.cellStyle.cellDimension) {
-				let fracValue = self.dataSource.fractionalValue(at: dataOffset) ?? 0.0
-				let color = self.cellStyle.fillStyle.color(atFraction: fracValue)
+		var xOffset = 0
+		while yOffset <= (bounds.height - style.cellSpacing - style.cellDimension) {
+			while xOffset < horizontalCellCount {
+				let cell = CGRect(
+					x: style.cellSpacing + (CGFloat(xOffset) * (style.cellSpacing + style.cellDimension)),
+					y: yOffset,
+					width: style.cellDimension,
+					height: style.cellDimension
+				)
+				self.drawCell(context: context, inRect: cell, index: dataOffset)
 
-				let cell = CGRect(x: xOffset, y: yOffset, width: self.cellStyle.cellDimension, height: self.cellStyle.cellDimension)
-				context.addPath(CGPath(roundedRect: cell, cornerWidth: 2.5, cornerHeight: 2.5, transform: nil))
-				context.setFillColor(color)
-				context.fillPath()
-
-				cells.append(cell)
-
-				if let c = self.cellStyle.borderColor {
-					let ins = cell.insetBy(dx: 0.25, dy: 0.25)
-					context.addPath(CGPath(roundedRect: ins, cornerWidth: 2, cornerHeight: 2, transform: nil))
-					context.setFillColor(.clear)
-					context.setStrokeColor(c)
-					context.setLineWidth(0.5)
-					context.strokePath()
-				}
-
-				xOffset += self.cellStyle.cellDimension + self.cellStyle.cellSpacing
-
+				xOffset += 1
 				dataOffset += 1
 			}
-			xOffset = self.cellStyle.cellSpacing
+			xOffset = 0
 			yOffset += self.cellStyle.cellDimension + self.cellStyle.cellSpacing
+		}
+	}
+}
+
+private extension DSFSparklineOverlay.ActivityGrid {
+	func drawCell(context: CGContext, inRect cell: CGRect, index: Int) {
+		let style = self.cellStyle
+		let fracValue = self.dataSource.fractionalValue(at: index) ?? 0.0
+
+		let color = style.fillStyle.color(atFraction: fracValue)
+
+		context.addPath(
+			CGPath(
+				roundedRect: cell,
+				cornerWidth: style.cornerRadius,
+				cornerHeight: style.cornerRadius,
+				transform: nil
+			)
+		)
+		context.setFillColor(color)
+		context.fillPath()
+
+		cells.append(cell)
+
+		if let c = self.cellStyle.borderColor {
+			context.addPath(
+				CGPath(
+					roundedRect: cell,
+					cornerWidth: style.cornerRadius,
+					cornerHeight: style.cornerRadius,
+					transform: nil
+				)
+			)
+			context.setFillColor(.clear)
+			context.setStrokeColor(c)
+			context.setLineWidth(style.borderWidth)
+			context.strokePath()
 		}
 	}
 }
@@ -215,18 +242,21 @@ public extension DSFSparklineOverlay.ActivityGrid {
 		@objc public let borderWidth: CGFloat
 		@objc public let cellDimension: CGFloat
 		@objc public let cellSpacing: CGFloat
+		@objc public let cornerRadius: CGFloat
 		@objc public init(
 			fillStyle: DSFSparkline.ValueBasedFill,
 			borderColor: CGColor? = nil,
 			borderWidth: CGFloat = 1.0,
 			cellDimension: CGFloat = 11.0,
-			cellSpacing: CGFloat = 2.5
+			cellSpacing: CGFloat = 2.5,
+			cornerRadius: CGFloat = 2.5
 		) {
 			self.fillStyle = fillStyle
 			self.borderColor = borderColor
 			self.borderWidth = borderWidth
 			self.cellDimension = cellDimension
 			self.cellSpacing = cellSpacing
+			self.cornerRadius = cornerRadius
 			super.init()
 		}
 
@@ -236,25 +266,28 @@ public extension DSFSparklineOverlay.ActivityGrid {
 		}
 
 		/// Return a copy of this cell style changing the specified attribute values
-		func copy(
+		public func modify(
 			fillStyle: DSFSparkline.ValueBasedFill? = nil,
 			borderColor: CGColor? = nil,
 			borderWidth: CGFloat? = nil,
 			cellDimension: CGFloat? = nil,
-			cellSpacing: CGFloat? = nil
+			cellSpacing: CGFloat? = nil,
+			cornerRadius: CGFloat? = nil
 		) -> CellStyle {
 			let fs = fillStyle ?? self.fillStyle
 			let bc = borderColor ?? self.borderColor
 			let bw = borderWidth ?? self.borderWidth
 			let cd = cellDimension ?? self.cellDimension
 			let cs = cellSpacing ?? self.cellSpacing
+			let cr = cornerRadius ?? self.cornerRadius
 
 			return CellStyle(
 				fillStyle: fs,
 				borderColor: bc,
 				borderWidth: bw,
 				cellDimension: cd,
-				cellSpacing: cs
+				cellSpacing: cs,
+				cornerRadius: cr
 			)
 		}
 	}

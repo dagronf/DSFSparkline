@@ -39,6 +39,16 @@ struct ActivityGridView: View {
 		fillStyle: DSFSparkline.ValueBasedFill(palette: ActivityGridView.DefaultDark)
 	)
 
+	let gradient = DSFSparkline.GradientBucket(
+		colors: [
+			CGColor(srgbRed: 0, green: 0, blue: 1, alpha: 1),
+			CGColor(srgbRed: 1, green: 1, blue: 0, alpha: 1),
+			CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1),
+		]
+	)
+
+	let SmallerFullRange: [Double] = (0 ... 1000).map { _ in Double.random(in: 0 ... 1) }
+
 	@State var isLightMode: Bool = false
 
 	var body: some View {
@@ -67,7 +77,69 @@ struct ActivityGridView: View {
 			)
 			.border(.red)
 
-			EmptyView()
+			Divider()
+				.frame(maxWidth: .infinity)
+
+			VStack {
+				Text("Fixed row/column").font(.title3)
+				HStack {
+
+					DSFSparklineActivityGridView.SwiftUI(
+						values: inputData,
+						range: 0 ... 1,
+						verticalCellCount: 10,
+						horizontalCellCount: 7,
+						layoutStyle: .defrag,
+						fillStyle: isLightMode ? .init(palette: ActivityGridView.DefaultLight) : .init(palette: ActivityGridView.DefaultDark),
+						borderColor: isLightMode ? .black.copy(alpha: 0.2) : .white.copy(alpha: 0.2),
+						borderWidth: 0.5
+					)
+					.border(.red)
+					DSFSparklineActivityGridView.SwiftUI(
+						values: inputData,
+						range: 0 ... 1,
+						verticalCellCount: 10,
+						horizontalCellCount: 7,
+						layoutStyle: .github,
+						fillStyle: isLightMode ? .init(palette: ActivityGridView.DefaultLight) : .init(palette: ActivityGridView.DefaultDark),
+						borderColor: isLightMode ? .black.copy(alpha: 0.2) : .white.copy(alpha: 0.2),
+						borderWidth: 0.5
+					)
+					.border(.green)
+
+					DSFSparklineActivityGridView.SwiftUI(
+						values: SmallerFullRange,
+						range: 0 ... 1,
+						verticalCellCount: 7,
+						horizontalCellCount: 10,
+						cellStyle: .init(fillStyle: .init(gradient: gradient), cellDimension: 6, cellSpacing: 3),
+						layoutStyle: .defrag
+					)
+					.border(.blue)
+					DSFSparklineActivityGridView.SwiftUI(
+						values: SmallerFullRange,
+						range: 0 ... 1,
+						verticalCellCount: 7,
+						horizontalCellCount: 10,
+						cellStyle: .init(fillStyle: .init(gradient: gradient), cellDimension: 15, cellSpacing: 1),
+						layoutStyle: .github
+					)
+					.border(.yellow)
+				}
+			}
+
+			Text("Fixed row/column").font(.title3)
+			ZStack {
+				DSFSparklineActivityGridView.SwiftUI(
+					values: SmallerFullRange,
+					range: 0 ... 1,
+					verticalCellCount: 0,
+					horizontalCellCount: 0,
+					cellStyle: .init(fillStyle: .init(gradient: gradient)),
+					layoutStyle: .github
+				)
+				.frame(maxWidth: .infinity, maxHeight: .infinity)
+			}
 		}
 		.padding()
 	}
@@ -76,5 +148,6 @@ struct ActivityGridView: View {
 struct ActivityGridView_Previews: PreviewProvider {
 	static var previews: some View {
 		ActivityGridView()
+			.frame(height: 1000)
 	}
 }

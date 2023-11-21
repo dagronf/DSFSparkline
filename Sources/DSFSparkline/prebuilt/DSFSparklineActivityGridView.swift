@@ -79,7 +79,7 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 	/// The color scheme to use when drawing the cells
 	@objc public var colorScheme: DSFSparkline.ValueBasedFill {
 		get { self.activityLayer.cellStyle.fillStyle }
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(fillStyle: newValue) }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(fillStyle: newValue) }
 	}
 
 	/// The number of vertical cells in a column
@@ -88,16 +88,22 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 		set { self.activityLayer.verticalCellCount = Int(newValue) }
 	}
 
+	/// The number of horizontal cells in a column.
+	@objc public var horizontalCellCount: UInt {
+		get { UInt(self.activityLayer.horizontalCellCount) }
+		set { self.activityLayer.horizontalCellCount = Int(newValue) }
+	}
+
 	/// The dimension of each cell
 	@objc public var cellDimension: CGFloat {
 		get { self.activityLayer.cellStyle.cellDimension }
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(cellDimension: newValue) }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(cellDimension: newValue) }
 	}
 
 	/// The spacing between each of the cells
 	@objc public var cellSpacing: CGFloat {
 		get { self.activityLayer.cellStyle.cellSpacing }
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(cellSpacing: newValue) }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(cellSpacing: newValue) }
 	}
 
 	/// The border color for each individual cell
@@ -106,7 +112,7 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 			guard let c = self.activityLayer.cellStyle.borderColor else { return nil }
 			return DSFColor(cgColor: c)
 		}
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.copy(borderColor: newValue?.cgColor) }
+		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(borderColor: newValue?.cgColor) }
 	}
 
 	/// Initializer
@@ -130,17 +136,13 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 		super.layout()
 		self.activityLayer.frame = self.bounds
 	}
-	public override var intrinsicContentSize: NSSize {
-		NSSize(width: NSView.noIntrinsicMetric, height: self.activityLayer.intrinsicHeight)
-	}
+	public override var intrinsicContentSize: NSSize { self.activityLayer.intrinsicSize }
 	#else
 	public override func layoutSubviews() {
 		super.layoutSubviews()
 		self.activityLayer.frame = self.bounds
 	}
-	public override var intrinsicContentSize: CGSize {
-		CGSize(width: UIView.noIntrinsicMetric, height: self.activityLayer.intrinsicHeight)
-	}
+	public override var intrinsicContentSize: CGSize { self.activityLayer.intrinsicSize }
 	#endif
 
 	// private

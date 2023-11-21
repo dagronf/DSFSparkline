@@ -38,6 +38,7 @@ public extension DSFSparklineActivityGridView {
 		let values: [Double]
 		let range: ClosedRange<Double>?
 		let verticalCellCount: UInt?
+		let horizontalCellCount: UInt
 		let cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle
 		let layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle
 
@@ -52,14 +53,57 @@ public extension DSFSparklineActivityGridView {
 			values: [Double],
 			range: ClosedRange<Double>? = nil,
 			verticalCellCount: UInt? = nil,
+			horizontalCellCount: UInt = 0,
 			cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle = .init(),
 			layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle = .github
 		) {
 			self.values = values
 			self.range = range
 			self.verticalCellCount = verticalCellCount
+			self.horizontalCellCount = horizontalCellCount
 			self.cellStyle = cellStyle
 			self.layoutStyle = layoutStyle
+		}
+
+		/// Create an Activity Grid
+		/// - Parameters:
+		///   - values: The values to display
+		///   - range: The allowable upper/lower bounds for the input values
+		///   - verticalCellCount: The number of vertical cells, or 0 to fill vertically
+		///   - horizontalCellCount: The number of horizontal cells, or 0 to fill horizontally
+		///   - layoutStyle: The style for drawing the activity grid
+		///   - fillStyle: The fill mechanism
+		///   - borderColor: Cell border color
+		///   - borderWidth: Cell border width
+		///   - cellDimension: Cell dimension (cells are always square)
+		///   - cellSpacing: The spacing between cells
+		///   - cornerRadius: Cell corner radius
+		public init(
+			values: [Double],
+			range: ClosedRange<Double>? = nil,
+			verticalCellCount: UInt? = nil,
+			horizontalCellCount: UInt = 0,
+			layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle = .github,
+			fillStyle: DSFSparkline.ValueBasedFill,
+			borderColor: CGColor? = nil,
+			borderWidth: CGFloat = 1,
+			cellDimension: CGFloat = 11,
+			cellSpacing: CGFloat = 2.5,
+			cornerRadius: CGFloat = 2.5
+		) {
+			self.values = values
+			self.range = range
+			self.verticalCellCount = verticalCellCount
+			self.horizontalCellCount = horizontalCellCount
+			self.layoutStyle = layoutStyle
+			self.cellStyle = DSFSparklineOverlay.ActivityGrid.CellStyle(
+				fillStyle: fillStyle,
+				borderColor: borderColor,
+				borderWidth: borderWidth,
+				cellDimension: cellDimension,
+				cellSpacing: cellSpacing,
+				cornerRadius: cornerRadius
+			)
 		}
 	}
 }
@@ -92,18 +136,14 @@ extension DSFSparklineActivityGridView.SwiftUI: DSFViewRepresentable {
 	#if os(macOS)
 	@available(macOS 13.0, *)
 	public func sizeThatFits(_ proposal: ProposedViewSize, nsView: DSFSparklineActivityGridView, context: Context) -> CGSize? {
-		return CGSize(
-			width: proposal.width ?? nsView.activityLayer.intrinsicWidth,
-			height: nsView.intrinsicContentSize.height
-		)
+		let w = (nsView.horizontalCellCount == 0) ? (proposal.width ?? nsView.activityLayer.intrinsicWidth) : nsView.activityLayer.intrinsicWidth
+		return CGSize(width: w, height: nsView.intrinsicContentSize.height)
 	}
 	#else
 	@available(iOS 16.0, tvOS 16.0, *)
 	public func sizeThatFits(_ proposal: ProposedViewSize, uiView: DSFSparklineActivityGridView, context: Context) -> CGSize? {
-		return CGSize(
-			width: proposal.width ?? uiView.activityLayer.intrinsicWidth,
-			height: uiView.intrinsicContentSize.height
-		)
+		let w = (uiView.horizontalCellCount == 0) ? (proposal.width ?? uiView.activityLayer.intrinsicWidth) : uiView.activityLayer.intrinsicWidth
+		return CGSize(width: w, height: uiView.intrinsicContentSize.height)
 	}
 	#endif
 }
@@ -141,6 +181,7 @@ public extension DSFSparklineActivityGridView.SwiftUI {
 	func updateView(_ view: DSFSparklineActivityGridView) {
 		let v = self.values.map { CGFloat($0) }
 		if let vh = self.verticalCellCount { view.verticalCellCount = vh }
+		view.horizontalCellCount = self.horizontalCellCount
 		if let range = self.range {
 			view.setValues(v, range: CGFloat(range.lowerBound) ... CGFloat(range.upperBound))
 		}
