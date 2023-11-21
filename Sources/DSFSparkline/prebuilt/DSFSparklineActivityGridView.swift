@@ -76,12 +76,6 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 		set { self.activityLayer.layoutStyle = newValue }
 	}
 
-	/// The color scheme to use when drawing the cells
-	@objc public var colorScheme: DSFSparkline.ValueBasedFill {
-		get { self.activityLayer.cellStyle.fillStyle }
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(fillStyle: newValue) }
-	}
-
 	/// The number of vertical cells in a column
 	@objc public var verticalCellCount: UInt {
 		get { UInt(self.activityLayer.verticalCellCount) }
@@ -94,25 +88,43 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 		set { self.activityLayer.horizontalCellCount = Int(newValue) }
 	}
 
+	/// The color scheme to use when filling cells
+	@objc public var cellFillScheme: DSFSparkline.ValueBasedFill {
+		get { self.activityLayer.cellFillScheme }
+		set { self.activityLayer.cellFillScheme = newValue }
+	}
+
 	/// The dimension of each cell
 	@objc public var cellDimension: CGFloat {
-		get { self.activityLayer.cellStyle.cellDimension }
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(cellDimension: newValue) }
+		get { self.activityLayer.cellDimension }
+		set { self.activityLayer.cellDimension = newValue }
 	}
 
 	/// The spacing between each of the cells
 	@objc public var cellSpacing: CGFloat {
-		get { self.activityLayer.cellStyle.cellSpacing }
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(cellSpacing: newValue) }
+		get { self.activityLayer.cellSpacing }
+		set { self.activityLayer.cellSpacing = newValue }
 	}
 
 	/// The border color for each individual cell
 	@objc public var cellBorderColor: DSFColor? {
 		get {
-			guard let c = self.activityLayer.cellStyle.borderColor else { return nil }
-			return DSFColor(cgColor: c)
+			if let c = self.activityLayer.borderColor { return DSFColor(cgColor: c) }
+			return nil
 		}
-		set { self.activityLayer.cellStyle = self.activityLayer.cellStyle.modify(borderColor: newValue?.cgColor) }
+		set { self.activityLayer.cellBorderColor = newValue?.cgColor }
+	}
+
+	/// The cell's border width
+	@objc public var cellBorderWidth: CGFloat {
+		get { self.activityLayer.borderWidth }
+		set { self.activityLayer.borderWidth = newValue }
+	}
+
+	/// The cell's corner radius
+	@objc public var cellCornerRadius: CGFloat {
+		get { self.activityLayer.cellCornerRadius }
+		set { self.activityLayer.cellCornerRadius = newValue }
 	}
 
 	/// Initializer

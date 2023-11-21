@@ -84,7 +84,7 @@ public extension DSFSparklineActivityGridView {
 			verticalCellCount: UInt? = nil,
 			horizontalCellCount: UInt = 0,
 			layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle = .github,
-			fillStyle: DSFSparkline.ValueBasedFill,
+			fillScheme: DSFSparkline.ValueBasedFill,
 			borderColor: CGColor? = nil,
 			borderWidth: CGFloat = 1,
 			cellDimension: CGFloat = 11,
@@ -97,7 +97,7 @@ public extension DSFSparklineActivityGridView {
 			self.horizontalCellCount = horizontalCellCount
 			self.layoutStyle = layoutStyle
 			self.cellStyle = DSFSparklineOverlay.ActivityGrid.CellStyle(
-				fillStyle: fillStyle,
+				fillScheme: fillScheme,
 				borderColor: borderColor,
 				borderWidth: borderWidth,
 				cellDimension: cellDimension,

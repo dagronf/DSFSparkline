@@ -39,11 +39,53 @@ public extension DSFSparklineOverlay {
 		/// If `horizontalCellCount` == 0, cells will be added to fill the entire width of the view
 		@objc @LayerInvalidating(.display) public var horizontalCellCount: Int = 0
 
+		/// The layout style for the grid
+		@objc @LayerInvalidating(.display) public var layoutStyle: LayoutStyle = .github
+
+		// MARK: Cell style
+
 		/// The cell's drawing style
 		@objc @LayerInvalidating(.display) public var cellStyle: CellStyle = CellStyle()
 
-		/// The layout style for the grid
-		@objc @LayerInvalidating(.display) public var layoutStyle: LayoutStyle = .github
+		// MARK: Individual cell style setters/getters
+
+		/// The color scheme to use when fill cells
+		@objc public var cellFillScheme: DSFSparkline.ValueBasedFill {
+			get { self.cellStyle.fillScheme }
+			set { self.cellStyle = self.cellStyle.modify(fillScheme: newValue) }
+		}
+
+		/// The dimension of each cell
+		@objc public var cellDimension: CGFloat {
+			get { self.cellStyle.cellDimension }
+			set { self.cellStyle = self.cellStyle.modify(cellDimension: newValue) }
+		}
+
+		/// The spacing between each of the cells
+		@objc public var cellSpacing: CGFloat {
+			get { self.cellStyle.cellSpacing }
+			set { self.cellStyle = self.cellStyle.modify(cellSpacing: newValue) }
+		}
+
+		/// The color for the border of the cell
+		@objc public var cellBorderColor: CGColor? {
+			get { self.cellStyle.borderColor }
+			set { self.cellStyle = self.cellStyle.modify(borderColor: newValue) }
+		}
+
+		/// The cell's border width
+		@objc public var cellBorderWidth: CGFloat {
+			get { self.cellStyle.borderWidth }
+			set { self.cellStyle = self.cellStyle.modify(borderWidth: newValue) }
+		}
+
+		/// The cell's corner radius
+		@objc public var cellCornerRadius: CGFloat {
+			get { self.cellStyle.cornerRadius }
+			set { self.cellStyle = self.cellStyle.modify(cornerRadius: newValue) }
+		}
+
+		// MARK: Drawing and updates
 
 		/// Called when the content of the data source changes
 		override func staticDataSourceDidChange() {
@@ -62,27 +104,26 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		// private
+		// MARK: Private
+
 		private var cells: [CGRect] = []
 
 		/// A default palette used when no palette is specified.
-		static let DefaultLight = DSFSparkline.Palette([
-			DSFColor(red: 0.920, green: 0.930, blue: 0.942, alpha: 1.000),
+		public static let DefaultLight = DSFSparkline.ValueBasedFill(colors: [
+			DSFColor(red: 0.820, green: 0.830, blue: 0.842, alpha: 1.000),
 			DSFColor(red: 0.606, green: 0.914, blue: 0.657, alpha: 1.000),
 			DSFColor(red: 0.248, green: 0.768, blue: 0.387, alpha: 1.000),
 			DSFColor(red: 0.190, green: 0.633, blue: 0.306, alpha: 1.000),
 			DSFColor(red: 0.132, green: 0.432, blue: 0.222, alpha: 1.000),
 		])
 
-		static let DefaultDark = DSFSparkline.Palette([
+		public static let DefaultDark = DSFSparkline.ValueBasedFill(colors: [
 			DSFColor(red: 0.086, green: 0.106, blue: 0.132, alpha: 1.000),
 			DSFColor(red: 0.055, green: 0.269, blue: 0.159, alpha: 1.000),
 			DSFColor(red: 0.000, green: 0.429, blue: 0.194, alpha: 1.000),
 			DSFColor(red: 0.148, green: 0.649, blue: 0.257, alpha: 1.000),
 			DSFColor(red: 0.219, green: 0.829, blue: 0.323, alpha: 1.000),
 		])
-
-		static let DefaultFill = DSFSparkline.ValueBasedFill(palette: ActivityGrid.DefaultDark)
 	}
 }
 
@@ -137,7 +178,7 @@ extension DSFSparklineOverlay.ActivityGrid {
 	}
 
 	/// Intrinsic size for the grid
-	@inlinable var intrinsicSize: CGSize { CGSize(width: self.intrinsicWidth, height: self.intrinsicHeight) }
+	var intrinsicSize: CGSize { CGSize(width: self.intrinsicWidth, height: self.intrinsicHeight) }
 }
 
 extension DSFSparklineOverlay.ActivityGrid {
@@ -192,7 +233,7 @@ private extension DSFSparklineOverlay.ActivityGrid {
 		let style = self.cellStyle
 		let fracValue = self.dataSource.fractionalValue(at: index) ?? 0.0
 
-		let color = style.fillStyle.color(atFraction: fracValue)
+		let color = style.fillScheme.color(atFraction: fracValue)
 
 		context.addPath(
 			CGPath(
@@ -237,21 +278,21 @@ public extension DSFSparklineOverlay.ActivityGrid {
 	/// The style for drawing cells in the activity grid
 	@objc(DSFSparklineOverlayActivityGridCellStyle) 
 	class CellStyle: NSObject {
-		@objc public let fillStyle: DSFSparkline.ValueBasedFill
+		@objc public let fillScheme: DSFSparkline.ValueBasedFill
 		@objc public let borderColor: CGColor?
 		@objc public let borderWidth: CGFloat
 		@objc public let cellDimension: CGFloat
 		@objc public let cellSpacing: CGFloat
 		@objc public let cornerRadius: CGFloat
 		@objc public init(
-			fillStyle: DSFSparkline.ValueBasedFill,
+			fillScheme: DSFSparkline.ValueBasedFill,
 			borderColor: CGColor? = nil,
 			borderWidth: CGFloat = 1.0,
 			cellDimension: CGFloat = 11.0,
 			cellSpacing: CGFloat = 2.5,
 			cornerRadius: CGFloat = 2.5
 		) {
-			self.fillStyle = fillStyle
+			self.fillScheme = fillScheme
 			self.borderColor = borderColor
 			self.borderWidth = borderWidth
 			self.cellDimension = cellDimension
@@ -262,19 +303,19 @@ public extension DSFSparklineOverlay.ActivityGrid {
 
 		/// Default style - dark github
 		@objc public convenience override init() {
-			self.init(fillStyle: ActivityGrid.DefaultFill)
+			self.init(fillScheme: ActivityGrid.DefaultDark)
 		}
 
 		/// Return a copy of this cell style changing the specified attribute values
 		public func modify(
-			fillStyle: DSFSparkline.ValueBasedFill? = nil,
+			fillScheme: DSFSparkline.ValueBasedFill? = nil,
 			borderColor: CGColor? = nil,
 			borderWidth: CGFloat? = nil,
 			cellDimension: CGFloat? = nil,
 			cellSpacing: CGFloat? = nil,
 			cornerRadius: CGFloat? = nil
 		) -> CellStyle {
-			let fs = fillStyle ?? self.fillStyle
+			let fs = fillScheme ?? self.fillScheme
 			let bc = borderColor ?? self.borderColor
 			let bw = borderWidth ?? self.borderWidth
 			let cd = cellDimension ?? self.cellDimension
@@ -282,7 +323,7 @@ public extension DSFSparklineOverlay.ActivityGrid {
 			let cr = cornerRadius ?? self.cornerRadius
 
 			return CellStyle(
-				fillStyle: fs,
+				fillScheme: fs,
 				borderColor: bc,
 				borderWidth: bw,
 				cellDimension: cd,

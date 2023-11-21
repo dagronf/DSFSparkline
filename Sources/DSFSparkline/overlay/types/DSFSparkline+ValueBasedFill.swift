@@ -50,6 +50,13 @@ public extension DSFSparkline {
 
 		@objc public init(palette: DSFSparkline.Palette) {
 			self.palette = palette
+			super.init()
+		}
+
+		/// Create a fill object containing an array of colors
+		/// - Parameter colors: The colors
+		@objc public convenience init(colors: [DSFColor]) {
+			self.init(palette: DSFSparkline.Palette(colors))
 		}
 
 		@objc public init(gradient: DSFSparkline.GradientBucket) {

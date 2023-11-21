@@ -283,6 +283,18 @@ A simple gauge with a single value (0 ... 1). The color displayed in the gauge c
 |------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge.png" width="400">|
 
+### Activity Grid <img src="./Art/doc/activity-grid-mini.png" height="8"/>
+
+A Github-style activity grid. Each cell represents a discrete value in a progression with a color
+
+* Configurable horizontal/vertical cell count
+* Configurable fill schemes
+
+|            |            |
+|------------|------------|
+|<img src="./Art/doc/activity-grid-1.png" width="400">|<img src="./Art/doc/activity-grid-2.png" width="400">|
+
+
 # Demos
 
 You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder, providing examples for macOS (swift and objc), iO, tvOS, macCatalyst and SwiftUI.
@@ -682,6 +694,25 @@ let image = bitmap.image(width: 50, height: 25, scale: 2)
 
 </details>
 
+<details>
+  <summary>`DSFSparklineOverlay.ActivityGrid` <img src="./Art/doc/activity-grid-mini.png" width="100"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()
+let activityGrid = DSFSparklineOverlay.ActivityGrid()
+activityGrid.dataSource = DSFSparkline.StaticDataSource(values: [...])
+activityGrid.verticalCellCount = 1
+
+bitmap.addOverlay(activityGrid)
+
+// Generate an image of the wiper gauge with retina scale
+let image = bitmap.image(width: 200, height: 14, scale: 2)
+
+// Do something with 'image'
+```
+
+</details>
+
 ### Component types
 
 A component represents an overlay that isn't a graph in itself.  Examples are grid lines, zero-lines, highlights etc.  A component uses the same datasource so that it aligns with the graph it is associated with.
@@ -711,6 +742,7 @@ Every prebuilt sparkline view has a SwiftUI companion view.
 * `DSFSparklineDataBarGraphView` / `DSFSparklineDataBarGraphView.SwiftUI`
 * `DSFSparklinePercentBarGraphView` / `DSFSparklinePercentBarGraphView.SwiftUI`
 * `DSFSparklineWiperGaugeGraphView` / `DSFSparklineWiperGaugeGraphView.SwiftUI`
+* `DSFSparklineActivityGridView` / `DSFSparklineActivityGridView.SwiftUI`
 
 <details>
   <summary>Sample Swift code</summary>
@@ -954,6 +986,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `5.1.0`
+
+* Added Activity Graph
 
 ### `5.0.0`
 
