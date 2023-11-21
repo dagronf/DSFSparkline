@@ -17,7 +17,7 @@ struct TestingView: View {
 
 	/// A default palette used when no palette is specified.
 	let DefaultLight = DSFSparkline.Palette([
-		DSFColor(red: 0.920, green: 0.930, blue: 0.942, alpha: 1.000),
+		DSFColor(red: 0.820, green: 0.830, blue: 0.842, alpha: 1.000),
 		DSFColor(red: 0.606, green: 0.914, blue: 0.657, alpha: 1.000),
 		DSFColor(red: 0.248, green: 0.768, blue: 0.387, alpha: 1.000),
 		DSFColor(red: 0.190, green: 0.633, blue: 0.306, alpha: 1.000),
