@@ -7,6 +7,7 @@
 
 import Cocoa
 import DSFSparkline
+import SwiftImageReadWrite
 
 class FlippedClipView: NSClipView {
 	override var isFlipped: Bool {
@@ -140,6 +141,11 @@ class ViewController: NSViewController {
 	@IBOutlet weak var wiperGauge6: DSFSparklineWiperGaugeGraphView!
 	@IBOutlet weak var wiperGauge7: DSFSparklineWiperGaugeGraphView!
 
+	@IBOutlet weak var activityGrid1: DSFSparklineActivityGridView!
+	@IBOutlet weak var activityGrid2: DSFSparklineActivityGridView!
+
+	var bitmapMap: [String: Data] = [:]
+
 	var nameMap: [String: NSView] = [:]
 	func buildNameMap() {
 		nameMap["line-standard"] = lineStandardView
@@ -167,6 +173,8 @@ class ViewController: NSViewController {
 		nameMap["percent-bar"] = self.percentBarTotalContainerView
 		nameMap["percent-bar-2"] = self.percentBarTotalContainerView2
 		nameMap["wiper-gauge"] = self.wiperContainer
+		nameMap["activity-grid-1"] = self.activityGrid1
+		nameMap["activity-grid-2"] = self.activityGrid2
 	}
 
 	fileprivate var lineSource: DSFSparkline.DataSource = {
@@ -459,6 +467,45 @@ class ViewController: NSViewController {
 		self.stripes2.gradient = gradient2
 		self.stripes2.barSpacing = 1
 		self.stripes2.integral = true
+
+		do {
+			activityGrid1.cellFillScheme = DSFSparklineOverlay.ActivityGrid.DefaultLight
+			activityGrid1.setValues((0 ..< 1000).map { _ in CGFloat.random(in: 0 ... 1)}, range: 0 ... 1)
+
+			let palette2 = [
+				DSFColor(red: 0.706, green: 0.020, blue: 0.151, alpha: 1.0),
+				DSFColor(red: 0.845, green: 0.324, blue: 0.265, alpha: 1.0),
+				DSFColor(red: 0.932, green: 0.520, blue: 0.408, alpha: 1.0),
+				DSFColor(red: 0.970, green: 0.678, blue: 0.562, alpha: 1.0),
+				DSFColor(red: 0.949, green: 0.795, blue: 0.720, alpha: 1.0),
+				DSFColor(red: 0.867, green: 0.867, blue: 0.867, alpha: 1.0),
+				DSFColor(red: 0.752, green: 0.832, blue: 0.960, alpha: 1.0),
+				DSFColor(red: 0.621, green: 0.745, blue: 1.000, alpha: 1.0),
+				DSFColor(red: 0.484, green: 0.621, blue: 0.978, alpha: 1.0),
+				DSFColor(red: 0.352, green: 0.469, blue: 0.889, alpha: 1.0),
+				DSFColor(red: 0.230, green: 0.299, blue: 0.751, alpha: 1.0),
+			]
+
+			activityGrid2.cellFillScheme = .init(colors: palette2)
+			activityGrid2.cellDimension = 9
+			activityGrid2.verticalCellCount = 8
+			activityGrid2.cellSpacing = 3
+			activityGrid2.cellBorderColor = .black.withAlphaComponent(1)
+			activityGrid2.cellBorderWidth = 0.5
+			activityGrid2.setValues((0 ..< 1000).map { _ in CGFloat.random(in: 0 ... 1)}, range: 0 ... 1)
+
+
+			let surface = DSFSparklineSurface.Bitmap()
+			let grid = DSFSparklineOverlay.ActivityGrid()
+			grid.dataSource = DSFSparkline.StaticDataSource((0 ... 1000).map { _ in CGFloat.random(in: 0 ... 1) }, range: 0 ... 1)
+			grid.verticalCellCount = 1
+			grid.cellStyle = .init(fillScheme: DSFSparklineOverlay.ActivityGrid.DefaultLight, borderColor: .black, borderWidth: 0.5, cellDimension: 11, cellSpacing: 2.5)
+			surface.addOverlay(grid)
+
+			let img = surface.image(width: 200, height: 14, scale: 2)!
+			let pngdata = try! img.representation.png(dpi: 144)
+			bitmapMap["activity-grid-mini.png"] = pngdata
+		}
 	}
 
 	override var representedObject: Any? {
@@ -505,6 +552,16 @@ class ViewController: NSViewController {
 
 			do {
 				try pngData.write(to: outputFile)
+			}
+			catch {
+				Swift.print("\(error)")
+			}
+		}
+
+		self.bitmapMap.forEach { (name: String, value: Data) in
+			let outputFile = path.appendingPathComponent(name)
+			do {
+				try value.write(to: outputFile)
 			}
 			catch {
 				Swift.print("\(error)")

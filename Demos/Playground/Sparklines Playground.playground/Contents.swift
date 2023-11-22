@@ -348,7 +348,7 @@ do {
 	let bitmap = DSFSparklineSurface.Bitmap()      // Create a bitmap surface
 	let wiper = DSFSparklineOverlay.WiperGauge()   // Create a wiper graph overlay
 	wiper.value = 0.75
-	wiper.valueColor = DSFSparkline.FillContainer(flatColor: baseColor)
+	wiper.valueColor = DSFSparkline.ValueBasedFill(flatColor: baseColor)
 	bitmap.addOverlay(wiper)                       // And add the overlay to the surface.
 
 	// Generate an image with retina scale

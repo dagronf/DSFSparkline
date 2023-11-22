@@ -29,11 +29,13 @@ import UIKit
 #endif
 
 public extension DSFSparkline {
-	/// A fill color that (can) change depending on a fill value
+	/// A fill color that can change depending on a value
 	@objc(DSFSparklineValueBasedFill) class ValueBasedFill: NSObject {
-
+		/// Is this a simple flat color?
 		@objc public var isFlatColor: Bool { self.flatColor != nil }
+		/// Is this a color palette?
 		@objc public var isPalette: Bool { self.palette != nil }
+		/// Is this a gradient?
 		@objc public var isGradient: Bool { self.gradient != nil }
 
 		@objc public static let sharedPalette = ValueBasedFill(palette: DSFSparkline.Palette.shared)
@@ -48,6 +50,13 @@ public extension DSFSparkline {
 
 		@objc public init(palette: DSFSparkline.Palette) {
 			self.palette = palette
+			super.init()
+		}
+
+		/// Create a fill object containing an array of colors
+		/// - Parameter colors: The colors
+		@objc public convenience init(colors: [DSFColor]) {
+			self.init(palette: DSFSparkline.Palette(colors))
 		}
 
 		@objc public init(gradient: DSFSparkline.GradientBucket) {

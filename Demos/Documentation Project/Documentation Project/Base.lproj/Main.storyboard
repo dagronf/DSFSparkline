@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -693,9 +693,7 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <toolbar key="toolbar" implicitIdentifier="23AF9603-C832-4FE3-A81D-B206A5BFC7D4" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="lko-rv-i99">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="1B4215A3-F7A3-4B6E-B583-23388B47B01F" label="Generate" paletteLabel="Generate" tag="-1" image="NSFlowViewTemplate" autovalidates="NO" id="gvX-FX-l92" userLabel="Generate">
-                                    <size key="minSize" width="40" height="22"/>
-                                    <size key="maxSize" width="40" height="22"/>
+                                <toolbarItem implicitItemIdentifier="1B4215A3-F7A3-4B6E-B583-23388B47B01F" label="Generate" paletteLabel="Generate" tag="-1" image="NSFlowViewTemplate" sizingBehavior="auto" autovalidates="NO" id="gvX-FX-l92" userLabel="Generate">
                                     <connections>
                                         <action selector="generate:" target="Oky-zY-oP4" id="WUv-hc-T9T"/>
                                     </connections>
@@ -737,7 +735,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="856" height="486"/>
                                             <subviews>
                                                 <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" rowSpacing="16" columnSpacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hOh-4e-Vtx">
-                                                    <rect key="frame" x="20" y="20" width="816" height="1024"/>
+                                                    <rect key="frame" x="20" y="20" width="816" height="1136"/>
                                                     <rows>
                                                         <gridRow height="64" id="47u-jo-OYT"/>
                                                         <gridRow height="64" id="rf1-Sg-8OA"/>
@@ -752,6 +750,7 @@
                                                         <gridRow id="hsD-F4-k8U"/>
                                                         <gridRow id="r5p-Hs-XDA"/>
                                                         <gridRow id="gw1-yq-e3j"/>
+                                                        <gridRow id="7WA-8A-T7M"/>
                                                     </rows>
                                                     <columns>
                                                         <gridColumn width="400" id="Fgv-Q3-Ekz"/>
@@ -760,7 +759,7 @@
                                                     <gridCells>
                                                         <gridCell row="47u-jo-OYT" column="Fgv-Q3-Ekz" id="fBp-FV-8td">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="P1e-zq-3Kb" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="960" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="1072" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="PeM-5L-g65"/>
                                                                     <constraint firstAttribute="width" constant="400" id="cmV-xb-fqd"/>
@@ -780,7 +779,7 @@
                                                         </gridCell>
                                                         <gridCell row="47u-jo-OYT" column="Wsh-KX-sd2" id="paB-Kc-fn9">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Lwo-B5-fXw" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="960" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="1072" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="AmA-sQ-cTd"/>
                                                                     <constraint firstAttribute="width" constant="400" id="k5B-GP-KV6"/>
@@ -801,7 +800,7 @@
                                                         </gridCell>
                                                         <gridCell row="rf1-Sg-8OA" column="Fgv-Q3-Ekz" id="WZQ-gH-xjR">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="9Uq-bZ-Qih" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="880" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="992" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="CAC-zl-i43"/>
                                                                     <constraint firstAttribute="height" constant="64" id="I7X-h3-4It"/>
@@ -821,7 +820,7 @@
                                                         </gridCell>
                                                         <gridCell row="rf1-Sg-8OA" column="Wsh-KX-sd2" id="guE-UA-jgS">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="aCQ-sL-A3S" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="880" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="992" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="Z6T-Sr-UR1"/>
                                                                     <constraint firstAttribute="height" constant="64" id="niz-rm-4pc"/>
@@ -843,7 +842,7 @@
                                                         </gridCell>
                                                         <gridCell row="5sQ-Aa-yfE" column="Fgv-Q3-Ekz" id="Pq1-kd-r9g">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="O21-tc-rhl" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="800" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="912" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="O3G-bL-oZv"/>
                                                                     <constraint firstAttribute="height" constant="64" id="SvM-kG-FwN"/>
@@ -866,7 +865,7 @@
                                                         </gridCell>
                                                         <gridCell row="5sQ-Aa-yfE" column="Wsh-KX-sd2" id="a5N-JY-mYJ">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-or-Kg8" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="800" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="912" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="SUb-RU-Pfj"/>
                                                                     <constraint firstAttribute="height" constant="64" id="VVP-5w-JVc"/>
@@ -887,7 +886,7 @@
                                                         </gridCell>
                                                         <gridCell row="H3e-Ol-bBd" column="Fgv-Q3-Ekz" id="rf2-AY-ih3">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="43s-kw-e5c" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="720" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="832" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="wCV-42-WtN"/>
                                                                     <constraint firstAttribute="height" constant="64" id="wZy-pG-uWG"/>
@@ -908,7 +907,7 @@
                                                         </gridCell>
                                                         <gridCell row="H3e-Ol-bBd" column="Wsh-KX-sd2" id="QeP-6M-gU3">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-LI-Nfa" customClass="DSFSparklineLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="720" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="832" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="4Xb-LW-sk3"/>
                                                                     <constraint firstAttribute="width" constant="400" id="kgg-2T-eNU"/>
@@ -929,7 +928,7 @@
                                                         </gridCell>
                                                         <gridCell row="kkS-K4-DXg" column="Fgv-Q3-Ekz" id="dRo-n6-uEO">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="i6C-86-GhI" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="640" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="752" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="KWz-06-o4D"/>
                                                                     <constraint firstAttribute="width" constant="400" id="n8Y-Xv-w4H"/>
@@ -943,7 +942,7 @@
                                                         </gridCell>
                                                         <gridCell row="kkS-K4-DXg" column="Wsh-KX-sd2" id="Hbx-jo-sRD">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="RNH-ZJ-Tq5" customClass="DSFSparklineBarGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="640" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="752" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="79F-vE-19C"/>
                                                                     <constraint firstAttribute="height" constant="64" id="ARW-OU-fq3"/>
@@ -962,7 +961,7 @@
                                                         </gridCell>
                                                         <gridCell row="S0C-Pu-lmw" column="Fgv-Q3-Ekz" id="dMp-6n-HZH">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="umI-Ph-yaN" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="560" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="672" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="VbZ-wX-ctJ"/>
                                                                     <constraint firstAttribute="width" constant="400" id="uLo-0U-xH8"/>
@@ -979,7 +978,7 @@
                                                         </gridCell>
                                                         <gridCell row="S0C-Pu-lmw" column="Wsh-KX-sd2" id="OPb-9q-brt">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="UO4-nH-tLy" customClass="DSFSparklineStackLineGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="560" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="672" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="1Ka-V0-teG"/>
                                                                     <constraint firstAttribute="height" constant="64" id="N4E-sn-5XV"/>
@@ -998,7 +997,7 @@
                                                         </gridCell>
                                                         <gridCell row="HB5-mQ-V2B" column="Fgv-Q3-Ekz" id="Jha-X7-k9q">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-8N-hcb" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="480" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="592" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="1E2-oL-g5b"/>
                                                                     <constraint firstAttribute="width" constant="400" id="cEQ-iv-2P5"/>
@@ -1012,7 +1011,7 @@
                                                         </gridCell>
                                                         <gridCell row="HB5-mQ-V2B" column="Wsh-KX-sd2" id="CfV-5c-n4Z">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="G7g-fC-Oe0" customClass="DSFSparklineDotGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="480" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="592" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="9O7-rm-mHW"/>
                                                                     <constraint firstAttribute="width" constant="400" id="SFi-bH-u15"/>
@@ -1033,7 +1032,7 @@
                                                         </gridCell>
                                                         <gridCell row="luz-is-ypo" column="Fgv-Q3-Ekz" id="moa-qM-lWG">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Lqw-wT-484" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="400" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="512" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="64" id="bHl-GZ-huh"/>
                                                                     <constraint firstAttribute="width" constant="400" id="jTA-am-ERC"/>
@@ -1045,7 +1044,7 @@
                                                         </gridCell>
                                                         <gridCell row="luz-is-ypo" column="Wsh-KX-sd2" id="jdF-Kd-tgU">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Wfv-p8-aS4" customClass="DSFSparklineWinLossGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="400" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="512" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="26K-LL-4cx"/>
                                                                     <constraint firstAttribute="height" constant="64" id="7dQ-9H-bCq"/>
@@ -1065,7 +1064,7 @@
                                                         </gridCell>
                                                         <gridCell row="utc-Nl-zmD" column="Fgv-Q3-Ekz" id="V9N-iI-Ii8">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Qh3-wL-K7r" customClass="DSFSparklineTabletGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="320" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="432" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="KpC-kg-bkX"/>
                                                                     <constraint firstAttribute="height" constant="64" id="lHG-nv-eiV"/>
@@ -1074,7 +1073,7 @@
                                                         </gridCell>
                                                         <gridCell row="utc-Nl-zmD" column="Wsh-KX-sd2" id="6nP-TW-gBi">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Gi0-4d-DPA">
-                                                                <rect key="frame" x="416" y="320" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="432" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e41-yn-7PI">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1090,6 +1089,7 @@
                                                                                 <rect key="frame" x="66" y="14" width="36" height="36"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="GNz-4m-0t3" secondAttribute="height" id="4no-ve-TE7"/>
+                                                                                    <constraint firstAttribute="width" secondItem="GNz-4m-0t3" secondAttribute="height" id="OXO-Kg-Adn"/>
                                                                                     <constraint firstAttribute="width" constant="36" id="ioy-iM-Whu"/>
                                                                                 </constraints>
                                                                             </customView>
@@ -1097,6 +1097,7 @@
                                                                                 <rect key="frame" x="113" y="14" width="36" height="36"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="8nY-fj-FYr" secondAttribute="height" id="k3U-YU-Ln6"/>
+                                                                                    <constraint firstAttribute="width" secondItem="8nY-fj-FYr" secondAttribute="height" id="m0g-1c-iDe"/>
                                                                                     <constraint firstAttribute="width" constant="36" id="quK-UF-1wf"/>
                                                                                 </constraints>
                                                                             </customView>
@@ -1104,6 +1105,7 @@
                                                                                 <rect key="frame" x="159" y="14" width="36" height="36"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="36" id="4Hy-aD-63o"/>
+                                                                                    <constraint firstAttribute="width" secondItem="Pvz-x2-3SE" secondAttribute="height" id="7rc-zx-jvb"/>
                                                                                     <constraint firstAttribute="width" secondItem="Pvz-x2-3SE" secondAttribute="height" id="UWB-wc-Irh"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
@@ -1115,6 +1117,7 @@
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="A2M-xk-19s" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                                                 <rect key="frame" x="205" y="14" width="36" height="36"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="A2M-xk-19s" secondAttribute="height" id="DwY-HI-i8J"/>
                                                                                     <constraint firstAttribute="width" secondItem="A2M-xk-19s" secondAttribute="height" id="f1j-Nh-p5g"/>
                                                                                     <constraint firstAttribute="width" constant="36" id="grg-TG-pev"/>
                                                                                 </constraints>
@@ -1130,6 +1133,7 @@
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Apr-ah-BVH" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                                                 <rect key="frame" x="251" y="14" width="36" height="36"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="Apr-ah-BVH" secondAttribute="height" id="3I6-e9-j3W"/>
                                                                                     <constraint firstAttribute="width" secondItem="Apr-ah-BVH" secondAttribute="height" id="9ES-6p-WC0"/>
                                                                                     <constraint firstAttribute="width" constant="36" id="ayH-pL-aoX"/>
                                                                                 </constraints>
@@ -1145,8 +1149,10 @@
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="mc2-pp-glr" customClass="DSFSparklinePieGraphView" customModule="DSFSparkline">
                                                                                 <rect key="frame" x="298" y="14" width="36" height="36"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="mc2-pp-glr" secondAttribute="height" id="TDe-cc-trP"/>
                                                                                     <constraint firstAttribute="width" constant="36" id="Uwv-uz-Cin"/>
                                                                                     <constraint firstAttribute="width" secondItem="mc2-pp-glr" secondAttribute="height" id="ajf-8M-T3o"/>
+                                                                                    <constraint firstAttribute="width" secondItem="mc2-pp-glr" secondAttribute="height" id="vBU-lu-8BS"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
@@ -1161,6 +1167,8 @@
                                                                                 <rect key="frame" x="344" y="14" width="36" height="36"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="0B4-x9-yaI" secondAttribute="height" id="LYU-Qd-Jnf"/>
+                                                                                    <constraint firstAttribute="width" secondItem="0B4-x9-yaI" secondAttribute="height" id="bhp-Ii-bMj"/>
+                                                                                    <constraint firstAttribute="width" secondItem="0B4-x9-yaI" secondAttribute="height" id="j3K-TX-GK9"/>
                                                                                     <constraint firstAttribute="width" constant="36" id="o7n-gp-7Yu"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
@@ -1174,17 +1182,6 @@
                                                                             </customView>
                                                                         </subviews>
                                                                         <edgeInsets key="edgeInsets" left="20" right="20" top="0.0" bottom="0.0"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="Apr-ah-BVH" firstAttribute="width" secondItem="Apr-ah-BVH" secondAttribute="height" id="3I6-e9-j3W"/>
-                                                                            <constraint firstItem="Pvz-x2-3SE" firstAttribute="width" secondItem="Pvz-x2-3SE" secondAttribute="height" id="7rc-zx-jvb"/>
-                                                                            <constraint firstItem="A2M-xk-19s" firstAttribute="width" secondItem="A2M-xk-19s" secondAttribute="height" id="DwY-HI-i8J"/>
-                                                                            <constraint firstItem="GNz-4m-0t3" firstAttribute="width" secondItem="GNz-4m-0t3" secondAttribute="height" id="OXO-Kg-Adn"/>
-                                                                            <constraint firstItem="mc2-pp-glr" firstAttribute="width" secondItem="mc2-pp-glr" secondAttribute="height" id="TDe-cc-trP"/>
-                                                                            <constraint firstItem="0B4-x9-yaI" firstAttribute="width" secondItem="0B4-x9-yaI" secondAttribute="height" id="bhp-Ii-bMj"/>
-                                                                            <constraint firstItem="0B4-x9-yaI" firstAttribute="width" secondItem="0B4-x9-yaI" secondAttribute="height" id="j3K-TX-GK9"/>
-                                                                            <constraint firstItem="8nY-fj-FYr" firstAttribute="width" secondItem="8nY-fj-FYr" secondAttribute="height" id="m0g-1c-iDe"/>
-                                                                            <constraint firstItem="mc2-pp-glr" firstAttribute="width" secondItem="mc2-pp-glr" secondAttribute="height" id="vBU-lu-8BS"/>
-                                                                        </constraints>
                                                                         <visibilityPriorities>
                                                                             <integer value="1000"/>
                                                                             <integer value="1000"/>
@@ -1219,7 +1216,7 @@
                                                         </gridCell>
                                                         <gridCell row="6oS-Fm-DQZ" column="Fgv-Q3-Ekz" id="L2t-rF-mxM">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-ly-t6H">
-                                                                <rect key="frame" x="0.0" y="240" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="352" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ciX-I1-78t">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1319,7 +1316,7 @@
                                                         </gridCell>
                                                         <gridCell row="6oS-Fm-DQZ" column="Wsh-KX-sd2" id="o1i-xH-1W5">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="3Ek-ZN-wI3">
-                                                                <rect key="frame" x="416" y="240" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="352" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qfH-1l-1b2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1443,7 +1440,7 @@
                                                         </gridCell>
                                                         <gridCell row="hsD-F4-k8U" column="Fgv-Q3-Ekz" id="YXd-2q-lkN">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="CVK-JB-TRV" customClass="DSFSparklineStripesGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="0.0" y="160" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="272" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="Mui-ep-2bF"/>
                                                                     <constraint firstAttribute="height" constant="64" id="zoX-5w-x4D"/>
@@ -1452,7 +1449,7 @@
                                                         </gridCell>
                                                         <gridCell row="hsD-F4-k8U" column="Wsh-KX-sd2" id="ySw-8S-UHd">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="0Tg-Zl-izg" customClass="DSFSparklineStripesGraphView" customModule="DSFSparkline">
-                                                                <rect key="frame" x="416" y="160" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="272" width="400" height="64"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="400" id="F5a-fW-LzZ"/>
                                                                     <constraint firstAttribute="height" constant="64" id="TpU-wg-ZQW"/>
@@ -1461,7 +1458,7 @@
                                                         </gridCell>
                                                         <gridCell row="r5p-Hs-XDA" column="Fgv-Q3-Ekz" id="jVF-u6-UIQ">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="7sC-Mq-lN0">
-                                                                <rect key="frame" x="0.0" y="80" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="192" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odc-s6-dkH">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1654,7 +1651,7 @@
                                                         </gridCell>
                                                         <gridCell row="r5p-Hs-XDA" column="Wsh-KX-sd2" id="Dho-2h-Zpo">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-9C-8wg">
-                                                                <rect key="frame" x="416" y="80" width="400" height="64"/>
+                                                                <rect key="frame" x="416" y="192" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9vO-5V-49J">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1838,7 +1835,7 @@
                                                         </gridCell>
                                                         <gridCell row="gw1-yq-e3j" column="Fgv-Q3-Ekz" id="PxR-MV-nki">
                                                             <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="5W0-gr-b2c">
-                                                                <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
+                                                                <rect key="frame" x="0.0" y="112" width="400" height="64"/>
                                                                 <subviews>
                                                                     <stackView distribution="equalSpacing" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ays-Bd-sg8">
                                                                         <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
@@ -1858,6 +1855,7 @@
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Prr-jr-3GY" customClass="DSFSparklineWiperGaugeGraphView" customModule="DSFSparkline">
                                                                                 <rect key="frame" x="64" y="8" width="48" height="48"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="Prr-jr-3GY" secondAttribute="height" id="Np3-MT-q7t"/>
                                                                                     <constraint firstAttribute="width" secondItem="Prr-jr-3GY" secondAttribute="height" id="p4i-zE-C7t"/>
                                                                                     <constraint firstAttribute="width" constant="48" id="rkb-ui-G15"/>
                                                                                 </constraints>
@@ -1872,6 +1870,7 @@
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="48" id="HeT-2V-Y20"/>
                                                                                     <constraint firstAttribute="width" secondItem="xGj-ny-sQ1" secondAttribute="height" id="N2H-vA-Prt"/>
+                                                                                    <constraint firstAttribute="width" secondItem="xGj-ny-sQ1" secondAttribute="height" id="SQY-Wl-582"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
@@ -1882,6 +1881,7 @@
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="9PI-63-hJY" customClass="DSFSparklineWiperGaugeGraphView" customModule="DSFSparkline">
                                                                                 <rect key="frame" x="176" y="8" width="48" height="48"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="9PI-63-hJY" secondAttribute="height" id="38c-yL-PTa"/>
                                                                                     <constraint firstAttribute="width" secondItem="9PI-63-hJY" secondAttribute="height" id="U6R-yH-qRp"/>
                                                                                     <constraint firstAttribute="width" constant="48" id="aNj-jd-5ma"/>
                                                                                 </constraints>
@@ -1894,6 +1894,7 @@
                                                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cne-Df-n4j" customClass="DSFSparklineWiperGaugeGraphView" customModule="DSFSparkline">
                                                                                 <rect key="frame" x="232" y="8" width="48" height="48"/>
                                                                                 <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="cne-Df-n4j" secondAttribute="height" id="1hg-1m-twA"/>
                                                                                     <constraint firstAttribute="width" constant="48" id="cHO-6X-z8r"/>
                                                                                     <constraint firstAttribute="width" secondItem="cne-Df-n4j" secondAttribute="height" id="gME-NR-l4J"/>
                                                                                 </constraints>
@@ -1907,6 +1908,7 @@
                                                                                 <rect key="frame" x="288" y="8" width="48" height="48"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="uxB-Sk-eBr" secondAttribute="height" id="TDg-p5-RNf"/>
+                                                                                    <constraint firstAttribute="width" secondItem="uxB-Sk-eBr" secondAttribute="height" id="rjX-pg-CLg"/>
                                                                                     <constraint firstAttribute="width" constant="48" id="tOc-GZ-qMX"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
@@ -1919,7 +1921,9 @@
                                                                                 <rect key="frame" x="344" y="8" width="48" height="48"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" secondItem="qNO-dq-m20" secondAttribute="height" id="16N-IA-Bgk"/>
+                                                                                    <constraint firstAttribute="width" secondItem="qNO-dq-m20" secondAttribute="height" id="I5J-GT-nD2"/>
                                                                                     <constraint firstAttribute="width" constant="48" id="jBO-ak-lIm"/>
+                                                                                    <constraint firstAttribute="width" secondItem="qNO-dq-m20" secondAttribute="height" id="v97-1J-GkX"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="value">
@@ -1929,15 +1933,6 @@
                                                                             </customView>
                                                                         </subviews>
                                                                         <edgeInsets key="edgeInsets" left="8" right="8" top="0.0" bottom="0.0"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="cne-Df-n4j" firstAttribute="width" secondItem="cne-Df-n4j" secondAttribute="height" id="1hg-1m-twA"/>
-                                                                            <constraint firstItem="9PI-63-hJY" firstAttribute="width" secondItem="9PI-63-hJY" secondAttribute="height" id="38c-yL-PTa"/>
-                                                                            <constraint firstItem="qNO-dq-m20" firstAttribute="width" secondItem="qNO-dq-m20" secondAttribute="height" id="I5J-GT-nD2"/>
-                                                                            <constraint firstItem="Prr-jr-3GY" firstAttribute="width" secondItem="Prr-jr-3GY" secondAttribute="height" id="Np3-MT-q7t"/>
-                                                                            <constraint firstItem="xGj-ny-sQ1" firstAttribute="width" secondItem="xGj-ny-sQ1" secondAttribute="height" id="SQY-Wl-582"/>
-                                                                            <constraint firstItem="uxB-Sk-eBr" firstAttribute="width" secondItem="uxB-Sk-eBr" secondAttribute="height" id="rjX-pg-CLg"/>
-                                                                            <constraint firstItem="qNO-dq-m20" firstAttribute="width" secondItem="qNO-dq-m20" secondAttribute="height" id="v97-1J-GkX"/>
-                                                                        </constraints>
                                                                         <visibilityPriorities>
                                                                             <integer value="1000"/>
                                                                             <integer value="1000"/>
@@ -1969,6 +1964,24 @@
                                                             </customView>
                                                         </gridCell>
                                                         <gridCell row="gw1-yq-e3j" column="Wsh-KX-sd2" id="ahz-Eq-LjY"/>
+                                                        <gridCell row="7WA-8A-T7M" column="Fgv-Q3-Ekz" id="mD7-qH-OJV">
+                                                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="q0f-Mo-5Wl" customClass="DSFSparklineActivityGridView" customModule="DSFSparkline">
+                                                                <rect key="frame" x="0.0" y="0.0" width="400" height="96"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="400" id="lcv-xn-iq8"/>
+                                                                    <constraint firstAttribute="height" constant="96" id="tPE-O1-lnm"/>
+                                                                </constraints>
+                                                            </customView>
+                                                        </gridCell>
+                                                        <gridCell row="7WA-8A-T7M" column="Wsh-KX-sd2" id="XBq-Ny-COv">
+                                                            <customView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="0vo-py-JRJ" customClass="DSFSparklineActivityGridView" customModule="DSFSparkline">
+                                                                <rect key="frame" x="416" y="0.0" width="400" height="96"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="400" id="nZS-yU-lzi"/>
+                                                                    <constraint firstAttribute="height" constant="96" id="s1s-47-pEZ"/>
+                                                                </constraints>
+                                                            </customView>
+                                                        </gridCell>
                                                     </gridCells>
                                                 </gridView>
                                             </subviews>
@@ -2003,6 +2016,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityGrid1" destination="q0f-Mo-5Wl" id="TC1-8n-Yid"/>
+                        <outlet property="activityGrid2" destination="0vo-py-JRJ" id="qW2-ac-VlA"/>
                         <outlet property="barCenteredView" destination="RNH-ZJ-Tq5" id="ND5-6v-qTI"/>
                         <outlet property="barStandardView" destination="i6C-86-GhI" id="q95-Yj-Qb7"/>
                         <outlet property="databarContainerView" destination="uQn-ly-t6H" id="4qc-Mq-NQH"/>

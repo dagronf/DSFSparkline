@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		236A660C2626C0C0004B70C9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A660B2626C0C0004B70C9 /* Utilities.swift */; };
+		239088F82B0D6A4C0059761E /* SwiftImageReadWrite in Frameworks */ = {isa = PBXBuildFile; productRef = 239088F72B0D6A4C0059761E /* SwiftImageReadWrite */; };
 		23EE63DF25D875C7000C85E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE63DE25D875C7000C85E4 /* AppDelegate.swift */; };
 		23EE63E125D875C7000C85E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EE63E025D875C7000C85E4 /* ViewController.swift */; };
 		23EE63E325D875C8000C85E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23EE63E225D875C8000C85E4 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239088F82B0D6A4C0059761E /* SwiftImageReadWrite in Frameworks */,
 				23EE640925D87663000C85E4 /* DSFSparkline in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +101,7 @@
 			name = "Documentation Project";
 			packageProductDependencies = (
 				23EE640825D87663000C85E4 /* DSFSparkline */,
+				239088F72B0D6A4C0059761E /* SwiftImageReadWrite */,
 			);
 			productName = "Documentation Project";
 			productReference = 23EE63DB25D875C7000C85E4 /* Documentation Project.app */;
@@ -127,6 +130,9 @@
 				Base,
 			);
 			mainGroup = 23EE63D225D875C7000C85E4;
+			packageReferences = (
+				239088F62B0D6A4C0059761E /* XCRemoteSwiftPackageReference "SwiftImageReadWrite" */,
+			);
 			productRefGroup = 23EE63DC25D875C7000C85E4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,7 +362,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		239088F62B0D6A4C0059761E /* XCRemoteSwiftPackageReference "SwiftImageReadWrite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/SwiftImageReadWrite";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		239088F72B0D6A4C0059761E /* SwiftImageReadWrite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 239088F62B0D6A4C0059761E /* XCRemoteSwiftPackageReference "SwiftImageReadWrite" */;
+			productName = SwiftImageReadWrite;
+		};
 		23EE640825D87663000C85E4 /* DSFSparkline */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DSFSparkline;
