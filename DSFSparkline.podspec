@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "DSFSparkline"
-  s.version      = "5.1.1"
+  s.version      = "5.2.0"
   s.summary      = "Simple Sparkline View for macOS, iOS and tvOS"
   s.description  = <<-DESC
     Simple Sparkline View for macOS, iOS and tvOS. Supports SwiftUI, AppKit and UIKit
@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
 
   s.ios.framework  = 'UIKit'
   s.osx.framework  = 'AppKit'
+  s.tvos.framework  = 'UIKit'
 
   s.swift_version = "5.4"
 end

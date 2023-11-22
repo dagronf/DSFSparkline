@@ -154,6 +154,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 		}
 	}
 
+	/// The y-values on the graph with a grid line
 	@objc public var gridLinesValues: [CGFloat] = [] {
 		didSet {
 			self.updateGridLinesSettings()
@@ -170,7 +171,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	}
 
 	#if os(macOS)
-	@IBInspectable public var gridLinesColor = NSColor.gray.withAlphaComponent(0.5) {
+	@IBInspectable public var gridLinesColor = NSColor.systemGray.withAlphaComponent(0.5) {
 		didSet {
 			self.updateGridLinesSettings()
 		}

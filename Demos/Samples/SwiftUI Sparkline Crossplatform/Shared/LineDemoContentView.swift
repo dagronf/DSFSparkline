@@ -576,7 +576,8 @@ struct LineGraphShowingBug13: View {
 					shadowed: true,
 					centeredAtZeroLine: true,
 					lowerGraphColor: DSFColor.systemRed,
-					markerSize: 6
+					markerSize: 6,
+					gridLines: .init(values: [-60, -30, 0, 30, 60])
 				)
 				.border(Color.gray.opacity(0.2), width: 1)
 				.frame(width: 200, height: 100)

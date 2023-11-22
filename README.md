@@ -987,6 +987,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Changes
 
+### `5.2.0`
+
+* Added grid-lines support for pre-built views (line, bar, stack) (NSView/UIView/SwiftUI)
+
 ### `5.1.0`
 
 * Added Activity Graph

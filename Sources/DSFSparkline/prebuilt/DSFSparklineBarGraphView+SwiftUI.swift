@@ -51,6 +51,7 @@ public extension DSFSparklineBarGraphView {
 		/// Highlight y-ranges within the graph
 		let highlightDefinitions: [DSFSparkline.HighlightRangeDefinition]
 
+		/// The grid lines definition
 		let gridLines: DSFSparkline.GridLinesDefinition?
 
 		/// Create a bar graph sparkline
