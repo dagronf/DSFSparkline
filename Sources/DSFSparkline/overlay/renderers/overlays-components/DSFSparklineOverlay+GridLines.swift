@@ -97,7 +97,12 @@ public extension DSFSparklineOverlay {
 
 extension DSFSparklineOverlay.GridLines {
 	func drawGridLines(context: CGContext, bounds: CGRect, scale _: CGFloat) {
-		guard let dataSource = self.dataSource else { return }
+		guard
+			self.floatValues.count > 0,
+			let dataSource = self.dataSource
+		else {
+			return
+		}
 
 		context.setLineWidth(self.strokeWidth)
 		context.setStrokeColor(self.strokeColor)

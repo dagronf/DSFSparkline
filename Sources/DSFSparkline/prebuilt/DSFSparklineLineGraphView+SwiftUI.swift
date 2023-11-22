@@ -60,6 +60,9 @@ public extension DSFSparklineLineGraphView {
 
 		let markerDrawingBlock: DSFSparklineOverlay.Line.MarkerDrawingBlock?
 
+		/// The grid lines definition
+		let gridLines: DSFSparkline.GridLinesDefinition?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -74,21 +77,24 @@ public extension DSFSparklineLineGraphView {
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
 		///   - markerSize: The size of the markers to draw. If the markerSize is less than 0, markers will not draw
-		///   - markerDrawingFunc: (optional) function to draw the markers
-		public init(dataSource: DSFSparkline.DataSource,
-						graphColor: DSFColor,
-						lineWidth: CGFloat = 1.5,
-						interpolated: Bool = false,
-						lineShading: Bool = true,
-						shadowed: Bool = false,
-						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
-						centeredAtZeroLine: Bool = false,
-						lowerGraphColor: DSFColor? = nil,
-						highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
-						markerSize: CGFloat = -1,
-						markerDrawingBlock: DSFSparklineOverlay.Line.MarkerDrawingBlock? = nil)
-		{
+		///   - markerDrawingBlock: (optional) function to draw the markers
+		///   - gridLines: The grid lines to draw on the graph
+		public init(
+			dataSource: DSFSparkline.DataSource,
+			graphColor: DSFColor,
+			lineWidth: CGFloat = 1.5,
+			interpolated: Bool = false,
+			lineShading: Bool = true,
+			shadowed: Bool = false,
+			showZeroLine: Bool = false,
+			zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
+			centeredAtZeroLine: Bool = false,
+			lowerGraphColor: DSFColor? = nil,
+			highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
+			markerSize: CGFloat = -1,
+			markerDrawingBlock: DSFSparklineOverlay.Line.MarkerDrawingBlock? = nil,
+			gridLines: DSFSparkline.GridLinesDefinition? = nil
+		) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 
@@ -107,6 +113,8 @@ public extension DSFSparklineLineGraphView {
 
 			self.markerSize = markerSize
 			self.markerDrawingBlock = markerDrawingBlock
+
+			self.gridLines = gridLines
 		}
 	}
 }
@@ -141,15 +149,22 @@ extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.lineShading = self.lineShading
 		view.shadowed = self.shadowed
 
-		view.showZeroLine = self.showZeroLine
+		view.zeroLineVisible = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		view.centeredAtZeroLine = self.centeredAtZeroLine
 		view.lowerGraphColor = self.lowerGraphColor
 
 		if self.highlightDefinitions.count > 0 {
-			view.showHighlightRange = true
+			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
+		}
+
+		if let gridLines = self.gridLines {
+			view.setGridLineDefinition(gridLines)
+		}
+		else {
+			view.gridLinesVisible = false
 		}
 
 		view.markerSize = self.markerSize
@@ -192,7 +207,7 @@ public extension DSFSparklineLineGraphView.SwiftUI {
 
 		UpdateIfNotEqual(result: &view.graphColor, val: self.graphColor)
 
-		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
+		UpdateIfNotEqual(result: &view.zeroLineVisible, val: self.showZeroLine)
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		UpdateIfNotEqual(result: &view.centeredAtZeroLine, val: self.centeredAtZeroLine)
@@ -207,11 +222,11 @@ public extension DSFSparklineLineGraphView.SwiftUI {
 		view.markerDrawingBlock = self.markerDrawingBlock
 
 		if self.highlightDefinitions.count > 0 {
-			view.showHighlightRange = true
+			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
 		else {
-			view.showHighlightRange = false
+			view.highlightRangeVisible = false
 			view.highlightRangeDefinition = []
 		}
 

@@ -11,7 +11,7 @@ import DSFSparkline
 var LineSource1: DSFSparkline.DataSource = {
 	let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.5)
 	d.push(values: [
-		0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.87, 0.44, 0.02, 0.27,
+		0.72, 0.84, 0.15, 0.16, 0.30, 0.58, 0.95, 0.44, 0.02, 0.27,
 		0.48, 0.16, 0.15, 0.14, 0.81, 0.53, 0.67, 0.52, 0.07, 0.50
 	])
 	return d
@@ -355,6 +355,30 @@ struct LineDemoLineRanges: View {
 				.padding(5)
 				.border(Color.gray.opacity(0.2), width: 1)
 			}
+
+			Text("Line with grid lines")
+			HStack {
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: LineSource1,
+					graphColor: GraphColor,
+					lineShading: false,
+					gridLines: .init(values: [0, 0.25, 0.5, 0.75, 1.0])
+				)
+				.frame(height: 40.0)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: LineSource1,
+					graphColor: GraphColor,
+					interpolated: true,
+					lineShading: false,
+					gridLines: .init(values: [0, 0.4, 0.7, 0.9, 1.0])
+				)
+				.frame(height: 40.0)
+				.padding(5)
+				.border(Color.gray.opacity(0.2), width: 1)
+			}
 		}
 	}
 }
@@ -564,7 +588,8 @@ struct LineGraphShowingBug13: View {
 					interpolated: true,
 					lineShading: true,
 					shadowed: true,
-					markerSize: 6
+					markerSize: 6,
+					gridLines: .init(values: [-60, -30, 0, 30, 60])
 				)
 				.border(Color.gray.opacity(0.2), width: 1)
 				.frame(width: 200, height: 100)

@@ -1,9 +1,6 @@
 //
-//  DSFSparkline.swift
-//  DSFSparklines
-//
-//  Created by Darren Ford on 26/2/21.
-//  Copyright © 2021 Darren Ford. All rights reserved.
+//  Created by Darren Ford on 25/01/21.
+//  Copyright © 2023 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -21,10 +18,42 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+import Foundation
+import CoreGraphics
+
 #if os(macOS)
 import AppKit
 #else
 import UIKit
 #endif
 
-@objc public class DSFSparkline: NSObject { }
+public extension DSFSparkline {
+	/// Grid lines definition
+	@objc(DSFSparklineGridLinesDefinition) class GridLinesDefinition: NSObject {
+		/// Grid lines color
+		@objc public let color: DSFColor
+		/// Grid lines width
+		@objc public let width: CGFloat
+		/// The dash style to use when drawing
+		@objc public let dashStyle: [CGFloat]
+		/// The positions to draw the gridlines for the data source
+		@objc public let values: [CGFloat]
+		/// Create a grid lines definition
+		/// - Parameters:
+		///   - color: The color of the grid lines
+		///   - width: The width to draw the grid lines
+		///   - dashStyle: The dash style for the grid lines
+		///   - values: The positions to draw the gridlines for the data source
+		@objc public init(
+			color: DSFColor = .init(white: 0.5, alpha: 0.5),
+			width: CGFloat = 1.0,
+			dashStyle: [CGFloat] = [1.0, 1.0],
+			values: [CGFloat] = []
+		) {
+			self.color = color
+			self.width = width
+			self.dashStyle = dashStyle
+			self.values = values
+		}
+	}
+}

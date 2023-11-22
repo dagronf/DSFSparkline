@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22154"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -738,7 +739,7 @@
                                 </columns>
                                 <gridCells>
                                     <gridCell row="LWT-zz-Wli" column="mND-oT-fMP" headOfMergedCell="SvU-3Q-xSO" id="SvU-3Q-xSO">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wkB-t0-cET">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wkB-t0-cET">
                                             <rect key="frame" x="-2" y="585" width="37" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="f6g-SZ-dX3">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -750,7 +751,7 @@
                                     <gridCell row="LWT-zz-Wli" column="lKi-gS-TNi" headOfMergedCell="SvU-3Q-xSO" id="gaP-8z-0D2"/>
                                     <gridCell row="LWT-zz-Wli" column="BAq-tP-YvS" headOfMergedCell="SvU-3Q-xSO" id="dOo-dw-e60"/>
                                     <gridCell row="a9M-Aq-5EU" column="mND-oT-fMP" id="uRY-xS-tms">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Br9-aV-51P">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Br9-aV-51P">
                                             <rect key="frame" x="-2" y="550" width="43" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Crash" id="kP2-gU-xGS">
                                                 <font key="font" metaFont="systemBold"/>
@@ -760,7 +761,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="a9M-Aq-5EU" column="lKi-gS-TNi" id="Vor-4M-4U8">
-                                        <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-lZ-xkS">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-lZ-xkS">
                                             <rect key="frame" x="140" y="550" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="2,822" id="F4H-Da-4TV">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -782,16 +783,24 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="1.5"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                     <integer key="value" value="40"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showGridLines" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="gridLinesValuesString" value="-10, -5, 0, 5, 10"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="gridLinesColor">
+                                                    <color key="value" name="AccentColor"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="gridLinesHidden" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="gridLinesVisible" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>
                                     <gridCell row="aLC-sK-pHI" column="mND-oT-fMP" id="fbP-A9-Cu9">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSS-Et-Ewc">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RSS-Et-Ewc">
                                             <rect key="frame" x="-2" y="507" width="65" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Crash (2)" id="EoP-4H-Ynb">
                                                 <font key="font" metaFont="systemBold"/>
@@ -801,7 +810,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="aLC-sK-pHI" column="lKi-gS-TNi" id="GQX-bs-orJ">
-                                        <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8YD-kP-XpR">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8YD-kP-XpR">
                                             <rect key="frame" x="140" y="507" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="2,822" id="UzH-Ep-LAw">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -823,7 +832,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="0.5"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="interpolated" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
                                                     <color key="value" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -846,7 +855,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="rOA-HK-JHa" column="mND-oT-fMP" id="e3L-YV-l2s">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rqu-Ag-2nU">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rqu-Ag-2nU">
                                             <rect key="frame" x="-2" y="464" width="76" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Static Data" id="dMM-dY-w8K">
                                                 <font key="font" metaFont="systemBold"/>
@@ -869,7 +878,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="lineShading" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="markerSize">
                                                     <real key="value" value="6"/>
@@ -878,7 +887,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="mUE-ZI-8yG" column="mND-oT-fMP" id="JUi-AP-7D1">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FJq-ps-Fbl">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FJq-ps-Fbl">
                                             <rect key="frame" x="-2" y="421" width="84" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Deprecation" id="v5M-wK-vP3">
                                                 <font key="font" metaFont="systemBold"/>
@@ -888,7 +897,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="mUE-ZI-8yG" column="lKi-gS-TNi" id="Uj1-kZ-1G2">
-                                        <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v9-x6-8ah">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4v9-x6-8ah">
                                             <rect key="frame" x="140" y="421" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="3,037" id="27w-5h-CaQ">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -917,7 +926,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="Mqg-XJ-bG5" column="mND-oT-fMP" id="Hpv-lY-5Ya">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3wx-H0-7Ow">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3wx-H0-7Ow">
                                             <rect key="frame" x="-2" y="378" width="83" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Intervention" id="Xxi-QW-iJp">
                                                 <font key="font" metaFont="systemBold"/>
@@ -927,7 +936,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="Mqg-XJ-bG5" column="lKi-gS-TNi" id="mkn-W6-Pdk">
-                                        <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-NK-WRY">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-NK-WRY">
                                             <rect key="frame" x="140" y="378" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="162" id="11w-7T-MxN">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -949,12 +958,12 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </gridCell>
                                     <gridCell row="Urz-a5-acf" column="mND-oT-fMP" id="KTh-ec-gUg">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ied-wV-JMz">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ied-wV-JMz">
                                             <rect key="frame" x="-2" y="335" width="95" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Network Error" id="ljv-BH-AcY">
                                                 <font key="font" metaFont="systemBold"/>
@@ -964,7 +973,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="Urz-a5-acf" column="lKi-gS-TNi" id="hgr-d2-dil">
-                                        <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0me-JO-0hc">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0me-JO-0hc">
                                             <rect key="frame" x="140" y="335" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="30,382" id="buR-jG-fao">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -986,7 +995,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <integer key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="barSpacing">
                                                     <integer key="value" value="0"/>
                                                 </userDefinedRuntimeAttribute>
@@ -1004,7 +1013,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="ldh-b2-9YP" column="mND-oT-fMP" id="ycW-i5-37X">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-U5-VUl">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0EL-U5-VUl">
                                             <rect key="frame" x="-2" y="292" width="126" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Transmission Error" id="ZEn-qy-J3w">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1014,7 +1023,7 @@
                                         </textField>
                                     </gridCell>
                                     <gridCell row="ldh-b2-9YP" column="lKi-gS-TNi" id="EH2-jW-C5V">
-                                        <textField key="contentView" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xOP-wC-3ic">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xOP-wC-3ic">
                                             <rect key="frame" x="140" y="292" width="66" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="11" id="W0P-Gr-AOH">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -1037,7 +1046,7 @@
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="NO"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                     <integer key="value" value="40"/>
                                                 </userDefinedRuntimeAttribute>
@@ -1045,7 +1054,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="jbP-L9-XJx" column="mND-oT-fMP" id="Bh6-7L-opA">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-fI-UTe">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-fI-UTe">
                                             <rect key="frame" x="-2" y="249" width="112" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Packet Rejection" id="iAV-45-pDZ">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1066,7 +1075,7 @@
                                                     <color key="value" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowed" value="NO"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="zeroLineColor">
                                                     <color key="value" name="separatorColor" catalog="System" colorSpace="catalog"/>
                                                 </userDefinedRuntimeAttribute>
@@ -1078,7 +1087,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="H5O-EY-kNw" column="mND-oT-fMP" id="NCf-hd-cVW">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xpk-48-kFy">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xpk-48-kFy">
                                             <rect key="frame" x="-2" y="206" width="81" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Throughput" id="Waa-6g-5xP">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1105,7 +1114,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                                     <real key="value" value="2"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showHighlightRange" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="highlightColor">
                                                     <color key="value" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
@@ -1115,7 +1124,7 @@
                                         </customView>
                                     </gridCell>
                                     <gridCell row="K76-XG-Qsl" column="mND-oT-fMP" id="ncE-AV-s8y">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gjW-nV-VPb">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gjW-nV-VPb">
                                             <rect key="frame" x="-2" y="164" width="69" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Total Loss" id="Scb-jz-QgE">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1210,7 +1219,7 @@
                                         </box>
                                     </gridCell>
                                     <gridCell row="67c-qk-plU" column="mND-oT-fMP" id="UJ0-bn-zJc">
-                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-8C-Wch">
+                                        <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-8C-Wch">
                                             <rect key="frame" x="-2" y="102" width="77" height="16"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="CPU Levels" id="64t-9u-f4Y">
                                                 <font key="font" metaFont="systemBold"/>
@@ -1234,7 +1243,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1257,7 +1266,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1280,7 +1289,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1303,7 +1312,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1326,7 +1335,7 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="graphColor">
                                                             <color key="value" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showZeroLine" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="zeroLineVisible" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="graphWindowSize">
                                                             <integer key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
@@ -1475,4 +1484,9 @@
             <point key="canvasLocation" x="90.5" y="947.5"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

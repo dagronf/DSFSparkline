@@ -87,7 +87,8 @@ struct BarRange: View {
 					range: 20 ..< 80,
 					fillColor: DSFColor.systemGray.withAlphaComponent(0.2).cgColor
 				)
-			]
+			],
+			gridLines: .init(values: [0, 25, 50, 75, 100])
 		)
 		.frame(width: 250.0, height: 59.0)
 		.padding(5)

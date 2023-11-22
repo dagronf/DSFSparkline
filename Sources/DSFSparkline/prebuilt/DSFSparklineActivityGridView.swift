@@ -65,13 +65,13 @@ public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 	}
 
 	/// The layout style for the grid
-	@objc public var cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle {
+	@objc public var cellStyle: DSFSparkline.ActivityGrid.CellStyle {
 		get { self.activityLayer.cellStyle }
 		set { self.activityLayer.cellStyle = newValue }
 	}
 
 	/// The layout style for the grid
-	@objc public var layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle {
+	@objc public var layoutStyle: DSFSparkline.ActivityGrid.LayoutStyle {
 		get { self.activityLayer.layoutStyle }
 		set { self.activityLayer.layoutStyle = newValue }
 	}

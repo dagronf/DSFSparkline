@@ -39,8 +39,8 @@ public extension DSFSparklineActivityGridView {
 		let range: ClosedRange<Double>?
 		let verticalCellCount: UInt?
 		let horizontalCellCount: UInt
-		let cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle
-		let layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle
+		let cellStyle: DSFSparkline.ActivityGrid.CellStyle
+		let layoutStyle: DSFSparkline.ActivityGrid.LayoutStyle
 
 		/// Create an Activity Grid
 		/// - Parameters:
@@ -54,8 +54,8 @@ public extension DSFSparklineActivityGridView {
 			range: ClosedRange<Double>? = nil,
 			verticalCellCount: UInt? = nil,
 			horizontalCellCount: UInt = 0,
-			cellStyle: DSFSparklineOverlay.ActivityGrid.CellStyle = .init(),
-			layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle = .github
+			cellStyle: DSFSparkline.ActivityGrid.CellStyle = .init(),
+			layoutStyle: DSFSparkline.ActivityGrid.LayoutStyle = .github
 		) {
 			self.values = values
 			self.range = range
@@ -83,7 +83,7 @@ public extension DSFSparklineActivityGridView {
 			range: ClosedRange<Double>? = nil,
 			verticalCellCount: UInt? = nil,
 			horizontalCellCount: UInt = 0,
-			layoutStyle: DSFSparklineOverlay.ActivityGrid.LayoutStyle = .github,
+			layoutStyle: DSFSparkline.ActivityGrid.LayoutStyle = .github,
 			fillScheme: DSFSparkline.ValueBasedFill,
 			borderColor: CGColor? = nil,
 			borderWidth: CGFloat = 1,
@@ -96,7 +96,7 @@ public extension DSFSparklineActivityGridView {
 			self.verticalCellCount = verticalCellCount
 			self.horizontalCellCount = horizontalCellCount
 			self.layoutStyle = layoutStyle
-			self.cellStyle = DSFSparklineOverlay.ActivityGrid.CellStyle(
+			self.cellStyle = DSFSparkline.ActivityGrid.CellStyle(
 				fillScheme: fillScheme,
 				borderColor: borderColor,
 				borderWidth: borderWidth,

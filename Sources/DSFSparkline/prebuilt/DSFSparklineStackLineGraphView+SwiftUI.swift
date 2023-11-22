@@ -53,6 +53,9 @@ public extension DSFSparklineStackLineGraphView {
 		/// Highlight y-ranges within the graph
 		let highlightDefinitions: [DSFSparkline.HighlightRangeDefinition]
 
+		/// The grid lines to be drawn on the graph
+		let gridLines: DSFSparkline.GridLinesDefinition?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -65,17 +68,20 @@ public extension DSFSparklineStackLineGraphView {
 		///   - centeredAtZeroLine: Should the line graph be centered around the zero-line?
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
-		public init(dataSource: DSFSparkline.DataSource,
-						graphColor: DSFColor,
-						lineWidth: CGFloat = 1.5,
-						lineShading: Bool = true,
-						shadowed: Bool = false,
-						showZeroLine: Bool = false,
-						zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
-						centeredAtZeroLine: Bool = false,
-						lowerGraphColor: DSFColor? = nil,
-						highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [])
-		{
+		///   - gridLines: DSFSparkline.GridLinesDefinition? = nil
+		public init(
+			dataSource: DSFSparkline.DataSource,
+			graphColor: DSFColor,
+			lineWidth: CGFloat = 1.5,
+			lineShading: Bool = true,
+			shadowed: Bool = false,
+			showZeroLine: Bool = false,
+			zeroLineDefinition: DSFSparkline.ZeroLineDefinition = .shared,
+			centeredAtZeroLine: Bool = false,
+			lowerGraphColor: DSFColor? = nil,
+			highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
+			gridLines: DSFSparkline.GridLinesDefinition? = nil
+		) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
 
@@ -90,6 +96,7 @@ public extension DSFSparklineStackLineGraphView {
 			self.shadowed = shadowed
 
 			self.highlightDefinitions = highlightDefinitions
+			self.gridLines = gridLines
 		}
 	}
 }
@@ -124,17 +131,24 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 		view.lineShading = self.lineShading
 		view.shadowed = self.shadowed
 
-		view.showZeroLine = self.showZeroLine
+		view.zeroLineVisible = self.showZeroLine
 		view.setZeroLineDefinition(self.zeroLineDefinition)
 
 		view.centeredAtZeroLine = self.centeredAtZeroLine
 		view.lowerGraphColor = self.lowerGraphColor
 
 		if self.highlightDefinitions.count > 0 {
-			view.showHighlightRange = true
+			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
-		
+
+		if let gridLines = self.gridLines {
+			view.setGridLineDefinition(gridLines)
+		}
+		else {
+			view.gridLinesVisible = false
+		}
+
 		return view
 	}
 }
@@ -179,17 +193,18 @@ public extension DSFSparklineStackLineGraphView.SwiftUI {
 
 		UpdateIfNotEqual(result: &view.lineShading, val: self.lineShading)
 
-		UpdateIfNotEqual(result: &view.showZeroLine, val: self.showZeroLine)
-
+		UpdateIfNotEqual(result: &view.zeroLineVisible, val: self.showZeroLine)
+		view.setZeroLineDefinition(self.zeroLineDefinition)
+		
 		UpdateIfNotEqual(result: &view.centeredAtZeroLine, val: self.centeredAtZeroLine)
 		UpdateIfNotEqual(result: &view.lowerGraphColor, val: self.lowerGraphColor)
 
 		if self.highlightDefinitions.count > 0 {
-			view.showHighlightRange = true
+			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
 		else {
-			view.showHighlightRange = false
+			view.highlightRangeVisible = false
 			view.highlightRangeDefinition = []
 		}
 
