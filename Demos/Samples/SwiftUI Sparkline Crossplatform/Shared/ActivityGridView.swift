@@ -15,8 +15,8 @@ struct ActivityGridView: View {
 
 	@State var inputData: [Double] = []
 
-	let cellStyleLight = DSFSparklineOverlay.ActivityGrid.CellStyle(fillScheme: DSFSparklineOverlay.ActivityGrid.DefaultLight)
-	let cellStyleDark = DSFSparklineOverlay.ActivityGrid.CellStyle(fillScheme: DSFSparklineOverlay.ActivityGrid.DefaultDark)
+	let cellStyleLight = DSFSparkline.ActivityGrid.CellStyle(fillScheme: DSFSparkline.ActivityGrid.CellStyle.DefaultLight)
+	let cellStyleDark = DSFSparkline.ActivityGrid.CellStyle(fillScheme: DSFSparkline.ActivityGrid.CellStyle.DefaultDark)
 
 	let gradient = DSFSparkline.GradientBucket(
 		colors: [

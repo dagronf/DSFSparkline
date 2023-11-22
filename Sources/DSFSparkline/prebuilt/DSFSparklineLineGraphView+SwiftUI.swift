@@ -60,6 +60,7 @@ public extension DSFSparklineLineGraphView {
 
 		let markerDrawingBlock: DSFSparklineOverlay.Line.MarkerDrawingBlock?
 
+		/// The grid lines definition
 		let gridLines: DSFSparkline.GridLinesDefinition?
 
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
