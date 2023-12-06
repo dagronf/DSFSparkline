@@ -112,7 +112,7 @@ public extension DSFSparklineOverlay {
 
 public extension DSFSparklineOverlay.ActivityGrid {
 	/// Returns the index within the datasource of the value at the given point
-	/// - Parameter point: The point within the activity graph to test
+	/// - Parameter point: The point within the activity grid to test
 	/// - Returns: The data source index for the point, or -1 if
 	///            1. no cell was hit, or
 	///            2. the cell hit was outside of bounds of the data source

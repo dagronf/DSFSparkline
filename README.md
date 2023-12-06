@@ -993,7 +993,7 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ### `5.1.0`
 
-* Added Activity Graph
+* Added Activity Grid
 
 ### `5.0.0`
 
