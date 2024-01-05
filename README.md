@@ -12,7 +12,7 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" />
+    <img src="https://img.shields.io/badge/Swift-5-orange.svg" />
     <img src="https://img.shields.io/badge/License-MIT-lightgrey" />
     <img src="https://img.shields.io/badge/pod-compatible-informational" alt="CocoaPods" />
     <a href="https://swift.org/package-manager">
