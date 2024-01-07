@@ -469,7 +469,7 @@ class ViewController: NSViewController {
 		self.stripes2.integral = true
 
 		do {
-			activityGrid1.cellFillScheme = DSFSparklineOverlay.ActivityGrid.DefaultLight
+			activityGrid1.cellFillScheme = DSFSparkline.ActivityGrid.CellStyle.DefaultLight
 			activityGrid1.setValues((0 ..< 1000).map { _ in CGFloat.random(in: 0 ... 1)}, range: 0 ... 1)
 
 			let palette2 = [
@@ -499,7 +499,7 @@ class ViewController: NSViewController {
 			let grid = DSFSparklineOverlay.ActivityGrid()
 			grid.dataSource = DSFSparkline.StaticDataSource((0 ... 1000).map { _ in CGFloat.random(in: 0 ... 1) }, range: 0 ... 1)
 			grid.verticalCellCount = 1
-			grid.cellStyle = .init(fillScheme: DSFSparklineOverlay.ActivityGrid.DefaultLight, borderColor: .black, borderWidth: 0.5, cellDimension: 11, cellSpacing: 2.5)
+			grid.cellStyle = .init(fillScheme: DSFSparkline.ActivityGrid.CellStyle.DefaultLight, borderColor: .black, borderWidth: 0.5, cellDimension: 11, cellSpacing: 2.5)
 			surface.addOverlay(grid)
 
 			let img = surface.image(width: 200, height: 14, scale: 2)!
