@@ -355,3 +355,25 @@ do {
 	let image = bitmap.image(width: 40, height: 20, scale: 2)!
 	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/wiper-small.png"))
 }
+
+// MARK: - Activity Graph
+
+do {
+	let bitmap = DSFSparklineSurface.Bitmap()          // Create a bitmap surface
+	let activity = DSFSparklineOverlay.ActivityGrid()
+	let data: [CGFloat] = (0 ... 100).map { _ in CGFloat.random(in: 0...100) }
+	activity.dataSource = .init(data)
+
+	bitmap.addOverlay(activity)                       // And add the overlay to the surface.
+
+	// Generate an image with retina scale
+	let image = bitmap.image(width: 300, height: 100, scale: 2)!
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/activity-basic-1.png"))
+
+	activity.verticalCellCount = 10
+	activity.cellDimension = 6
+	activity.cellSpacing = 1
+	activity.cellFillScheme = DSFSparkline.ActivityGrid.CellStyle.DefaultLight
+	let image2 = bitmap.image(width: 300, height: 100, scale: 2)!
+	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/activity-basic-2.png"))
+}
