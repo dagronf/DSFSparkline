@@ -1,7 +1,7 @@
 PODS:
-  - DSFSparkline (5.1.1):
-    - DSFSparkline/Core (= 5.1.1)
-  - DSFSparkline/Core (5.1.1)
+  - DSFSparkline (5.2.4):
+    - DSFSparkline/Core (= 5.2.4)
+  - DSFSparkline/Core (5.2.4)
 
 DEPENDENCIES:
   - DSFSparkline (from `../../`)
@@ -11,8 +11,8 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  DSFSparkline: babd49d291824b4f51b5fde7603154cfa2799965
+  DSFSparkline: ecbc5b9a01ccf76bef0e48494ee348c2973a8075
 
 PODFILE CHECKSUM: e77cd3ca7fbeca6eb024b4fe9c15183a1cdebbfb
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.14.3
