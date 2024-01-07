@@ -79,7 +79,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	/// Primarily used for Interface Builder integration
 	@IBInspectable public var zeroLineDashStyleString: String = "1,1" {
 		didSet {
-			self.updateZeroLineSettings()
+			self.handleZeroLineString()
 		}
 	}
 
@@ -279,7 +279,6 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 		}
 		super.prepareForInterfaceBuilder()
 	}
-
 }
 
 public extension DSFSparklineZeroLineGraphView {
@@ -304,12 +303,8 @@ private extension DSFSparklineZeroLineGraphView {
 		self.updateDisplay()
 	}
 
-	private func updateZeroLineSettings() {
-		self.zerolineOverlay.isHidden = !self.zeroLineVisible
-		self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
-		self.zerolineOverlay.strokeWidth = self.zeroLineWidth
-		self.zerolineOverlay.dashStyle = self.zeroLineDashStyle
-
+	///
+	private func handleZeroLineString() {
 		if self.zeroLineDashStyleString == "-" {
 			// Solid line
 			self.zeroLineDashStyle = []
@@ -317,32 +312,38 @@ private extension DSFSparklineZeroLineGraphView {
 		else {
 			let components = self.zeroLineDashStyleString.extractCGFloats()
 			if components.count >= 2 {
-				self.zerolineOverlay.dashStyle = components
+				self.zeroLineDashStyle = components
 			}
 			else {
 				Swift.print("ERROR: Zero Line Style string format is incompatible (\(self.zeroLineDashStyleString) -> \(components))")
 			}
 		}
+	}
 
+	private func updateZeroLineSettings() {
+		self.zerolineOverlay.isHidden = !self.zeroLineVisible
+		self.zerolineOverlay.strokeColor = self.zeroLineColor.cgColor
+		self.zerolineOverlay.strokeWidth = self.zeroLineWidth
+		self.zerolineOverlay.dashStyle = self.zeroLineDashStyle
 		self.updateDisplay()
 	}
 
 	private func updateHighlightSettings() {
-		self.ibHighlightOverlay.isHidden = !self.highlightRangeVisible
-		self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightRangeColor.cgColor)
+			self.ibHighlightOverlay.isHidden = !self.highlightRangeVisible
+			self.ibHighlightOverlay.fill = DSFSparkline.Fill.Color(self.highlightRangeColor.cgColor)
 
-		let floats = self.highlightRangeString?.extractCGFloats() ?? []
-		if floats.count == 2, floats[0] < floats[1] {
-			self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
-		}
-		else if floats.count == 0 {
-			// No ranges. This is fine
-			self.highlightRangeDefinition = []
-		}
-		else {
-			self.highlightRangeDefinition = []
-			Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(floats))")
-		}
-		self.updateDisplay()
+			let floats = self.highlightRangeString?.extractCGFloats() ?? []
+			if floats.count == 2, floats[0] < floats[1] {
+				self.ibHighlightOverlay.highlightRange = floats[0] ..< floats[1]
+			}
+			else if floats.count == 0 {
+				// No ranges. This is fine
+				self.highlightRangeDefinition = []
+			}
+			else {
+				self.highlightRangeDefinition = []
+				Swift.print("ERROR: Highlight range string format is incompatible (\(self.zeroLineDashStyleString) -> \(floats))")
+			}
+			self.updateDisplay()
 	}
 }
