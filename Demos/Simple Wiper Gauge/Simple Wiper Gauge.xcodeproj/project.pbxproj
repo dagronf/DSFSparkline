@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -289,6 +289,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Simple Wiper Gauge/Simple_Wiper_Gauge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
 				INFOPLIST_FILE = "Simple Wiper Gauge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -309,6 +310,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Simple Wiper Gauge/Simple_Wiper_Gauge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
 				INFOPLIST_FILE = "Simple Wiper Gauge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
