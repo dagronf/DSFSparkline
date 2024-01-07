@@ -85,6 +85,9 @@ public extension DSFSparklineOverlay {
 			set { self.cellStyle = self.cellStyle.modify(cornerRadius: newValue) }
 		}
 
+		/// Called when the activity cells are updated
+		@objc public var cellsDidUpdateBlock: (() -> Void)?
+
 		// MARK: Drawing and updates
 
 		/// Called when the content of the data source changes
@@ -95,18 +98,21 @@ public extension DSFSparklineOverlay {
 
 		/// Draws the graph
 		override internal func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
-			self.cells.removeAll()
+			self._cells.removeAll()
 			switch self.layoutStyle {
 			case .github:
 				self.drawGithubStyle(context: context, bounds: bounds, scale: scale)
 			case .defrag:
 				self.drawDefragStyle(context: context, bounds: bounds, scale: scale)
 			}
+
+			self.cellsDidUpdateBlock?()
 		}
 
-		// MARK: Private
+		public var cells: [CGRect] { _cells }
 
-		private var cells: [CGRect] = []
+		// MARK: Private
+		private var _cells: [CGRect] = []
 	}
 }
 
@@ -115,23 +121,35 @@ public extension DSFSparklineOverlay.ActivityGrid {
 	/// - Parameter point: The point within the activity grid to test
 	/// - Returns: The data source index for the point, or -1 if
 	///            1. no cell was hit, or
-	///            2. the cell hit was outside of bounds of the data source
+	///            2. The cell was a skip cell (ie. its value is `.infinity`, or
+	///            3. the cell hit was outside of bounds of the data source
 	@objc func indexAtPoint(_ point: CGPoint) -> Int {
-		self.cells.firstIndex { $0.contains(point) } ?? -1
+		if let index: Int = self._cells.firstIndex(where: { $0.contains(point) }) {
+			if index < self.dataSource.values.count,
+				self.dataSource.values[index] == .infinity
+			{
+				// It's an existing cell, but it's a skip cell
+				return -1
+			}
+			return index
+		}
+		return -1
 	}
 
 	/// Return the cell frame for the given index
 	/// - Parameter index: The index
 	/// - Returns: The cell bounds for the given index
 	@objc func cellFrame(for index: Int) -> CGRect {
-		if index < self.cells.count {
-			return self.cells[index]
+		if index < self._cells.count {
+			return self._cells[index]
 		}
 
 		// If we get here, the indexed cell was not visible on screen
 		return .zero
 	}
 }
+
+// MARK: - Sizing
 
 extension DSFSparklineOverlay.ActivityGrid {
 	/// The expected height given the current settings
@@ -161,7 +179,7 @@ extension DSFSparklineOverlay.ActivityGrid {
 	}
 
 	/// Intrinsic size for the grid
-	var intrinsicSize: CGSize { CGSize(width: self.intrinsicWidth, height: self.intrinsicHeight) }
+	@objc public var intrinsicSize: CGSize { CGSize(width: self.intrinsicWidth, height: self.intrinsicHeight) }
 }
 
 extension DSFSparklineOverlay.ActivityGrid {
@@ -214,9 +232,20 @@ extension DSFSparklineOverlay.ActivityGrid {
 private extension DSFSparklineOverlay.ActivityGrid {
 	func drawCell(context: CGContext, inRect cell: CGRect, index: Int) {
 		let style = self.cellStyle
-		let fracValue = self.dataSource.fractionalValue(at: index) ?? 0.0
 
-		let color = style.fillScheme.color(atFraction: fracValue)
+		// Store the cell information so we can access it later
+		self._cells.append(cell)
+
+		// The fractional value for the index
+		let fracValue = self.dataSource.fractionalValue(at: index)
+
+		if fracValue.isInfinite {
+			// Treat an infinite value as a skip cell. Draw nothing
+			return
+		}
+		
+		let fraction = fracValue.isNaN ? 0.0 : fracValue
+		let color = style.fillScheme.color(atFraction: fraction)
 
 		context.addPath(
 			CGPath(
@@ -228,8 +257,6 @@ private extension DSFSparklineOverlay.ActivityGrid {
 		)
 		context.setFillColor(color)
 		context.fillPath()
-
-		cells.append(cell)
 
 		if let c = self.cellStyle.borderColor {
 			context.addPath(

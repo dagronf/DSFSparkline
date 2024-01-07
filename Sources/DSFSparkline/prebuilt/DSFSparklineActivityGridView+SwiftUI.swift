@@ -42,6 +42,8 @@ public extension DSFSparklineActivityGridView {
 		let cellStyle: DSFSparkline.ActivityGrid.CellStyle
 		let layoutStyle: DSFSparkline.ActivityGrid.LayoutStyle
 
+		var _tooltipStringForCell: ((Int) -> String?)?
+
 		/// Create an Activity Grid
 		/// - Parameters:
 		///   - values: The values to display
@@ -105,6 +107,13 @@ public extension DSFSparklineActivityGridView {
 				cornerRadius: cornerRadius
 			)
 		}
+
+		/// A callback block for retrieving the tooltip text for a cell within the activity grid
+		public func tooltipStringForCell(_ block: @escaping (Int) -> String?) -> Self {
+			var copy = self
+			copy._tooltipStringForCell = block
+			return copy
+		}
 	}
 }
 
@@ -127,9 +136,10 @@ extension DSFSparklineActivityGridView.SwiftUI: DSFViewRepresentable {
 		Coordinator(self)
 	}
 
-	func makeActivityGrid(_: Context) -> DSFSparklineActivityGridView {
+	func makeActivityGrid(_ context: Context) -> DSFSparklineActivityGridView {
 		let view = DSFSparklineActivityGridView(frame: .zero)
 		self.updateView(view)
+		view.cellTooltipString = self._tooltipStringForCell
 		return view
 	}
 
@@ -166,7 +176,8 @@ public extension DSFSparklineActivityGridView.SwiftUI {
 @available(macOS 10.15, iOS 9999.0, tvOS 9999.0, *)
 public extension DSFSparklineActivityGridView.SwiftUI {
 	func makeNSView(context: Context) -> DSFSparklineActivityGridView {
-		return self.makeActivityGrid(context)
+		let v = self.makeActivityGrid(context)
+		return v
 	}
 
 	func updateNSView(_ view: DSFSparklineActivityGridView, context _: Context) {

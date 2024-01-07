@@ -52,6 +52,9 @@ struct ActivityGridView: View {
 				range: 0 ... 1,
 				cellStyle: isLightMode ? cellStyleLight : cellStyleDark
 			)
+			.tooltipStringForCell { index in
+				"Index[\(index)]"
+			}
 			.onReceive(timer) { input in
 				self.inputData.insert(Double.random(in: 0 ... 1), at: 0)
 			}
@@ -135,6 +138,9 @@ struct ActivityGridView: View {
 							cellStyle: .init(fillScheme: .init(gradient: fiveColorGradient)),
 							layoutStyle: .github
 						)
+						.tooltipStringForCell { index in
+							"Tooltip[\(SmallerFullRange[index])]"
+						}
 					}
 				}
 			}

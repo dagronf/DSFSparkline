@@ -21,31 +21,42 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-
-import Foundation
 import CoreGraphics
+import Foundation
 
 public extension DSFSparkline {
-
 	/// A simple data source containing an array of values.
 	@objc(DSFSparklineStaticDataSource) class StaticDataSource: NSObject {
-		@objc let values: [CGFloat]
+		/// The datasource values
+		let values: [CGFloat]
 
-		/// The total of all the values within the datasource
+		/// The minimum value in the data source, excluding .infinite values
+		let minValue: CGFloat
+		/// The maximum value in the data source, excluding .infinite values
+		let maxValue: CGFloat
+
+		/// The total of all the values within the datasource, excluding .infinite values
 		@objc public let total: CGFloat
 
-		/// The allowable range of values for this source
+		/// The allowable range of values for this source. If nil, there are no bounds for the source
 		public let valueBounds: ClosedRange<CGFloat>?
 
 		/// Create an empty data source
-		@objc convenience public override init() {
+		@objc override public convenience init() {
 			self.init([])
 		}
 
+		/// Create a data source with the specified values
+		/// - Parameter values: The datasource values
 		@objc public init(_ values: [CGFloat]) {
 			self.values = values
-			self.total = values.reduce(0) { $0 + $1 }
 			self.valueBounds = nil
+
+			let nonInfiniteValues = values.filter { !$0.isInfinite }
+			self.minValue = nonInfiniteValues.min() ?? 0.0
+			self.maxValue = nonInfiniteValues.max() ?? 1.0
+			self.total = nonInfiniteValues.reduce(0) { $0 + $1 }
+
 			super.init()
 		}
 
@@ -54,7 +65,8 @@ public extension DSFSparkline {
 		///   - values: The values to be displayed
 		///   - lowerBound: The lower bounds of the data
 		///   - upperBound: The upper bounds of the data
-		@objc convenience public init(_ values: [CGFloat], lowerBound: CGFloat, upperBound: CGFloat) {
+		@objc public convenience init(_ values: [CGFloat], lowerBound: CGFloat, upperBound: CGFloat) {
+			assert(lowerBound < upperBound)
 			self.init(values, range: lowerBound ... upperBound)
 		}
 
@@ -63,43 +75,43 @@ public extension DSFSparkline {
 		///   - values: The values to be displayed
 		///   - range: The allowable range for each value
 		public init(_ values: [CGFloat], range: ClosedRange<CGFloat>) {
-			self.values = values.map { $0.clamped(to: range) }
-			self.total = values.reduce(0) { $0 + $1 }
 			self.valueBounds = range
+
+			let clampedValues = values.map { $0.isInfinite ? .infinity : $0.clamped(to: range) }
+			self.values = clampedValues
+
+			let nonInfiniteValues = clampedValues.filter { !$0.isInfinite }
+			self.total = nonInfiniteValues.reduce(0) { $0 + $1 }
+			self.minValue = nonInfiniteValues.min() ?? 0.0
+			self.maxValue = nonInfiniteValues.max() ?? 1.0
+
 			super.init()
 		}
 
-		/// Return the fractional (0 ... 1) value for the specified value
+		/// Return the fractional (0 ... 1) value for the specified value, or .infinity if the value is infinite
 		/// - Parameter value: The value to convert to a fractional value within the range of the datasource
-		/// - Returns: A fractional value
+		/// - Returns: A fractional value, or nil when value == .infinity
 		@objc public func fractionalValue(for value: CGFloat) -> CGFloat {
+			if value == .infinity { return .infinity }
 			if let r = valueBounds {
 				let v = value.clamped(to: r)
 				return (v - r.lowerBound) / (r.upperBound - r.lowerBound)
 			}
 			else {
-				return (value - self.min) / (self.max - self.min)
+				return (value - self.minValue) / (self.maxValue - self.minValue)
 			}
 		}
 
 		/// Return the fractional (0 ... 1) value for the specified value
 		/// - Parameter index: The indexed offset of the datasource to retrieve the fractional value for
-		/// - Returns: The fractional value, or -1 if index is out of bounds
-		public func fractionalValue(at index: Int) -> CGFloat? {
-			guard index < self.values.count else { return nil }
-			let valueAtIndex = self.values[index]
-			if let r = valueBounds {
-				return (valueAtIndex - r.lowerBound) / (r.upperBound - r.lowerBound)
-			}
-			else {
-				return (valueAtIndex - self.min) / (self.max - self.min)
-			}
+		/// - Returns:
+		///    * If the index is outside the scope of the data source, returns `.nan`
+		///    * If the value at the index is infinite, returns `.infinity`
+		///    * If the value at the index is not infinite, returns the fractional value
+		public func fractionalValue(at index: Int) -> CGFloat {
+			guard index < self.values.count else { return .nan }
+			return self.fractionalValue(for: self.values[index])
 		}
-
-		/// The minimum value in the datasource
-		@objc public private(set) lazy var min: CGFloat = { self.values.min() ?? 0 }()
-		/// The maximum value in the datasource
-		@objc public private(set) lazy var max: CGFloat = { self.values.max() ?? 0 }()
 	}
 }
 
@@ -107,7 +119,7 @@ public extension DSFSparkline.StaticDataSource {
 	override var description: String {
 		"""
 		StaticDataSource: count: \(values.count), totalValue: \(self.total)
-		   values: \(self.values)
+			values: \(self.values)
 		"""
 	}
 }

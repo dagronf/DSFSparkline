@@ -469,6 +469,7 @@ class ViewController: NSViewController {
 		self.stripes2.integral = true
 
 		do {
+			activityGrid1.cellTooltipString = { index in "\(index)" }
 			activityGrid1.cellFillScheme = DSFSparkline.ActivityGrid.CellStyle.DefaultLight
 			activityGrid1.setValues((0 ..< 1000).map { _ in CGFloat.random(in: 0 ... 1)}, range: 0 ... 1)
 
@@ -568,8 +569,6 @@ class ViewController: NSViewController {
 			}
 		}
 	}
-
-
 }
 
 /////
