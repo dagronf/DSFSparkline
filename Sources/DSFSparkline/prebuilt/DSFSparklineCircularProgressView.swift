@@ -1,0 +1,119 @@
+//
+//  DSFSparklineCircularProgressView.swift
+//
+//  Copyright © 2023 Darren Ford. All rights reserved.
+//
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
+import Foundation
+import CoreGraphics
+
+#if os(macOS)
+import AppKit
+#else
+import UIKit
+#endif
+
+@IBDesignable
+public class DSFSparklineCircularProgressView: DSFSparklineSurfaceView {
+
+	@IBInspectable public var value: CGFloat = 0.0 {
+		didSet {
+			self.overlay.value = self.value
+		}
+	}
+
+	@IBInspectable public var lineWidth: CGFloat = 10 {
+		didSet {
+			self.overlay.lineWidth = self.lineWidth
+		}
+	}
+
+	/// The padding (inset) for drawing the ring
+	@IBInspectable public var padding: CGFloat = 0.0 {
+		didSet {
+			self.overlay.padding = self.padding
+		}
+	}
+
+	/// The stroke color for the pie chart
+	#if os(macOS)
+	@IBInspectable public var trackColor: NSColor? {
+		didSet {
+			if let t = self.trackColor?.cgColor {
+				self.overlay.trackColor = t
+			}
+		}
+	}
+	#else
+	@IBInspectable public var trackColor: UIColor? {
+		didSet {
+			if let t = self.trackColor?.cgColor {
+				self.overlay.trackColor = t
+			}
+		}
+	}
+	#endif
+
+	/// The stroke color for the pie chart
+	#if os(macOS)
+	@IBInspectable public var progressColor: NSColor? {
+		didSet {
+			if let t = self.progressColor?.cgColor {
+				self.overlay.fillStyle = DSFSparkline.Fill.Color(t)
+			}
+		}
+	}
+	#else
+	@IBInspectable public var progressColor: UIColor? {
+		didSet {
+			if let t = self.progressColor?.cgColor {
+				self.overlay.fillStyle = DSFSparkline.Fill.Color(t)
+			}
+		}
+	}
+	#endif
+
+	/// The fill color for the value ring
+	@objc public var fillStyle: DSFSparklineFillable = DSFSparkline.Fill.Color.white {
+		didSet {
+			self.overlay.fillStyle = fillStyle
+		}
+	}
+
+	// MARK: - Initializers
+
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		self.configure()
+	}
+
+	public required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.configure()
+	}
+
+	private let overlay = DSFSparklineOverlay.CircularProgress()
+}
+
+extension DSFSparklineCircularProgressView {
+	func configure() {
+		self.addOverlay(self.overlay)
+		self.setNeedsDisplay()
+	}
+}
+

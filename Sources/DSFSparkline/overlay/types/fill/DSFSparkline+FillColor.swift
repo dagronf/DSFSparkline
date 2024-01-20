@@ -30,6 +30,13 @@ public extension DSFSparkline.Fill {
 	/// The solid color fill
 	@objc(DSFSparklineFillColor) class `Color`: NSObject, DSFSparklineFillable {
 
+		/// Black color
+		@objc public static var black: DSFSparkline.Fill.Color { .init(CGColor.black) }
+		/// White color
+		@objc public static var white: DSFSparkline.Fill.Color { .init(CGColor.white) }
+		/// Clear color
+		@objc public static var clear: DSFSparkline.Fill.Color { .init(CGColor.clear) }
+
 		@objc public var color: CGColor
 		@objc public init(_ color: CGColor) {
 			self.color = color
@@ -42,6 +49,10 @@ public extension DSFSparkline.Fill {
 
 		@objc public func copyFill() -> DSFSparklineFillable {
 			return Color(self.color.copy() ?? .black)
+		}
+
+		@objc public func color(at fractionalValue: CGFloat) -> CGColor {
+			self.color
 		}
 	}
 }

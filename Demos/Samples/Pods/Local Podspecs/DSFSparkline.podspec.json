@@ -1,6 +1,6 @@
 {
   "name": "DSFSparkline",
-  "version": "5.2.5",
+  "version": "5.2.6",
   "summary": "Simple Sparkline View for macOS, iOS and tvOS",
   "description": "Simple Sparkline View for macOS, iOS and tvOS. Supports SwiftUI, AppKit and UIKit",
   "homepage": "https://github.com/dagronf",
@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/dagronf/DSFSparkline.git",
-    "tag": "5.2.5"
+    "tag": "5.2.6"
   },
   "ios": {
     "frameworks": "UIKit"

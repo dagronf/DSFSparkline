@@ -176,12 +176,9 @@ func DrawRect(primary: CGContext, rect: CGRect, color: CGColor = DSFColor.system
 
 #if !os(macOS)
 extension CGColor {
-	static var black: CGColor {
-		return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 1])!
-	}
-	static var clear: CGColor {
-		return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0, 0, 0, 0])!
-	}
+	static var black: CGColor { CGColor(gray: 0, alpha: 1) }
+	static var white: CGColor { CGColor(gray: 1, alpha: 1) }
+	static var clear: CGColor { CGColor(gray: 0, alpha: 0) }
 }
 #endif
 
@@ -344,5 +341,21 @@ extension DSFEdgeInsets {
 									left: max(self.left, other.left),
 									bottom: max(self.bottom, other.bottom),
 									right: max(self.right, other.right))
+	}
+}
+
+extension Array {
+	/// Return a copy of this array with 'element' appended
+	@inlinable func appending(_ element: Element) -> Self {
+		var result = self
+		result.append(element)
+		return result
+	}
+
+	/// Return a copy of this array with an array of 'element' appended
+	@inlinable func appending(contentsOf elements: [Element]) -> Self {
+		var result = self
+		result.append(contentsOf: elements)
+		return result
 	}
 }

@@ -198,4 +198,59 @@ class DSFSparklineTests: XCTestCase {
 		ds.push(values: [1, 2, 3, 4, 5, 6, 7, 8])
 		XCTAssertEqual(ds.data, [4, 5, 6, 7, 8])
 	}
+
+	func testCircularProgress() throws {
+
+		let l1 = DSFSparklineOverlay.CircularProgress()
+		l1.value = 1.8
+		l1.lineWidth = 10
+
+		let l2 = DSFSparklineOverlay.CircularProgress()
+		l2.value = 1.4
+		l2.lineWidth = 10
+		l2.padding = 12
+		l2.fillStyle = DSFSparkline.Fill.Gradient(colors: [
+			CGColor.init(red: 1, green: 0, blue: 0, alpha: 1),
+			CGColor.init(red: 0, green: 1, blue: 0, alpha: 1),
+			CGColor.init(red: 0, green: 0, blue: 1, alpha: 1),
+		])
+
+		// Solid white
+		let l3 = DSFSparklineOverlay.CircularProgress()
+		l3.value = 0.35
+		l3.lineWidth = 10
+		l3.padding = 24
+		l3.fillStyle = DSFSparkline.Fill.Gradient(colors: [
+			CGColor.init(red: 1, green: 0, blue: 0, alpha: 1),
+			CGColor.init(red: 0, green: 1, blue: 0, alpha: 1),
+			CGColor.init(red: 0, green: 0, blue: 1, alpha: 1),
+		])
+
+		let bitmap = DSFSparklineSurface.Bitmap()   // Create a bitmap surface
+		bitmap.addOverlay(l1)                    // And add the overlay to the surface.
+		bitmap.addOverlay(l2)                    // And add the overlay to the surface.
+		bitmap.addOverlay(l3)                    // And add the overlay to the surface.
+
+		let image = bitmap.image(width: 100, height: 100, scale: 2)
+		Swift.print(image)
+	}
+
+	func testGradientPeek() throws {
+
+		let gr = CGGradient(
+			colorsSpace: nil,
+			colors: [
+				CGColor(red: 1, green: 0, blue: 0, alpha: 1),
+				CGColor(red: 0, green: 0, blue: 1, alpha: 1),
+			] as CFArray,
+			locations: [0.0, 1.0]
+		)!
+
+		let f1 = DSFSparkline.Fill.Gradient(gradient: gr)
+		let c1 = f1.color(at: 0)
+		let c2 = f1.color(at: 0.5)
+		let c3 = f1.color(at: 1)
+		
+		Swift.print([c1, c2, c3])
+	}
 }
