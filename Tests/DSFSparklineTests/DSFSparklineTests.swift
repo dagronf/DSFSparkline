@@ -203,11 +203,11 @@ class DSFSparklineTests: XCTestCase {
 
 		let l1 = DSFSparklineOverlay.CircularProgress()
 		l1.value = 1.8
-		l1.lineWidth = 10
+		l1.trackWidth = 10
 
 		let l2 = DSFSparklineOverlay.CircularProgress()
 		l2.value = 1.4
-		l2.lineWidth = 10
+		l2.trackWidth = 10
 		l2.padding = 12
 		l2.fillStyle = DSFSparkline.Fill.Gradient(colors: [
 			CGColor.init(red: 1, green: 0, blue: 0, alpha: 1),
@@ -218,7 +218,7 @@ class DSFSparklineTests: XCTestCase {
 		// Solid white
 		let l3 = DSFSparklineOverlay.CircularProgress()
 		l3.value = 0.35
-		l3.lineWidth = 10
+		l3.trackWidth = 10
 		l3.padding = 24
 		l3.fillStyle = DSFSparkline.Fill.Gradient(colors: [
 			CGColor.init(red: 1, green: 0, blue: 0, alpha: 1),

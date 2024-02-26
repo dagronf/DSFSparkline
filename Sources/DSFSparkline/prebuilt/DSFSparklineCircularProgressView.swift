@@ -1,7 +1,7 @@
 //
 //  DSFSparklineCircularProgressView.swift
 //
-//  Copyright © 2023 Darren Ford. All rights reserved.
+//  Copyright © 2024 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -37,9 +37,9 @@ public class DSFSparklineCircularProgressView: DSFSparklineSurfaceView {
 		}
 	}
 
-	@IBInspectable public var lineWidth: CGFloat = 10 {
+	@IBInspectable public var trackWidth: CGFloat = 10 {
 		didSet {
-			self.overlay.lineWidth = self.lineWidth
+			self.overlay.trackWidth = self.trackWidth
 		}
 	}
 
@@ -87,6 +87,13 @@ public class DSFSparklineCircularProgressView: DSFSparklineSurfaceView {
 		}
 	}
 	#endif
+
+	/// The track's icon
+	@IBInspectable public var trackIcon: CGImage? {
+		didSet {
+			self.overlay.icon = self.trackIcon
+		}
+	}
 
 	/// The fill color for the value ring
 	@objc public var fillStyle: DSFSparklineFillable = DSFSparkline.Fill.Color.white {

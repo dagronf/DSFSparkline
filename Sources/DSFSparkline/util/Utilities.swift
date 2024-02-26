@@ -30,12 +30,14 @@ public typealias DSFColor = NSColor
 public typealias DSFView = NSView
 public typealias DSFFont = NSFont
 public typealias DSFEdgeInsets = NSEdgeInsets
+public typealias DSFImage = NSImage
 #else
 import UIKit
 public typealias DSFColor = UIColor
 public typealias DSFView = UIView
 public typealias DSFFont = UIFont
 public typealias DSFEdgeInsets = UIEdgeInsets
+public typealias DSFImage = UIImage
 #endif
 
 #if canImport(SwiftUI)
@@ -357,5 +359,30 @@ extension Array {
 		var result = self
 		result.append(contentsOf: elements)
 		return result
+	}
+}
+
+extension CGImage {
+	func flipped() -> CGImage? {
+		let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+		let flipped = CGContext(
+			data: nil,
+			width: self.width,
+			height: self.height,
+			bitsPerComponent: 8,
+			bytesPerRow: 0,
+			space: CGColorSpaceCreateDeviceRGB(),
+			bitmapInfo: bitmapInfo.rawValue
+		)!
+
+		// Flip the context
+		flipped.translateBy(x: 0, y: CGFloat(height))
+		flipped.scaleBy(x: 1.0, y: -1.0)
+
+		// Draw the image into the context
+		flipped.draw(self, in: CGRect(x: 0, y: 0, width: self.width, height: self.height))
+
+		// Create a new CGImage from the context
+		return flipped.makeImage()
 	}
 }

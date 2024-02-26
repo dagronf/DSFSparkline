@@ -1,8 +1,22 @@
 //
-//  File.swift
-//  
+//  DSFSparklineOverlay+CircularProgress.swift
 //
-//  Created by Darren Ford on 17/1/2024.
+//  Copyright © 2024 Darren Ford. All rights reserved.
+//
+//  MIT license
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//  documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+//  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+//  permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all copies or substantial
+//  portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+//  OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+//  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
 import Foundation
@@ -25,7 +39,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// The value assigned to the percent bar. A value between 0.0 and 1.0
-		@objc public var lineWidth: CGFloat = 10.0 {
+		@objc public var trackWidth: CGFloat = 10.0 {
 			didSet {
 				self.valueDidChange()
 			}
@@ -52,28 +66,40 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		/// The icon appearing at the top of the ring
+		@objc public var icon: CGImage? = nil {
+			didSet {
+				self._flippedIcon = icon?.flipped()
+				self.valueDidChange()
+			}
+		}
+		private var _flippedIcon: CGImage? = nil
+
 		override init() {
 			self.fillStyle = DSFSparkline.Fill.Color(.white)
 			super.init()
+			self.drawsAsynchronously = true
 		}
 
-		init(value: CGFloat, lineWidth: CGFloat, fillStyle: DSFSparklineFillable) {
+		init(value: CGFloat, trackWidth: CGFloat, fillStyle: DSFSparklineFillable) {
 			self.value = value
-			self.lineWidth = lineWidth
+			self.trackWidth = trackWidth
 			self.fillStyle = fillStyle
 			super.init()
+			self.drawsAsynchronously = true
 		}
 		
 		public override init(layer: Any) {
 			if let layer = layer as? CircularProgress {
 				self.value = layer.value
-				self.lineWidth = layer.lineWidth
+				self.trackWidth = layer.trackWidth
 				self.fillStyle = layer.fillStyle
 			}
 			else {
 				fatalError()
 			}
 			super.init(layer: layer)
+			self.drawsAsynchronously = true
 		}
 
 		required init?(coder: NSCoder) {
@@ -99,9 +125,10 @@ private extension DSFSparklineOverlay.CircularProgress {
 			destination: bounds,
 			value: self.value,
 			padding: self.padding,
-			lineWidth: self.lineWidth,
+			trackWidth: self.trackWidth,
 			fillStyle: self.fillStyle,
-			trackColor: self.trackColor
+			trackColor: self.trackColor,
+			icon: self._flippedIcon
 		)
 	}
 }
@@ -116,17 +143,18 @@ private class ActivityRing {
 		destination: CGRect = .zero,
 		value: CGFloat,
 		padding: CGFloat,
-		lineWidth: CGFloat,
+		trackWidth: CGFloat,
 		fillStyle: DSFSparklineFillable,
-		trackColor: CGColor
+		trackColor: CGColor,
+		icon: CGImage?
 	) {
 		assert(value >= 0.0)
+		guard destination.isEmpty == false else { return }
 
 		let _fullCircle = 2.0 * CGFloat.pi
 
-		let ctxBounds = CGRect(origin: .zero, size: CGSize(width: ctx.width, height: ctx.height))
+		var drawRect = destination
 
-		var drawRect = destination == .zero ? ctxBounds : destination
 		if drawRect.width != drawRect.height {
 			let m = min(drawRect.width, drawRect.height)
 			drawRect = CGRect(
@@ -140,9 +168,13 @@ private class ActivityRing {
 		// Inset by the padding amount
 		drawRect = drawRect.insetBy(dx: padding, dy: padding)
 
+		guard drawRect.isEmpty == false else {
+			return
+		}
+
 		let centerPoint = CGPoint(x: drawRect.midX, y: drawRect.midY)
 		let dimension = drawRect.width > drawRect.height ? drawRect.height : drawRect.width
-		let radius: CGFloat = drawRect.width > drawRect.height ? (drawRect.height - lineWidth) / 2.0 : (drawRect.width - lineWidth) / 2.0
+		let radius: CGFloat = drawRect.width > drawRect.height ? (drawRect.height - trackWidth) / 2.0 : (drawRect.width - trackWidth) / 2.0
 
 		//
 		// Clip to the activity track
@@ -150,7 +182,7 @@ private class ActivityRing {
 
 		let pth = CGMutablePath()
 		pth.addArc(center: centerPoint, radius: radius, startAngle: 0, endAngle: _fullCircle, clockwise: false)
-		let act = pth.copy(strokingWithWidth: lineWidth, lineCap: .round, lineJoin: .round, miterLimit: 1.0)
+		let act = pth.copy(strokingWithWidth: trackWidth, lineCap: .round, lineJoin: .round, miterLimit: 1.0)
 		ctx.addPath(act)
 		ctx.clip()
 
@@ -194,7 +226,7 @@ private class ActivityRing {
 				offset += 0.01
 
 				let p = CGPath(
-					ellipseIn: CGRect(x: x, y: y, width: lineWidth, height: lineWidth),
+					ellipseIn: CGRect(x: x - 0.1, y: y - 0.1, width: trackWidth + 0.2, height: trackWidth + 0.2),
 					transform: nil)
 
 				fill.addPath(p)
@@ -217,7 +249,7 @@ private class ActivityRing {
 				let y = drawRect.minY + (radius + (radius * sin(offset - (CGFloat.pi * 0.5))))
 
 				let cp = CGPath(
-					ellipseIn: CGRect(x: x, y: y, width: lineWidth, height: lineWidth),
+					ellipseIn: CGRect(x: x - 0.1, y: y - 0.1, width: trackWidth + 0.2, height: trackWidth + 0.2),
 					transform: nil
 				)
 				ctx.addPath(cp)
@@ -236,11 +268,12 @@ private class ActivityRing {
 			}
 		}
 
-		///////////
+		if let icon = icon {
+			let x = drawRect.minX + (radius + (radius * cos(-(CGFloat.pi * 0.5))))
+			let y = drawRect.minY + (radius + (radius * sin(-(CGFloat.pi * 0.5))))
 
-//		let cgi = ctx.makeImage()!
-//		let nsi = NSImage(cgImage: cgi, size: .zero)
-//		Swift.print(nsi)
+			let iconRect = CGRect(x: x, y: y, width: trackWidth, height: trackWidth)
+			ctx.draw(icon, in: iconRect, byTiling: false)
+		}
 	}
 }
-

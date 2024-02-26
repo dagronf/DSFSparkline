@@ -31,15 +31,50 @@ public extension DSFSparkline.Fill {
 	@objc(DSFSparklineFillColor) class `Color`: NSObject, DSFSparklineFillable {
 
 		/// Black color
-		@objc public static var black: DSFSparkline.Fill.Color { .init(CGColor.black) }
+		@objc public static var black: DSFSparkline.Fill.Color { .init(gray: 0) }
 		/// White color
-		@objc public static var white: DSFSparkline.Fill.Color { .init(CGColor.white) }
+		@objc public static var white: DSFSparkline.Fill.Color { .init(gray: 1) }
 		/// Clear color
-		@objc public static var clear: DSFSparkline.Fill.Color { .init(CGColor.clear) }
+		@objc public static var clear: DSFSparkline.Fill.Color { .init(gray: 0, alpha: 0) }
 
+		/// The fill color
 		@objc public var color: CGColor
+
+		/// Create a color using a CGColor
+		/// - Parameter color: The color
 		@objc public init(_ color: CGColor) {
 			self.color = color
+		}
+
+		/// Create a fill color using an sRGB color
+		/// - Parameters:
+		///   - red: red component
+		///   - green: green component
+		///   - blue: blue component
+		///   - alpha: alpha component
+		@objc public init(srgbRed red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) {
+			let cs = CGColorSpace(name: CGColorSpace.sRGB)!
+			self.color = CGColor(colorSpace: cs, components: [red, green, blue, alpha]) ?? CGColor.black
+		}
+
+		/// Create a fill color using an rgb color
+		/// - Parameters:
+		///   - red: red component
+		///   - green: green component
+		///   - blue: blue component
+		///   - alpha: alpha component
+		@objc public init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) {
+			self.color = CGColor(red: red, green: green, blue: blue, alpha: alpha)
+		}
+
+		/// Create a fill color using an sRGB color
+		/// - Parameters:
+		///   - red: red component
+		///   - green: green component
+		///   - blue: blue component
+		///   - alpha: alpha component
+		@objc public init(gray: CGFloat, alpha: CGFloat = 1.0) {
+			self.color = CGColor(gray: gray, alpha: alpha)
 		}
 
 		public func fill(context: CGContext, bounds: CGRect) {
