@@ -72,7 +72,7 @@ extension PresentationTests {
 			)
 			surface.addOverlay(grid)
 
-			let bitmap = surface.image(width: 150, height: 30, scale: 2)!
+			let bitmap = surface.image(width: 150, height: 17, scale: 2)!
 			// Generate an image with retina scale
 			let filename = "activity-grid-mini.png"
 			let link = try imageStore.store(bitmap.representation.png(scale: 2), filename: filename)
@@ -105,7 +105,6 @@ extension PresentationTests {
 			markdownText += "<a href=\"\(link2)\"><img src=\"\(link2)\" width=\"300\" /></a>\n"
 		}
 	}
-
 
 	func testCircularProgress() throws {
 
@@ -282,6 +281,71 @@ extension PresentationTests {
 					markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"48\" /></a>\n"
 				}
 			}
+
+			markdownText += "\n"
+
+			do {
+				markdownText += "### Health rings\n\n"
+
+				let g = DSFSparkline.Fill.Gradient(
+					colors: [
+						CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 1.0),
+						CGColor(srgbRed: 0.891, green: 0.000, blue: 0.090, alpha: 1.0),
+					]
+				)
+				let g1 = DSFSparkline.Fill.Gradient(
+					colors: [
+						CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 1.0),
+						CGColor(srgbRed: 0.601, green: 1.000, blue: 0.009, alpha: 1.0),
+					]
+				)
+				let g2 = DSFSparkline.Fill.Gradient(
+					colors: [
+						CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 1.0),
+						CGColor(srgbRed: 0.015, green: 0.847, blue: 1.000, alpha: 1.0),
+					]
+				)
+
+				try [0.0, 0.33, 0.66, 1.0].forEach { index in
+
+					let b1 = DSFSparklineSurface.Bitmap()
+					do {
+						let a1 = DSFSparklineOverlay.CircularProgress()
+						a1.value = index
+						a1.fillStyle = g
+						a1.trackWidth = 10
+						a1.trackColor = .init(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1)
+						b1.addOverlay(a1)
+					}
+
+					do {
+						let a1 = DSFSparklineOverlay.CircularProgress()
+						a1.value = index * 0.8
+						a1.fillStyle = g1
+						a1.trackWidth = 10
+						a1.padding = 12
+						a1.trackColor = .init(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1)
+						b1.addOverlay(a1)
+					}
+
+					do {
+						let a1 = DSFSparklineOverlay.CircularProgress()
+						a1.value = index * 0.6
+						a1.fillStyle = g2
+						a1.trackWidth = 10
+						a1.padding = 24
+						a1.trackColor = .init(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1)
+						b1.addOverlay(a1)
+					}
+
+					let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 96, height: 96), scale: 2))
+					let filename = "circular-health-\(index).png"
+					let link = try imageStore.store(image.representation.png(scale: 2), filename: filename)
+					markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"96\" /></a>\n"
+				}
+			}
+
+			markdownText += "\n"
 		}
 	}
 }
