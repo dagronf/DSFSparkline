@@ -24,6 +24,9 @@
 import XCTest
 @testable import DSFSparkline
 
+// A temporary file container to hold results
+internal let testResultsContainer = try! TestFilesContainer(named: "DSFSparkline_Tests")
+
 class DSFSparklineTests: XCTestCase {
 
 	override func setUp() {

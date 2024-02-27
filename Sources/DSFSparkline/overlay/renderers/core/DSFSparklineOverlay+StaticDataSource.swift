@@ -38,6 +38,12 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		/// Datasource values
+		@objc public var values: [CGFloat] {
+			get { self.dataSource.values }
+			set { self.dataSource = .init(newValue) }
+		}
+
 		@objc public override init() {
 			super.init()
 		}

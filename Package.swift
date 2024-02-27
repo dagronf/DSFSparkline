@@ -15,6 +15,11 @@ let package = Package(
 		.library(name: "DSFSparkline-shared", type: .dynamic, targets: ["DSFSparkline"]),
 	],
 	dependencies: [
+		// A microframework for cleaning handling image conversion
+		.package(
+			url: "https://github.com/dagronf/SwiftImageReadWrite",
+			.upToNextMinor(from: "1.6.1")
+		),
 	],
 	targets: [
 		.target(
@@ -22,7 +27,7 @@ let package = Package(
 			dependencies: []),
 		.testTarget(
 			name: "DSFSparklineTests",
-			dependencies: ["DSFSparkline"]),
+			dependencies: ["DSFSparkline", "SwiftImageReadWrite"]),
 	],
 	swiftLanguageVersions: [.v5]
 )
