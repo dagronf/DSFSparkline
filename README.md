@@ -283,17 +283,30 @@ A simple gauge with a single value (0 ... 1). The color displayed in the gauge c
 |------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge.png" width="400">|
 
-### Activity Grid <img src="./Art/doc/activity-grid-mini.png" height="8"/>
+### Activity Grid <img src="./Art/doc/activity-grid-mini.png" width="150"/>
 
 A Github-style activity grid. Each cell represents a discrete value in a progression with a color
 
 * Configurable horizontal/vertical cell count
+* Configurable cell spacing
 * Configurable fill schemes
 
 |            |            |
 |------------|------------|
 |<img src="./Art/doc/activity-grid-1.png" width="400">|<img src="./Art/doc/activity-grid-2.png" width="400">|
 
+### Circular Progress <img src="./Art/doc/circular-radial-3.png" height="18"/> <img src="./Art/doc/circular-radial-4.png" height="18"/> <img src="./Art/doc/circular-radial-5.png" height="18"/> <img src="./Art/doc/circular-radial-6.png" height="18"/>
+
+A circular progress graph
+
+* Configurable track width
+* Optional track background color
+* Configurable track padding to allow overlaying multiple progress graphs to replicate the health rings.
+* Configurable fill schemes
+
+| Simulated health rings |
+|------------------------|
+|<img src="./Art/doc/circular-health-0.0.png" height="48"/>&nbsp;<img src="./Art/doc/circular-health-0.33.png" height="48"/>&nbsp;<img src="./Art/doc/circular-health-0.66.png" height="48"/>&nbsp;<img src="./Art/doc/circular-health-1.0.png" height="48"/>|
 
 # Demos
 

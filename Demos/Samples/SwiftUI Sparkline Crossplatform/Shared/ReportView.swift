@@ -106,20 +106,18 @@ struct ReportView: View {
 	}
 
 	var body: some View {
-		ScrollView([.vertical, .horizontal]) {
-			VStack {
-				ReportHeaderView(attrString: self.sparklineAttributedString())
-					.padding(EdgeInsets(top: 16, leading: 0, bottom: 25, trailing: 0))
-
-				ReportExamResults(gridItems1: self.gridItems1, userItems1: self.userItems1)
-					.frame(maxWidth: .infinity)
-
-				ReportTeamWinLosses(gridItems2: self.gridItems2, userItems2: self.userItems2)
-					.frame(maxWidth: .infinity)
-
-				ReportTeamSales(gridItems2: self.gridItems2, salesItems: self.salesItems)
-					.frame(maxWidth: .infinity)
-			}
+		VStack {
+			ReportHeaderView(attrString: self.sparklineAttributedString())
+				.padding(EdgeInsets(top: 16, leading: 0, bottom: 25, trailing: 0))
+			
+			ReportExamResults(gridItems1: self.gridItems1, userItems1: self.userItems1)
+				.frame(maxWidth: .infinity)
+			
+			ReportTeamWinLosses(gridItems2: self.gridItems2, userItems2: self.userItems2)
+				.frame(maxWidth: .infinity)
+			
+			ReportTeamSales(gridItems2: self.gridItems2, salesItems: self.salesItems)
+				.frame(maxWidth: .infinity)
 		}
 	}
 }

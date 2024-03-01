@@ -141,159 +141,157 @@ struct ActiveView: View {
 	])
 	
 	var body: some View {
-		ScrollView {
-			VStack {
-				HStack(alignment: .center, spacing: 8, content: {
-					UpperGraph(label: "Left", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemOrange, showZeroLine: false, interpolated: false, lineShading: true).frame(height: 60)
-					UpperGraph(label: "Middle", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemYellow, showZeroLine: true, interpolated: true, lineShading: true).frame(height: 60)
-					UpperGraph(label: "Right", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemPurple, showZeroLine: false, interpolated: false, lineShading: false).frame(height: 60)
-				})
-				HStack {
-					VStack {
-						DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
-																	graphColor: DSFColor.systemBlue,
-																	barSpacing: 1,
-																	showZeroLine: true,
-																	showHighlightRange: true,
-																	highlightDefinitions: [
-																		DSFSparkline.HighlightRangeDefinition(
-																			range: 0 ..< 0.5,
-																			fillColor: DSFColor.gray.withAlphaComponent(0.3).cgColor
-																		),
-																	])
-							.frame(height: 60)
-						DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
-																		 barSpacing: 1,
-																		 gradient: self.gradient)
-							.frame(height: 60)
-							.padding(2)
-					}
-					
-					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource2,
-																graphColor: DSFColor.systemGreen,
-																lineWidth: 2,
-																barSpacing: 2,
-																showZeroLine: true,
-																zeroLineDefinition: BigCyanZeroLine,
-																centeredAtZeroLine: true)
-						.frame(height: 60)
-				}
-				HStack {
-					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
-																graphColor: DSFColor.systemBlue,
-																unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2))
-						.frame(height: 60)
-						.padding(2)
-					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
-																graphColor: DSFColor.systemRed,
-																unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2),
-																upsideDown: true)
-						.frame(height: 60)
-						.padding(2)
-					VStack(alignment: .center, spacing: nil, content: {
-						DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
-																	graphColor: DSFColor.systemGreen,
-																	unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2),
-																	verticalDotCount: 10)
-							.frame(height: 60)
-						DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
-																	graphColor: DSFColor.systemPink,
-																	unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2),
-																	verticalDotCount: 10,
-																	upsideDown: true)
-							.frame(height: 60)
-						
-					})
-				}
-				
-				#if os(macOS)
-				HStack {
-					Picker(selection: $selectedType, label: EmptyView()) {
-						Text("Line").tag(1)
-						Text("Line (Smooth)").tag(2)
-						Text("Bar").tag(3)
-						Text("Dot").tag(4)
-						Text("Stripes").tag(5)
-					}.pickerStyle(RadioGroupPickerStyle())
-					Group {
-						if self.selectedType == 1 {
-							DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		 graphColor: DSFColor.systemOrange,
-																		 showZeroLine: true)
-						}
-						else if self.selectedType == 2 {
-							DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		 graphColor: DSFColor.systemOrange,
-																		 interpolated: true,
-																		 showZeroLine: true)
-						}
-						else if self.selectedType == 3 {
-							DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		graphColor: DSFColor.systemOrange,
-																		barSpacing: 1,
-																		showZeroLine: true)
-						}
-						else if self.selectedType == 4 {
-							DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		graphColor: DSFColor.systemOrange)
-						}
-						else {
-							DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																			 barSpacing: 1, gradient: self.gradient)
-						}
-					}
-					.frame(height: 80)
-					.padding(2)
-				}
-				#else
+		VStack {
+			HStack(alignment: .center, spacing: 8, content: {
+				UpperGraph(label: "Left", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemOrange, showZeroLine: false, interpolated: false, lineShading: true).frame(height: 60)
+				UpperGraph(label: "Middle", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemYellow, showZeroLine: true, interpolated: true, lineShading: true).frame(height: 60)
+				UpperGraph(label: "Right", dataSource: dataSource.PreviewGlobalDataSource4, graphColor: DSFColor.systemPurple, showZeroLine: false, interpolated: false, lineShading: false).frame(height: 60)
+			})
+			HStack {
 				VStack {
-					Picker(selection: $selectedType, label: EmptyView()) {
-						Text("Line").tag(1)
-						Text("Line (Smooth)").tag(2)
-						Text("Bar").tag(3)
-						Text("Dot").tag(4)
-						Text("Stripes").tag(5)
-					}
-					Group {
-						if self.selectedType == 1 {
-							DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		 graphColor: DSFColor.systemOrange,
-																		 showZeroLine: true)
-						}
-						else if self.selectedType == 2 {
-							DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		 graphColor: DSFColor.systemOrange,
-																		 interpolated: true,
-																		 showZeroLine: true)
-						}
-						else if self.selectedType == 3 {
-							DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		graphColor: DSFColor.systemOrange,
-																		barSpacing: 1,
-																		showZeroLine: true)
-						}
-						else if self.selectedType == 4 {
-							DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																		graphColor: DSFColor.systemOrange)
-						}
-						else {
-							DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
-																			 barSpacing: 1, gradient: self.gradient)
-						}
-					}
-					.frame(height: 80)
+					DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
+																graphColor: DSFColor.systemBlue,
+																barSpacing: 1,
+																showZeroLine: true,
+																showHighlightRange: true,
+																highlightDefinitions: [
+																	DSFSparkline.HighlightRangeDefinition(
+																		range: 0 ..< 0.5,
+																		fillColor: DSFColor.gray.withAlphaComponent(0.3).cgColor
+																	),
+																])
+					.frame(height: 60)
+					DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource1,
+																	 barSpacing: 1,
+																	 gradient: self.gradient)
+					.frame(height: 60)
 					.padding(2)
 				}
-				#endif
 				
-			}.padding(20)
+				DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource2,
+															graphColor: DSFColor.systemGreen,
+															lineWidth: 2,
+															barSpacing: 2,
+															showZeroLine: true,
+															zeroLineDefinition: BigCyanZeroLine,
+															centeredAtZeroLine: true)
+				.frame(height: 60)
+			}
+			HStack {
+				DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
+															graphColor: DSFColor.systemBlue,
+															unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2))
+				.frame(height: 60)
+				.padding(2)
+				DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
+															graphColor: DSFColor.systemRed,
+															unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2),
+															upsideDown: true)
+				.frame(height: 60)
+				.padding(2)
+				VStack(alignment: .center, spacing: nil, content: {
+					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
+																graphColor: DSFColor.systemGreen,
+																unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2),
+																verticalDotCount: 10)
+					.frame(height: 60)
+					DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource3,
+																graphColor: DSFColor.systemPink,
+																unsetGraphColor: DSFColor.darkGray.withAlphaComponent(0.2),
+																verticalDotCount: 10,
+																upsideDown: true)
+					.frame(height: 60)
+					
+				})
+			}
+			
+#if os(macOS)
+			HStack {
+				Picker(selection: $selectedType, label: EmptyView()) {
+					Text("Line").tag(1)
+					Text("Line (Smooth)").tag(2)
+					Text("Bar").tag(3)
+					Text("Dot").tag(4)
+					Text("Stripes").tag(5)
+				}.pickerStyle(RadioGroupPickerStyle())
+				Group {
+					if self.selectedType == 1 {
+						DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	 graphColor: DSFColor.systemOrange,
+																	 showZeroLine: true)
+					}
+					else if self.selectedType == 2 {
+						DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	 graphColor: DSFColor.systemOrange,
+																	 interpolated: true,
+																	 showZeroLine: true)
+					}
+					else if self.selectedType == 3 {
+						DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	graphColor: DSFColor.systemOrange,
+																	barSpacing: 1,
+																	showZeroLine: true)
+					}
+					else if self.selectedType == 4 {
+						DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	graphColor: DSFColor.systemOrange)
+					}
+					else {
+						DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																		 barSpacing: 1, gradient: self.gradient)
+					}
+				}
+				.frame(height: 80)
+				.padding(2)
+			}
+#else
+			VStack {
+				Picker(selection: $selectedType, label: EmptyView()) {
+					Text("Line").tag(1)
+					Text("Line (Smooth)").tag(2)
+					Text("Bar").tag(3)
+					Text("Dot").tag(4)
+					Text("Stripes").tag(5)
+				}
+				Group {
+					if self.selectedType == 1 {
+						DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	 graphColor: DSFColor.systemOrange,
+																	 showZeroLine: true)
+					}
+					else if self.selectedType == 2 {
+						DSFSparklineLineGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	 graphColor: DSFColor.systemOrange,
+																	 interpolated: true,
+																	 showZeroLine: true)
+					}
+					else if self.selectedType == 3 {
+						DSFSparklineBarGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	graphColor: DSFColor.systemOrange,
+																	barSpacing: 1,
+																	showZeroLine: true)
+					}
+					else if self.selectedType == 4 {
+						DSFSparklineDotGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																	graphColor: DSFColor.systemOrange)
+					}
+					else {
+						DSFSparklineStripesGraphView.SwiftUI(dataSource: dataSource.PreviewGlobalDataSource5,
+																		 barSpacing: 1, gradient: self.gradient)
+					}
+				}
+				.frame(height: 80)
+				.padding(2)
+			}
+#endif
+			
+		}.padding(20)
 			.onAppear {
 				self.dataSource.start()
 			}
 			.onDisappear {
 				self.dataSource.stop()
 			}
-		}
 	}
 }
 

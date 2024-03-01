@@ -36,6 +36,11 @@ public extension DSFSparkline.Fill {
 		/// Is the gradient horizontal or vertical
 		@objc public var isHorizontal: Bool
 
+		/// A workaround for retrieving a color at a fractional location within a CGGradient
+		private lazy var peek: GradientPeek = {
+			GradientPeek(gradient: self.gradient)
+		}()
+
 		/// Create a fill gradient
 		@objc public init(gradient: CGGradient, isHorizontal: Bool = false) {
 			self.gradient = gradient
@@ -48,18 +53,9 @@ public extension DSFSparkline.Fill {
 
 			self.isHorizontal = isHorizontal
 
-			let locations: [CGFloat] = {
-				if colors.count == 2 { return [1, 0] }
-
-				var tmp: [CGFloat] = []
-				let divisor: CGFloat = 1.0 / CGFloat((colors.count - 2) + 1)
-				var tmpVal: CGFloat = 1.0
-				while tmpVal >= 0 {
-					tmp.append(tmpVal)
-					tmpVal -= divisor
-				}
-				return tmp
-			}()
+			let count = colors.count
+			let divisor = 1.0 / (CGFloat(count) - 1)
+			let locations = (0 ..< count - 1).map { Double($0) * divisor }.appending(1)
 
 			let gradient = CGGradient(
 				colorsSpace: nil,
@@ -91,6 +87,75 @@ public extension DSFSparkline.Fill {
 					options: [.drawsAfterEndLocation, .drawsBeforeStartLocation]
 				)
 			}
+		}
+
+		/// Return the color at a fractional (0 -> 1) position within the gradient
+		@objc public func color(at fractionalValue: CGFloat) -> CGColor {
+			self.peek.color(at: fractionalValue)
+		}
+	}
+}
+
+private extension DSFSparkline.Fill.Gradient {
+	class GradientPeek {
+		static let divisor: CGFloat = 1.0 / 255.0
+		let snapshotSize = 4096
+		let gradient: CGGradient
+
+		private let colorSpace = CGColorSpace(name: CGColorSpace.sRGB)!
+		private lazy var bitmap: [UInt8] = {
+			[UInt8](repeating: 0, count: (self.snapshotSize + 1) * 4)
+		}()
+
+		init(gradient: CGGradient) {
+			self.gradient = gradient
+			self.build()
+		}
+
+		func color(at fraction: CGFloat) -> CGColor {
+			let fraction = fraction.clamped(to: 0 ... 1)
+			let pixel = Int((CGFloat(self.snapshotSize) * fraction).rounded(.towardZero))
+			let offset = pixel * 4
+
+			let r = bitmap[offset + 0]
+			let g = bitmap[offset + 1]
+			let b = bitmap[offset + 2]
+			let a = bitmap[offset + 3]
+
+			return CGColor(
+				colorSpace: self.colorSpace,
+				components: [
+					CGFloat(r) * Self.divisor,
+					CGFloat(g) * Self.divisor,
+					CGFloat(b) * Self.divisor,
+					CGFloat(a) * Self.divisor
+				]
+			)!
+		}
+
+		private func build() {
+			let sz = self.snapshotSize + 1
+			let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+			guard
+				let ctx = CGContext(
+					data: &bitmap,
+					width: sz,
+					height: 1,
+					bitsPerComponent: 8,
+					bytesPerRow: sz * 4,
+					space: self.colorSpace,
+					bitmapInfo: bitmapInfo.rawValue
+				)
+			else {
+				fatalError()
+			}
+
+			ctx.drawLinearGradient(
+				gradient,
+				start: .init(x: 0, y: 0),
+				end: .init(x: sz, y: 0),
+				options: []
+			)
 		}
 	}
 }
