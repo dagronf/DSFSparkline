@@ -25,6 +25,7 @@ import SwiftUI
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineCircularProgressView {
+	/// A SwiftUI wrapper for the Circular Progress sparkline overlay
 	struct SwiftUI {
 		let value: Double
 		let trackWidth: Double
@@ -35,8 +36,8 @@ public extension DSFSparklineCircularProgressView {
 
 		public init(
 			value: Double,
-			fillStyle: DSFSparklineFillable = DSFSparkline.Fill.Color.white,
-			trackWidth: Double = 10.0,
+			fillStyle: DSFSparklineFillable = DSFSparklineOverlay.CircularProgress.DefaultFillStyle,
+			trackWidth: Double = DSFSparklineOverlay.CircularProgress.DefaultTrackWidth,
 			padding: Double = 0.0,
 			trackColor: CGColor? = nil,
 			trackIcon: CGImage? = nil
@@ -53,23 +54,11 @@ public extension DSFSparklineCircularProgressView {
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 extension DSFSparklineCircularProgressView.SwiftUI: DSFViewRepresentable {
-
 #if os(macOS)
-public typealias NSViewType = DSFSparklineCircularProgressView
+	public typealias NSViewType = DSFSparklineCircularProgressView
 #else
-public typealias UIViewType = DSFSparklineCircularProgressView
+	public typealias UIViewType = DSFSparklineCircularProgressView
 #endif
-
-	public class Coordinator: NSObject {
-		let parent: DSFSparklineCircularProgressView.SwiftUI
-		init(_ sparkline: DSFSparklineCircularProgressView.SwiftUI) {
-			self.parent = sparkline
-		}
-	}
-
-	public func makeCoordinator() -> Coordinator {
-		Coordinator(self)
-	}
 
 	func makeProgressGraph(_: Context) -> DSFSparklineCircularProgressView {
 		let view = DSFSparklineCircularProgressView(frame: .zero)
@@ -139,11 +128,14 @@ public extension DSFSparklineCircularProgressView.SwiftUI {
 func namedImage(_ name: String) -> CGImage? {
 #if os(macOS)
 	if #available(macOS 11.0, *) {
-		return NSImage(systemSymbolName: name, accessibilityDescription: nil)?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+		let ns = NSImage(systemSymbolName: name, accessibilityDescription: nil)!
+		//ns.
+		return ns.cgImage(forProposedRect: nil, context: nil, hints: nil)
 	}
 	return nil
 #else
-	return UIImage(named: name)?.cgImage
+	let ui = UIImage(systemName: name)!
+	return ui.cgImage
 #endif
 }
 
@@ -182,79 +174,86 @@ struct DSFSparklineCircularProgressViewPreviews: PreviewProvider {
 			]
 		)
 
-		let i1: CGImage? = namedImage("arrow.right")
-		let i2: CGImage? = namedImage("arrow.up")
-		let i3: CGImage? = namedImage("arrow.triangle.swap")
-		let i4: CGImage? = namedImage("phone.arrow.right")
+		let i1 = namedImage("arrow.right")
+		let i2 = namedImage("arrow.up")
+		let i3 = namedImage("arrow.triangle.swap")
+		let i4 = namedImage("phone.arrow.right")
 
-		SwiftUI.VStack {
-			HStack(alignment: .center) {
-				DSFSparklineCircularProgressView.SwiftUI(value: 0, trackWidth: 20)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 0.4, trackWidth: 20)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 0.8, trackWidth: 20)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 1.2, trackWidth: 20)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 1.6, trackWidth: 20)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 2.0, trackWidth: 20)
-					.frame(width: 100, height: 100)
-			}
-			HStack(alignment: .center) {
-				DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: ge, trackWidth: 25)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: ge, trackWidth: 25)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 0.8, fillStyle: ge, trackWidth: 25)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 1.2, fillStyle: ge, trackWidth: 25)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 1.6, fillStyle: ge, trackWidth: 25)
-					.frame(width: 100, height: 100)
-				DSFSparklineCircularProgressView.SwiftUI(value: 2.0, fillStyle: ge, trackWidth: 25)
-					.frame(width: 100, height: 100)
-			}
-			HStack(alignment: .center) {
-				ZStack {
-					DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1))
+		ScrollView([.horizontal, .vertical]) {
+			VStack {
+				HStack(alignment: .center) {
+					DSFSparklineCircularProgressView.SwiftUI(value: 0, trackWidth: 20)
+						.frame(width: 100, height: 100)
+					DSFSparklineCircularProgressView.SwiftUI(value: 0.4, trackWidth: 20)
+						.frame(width: 100, height: 100)
+					DSFSparklineCircularProgressView.SwiftUI(value: 0.8, trackWidth: 20)
+						.frame(width: 100, height: 100)
+					DSFSparklineCircularProgressView.SwiftUI(value: 1.2, trackWidth: 20)
+						.frame(width: 100, height: 100)
+					DSFSparklineCircularProgressView.SwiftUI(value: 1.6, trackWidth: 20)
+						.frame(width: 100, height: 100)
+					DSFSparklineCircularProgressView.SwiftUI(value: 2.0, trackWidth: 20)
+						.frame(width: 100, height: 100)
 				}
-				.frame(width: 150, height: 150)
-				ZStack {
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1), trackIcon: i1)
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1), trackIcon: i2)
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1), trackIcon: i3)
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1), trackIcon: i4)
+
+				ForEach(0 ..< 2) { which in
+
+					HStack(alignment: .center) {
+						DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: ge, trackWidth: 25, trackIcon: which == 1 ? i1 : nil)
+							.frame(width: 100, height: 100)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: ge, trackWidth: 25, trackIcon: which == 1 ? i1 : nil)
+							.frame(width: 100, height: 100)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.8, fillStyle: ge, trackWidth: 25, trackIcon: which == 1 ? i1 : nil)
+							.frame(width: 100, height: 100)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.2, fillStyle: ge, trackWidth: 25, trackIcon: which == 1 ? i1 : nil)
+							.frame(width: 100, height: 100)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.6, fillStyle: ge, trackWidth: 25, trackIcon: which == 1 ? i1 : nil)
+							.frame(width: 100, height: 100)
+						DSFSparklineCircularProgressView.SwiftUI(value: 2.0, fillStyle: ge, trackWidth: 25, trackIcon: which == 1 ? i1 : nil)
+							.frame(width: 100, height: 100)
+					}
 				}
+
+				HStack(alignment: .center) {
+					ZStack {
+						DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1)              , trackIcon: i1)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1), trackIcon: i2)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1), trackIcon: i3)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1), trackIcon: i4)
+					}
 					.frame(width: 150, height: 150)
-				ZStack {
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.8, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.8, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.8, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 0.8, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1))
+					ZStack {
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1)              , trackIcon: i1)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.3, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1), trackIcon: i2)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.2, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1), trackIcon: i3)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.1, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1), trackIcon: i4)
+					}
+					.frame(width: 150, height: 150)
+					ZStack {
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.7, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1)              , trackIcon: i1)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.6, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1), trackIcon: i2)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.5, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1), trackIcon: i3)
+						DSFSparklineCircularProgressView.SwiftUI(value: 0.4, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1), trackIcon: i4)
+					}
+					.frame(width: 150, height: 150)
+					ZStack {
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.4, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1)              , trackIcon: i1)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.3, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1), trackIcon: i2)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.2, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1), trackIcon: i3)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.1, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1), trackIcon: i4)
+					}
+					.frame(width: 150, height: 150)
+					ZStack {
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.9, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1)              , trackIcon: i1)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.8, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1), trackIcon: i2)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.7, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1), trackIcon: i3)
+						DSFSparklineCircularProgressView.SwiftUI(value: 1.6, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1), trackIcon: i4)
+					}
+					.frame(width: 150, height: 150)
+				}
+			}
+			.padding()
 		}
-					.frame(width: 150, height: 150)
-				ZStack {
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.1, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.1, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.1, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.1, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1))
-				}
-					.frame(width: 150, height: 150)
-				ZStack {
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.5, fillStyle: g, trackColor: CGColor(srgbRed: 0.977, green: 0.221, blue: 0.520, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.5, fillStyle: g1, padding: 12, trackColor: CGColor(srgbRed: 0.849, green: 1.000, blue: 0.000, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.5, fillStyle: g2, padding: 24, trackColor: CGColor(srgbRed: 0.000, green: 1.000, blue: 0.663, alpha: 0.1))
-					DSFSparklineCircularProgressView.SwiftUI(value: 1.5, fillStyle: g3, padding: 36, trackColor: CGColor(srgbRed: 0.996, green: 0.759, blue: 0.300, alpha: 0.1))
-				}
-				.frame(width: 150, height: 150)
-			}
-		}
-		.padding()
 	}
 }
 

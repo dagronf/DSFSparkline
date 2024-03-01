@@ -30,7 +30,9 @@ import UIKit
 
 public extension DSFSparklineOverlay {
 
+	/// A circular progress sparkline
 	@objc(DSFSparklineOverlayCircularProgress) class CircularProgress: DSFSparklineOverlay {
+
 		/// The value assigned to the percent bar. A value between 0.0 and 1.0
 		@objc public var value: CGFloat = 0.25 {
 			didSet {
@@ -38,8 +40,11 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		/// The value assigned to the percent bar. A value between 0.0 and 1.0
-		@objc public var trackWidth: CGFloat = 10.0 {
+		/// Default track width
+		@objc public static let DefaultTrackWidth: CGFloat = 10.0
+
+		/// The width of the circular ring track
+		@objc public var trackWidth: CGFloat = CircularProgress.DefaultTrackWidth {
 			didSet {
 				self.valueDidChange()
 			}
@@ -52,21 +57,28 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		/// Default fill style
+		@objc public static let DefaultFillStyle = DSFSparkline.Fill.Color(srgbRed: 0, green: 0, blue: 1)
+
+
 		/// The fill style for the progress track
-		@objc public var fillStyle: DSFSparklineFillable {
+		@objc public var fillStyle: DSFSparklineFillable = CircularProgress.DefaultFillStyle {
 			didSet {
 				self.valueDidChange()
 			}
 		}
+
+		/// Default track color
+		@objc public static let DefaultTrackColor = CGColor(gray: 0.5, alpha: 0.1)
 
 		/// The color of the track background
-		@objc public var trackColor = CGColor.init(gray: 0.5, alpha: 0.1) {
+		@objc public var trackColor: CGColor = CircularProgress.DefaultTrackColor {
 			didSet {
 				self.valueDidChange()
 			}
 		}
 
-		/// The icon appearing at the top of the ring
+		/// The icon appearing in the track at the top of the ring
 		@objc public var icon: CGImage? = nil {
 			didSet {
 				self._flippedIcon = icon?.flipped()
@@ -76,15 +88,15 @@ public extension DSFSparklineOverlay {
 		private var _flippedIcon: CGImage? = nil
 
 		override init() {
-			self.fillStyle = DSFSparkline.Fill.Color(.white)
 			super.init()
 			self.drawsAsynchronously = true
 		}
 
-		init(value: CGFloat, trackWidth: CGFloat, fillStyle: DSFSparklineFillable) {
+		init(value: CGFloat, trackWidth: CGFloat, fillStyle: DSFSparklineFillable, trackColor: CGColor = CircularProgress.DefaultTrackColor) {
 			self.value = value
 			self.trackWidth = trackWidth
 			self.fillStyle = fillStyle
+			self.trackColor = trackColor
 			super.init()
 			self.drawsAsynchronously = true
 		}
@@ -94,6 +106,9 @@ public extension DSFSparklineOverlay {
 				self.value = layer.value
 				self.trackWidth = layer.trackWidth
 				self.fillStyle = layer.fillStyle
+				self.trackColor = layer.trackColor.copy()!
+				self.padding = layer.padding
+				self.icon = layer.icon?.copy()
 			}
 			else {
 				fatalError()
@@ -268,11 +283,15 @@ private class ActivityRing {
 			}
 		}
 
+		//
+		// Draw the icon
+		//
+
 		if let icon = icon {
 			let x = drawRect.minX + (radius + (radius * cos(-(CGFloat.pi * 0.5))))
 			let y = drawRect.minY + (radius + (radius * sin(-(CGFloat.pi * 0.5))))
 
-			let iconRect = CGRect(x: x, y: y, width: trackWidth, height: trackWidth)
+			let iconRect = CGRect(x: x, y: y, width: trackWidth, height: trackWidth).insetBy(dx: 2, dy: 2)
 			ctx.draw(icon, in: iconRect, byTiling: false)
 		}
 	}

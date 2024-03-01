@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftImageReadWrite",
+        "repositoryURL": "https://github.com/dagronf/SwiftImageReadWrite",
+        "state": {
+          "branch": null,
+          "revision": "96361ba7f9dce5184d95aba8ea90d9faa4acabb2",
+          "version": "1.6.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
