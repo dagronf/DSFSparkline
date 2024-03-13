@@ -266,7 +266,5 @@ final class CircularProgressTests: XCTestCase {
 
 			markdownText += "\n"
 		}
-
 	}
-
 }
