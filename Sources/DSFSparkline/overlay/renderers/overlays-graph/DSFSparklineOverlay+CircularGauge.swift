@@ -69,11 +69,6 @@ public extension DSFSparklineOverlay {
 		override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawCircularGauge(context: context, bounds: bounds, scale: scale)
 		}
-
-		// MARK: - Privates
-
-		internal var animator = ArbitraryAnimator()
-		internal var fractionComplete: CGFloat = 0
 	}
 }
 
@@ -110,23 +105,6 @@ public extension DSFSparklineOverlay.CircularGauge {
 			self.lineCap = lineCap
 			super.init()
 		}
-	}
-}
-
-private extension DSFSparklineOverlay.CircularGauge {
-	func startAnimateIn() {
-		// Stop any animation that is currently active
-		self.animator.stop()
-
-		self.fractionComplete = 0
-
-		self.animator.animationFunction = ArbitraryAnimator.Function.EaseInEaseOut()
-		self.animator.progressBlock = { progress in
-			self.fractionComplete = CGFloat(progress)
-			self.setNeedsDisplay()
-		}
-
-		self.animator.start()
 	}
 }
 

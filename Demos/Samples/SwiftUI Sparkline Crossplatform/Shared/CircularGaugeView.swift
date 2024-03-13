@@ -50,14 +50,14 @@ struct CircularGaugeView: View {
 	@State var value: Double = 0.25
 
 	@State var trackStyle = TrackStyle(color: Color(red: 1, green: 0, blue: 0, opacity: 0.1), width: 40)
-	@State var valueStyle = TrackStyle(color: Color(red: 1, green: 0, blue: 0, opacity: 1), width: 20)
+	@State var lineStyle = TrackStyle(color: Color(red: 1, green: 0, blue: 0, opacity: 1), width: 20)
 
 	var body: some View {
 		VStack {
 			DSFSparklineCircularGaugeView.SwiftUI(
 				value: value,
 				trackStyle: trackStyle.track,
-				valueStyle: valueStyle.track
+				lineStyle: lineStyle.track
 			)
 			.frame(width: 200, height: 200)
 

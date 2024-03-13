@@ -70,16 +70,20 @@ extension CGColor {
 @usableFromInline internal let _rgbaColorSpace = CGColorSpace(name: CGColorSpace.genericRGBLinear)!
 @usableFromInline internal let _grayColorSpace = CGColorSpace(name: CGColorSpace.genericGrayGamma2_2)!
 
+// MARK: - Standard CGColors
+
 extension CGColor {
 	@usableFromInline internal struct Colors {
 		@usableFromInline internal let white = CGColor.gray(1)
 		@usableFromInline internal let black = CGColor.gray(0)
 		@usableFromInline internal let clear = CGColor.gray(0, 0)
+		
 		@usableFromInline internal let red = CGColor.sRGBA(1, 0, 0)
 		@usableFromInline internal let green = CGColor.sRGBA(0, 1, 0)
 		@usableFromInline internal let blue = CGColor.sRGBA(0, 0, 1)
-		@usableFromInline internal let yellow = CGColor.sRGBA(1, 1, 0)
+
 		@usableFromInline internal let cyan = CGColor.sRGBA(0, 1, 1)
+		@usableFromInline internal let yellow = CGColor.sRGBA(1, 1, 0)
 		@usableFromInline internal let magenta = CGColor.sRGBA(1, 0, 1)
 	}
 	@usableFromInline internal static var standard: Colors { Colors() }
