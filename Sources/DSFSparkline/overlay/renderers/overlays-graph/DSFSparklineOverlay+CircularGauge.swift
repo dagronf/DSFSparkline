@@ -29,48 +29,38 @@ import UIKit
 #endif
 
 public extension DSFSparklineOverlay {
-
+	/// A circular gauge
 	@objc(DSFSparklineOverlayCircularGauge) class CircularGauge: DSFSparklineOverlay {
+		/// The default track style
+		@objc public static let DefaultTrackStyle = DSFSparklineOverlay.CircularGauge.TrackStyle(
+			width: 10,
+			fillColor: DSFSparkline.Fill.Color(red: 0, green: 0, blue: 0, alpha: 0.2)
+		)
 
-		@objc(DSFSparklineOverlayCircularGaugeTrackStyle)
-		public class TrackStyle: NSObject {
-			@objc public var width: CGFloat
-			@objc public var fillColor: DSFSparklineFillable
-			@objc public var strokeWidth: CGFloat
-			@objc public var strokeColor: CGColor?
-			@objc public var shadow: DSFSparkline.Shadow?
-
-			@objc public init(
-				width: CGFloat,
-				fillColor: DSFSparklineFillable,
-				strokeWidth: CGFloat = 0.0,
-				strokeColor: CGColor? = nil,
-				shadow: DSFSparkline.Shadow? = nil
-			) {
-				self.width = width
-				self.fillColor = fillColor
-				self.strokeWidth = strokeWidth
-				self.strokeColor = strokeColor
-				self.shadow = shadow
-			}
-		}
+		/// The default value style
+		@objc public static let DefaultValueStyle = DSFSparklineOverlay.CircularGauge.TrackStyle(
+			width: 7,
+			fillColor: DSFSparkline.Fill.Color(red: 0, green: 0, blue: 0, alpha: 1)
+		)
 
 		/// The value assigned to the percent bar. A value between 0.0 and 1.0
-		@objc public var value: CGFloat = 0.25 {
+		@objc public var value: CGFloat = 0 {
 			didSet {
-				self._value = value.clamped(to: 0 ... 1)
+				self._value = self.value.clamped(to: 0 ... 1)
 			}
 		}
 
-		private var _value: CGFloat = 0.25 {
+		private var _value: CGFloat = 0 {
 			didSet { self.setNeedsDisplay() }
 		}
 
+		/// The style to use when drawing the gauge's track
 		@objc public var trackStyle: TrackStyle = TrackStyle(
 			width: 5,
 			fillColor: DSFSparkline.Fill.Color(srgbRed: 0, green: 0, blue: 0, alpha: 0.2)
 		)
 
+		/// The style to use when drawing the gauge's value
 		@objc public var valueStyle: TrackStyle = TrackStyle(
 			width: 3,
 			fillColor: DSFSparkline.Fill.Color(srgbRed: 0, green: 0, blue: 0)
@@ -79,6 +69,61 @@ public extension DSFSparklineOverlay {
 		override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
 			self.drawCircularGauge(context: context, bounds: bounds, scale: scale)
 		}
+
+		// MARK: - Privates
+
+		internal var animator = ArbitraryAnimator()
+		internal var fractionComplete: CGFloat = 0
+	}
+}
+
+public extension DSFSparklineOverlay.CircularGauge {
+	/// A circular gauge track style
+	@objc(DSFSparklineOverlayCircularGaugeTrackStyle) class TrackStyle: NSObject {
+		/// The width of the track
+		@objc public var width: CGFloat
+		/// The fill style to use
+		@objc public var fillColor: DSFSparklineFillable
+		/// The stroke width
+		@objc public var strokeWidth: CGFloat
+		/// The stroke color
+		@objc public var strokeColor: CGColor?
+		/// The shadow to use
+		@objc public var shadow: DSFSparkline.Shadow?
+
+		/// Create
+		@objc public init(
+			width: CGFloat,
+			fillColor: DSFSparklineFillable,
+			strokeWidth: CGFloat = 0.0,
+			strokeColor: CGColor? = nil,
+			shadow: DSFSparkline.Shadow? = nil
+		) {
+			self.width = width
+			self.fillColor = fillColor
+			self.strokeWidth = strokeWidth
+			self.strokeColor = strokeColor
+			self.shadow = shadow
+			super.init()
+		}
+	}
+}
+
+
+private extension DSFSparklineOverlay.CircularGauge {
+	func startAnimateIn() {
+		// Stop any animation that is currently active
+		self.animator.stop()
+
+		self.fractionComplete = 0
+
+		self.animator.animationFunction = ArbitraryAnimator.Function.EaseInEaseOut()
+		self.animator.progressBlock = { progress in
+			self.fractionComplete = CGFloat(progress)
+			self.setNeedsDisplay()
+		}
+
+		self.animator.start()
 	}
 }
 
@@ -98,13 +143,12 @@ private extension DSFSparklineOverlay.CircularGauge {
 
 		// Inset so that the line drawing doesn't crop at the edges
 		let inset: CGFloat = {
-			var inset = trackStyle.width + trackStyle.strokeWidth
-			if let shadow = trackStyle.shadow {
-				inset += shadow.offset.width + shadow.blurRadius
-			}
+			var inset = max(trackStyle.width + trackStyle.strokeWidth, valueStyle.width + valueStyle.strokeWidth)
+			let trackW = trackStyle.shadow?.requiredShadowInset ?? 0
+			let valueW = valueStyle.shadow?.requiredShadowInset ?? 0
+			inset += max(trackW, valueW)
 			return inset
 		}()
-
 
 		drawRect = drawRect.insetBy(dx: inset / 2, dy: inset / 2)
 
@@ -160,7 +204,6 @@ private extension DSFSparklineOverlay.CircularGauge {
 
 		if let shadow = style.shadow {
 			if shadow.isInner {
-
 				context.usingGState { ctx in
 					// Draw the track
 					ctx.addPath(act)
@@ -170,7 +213,7 @@ private extension DSFSparklineOverlay.CircularGauge {
 					// Overlay the inner shadow
 					ctx.drawInnerShadow(
 						in: act,
-						shadowColor: shadow.color?.cgColor,
+						shadowColor: shadow.color,
 						offset: shadow.offset,
 						blurRadius: shadow.blurRadius
 					)
@@ -185,7 +228,7 @@ private extension DSFSparklineOverlay.CircularGauge {
 
 					ctx.setShadow(shadow.shadow)
 					ctx.addPath(act)
-					ctx.setFillColor(shadow.color!.cgColor)
+					ctx.setFillColor(shadow.color!)
 					ctx.fillPath()
 				}
 

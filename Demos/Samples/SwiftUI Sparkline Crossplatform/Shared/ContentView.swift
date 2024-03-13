@@ -35,6 +35,7 @@ struct ContentView: View {
 		Item(id: 14, name: "Wiper Gauge"),
 		Item(id: 15, name: "Activity Grid"),
 		Item(id: 16, name: "Circular Progress"),
+		Item(id: 17, name: "Circular Gauge"),
 
 		Item(id: 99, name: "Testing Harness")
 	]
@@ -79,6 +80,7 @@ struct DetailView: View {
 			case 14: WiperGraphDemoView()
 			case 15: ActivityGridView()
 			case 16: CircularProgressView()
+			case 17: CircularGaugeView()
 
 			case 99: TestingView()
 

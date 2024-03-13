@@ -89,8 +89,14 @@ final class CircularGaugeTests: XCTestCase {
 	func testTrackShadow() throws {
 		markdownText += "## Shadowing\n\n"
 
-		try [false, true].forEach { trackShadow in
-			try [false, true].forEach { lineShadow in
+		markdownText += "\n### Track/Value shadows\n\n"
+
+		markdownText += "| none    |  track only  |  value only  |  both   |\n"
+		markdownText += "|---------|--------------|--------------|---------|\n"
+		markdownText += "|"
+
+		try [false, true].forEach { (lineShadow: Bool) in
+			try [false, true].forEach { (trackShadow: Bool) in
 				let b1 = DSFSparklineSurface.Bitmap()
 				let a1 = DSFSparklineOverlay.CircularGauge()
 				a1.value = 0.65
@@ -99,19 +105,21 @@ final class CircularGaugeTests: XCTestCase {
 				a1.valueStyle.width = 4
 
 				if trackShadow {
-					a1.trackStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: .blue)
+					a1.trackStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: CGColor.sRGBA(0, 0, 1))
 				}
 				if lineShadow {
-					a1.valueStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: .red)
+					a1.valueStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: CGColor.sRGBA(1, 0, 0))
 				}
 
 				b1.addOverlay(a1)
 				let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 48, height: 48), scale: 2))
 				let filename = "circular-gauge-inset-\(trackShadow)-\(lineShadow).png"
 				let link = try imageStore.store(image.representation.png(), filename: filename)
-				markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"\(48)\" /></a>\n"
+				markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"\(48)\" /></a>|"
 			}
 		}
+
+		markdownText += "|\n\n"
 	}
 
 	func testTrackShadowInset() throws {

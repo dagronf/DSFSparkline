@@ -28,32 +28,58 @@ import UIKit
 #endif
 
 public extension DSFSparkline {
+	/// A shadow object
 	@objc class Shadow: NSObject {
+		/// The shadow
 		public let shadow: NSShadow
+		/// Is the shadow an inner shadow?
 		public let isInner: Bool
-		@inlinable public init(_ shadow: NSShadow, isInner: Bool = false) {
+
+		/// Create a new shadow object
+		@objc public init(_ shadow: NSShadow, isInner: Bool = false) {
 			self.shadow = shadow
 			self.isInner = isInner
+			super.init()
 		}
 
-		@inlinable convenience public init(blurRadius: CGFloat, offset: CGSize, color: DSFColor, isInner: Bool = false) {
+		/// Create a new shadow object
+		@objc @inlinable convenience public init(blurRadius: CGFloat, offset: CGSize, color: CGColor, isInner: Bool = false) {
 			self.init(
-				NSShadow(blurRadius: blurRadius, offset: offset, color: color),
+				NSShadow(blurRadius: blurRadius, offset: offset, color: DSFColor(cgColor: color) ?? .black),
 				isInner: isInner
 			)
 		}
 
+		/// Shadow offset
 		@inlinable @objc public var offset: CGSize {
 			get { shadow.shadowOffset }
 			set { shadow.shadowOffset = newValue }
 		}
-		@inlinable @objc public var color: DSFColor? {
-			get { shadow.shadowColor }
-			set { shadow.shadowColor = newValue }
+		#if os(macOS)
+		/// Shadow color
+		@inlinable @objc public var color: CGColor? {
+			get { shadow.shadowColor?.cgColor }
+			set { shadow.shadowColor = newValue != nil ? NSColor(cgColor: newValue!) : nil }
 		}
+		#else
+		/// Shadow color
+		@inlinable @objc public var color: CGColor? {
+			get { (shadow.shadowColor as? DSFColor)?.cgColor }
+			set { shadow.shadowColor = (newValue != nil) ? UIColor(cgColor: newValue!) : nil }
+		}
+		#endif
+		/// Shadow blur radius
 		@inlinable @objc public var blurRadius: CGFloat {
 			get { shadow.shadowBlurRadius}
 			set { shadow.shadowBlurRadius = newValue }
+		}
+
+		/// Calculate the amount of inset required to cater for drawing a shadow
+		@inlinable internal var requiredShadowInset: CGFloat {
+			if self.isInner { return 0 }
+			let dx = (abs(self.offset.width) + self.blurRadius) * 2
+			let dy = (abs(self.offset.height) + self.blurRadius) * 2
+			return max(dx, dy)
 		}
 	}
 }

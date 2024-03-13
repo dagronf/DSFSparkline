@@ -32,5 +32,7 @@ import Foundation
 
 public extension DSFSparkline {
 	/// Defining a namespace for fillables
-	class Fill { }
+	class Fill {
+		private init() {}
+	}
 }
