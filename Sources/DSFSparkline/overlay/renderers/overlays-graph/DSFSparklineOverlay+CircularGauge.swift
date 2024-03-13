@@ -38,7 +38,7 @@ public extension DSFSparklineOverlay {
 		)
 
 		/// The default value style
-		@objc public static let DefaultValueStyle = DSFSparklineOverlay.CircularGauge.TrackStyle(
+		@objc public static let DefaultLineStyle = DSFSparklineOverlay.CircularGauge.TrackStyle(
 			width: 7,
 			fillColor: DSFSparkline.Fill.Color(red: 0, green: 0, blue: 0, alpha: 1)
 		)
@@ -61,7 +61,7 @@ public extension DSFSparklineOverlay {
 		)
 
 		/// The style to use when drawing the gauge's value
-		@objc public var valueStyle: TrackStyle = TrackStyle(
+		@objc public var lineStyle: TrackStyle = TrackStyle(
 			width: 3,
 			fillColor: DSFSparkline.Fill.Color(srgbRed: 0, green: 0, blue: 0)
 		)
@@ -90,6 +90,8 @@ public extension DSFSparklineOverlay.CircularGauge {
 		@objc public var strokeColor: CGColor?
 		/// The shadow to use
 		@objc public var shadow: DSFSparkline.Shadow?
+		/// The line's cap style
+		@objc public var lineCap: CGLineCap
 
 		/// Create
 		@objc public init(
@@ -97,18 +99,19 @@ public extension DSFSparklineOverlay.CircularGauge {
 			fillColor: DSFSparklineFillable,
 			strokeWidth: CGFloat = 0.0,
 			strokeColor: CGColor? = nil,
-			shadow: DSFSparkline.Shadow? = nil
+			shadow: DSFSparkline.Shadow? = nil,
+			lineCap: CGLineCap = .round
 		) {
 			self.width = width
 			self.fillColor = fillColor
 			self.strokeWidth = strokeWidth
 			self.strokeColor = strokeColor
 			self.shadow = shadow
+			self.lineCap = lineCap
 			super.init()
 		}
 	}
 }
-
 
 private extension DSFSparklineOverlay.CircularGauge {
 	func startAnimateIn() {
@@ -143,9 +146,9 @@ private extension DSFSparklineOverlay.CircularGauge {
 
 		// Inset so that the line drawing doesn't crop at the edges
 		let inset: CGFloat = {
-			var inset = max(trackStyle.width + trackStyle.strokeWidth, valueStyle.width + valueStyle.strokeWidth)
+			var inset = max(trackStyle.width + trackStyle.strokeWidth, lineStyle.width + lineStyle.strokeWidth)
 			let trackW = trackStyle.shadow?.requiredShadowInset ?? 0
-			let valueW = valueStyle.shadow?.requiredShadowInset ?? 0
+			let valueW = lineStyle.shadow?.requiredShadowInset ?? 0
 			inset += max(trackW, valueW)
 			return inset
 		}()
@@ -172,7 +175,7 @@ private extension DSFSparklineOverlay.CircularGauge {
 			centerPoint: centerPoint,
 			radius: radius,
 			value: _value,
-			style: valueStyle
+			style: lineStyle
 		)
 	}
 }
@@ -197,7 +200,7 @@ private extension DSFSparklineOverlay.CircularGauge {
 
 		let act = pth.copy(
 			strokingWithWidth: style.width,
-			lineCap: .round,
+			lineCap: style.lineCap,
 			lineJoin: .round,
 			miterLimit: 1.0
 		)

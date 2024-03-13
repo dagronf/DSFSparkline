@@ -45,9 +45,9 @@ public class DSFSparklineCircularGaugeView: DSFSparklineSurfaceView {
 	}
 
 	/// The style to use when drawing the gauge's value
-	@objc public var valueStyle = DSFSparklineOverlay.CircularGauge.DefaultValueStyle {
+	@objc public var lineStyle = DSFSparklineOverlay.CircularGauge.DefaultLineStyle {
 		didSet {
-			self.overlay.valueStyle = self.valueStyle
+			self.overlay.lineStyle = self.lineStyle
 		}
 	}
 

@@ -69,7 +69,7 @@ final class CircularGaugeTests: XCTestCase {
 					a1.value = value
 					a1.trackStyle = tfc
 					vfc.width = CGFloat(tw)
-					a1.valueStyle = vfc
+					a1.lineStyle = vfc
 
 					if hasShadow {
 						vfc.shadow = .init(blurRadius: 3, offset: CGSize(width: 2, height: -3), color: .black)
@@ -102,13 +102,13 @@ final class CircularGaugeTests: XCTestCase {
 				a1.value = 0.65
 
 				a1.trackStyle.width = 10
-				a1.valueStyle.width = 4
+				a1.lineStyle.width = 4
 
 				if trackShadow {
 					a1.trackStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: CGColor.sRGBA(0, 0, 1))
 				}
 				if lineShadow {
-					a1.valueStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: CGColor.sRGBA(1, 0, 0))
+					a1.lineStyle.shadow = .init(blurRadius: 2, offset: CGSize(width: 1, height: -1), color: CGColor.sRGBA(1, 0, 0))
 				}
 
 				b1.addOverlay(a1)
@@ -119,6 +119,35 @@ final class CircularGaugeTests: XCTestCase {
 			}
 		}
 
+		markdownText += "|\n\n"
+
+		markdownText += "### Shadow Offset\n\n"
+
+		markdownText += "| -2, -2  |  -2, 2  |  2, -2  |  2, 2   |  4, 0  |  0, 4  |\n"
+		markdownText += "|---------|---------|---------|---------|--------|--------|\n"
+		markdownText += "|"
+
+		try [(-2, -2), (-2, 2), (2, -2), (2, 2), (4, 0), (0, 4)].forEach { offset in
+			let b1 = DSFSparklineSurface.Bitmap()
+			let a1 = DSFSparklineOverlay.CircularGauge()
+
+			let sh = DSFSparkline.Shadow(blurRadius: 3, offset: CGSize(width: offset.0, height: offset.1), color: .black)
+
+			a1.value = 0.65
+			a1.trackStyle.width = 20
+			a1.trackStyle.shadow = sh
+
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
+			a1.lineStyle.shadow = sh
+
+			b1.addOverlay(a1)
+			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
+			let filename = "circular-gauge-offset-standardshadow-\(offset).png"
+			let link = try imageStore.store(image.representation.png(), filename: filename)
+			markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"64\" /></a>"
+			markdownText += "|"
+		}
 		markdownText += "|\n\n"
 	}
 
@@ -153,13 +182,13 @@ final class CircularGaugeTests: XCTestCase {
 				a1.trackStyle.shadow = innerShadow
 			}
 
-			a1.valueStyle.width = 10
-			a1.valueStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
-			a1.valueStyle.strokeColor = CGColor(srgbRed: 1, green: 1, blue: 0, alpha: 1)
-			a1.valueStyle.strokeWidth = 0.1
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
+			a1.lineStyle.strokeColor = CGColor.standard.yellow
+			a1.lineStyle.strokeWidth = 0.1
 
 			if useTrackInner == .value || useTrackInner == .all {
-				a1.valueStyle.shadow = innerShadow
+				a1.lineStyle.shadow = innerShadow
 			}
 
 			b1.addOverlay(a1)
@@ -177,9 +206,9 @@ final class CircularGaugeTests: XCTestCase {
 			a1.trackStyle.width = 20
 			a1.trackStyle.shadow = innerShadow
 
-			a1.valueStyle.width = 10
-			a1.valueStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
-			a1.valueStyle.shadow = outerShadow
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
+			a1.lineStyle.shadow = outerShadow
 
 			b1.addOverlay(a1)
 			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
@@ -204,9 +233,9 @@ final class CircularGaugeTests: XCTestCase {
 			a1.trackStyle.width = 20
 			a1.trackStyle.shadow = sh
 
-			a1.valueStyle.width = 10
-			a1.valueStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
-			a1.valueStyle.shadow = sh
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
+			a1.lineStyle.shadow = sh
 
 			b1.addOverlay(a1)
 			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
@@ -227,9 +256,9 @@ final class CircularGaugeTests: XCTestCase {
 
 		a1.value = 0.65
 		a1.trackStyle.width = 20
-		a1.valueStyle.width = 15
-		a1.valueStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
-		a1.valueStyle.shadow = innerShadow
+		a1.lineStyle.width = 15
+		a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
+		a1.lineStyle.shadow = innerShadow
 
 		b1.addOverlay(a1)
 		let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))

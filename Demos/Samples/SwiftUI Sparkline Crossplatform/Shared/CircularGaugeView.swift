@@ -72,14 +72,14 @@ struct CircularGaugeView: View {
 						.padding(8)
 				}
 				GroupBox("Value Settings") {
-					TrackSettingsView(style: $valueStyle)
+					TrackSettingsView(style: $lineStyle)
 						.padding(8)
 				}
 			}
 			#else
 			HStack(spacing: 8) {
 				TrackSettingsView(style: $trackStyle)
-				TrackSettingsView(style: $valueStyle)
+				TrackSettingsView(style: $lineStyle)
 			}
 			.frame(maxHeight: .infinity)
 			#endif

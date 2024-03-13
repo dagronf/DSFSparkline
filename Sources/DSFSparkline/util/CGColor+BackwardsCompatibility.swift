@@ -32,7 +32,7 @@ extension CGColor {
 		if #available(iOS 13, tvOS 13, watchOS 6, *) {
 			return CGColor(gray: gray, alpha: a)
 		}
-		return CGColor(colorSpace: _grayColorSpace, components: [gray, a]) ?? .commonBlack
+		return CGColor(colorSpace: _grayColorSpace, components: [gray, a]) ?? .standard.black
 	}
 
 	/// Creates a color in the Generic RGB color space
@@ -46,7 +46,7 @@ extension CGColor {
 		if #available(iOS 13, tvOS 13, watchOS 6, *) {
 			return CGColor(red: red, green: green, blue: blue, alpha: alpha)
 		}
-		return CGColor(colorSpace: _rgbaColorSpace, components: [red, green, blue, alpha]) ?? .commonBlack
+		return CGColor(colorSpace: _rgbaColorSpace, components: [red, green, blue, alpha]) ?? .standard.black
 	}
 
 	/// Creates a color in the sRGB color space.
@@ -60,7 +60,7 @@ extension CGColor {
 		if #available(macOS 15, iOS 13, tvOS 13, watchOS 6, *) {
 			return CGColor(srgbRed: red, green: green, blue: blue, alpha: alpha)
 		}
-		return CGColor(colorSpace: _sRGBAColorSpace, components: [red, green, blue, alpha]) ?? .commonBlack
+		return CGColor(colorSpace: _sRGBAColorSpace, components: [red, green, blue, alpha]) ?? .standard.black
 	}
 }
 
@@ -71,7 +71,16 @@ extension CGColor {
 @usableFromInline internal let _grayColorSpace = CGColorSpace(name: CGColorSpace.genericGrayGamma2_2)!
 
 extension CGColor {
-	@usableFromInline internal static let commonWhite = CGColor.gray(1)
-	@usableFromInline internal static let commonBlack = CGColor.gray(0)
-	@usableFromInline internal static let commonClear = CGColor.gray(0, 0)
+	@usableFromInline internal struct Colors {
+		@usableFromInline internal let white = CGColor.gray(1)
+		@usableFromInline internal let black = CGColor.gray(0)
+		@usableFromInline internal let clear = CGColor.gray(0, 0)
+		@usableFromInline internal let red = CGColor.sRGBA(1, 0, 0)
+		@usableFromInline internal let green = CGColor.sRGBA(0, 1, 0)
+		@usableFromInline internal let blue = CGColor.sRGBA(0, 0, 1)
+		@usableFromInline internal let yellow = CGColor.sRGBA(1, 1, 0)
+		@usableFromInline internal let cyan = CGColor.sRGBA(0, 1, 1)
+		@usableFromInline internal let magenta = CGColor.sRGBA(1, 0, 1)
+	}
+	@usableFromInline internal static var standard: Colors { Colors() }
 }
