@@ -308,6 +308,20 @@ A circular progress graph
 |------------------------|
 |<img src="./Art/doc/circular-health-0.0.png" height="48"/>&nbsp;<img src="./Art/doc/circular-health-0.33.png" height="48"/>&nbsp;<img src="./Art/doc/circular-health-0.66.png" height="48"/>&nbsp;<img src="./Art/doc/circular-health-1.0.png" height="48"/>|
 
+### Circular Gauge <img src="./Art/doc/circular-gauge-small-0.0.png" height="25" /> <img src="./Art/doc/circular-gauge-small-0.33.png" height="25" /> <img src="./Art/doc/circular-gauge-small-0.66.png" height="25" /> <img src="./Art/doc/circular-gauge-small-1.0.png" height="25" />
+
+A circular gauge
+
+* Configurable track/line width
+* Configurable fill/stroke schemes
+* Supports shadows/inner shadows
+* Animatable changes
+
+|      |       |       |       |
+|------|-------|-------|-------|
+| <a href="./Art/doc/circular-gauge-basic.png"> <img src="./Art/doc/circular-gauge-basic.png" height="64" /></a> | <a href="./Art/doc/circular-gauge-inner-inout.png"> <img src="./Art/doc/circular-gauge-inner-inout.png" height="64" /></a> | <a href="./Art/doc/circular-gauge-gradient.png"> <img src="./Art/doc/circular-gauge-gradient.png" height="64" /></a> | <a href="./Art/doc/circular-gauge-slightly.png"> <img src="./Art/doc/circular-gauge-slightly.png" height="30" /></a> |
+
+
 # Demos
 
 You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder, providing examples for macOS (swift and objc), iO, tvOS, macCatalyst and SwiftUI.
@@ -720,6 +734,24 @@ bitmap.addOverlay(activityGrid)
 
 // Generate an image of the wiper gauge with retina scale
 let image = bitmap.image(width: 200, height: 14, scale: 2)
+
+// Do something with 'image'
+```
+
+</details>
+
+<details>
+  <summary>`DSFSparklineOverlay.CircularGauge` <img src="./Art/doc/circular-gauge-small-0.66.png" width="18"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()
+let gauge = DSFSparklineOverlay.CircularGauge()
+gauge.value = 0.66
+
+bitmap.addOverlay(gauge)
+
+// Generate an image of the wiper gauge with retina scale
+let image = bitmap.image(width: 40, height: 40, scale: 2)
 
 // Do something with 'image'
 ```

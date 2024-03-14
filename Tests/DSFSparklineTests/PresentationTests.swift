@@ -57,6 +57,131 @@ let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
 
 
 extension PresentationTests {
+	func testCircularGraph() throws {
+
+		markdownText += "## Circular Grid\n\n"
+
+		do {
+			try [0, 0.33, 0.66, 1.0].forEach { value in
+				let surface = DSFSparklineSurface.Bitmap()
+				let a = DSFSparklineOverlay.CircularGauge()
+
+				let baseColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.033,  0.277, 0.650, 1.000])!
+				let primaryFill = DSFSparkline.Fill.Color(baseColor.copy(alpha: 0.3)!)
+
+				a.trackStyle = DSFSparklineOverlay.CircularGauge.TrackStyle(width: 10, fillColor: primaryFill)
+				a.lineStyle = DSFSparklineOverlay.CircularGauge.TrackStyle(width: 5, fillColor: DSFSparkline.Fill.Color(baseColor))
+				a.value = value
+				surface.addOverlay(a)
+
+				let filename = "circular-gauge-small-\(value).png"
+				let bitmap = surface.image(width: 40, height: 40, scale: 2)!
+				let link = try imageStore.store(bitmap.representation.png(scale: 2), filename: filename)
+				markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"40\" /></a>\n"
+			}
+		}
+		do {
+			let b1 = DSFSparklineSurface.Bitmap()
+			let a1 = DSFSparklineOverlay.CircularGauge()
+
+			let innerShadow = DSFSparkline.Shadow(blurRadius: 3, offset: CGSize(width: 2, height: -2), color: .black, isInner: true)
+			let outerShadow = DSFSparkline.Shadow(blurRadius: 3, offset: CGSize(width: 2, height: -2), color: .black, isInner: false)
+
+			a1.value = 0.65
+			a1.trackStyle.width = 20
+			a1.trackStyle.shadow = innerShadow
+
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 1, blue: 0)
+			a1.lineStyle.shadow = outerShadow
+
+			b1.addOverlay(a1)
+			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
+			let filename = "circular-gauge-inner-inout.png"
+			let link = try imageStore.store(image.representation.png(), filename: filename)
+			markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"64\" /></a>|\n\n"
+		}
+
+		do {
+			let b1 = DSFSparklineSurface.Bitmap()
+			let a1 = DSFSparklineOverlay.CircularGauge()
+
+			a1.value = 0.35
+			a1.trackStyle.width = 20
+			a1.trackStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 0, blue: 0, alpha: 0.1)
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 0, blue: 0, alpha: 1)
+
+			b1.addOverlay(a1)
+			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
+			let filename = "circular-gauge-basic.png"
+			let link = try imageStore.store(image.representation.png(), filename: filename)
+			markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"64\" /></a>|\n\n"
+		}
+
+		do {
+			let b1 = DSFSparklineSurface.Bitmap()
+			let a1 = DSFSparklineOverlay.CircularGauge()
+
+			a1.value = 0.35
+			a1.trackStyle.width = 20
+			a1.trackStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 0, blue: 0, alpha: 0.1)
+			a1.lineStyle.width = 10
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 0, blue: 0, alpha: 1)
+
+			b1.addOverlay(a1)
+			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
+			let filename = "circular-gauge-basic.png"
+			let link = try imageStore.store(image.representation.png(), filename: filename)
+			markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"64\" /></a>|\n\n"
+		}
+
+		do {
+			let b1 = DSFSparklineSurface.Bitmap()
+			let a1 = DSFSparklineOverlay.CircularGauge()
+
+			a1.value = 0.55
+			a1.trackStyle.width = 10
+			a1.trackStyle.shadow = DSFSparkline.Shadow(blurRadius: 3, offset: CGSize(width: 2, height: -2), color: .black, isInner: true)
+			a1.trackStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 0, blue: 1, alpha: 0.1)
+			a1.lineStyle.width = 8
+			a1.lineStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 1, green: 0, blue: 1, alpha: 1)
+
+			b1.addOverlay(a1)
+			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 30, height: 30), scale: 2))
+			let filename = "circular-gauge-slightly.png"
+			let link = try imageStore.store(image.representation.png(scale: 2), filename: filename)
+			markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"30\" /></a>|\n\n"
+		}
+
+		do {
+			let b1 = DSFSparklineSurface.Bitmap()
+			let a1 = DSFSparklineOverlay.CircularGauge()
+
+			let gr = DSFSparkline.Fill.Gradient(colors: [
+				CGColor.sRGBA(0, 0, 1),
+				CGColor.sRGBA(0, 1, 1),
+			])
+
+			a1.value = 0.87
+			a1.trackStyle.width = 15
+			a1.trackStyle.fillColor = DSFSparkline.Fill.Color(srgbRed: 0, green: 0, blue: 1, alpha: 0.1)
+			a1.lineStyle.width = 7
+			a1.lineStyle.fillColor = gr
+			a1.lineStyle.shadow = .init(
+				blurRadius: 3,
+				offset: .init(width: 2, height: -2),
+				color: CGColor(gray: 0, alpha: 0.8)
+			)
+
+			b1.addOverlay(a1)
+			let image = try XCTUnwrap(b1.cgImage(size: CGSize(width: 64, height: 64), scale: 2))
+			let filename = "circular-gauge-gradient.png"
+			let link = try imageStore.store(image.representation.png(), filename: filename)
+			markdownText += "<a href=\"\(link)\"><img src=\"\(link)\" width=\"64\" /></a>|\n\n"
+		}
+	}
+
 	func testActivityGrid() throws {
 		markdownText += "## Activity Grid\n\n"
 
