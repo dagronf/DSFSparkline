@@ -43,9 +43,14 @@ public extension DSFSparkline {
 		}
 
 		/// Create a new shadow object
-		@objc @inlinable convenience public init(blurRadius: CGFloat, offset: CGSize, color: CGColor, isInner: Bool = false) {
+		@objc convenience public init(blurRadius: CGFloat, offset: CGSize, color: CGColor, isInner: Bool = false) {
+			#if os(macOS)
+			let color: DSFColor = DSFColor(cgColor: color) ?? .black
+			#else
+			let color: DSFColor = DSFColor(cgColor: color)
+			#endif
 			self.init(
-				NSShadow(blurRadius: blurRadius, offset: offset, color: DSFColor(cgColor: color) ?? .black),
+				NSShadow(blurRadius: blurRadius, offset: offset, color: color),
 				isInner: isInner
 			)
 		}
