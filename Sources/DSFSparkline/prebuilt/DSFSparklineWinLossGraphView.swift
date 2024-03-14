@@ -30,20 +30,19 @@ import AppKit
 import UIKit
 #endif
 
-@IBDesignable
-public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
+@objc public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 
 	let overlay = DSFSparklineOverlay.WinLossTie()
 
 	/// The line width (in pixels) to use when drawing the border of each bar
-	@IBInspectable public var lineWidth: UInt = 1 {
+	@objc public dynamic var lineWidth: UInt = 1 {
 		didSet {
 			self.updateDisplay()
 		}
 	}
 
 	/// The spacing (in pixels) between each bar
-	@IBInspectable public var barSpacing: UInt = 1 {
+	@objc public dynamic var barSpacing: UInt = 1 {
 		didSet {
 			self.updateDisplay()
 		}
@@ -51,38 +50,38 @@ public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 
 	#if os(macOS)
 	/// The color to draw the 'win' boxes
-	@IBInspectable public var winColor: NSColor = NSColor.systemGreen {
+	@objc public dynamic var winColor: NSColor = NSColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	/// The color to draw the 'loss' boxes
-	@IBInspectable public var lossColor: NSColor = NSColor.systemRed {
+	@objc public dynamic var lossColor: NSColor = NSColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	/// The color to draw the 'tie' boxes
-	@IBInspectable public var tieColor: NSColor? = nil {
+	@objc public dynamic var tieColor: NSColor? = nil {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
 	/// The color to draw the 'win' boxes
-	@IBInspectable public var winColor: UIColor = UIColor.systemGreen {
+	@objc public dynamic var winColor: UIColor = UIColor.systemGreen {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	/// The color to draw the 'loss' boxes
-	@IBInspectable public var lossColor: UIColor = UIColor.systemRed {
+	@objc public dynamic var lossColor: UIColor = UIColor.systemRed {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	/// The color to draw the 'tie' boxes
-	@IBInspectable public var tieColor: UIColor? = nil {
+	@objc public dynamic var tieColor: UIColor? = nil {
 		didSet {
 			self.colorDidChange()
 		}
@@ -93,13 +92,13 @@ public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 
 	/// The centerline color. If nil, then no centerline is drawn
 	#if os(macOS)
-	@IBInspectable public var centerlineColor: NSColor? = nil {
+	@objc public dynamic var centerlineColor: NSColor? = nil {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
-	@IBInspectable public var centerlineColor: UIColor? = nil {
+	@objc public dynamic var centerlineColor: UIColor? = nil {
 		didSet {
 			self.colorDidChange()
 		}
@@ -107,7 +106,7 @@ public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 	#endif
 
 	// The width of the zero line
-	@IBInspectable public var centerlineWidth: CGFloat = 1 {
+	@objc public dynamic var centerlineWidth: CGFloat = 1 {
 		didSet {
 			self.colorDidChange()
 		}
@@ -120,7 +119,7 @@ public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 	/// If you want a solid line, specify "-"
 	///
 	/// Primarily used for Interface Builder integration
-	@IBInspectable public var centerlineDashStyleString: String = "1,1" {
+	@objc public dynamic var centerlineDashStyleString: String = "1,1" {
 		didSet {
 			if self.centerlineDashStyleString == "-" {
 				// Solid line
@@ -185,23 +184,4 @@ public class DSFSparklineWinLossGraphView: DSFSparklineDataSourceView {
 
 		self.updateDisplay()
 	}
-}
-
-extension DSFSparklineWinLossGraphView {
-
-	public override func prepareForInterfaceBuilder() {
-
-		let e = 0 ..< self.graphWindowSize
-		let data = e.map { arg in return Int.random(in: -1 ... 1) }
-
-		let ds = DSFSparkline.DataSource(windowSize: self.graphWindowSize)
-		self.dataSource = ds
-		ds.set(values: data.map { CGFloat($0) })
-
-		#if TARGET_INTERFACE_BUILDER
-		/// Need this to hold on to the datasource, or else it disappears due to being weak
-		self.ibDataSource = ds
-		#endif
-	}
-
 }

@@ -44,10 +44,36 @@ public class DSFSparklineCircularGaugeView: DSFSparklineSurfaceView {
 		}
 	}
 
+	/// The width of the track
+	@objc public dynamic var trackWidth: CGFloat {
+		get { self.overlay.trackStyle.width }
+		set { self.overlay.trackStyle.width = newValue }
+	}
+
+	/// Track color
+	@objc public dynamic var trackColor: DSFColor = .black.withAlphaComponent(0.1) {
+		didSet {
+			self.overlay.trackStyle.fillColor = DSFSparkline.Fill.Color(trackColor.cgColor)
+		}
+	}
+
 	/// The style to use when drawing the gauge's value
 	@objc public var lineStyle = DSFSparklineOverlay.CircularGauge.DefaultLineStyle {
 		didSet {
 			self.overlay.lineStyle = self.lineStyle
+		}
+	}
+
+	/// The width of the track
+	@objc public dynamic var lineWidth: CGFloat {
+		get { self.overlay.lineStyle.width }
+		set { self.overlay.lineStyle.width = newValue }
+	}
+
+	/// Line color
+	@objc public dynamic var lineColor: DSFColor = .black {
+		didSet {
+			self.overlay.lineStyle.fillColor = DSFSparkline.Fill.Color(lineColor.cgColor)
 		}
 	}
 

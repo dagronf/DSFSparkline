@@ -135,7 +135,7 @@ import UIKit
 	}
 
 	/// The left inset for the bar
-	@IBInspectable public var leftInset: CGFloat = 0 {
+	@objc public dynamic var leftInset: CGFloat = 0 {
 		didSet {
 			self.displayStyle.barEdgeInsets.left = self.leftInset
 			self.displayUpdate()
@@ -143,7 +143,7 @@ import UIKit
 	}
 
 	/// The top inset for the bar
-	@IBInspectable public var topInset: CGFloat = 0 {
+	@objc public dynamic var topInset: CGFloat = 0 {
 		didSet {
 			self.displayStyle.barEdgeInsets.top = self.topInset
 			self.displayUpdate()
@@ -151,7 +151,7 @@ import UIKit
 	}
 
 	/// The right inset for the bar
-	@IBInspectable public var rightInset: CGFloat = 0 {
+	@objc public dynamic var rightInset: CGFloat = 0 {
 		didSet {
 			self.displayStyle.barEdgeInsets.right = self.rightInset
 			self.displayUpdate()
@@ -159,7 +159,7 @@ import UIKit
 	}
 
 	/// The bottom inset for the bar
-	@IBInspectable public var bottomInset: CGFloat = 0 {
+	@objc public dynamic var bottomInset: CGFloat = 0 {
 		didSet {
 			self.displayStyle.barEdgeInsets.bottom = self.bottomInset
 			self.displayUpdate()
@@ -191,18 +191,6 @@ import UIKit
 
 	// The overlay
 	private let overlay = DSFSparklineOverlay.PercentBar(value: 0)
-}
-
-extension DSFSparklinePercentBarGraphView {
-	public override func prepareForInterfaceBuilder() {
-		super.prepareForInterfaceBuilder()
-
-		#if TARGET_INTERFACE_BUILDER
-		self.configure()
-		self.overlay.setNeedsDisplay()
-		self.updateDisplay()
-		#endif
-	}
 }
 
 private extension DSFSparklinePercentBarGraphView {

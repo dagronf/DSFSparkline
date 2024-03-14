@@ -31,19 +31,18 @@ import UIKit
 #endif
 
 /// A stack line sparkline type
-@IBDesignable
-public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
+@objc public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	let overlay = DSFSparklineOverlay.Stackline()
 
 	/// The width for the line drawn on the graph
-	@IBInspectable public var lineWidth: CGFloat = 1 {
+	@objc public dynamic var lineWidth: CGFloat = 1 {
 		didSet {
 			self.updateDisplay()
 		}
 	}
 
 	/// Shade the area under the line
-	@IBInspectable public var lineShading: Bool = true {
+	@objc public dynamic var lineShading: Bool = true {
 		didSet {
 			self.overlay.primaryFill = DSFSparkline.Fill.Color(self.graphColor.withAlphaComponent(0.3).cgColor)
 			self.updateDisplay()
@@ -51,14 +50,14 @@ public class DSFSparklineStackLineGraphView: DSFSparklineZeroLineGraphView {
 	}
 
 	/// Draw a shadow under the line
-	@IBInspectable public var shadowed: Bool = false {
+	@objc public dynamic var shadowed: Bool = false {
 		didSet {
 			self.overlay.shadow = self.shadowed ? NSShadow.sparklineDefault : nil
 		}
 	}
 
 	/// Should the graph be centered at the zero line?
-	@IBInspectable public var centeredAtZeroLine: Bool = false {
+	@objc public dynamic var centeredAtZeroLine: Bool = false {
 		didSet {
 			self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 		}

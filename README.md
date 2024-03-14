@@ -332,7 +332,7 @@ There's also a simple Xcode Playground available in the `Demos/Playground` subfo
 
 ### Using prebuilt views
 
-A prebuilt view is useful to quickly add a sparkline using SwiftUI or via Interface Builder (while providing previews using @IBDesignable). These views a slightly more limited set of styling and customizations but are much quicker to implement than using overlays directly.
+A prebuilt view is useful to quickly add a sparkline using SwiftUI or via Interface Builder. These views a slightly more limited set of styling and customizations but are much quicker to implement than using overlays directly.
 
 For the most part, the prebuilt types will be all you need.
 
@@ -343,7 +343,7 @@ If you've used `DSFSparklines` prior to v4, these are the original view types th
 
 ### Using overlays
 
-There are three fundamental building blocks for an overlay sparkline. Overlay sparklines are more flexible and configurable than the pre-built views, but are more complex to set up and provides no support for @IBDesignable.
+There are three fundamental building blocks for an overlay sparkline. Overlay sparklines are more flexible and configurable than the pre-built views, but are more complex to set up.
 
 * **A surface** - where it will draw
 * **A datasource** - the set of values to draw
@@ -770,7 +770,7 @@ A component represents an overlay that isn't a graph in itself.  Examples are gr
 
 ## Using prebuilt views
 
-DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project, especially relating to Interface Builder (the pre-built types provide an `@IBDesignable` interface) so you can design the look of your graph from directly within Interface Builder.
+DSFSparkline has a number of 'prebuilt' sparkline views available with a more limited scope, designed to be quicker to add to your project.
 
 Every prebuilt sparkline view has a SwiftUI companion view.
 
@@ -788,6 +788,7 @@ Every prebuilt sparkline view has a SwiftUI companion view.
 * `DSFSparklinePercentBarGraphView` / `DSFSparklinePercentBarGraphView.SwiftUI`
 * `DSFSparklineWiperGaugeGraphView` / `DSFSparklineWiperGaugeGraphView.SwiftUI`
 * `DSFSparklineActivityGridView` / `DSFSparklineActivityGridView.SwiftUI`
+* `DSFSparklineCircularGaugeView` / `DSFSparklineCircularGaugeView.SwiftUI`
 
 <details>
   <summary>Sample Swift code</summary>

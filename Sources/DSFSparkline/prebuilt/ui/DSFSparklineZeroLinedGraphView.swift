@@ -30,8 +30,7 @@ import UIKit
 #endif
 
 /// A view that can draw a zero-point line. Should never be used directly, just to inherit from for other graph types
-@IBDesignable
-public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
+@objc public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	// MARK: Zero-line display
 
@@ -39,7 +38,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	let zerolineOverlay = DSFSparklineOverlay.ZeroLine()
 
 	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var zeroLineVisible: Bool = false {
+	@objc public dynamic var zeroLineVisible: Bool = false {
 		didSet {
 			self.updateZeroLineSettings()
 		}
@@ -47,13 +46,13 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	/// The color of the dotted line at the zero point on the y-axis
 	#if os(macOS)
-	@IBInspectable public var zeroLineColor = NSColor.gray {
+	@objc public dynamic var zeroLineColor = NSColor.gray {
 		didSet {
 			self.updateZeroLineSettings()
 		}
 	}
 	#else
-	@IBInspectable public var zeroLineColor: UIColor = .systemGray {
+	@objc public dynamic var zeroLineColor: UIColor = .systemGray {
 		didSet {
 			self.updateZeroLineSettings()
 		}
@@ -61,7 +60,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	#endif
 
 	/// The width of the dotted line at the zero point on the y-axis
-	@IBInspectable public var zeroLineWidth: CGFloat = 1.0 {
+	@objc public dynamic var zeroLineWidth: CGFloat = 1.0 {
 		didSet {
 			self.updateZeroLineSettings()
 		}
@@ -77,7 +76,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	/// A string representation of the line dash lengths for the zero line, eg. "1,3,4,2". If you want a solid line, specify "-"
 	///
 	/// Primarily used for Interface Builder integration
-	@IBInspectable public var zeroLineDashStyleString: String = "1,1" {
+	@objc public dynamic var zeroLineDashStyleString: String = "1,1" {
 		didSet {
 			self.handleZeroLineString()
 		}
@@ -86,19 +85,11 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	// MARK: Zero-line centering
 
 	/// The color used to draw values below the zero line. If nil, is the same as the graph color
-	#if os(macOS)
-	@IBInspectable public var lowerGraphColor: NSColor? {
+	@objc public dynamic var lowerGraphColor: DSFColor? {
 		didSet {
 			self.colorDidChange()
 		}
 	}
-	#else
-	@IBInspectable public var lowerGraphColor: UIColor? {
-		didSet {
-			self.colorDidChange()
-		}
-	}
-	#endif
 
 	/// The 'lowerColor' represents the 'negativeColor' if it is set, otherwise its the same as the graphColor
 	internal var lowerColor: DSFColor {
@@ -114,7 +105,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	var highlightOverlay: [DSFSparklineOverlay.RangeHighlight] = []
 
 	/// Draw a highlight for a range on the graph
-	@IBInspectable public var highlightRangeVisible: Bool = false {
+	@objc public dynamic var highlightRangeVisible: Bool = false {
 		didSet {
 			self.updateHighlightSettings()
 		}
@@ -122,13 +113,13 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 
 	/// The color of the highlight to be used
 	#if os(macOS)
-	@IBInspectable public var highlightRangeColor = NSColor.gray {
+	@objc public dynamic var highlightRangeColor = NSColor.gray {
 		didSet {
 			self.updateHighlightSettings()
 		}
 	}
 	#else
-	@IBInspectable public var highlightRangeColor: UIColor = .systemGray {
+	@objc public dynamic var highlightRangeColor: UIColor = .systemGray {
 		didSet {
 			self.updateHighlightSettings()
 		}
@@ -136,7 +127,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	#endif
 
 	/// A string of the format "0.1,0.7"
-	@IBInspectable public var highlightRangeString: String? = nil {
+	@objc public dynamic var highlightRangeString: String? = nil {
 		didSet {
 			self.updateHighlightSettings()
 		}
@@ -148,7 +139,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	let ibGridLinesOverlay = DSFSparklineOverlay.GridLines()
 
 	/// Draw a dotted line at the zero point on the y-axis
-	@IBInspectable public var gridLinesVisible: Bool = false {
+	@objc public dynamic var gridLinesVisible: Bool = false {
 		didSet {
 			self.updateGridLinesSettings()
 		}
@@ -162,7 +153,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	}
 
 	/// A string of the format "0.1,0.7"
-	@IBInspectable public var gridLinesValuesString: String? = nil {
+	@objc public dynamic var gridLinesValuesString: String? = nil {
 		didSet {
 			// Dash style
 			let floats = self.gridLinesValuesString?.extractCGFloats() ?? []
@@ -171,13 +162,13 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	}
 
 	#if os(macOS)
-	@IBInspectable public var gridLinesColor = NSColor.systemGray.withAlphaComponent(0.5) {
+	@objc public dynamic var gridLinesColor = NSColor.systemGray.withAlphaComponent(0.5) {
 		didSet {
 			self.updateGridLinesSettings()
 		}
 	}
 	#else
-	@IBInspectable public var gridLinesColor: UIColor = .systemGray.withAlphaComponent(0.5) {
+	@objc public dynamic var gridLinesColor: UIColor = .systemGray.withAlphaComponent(0.5) {
 		didSet {
 			self.updateGridLinesSettings()
 		}
@@ -185,14 +176,14 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	#endif
 
 	/// The width of the dotted line at the zero point on the y-axis
-	@IBInspectable public var gridLinesWidth: CGFloat = 1.0 {
+	@objc public dynamic var gridLinesWidth: CGFloat = 1.0 {
 		didSet {
 			self.updateGridLinesSettings()
 		}
 	}
 
 	/// The line style for the dotted line. Use [] to specify a solid line.
-	@objc public var gridLinesDashStyle: [CGFloat] = [1.0, 1.0] {
+	@objc public dynamic var gridLinesDashStyle: [CGFloat] = [1.0, 1.0] {
 		didSet {
 			self.updateGridLinesSettings()
 		}
@@ -201,7 +192,7 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 	/// A string representation of the line dash lengths for grid lines, eg. "1,3,4,2". If you want a solid line, specify "-"
 	///
 	/// Primarily used for Interface Builder integration
-	@IBInspectable public var gridLinesDashStyleString: String = "1.0,1.0" {
+	@objc public dynamic var gridLinesDashStyleString: String = "1.0,1.0" {
 		didSet {
 			self.updateGridLinesSettings()
 		}
@@ -268,21 +259,9 @@ public class DSFSparklineZeroLineGraphView: DSFSparklineDataSourceView {
 			self.updateDisplay()
 		}
 	}
-
-	public override func prepareForInterfaceBuilder() {
-		if self.highlightRangeVisible {
-			self.highlightRangeDefinition = [
-				DSFSparkline.HighlightRangeDefinition(
-					range: -3 ..< 3,
-					fill: DSFSparkline.Fill.Color(self.highlightRangeColor.cgColor))
-			]
-		}
-		super.prepareForInterfaceBuilder()
-	}
 }
 
 public extension DSFSparklineZeroLineGraphView {
-
 	/// Configure the zero line using the ZeroLineDefinition 
 	func setZeroLineDefinition(_ definition: DSFSparkline.ZeroLineDefinition) {
 		self.zeroLineWidth = definition.lineWidth

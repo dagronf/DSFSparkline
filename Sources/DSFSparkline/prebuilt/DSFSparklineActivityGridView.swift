@@ -27,8 +27,7 @@ import AppKit
 import UIKit
 #endif
 
-@IBDesignable
-public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
+@objc public class DSFSparklineActivityGridView: DSFSparklineSurfaceView {
 	/// The view's data source
 	@objc public var dataSource: DSFSparkline.StaticDataSource {
 		get { self.activityLayer.dataSource }

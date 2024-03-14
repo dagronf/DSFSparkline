@@ -31,13 +31,12 @@ import UIKit
 #endif
 
 /// A sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
-@IBDesignable
-public class DSFSparklineDotGraphView: DSFSparklineDataSourceView {
+@objc public class DSFSparklineDotGraphView: DSFSparklineDataSourceView {
 
 	let overlay = DSFSparklineOverlay.Dot()
 
 	/// Are the values drawn from the top down?
-	@IBInspectable public var upsideDown: Bool = false {
+	@objc public dynamic var upsideDown: Bool = false {
 		didSet {
 			self.overlay.upsideDown = self.upsideDown
 			self.updateDisplay()
@@ -45,7 +44,7 @@ public class DSFSparklineDotGraphView: DSFSparklineDataSourceView {
 	}
 
 	/// The number of vertical buckets to break the input data up into
-	@IBInspectable public var verticalDotCount: UInt = 10 {
+	@objc public dynamic var verticalDotCount: UInt = 10 {
 		didSet {
 			self.overlay.verticalDotCount = self.verticalDotCount
 			self.updateDisplay()
@@ -54,13 +53,13 @@ public class DSFSparklineDotGraphView: DSFSparklineDataSourceView {
 
 	/// The secondary color for the sparkline
 	#if os(macOS)
-	@IBInspectable public var unsetGraphColor: NSColor = NSColor.clear {
+	@objc public dynamic var unsetGraphColor: NSColor = NSColor.clear {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
-	@IBInspectable public var unsetGraphColor: UIColor = UIColor.clear {
+	@objc public dynamic var unsetGraphColor: UIColor = UIColor.clear {
 		didSet {
 			self.colorDidChange()
 		}

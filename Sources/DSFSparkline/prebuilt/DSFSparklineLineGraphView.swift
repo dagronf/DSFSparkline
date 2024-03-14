@@ -28,27 +28,26 @@ import UIKit
 #endif
 
 /// A sparkline that draws a line graph
-@IBDesignable
-public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
+@objc public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 
 	let overlay = DSFSparklineOverlay.Line()
 
 	/// The width for the line drawn on the graph
-	@IBInspectable public var lineWidth: CGFloat = 1.5 {
+	@objc public dynamic var lineWidth: CGFloat = 1.5 {
 		didSet {
 			self.overlay.strokeWidth = self.lineWidth
 		}
 	}
 	
 	/// Interpolate a curve between the points
-	@IBInspectable public var interpolated: Bool = false {
+	@objc public dynamic var interpolated: Bool = false {
 		didSet {
 			self.overlay.interpolated = self.interpolated
 		}
 	}
 	
 	/// Shade the area under the line
-	@IBInspectable public var lineShading: Bool = true {
+	@objc public dynamic var lineShading: Bool = true {
 		didSet {
 			if lineShading == true {
 				self.overlay.primaryFill = DSFSparkline.Fill.Color(self.graphColor.withAlphaComponent(0.4).cgColor)
@@ -60,14 +59,14 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	}
 	
 	/// Draw a shadow under the line
-	@IBInspectable public var shadowed: Bool = false {
+	@objc public dynamic var shadowed: Bool = false {
 		didSet {
 			self.overlay.shadow = self.shadowed ? NSShadow.sparklineDefault : nil
 		}
 	}
 
 	/// The size of the markers to draw. If the markerSize is less than 0, markers will not draw
-	@IBInspectable public var markerSize: CGFloat = -1 {
+	@objc public dynamic var markerSize: CGFloat = -1 {
 		didSet {
 			self.overlay.markerSize = self.markerSize
 		}
@@ -86,7 +85,7 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	}
 
 	/// Should the graph be centered at the zero line?
-	@IBInspectable public var centeredAtZeroLine: Bool = false {
+	@objc public dynamic var centeredAtZeroLine: Bool = false {
 		didSet {
 			self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 		}
@@ -95,7 +94,6 @@ public class DSFSparklineLineGraphView: DSFSparklineZeroLineGraphView {
 	// Optional gradient colors
 	internal var gradient: CGGradient?
 	internal var lowerGradient: CGGradient?
-
 
 	public override init(frame: CGRect) {
 		super.init(frame: frame)

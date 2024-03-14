@@ -28,68 +28,47 @@ import AppKit
 import UIKit
 #endif
 
-@IBDesignable
-public class DSFSparklineCircularProgressView: DSFSparklineSurfaceView {
+@objc public class DSFSparklineCircularProgressView: DSFSparklineSurfaceView {
 
-	@IBInspectable public var value: CGFloat = 0.0 {
+	@objc public dynamic var value: CGFloat = 0.0 {
 		didSet {
 			self.overlay.value = self.value
 		}
 	}
 
-	@IBInspectable public var trackWidth: CGFloat = 10 {
+	@objc public dynamic var trackWidth: CGFloat = 10 {
 		didSet {
 			self.overlay.trackWidth = self.trackWidth
 		}
 	}
 
 	/// The padding (inset) for drawing the ring
-	@IBInspectable public var padding: CGFloat = 0.0 {
+	@objc public dynamic var padding: CGFloat = 0.0 {
 		didSet {
 			self.overlay.padding = self.padding
 		}
 	}
 
 	/// The stroke color for the pie chart
-	#if os(macOS)
-	@IBInspectable public var trackColor: NSColor? {
+	@objc public dynamic var trackColor: DSFColor? {
 		didSet {
 			if let t = self.trackColor?.cgColor {
 				self.overlay.trackColor = t
 			}
 		}
 	}
-	#else
-	@IBInspectable public var trackColor: UIColor? {
-		didSet {
-			if let t = self.trackColor?.cgColor {
-				self.overlay.trackColor = t
-			}
-		}
-	}
-	#endif
 
 	/// The stroke color for the pie chart
-	#if os(macOS)
-	@IBInspectable public var progressColor: NSColor? {
+	@objc public dynamic var progressColor: DSFColor? {
 		didSet {
 			if let t = self.progressColor?.cgColor {
 				self.overlay.fillStyle = DSFSparkline.Fill.Color(t)
 			}
 		}
 	}
-	#else
-	@IBInspectable public var progressColor: UIColor? {
-		didSet {
-			if let t = self.progressColor?.cgColor {
-				self.overlay.fillStyle = DSFSparkline.Fill.Color(t)
-			}
-		}
-	}
-	#endif
 
 	/// The track's icon
-	@IBInspectable public var trackIcon: CGImage? {
+	@objc public dynamic var trackIcon: CGImage? {
 		didSet {
 			self.overlay.icon = self.trackIcon
 		}

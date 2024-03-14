@@ -28,34 +28,33 @@ import UIKit
 #endif
 
 /// A sparkline graph that displays bars
-@IBDesignable
-public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
+@objc public class DSFSparklineBarGraphView: DSFSparklineZeroLineGraphView {
 
 	let overlay = DSFSparklineOverlay.Bar()
 
 	/// The line width (in pixels) to use when drawing the border of each bar
-	@IBInspectable public var lineWidth: UInt = 1 {
+	@objc public dynamic var lineWidth: UInt = 1 {
 		didSet {
 			self.overlay.strokeWidth = self.lineWidth
 		}
 	}
 
 	/// The spacing (in pixels) between each bar
-	@IBInspectable public var barSpacing: UInt = 1 {
+	@objc public dynamic var barSpacing: UInt = 1 {
 		didSet {
 			self.overlay.barSpacing = self.barSpacing
 		}
 	}
 
 	/// Draw a shadow under the line
-	@IBInspectable public var shadowed: Bool = false {
+	@objc public dynamic var shadowed: Bool = false {
 		didSet {
 			self.overlay.shadow = self.shadowed ? NSShadow.sparklineDefault : nil
 		}
 	}
 
 	/// Should the graph be centered at the zero line?
-	@IBInspectable public var centeredAtZeroLine: Bool = false {
+	@objc public dynamic var centeredAtZeroLine: Bool = false {
 		didSet {
 			self.overlay.centeredAtZeroLine = self.centeredAtZeroLine
 		}

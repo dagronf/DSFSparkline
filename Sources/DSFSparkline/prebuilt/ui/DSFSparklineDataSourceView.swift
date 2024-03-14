@@ -31,13 +31,7 @@ import UIKit
 #endif
 
 /// A Sparkline View with an attached datasource.
-@IBDesignable
 @objc public class DSFSparklineDataSourceView: DSFSparklineSurfaceView {
-
-	#if TARGET_INTERFACE_BUILDER
-	/// Need this to hold on to the datasource when using designable, or else it disappears due to being weak
-	var ibDataSource: DSFSparkline.DataSource?
-	#endif
 
 	// Listen for changes in the data and update appropriately
 	private var dataObserver: NSObjectProtocol?
@@ -66,13 +60,13 @@ import UIKit
 
 	/// The primary color for the sparkline
 	#if os(macOS)
-	@IBInspectable public var graphColor: NSColor = NSColor.black {
+	@objc public dynamic var graphColor: NSColor = NSColor.black {
 		didSet {
 			self.colorDidChange()
 		}
 	}
 	#else
-	@IBInspectable public var graphColor: UIColor = UIColor.black {
+	@objc public dynamic var graphColor: UIColor = UIColor.black {
 		didSet {
 			self.colorDidChange()
 		}
@@ -91,7 +85,7 @@ import UIKit
 	///
 	/// This member is purely IBDesignable display related
 	/// `windowSize` on the dataSource
-	@IBInspectable public var graphWindowSize: UInt = 20 {
+	@objc public dynamic var graphWindowSize: UInt = 20 {
 		didSet {
 			self.windowSizeSetInXib = true
 			self.dataSource?.windowSize = self.graphWindowSize
@@ -127,20 +121,4 @@ extension DSFSparklineDataSourceView {
 		super.draw(rect)
 	}
 	#endif
-
-	public override func prepareForInterfaceBuilder() {
-
-		let e = 0 ..< self.graphWindowSize
-		let data = e.map { arg in return CGFloat.random(in: -10.0 ... 10.0) }
-
-		let ds = DSFSparkline.DataSource(windowSize: self.graphWindowSize)
-		self.dataSource = ds
-		ds.set(values: data)
-
-		#if TARGET_INTERFACE_BUILDER
-		/// Need this to hold on to the datasource, or else it disappears due to being weak
-		self.ibDataSource = ds
-		#endif
-	}
 }
-

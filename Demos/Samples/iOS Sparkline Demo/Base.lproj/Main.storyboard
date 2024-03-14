@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="48" width="414" height="810"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="a8x-rk-lDK">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1458"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NSAttributedString inlinable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1v-nq-25c" userLabel="NSAttributedString inlinable">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
@@ -823,6 +823,85 @@
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="i0P-kq-jkL"/>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dyz-uN-7bW">
+                                                <rect key="frame" x="0.0" y="1408" width="414" height="50"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oF-Ff-1E9" customClass="DSFSparklineCircularGaugeView" customModule="DSFSparkline">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="11a-SH-7fh"/>
+                                                            <constraint firstAttribute="height" constant="50" id="FNb-II-n65"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                <real key="value" value="0.23000000000000001"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqu-Vs-JSe" customClass="DSFSparklineCircularGaugeView" customModule="DSFSparkline">
+                                                        <rect key="frame" x="96.5" y="0.0" width="80" height="50"/>
+                                                        <viewLayoutGuide key="safeArea" id="ejk-H2-Ujj"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="3UA-Ae-md9"/>
+                                                            <constraint firstAttribute="height" constant="50" id="6q1-6f-xIE"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                <real key="value" value="0.65000000000000002"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                                                <integer key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iel-sI-0z2" customClass="DSFSparklineCircularGaugeView" customModule="DSFSparkline">
+                                                        <rect key="frame" x="232.5" y="0.0" width="25" height="50"/>
+                                                        <viewLayoutGuide key="safeArea" id="PKN-ql-71V"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="T5p-7g-Na7"/>
+                                                            <constraint firstAttribute="width" constant="25" id="aMk-Mt-UDB"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                <real key="value" value="0.92000000000000004"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dID-DW-6S2" customClass="DSFSparklineCircularGaugeView" customModule="DSFSparkline">
+                                                        <rect key="frame" x="314" y="0.0" width="100" height="50"/>
+                                                        <viewLayoutGuide key="safeArea" id="hqe-tN-qfO"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="WaJ-37-zrY"/>
+                                                            <constraint firstAttribute="width" constant="100" id="mhu-bx-pjT"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                                <real key="value" value="0.40000000000000002"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
+                                                                <integer key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                                <color key="value" systemColor="linkColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                                                                <color key="value" systemColor="systemMintColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="Jaf-BR-yFK"/>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -883,6 +962,9 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="quaternarySystemFillColor">
             <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -900,6 +982,9 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

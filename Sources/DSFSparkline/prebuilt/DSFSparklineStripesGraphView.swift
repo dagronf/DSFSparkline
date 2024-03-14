@@ -31,12 +31,11 @@ import UIKit
 #endif
 
 /// A sparkline graph that displays solid color bars with a gradient (like the climate graph)
-@IBDesignable
 public class DSFSparklineStripesGraphView: DSFSparklineDataSourceView {
 
 	let overlay = DSFSparklineOverlay.Stripes()
 
-	@IBInspectable public var integral: Bool = true {
+	@objc public dynamic var integral: Bool = true {
 		didSet {
 			self.colorDidChange()
 			self.updateDisplay()
@@ -44,7 +43,7 @@ public class DSFSparklineStripesGraphView: DSFSparklineDataSourceView {
 	}
 
 	/// The spacing (in pixels) between each bar
-	@IBInspectable public var barSpacing: UInt = 0 {
+	@objc public dynamic var barSpacing: UInt = 0 {
 		didSet {
 			self.colorDidChange()
 			self.updateDisplay()
