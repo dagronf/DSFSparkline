@@ -51,6 +51,13 @@ public class DSFSparklineCircularGaugeView: DSFSparklineSurfaceView {
 		}
 	}
 
+	/// The animation style to use when the value changes
+	@objc public var animationStyle: AnimationStyle? = nil {
+		didSet {
+			self.overlay.animationStyle = animationStyle
+		}
+	}
+
 	// MARK: - Initializers
 	
 	/// Create

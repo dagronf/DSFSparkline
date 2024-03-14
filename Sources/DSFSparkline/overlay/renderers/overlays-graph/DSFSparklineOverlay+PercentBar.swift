@@ -55,11 +55,6 @@ public extension DSFSparkline {
 			/// Should we display a text percentage value on the bar?
 			@objc public var showLabel: Bool = true
 
-			/// Should the pie chart animate in?
-			@objc public var animated: Bool = false
-			/// The length of the animate-in duration
-			@objc public var animationDuration: Double = 0.25
-
 			@objc public func label(for value: CGFloat) -> String {
 				return self.numberFormatter.string(from: NSNumber(value: Double(value))) ?? ""
 			}
@@ -100,8 +95,13 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
+		/// Animation style
+		@objc public var animationStyle: AnimationStyle? = nil
+
+		internal var animated: Bool { animationStyle != nil }
+
 		/// Creator
-		public init(style: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style(), value: CGFloat) {
+		@objc public init(style: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style(), value: CGFloat) {
 			super.init()
 
 			self.addSublayer(self.fractionLayer)
@@ -218,7 +218,7 @@ private extension DSFSparklineOverlay.PercentBar {
 	}
 
 	func dataDidChange() {
-		if self.displayStyle.animated {
+		if self.animated {
 			self.startAnimateIn()
 		}
 		else {
@@ -228,15 +228,18 @@ private extension DSFSparklineOverlay.PercentBar {
 	}
 
 	func startAnimateIn() {
+		guard let anim = self.animationStyle else { fatalError() }
 		// Stop any animation that is currently active
+		self.animator.progressBlock = nil
+
 		self.animator.stop()
 		self.fractionComplete = 0
 
-		self.animator.animationFunction = ArbitraryAnimator.Function.EaseInEaseOut()
-		self.animator.duration = self.displayStyle.animationDuration
-		self.animator.progressBlock = { progress in
-			self.fractionComplete = CGFloat(progress)
-			self.setNeedsLayout()
+		self.animator.animationFunction = anim.function.function
+		self.animator.duration = anim.duration
+		self.animator.progressBlock = { [weak self] progress in
+			self?.fractionComplete = CGFloat(progress)
+			self?.setNeedsLayout()
 		}
 		self.animator.start()
 	}

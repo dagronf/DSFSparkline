@@ -42,7 +42,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 		/// The value to display in the chart
 		let value: Double
 		/// Should changes to value be animated?
-		let animated: Bool
+		let animationStyle: AnimationStyle?
 
 		/// Create a sparkline graph that displays a 0 ... 1 value as a gauge
 		public init(
@@ -52,7 +52,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			upperArcColor: DSFColor? = nil,
 			pointerColor: DSFColor? = nil,
 			backgroundColor: DSFColor? = nil,
-			animated: Bool = false
+			animationStyle: AnimationStyle? = nil
 		) {
 			self.valueColor = valueColor
 			self.valueBackgroundColor = valueBackgroundColor
@@ -60,7 +60,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			self.pointerColor = pointerColor
 			self.backgroundColor = backgroundColor
 			self.value = value
-			self.animated = animated
+			self.animationStyle = animationStyle
 		}
 
 		/// Create a sparkline graph that displays a 0 ... 1 value as a gauge
@@ -71,7 +71,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			upperArcColor: DSFColor? = nil,
 			pointerColor: DSFColor? = nil,
 			backgroundColor: DSFColor? = nil,
-			animated: Bool = false
+			animationStyle: AnimationStyle? = nil
 		) {
 			self.valueColor = DSFSparkline.ValueBasedFill(flatColor: valueColor.cgColor)
 			self.valueBackgroundColor = valueBackgroundColor
@@ -79,7 +79,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			self.pointerColor = pointerColor
 			self.backgroundColor = backgroundColor
 			self.value = value
-			self.animated = animated
+			self.animationStyle = animationStyle
 		}
 	}
 }
@@ -141,7 +141,6 @@ public extension DSFSparklineWiperGaugeGraphView.SwiftUI {
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineWiperGaugeGraphView.SwiftUI {
 	func updateView(_ view: DSFSparklineWiperGaugeGraphView) {
-		view.animated = self.animated
 		view.valueColor = self.valueColor
 		if let c = self.valueBackgroundColor {
 			view.valueBackgroundColor = c
@@ -151,6 +150,9 @@ public extension DSFSparklineWiperGaugeGraphView.SwiftUI {
 		}
 		if let c = self.pointerColor {
 			view.gaugePointerColor = c
+		}
+		if view.animationStyle != self.animationStyle {
+			view.animationStyle = self.animationStyle
 		}
 		view.value = CGFloat(self.value)
 	}

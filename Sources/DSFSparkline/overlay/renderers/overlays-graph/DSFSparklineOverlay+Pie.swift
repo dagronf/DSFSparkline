@@ -48,11 +48,12 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// Should the pie chart animate in?
-		@objc public var animated: Bool = false
+		@objc public var animationStyle: AnimationStyle? = nil
 
-		/// The length of the animate-in duration
-		@objc public var animationDuration: CGFloat = 0.25
+		// Should we animate?
+		private var animated: Bool { animationStyle != nil }
 
+		/// Create
 		@objc public override init() {
 			super.init()
 		}
@@ -62,8 +63,7 @@ public extension DSFSparklineOverlay {
 			self.palette = orig.palette.copyPalette()
 			self.strokeColor = orig.strokeColor?.copy()
 			self.lineWidth = orig.lineWidth
-			self.animated = orig.animated
-			self.animationDuration = orig.animationDuration
+			self.animationStyle = orig.animationStyle
 			super.init(layer: layer)
 		}
 
@@ -95,15 +95,19 @@ public extension DSFSparklineOverlay {
 
 private extension DSFSparklineOverlay.Pie {
 	func startAnimateIn() {
+		guard let anim = self.animationStyle else { fatalError() }
+
 		// Stop any animation that is currently active
 		self.animator.stop()
 
 		self.fractionComplete = 0
 
-		self.animator.animationFunction = ArbitraryAnimator.Function.EaseInEaseOut()
-		self.animator.progressBlock = { progress in
-			self.fractionComplete = CGFloat(progress)
-			self.setNeedsDisplay()
+		self.animator.animationFunction = anim.function.function
+		self.animator.duration = anim.duration
+
+		self.animator.progressBlock = { [weak self] progress in
+			self?.fractionComplete = CGFloat(progress)
+			self?.setNeedsDisplay()
 		}
 
 		self.animator.start()

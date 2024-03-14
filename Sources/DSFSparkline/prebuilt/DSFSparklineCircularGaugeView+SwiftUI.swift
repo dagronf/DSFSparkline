@@ -25,30 +25,55 @@ import SwiftUI
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, *)
 public extension DSFSparklineCircularGaugeView {
+
+	enum Animation {
+		case linear(Double)
+		case easeInEaseOut(Double)
+	}
+
 	/// A SwiftUI wrapper for the Circular Progress sparkline overlay
 	struct SwiftUI {
 		let value: Double
+		let animationStyle: AnimationStyle?
 		let trackStyle: DSFSparklineOverlay.CircularGauge.TrackStyle
 		let lineStyle: DSFSparklineOverlay.CircularGauge.TrackStyle
 
+		/// Create a Circular Gauge view
+		/// - Parameters:
+		///   - value: The value to display
+		///   - animationStyle: The animation style, or nil for no animation
+		///   - trackStyle: The style to use when drawing the track (background ring)
+		///   - lineStyle: The style to use when drawing the value line
 		public init(
 			value: Double,
+			animationStyle: AnimationStyle? = nil,
 			trackStyle: DSFSparklineOverlay.CircularGauge.TrackStyle,
 			lineStyle: DSFSparklineOverlay.CircularGauge.TrackStyle
 		) {
 			self.value = value
+			self.animationStyle = animationStyle
 			self.trackStyle = trackStyle
 			self.lineStyle = lineStyle
 		}
 
+		/// Create a Circular Gauge view
+		/// - Parameters:
+		///   - value: The value to display
+		///   - animationStyle: The animation style, or nil for no animation
+		///   - trackWidth: The width of the track
+		///   - trackFill: The fill style to use for the track
+		///   - valueWidth: The width of the value line
+		///   - valueFill: The fill style to use for the value line
 		public init(
 			value: Double,
+			animationStyle: AnimationStyle? = nil,
 			trackWidth: Double = 10,
 			trackFill: DSFSparklineFillable,
 			valueWidth: Double = 7,
 			valueFill: DSFSparklineFillable
 		) {
 			self.value = value
+			self.animationStyle = animationStyle
 			self.trackStyle = .init(width: trackWidth, fillColor: trackFill)
 			self.lineStyle = .init(width: valueWidth, fillColor: valueFill)
 		}
@@ -67,6 +92,7 @@ extension DSFSparklineCircularGaugeView.SwiftUI: DSFViewRepresentable {
 		let view = DSFSparklineCircularGaugeView(frame: .zero)
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.value = self.value
+		view.animationStyle = self.animationStyle
 		view.trackStyle = self.trackStyle
 		view.lineStyle = self.lineStyle
 		return view
@@ -105,6 +131,9 @@ public extension DSFSparklineCircularGaugeView.SwiftUI {
 public extension DSFSparklineCircularGaugeView.SwiftUI {
 	func updateView(_ view: DSFSparklineCircularGaugeView) {
 		UpdateIfNotEqual(result: &view.value, val: self.value)
+		if view.animationStyle !== self.animationStyle {
+			view.animationStyle = self.animationStyle
+		}
 		if view.trackStyle !== self.trackStyle {
 			view.trackStyle = self.trackStyle
 		}

@@ -8,9 +8,7 @@
 import SwiftUI
 import DSFSparkline
 
-struct PercentBar: View {
-
-	let shouldAnimate: Bool
+struct PercentBarView: View {
 
 	// The actual line graph
 	var percentBarOverlay: DSFSparklineOverlay.PercentBar = {
@@ -35,8 +33,6 @@ struct PercentBar: View {
 		s.underBarColor = DSFColor.systemBlue.cgColor
 		s.underBarTextColor = CGColor(gray: 1.0, alpha: 1.0)
 		s.font = DSFFont(name: "Menlo", size: 13)!
-		s.animated = self.shouldAnimate
-		s.animationDuration = 1
 		return s
 	}
 
@@ -45,8 +41,6 @@ struct PercentBar: View {
 		s.barColor = DSFColor.systemIndigo.cgColor
 		s.underBarColor = CGColor(gray: 0.0, alpha: 0.1)
 		s.showLabel = false
-		s.animated = self.shouldAnimate
-		s.animationDuration = 1
 		return s
 	}
 
@@ -58,7 +52,6 @@ struct PercentBar: View {
 		s.underBarColor = CGColor(gray: 0.0, alpha: 0.1)
 		s.underBarTextColor = .black
 		s.font = DSFFont(name: "Menlo", size: 13)!
-		s.animated = false
 		return s
 	}
 
@@ -82,8 +75,6 @@ struct PercentBar: View {
 		s.underBarColor = CGColor(gray: 0.8, alpha: 1.0)
 		s.underBarTextColor = .black
 		s.font = DSFFont(name: "Menlo Bold", size: 16)!
-		s.animated = self.shouldAnimate
-		s.animationDuration = 0.5
 		return s
 	}
 
@@ -106,8 +97,6 @@ struct PercentBar: View {
 		s.underBarColor = CGColor(gray: 0.8, alpha: 1.0)
 		s.underBarTextColor = .black
 		s.font = DSFFont(name: "Menlo", size: 11)!
-		s.animated = true
-		s.animationDuration = 0.5
 		return s
 	}
 
@@ -120,8 +109,6 @@ struct PercentBar: View {
 		s.underBarColor = CGColor(gray: 0.8, alpha: 1.0)
 		s.underBarTextColor = .black
 		s.font = DSFFont(name: "Menlo", size: 11)!
-		s.animated = true
-		s.animationDuration = 0.5
 		return s
 	}
 
@@ -156,33 +143,34 @@ struct PercentBar: View {
 				Divider()
 
 				VStack {
+					let animationStyle = AnimationStyle(duration: 0.25)
 					HStack {
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v10))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v10), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v11))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v11), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v12))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v12), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v13))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v13), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v14))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v14), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v15))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v15), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
 					}
 
 					HStack {
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v10))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v10), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v11))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v11), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v12))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v12), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v13))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v13), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v14))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v14), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
-						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v15))
+						DSFSparklinePercentBarGraphView.SwiftUI(style: style11(), value: Double(v15), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
 					}
 					Button("Random") {
@@ -240,11 +228,11 @@ struct PercentBar: View {
 				Text("Animation")
 					.font(.subheadline)
 
-				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v3), value: Double(v3))
+				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v3), value: Double(v3), animationStyle: AnimationStyle(duration: 0.5))
 					.frame(height: 30)
-				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v4), value: Double(v4))
+				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v4), value: Double(v4), animationStyle: AnimationStyle(duration: 0.5))
 					.frame(height: 30)
-				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v5), value: Double(v5))
+				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v5), value: Double(v5), animationStyle: AnimationStyle(duration: 0.5))
 					.frame(height: 30)
 				Button("Random") {
 					self.v3 = CGFloat(drand48())
@@ -259,6 +247,6 @@ struct PercentBar: View {
 
 struct PercentBar_Previews: PreviewProvider {
 	static var previews: some View {
-		PercentBar(shouldAnimate: false)
+		PercentBarView()
 	}
 }

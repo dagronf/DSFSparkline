@@ -104,8 +104,7 @@ struct PieGraphDemoView: View {
 				DSFSparklinePieGraphView.SwiftUI(
 					dataSource: fourthDataSource,
 					palette: grays,
-					animated: true,
-					animationDuration: 1.0
+					animationStyle: AnimationStyle(duration: 1.0, function: .easeInEaseOut)
 				)
 				.frame(width: 36, height: 36)
 
@@ -113,8 +112,7 @@ struct PieGraphDemoView: View {
 					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count)),
 					strokeColor: DSFColor.black,
 					lineWidth: 2,
-					animated: true,
-					animationDuration: 1.0
+					animationStyle: AnimationStyle(duration: 1.0, function: .easeInEaseOut)
 				)
 				.frame(width: 36, height: 36)
 
@@ -123,8 +121,7 @@ struct PieGraphDemoView: View {
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
-					animated: true,
-					animationDuration: 1.0
+					animationStyle: AnimationStyle(duration: 1.0, function: .easeInEaseOut)
 				)
 				.frame(width: 36, height: 36)
 
@@ -132,8 +129,7 @@ struct PieGraphDemoView: View {
 					dataSource: DSFSparkline.StaticDataSource([5, 2, 4, 8]),
 					strokeColor: DSFColor.gray,
 					lineWidth: 1,
-					animated: true,
-					animationDuration: 1.0
+					animationStyle: AnimationStyle(duration: 1.0, function: .easeInEaseOut)
 				)
 				.frame(width: 36, height: 36)
 			}

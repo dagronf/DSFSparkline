@@ -31,7 +31,6 @@ import UIKit
 #endif
 
 /// A sparkline that draws a simple pie chart
-@IBDesignable
 public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 
 	let databarOverlay = DSFSparklineOverlay.DataBar()
@@ -51,7 +50,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 	// MARK: - Maximum Total
 
 	/// The maximum _total_ value. If the datasource values total is greater than this value, it clips the display
-	@IBInspectable public var maximumTotalValue: CGFloat = -1 {
+	@objc public dynamic var maximumTotalValue: CGFloat = -1 {
 		didSet {
 			self.databarOverlay.maximumTotalValue = self.maximumTotalValue
 		}
@@ -60,55 +59,32 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 	// MARK: Optional background color
 
 	/// The 'undrawn' color for the graph
-	#if os(macOS)
-	@IBInspectable public var unsetColor: NSColor? {
+	@objc public dynamic var unsetColor: DSFColor? {
 		didSet {
 			self.databarOverlay.unsetColor = self.unsetColor?.cgColor
 		}
 	}
-	#else
-	@IBInspectable public var unsetColor: UIColor? {
-		didSet {
-			self.databarOverlay.unsetColor = self.unsetColor?.cgColor
-		}
-	}
-	#endif
 
 	// MARK: - Stroke
 
 	/// The stroke color for the pie chart
-	#if os(macOS)
-	@IBInspectable public var strokeColor: NSColor? {
+	@objc public dynamic var strokeColor: DSFColor? {
 		didSet {
 			self.databarOverlay.strokeColor = self.strokeColor?.cgColor
 		}
 	}
-	#else
-	@IBInspectable public var strokeColor: UIColor? {
-		didSet {
-			self.databarOverlay.strokeColor = self.strokeColor?.cgColor
-		}
-	}
-	#endif
 
 	/// The width of the stroke line
-	@IBInspectable public var lineWidth: CGFloat = 0.5 {
+	@objc public dynamic var lineWidth: CGFloat = 0.5 {
 		didSet {
 			self.updateDisplay()
 		}
 	}
 
-	/// Should the pie chart animate in?
-	@IBInspectable public var animated: Bool = false {
+	/// The animation style to apply when datasource changes, or nil for no animation
+	@objc public var animationStyle: AnimationStyle? = nil {
 		didSet {
-			self.databarOverlay.animated = self.animated
-		}
-	}
-
-	/// The length of the animate-in duration
-	@IBInspectable public var animationDuration: CGFloat = 0.25 {
-		didSet {
-			self.databarOverlay.animationDuration = self.animationDuration
+			self.databarOverlay.animationStyle = self.animationStyle
 		}
 	}
 
@@ -140,8 +116,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 		self.databarOverlay.lineWidth = self.lineWidth
 		self.databarOverlay.maximumTotalValue = self.maximumTotalValue
 
-		self.databarOverlay.animated = self.animated
-		self.databarOverlay.animationDuration = self.animationDuration
+		self.databarOverlay.animationStyle = self.animationStyle
 
 		self.databarOverlay.dataSource = self.dataSource
 	}
@@ -151,20 +126,4 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 	internal var animator = ArbitraryAnimator()
 	internal var fractionComplete: CGFloat = 0
 	internal var total: CGFloat = 0.0
-}
-
-public extension DSFSparklineDataBarGraphView {
-	override func prepareForInterfaceBuilder() {
-		super.prepareForInterfaceBuilder()
-
-		#if TARGET_INTERFACE_BUILDER
-		self.animated = false
-		self.dataSource = DSFSparkline.StaticDataSource([
-			CGFloat(UInt.random(in: 1 ... 9)),
-			CGFloat(UInt.random(in: 1 ... 9)),
-			CGFloat(UInt.random(in: 1 ... 9)),
-			CGFloat(UInt.random(in: 1 ... 9)),
-		])
-		#endif
-	}
 }

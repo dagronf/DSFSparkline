@@ -39,8 +39,9 @@ public extension DSFSparklineOverlay {
 		@objc public var value: CGFloat = 0.0 {
 			didSet {
 				let v = max(0, min(1, self.value))
-				if animated {
-					animate(to: v)
+				let tra = AnimationTransition(start: currentValue__, stop: v)
+				if isAnimated {
+					self.animate(tra)
 				}
 				else {
 					self.currentValue__ = v
@@ -83,8 +84,10 @@ public extension DSFSparklineOverlay {
 			}
 		}
 
-		/// Should changes to `value` be animated?
-		@objc public var animated: Bool = false
+		/// Should the pie chart animate in?
+		@objc public var animationStyle: AnimationStyle? = nil
+
+		private var isAnimated: Bool { self.animationStyle != nil }
 
 		// MARK: - Initializers
 
@@ -105,7 +108,7 @@ public extension DSFSparklineOverlay {
 
 			self.gaugeBackgroundColor = orig.gaugeBackgroundColor?.copy() ?? CGColor(gray: 0, alpha: 0)
 
-			self.animated = orig.animated
+			self.animationStyle = orig.animationStyle
 
 			super.init(layer: layer)
 
@@ -360,19 +363,18 @@ extension DSFSparklineOverlay.WiperGauge {
 // MARK: Animation
 
 private extension DSFSparklineOverlay.WiperGauge {
-	func animate(to newValue: CGFloat) {
+	func animate(_ transition: AnimationTransition) {
+		guard let anim = self.animationStyle else { return }
 		// Stop any animation that is currently active
+		self.animator.progressBlock = nil
 		self.animator.stop()
 
-		let startValue = self.currentValue__
-		let diff = newValue - self.currentValue__
-
-		self.animator.animationFunction = ArbitraryAnimator.Function.EaseInEaseOut()
-		self.animator.progressBlock = { progress in
-			self.currentValue__ = startValue + (CGFloat(progress) * diff)
+		self.animator.animationFunction = anim.function.function
+		self.animator.duration = anim.duration
+		self.animator.progressBlock = { [weak self] progress in
+			self?.currentValue__ = transition.start + (transition.distance * progress)
 		}
 
-		self.animator.duration = 0.2
 		self.animator.start()
 	}
 }

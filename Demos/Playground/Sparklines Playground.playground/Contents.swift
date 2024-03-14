@@ -377,3 +377,17 @@ do {
 	let image2 = bitmap.image(width: 300, height: 100, scale: 2)!
 	SaveImage(image: image2, path: URL(fileURLWithPath: "/tmp/activity-basic-2.png"))
 }
+
+// MARK: Circular Gauge
+
+do {
+	let bitmap = DSFSparklineSurface.Bitmap()         // Create a bitmap surface
+	let wiper = DSFSparklineOverlay.CircularGauge()   // Create a wiper graph overlay
+	wiper.value = 0.65
+	//wiper.valueColor = DSFSparkline.ValueBasedFill(flatColor: baseColor)
+	bitmap.addOverlay(wiper)                       // And add the overlay to the surface.
+
+	// Generate an image with retina scale
+	let image = bitmap.image(width: 40, height: 40, scale: 2)!
+	SaveImage(image: image, path: URL(fileURLWithPath: "/tmp/circular-gauge-small.png"))
+}

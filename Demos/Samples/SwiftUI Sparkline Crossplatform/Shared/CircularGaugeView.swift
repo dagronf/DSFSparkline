@@ -10,7 +10,7 @@ import DSFSparkline
 
 struct TrackStyle {
 	var color: Color = .black
-	var width: Double = 40
+	var width: Double = 10
 
 	var hasShadow: Bool = false
 	var shadowInner: Bool = false
@@ -53,7 +53,10 @@ struct CircularGaugeView: View {
 	@State var lineStyle = TrackStyle(color: Color(red: 1, green: 0, blue: 0, opacity: 1), width: 20)
 
 	var body: some View {
-		VStack {
+
+		//Self._printChanges()
+
+		return VStack {
 			DSFSparklineCircularGaugeView.SwiftUI(
 				value: value,
 				trackStyle: trackStyle.track,
@@ -83,6 +86,10 @@ struct CircularGaugeView: View {
 			}
 			.frame(maxHeight: .infinity)
 			#endif
+
+			Divider()
+
+			AnimatedGaugeView()
 		}
 		.padding()
 	}
@@ -93,7 +100,10 @@ struct TrackSettingsView: View {
 	@Binding var style: TrackStyle
 
 	var body: some View {
-		Form {
+
+		//Self._printChanges()
+
+		return Form {
 			ColorPicker("Color", selection: $style.color)
 			Slider(value: $style.width, in: 0.1 ... 50) {
 				Text("Width")
@@ -131,6 +141,51 @@ struct TrackSettingsView: View {
 	}
 }
 
+struct AnimatedGaugeView: View {
+
+	@State var r1: Double = 0.25
+	@State var r1tStyle = TrackStyle(color: Color(red: 0, green: 1, blue: 0, opacity: 0.1), width: 15)
+	@State var r1lStyle = TrackStyle(color: Color(red: 0, green: 1, blue: 0, opacity: 1), width: 7)
+
+	@State var r2: Double = 0.5
+	@State var r2tStyle = TrackStyle(color: Color(red: 0, green: 0, blue: 1, opacity: 0.1), width: 15)
+	@State var r2lStyle = TrackStyle(color: Color(red: 0, green: 0, blue: 1, opacity: 1), width: 7)
+
+	@State var duration: Double = 0.25
+
+	var body: some View {
+		
+		//Self._printChanges()
+
+		return HStack {
+			Slider(value: $duration, in: 0.01 ... 2) {
+				Text("Duration")
+			}
+			
+			Button("Animate!") {
+				r1 = Double.random(in: 0 ... 1)
+				r2 = Double.random(in: 0 ... 1)
+			}
+
+			DSFSparklineCircularGaugeView.SwiftUI(
+				value: r1,
+				animationStyle: AnimationStyle(duration: duration, function: .linear),
+				trackStyle: r1tStyle.track,
+				lineStyle: r1lStyle.track
+			)
+			.frame(width: 50, height: 50)
+
+			DSFSparklineCircularGaugeView.SwiftUI(
+				value: r2,
+				animationStyle: AnimationStyle(duration: duration, function: .easeInEaseOut),
+				trackStyle: r2tStyle.track,
+				lineStyle: r2lStyle.track
+			)
+			.frame(width: 50, height: 50)
+		}
+	}
+}
+
 #Preview("All") {
 	CircularGaugeView()
 		.padding()
@@ -138,5 +193,10 @@ struct TrackSettingsView: View {
 
 #Preview("Settings") {
 	TrackSettingsView(style: .constant(TrackStyle()))
+		.padding()
+}
+
+#Preview("Animated") {
+	AnimatedGaugeView()
 		.padding()
 }

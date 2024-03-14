@@ -28,13 +28,12 @@ import UIKit
 #endif
 
 /// A sparkline that draws a percent bar
-@IBDesignable
-public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
+@objc public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 
 	// MARK: - Value
 
 	/// The initial value to display in the percent bar
-	@IBInspectable public var value: CGFloat = 0.2 {
+	@objc public dynamic var value: CGFloat = 0.2 {
 		didSet {
 			self.overlay.value = self.value
 			self.displayUpdate()
@@ -50,7 +49,7 @@ public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 	}
 
 	/// The corner radius for the bar
-	@IBInspectable public var cornerRadius: CGFloat = 5 {
+	@objc public dynamic var cornerRadius: CGFloat = 5 {
 		didSet {
 			self.displayStyle.cornerRadius = self.cornerRadius
 			self.displayUpdate()
@@ -58,93 +57,53 @@ public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 	}
 
 	/// Should the control display a text label for the percent bar
-	@IBInspectable public var showLabel: Bool = true {
+	@objc public dynamic var showLabel: Bool = true {
 		didSet {
 			self.displayStyle.showLabel = self.showLabel
 			self.displayUpdate()
 		}
 	}
 
-	#if os(macOS)
 	/// The background of the bar color for the percent bar chart
-	@IBInspectable public var underBarColor: NSColor = .clear {
+	@objc public dynamic var underBarColor: DSFColor = .clear {
 		didSet {
 			self.displayStyle.underBarColor = self.underBarColor.cgColor
 			self.displayUpdate()
 		}
 	}
-	#else
-	/// The background of the bar color for the percent bar chart
-	@IBInspectable public var underBarColor: UIColor = .clear {
-		didSet {
-			self.displayStyle.underBarColor = self.underBarColor.cgColor
-			self.displayUpdate()
-		}
-	}
-	#endif
 
-	#if os(macOS)
 	/// The color for text displayed on the background
-	@IBInspectable public var underBarTextColor: NSColor = .white {
+	@objc public dynamic var underBarTextColor: DSFColor = .white {
 		didSet {
 			self.displayStyle.underBarTextColor = self.underBarTextColor.cgColor
 			self.displayUpdate()
 		}
 	}
-	#else
-	/// The color for text displayed on the background
-	@IBInspectable public var underBarTextColor: UIColor = .white {
-		didSet {
-			self.displayStyle.underBarTextColor = self.underBarTextColor.cgColor
-			self.displayUpdate()
-		}
-	}
-	#endif
 
 	// MARK: - Bar Color
 
-	#if os(macOS)
 	/// The bar color for the percent bar chart
-	@IBInspectable public var barColor: NSColor = .black {
+	@objc public dynamic var barColor: DSFColor = .black {
 		didSet {
 			self.displayStyle.barColor = self.barColor.cgColor
 			self.displayUpdate()
 		}
 	}
-	#else
-	/// The bar color for the percent bar chart
-	@IBInspectable public var barColor: UIColor = .black {
-		didSet {
-			self.displayStyle.barColor = self.barColor.cgColor
-			self.displayUpdate()
-		}
-	}
-	#endif
 
 	// MARK: - Background Color
 
-	#if os(macOS)
 	/// The color for text displayed on the bar
-	@IBInspectable public var barTextColor: NSColor = .white {
+	@objc public dynamic var barTextColor: DSFColor = .white {
 		didSet {
 			self.displayStyle.barTextColor = self.barTextColor.cgColor
 			self.displayUpdate()
 		}
 	}
-	#else
-	/// The color for text displayed on the bar
-	@IBInspectable public var barTextColor: UIColor = .white {
-		didSet {
-			self.displayStyle.barTextColor = self.barTextColor.cgColor
-			self.displayUpdate()
-		}
-	}
-	#endif
 
 	// MARK: - Font
 
 	/// The name of the font to use when drawing the percent bar label
-	@IBInspectable public var fontName: String? = nil {
+	@objc public dynamic var fontName: String? = nil {
 		didSet {
 			if let f = fontName,
 				let font = DSFFont(name: f, size: self.fontSize) {
@@ -158,7 +117,7 @@ public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 	}
 
 	/// The size (in points) of the font to use when drawing the percent bar label
-	@IBInspectable public var fontSize: CGFloat = 12 {
+	@objc public dynamic var fontSize: CGFloat = 12 {
 		didSet {
 			let font = self.displayStyle.font
 
@@ -209,18 +168,9 @@ public class DSFSparklinePercentBarGraphView: DSFSparklineSurfaceView {
 
 	// MARK: - Animation
 
-	/// Should the bar animate to new values?
-	@IBInspectable public var shouldAnimate: Bool = false {
+	@objc public var animationStyle: AnimationStyle? = nil {
 		didSet {
-			self.displayStyle.animated = self.shouldAnimate
-			self.displayUpdate()
-		}
-	}
-
-	/// The animation duration if `shouldAnimate` is set
-	@IBInspectable public var animationDuration: CGFloat = 0.25 {
-		didSet {
-			self.displayStyle.animationDuration = Double(self.animationDuration)
+			self.overlay.animationStyle = self.animationStyle
 			self.displayUpdate()
 		}
 	}
@@ -272,12 +222,6 @@ private extension DSFSparklinePercentBarGraphView {
 		else {
 			self.displayStyle.font = DSFFont.systemFont(ofSize: self.fontSize)
 		}
-
-		#if TARGET_INTERFACE_BUILDER
-		self.displayStyle.animated = false
-		#else
-		self.displayStyle.animated = self.shouldAnimate
-		#endif
 
 		self.overlay.displayStyle = self.displayStyle
 		self.overlay.value = self.value

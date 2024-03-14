@@ -61,7 +61,8 @@ struct ContentView_Previews: PreviewProvider {
 struct DetailView: View {
 	let item: Item
 	var body: some View {
-		ScrollView([.vertical]) {
+		Self._printChanges()
+		return ScrollView([.vertical]) {
 			switch item.id {
 			case 0: ReportView()
 			case 1: WinLossCreate()
@@ -76,7 +77,7 @@ struct DetailView: View {
 			case 10: BarDemoContentView()
 			case 11: BitmapGenerationView()
 			case 12: SwiftUIView(shouldAnimate: true)
-			case 13: PercentBar(shouldAnimate: true)
+			case 13: PercentBarView()
 			case 14: WiperGraphDemoView()
 			case 15: ActivityGridView()
 			case 16: CircularProgressView()

@@ -25,6 +25,8 @@ struct WiperGraphDemoView: View {
 
 	@State var sliderValue: CGFloat = 0.75
 
+	@State var animationDuration: Double = 0.5
+
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 8) {
@@ -60,7 +62,11 @@ struct WiperGraphDemoView: View {
 							Text("default")
 						}
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue, animated: true)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(
+								valueColor: DSFSparkline.ValueBasedFill(palette: palette2),
+								value: randomValue,
+								animationStyle: AnimationStyle(duration: animationDuration)
+							)
 								.frame(width: 64, height: 32)
 							Text("animated")
 						}
@@ -73,6 +79,8 @@ struct WiperGraphDemoView: View {
 								}
 								Button("Min") { randomValue = 0 }
 								Button("Max") { randomValue = 1 }
+								Slider(value: $animationDuration, in: 0 ... 2)
+								.frame(width: 100)
 							}
 							Text("\(randomValue)")
 								.font(.custom("FontNameMono", fixedSize: 12))
@@ -80,13 +88,20 @@ struct WiperGraphDemoView: View {
 					}
 					HStack {
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue)
-								.frame(width: 128, height: 64)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(
+								valueColor: DSFSparkline.ValueBasedFill(palette: palette2),
+								value: randomValue
+							)
+							.frame(width: 128, height: 64)
 							Text("default")
 						}
 						VStack {
-							DSFSparklineWiperGaugeGraphView.SwiftUI(valueColor: DSFSparkline.ValueBasedFill(palette: palette2), value: randomValue, animated: true)
-								.frame(width: 128, height: 64)
+							DSFSparklineWiperGaugeGraphView.SwiftUI(
+								valueColor: DSFSparkline.ValueBasedFill(palette: palette2),
+								value: randomValue,
+								animationStyle: AnimationStyle(duration: animationDuration)
+							)
+							.frame(width: 128, height: 64)
 							Text("animated")
 						}
 					}

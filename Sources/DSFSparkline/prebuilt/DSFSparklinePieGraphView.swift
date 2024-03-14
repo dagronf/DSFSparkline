@@ -49,38 +49,23 @@ public class DSFSparklinePieGraphView: DSFSparklineSurfaceView {
 	}
 
 	/// The stroke color for the pie chart
-	#if os(macOS)
-	@IBInspectable public var strokeColor: NSColor? {
+	@objc public dynamic var strokeColor: DSFColor? {
 		didSet {
 			self.pieOverlay.strokeColor = self.strokeColor?.cgColor
 		}
 	}
-	#else
-	@IBInspectable public var strokeColor: UIColor? {
-		didSet {
-			self.pieOverlay.strokeColor = self.strokeColor?.cgColor
-		}
-	}
-	#endif
 
 	/// The width of the stroke line
-	@IBInspectable public var lineWidth: CGFloat = 0.5 {
+	@objc public dynamic var lineWidth: CGFloat = 0.5 {
 		didSet {
 			self.pieOverlay.lineWidth = self.lineWidth
 		}
 	}
 
 	/// Should the pie chart animate in?
-	@IBInspectable public var animated: Bool = false {
+	@objc public var animationStyle: AnimationStyle? = nil {
 		didSet {
-			self.pieOverlay.animated = self.animated
-		}
-	}
-
-	/// The length of the animate-in duration
-	@IBInspectable public var animationDuration: CGFloat = 0.25 {
-		didSet {
-			self.pieOverlay.animationDuration = self.animationDuration
+			self.pieOverlay.animationStyle = self.animationStyle
 		}
 	}
 
@@ -110,8 +95,7 @@ public class DSFSparklinePieGraphView: DSFSparklineSurfaceView {
 		self.pieOverlay.strokeColor = self.strokeColor?.cgColor
 		self.pieOverlay.lineWidth = self.lineWidth
 
-		self.pieOverlay.animated = self.animated
-		self.pieOverlay.animationDuration = self.animationDuration
+		self.pieOverlay.animationStyle = self.animationStyle
 
 		self.pieOverlay.dataSource = self.dataSource
 	}
@@ -122,20 +106,4 @@ public class DSFSparklinePieGraphView: DSFSparklineSurfaceView {
 
 	internal var fractionComplete: CGFloat = 0
 	internal var total: CGFloat = 0.0
-}
-
-extension DSFSparklinePieGraphView {
-	public override func prepareForInterfaceBuilder() {
-		super.prepareForInterfaceBuilder()
-
-		#if TARGET_INTERFACE_BUILDER
-		self.animated = false
-		self.dataSource = DSFSparkline.StaticDataSource([
-			CGFloat(UInt.random(in: 1 ... 9)),
-			CGFloat(UInt.random(in: 1 ... 9)),
-			CGFloat(UInt.random(in: 1 ... 9)),
-			CGFloat(UInt.random(in: 1 ... 9)),
-		])
-		#endif
-	}
 }

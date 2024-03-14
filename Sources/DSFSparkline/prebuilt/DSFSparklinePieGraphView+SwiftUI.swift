@@ -40,26 +40,23 @@ public extension DSFSparklinePieGraphView {
 		let lineWidth: CGFloat
 
 		/// Should we animate the dataSource changes
-		let animated: Bool
-		/// The duration of the animation
-		let animationDuration: CGFloat
+		let animationStyle: AnimationStyle?
 
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
-		public init(dataSource: DSFSparkline.StaticDataSource,
-						palette: DSFSparkline.Palette = .shared,
-						strokeColor: DSFColor? = nil,
-						lineWidth: CGFloat = 1.0,
-						animated: Bool = false,
-						animationDuration: CGFloat = 0.25)
-		{
+		public init(
+			dataSource: DSFSparkline.StaticDataSource,
+			palette: DSFSparkline.Palette = .shared,
+			strokeColor: DSFColor? = nil,
+			lineWidth: CGFloat = 1.0,
+			animationStyle: AnimationStyle? = nil
+		) {
 			self.dataSource = dataSource
 			self.strokeColor = strokeColor
 			self.lineWidth = lineWidth
 			self.palette = palette
-			self.animated = animated
-			self.animationDuration = animationDuration
+			self.animationStyle = animationStyle
 		}
 	}
 }
@@ -90,8 +87,7 @@ extension DSFSparklinePieGraphView.SwiftUI: DSFViewRepresentable {
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
 
-		view.animated = self.animated
-		view.animationDuration = self.animationDuration
+		view.animationStyle = self.animationStyle
 
 		view.dataSource = self.dataSource
 		return view
@@ -133,8 +129,7 @@ public extension DSFSparklinePieGraphView.SwiftUI {
 		UpdateIfNotEqual(result: &view.lineWidth, val: self.lineWidth)
 		UpdateIfNotEqual(result: &view.palette, val: self.palette)
 
-		UpdateIfNotEqual(result: &view.animated, val: self.animated)
-		UpdateIfNotEqual(result: &view.animationDuration, val: self.animationDuration)
+		UpdateIfNotEqual(result: &view.animationStyle, val: self.animationStyle)
 
 		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
 	}

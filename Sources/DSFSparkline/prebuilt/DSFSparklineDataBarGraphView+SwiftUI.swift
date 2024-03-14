@@ -44,10 +44,8 @@ public extension DSFSparklineDataBarGraphView {
 		/// Stroke Width
 		let lineWidth: CGFloat
 
-		/// Should we animate the dataSource changes
-		let animated: Bool
-		/// The duration of the animation
-		let animationDuration: CGFloat
+		/// The animation style to apply when datasource changes
+		let animationStyle: AnimationStyle?
 
 		/// Create a databar graph
 		/// - Parameters:
@@ -57,25 +55,23 @@ public extension DSFSparklineDataBarGraphView {
 		///   - unsetColor: (optional) the color to use when drawing the background (useful when the maximumValue is also set)
 		///   - strokeColor: The color to draw the separator lines between data points
 		///   - lineWidth: The width of the separator lines
-		///   - animated: If set, animates any datasource value changes
-		///   - animationDuration: The duration for the animate-in animation
-		public init(dataSource: DSFSparkline.StaticDataSource,
-						maximumTotalValue: CGFloat = -1,
-						palette: DSFSparkline.Palette = .shared,
-						unsetColor: DSFColor? = nil,
-						strokeColor: DSFColor? = nil,
-						lineWidth: CGFloat = 1.0,
-						animated: Bool = false,
-						animationDuration: CGFloat = 0.25)
-		{
+		///   - animationStyle: The animation style, or nil for no animation
+		public init(
+			dataSource: DSFSparkline.StaticDataSource,
+			maximumTotalValue: CGFloat = -1,
+			palette: DSFSparkline.Palette = .shared,
+			unsetColor: DSFColor? = nil,
+			strokeColor: DSFColor? = nil,
+			lineWidth: CGFloat = 1.0,
+			animationStyle: AnimationStyle? = nil
+		) {
 			self.dataSource = dataSource
 			self.maximumTotalValue = maximumTotalValue
 			self.unsetColor = unsetColor
 			self.strokeColor = strokeColor
 			self.lineWidth = lineWidth
 			self.palette = palette
-			self.animated = animated
-			self.animationDuration = animationDuration
+			self.animationStyle = animationStyle
 		}
 	}
 }
@@ -107,8 +103,7 @@ extension DSFSparklineDataBarGraphView.SwiftUI: DSFViewRepresentable {
 		view.lineWidth = self.lineWidth
 		view.palette = self.palette
 
-		view.animated = self.animated
-		view.animationDuration = self.animationDuration
+		view.animationStyle = self.animationStyle
 
 		view.dataSource = self.dataSource
 		view.maximumTotalValue = self.maximumTotalValue
@@ -154,8 +149,7 @@ public extension DSFSparklineDataBarGraphView.SwiftUI {
 
 		UpdateIfNotEqual(result: &view.palette, val: self.palette)
 
-		UpdateIfNotEqual(result: &view.animated, val: self.animated)
-		UpdateIfNotEqual(result: &view.animationDuration, val: self.animationDuration)
+		UpdateIfNotEqual(result: &view.animationStyle, val: self.animationStyle)
 
 		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
 

@@ -47,7 +47,7 @@
 	_receiveDataSource = [[DSFSparklineDataSource alloc] init];
 	_sendDataSource = [[DSFSparklineDataSource alloc] init];
 
-	[_wiperGauge setAnimated:TRUE];
+	[_wiperGauge setAnimationStyle:[[AnimationStyle alloc] initWithDuration:0.2 function: AnimatorFunctionTypeLinear]];
 
 	// Add a custom marker drawing function
 	[_lineGraph setMarkerDrawingBlock:^(CGContextRef context, NSArray<DSFSparklineOverlayLineMarker *> * markers) {
@@ -92,7 +92,6 @@
 
 	DSFSparklinePercentBarStyle* style = [[self percentBarThroughput] displayStyle];
 	[style setBarEdgeInsets: NSEdgeInsetsMake(1, 1, 1, 1)];
-	[style setAnimated:NO];
 
 	[self performUpdate];
 }

@@ -45,8 +45,16 @@ public extension DSFSparklineOverlay {
 
 		/// The value assigned to the percent bar. A value between 0.0 and 1.0
 		@objc public var value: CGFloat = 0 {
+			willSet {
+				animationTransition = AnimationTransition(start: _value, stop: newValue)
+			}
 			didSet {
-				self._value = self.value.clamped(to: 0 ... 1)
+				if isAnimated {
+					startAnimateIn()
+				}
+				else {
+					self._value = self.value.clamped(to: 0 ... 1)
+				}
 			}
 		}
 
@@ -66,9 +74,37 @@ public extension DSFSparklineOverlay {
 			fillColor: DSFSparkline.Fill.Color(srgbRed: 0, green: 0, blue: 0)
 		)
 
+		/// The animation style to apply
+		@objc public var animationStyle: AnimationStyle? = nil
+		private var isAnimated: Bool { animationStyle != nil }
+
 		override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
-			self.drawCircularGauge(context: context, bounds: bounds, scale: scale)
+			CATransaction.withDisabledActions { [weak self] in
+				self?.drawCircularGauge(context: context, bounds: bounds, scale: scale)
+			}
 		}
+
+		// MARK: Animation
+
+		private var animator = ArbitraryAnimator() //
+		private var animationTransition: AnimationTransition?
+	}
+}
+
+extension DSFSparklineOverlay.CircularGauge {
+	func startAnimateIn() {
+		guard let animStyle = animationStyle else { fatalError() }
+		// Stop any animation that is currently active
+		self.animator.progressBlock = nil
+		self.animator.stop()
+
+		self.animator.animationFunction = animStyle.function.function
+		self.animator.duration = animStyle.duration
+		self.animator.progressBlock = { [weak self] progress in
+			guard let `self` = self, let a = self.animationTransition else { return }
+			_value = a.start + (a.stop - a.start) * progress
+		}
+		self.animator.start()
 	}
 }
 

@@ -61,8 +61,8 @@
 		2346EF3125E8D13A00050570 /* SwiftUIContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2346EF2F25E8D13A00050570 /* SwiftUIContentView.swift */; };
 		23529A7425E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
 		23529A7525E84D2A00DFA52D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23529A7325E84D2A00DFA52D /* Extensions.swift */; };
-		235A585B2603181A00266642 /* PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A585A2603181A00266642 /* PercentBar.swift */; };
-		235A585C2603181A00266642 /* PercentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A585A2603181A00266642 /* PercentBar.swift */; };
+		235A585B2603181A00266642 /* PercentBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A585A2603181A00266642 /* PercentBarView.swift */; };
+		235A585C2603181A00266642 /* PercentBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235A585A2603181A00266642 /* PercentBarView.swift */; };
 		236417E729628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */; };
 		236417E829628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */; };
 		236A57FB25C1392B00F2BACF /* SwiftUI_Sparkline_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */; };
@@ -206,7 +206,7 @@
 		2346EF2F25E8D13A00050570 /* SwiftUIContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIContentView.swift; sourceTree = "<group>"; };
 		23529A5825E847B900DFA52D /* iOS Sparkline Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Sparkline Demo.entitlements"; sourceTree = "<group>"; };
 		23529A7325E84D2A00DFA52D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		235A585A2603181A00266642 /* PercentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentBar.swift; sourceTree = "<group>"; };
+		235A585A2603181A00266642 /* PercentBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentBarView.swift; sourceTree = "<group>"; };
 		236417E629628C0600C8A1D2 /* WiperGaugeDemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiperGaugeDemoView.swift; sourceTree = "<group>"; };
 		236A57E925C1392A00F2BACF /* SwiftUI_Sparkline_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_Sparkline_DemoApp.swift; sourceTree = "<group>"; };
 		236A57EA25C1392A00F2BACF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 				23FC81B325DB59E70047A800 /* DotGraphView.swift */,
 				23529A7325E84D2A00DFA52D /* Extensions.swift */,
 				23FC813F25DB4E5D0047A800 /* LineDemoContentView.swift */,
-				235A585A2603181A00266642 /* PercentBar.swift */,
+				235A585A2603181A00266642 /* PercentBarView.swift */,
 				23FC819225DB586B0047A800 /* PieGraphDemoView.swift */,
 				23FC80FF25DB3FC40047A800 /* ReportView.swift */,
 				23FC817425DB547E0047A800 /* StackLineDemoContentView.swift */,
@@ -1131,7 +1131,7 @@
 				238DB6EA25EB3A2E009197AB /* TabletView.swift in Sources */,
 				237B827825E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				236417E729628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */,
-				235A585B2603181A00266642 /* PercentBar.swift in Sources */,
+				235A585B2603181A00266642 /* PercentBarView.swift in Sources */,
 				2322C06B262651D5007D8112 /* TestingView.swift in Sources */,
 				232BAF6D25EB16210090C447 /* SwiftUIView.swift in Sources */,
 				2346EF3025E8D13A00050570 /* SwiftUIContentView.swift in Sources */,
@@ -1165,7 +1165,7 @@
 				238DB6EB25EB3A2F009197AB /* TabletView.swift in Sources */,
 				237B827925E7891E00B3DE23 /* BitmapGenerationView.swift in Sources */,
 				236417E829628C0600C8A1D2 /* WiperGaugeDemoView.swift in Sources */,
-				235A585C2603181A00266642 /* PercentBar.swift in Sources */,
+				235A585C2603181A00266642 /* PercentBarView.swift in Sources */,
 				2322C06C262651D5007D8112 /* TestingView.swift in Sources */,
 				232BAF6E25EB16210090C447 /* SwiftUIView.swift in Sources */,
 				2346EF3125E8D13A00050570 /* SwiftUIContentView.swift in Sources */,

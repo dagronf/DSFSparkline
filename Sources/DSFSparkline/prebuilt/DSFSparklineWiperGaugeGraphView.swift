@@ -44,9 +44,9 @@ public class DSFSparklineWiperGaugeGraphView: DSFSparklineSurfaceView {
 		}
 	}
 
-	@IBInspectable public var animated: Bool = false {
+	@objc public var animationStyle: AnimationStyle? = nil {
 		didSet {
-			self.overlay.animated = animated
+			self.overlay.animationStyle = animationStyle
 		}
 	}
 
@@ -144,7 +144,7 @@ private extension DSFSparklineWiperGaugeGraphView {
 	func configure() {
 		self.addOverlay(self.overlay)
 		self.overlay.value = self.value
-		self.overlay.animated = animated
+		self.overlay.animationStyle = animationStyle
 		self.updateColors()
 	}
 	

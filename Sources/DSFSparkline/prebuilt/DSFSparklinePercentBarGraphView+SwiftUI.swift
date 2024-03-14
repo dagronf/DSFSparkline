@@ -34,14 +34,19 @@ public extension DSFSparklinePercentBarGraphView {
 		let style: DSFSparkline.PercentBar.Style
 		/// Palette to use when coloring the chart
 		let value: Double
-		
+		/// The animation style to apply to changes
+		let animationStyle: AnimationStyle?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
-		public init(style: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style(),
-						value: Double)
-		{
+		public init(
+			style: DSFSparkline.PercentBar.Style = DSFSparkline.PercentBar.Style(),
+			value: Double,
+			animationStyle: AnimationStyle? = nil
+		) {
 			self.style = style
 			self.value = value
+			self.animationStyle = animationStyle
 		}
 	}
 }
@@ -69,6 +74,7 @@ extension DSFSparklinePercentBarGraphView.SwiftUI: DSFViewRepresentable {
 		let view = DSFSparklinePercentBarGraphView(frame: .zero)
 		view.displayStyle = self.style
 		view.value = CGFloat(self.value)
+		view.animationStyle = self.animationStyle
 		return view
 	}
 }
@@ -106,6 +112,7 @@ public extension DSFSparklinePercentBarGraphView.SwiftUI {
 	func updateView(_ view: DSFSparklinePercentBarGraphView) {
 		view.displayStyle = self.style
 		view.value = CGFloat(self.value)
+		view.animationStyle = self.animationStyle
 	}
 }
 
