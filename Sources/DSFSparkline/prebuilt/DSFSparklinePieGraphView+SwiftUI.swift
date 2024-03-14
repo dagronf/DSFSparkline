@@ -40,7 +40,7 @@ public extension DSFSparklinePieGraphView {
 		let lineWidth: CGFloat
 
 		/// Should we animate the dataSource changes
-		let animationStyle: AnimationStyle?
+		let animationStyle: DSFSparkline.AnimationStyle?
 
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
@@ -50,7 +50,7 @@ public extension DSFSparklinePieGraphView {
 			palette: DSFSparkline.Palette = .shared,
 			strokeColor: DSFColor? = nil,
 			lineWidth: CGFloat = 1.0,
-			animationStyle: AnimationStyle? = nil
+			animationStyle: DSFSparkline.AnimationStyle? = nil
 		) {
 			self.dataSource = dataSource
 			self.strokeColor = strokeColor

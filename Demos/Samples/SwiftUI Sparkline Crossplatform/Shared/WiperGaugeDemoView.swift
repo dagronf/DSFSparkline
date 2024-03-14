@@ -65,7 +65,7 @@ struct WiperGraphDemoView: View {
 							DSFSparklineWiperGaugeGraphView.SwiftUI(
 								valueColor: DSFSparkline.ValueBasedFill(palette: palette2),
 								value: randomValue,
-								animationStyle: AnimationStyle(duration: animationDuration)
+								animationStyle: .init(duration: animationDuration)
 							)
 								.frame(width: 64, height: 32)
 							Text("animated")
@@ -99,7 +99,7 @@ struct WiperGraphDemoView: View {
 							DSFSparklineWiperGaugeGraphView.SwiftUI(
 								valueColor: DSFSparkline.ValueBasedFill(palette: palette2),
 								value: randomValue,
-								animationStyle: AnimationStyle(duration: animationDuration)
+								animationStyle: .init(duration: animationDuration)
 							)
 							.frame(width: 128, height: 64)
 							Text("animated")

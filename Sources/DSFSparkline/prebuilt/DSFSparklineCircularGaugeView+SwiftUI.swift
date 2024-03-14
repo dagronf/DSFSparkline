@@ -34,7 +34,7 @@ public extension DSFSparklineCircularGaugeView {
 	/// A SwiftUI wrapper for the Circular Progress sparkline overlay
 	struct SwiftUI {
 		let value: Double
-		let animationStyle: AnimationStyle?
+		let animationStyle: DSFSparkline.AnimationStyle?
 		let trackStyle: DSFSparklineOverlay.CircularGauge.TrackStyle
 		let lineStyle: DSFSparklineOverlay.CircularGauge.TrackStyle
 
@@ -46,7 +46,7 @@ public extension DSFSparklineCircularGaugeView {
 		///   - lineStyle: The style to use when drawing the value line
 		public init(
 			value: Double,
-			animationStyle: AnimationStyle? = nil,
+			animationStyle: DSFSparkline.AnimationStyle? = nil,
 			trackStyle: DSFSparklineOverlay.CircularGauge.TrackStyle,
 			lineStyle: DSFSparklineOverlay.CircularGauge.TrackStyle
 		) {
@@ -66,7 +66,7 @@ public extension DSFSparklineCircularGaugeView {
 		///   - valueFill: The fill style to use for the value line
 		public init(
 			value: Double,
-			animationStyle: AnimationStyle? = nil,
+			animationStyle: DSFSparkline.AnimationStyle? = nil,
 			trackWidth: Double = 10,
 			trackFill: DSFSparklineFillable,
 			valueWidth: Double = 7,

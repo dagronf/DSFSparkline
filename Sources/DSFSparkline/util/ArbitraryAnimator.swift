@@ -24,42 +24,44 @@
 import Foundation
 import QuartzCore
 
-/// Animation function types
-@objc public enum AnimatorFunctionType: Int {
-	case linear
-	case easeInEaseOut
+extension DSFSparkline {
+	/// Animation function types
+	@objc public enum AnimatorFunctionType: Int {
+		case linear
+		case easeInEaseOut
 
-	internal var function: ArbitraryAnimatorFunction {
-		switch self {
-		case .linear: return ArbitraryAnimator.Function.Linear()
-		case .easeInEaseOut: return ArbitraryAnimator.Function.EaseInEaseOut()
-		default:
-			fatalError()
+		internal var function: ArbitraryAnimatorFunction {
+			switch self {
+			case .linear: return ArbitraryAnimator.Function.Linear()
+			case .easeInEaseOut: return ArbitraryAnimator.Function.EaseInEaseOut()
+			default:
+				fatalError()
+			}
 		}
 	}
-}
 
-/// An animation style
-@objc public class AnimationStyle: NSObject {
-	@objc public let duration: CGFloat
-	@objc public let function: AnimatorFunctionType
-	@objc public init(duration: CGFloat = 0.25, function: AnimatorFunctionType = .easeInEaseOut) {
-		self.duration = duration
-		self.function = function
+	/// An animation style
+	@objc public class AnimationStyle: NSObject {
+		@objc public let duration: CGFloat
+		@objc public let function: AnimatorFunctionType
+		@objc public init(duration: CGFloat = 0.25, function: AnimatorFunctionType = .easeInEaseOut) {
+			self.duration = duration
+			self.function = function
+		}
+	}
+
+	struct AnimationTransition {
+		let start: CGFloat
+		let stop: CGFloat
+		var distance: CGFloat { self.stop - self.start }
 	}
 }
 
-struct AnimationTransition {
-	let start: CGFloat
-	let stop: CGFloat
-	var distance: CGFloat { stop - start }
-}
-
-func ==(_ left: AnimationStyle, _ right: AnimationStyle) -> Bool {
+func ==(_ left: DSFSparkline.AnimationStyle, _ right: DSFSparkline.AnimationStyle) -> Bool {
 	left.duration == right.duration && left.function == right.function
 }
 
-func !=(_ left: AnimationStyle, _ right: AnimationStyle) -> Bool {
+func !=(_ left: DSFSparkline.AnimationStyle, _ right: DSFSparkline.AnimationStyle) -> Bool {
 	left.duration != right.duration || left.function != right.function
 }
 

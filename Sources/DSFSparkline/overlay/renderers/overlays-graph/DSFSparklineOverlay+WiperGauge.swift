@@ -39,7 +39,7 @@ public extension DSFSparklineOverlay {
 		@objc public var value: CGFloat = 0.0 {
 			didSet {
 				let v = max(0, min(1, self.value))
-				let tra = AnimationTransition(start: currentValue__, stop: v)
+				let tra = DSFSparkline.AnimationTransition(start: currentValue__, stop: v)
 				if isAnimated {
 					self.animate(tra)
 				}
@@ -85,7 +85,7 @@ public extension DSFSparklineOverlay {
 		}
 
 		/// Should the pie chart animate in?
-		@objc public var animationStyle: AnimationStyle? = nil
+		@objc public var animationStyle: DSFSparkline.AnimationStyle? = nil
 
 		private var isAnimated: Bool { self.animationStyle != nil }
 
@@ -363,7 +363,7 @@ extension DSFSparklineOverlay.WiperGauge {
 // MARK: Animation
 
 private extension DSFSparklineOverlay.WiperGauge {
-	func animate(_ transition: AnimationTransition) {
+	func animate(_ transition: DSFSparkline.AnimationTransition) {
 		guard let anim = self.animationStyle else { return }
 		// Stop any animation that is currently active
 		self.animator.progressBlock = nil

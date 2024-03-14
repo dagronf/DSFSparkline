@@ -46,7 +46,7 @@ public extension DSFSparklineOverlay {
 		/// The value assigned to the percent bar. A value between 0.0 and 1.0
 		@objc public var value: CGFloat = 0 {
 			willSet {
-				animationTransition = AnimationTransition(start: _value, stop: newValue)
+				animationTransition = DSFSparkline.AnimationTransition(start: _value, stop: newValue)
 			}
 			didSet {
 				if isAnimated {
@@ -75,7 +75,7 @@ public extension DSFSparklineOverlay {
 		)
 
 		/// The animation style to apply
-		@objc public var animationStyle: AnimationStyle? = nil
+		@objc public var animationStyle: DSFSparkline.AnimationStyle? = nil
 		private var isAnimated: Bool { animationStyle != nil }
 
 		override func drawGraph(context: CGContext, bounds: CGRect, scale: CGFloat) {
@@ -87,7 +87,7 @@ public extension DSFSparklineOverlay {
 		// MARK: Animation
 
 		private var animator = ArbitraryAnimator() //
-		private var animationTransition: AnimationTransition?
+		private var animationTransition: DSFSparkline.AnimationTransition?
 	}
 }
 

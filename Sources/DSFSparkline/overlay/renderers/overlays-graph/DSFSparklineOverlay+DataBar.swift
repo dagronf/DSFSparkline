@@ -68,7 +68,7 @@ public extension DSFSparklineOverlay {
 		// MARK: Animation support
 
 		/// The animation style
-		@objc public var animationStyle: AnimationStyle? = nil
+		@objc public var animationStyle: DSFSparkline.AnimationStyle? = nil
 
 		private var animated: Bool { animationStyle != nil }
 

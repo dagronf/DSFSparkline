@@ -82,7 +82,7 @@ public class DSFSparklineDataBarGraphView: DSFSparklineSurfaceView {
 	}
 
 	/// The animation style to apply when datasource changes, or nil for no animation
-	@objc public var animationStyle: AnimationStyle? = nil {
+	@objc public var animationStyle: DSFSparkline.AnimationStyle? = nil {
 		didSet {
 			self.databarOverlay.animationStyle = self.animationStyle
 		}

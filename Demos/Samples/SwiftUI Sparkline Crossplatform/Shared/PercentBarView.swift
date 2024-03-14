@@ -143,7 +143,7 @@ struct PercentBarView: View {
 				Divider()
 
 				VStack {
-					let animationStyle = AnimationStyle(duration: 0.25)
+					let animationStyle = DSFSparkline.AnimationStyle(duration: 0.25)
 					HStack {
 						DSFSparklinePercentBarGraphView.SwiftUI(style: style10(), value: Double(v10), animationStyle: animationStyle)
 							.frame(width: 50, height: 18, alignment: .center)
@@ -228,11 +228,11 @@ struct PercentBarView: View {
 				Text("Animation")
 					.font(.subheadline)
 
-				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v3), value: Double(v3), animationStyle: AnimationStyle(duration: 0.5))
+				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v3), value: Double(v3), animationStyle: .init(duration: 0.5))
 					.frame(height: 30)
-				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v4), value: Double(v4), animationStyle: AnimationStyle(duration: 0.5))
+				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v4), value: Double(v4), animationStyle: .init(duration: 0.5))
 					.frame(height: 30)
-				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v5), value: Double(v5), animationStyle: AnimationStyle(duration: 0.5))
+				DSFSparklinePercentBarGraphView.SwiftUI(style: style4(value: v5), value: Double(v5), animationStyle: .init(duration: 0.5))
 					.frame(height: 30)
 				Button("Random") {
 					self.v3 = CGFloat(drand48())

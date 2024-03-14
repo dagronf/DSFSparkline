@@ -103,7 +103,7 @@ struct DataBarGraphContent: View {
 				DSFSparklineDataBarGraphView.SwiftUI(
 					dataSource: fourthDataSourceDataBar,
 					palette: grays,
-					animationStyle: AnimationStyle(duration: 1, function: .easeInEaseOut)
+					animationStyle: DSFSparkline.AnimationStyle(duration: 1, function: .easeInEaseOut)
 				)
 				.frame(width: 96, height: 36)
 
@@ -111,7 +111,7 @@ struct DataBarGraphContent: View {
 					dataSource: DSFSparkline.StaticDataSource([CGFloat](repeating: 10.0, count: DSFSparkline.Palette.shared.colors.count)),
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
-					animationStyle: AnimationStyle(duration: 1, function: .easeInEaseOut)
+					animationStyle: .init(duration: 1, function: .easeInEaseOut)
 				)
 				.frame(width: 96, height: 36)
 
@@ -120,7 +120,7 @@ struct DataBarGraphContent: View {
 					palette: .sharedGrays,
 					strokeColor: DSFColor.black.withAlphaComponent(0.5),
 					lineWidth: 1,
-					animationStyle: AnimationStyle(duration: 1, function: .easeInEaseOut)
+					animationStyle: .init(duration: 1, function: .easeInEaseOut)
 				)
 				.frame(width: 96, height: 36)
 
@@ -128,7 +128,7 @@ struct DataBarGraphContent: View {
 					dataSource: DSFSparkline.StaticDataSource([5, 2, 4, 8]),
 					strokeColor: DSFColor.gray,
 					lineWidth: 1,
-					animationStyle: AnimationStyle(duration: 1, function: .easeInEaseOut)
+					animationStyle: .init(duration: 1, function: .easeInEaseOut)
 				)
 				.frame(width: 96, height: 36)
 			}
@@ -144,7 +144,7 @@ struct DataBarGraphContent: View {
 							maximumTotalValue: 20,
 							palette: palette1,
 							lineWidth: 1,
-							animationStyle: AnimationStyle(duration: 0.5, function: .linear)
+							animationStyle: .init(duration: 0.5, function: .linear)
 						)
 						.frame(height: 24)
 						.padding(3)
@@ -155,7 +155,7 @@ struct DataBarGraphContent: View {
 							maximumTotalValue: 20,
 							palette: palette1,
 							lineWidth: 1,
-							animationStyle: AnimationStyle(duration: 0.5, function: .linear)
+							animationStyle: .init(duration: 0.5, function: .linear)
 						)
 						.frame(height: 24)
 						.padding(3)
@@ -166,7 +166,7 @@ struct DataBarGraphContent: View {
 							maximumTotalValue: 20,
 							palette: palette1,
 							lineWidth: 1,
-							animationStyle: AnimationStyle(duration: 0.5, function: .linear)
+							animationStyle: .init(duration: 0.5, function: .linear)
 						)
 						.frame(height: 24)
 						.padding(3)
@@ -184,7 +184,7 @@ struct DataBarGraphContent: View {
 							unsetColor: DSFColor.black,
 							strokeColor: DSFColor.black,
 							lineWidth: 1,
-							animationStyle: AnimationStyle(duration: 0.5, function: .easeInEaseOut)
+							animationStyle: .init(duration: 0.5, function: .easeInEaseOut)
 						)
 						.frame(height: 24)
 						.padding(3)
@@ -197,7 +197,7 @@ struct DataBarGraphContent: View {
 							unsetColor: DSFColor.black,
 							strokeColor: DSFColor.black,
 							lineWidth: 1,
-							animationStyle: AnimationStyle(duration: 0.5, function: .easeInEaseOut)
+							animationStyle: .init(duration: 0.5, function: .easeInEaseOut)
 						)
 						.frame(height: 24)
 						.padding(3)
@@ -210,7 +210,7 @@ struct DataBarGraphContent: View {
 							unsetColor: DSFColor.black,
 							strokeColor: DSFColor.black,
 							lineWidth: 1,
-							animationStyle: AnimationStyle(duration: 0.5, function: .easeInEaseOut)
+							animationStyle: .init(duration: 0.5, function: .easeInEaseOut)
 						)
 						.frame(height: 24)
 						.padding(3)

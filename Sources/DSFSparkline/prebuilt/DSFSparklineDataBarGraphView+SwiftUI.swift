@@ -45,7 +45,7 @@ public extension DSFSparklineDataBarGraphView {
 		let lineWidth: CGFloat
 
 		/// The animation style to apply when datasource changes
-		let animationStyle: AnimationStyle?
+		let animationStyle: DSFSparkline.AnimationStyle?
 
 		/// Create a databar graph
 		/// - Parameters:
@@ -63,7 +63,7 @@ public extension DSFSparklineDataBarGraphView {
 			unsetColor: DSFColor? = nil,
 			strokeColor: DSFColor? = nil,
 			lineWidth: CGFloat = 1.0,
-			animationStyle: AnimationStyle? = nil
+			animationStyle: DSFSparkline.AnimationStyle? = nil
 		) {
 			self.dataSource = dataSource
 			self.maximumTotalValue = maximumTotalValue

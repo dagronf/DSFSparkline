@@ -169,7 +169,7 @@ struct AnimatedGaugeView: View {
 
 			DSFSparklineCircularGaugeView.SwiftUI(
 				value: r1,
-				animationStyle: AnimationStyle(duration: duration, function: .linear),
+				animationStyle: .init(duration: duration, function: .linear),
 				trackStyle: r1tStyle.track,
 				lineStyle: r1lStyle.track
 			)
@@ -177,7 +177,7 @@ struct AnimatedGaugeView: View {
 
 			DSFSparklineCircularGaugeView.SwiftUI(
 				value: r2,
-				animationStyle: AnimationStyle(duration: duration, function: .easeInEaseOut),
+				animationStyle: .init(duration: duration, function: .easeInEaseOut),
 				trackStyle: r2tStyle.track,
 				lineStyle: r2lStyle.track
 			)

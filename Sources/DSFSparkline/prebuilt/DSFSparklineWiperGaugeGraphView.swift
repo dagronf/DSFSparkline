@@ -43,7 +43,7 @@ import UIKit
 		}
 	}
 
-	@objc public var animationStyle: AnimationStyle? = nil {
+	@objc public var animationStyle: DSFSparkline.AnimationStyle? = nil {
 		didSet {
 			self.overlay.animationStyle = animationStyle
 		}

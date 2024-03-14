@@ -107,9 +107,9 @@ class ViewController: UIViewController {
 		self.pie1.palette = palette
 		self.pie2.palette = palette
 
-		self.percentBar1.animationStyle = AnimationStyle()
-		self.percentBar2.animationStyle = AnimationStyle()
-		self.percentBar3.animationStyle = AnimationStyle()
+		self.percentBar1.animationStyle = DSFSparkline.AnimationStyle()
+		self.percentBar2.animationStyle = DSFSparkline.AnimationStyle()
+		self.percentBar3.animationStyle = DSFSparkline.AnimationStyle()
 
 		self.updateValues(self)
 

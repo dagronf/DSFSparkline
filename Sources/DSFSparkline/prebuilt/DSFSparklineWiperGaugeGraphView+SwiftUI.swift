@@ -42,7 +42,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 		/// The value to display in the chart
 		let value: Double
 		/// Should changes to value be animated?
-		let animationStyle: AnimationStyle?
+		let animationStyle: DSFSparkline.AnimationStyle?
 
 		/// Create a sparkline graph that displays a 0 ... 1 value as a gauge
 		public init(
@@ -52,7 +52,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			upperArcColor: DSFColor? = nil,
 			pointerColor: DSFColor? = nil,
 			backgroundColor: DSFColor? = nil,
-			animationStyle: AnimationStyle? = nil
+			animationStyle: DSFSparkline.AnimationStyle? = nil
 		) {
 			self.valueColor = valueColor
 			self.valueBackgroundColor = valueBackgroundColor
@@ -71,7 +71,7 @@ public extension DSFSparklineWiperGaugeGraphView {
 			upperArcColor: DSFColor? = nil,
 			pointerColor: DSFColor? = nil,
 			backgroundColor: DSFColor? = nil,
-			animationStyle: AnimationStyle? = nil
+			animationStyle: DSFSparkline.AnimationStyle? = nil
 		) {
 			self.valueColor = DSFSparkline.ValueBasedFill(flatColor: valueColor.cgColor)
 			self.valueBackgroundColor = valueBackgroundColor
