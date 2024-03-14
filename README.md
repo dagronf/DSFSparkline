@@ -1033,6 +1033,12 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Changes
 
+### `6.0.0`
+
+* Added CircularGauge, CircularProgress sparkline types
+* Removed support for `@IBDesignable` and `@IBInspectable` from the NSView/UIView implementations, as Xcode has
+  indicated that it will be dropping support in the near future
+
 ### `5.2.0`
 
 * Added grid-lines support for pre-built views (line, bar, stack) (NSView/UIView/SwiftUI)
