@@ -26,4 +26,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run tests on iOS
-        run: xcodebuild -scheme ColorPaletteCodable test -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest"
+        run: xcodebuild -scheme DSFSparkline test -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=latest"
