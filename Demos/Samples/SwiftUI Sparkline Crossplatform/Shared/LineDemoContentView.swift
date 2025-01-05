@@ -311,9 +311,40 @@ struct LineDemoAreaCenteredMarkersNoLowerColor: View {
 //	}
 //}
 
+let primaryFill = DSFSparkline.Fill.Gradient(colors: [
+	CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1),
+	CGColor(srgbRed: 0, green: 0, blue: 1, alpha: 1),
+])
+
+let secondaryFill = DSFSparkline.Fill.Gradient(colors: [
+	CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1),
+	CGColor(srgbRed: 0.3, green: 0.5, blue: 0.5, alpha: 1),
+])
+
 struct LineDemoLineRanges: View {
 	var body: some View {
 		VStack {
+			Text("Line with gradient fill")
+			HStack {
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: LineSource1,
+					graphColor: GraphColor,
+					lineWidth: 0.5,
+					centeredAtZeroLine: true,
+					primaryFill: primaryFill,
+					secondaryFill: secondaryFill
+				)
+				DSFSparklineLineGraphView.SwiftUI(
+					dataSource: LineSource1,
+					graphColor: GraphColor,
+					lineWidth: 0.5,
+					interpolated: true,
+					centeredAtZeroLine: true,
+					primaryFill: primaryFill,
+					secondaryFill: secondaryFill
+				)
+			}
+			.frame(height: 80.0)
 			Text("Line with ranges")
 			HStack {
 				DSFSparklineLineGraphView.SwiftUI(
