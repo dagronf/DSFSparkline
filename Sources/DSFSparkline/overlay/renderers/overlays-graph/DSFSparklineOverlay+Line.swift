@@ -1,9 +1,5 @@
 //
-//  DSFSparklineOverlay+Line.swift
-//  DSFSparklines
-//
-//  Created by Darren Ford on 26/2/21.
-//  Copyright © 2021 Darren Ford. All rights reserved.
+//  Copyright © 2025 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -372,13 +368,10 @@ private extension DSFSparklineOverlay.Line {
 				// scaled to avoid clipping we don't end up with blank spaces at the top and bottom of the graph.
 				let split = self.bounds.divided(atDistance: centroid, from: .minYEdge)
 
-				if which == 0 {
-					inner.clip(to: split.slice)
-				}
-				else {
-					inner.clip(to: split.remainder)
-				}
+				let activeRegion = (which == 0) ? split.slice : split.remainder
+				inner.clip(to: activeRegion)
 
+				// Fill color
 				let fillItem = (which == 0) ? self.primaryFill : self.secondaryFill
 
 				if let fill = fillItem {
@@ -399,7 +392,7 @@ private extension DSFSparklineOverlay.Line {
 
 						ctx.addPath(clipper)
 						ctx.clip()
-						fill.fill(context: ctx, bounds: self.bounds)
+						fill.fill(context: ctx, bounds: activeRegion)
 					}
 				}
 

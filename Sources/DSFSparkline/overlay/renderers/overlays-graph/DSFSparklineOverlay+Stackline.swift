@@ -1,9 +1,5 @@
 //
-//  DSFSparklineOverlay+Stackline.swift
-//  DSFSparklines
-//
-//  Created by Darren Ford on 26/2/21.
-//  Copyright © 2021 Darren Ford. All rights reserved.
+//  Copyright © 2025 Darren Ford. All rights reserved.
 //
 //  MIT license
 //
@@ -250,12 +246,8 @@ extension DSFSparklineOverlay.Stackline {
 				for which in 0 ... 1 {
 					clipped.usingGState { inner in
 
-						if which == 0 {
-							inner.clip(to: split.slice)
-						}
-						else {
-							inner.clip(to: split.remainder)
-						}
+						let whichRegion = (which == 0) ? split.slice : split.remainder
+						inner.clip(to: whichRegion)
 
 						let fillItem = (which == 0) ? self.primaryFill : self.secondaryFill
 
@@ -263,7 +255,7 @@ extension DSFSparklineOverlay.Stackline {
 							inner.usingGState { fillCtx in
 								fillCtx.addPath(linePath)
 								fillCtx.clip()
-								fill.fill(context: fillCtx, bounds: integralRect)
+								fill.fill(context: fillCtx, bounds: whichRegion)
 							}
 						}
 
