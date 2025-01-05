@@ -56,6 +56,11 @@ public extension DSFSparklineStackLineGraphView {
 		/// The grid lines to be drawn on the graph
 		let gridLines: DSFSparkline.GridLinesDefinition?
 
+		/// Primary fill
+		let primaryFill: DSFSparklineFillable?
+		/// Secondary fill
+		let secondaryFill: DSFSparklineFillable?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -80,7 +85,9 @@ public extension DSFSparklineStackLineGraphView {
 			centeredAtZeroLine: Bool = false,
 			lowerGraphColor: DSFColor? = nil,
 			highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
-			gridLines: DSFSparkline.GridLinesDefinition? = nil
+			gridLines: DSFSparkline.GridLinesDefinition? = nil,
+			primaryFill: (any DSFSparklineFillable)? = nil,
+			secondaryFill: (any DSFSparklineFillable)? = nil
 		) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -97,6 +104,9 @@ public extension DSFSparklineStackLineGraphView {
 
 			self.highlightDefinitions = highlightDefinitions
 			self.gridLines = gridLines
+
+			self.primaryFill = primaryFill
+			self.secondaryFill = secondaryFill
 		}
 	}
 }
@@ -147,6 +157,13 @@ extension DSFSparklineStackLineGraphView.SwiftUI: DSFViewRepresentable {
 		}
 		else {
 			view.gridLinesVisible = false
+		}
+
+		if let pf = self.primaryFill {
+			view.primaryFill = pf
+		}
+		if let sf = self.secondaryFill {
+			view.secondaryFill = sf
 		}
 
 		return view
@@ -206,6 +223,13 @@ public extension DSFSparklineStackLineGraphView.SwiftUI {
 		else {
 			view.highlightRangeVisible = false
 			view.highlightRangeDefinition = []
+		}
+
+		if let pf = self.primaryFill {
+			view.primaryFill = pf
+		}
+		if let sf = self.secondaryFill {
+			view.secondaryFill = sf
 		}
 
 		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)

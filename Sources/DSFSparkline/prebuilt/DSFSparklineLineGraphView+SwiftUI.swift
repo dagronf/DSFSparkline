@@ -63,6 +63,11 @@ public extension DSFSparklineLineGraphView {
 		/// The grid lines definition
 		let gridLines: DSFSparkline.GridLinesDefinition?
 
+		/// Primary fill
+		let primaryFill: DSFSparklineFillable?
+		/// Secondary fill
+		let secondaryFill: DSFSparklineFillable?
+
 		/// Create a sparkline graph that displays dots (like the CPU history graph in Activity Monitor)
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -93,7 +98,9 @@ public extension DSFSparklineLineGraphView {
 			highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
 			markerSize: CGFloat = -1,
 			markerDrawingBlock: DSFSparklineOverlay.Line.MarkerDrawingBlock? = nil,
-			gridLines: DSFSparkline.GridLinesDefinition? = nil
+			gridLines: DSFSparkline.GridLinesDefinition? = nil,
+			primaryFill: (any DSFSparklineFillable)? = nil,
+			secondaryFill: (any DSFSparklineFillable)? = nil
 		) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -115,6 +122,9 @@ public extension DSFSparklineLineGraphView {
 			self.markerDrawingBlock = markerDrawingBlock
 
 			self.gridLines = gridLines
+
+			self.primaryFill = primaryFill
+			self.secondaryFill = secondaryFill
 		}
 	}
 }
@@ -168,6 +178,13 @@ extension DSFSparklineLineGraphView.SwiftUI: DSFViewRepresentable {
 		}
 
 		view.markerSize = self.markerSize
+
+		if let pf = self.primaryFill {
+			view.primaryFill = pf
+		}
+		if let sf = self.secondaryFill {
+			view.secondaryFill = sf
+		}
 
 		return view
 	}
@@ -228,6 +245,13 @@ public extension DSFSparklineLineGraphView.SwiftUI {
 		else {
 			view.highlightRangeVisible = false
 			view.highlightRangeDefinition = []
+		}
+
+		if let pf = self.primaryFill {
+			view.primaryFill = pf
+		}
+		if let sf = self.secondaryFill {
+			view.secondaryFill = sf
 		}
 
 		UpdateIfNotEqual(result: &view.dataSource, val: self.dataSource)
