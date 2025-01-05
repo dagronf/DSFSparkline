@@ -8,6 +8,16 @@
 import DSFSparkline
 import SwiftUI
 
+private let primaryFill = DSFSparkline.Fill.Gradient(colors: [
+	CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1),
+	CGColor(srgbRed: 0, green: 0, blue: 1, alpha: 1),
+])
+
+private let secondaryFill = DSFSparkline.Fill.Gradient(colors: [
+	CGColor(srgbRed: 1, green: 1, blue: 0, alpha: 1),
+	CGColor(srgbRed: 0, green: 1, blue: 0, alpha: 1),
+])
+
 struct StackLineBasic: View {
 	var body: some View {
 		Text("Stackline")
@@ -154,6 +164,24 @@ struct StackLineCenteredZeroLine2: View {
 	}
 }
 
+struct StackLineCenteredZeroLineCustomFill: View {
+	var body: some View {
+		Text("StackLine centered around zero-line, custom fill")
+		DSFSparklineStackLineGraphView.SwiftUI(
+			dataSource: UpDataSource1,
+			graphColor: DSFColor.systemBlue,
+			lineWidth: 1,
+			showZeroLine: true,
+			centeredAtZeroLine: true,
+			primaryFill: primaryFill,
+			secondaryFill: secondaryFill
+		)
+		.frame(height: 80.0)
+		.padding(5)
+		.border(Color.gray.opacity(0.2), width: 1)
+	}
+}
+
 struct StackLineDemoContentView: View {
 	var body: some View {
 		ScrollView {
@@ -162,6 +190,7 @@ struct StackLineDemoContentView: View {
 				StackLineZeroLine()
 				StackLineCenteredZeroLine()
 				StackLineCenteredZeroLineColored()
+				StackLineCenteredZeroLineCustomFill()
 				StackLineRange()
 				StackLineNofill()
 				StackLineRange2()

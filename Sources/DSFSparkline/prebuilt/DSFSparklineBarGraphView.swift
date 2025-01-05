@@ -60,6 +60,18 @@ import UIKit
 		}
 	}
 
+	/// The primary fill (for the area of the graph ABOVE the zero line)
+	@objc public dynamic var primaryFill: (any DSFSparklineFillable)? {
+		get { self.overlay.primaryFill }
+		set { self.overlay.primaryFill = newValue }
+	}
+
+	/// The secondary fill (for the area of the graph UNDER the zero line)
+	@objc public dynamic var secondaryFill: (any DSFSparklineFillable)? {
+		get { self.overlay.secondaryFill }
+		set { self.overlay.secondaryFill = newValue }
+	}
+
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.configure()

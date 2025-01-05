@@ -54,6 +54,11 @@ public extension DSFSparklineBarGraphView {
 		/// The grid lines definition
 		let gridLines: DSFSparkline.GridLinesDefinition?
 
+		/// Primary fill
+		let primaryFill: DSFSparklineFillable?
+		/// Secondary fill
+		let secondaryFill: DSFSparklineFillable?
+
 		/// Create a bar graph sparkline
 		/// - Parameters:
 		///   - dataSource: The data source for the graph
@@ -66,6 +71,8 @@ public extension DSFSparklineBarGraphView {
 		///   - lowerGraphColor: The color used to draw values lower than the zero-line, or nil for the same as the graph color
 		///   - highlightDefinitions: The style of the y-range highlight
 		///   - gridLines: The grid lines to draw on the graph
+		///   - primaryFill: The fill to use for values above the zero line
+		///   - secondaryFill: The fill to use for values below the zero line
 		public init(
 			dataSource: DSFSparkline.DataSource,
 			graphColor: DSFColor,
@@ -77,7 +84,9 @@ public extension DSFSparklineBarGraphView {
 			lowerGraphColor: DSFColor? = nil,
 			showHighlightRange: Bool = false,
 			highlightDefinitions: [DSFSparkline.HighlightRangeDefinition] = [],
-			gridLines: DSFSparkline.GridLinesDefinition? = nil
+			gridLines: DSFSparkline.GridLinesDefinition? = nil,
+			primaryFill: (any DSFSparklineFillable)? = nil,
+			secondaryFill: (any DSFSparklineFillable)? = nil
 		) {
 			self.dataSource = dataSource
 			self.graphColor = graphColor
@@ -93,6 +102,9 @@ public extension DSFSparklineBarGraphView {
 
 			self.highlightDefinitions = highlightDefinitions
 			self.gridLines = gridLines
+
+			self.primaryFill = primaryFill
+			self.secondaryFill = secondaryFill
 		}
 	}
 }
@@ -136,6 +148,14 @@ extension DSFSparklineBarGraphView.SwiftUI: DSFViewRepresentable {
 			view.highlightRangeVisible = true
 			view.highlightRangeDefinition = self.highlightDefinitions
 		}
+
+		if let pf = self.primaryFill {
+			view.primaryFill = pf
+		}
+		if let sf = self.secondaryFill {
+			view.secondaryFill = sf
+		}
+
 		return view
 	}
 }
@@ -194,6 +214,13 @@ public extension DSFSparklineBarGraphView.SwiftUI {
 		}
 		else {
 			view.gridLinesVisible = false
+		}
+
+		if let pf = self.primaryFill {
+			view.primaryFill = pf
+		}
+		if let sf = self.secondaryFill {
+			view.secondaryFill = sf
 		}
 	}
 }

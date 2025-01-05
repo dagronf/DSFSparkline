@@ -311,12 +311,12 @@ struct LineDemoAreaCenteredMarkersNoLowerColor: View {
 //	}
 //}
 
-let primaryFill = DSFSparkline.Fill.Gradient(colors: [
+private let primaryFill = DSFSparkline.Fill.Gradient(colors: [
 	CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1),
 	CGColor(srgbRed: 0, green: 0, blue: 1, alpha: 1),
 ])
 
-let secondaryFill = DSFSparkline.Fill.Gradient(colors: [
+private let secondaryFill = DSFSparkline.Fill.Gradient(colors: [
 	CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1),
 	CGColor(srgbRed: 0.3, green: 0.5, blue: 0.5, alpha: 1),
 ])

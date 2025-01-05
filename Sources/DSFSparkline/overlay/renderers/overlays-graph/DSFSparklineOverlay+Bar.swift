@@ -196,6 +196,10 @@ extension DSFSparklineOverlay.Bar {
 				outer.clip(to: clipRect)
 			}
 
+			let split = self.bounds.divided(atDistance: centroid, from: .minYEdge)
+			let positiveRegion: CGRect = split.slice
+			let negativeRegion: CGRect = split.remainder
+
 			var positivePath: [CGRect] = []
 			var negativePath: [CGRect] = []
 
@@ -203,18 +207,22 @@ extension DSFSparklineOverlay.Bar {
 				let x = bounds.minX + CGFloat(value.offset) * xDiff
 				if value.element >= centre {
 					let yy = bounds.minY + ((centre - value.element) * height)
-					let r = CGRect(x: x,
-										y: centroid,
-										width: xDiff - 1 - (CGFloat(self.barSpacing)),
-										height: yy) // - CGFloat(self.lineWidth))
+					let r = CGRect(
+						x: x,
+						y: centroid,
+						width: xDiff - 1 - (CGFloat(self.barSpacing)),
+						height: yy
+					)
 					positivePath.append(r.integral)
 				}
 				else {
 					let yy = bounds.minY + ((value.element - centre) * height)
-					let r = CGRect(x: x,
-										y: centroid + 1,
-										width: xDiff - 1 - (CGFloat(self.barSpacing)),
-										height: -yy - CGFloat(self.strokeWidth) + 1)
+					let r = CGRect(
+						x: x,
+						y: centroid + 1,
+						width: xDiff - 1 - (CGFloat(self.barSpacing)),
+						height: -yy - CGFloat(self.strokeWidth) + 1
+					)
 					negativePath.append(r.integral)
 				}
 			}
@@ -229,7 +237,7 @@ extension DSFSparklineOverlay.Bar {
 					outer.usingGState { fillCtx in
 						fillCtx.addPath(path)
 						fillCtx.clip()
-						primaryFill.fill(context: fillCtx, bounds: bounds)
+						primaryFill.fill(context: fillCtx, bounds: positiveRegion)
 					}
 				}
 
@@ -251,7 +259,7 @@ extension DSFSparklineOverlay.Bar {
 					outer.usingGState { fillCtx in
 						fillCtx.addPath(path)
 						fillCtx.clip()
-						secondaryFill.fill(context: fillCtx, bounds: bounds)
+						secondaryFill.fill(context: fillCtx, bounds: negativeRegion)
 					}
 				}
 

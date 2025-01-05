@@ -74,6 +74,51 @@ struct BarCenteredZeroLineColored: View {
 	}
 }
 
+
+private let primaryFill = DSFSparkline.Fill.Gradient(colors: [
+	CGColor(srgbRed: 1, green: 0, blue: 0, alpha: 1),
+	CGColor(srgbRed: 0, green: 0, blue: 1, alpha: 1),
+])
+
+private let secondaryFill = DSFSparkline.Fill.Gradient(colors: [
+	CGColor(srgbRed: 1, green: 1, blue: 0, alpha: 1),
+	CGColor(srgbRed: 0, green: 1, blue: 0, alpha: 1),
+])
+
+struct BarCenteredZeroLineCustomFill: View {
+	var body: some View {
+		Text("Bar centered around zero-line, custom fill")
+		DSFSparklineBarGraphView.SwiftUI(
+			dataSource: BarDataSource1,
+			graphColor: DSFColor.black,
+			lineWidth: 1,
+			showZeroLine: true,
+			centeredAtZeroLine: true,
+			primaryFill: primaryFill,
+			secondaryFill: secondaryFill
+		)
+		.frame(height: 60.0)
+		.padding(5)
+		.border(Color.gray.opacity(0.2), width: 1)
+	}
+}
+
+struct BarWithCustomFill: View {
+	var body: some View {
+		Text("Bar, custom fill")
+		DSFSparklineBarGraphView.SwiftUI(
+			dataSource: BarDataSource1,
+			graphColor: DSFColor.black,
+			lineWidth: 1,
+			primaryFill: primaryFill,
+			secondaryFill: secondaryFill
+		)
+		.frame(height: 60.0)
+		.padding(5)
+		.border(Color.gray.opacity(0.2), width: 1)
+	}
+}
+
 struct BarRange: View {
 	var body: some View {
 		Text("Bar with range")
@@ -159,8 +204,10 @@ struct BarDemoContentView: View {
 			VStack {
 				BarBasic()
 				BarZeroLine()
+				BarWithCustomFill()
 				BarCenteredZeroLine()
 				BarCenteredZeroLineColored()
+				BarCenteredZeroLineCustomFill()
 				BarRange()
 				BarNofill()
 				BarRange2()
@@ -182,11 +229,9 @@ struct BarDemoContentView_Previews: PreviewProvider {
 
 fileprivate var BarDataSource1: DSFSparkline.DataSource = {
 	let d = DSFSparkline.DataSource(windowSize: 20, range: 0 ... 1, zeroLineValue: 0.4)
-	//d.push(values: [0.0, 0.3, 0.2, 0.1, 0.8, 0.7, 0.5, 0.6, 0.1, 0.9, 1])
-
 	d.push(values: [
-				0.85, 0.04, 0.24, 0.13, 0.51, 0.93, 0.26, 0.69, 0.16, 0.39,
-				0.19, 0.12, 0.28, 0.42, 0.42, 0.48, 0.29, 0.05, 0.87, 0.28
+		0.85, 0.04, 0.24, 0.13, 0.51, 0.93, 0.26, 0.69, 0.16, 0.39,
+		0.19, 0.12, 0.28, 0.42, 0.42, 0.48, 0.29, 0.05, 0.87, 0.28
 	])
 
 	return d
