@@ -146,6 +146,21 @@ Use Swift Package Manager to integrate `DSFSparkline` into your project
 
 Add `https://github.com/dagronf/DSFSparkline` to your project.
 
+### Note
+
+When adding `DSFSparkline` to one of your projects, you need to choose a **SINGLE** 'package product' to 
+link to your target.  Choosing multiple package products for your project will result in weird, inconsistent link errors.
+
+|  Package Product       |  Description                    |
+|:-----------------------|:--------------------------------|
+| `DSFSparkline`         |  The default style.  If you are just trying this library out, this is the one to choose
+| `DSFSparkline-static`  |  Add `DSFSparkline` as a STATIC library, meaning that all DSFSparkline code is linked directly into your target |
+| `DSFSparkline-shared`  |  Add `DSFSparkline` as a SHARED library, meaning that you can use a single shared framework between multiple targets in your project to save space |
+
+
+<img src="./Art/xcode-add-at-target.png" />
+
+
 ## Available graph types
 
 ### Line <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/line-simple-small.png" width="50"/>
