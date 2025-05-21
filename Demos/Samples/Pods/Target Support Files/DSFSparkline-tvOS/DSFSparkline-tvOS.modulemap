@@ -1,6 +1,0 @@
-framework module DSFSparkline {
-  umbrella header "DSFSparkline-tvOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module DSFSparkline {
-  umbrella header "DSFSparkline-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

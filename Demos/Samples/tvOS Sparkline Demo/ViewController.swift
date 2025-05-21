@@ -49,13 +49,13 @@ class ViewController: UIViewController {
 		self.purple.dataSource = self.purpleDataSource
 		self.orange.dataSource = self.orangeDataSource
 
-		self.pie1.animationStyle = AnimationStyle(duration: 2.0)
+		self.pie1.animationStyle = DSFSparkline.AnimationStyle(duration: 2.0)
 		self.pie1.dataSource = DSFSparkline.StaticDataSource([1, 2, 3])
 
-		self.pie2.animationStyle = AnimationStyle(duration: 2.0)
+		self.pie2.animationStyle = DSFSparkline.AnimationStyle(duration: 2.0)
 		self.pie2.dataSource = DSFSparkline.StaticDataSource([3, 2, 1])
 
-		self.pie3.animationStyle = AnimationStyle(duration: 2.0)
+		self.pie3.animationStyle = DSFSparkline.AnimationStyle(duration: 2.0)
 		self.pie3.dataSource = DSFSparkline.StaticDataSource([1, 7, 4, 9])
 
 		self.updateWithNewValues()

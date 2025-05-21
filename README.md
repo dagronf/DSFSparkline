@@ -4,9 +4,9 @@ A lightweight sparkline component, supporting Swift, SwiftUI, macCatalyst and Ob
 
 <p align="center">
     <img src="https://img.shields.io/github/v/tag/dagronf/DSFSparkline" />
-    <img src="https://img.shields.io/badge/macOS-10.11+-red" />
-    <img src="https://img.shields.io/badge/iOS-11.0+-blue" />
-    <img src="https://img.shields.io/badge/tvOS-11.0+-orange" />
+    <img src="https://img.shields.io/badge/macOS-10.13+-red" />
+    <img src="https://img.shields.io/badge/iOS-14.0+-blue" />
+    <img src="https://img.shields.io/badge/tvOS-14.0+-orange" />
     <img src="https://img.shields.io/badge/SwiftUI-1.0+-green" />
     <img src="https://img.shields.io/badge/macCatalyst-1.0+-purple" />
 </p>
@@ -139,6 +139,12 @@ struct SuperCoolLineSpark: View {
 <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/swiftui-demo.png" width="165"/>
 
 </details>
+
+## Integration
+
+Use Swift Package Manager to integrate `DSFSparkline` into your project
+
+Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Available graph types
 
@@ -991,20 +997,6 @@ Represents the viewable settings and display.  The current view types available 
 
 </details>
 
-## Integration
-
-There are demos available in the `Demos` subfolder for each of the supported platforms.  The demos use CocoaPods so you'll need to `pod install` in the Demos folder.
-
-### Import the library into your source files
-
-#### Cocoapods
-
-`pod 'DSFSparkline', :git => 'https://github.com/dagronf/DSFSparkline/'`
-
-#### Swift package manager
-
-Add `https://github.com/dagronf/DSFSparkline` to your project.
-
 ## Screenshots
 
 ### In app
@@ -1033,11 +1025,16 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ## Changes
 
+### `7.0.0`
+
+* Removed support for macOS 10.11, 10.12
+* Removed support for iOS 13, tvOS 13
+* Removed CocoaPods support (if you need Cocoapods, stick with v6).
+
 ### `6.0.0`
 
 * Added CircularGauge, CircularProgress sparkline types
-* Removed support for `@IBDesignable` and `@IBInspectable` from the NSView/UIView implementations, as Xcode has
-  indicated that it will be dropping support in the near future
+* Removed support for `@IBDesignable` and `@IBInspectable` from the NSView/UIView implementations, as Xcode has indicated that it will be dropping support in the near future
 
 ### `5.2.0`
 
@@ -1166,7 +1163,7 @@ MIT. Use it for anything you want, just attribute my work. Let me know if you do
 ```
 MIT License
 
-Copyright (c) 2023 Darren Ford
+Copyright (c) 2025 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,13 +1,13 @@
-// swift-tools-version:5.3
+// swift-tools-version: 5.4
 
 import PackageDescription
 
 let package = Package(
 	name: "DSFSparkline",
 	platforms: [
-		.macOS(.v10_11),
-		.iOS(.v13),
-		.tvOS(.v13)
+		.macOS(.v10_13),
+		.iOS(.v14),
+		.tvOS(.v14)
 	],
 	products: [
 		.library(name: "DSFSparkline", targets: ["DSFSparkline"]),
@@ -15,11 +15,7 @@ let package = Package(
 		.library(name: "DSFSparkline-shared", type: .dynamic, targets: ["DSFSparkline"]),
 	],
 	dependencies: [
-		// A microframework for cleaning handling image conversion
-		.package(
-			url: "https://github.com/dagronf/SwiftImageReadWrite",
-			.upToNextMinor(from: "1.6.1")
-		),
+		.package(url: "https://github.com/dagronf/SwiftImageReadWrite", from: "1.9.2"),
 	],
 	targets: [
 		.target(
@@ -28,6 +24,5 @@ let package = Package(
 		.testTarget(
 			name: "DSFSparklineTests",
 			dependencies: ["DSFSparkline", "SwiftImageReadWrite"]),
-	],
-	swiftLanguageVersions: [.v5]
+	]
 )

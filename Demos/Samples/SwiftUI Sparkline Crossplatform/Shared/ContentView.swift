@@ -61,7 +61,7 @@ struct ContentView_Previews: PreviewProvider {
 struct DetailView: View {
 	let item: Item
 	var body: some View {
-		Self._printChanges()
+		//Self._printChanges()
 		return ScrollView([.vertical]) {
 			switch item.id {
 			case 0: ReportView()

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "236A57EF25C1392B00F2BACF"
-               BuildableName = "SwiftUI Sparkline Demo.app"
+               BuildableName = "SwiftUI Sparkline Demo (iOS).app"
                BlueprintName = "SwiftUI Sparkline Demo (iOS)"
                ReferencedContainer = "container:Demos.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "236A57EF25C1392B00F2BACF"
-            BuildableName = "SwiftUI Sparkline Demo.app"
+            BuildableName = "SwiftUI Sparkline Demo (iOS).app"
             BlueprintName = "SwiftUI Sparkline Demo (iOS)"
             ReferencedContainer = "container:Demos.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "236A57EF25C1392B00F2BACF"
-            BuildableName = "SwiftUI Sparkline Demo.app"
+            BuildableName = "SwiftUI Sparkline Demo (iOS).app"
             BlueprintName = "SwiftUI Sparkline Demo (iOS)"
             ReferencedContainer = "container:Demos.xcodeproj">
          </BuildableReference>
